@@ -1,6 +1,6 @@
 {
-  "plugins": ["react"],
-  "extends": ["eslint:recommended", "airbnb", "plugin:react/recommended"],
+  "plugins": ["react", "prettier"],
+  "extends": ["eslint:recommended", "airbnb", "plugin:react/recommended", "prettier"],
   "parserOptions": {
     "ecmaVersion": 8
   },
@@ -12,6 +12,13 @@
   },
   "globals": {
     "__DEV__": true
+  },
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "paths": ["./"]
+      }
+    }
   },
   "rules": {
     "comma-dangle": ["error", "never"],
@@ -27,11 +34,9 @@
     "jsx-a11y/label-has-for": "off",
     "jsx-a11y/no-noninteractive-element-interactions": "off",
     "jsx-a11y/no-static-element-interactions": "off",
+    "react/react-in-jsx-scope": 0,
     "react/jsx-filename-extension": "off",
-    "react/jsx-max-props-per-line": [
-      "error",
-      { "maximum": 1, "when": "always" }
-    ],
+    "react/jsx-max-props-per-line": ["error", { "maximum": 1, "when": "always" }],
     "semi": ["error", "never"],
     "import/prefer-default-export": "off",
     "import/extensions": ["never"],

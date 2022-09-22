@@ -1,3 +1,3 @@
-const reducers = () => ({})
+const rootReducer = () => ({})
 
-export default reducers
+export default rootReducer

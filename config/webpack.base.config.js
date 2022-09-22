@@ -54,16 +54,17 @@ module.exports = {
   ],
   resolve: {
     alias: {
-      Components: path.resolve(__dirname, '../src/components'),
-      Helpers: path.resolve(__dirname, '../src/helpers'),
-      Store: path.resolve(__dirname, '../src/store')
+      components: path.resolve(__dirname, '../src/components'),
+      helpers: path.resolve(__dirname, '../src/helpers'),
+      store: path.resolve(__dirname, '../src/store'),
+      src: path.resolve(__dirname, '../src')
     }
   },
   devServer: {
     proxy: {
       '/api': {
-        target: 'http://api.themoviedb.org/3/',
-        pathRewrite: {'^/api' : ''}
+        target: 'https://api.themoviedb.org/3',
+        pathRewrite: { '^/api': '' }
       },
       secure: false
     }

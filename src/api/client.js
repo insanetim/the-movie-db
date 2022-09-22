@@ -1,14 +1,14 @@
 import axios from 'axios'
 import Cookies from 'js-cookie'
 
-const baseURL = 'http://localhost:8080/api/'
+const baseURL = 'https://api.themoviedb.org/3/'
 
 const client = axios.create({
   baseURL,
   timeout: 10000
 })
 
-client.interceptors.request.use((config) => {
+client.interceptors.request.use(config => {
   const newConfig = config
 
   const token = Cookies.get('auth_token')
@@ -21,7 +21,7 @@ client.interceptors.request.use((config) => {
 
 client.interceptors.response.use(
   response => response,
-  (error) => {
+  error => {
     if (error.response) {
       const { message } = error.response.data
       const { status } = error.response

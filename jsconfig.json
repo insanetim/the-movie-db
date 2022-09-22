@@ -4,9 +4,7 @@
     "allowSyntheticDefaultImports": false,
     "baseUrl": ".",
     "paths": {
-      "Components/*": ["./src/components/*"],
-      "Helpers/*": ["./src/config/*"],
-      "Store/*": ["./src/store/*"]
+      "*": ["*"]
     },
     "module": "commonjs"
   },

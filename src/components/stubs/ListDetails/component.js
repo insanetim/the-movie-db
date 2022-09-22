@@ -1,7 +1,5 @@
 import React from 'react'
-import {
-  Layout, Row, Col, Typography, Modal, Pagination
-} from 'antd'
+import { Layout, Row, Col, Typography, Modal, Pagination } from 'antd'
 import { MinusCircleOutlined, DeleteOutlined } from '@ant-design/icons'
 import { range } from 'lodash'
 
@@ -52,18 +50,16 @@ class ListDetails extends React.Component {
               offset={2}
               span={20}
             >
-              <div className="top-margin">
+              <div className='top-margin'>
                 <Typography.Title>
-                  List item 1
-                  {' '}
-                  <MinusCircleOutlined onClick={showDeleteListModal} />
+                  List item 1 <MinusCircleOutlined onClick={showDeleteListModal} />
                 </Typography.Title>
               </div>
             </Col>
           </Row>
           <Row
             gutter={8}
-            type="flex"
+            type='flex'
           >
             <Col
               span={20}
@@ -71,7 +67,10 @@ class ListDetails extends React.Component {
             >
               <Row
                 gutter={{
-                  xs: 8, sm: 16, md: 24, lg: 32
+                  xs: 8,
+                  sm: 16,
+                  md: 24,
+                  lg: 32
                 }}
               >
                 {range(10).map(item => (
@@ -86,7 +85,7 @@ class ListDetails extends React.Component {
                     <Movie
                       actions={[
                         <DeleteOutlined
-                          key="delete"
+                          key='delete'
                           onClick={showDeleteMovieModal}
                         />
                       ]}
@@ -97,14 +96,14 @@ class ListDetails extends React.Component {
             </Col>
           </Row>
           <Row
-            type="flex"
-            justify="center"
+            type='flex'
+            justify='center'
           >
             <Col>
               <Pagination
                 defaultCurrent={1}
                 total={50}
-                className="pagination"
+                className='pagination'
               />
             </Col>
           </Row>
@@ -112,8 +111,8 @@ class ListDetails extends React.Component {
         <Modal
           visible={modalVisible}
           onCancel={this.hideModal}
-          okText="Create"
-          title="Create list"
+          okText='Create'
+          title='Create list'
         >
           <CreateListModal />
         </Modal>
