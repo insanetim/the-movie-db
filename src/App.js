@@ -1,7 +1,15 @@
 import React from 'react'
+import { Route, Routes } from 'react-router-dom'
 
-import StubsRoot from './components/stubs/StubsRoot'
+import StubsRoutes from './components/stubs'
 
-const App = () => <StubsRoot />
+const App = () => (
+  <Routes>
+    <Route
+      path='/stubs/*'
+      element={<StubsRoutes />}
+    />
+  </Routes>
+)
 
 export default App
