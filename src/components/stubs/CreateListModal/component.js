@@ -4,13 +4,13 @@ import { Form, Input } from 'antd'
 const CreateListModal = () => (
   <Form>
     <Form.Item
-      validateStatus="error"
-      help="Should be combination of numbers & alphabets"
+      validateStatus='error'
+      help='Should be combination of numbers &#38; alphabets'
     >
-      <Input placeholder="Name" />
+      <Input placeholder='Name' />
     </Form.Item>
     <Form.Item>
-      <Input placeholder="Description" />
+      <Input placeholder='Description' />
     </Form.Item>
   </Form>
 )

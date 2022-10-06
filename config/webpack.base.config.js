@@ -68,5 +68,6 @@ module.exports = {
       },
       secure: false
     }
-  }
+  },
+  devtool: 'source-map'
 }
