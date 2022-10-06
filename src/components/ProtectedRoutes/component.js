@@ -1,8 +1,19 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Outlet, Navigate } from 'react-router-dom'
+import { Outlet, Navigate, useLocation } from 'react-router-dom'
 
-const ProtectedRoutes = ({ isAuthenticated }) => (isAuthenticated ? <Outlet /> : <Navigate to='/login' />)
+const ProtectedRoutes = ({ isAuthenticated }) => {
+  const location = useLocation()
+  return isAuthenticated ? (
+    <Outlet />
+  ) : (
+    <Navigate
+      to='/login'
+      replace
+      state={{ from: location }}
+    />
+  )
+}
 
 ProtectedRoutes.propTypes = {
   isAuthenticated: PropTypes.bool.isRequired

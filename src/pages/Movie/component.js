@@ -5,7 +5,7 @@ import { HeartOutlined, BookOutlined, PlusCircleOutlined } from '@ant-design/ico
 import { range } from 'lodash'
 
 const PopoverContent = ({ openModal, closePopover }) => (
-  <React.Fragment>
+  <>
     <div>
       <Button
         type='link'
@@ -26,7 +26,7 @@ const PopoverContent = ({ openModal, closePopover }) => (
     <div>
       <Button type='link'>List 3</Button>
     </div>
-  </React.Fragment>
+  </>
 )
 
 PopoverContent.propTypes = {

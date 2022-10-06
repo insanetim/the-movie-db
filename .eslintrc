@@ -2,7 +2,7 @@
   "plugins": ["react", "prettier"],
   "extends": ["eslint:recommended", "airbnb", "plugin:react/recommended", "prettier"],
   "parserOptions": {
-    "ecmaVersion": 8
+    "ecmaVersion": "latest"
   },
   "env": {
     "browser": true,
@@ -37,14 +37,10 @@
     "react/react-in-jsx-scope": 0,
     "react/jsx-filename-extension": "off",
     "react/jsx-max-props-per-line": ["error", { "maximum": 1, "when": "always" }],
+    "react/function-component-definition": 0,
     "semi": ["error", "never"],
     "import/prefer-default-export": "off",
-    "import/extensions": ["never"],
-    "import/no-unresolved": [
-      "error",
-      {
-        "ignore": ["Components/", "Helpers/", "Store/"]
-      }
-    ]
+    "import/extensions": 0,
+    "max-classes-per-file": 0
   }
 }

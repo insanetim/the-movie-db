@@ -1,1 +1,3 @@
-export { default } from './component'
+import Favorites from './component'
+
+export default Favorites

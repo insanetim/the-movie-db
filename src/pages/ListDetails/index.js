@@ -1,1 +1,3 @@
-export { default } from './component'
+import ListDetails from './component'
+
+export default ListDetails
