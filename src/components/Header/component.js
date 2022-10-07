@@ -2,8 +2,10 @@ import React from 'react'
 import { Typography, Row, Col, Avatar, Dropdown, Menu, Layout } from 'antd'
 import { CaretDownOutlined, UserOutlined } from '@ant-design/icons'
 import { Link } from 'react-router-dom'
+import { useContainer } from './hook'
 
 const Header = () => {
+  const { handleLogout } = useContainer()
   const items = [
     { label: <Link to='/'>Dashboard</Link> },
     { type: 'divider' },
@@ -11,7 +13,7 @@ const Header = () => {
     { label: <Link to='/watchlist'>Watchlist</Link> },
     { label: <Link to='/favorites'>Favorites</Link> },
     { type: 'divider' },
-    { label: 'Logout' }
+    { label: 'Logout', onClick: () => handleLogout() }
   ]
   const menu = <Menu items={items} />
 

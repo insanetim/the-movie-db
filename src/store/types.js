@@ -1,0 +1,7 @@
+export const LOADING_ON = 'app/LOADING_ON'
+export const LOADING_OFF = 'app/LOADING_OFF'
+export const SHOW_NOTIFICATION = 'app/SHOW_NOTIFICATION'
+export const LOG_IN = 'session/LOG_IN'
+export const LOG_IN_CANCEL = 'session/LOG_IN_CANCEL'
+export const LOG_OUT = 'session/LOG_OUT'
+export const SET_SESSION = 'session/SET_SESSION'
