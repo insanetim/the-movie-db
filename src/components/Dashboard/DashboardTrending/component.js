@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { isEmpty } from 'lodash'
 
 import DashboardContent from 'src/components/Dashboard/DashboardContent'
 import DashboardLoading from 'src/components/Dashboard/DashboardLoading'
@@ -9,7 +10,7 @@ import { useContainer } from './hook'
 const DashboardTrending = ({ movies }) => {
   const { handleChange } = useContainer()
 
-  if (!movies) {
+  if (isEmpty(movies)) {
     return <DashboardLoading />
   }
 
@@ -29,11 +30,23 @@ const DashboardTrending = ({ movies }) => {
 }
 
 DashboardTrending.propTypes = {
-  movies: PropTypes.arrayOf()
+  movies: PropTypes.shape({
+    page: PropTypes.number,
+    results: PropTypes.arrayOf(
+      PropTypes.shape({
+        id: PropTypes.number,
+        title: PropTypes.string,
+        overview: PropTypes.string,
+        poster_path: PropTypes.string
+      })
+    ),
+    total_pages: PropTypes.number,
+    total_results: PropTypes.number
+  })
 }
 
 DashboardTrending.defaultProps = {
-  movies: []
+  movies: {}
 }
 
 export default DashboardTrending

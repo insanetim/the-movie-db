@@ -43,7 +43,14 @@ const DashboardContent = ({ movies }) => {
 }
 
 DashboardContent.propTypes = {
-  movies: PropTypes.arrayOf()
+  movies: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number,
+      title: PropTypes.string,
+      overview: PropTypes.string,
+      poster_path: PropTypes.string
+    })
+  )
 }
 
 DashboardContent.defaultProps = {

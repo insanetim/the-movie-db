@@ -11,10 +11,10 @@ import {
 
 const initialState = {
   sessionId: '',
-  account: null,
-  trending: null,
+  account: {},
+  trending: {},
   searchQuery: '',
-  searchResult: null,
+  searchResult: {},
   loading: false
 }
 
@@ -35,7 +35,7 @@ export default function reducer(state = initialState, action) {
     case SET_SEARCH_RESULT:
       return { ...state, searchResult: action.payload }
     case CLEAR_SEARCH:
-      return { ...state, searchQuery: '', searchResult: null }
+      return { ...state, searchQuery: '', searchResult: {} }
     default:
       return state
   }
