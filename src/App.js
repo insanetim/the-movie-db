@@ -14,10 +14,6 @@ import Movie from './pages/Movie'
 
 const App = () => (
   <Routes>
-    <Route
-      path='/login'
-      element={<Login />}
-    />
     <Route element={<ProtectedRoutes />}>
       <Route
         path='/'
@@ -49,6 +45,10 @@ const App = () => (
         />
       </Route>
     </Route>
+    <Route
+      path='/login'
+      element={<Login />}
+    />
     <Route
       path='/stubs/*'
       element={<StubsRoutes />}

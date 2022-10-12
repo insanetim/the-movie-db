@@ -4,8 +4,8 @@ import { Outlet, Navigate, useLocation } from 'react-router-dom'
 import { useContainer } from './hook'
 
 const ProtectedRoutes = () => {
-  const location = useLocation()
   const { sessionId } = useContainer()
+  const location = useLocation()
 
   return sessionId ? (
     <Outlet />

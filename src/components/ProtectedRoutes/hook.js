@@ -2,14 +2,17 @@ import { useEffect } from 'react'
 import * as Cookies from 'js-cookie'
 import { useDispatch } from 'react-redux'
 
-import { setSession } from 'src/store/actions'
+import { requestAccount, setSession } from 'src/store/actions'
 
 export const useContainer = () => {
-  const sessionId = Cookies.get('session_id')
   const dispatch = useDispatch()
+  const sessionId = Cookies.get('session_id')
 
   useEffect(() => {
-    dispatch(setSession(sessionId || null))
+    dispatch(setSession(sessionId || ''))
+    if (sessionId) {
+      dispatch(requestAccount())
+    }
   }, [sessionId])
 
   return { sessionId }

@@ -2,30 +2,48 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Card } from 'antd'
 
-const Movie = ({ actions }) => (
+import NoImage from '../../assets/images/no-image.svg'
+
+const Movie = ({ movie, actions }) => (
   <Card
     hoverable
-    cover={(
-      <img
-        alt="example"
-        src="http://t2.gstatic.com/images?q=tbn:ANd9GcQA_-tL18_rj9zEcjN6n41NEaJm-kRNF9UeOtvksZ4z_OW6jRA9"
-      />
-)}
-    className="top-margin"
+    cover={
+      movie.poster_path ? (
+        <img
+          src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+          alt='Poster'
+        />
+      ) : (
+        <div className='ant-card-cover--no-image'>
+          <img
+            src={NoImage}
+            alt=''
+          />
+        </div>
+      )
+    }
+    className='top-margin'
     actions={actions}
   >
     <Card.Meta
-      title="Avengers: Endgame"
-      description="Avengers: Endgame is a 2019 American superhero film based on the Marvel Comics superhero team the Avengers, produced by Marvel Studios and distributed by Walt Disney Studios Motion Pictures."
+      title={movie.title}
+      description={movie.overview}
     />
   </Card>
 )
 
 Movie.propTypes = {
+  movie: PropTypes.shape({
+    id: PropTypes.number,
+    title: PropTypes.string,
+    overview: PropTypes.string,
+    poster_path: PropTypes.string
+  }),
   actions: PropTypes.arrayOf(PropTypes.node)
 }
 
 Movie.defaultProps = {
+  movie: {},
   actions: []
 }
 

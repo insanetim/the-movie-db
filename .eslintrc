@@ -38,6 +38,7 @@
     "react/jsx-filename-extension": "off",
     "react/jsx-max-props-per-line": ["error", { "maximum": 1, "when": "always" }],
     "react/function-component-definition": 0,
+    "react/jsx-props-no-spreading": 0,
     "semi": ["error", "never"],
     "import/prefer-default-export": "off",
     "import/extensions": 0,
