@@ -1,24 +1,46 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { Modal, Form, Input } from 'antd'
+import { useContainer } from './hook'
 
-const CreateListModal = () => (
-  <Modal
-    open={false}
-    okText='Create'
-    title='Create list'
-  >
-    <Form>
-      <Form.Item
-        validateStatus='error'
-        help='Should be combination of numbers &#38; alphabets'
+const CreateListModal = ({ onCancel, ...rest }) => {
+  const [form] = Form.useForm()
+  const { handleOk, handleSubmit, handleAfterClose } = useContainer(form)
+
+  return (
+    <Modal
+      destroyOnClose
+      title='Create list'
+      okText='Create'
+      onCancel={onCancel}
+      onOk={handleOk}
+      afterClose={handleAfterClose}
+      {...rest}
+    >
+      <Form
+        form={form}
+        autoComplete='off'
+        onFinish={handleSubmit}
       >
-        <Input placeholder='Name' />
-      </Form.Item>
-      <Form.Item>
-        <Input placeholder='Description' />
-      </Form.Item>
-    </Form>
-  </Modal>
-)
+        <Form.Item
+          name='name'
+          rules={[{ required: true, message: 'Name is required' }]}
+        >
+          <Input placeholder='Name' />
+        </Form.Item>
+        <Form.Item
+          name='description'
+          rules={[{ required: true, message: 'Description is required' }]}
+        >
+          <Input placeholder='Description' />
+        </Form.Item>
+      </Form>
+    </Modal>
+  )
+}
+
+CreateListModal.propTypes = {
+  onCancel: PropTypes.func.isRequired
+}
 
 export default CreateListModal

@@ -1,71 +1,101 @@
-const {
-  LOG_IN,
-  LOADING_ON,
-  LOADING_OFF,
-  SHOW_NOTIFICATION,
-  SET_SESSION,
-  LOG_OUT,
-  REQUEST_ACCOUNT,
-  REQUEST_TRENDING,
-  REQUEST_SEARCH,
-  CLEAR_SEARCH,
-  SET_SEARCH_QUERY,
-  SET_SEARCH_RESULT
-} = require('./types')
+import * as types from './types'
 
 export const loadingOn = () => ({
-  type: LOADING_ON
+  type: types.LOADING_ON
 })
 
 export const loadingOff = () => ({
-  type: LOADING_OFF
+  type: types.LOADING_OFF
 })
 
 export const showNotification = payload => ({
-  type: SHOW_NOTIFICATION,
+  type: types.SHOW_NOTIFICATION,
   payload
 })
 
+export const showModal = payload => ({
+  type: types.SHOW_MODAL,
+  payload
+})
+
+export const hideModal = () => ({
+  type: types.HIDE_MODAL
+})
+
 export const login = (payload, cb) => ({
-  type: LOG_IN,
+  type: types.LOG_IN,
   payload,
   cb
 })
 
 export const logout = cb => ({
-  type: LOG_OUT,
+  type: types.LOG_OUT,
   cb
 })
 
 export const setSession = payload => ({
-  type: SET_SESSION,
+  type: types.SET_SESSION,
+  payload
+})
+
+export const deleteSession = () => ({
+  type: types.DELETE_SESSION
+})
+
+export const setAccount = payload => ({
+  type: types.SET_ACCOUNT,
   payload
 })
 
 export const requestAccount = () => ({
-  type: REQUEST_ACCOUNT
+  type: types.REQUEST_ACCOUNT
 })
 
 export const requestTrending = payload => ({
-  type: REQUEST_TRENDING,
+  type: types.REQUEST_TRENDING,
+  payload
+})
+
+export const setTrending = payload => ({
+  type: types.SET_TRENDING,
   payload
 })
 
 export const requestSearch = payload => ({
-  type: REQUEST_SEARCH,
+  type: types.REQUEST_SEARCH,
   payload
 })
 
 export const setSearchQuery = payload => ({
-  type: SET_SEARCH_QUERY,
+  type: types.SET_SEARCH_QUERY,
   payload
 })
 
 export const setSearchResult = payload => ({
-  type: SET_SEARCH_RESULT,
+  type: types.SET_SEARCH_RESULT,
   payload
 })
 
 export const clearSearch = () => ({
-  type: CLEAR_SEARCH
+  type: types.CLEAR_SEARCH
+})
+
+export const requestLists = payload => ({
+  type: types.REQUEST_LISTS,
+  payload
+})
+
+export const setLists = payload => ({
+  type: types.SET_LISTS,
+  payload
+})
+
+export const createList = payload => ({
+  type: types.CREATE_LIST,
+  payload
+})
+
+export const deleteList = payload => ({
+  type: types.DELETE_LIST,
+  payload
 })

@@ -9,7 +9,7 @@ export const useContainer = () => {
   const sessionId = Cookies.get('session_id')
 
   useEffect(() => {
-    dispatch(setSession(sessionId || ''))
+    dispatch(setSession(sessionId || null))
     if (sessionId) {
       dispatch(requestAccount())
     }

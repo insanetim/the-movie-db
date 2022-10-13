@@ -2,12 +2,12 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Row, Col } from 'antd'
 
-import DashboardEmpty from 'src/components/Dashboard/DashboardEmpty'
+import Empty from 'src/components/Empty'
 import Movie from 'src/components/MovieItem'
 
 const DashboardContent = ({ movies }) => {
   if (!movies.length) {
-    return <DashboardEmpty />
+    return <Empty description='No movies found' />
   }
 
   return (

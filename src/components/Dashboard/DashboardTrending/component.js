@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { isEmpty } from 'lodash'
 
 import DashboardContent from 'src/components/Dashboard/DashboardContent'
-import DashboardLoading from 'src/components/Dashboard/DashboardLoading'
+import Loading from 'src/components/Loading'
 import Pagination from 'src/components/Pagination'
 import { useContainer } from './hook'
 
@@ -11,7 +11,7 @@ const DashboardTrending = ({ movies }) => {
   const { handleChange } = useContainer()
 
   if (isEmpty(movies)) {
-    return <DashboardLoading />
+    return <Loading />
   }
 
   return (

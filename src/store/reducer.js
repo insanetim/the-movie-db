@@ -1,41 +1,43 @@
-import {
-  CLEAR_SEARCH,
-  LOADING_OFF,
-  LOADING_ON,
-  SET_ACCOUNT,
-  SET_SEARCH_QUERY,
-  SET_SEARCH_RESULT,
-  SET_SESSION,
-  SET_TRENDING
-} from './types'
+import * as types from './types'
 
 const initialState = {
-  sessionId: '',
+  sessionId: null,
   account: {},
   trending: {},
-  searchQuery: '',
+  searchQuery: null,
   searchResult: {},
+  lists: {},
+  modalType: null,
+  modalProps: {},
   loading: false
 }
 
 export default function reducer(state = initialState, action) {
   switch (action.type) {
-    case LOADING_ON:
+    case types.LOADING_ON:
       return { ...state, loading: true }
-    case LOADING_OFF:
+    case types.LOADING_OFF:
       return { ...state, loading: false }
-    case SET_SESSION:
+    case types.SHOW_MODAL:
+      return { ...state, modalType: action.payload.modalType, modalProps: action.payload.modalProps }
+    case types.HIDE_MODAL:
+      return { ...state, modalProps: { open: false } }
+    case types.SET_SESSION:
       return { ...state, sessionId: action.payload }
-    case SET_ACCOUNT:
+    case types.DELETE_SESSION:
+      return { ...state, sessionId: null }
+    case types.SET_ACCOUNT:
       return { ...state, account: action.payload }
-    case SET_TRENDING:
+    case types.SET_TRENDING:
       return { ...state, trending: action.payload }
-    case SET_SEARCH_QUERY:
+    case types.SET_SEARCH_QUERY:
       return { ...state, searchQuery: action.payload }
-    case SET_SEARCH_RESULT:
+    case types.SET_SEARCH_RESULT:
       return { ...state, searchResult: action.payload }
-    case CLEAR_SEARCH:
-      return { ...state, searchQuery: '', searchResult: {} }
+    case types.CLEAR_SEARCH:
+      return { ...state, searchQuery: null, searchResult: {} }
+    case types.SET_LISTS:
+      return { ...state, lists: action.payload }
     default:
       return state
   }

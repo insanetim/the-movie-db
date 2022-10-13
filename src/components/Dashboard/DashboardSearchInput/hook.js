@@ -8,7 +8,7 @@ export const useContainer = () => {
 
   const handleSearch = value => {
     if (value.trim()) {
-      dispatch(requestSearch({ query: value, page: 1 }))
+      dispatch(requestSearch({ query: value }))
     } else {
       dispatch(clearSearch())
     }

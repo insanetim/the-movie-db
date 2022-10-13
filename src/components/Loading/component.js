@@ -1,7 +1,7 @@
 import React from 'react'
 import { Row, Col, Spin } from 'antd'
 
-const DashboardLoading = () => (
+const Loading = () => (
   <Row justify='center'>
     <Col>
       <Spin />
@@ -9,4 +9,4 @@ const DashboardLoading = () => (
   </Row>
 )
 
-export default DashboardLoading
+export default Loading

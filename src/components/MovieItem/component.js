@@ -2,35 +2,41 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Card } from 'antd'
 
-import NoImage from '../../assets/images/no-image.svg'
+import NoImage from 'src/assets/images/no-image.svg'
+import { useContainer } from './hook'
 
-const Movie = ({ movie, actions }) => (
-  <Card
-    hoverable
-    cover={
-      movie.poster_path ? (
-        <img
-          src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-          alt='Poster'
-        />
-      ) : (
-        <div className='ant-card-cover--no-image'>
+const Movie = ({ movie, actions }) => {
+  const { handleClick } = useContainer(movie.id)
+
+  return (
+    <Card
+      hoverable
+      cover={
+        movie.poster_path ? (
           <img
-            src={NoImage}
-            alt=''
+            src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+            alt='Poster'
           />
-        </div>
-      )
-    }
-    className='top-margin'
-    actions={actions}
-  >
-    <Card.Meta
-      title={movie.title}
-      description={movie.overview}
-    />
-  </Card>
-)
+        ) : (
+          <div className='ant-card-cover--no-image'>
+            <img
+              src={NoImage}
+              alt=''
+            />
+          </div>
+        )
+      }
+      className='top-margin'
+      actions={actions}
+      onClick={handleClick}
+    >
+      <Card.Meta
+        title={movie.title}
+        description={movie.overview}
+      />
+    </Card>
+  )
+}
 
 Movie.propTypes = {
   movie: PropTypes.shape({

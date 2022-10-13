@@ -3,7 +3,7 @@ import { Outlet } from 'react-router-dom'
 import { Layout as AntdLayout } from 'antd'
 
 import Header from 'src/components/Header'
-import CreateListModal from 'src/components/CreateListModal'
+import ModalRoot from 'src/components/ModalRoot'
 
 const Layout = () => (
   <AntdLayout>
@@ -11,7 +11,7 @@ const Layout = () => (
     <AntdLayout.Content>
       <Outlet />
     </AntdLayout.Content>
-    <CreateListModal />
+    <ModalRoot />
   </AntdLayout>
 )
 

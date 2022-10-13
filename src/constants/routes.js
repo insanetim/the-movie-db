@@ -5,3 +5,6 @@ export const deleteSession = '/authentication/session'
 export const getDetails = '/account'
 export const getTrending = '/trending/movie/day'
 export const searchMovies = '/search/movie'
+export const getCreatedLists = accountId => `/account/${accountId}/lists`
+export const createList = '/list'
+export const deleteList = listId => `/list/${listId}`

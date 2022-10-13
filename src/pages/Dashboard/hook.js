@@ -1,5 +1,6 @@
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { isEmpty } from 'lodash'
 
 import { requestTrending } from 'src/store/actions'
 
@@ -10,7 +11,9 @@ export const useContainer = () => {
   const trending = useSelector(state => state.trending)
 
   useEffect(() => {
-    dispatch(requestTrending(1))
+    if (isEmpty(trending)) {
+      dispatch(requestTrending())
+    }
   }, [])
 
   return { searchQuery, searchResult, trending }

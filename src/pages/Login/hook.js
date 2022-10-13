@@ -7,14 +7,12 @@ export const useContainer = () => {
   const dispatch = useDispatch()
   const navigate = useNavigate()
   const location = useLocation()
+  const loading = useSelector(state => state.loading)
 
   const handleLogin = ({ username, password }) => {
-    const payload = { username, password }
     const from = location.state?.from?.pathname || '/'
-    dispatch(login(payload, () => navigate(from, { replace: true })))
+    dispatch(login({ username, password }, () => navigate(from, { replace: true })))
   }
-
-  const loading = useSelector(state => state.loading)
 
   return { handleLogin, loading }
 }
