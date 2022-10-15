@@ -4,9 +4,9 @@ import { requestTrending } from 'src/store/actions'
 export const useContainer = () => {
   const dispatch = useDispatch()
 
-  const handleChange = page => {
+  const handlePagination = page => {
     dispatch(requestTrending(page))
   }
 
-  return { handleChange }
+  return { handlePagination }
 }

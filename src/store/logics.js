@@ -3,7 +3,7 @@ import { notification as AntdNotification } from 'antd'
 import * as Cookies from 'js-cookie'
 import { merge } from 'lodash'
 
-import * as routes from 'src/constants/routes'
+import * as endpoints from 'src/constants/endpoints'
 import * as types from './types'
 import * as actions from './actions'
 
@@ -40,9 +40,9 @@ const login = createLogic({
   latest: true,
   async process({ httpClient, action: { payload, cb } }, dispatch, done) {
     dispatch(actions.loadingOn())
-    const { data: requestTokenData } = await httpClient.get(routes.createRequestToken)
+    const { data: requestTokenData } = await httpClient.get(endpoints.createRequestToken)
     const { data: sessionToken } = await httpClient
-      .post(routes.createSessionWithLogin, {
+      .post(endpoints.createSessionWithLogin, {
         request_token: requestTokenData.request_token,
         ...payload
       })
@@ -52,7 +52,7 @@ const login = createLogic({
         dispatch({ type: types.LOG_IN_CANCEL })
         done()
       })
-    const { data } = await httpClient.post(routes.createSession, {
+    const { data } = await httpClient.post(endpoints.createSession, {
       request_token: sessionToken.request_token
     })
     Cookies.set('session_id', data.session_id)
@@ -67,7 +67,7 @@ const logout = createLogic({
   latest: true,
   async process({ httpClient, getState, action: { cb } }, dispatch, done) {
     const { sessionId } = getState()
-    const { data } = await httpClient.delete(routes.deleteSession, {
+    const { data } = await httpClient.delete(endpoints.deleteSession, {
       data: { session_id: sessionId }
     })
     if (data.success) {
@@ -84,7 +84,7 @@ const requestAccount = createLogic({
   latest: true,
   async process({ httpClient, getState }, dispatch, done) {
     const { sessionId } = getState()
-    const { data } = await httpClient.get(routes.getDetails, {
+    const { data } = await httpClient.get(endpoints.getDetails, {
       params: {
         session_id: sessionId
       }
@@ -98,7 +98,7 @@ const requestTrending = createLogic({
   type: types.REQUEST_TRENDING,
   latest: true,
   async process({ httpClient, action: { payload: page = 1 } }, dispatch, done) {
-    const { data } = await httpClient.get(routes.getTrending, {
+    const { data } = await httpClient.get(endpoints.getTrending, {
       params: {
         page
       }
@@ -122,7 +122,7 @@ const requestSearch = createLogic({
     done
   ) {
     dispatch(actions.setSearchQuery(query))
-    const { data } = await httpClient.get(routes.searchMovies, {
+    const { data } = await httpClient.get(endpoints.searchMovies, {
       params: { query, page }
     })
     dispatch(actions.setSearchResult(data))
@@ -138,7 +138,7 @@ const requestLists = createLogic({
       sessionId,
       account: { id }
     } = getState()
-    const { data } = await httpClient.get(routes.getCreatedLists(id), {
+    const { data } = await httpClient.get(endpoints.getCreatedLists(id), {
       params: { session_id: sessionId, page }
     })
     dispatch(actions.setLists(data))
@@ -152,7 +152,7 @@ const createList = createLogic({
   async process({ httpClient, getState, action: { payload } }, dispatch, done) {
     const { sessionId } = getState()
     const { data } = await httpClient.post(
-      routes.createList,
+      endpoints.createList,
       { ...payload },
       {
         params: {
@@ -173,10 +173,42 @@ const deleteList = createLogic({
   async process({ httpClient, getState, action: { payload: id } }, dispatch, done) {
     const { sessionId } = getState()
     await httpClient
-      .delete(routes.deleteList(id), {
+      .delete(endpoints.deleteList(id), {
         params: { session_id: sessionId }
       })
       .finally(() => dispatch(actions.requestLists()))
+    done()
+  }
+})
+
+const requestWatchlist = createLogic({
+  type: types.REQUEST_WATCHLIST,
+  latest: true,
+  async process({ httpClient, getState, action: { payload: page = 1 } }, dispatch, done) {
+    const {
+      sessionId,
+      account: { id }
+    } = getState()
+    const { data } = await httpClient.get(endpoints.getWatchlist(id), {
+      params: { session_id: sessionId, page }
+    })
+    dispatch(actions.setWatchlist(data))
+    done()
+  }
+})
+
+const requestFavorites = createLogic({
+  type: types.REQUEST_FAVORITES,
+  latest: true,
+  async process({ httpClient, getState, action: { payload: page = 1 } }, dispatch, done) {
+    const {
+      sessionId,
+      account: { id }
+    } = getState()
+    const { data } = await httpClient.get(endpoints.getFavorites(id), {
+      params: { session_id: sessionId, page }
+    })
+    dispatch(actions.setFavorites(data))
     done()
   }
 })
@@ -191,5 +223,7 @@ export default [
   requestSearch,
   requestLists,
   createList,
-  deleteList
+  deleteList,
+  requestWatchlist,
+  requestFavorites
 ]

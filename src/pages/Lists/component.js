@@ -3,7 +3,7 @@ import { Row, Col, Typography } from 'antd'
 import { PlusCircleOutlined } from '@ant-design/icons'
 import { isEmpty } from 'lodash'
 
-import ListsContent from 'src/components/Lists/ListsContent'
+import ListsList from 'src/components/Lists/ListsList'
 import Loading from 'src/components/Loading'
 import { useContainer } from './hook'
 
@@ -21,7 +21,7 @@ const Lists = () => {
           </div>
         </Col>
       </Row>
-      {isEmpty(lists) ? <Loading /> : <ListsContent lists={lists} />}
+      {isEmpty(lists) ? <Loading /> : <ListsList lists={lists} />}
     </>
   )
 }

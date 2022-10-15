@@ -7,6 +7,8 @@ const initialState = {
   searchQuery: null,
   searchResult: {},
   lists: {},
+  watchlist: {},
+  favorites: {},
   modalType: null,
   modalProps: {},
   loading: false
@@ -38,6 +40,12 @@ export default function reducer(state = initialState, action) {
       return { ...state, searchQuery: null, searchResult: {} }
     case types.SET_LISTS:
       return { ...state, lists: action.payload }
+    case types.SET_WATCHLIST:
+      return { ...state, watchlist: action.payload }
+    case types.REQUEST_FAVORITES:
+      return { ...state, favorites: action.payload }
+    case types.SET_FAVORITES:
+      return { ...state, favorites: action.payload }
     default:
       return state
   }

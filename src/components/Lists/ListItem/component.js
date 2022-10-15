@@ -5,7 +5,7 @@ import { DeleteOutlined } from '@ant-design/icons'
 
 import { useContainer } from './hook'
 
-const ListsItem = ({ list }) => {
+const ListItem = ({ list }) => {
   const { handleClick, handleDelete } = useContainer(list.id)
 
   return (
@@ -34,7 +34,7 @@ const ListsItem = ({ list }) => {
   )
 }
 
-ListsItem.propTypes = {
+ListItem.propTypes = {
   list: PropTypes.shape({
     id: PropTypes.number,
     name: PropTypes.string,
@@ -42,8 +42,8 @@ ListsItem.propTypes = {
   })
 }
 
-ListsItem.defaultProps = {
+ListItem.defaultProps = {
   list: {}
 }
 
-export default ListsItem
+export default ListItem

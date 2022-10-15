@@ -6,9 +6,9 @@ export const useContainer = () => {
   const dispatch = useDispatch()
   const searchQuery = useSelector(state => state.searchQuery)
 
-  const handleChange = page => {
+  const handlePagination = page => {
     dispatch(requestSearch({ query: searchQuery, page }))
   }
 
-  return { handleChange }
+  return { handlePagination }
 }

@@ -4,10 +4,10 @@ import { Row, Col } from 'antd'
 
 import Pagination from 'src/components/Pagination'
 import Empty from 'src/components/Empty'
-import ListsItem from '../ListsItem'
+import ListItem from '../ListItem'
 import { useContainer } from './hook'
 
-const ListsContent = ({ lists }) => {
+const ListsList = ({ lists }) => {
   const { handleChange } = useContainer()
 
   if (!lists.results.length) {
@@ -27,7 +27,7 @@ const ListsContent = ({ lists }) => {
             }}
           >
             {lists.results.map(list => (
-              <ListsItem
+              <ListItem
                 key={list.id}
                 list={list}
               />
@@ -47,7 +47,7 @@ const ListsContent = ({ lists }) => {
   )
 }
 
-ListsContent.propTypes = {
+ListsList.propTypes = {
   lists: PropTypes.shape({
     page: PropTypes.number,
     results: PropTypes.arrayOf(
@@ -62,8 +62,8 @@ ListsContent.propTypes = {
   })
 }
 
-ListsContent.defaultProps = {
+ListsList.defaultProps = {
   lists: {}
 }
 
-export default ListsContent
+export default ListsList

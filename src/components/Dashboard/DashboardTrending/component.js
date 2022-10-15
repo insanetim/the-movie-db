@@ -2,30 +2,23 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { isEmpty } from 'lodash'
 
-import DashboardContent from 'src/components/Dashboard/DashboardContent'
 import Loading from 'src/components/Loading'
-import Pagination from 'src/components/Pagination'
+import MoviesList from 'src/components/MoviesList'
 import { useContainer } from './hook'
 
 const DashboardTrending = ({ movies }) => {
-  const { handleChange } = useContainer()
+  const { handlePagination } = useContainer()
 
   if (isEmpty(movies)) {
     return <Loading />
   }
 
   return (
-    <>
-      <DashboardContent movies={movies.results} />
-      {movies.total_pages > 1 && (
-        <Pagination
-          current={movies.page}
-          pageSize={20}
-          total={movies.total_results}
-          onChange={handleChange}
-        />
-      )}
-    </>
+    <MoviesList
+      movies={movies}
+      emptyText='No movies found'
+      handlePagination={handlePagination}
+    />
   )
 }
 

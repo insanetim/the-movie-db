@@ -99,3 +99,23 @@ export const deleteList = payload => ({
   type: types.DELETE_LIST,
   payload
 })
+
+export const requestWatchlist = payload => ({
+  type: types.REQUEST_WATCHLIST,
+  payload
+})
+
+export const setWatchlist = payload => ({
+  type: types.SET_WATCHLIST,
+  payload
+})
+
+export const requestFavorites = payload => ({
+  type: types.REQUEST_FAVORITES,
+  payload
+})
+
+export const setFavorites = payload => ({
+  type: types.SET_FAVORITES,
+  payload
+})
