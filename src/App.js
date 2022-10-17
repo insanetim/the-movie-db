@@ -36,11 +36,11 @@ const App = () => (
           element={<Favorites />}
         />
         <Route
-          path='/list/:list_id'
+          path='/list/:listId'
           element={<ListDetails />}
         />
         <Route
-          path='/movie/:movie_id'
+          path='/movie/:movieId'
           element={<Movie />}
         />
       </Route>

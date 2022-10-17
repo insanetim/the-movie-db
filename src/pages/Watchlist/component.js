@@ -33,6 +33,7 @@ const Watchlist = () => {
               onClick={handleDelete}
             />
           ]}
+          handleDelete={handleDelete}
           handlePagination={handlePagination}
         />
       )}

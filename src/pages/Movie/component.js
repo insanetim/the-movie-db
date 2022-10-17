@@ -1,18 +1,22 @@
 import React from 'react'
-import PropTypes from 'prop-types'
-import { Row, Col, Carousel, Typography, Card, Tag, Popover, Button } from 'antd'
-import { HeartOutlined, BookOutlined, PlusCircleOutlined } from '@ant-design/icons'
-import { range } from 'lodash'
+import { Row, Col, Typography, Tag, Popover, Button } from 'antd'
+import Icon, { HeartOutlined, HeartFilled, BookOutlined, BookFilled, PlusCircleOutlined } from '@ant-design/icons'
+import { upperCase } from 'lodash'
+import { format } from 'date-fns'
+import ISO6391 from 'iso-639-1'
 
-const PopoverContent = ({ openModal, closePopover }) => (
+import Loading from 'src/components/Loading'
+import CreditsItem from 'src/components/Movie/CreditsItem'
+import ImageGallery from 'src/components/Movie/ImageGallery'
+import { convertDuration, convertMoney } from 'src/utils'
+import { useContainer } from './hook'
+
+const PopoverContent = () => (
   <>
     <div>
       <Button
         type='link'
-        onClick={() => {
-          closePopover()
-          openModal()
-        }}
+        onClick={() => {}}
       >
         Create new list ...
       </Button>
@@ -29,229 +33,174 @@ const PopoverContent = ({ openModal, closePopover }) => (
   </>
 )
 
-PopoverContent.propTypes = {
-  openModal: PropTypes.func.isRequired,
-  closePopover: PropTypes.func.isRequired
+const Movie = () => {
+  const { movie, movieInFavorite, movieInWatchlist, loading, handleFavoriteClick, handleWatchlistClick } =
+    useContainer()
+
+  if (loading) {
+    return (
+      <div className='top-margin'>
+        <Loading />
+      </div>
+    )
+  }
+
+  return (
+    <>
+      {movie.images.length > 0 && <ImageGallery images={movie.images} />}
+      <div className='top-margin'>
+        <Row justify='center'>
+          <Col span={20}>
+            <Typography.Title>
+              <span>
+                {movie.title}
+                {movie.release_date && ` (${format(new Date(movie.release_date), 'yyyy')})`}
+              </span>{' '}
+              <Popover
+                title='Add movie to list'
+                trigger='click'
+                placement='top'
+                destroyTooltipOnHide
+                content={<PopoverContent />}
+              >
+                <PlusCircleOutlined />
+              </Popover>{' '}
+              <Icon
+                component={movieInFavorite ? HeartFilled : HeartOutlined}
+                onClick={handleFavoriteClick}
+              />{' '}
+              <Icon
+                component={movieInWatchlist ? BookFilled : BookOutlined}
+                onClick={handleWatchlistClick}
+              />
+            </Typography.Title>
+            {movie.overview && (
+              <>
+                <Typography.Title level={3}>Overview</Typography.Title>
+                <Typography.Paragraph>{movie.overview}</Typography.Paragraph>
+              </>
+            )}
+          </Col>
+        </Row>
+        <Row justify='center'>
+          <Col span={20}>
+            <Typography.Paragraph>
+              <b>Original Language: </b>
+              <span>{ISO6391.getName(movie.original_language)}</span>
+            </Typography.Paragraph>
+          </Col>
+          {movie.runtime !== 0 && (
+            <Col span={20}>
+              <Typography.Paragraph>
+                <b>Runtime: </b>
+                <span>{convertDuration(movie.runtime)}</span>
+              </Typography.Paragraph>
+            </Col>
+          )}
+          {movie.budget !== 0 && (
+            <Col span={20}>
+              <Typography.Paragraph>
+                <b>Budget: </b>
+                <span>{convertMoney(movie.budget)}</span>
+              </Typography.Paragraph>
+            </Col>
+          )}
+          {movie.revenue !== 0 && (
+            <Col span={20}>
+              <Typography.Paragraph>
+                <b>Revenue: </b>
+                <span>{convertMoney(movie.revenue)}</span>
+              </Typography.Paragraph>
+            </Col>
+          )}
+          {movie.genres.length > 0 && (
+            <Col span={20}>
+              <Typography.Paragraph>
+                <b>Genres: </b>
+                {movie.genres.map(({ id, name }) => (
+                  <Tag key={id}>{upperCase(name)}</Tag>
+                ))}
+              </Typography.Paragraph>
+            </Col>
+          )}
+        </Row>
+        {movie.credits.cast.length > 0 && (
+          <>
+            <Row>
+              <Col
+                className='top-margin'
+                span={10}
+                offset={2}
+              >
+                <Typography.Title level={3}>Casts</Typography.Title>
+              </Col>
+            </Row>
+            <Row
+              gutter={8}
+              justify='center'
+            >
+              <Col span={20}>
+                <Row
+                  gutter={{
+                    xs: 8,
+                    sm: 16,
+                    md: 24,
+                    lg: 32
+                  }}
+                >
+                  {movie.credits.cast.slice(0, 12).map(item => (
+                    <CreditsItem
+                      key={item.credit_id}
+                      profilePath={item.profile_path}
+                      title={item.name}
+                      description={item.character}
+                    />
+                  ))}
+                </Row>
+              </Col>
+            </Row>
+          </>
+        )}
+        {movie.credits.crew.length > 0 && (
+          <>
+            <Row>
+              <Col
+                className='top-margin'
+                span={10}
+                offset={2}
+              >
+                <Typography.Title level={3}>Crew</Typography.Title>
+              </Col>
+            </Row>
+            <Row
+              gutter={8}
+              justify='center'
+            >
+              <Col span={20}>
+                <Row
+                  gutter={{
+                    xs: 8,
+                    sm: 16,
+                    md: 24,
+                    lg: 32
+                  }}
+                >
+                  {movie.credits.crew.slice(0, 12).map(item => (
+                    <CreditsItem
+                      key={item.credit_id}
+                      profilePath={item.profile_path}
+                      title={item.name}
+                      description={item.job}
+                    />
+                  ))}
+                </Row>
+              </Col>
+            </Row>
+          </>
+        )}
+      </div>
+    </>
+  )
 }
 
-const Movie = () => (
-  <>
-    <Row type='flex'>
-      <Col span={24}>
-        <Carousel autoplay>
-          <div>
-            <img
-              className='movie-image'
-              src='https://image.tmdb.org/t/p/original/7RyHsO4yDXtBv1zUU3mTpHeQ0d5.jpg'
-              alt=''
-            />
-          </div>
-          <div>
-            <img
-              className='movie-image'
-              src='https://image.tmdb.org/t/p/original/orjiB3oUIsyz60hoEqkiGpy5CeO.jpg'
-              alt=''
-            />
-          </div>
-          <div>
-            <img
-              className='movie-image'
-              src='https://image.tmdb.org/t/p/original/wMFad1v8SwyVvrKXmsIkLhSxCEC.jpg'
-              alt=''
-            />
-          </div>
-        </Carousel>
-      </Col>
-    </Row>
-    <div className='top-margin'>
-      <Row>
-        <Col
-          span={20}
-          offset={2}
-        >
-          <Typography.Title>
-            <span>Avengers: Endgame (2019)</span>{' '}
-            <Popover
-              title='Add movie to list'
-              trigger='click'
-              content={<PopoverContent />}
-            >
-              <PlusCircleOutlined />
-            </Popover>{' '}
-            <HeartOutlined
-            // theme={watchlist ? 'filled' : undefined}
-            // onClick={this.handleWatchlist}
-            />{' '}
-            <BookOutlined
-            // theme={bookmarked ? 'filled' : undefined}
-            // onClick={this.handleBookmark}
-            />
-          </Typography.Title>
-          <Typography.Title level={3}>Overview</Typography.Title>
-          <Typography.Paragraph>
-            After the devastating events of Avengers: Infinity War, the universe is in ruins due to the efforts of the
-            Mad Titan, Thanos. With the help of remaining allies, the Avengers must assemble once more in order to undo
-            Thanos&apos; actions and restore order to the universe once and for all, no matter what consequences may be
-            in store.
-          </Typography.Paragraph>
-        </Col>
-      </Row>
-      <Row>
-        <Col
-          span={20}
-          offset={2}
-        >
-          <Typography.Paragraph>
-            <b>Original Language: </b>
-            <span>English</span>
-          </Typography.Paragraph>
-        </Col>
-        <Col
-          span={20}
-          offset={2}
-        >
-          <Typography.Paragraph>
-            <b>Runtime: </b>
-            <span>3h 1m</span>
-          </Typography.Paragraph>
-        </Col>
-        <Col
-          span={20}
-          offset={2}
-        >
-          <Typography.Paragraph>
-            <b>Budget: </b>
-            <span>$356,000,000.00</span>
-          </Typography.Paragraph>
-        </Col>
-        <Col
-          span={20}
-          offset={2}
-        >
-          <Typography.Paragraph>
-            <b>Revenue: </b>
-            <span>$2,742,491,359.00</span>
-          </Typography.Paragraph>
-        </Col>
-        <Col
-          span={20}
-          offset={2}
-        >
-          <Typography.Paragraph>
-            <b>Genres: </b>
-            <Tag>ADVENTURE</Tag>
-            <Tag>SCIENCE FICTION</Tag>
-            <Tag>ACTION</Tag>
-          </Typography.Paragraph>
-        </Col>
-      </Row>
-      <Row>
-        <Col
-          span={10}
-          offset={2}
-          className='top-margin'
-        >
-          <Typography.Title level={3}>Casts</Typography.Title>
-        </Col>
-      </Row>
-      <Row
-        gutter={8}
-        type='flex'
-      >
-        <Col
-          span={20}
-          offset={2}
-        >
-          <Row
-            gutter={{
-              xs: 8,
-              sm: 16,
-              md: 24,
-              lg: 32
-            }}
-          >
-            {range(10).map(index => (
-              <Col
-                key={index}
-                xs={{ span: 24 }}
-                sm={{ span: 12 }}
-                md={{ span: 8 }}
-                lg={{ span: 8 }}
-                xl={{ span: 6 }}
-              >
-                <Card
-                  cover={
-                    <img
-                      alt='example'
-                      src='https://m.media-amazon.com/images/M/MV5BNzg1MTUyNDYxOF5BMl5BanBnXkFtZTgwNTQ4MTE2MjE@._V1_.jpg'
-                    />
-                  }
-                  className='top-margin'
-                >
-                  <Card.Meta
-                    title='Robert Downey Jr.'
-                    description='Ironman'
-                  />
-                </Card>
-              </Col>
-            ))}
-          </Row>
-        </Col>
-      </Row>
-      <Row>
-        <Col
-          span={10}
-          offset={2}
-          className='top-margin'
-        >
-          <Typography.Title level={3}>Crew</Typography.Title>
-        </Col>
-      </Row>
-      <Row
-        gutter={8}
-        type='flex'
-      >
-        <Col
-          span={20}
-          offset={2}
-        >
-          <Row
-            gutter={{
-              xs: 8,
-              sm: 16,
-              md: 24,
-              lg: 32
-            }}
-          >
-            {range(10).map(index => (
-              <Col
-                key={index}
-                xs={{ span: 12 }}
-                sm={{ span: 8 }}
-                md={{ span: 6 }}
-                lg={{ span: 8 }}
-                xl={{ span: 6 }}
-              >
-                <Card
-                  cover={
-                    <img
-                      alt='example'
-                      src='https://m.media-amazon.com/images/M/MV5BNzg1MTUyNDYxOF5BMl5BanBnXkFtZTgwNTQ4MTE2MjE@._V1_.jpg'
-                    />
-                  }
-                  className='top-margin'
-                >
-                  <Card.Meta
-                    title='Robert Downey Jr.'
-                    description='Ironman'
-                  />
-                </Card>
-              </Col>
-            ))}
-          </Row>
-        </Col>
-      </Row>
-    </div>
-  </>
-)
 export default Movie

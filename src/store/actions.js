@@ -80,13 +80,25 @@ export const clearSearch = () => ({
   type: types.CLEAR_SEARCH
 })
 
-export const requestLists = payload => ({
+export const requestLists = (payload, cb) => ({
   type: types.REQUEST_LISTS,
-  payload
+  payload,
+  cb
 })
 
 export const setLists = payload => ({
   type: types.SET_LISTS,
+  payload
+})
+
+export const requestList = (payload, cb) => ({
+  type: types.REQUEST_LIST,
+  payload,
+  cb
+})
+
+export const setList = payload => ({
+  type: types.SET_LIST,
   payload
 })
 
@@ -95,9 +107,10 @@ export const createList = payload => ({
   payload
 })
 
-export const deleteList = payload => ({
+export const deleteList = (payload, cb) => ({
   type: types.DELETE_LIST,
-  payload
+  payload,
+  cb
 })
 
 export const requestWatchlist = payload => ({
@@ -117,5 +130,36 @@ export const requestFavorites = payload => ({
 
 export const setFavorites = payload => ({
   type: types.SET_FAVORITES,
+  payload
+})
+
+export const requestMovie = (payload, cb) => ({
+  type: types.REQUEST_MOVIE,
+  payload,
+  cb
+})
+
+export const setMovie = payload => ({
+  type: types.SET_MOVIE,
+  payload
+})
+
+export const setMovieInFavorite = payload => ({
+  type: types.SET_MOVIE_IN_FAVORITE,
+  payload
+})
+
+export const changeMovieInFavorite = payload => ({
+  type: types.CHANGE_MOVIE_IN_FAVORITE,
+  payload
+})
+
+export const setMovieInWatchlist = payload => ({
+  type: types.SET_MOVIE_IN_WATCHLIST,
+  payload
+})
+
+export const changeMovieInWatchlist = payload => ({
+  type: types.CHANGE_MOVIE_IN_WATCHLIST,
   payload
 })

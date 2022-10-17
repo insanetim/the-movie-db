@@ -6,7 +6,11 @@ const initialState = {
   trending: {},
   searchQuery: null,
   searchResult: {},
+  movie: {},
+  movieInFavorite: null,
+  movieInWatchlist: null,
   lists: {},
+  list: {},
   watchlist: {},
   favorites: {},
   modalType: null,
@@ -40,12 +44,20 @@ export default function reducer(state = initialState, action) {
       return { ...state, searchQuery: null, searchResult: {} }
     case types.SET_LISTS:
       return { ...state, lists: action.payload }
+    case types.SET_LIST:
+      return { ...state, list: action.payload }
     case types.SET_WATCHLIST:
       return { ...state, watchlist: action.payload }
     case types.REQUEST_FAVORITES:
       return { ...state, favorites: action.payload }
     case types.SET_FAVORITES:
       return { ...state, favorites: action.payload }
+    case types.SET_MOVIE:
+      return { ...state, movie: action.payload }
+    case types.SET_MOVIE_IN_FAVORITE:
+      return { ...state, movieInFavorite: action.payload.inFavorite }
+    case types.SET_MOVIE_IN_WATCHLIST:
+      return { ...state, movieInWatchlist: action.payload.inWatchlist }
     default:
       return state
   }

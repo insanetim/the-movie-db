@@ -27,7 +27,15 @@ const Movie = ({ movie, actions }) => {
         )
       }
       className='top-margin'
-      actions={actions}
+      actions={actions.map(action => ({
+        ...action,
+        props: {
+          ...action.props,
+          onClick: event => {
+            action.props.onClick(event, movie.id)
+          }
+        }
+      }))}
       onClick={handleClick}
     >
       <Card.Meta

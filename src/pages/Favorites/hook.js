@@ -2,7 +2,7 @@ import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Modal } from 'antd'
 import { isEmpty } from 'lodash'
-import { requestFavorites } from 'src/store/actions'
+import { changeMovieInFavorite, requestFavorites } from 'src/store/actions'
 
 export const useContainer = () => {
   const dispatch = useDispatch()
@@ -13,16 +13,18 @@ export const useContainer = () => {
     dispatch(requestFavorites(page))
   }
 
-  const handleDelete = event => {
+  const handleDelete = (event, movieId) => {
     event.stopPropagation()
     Modal.confirm({
       title: 'Do you want to delete movie from favorites?',
-      onOk() {}
+      onOk() {
+        dispatch(changeMovieInFavorite({ movieId, inFavorite: false }))
+      }
     })
   }
 
   useEffect(() => {
-    if (!isEmpty(account) && isEmpty(favorites)) {
+    if (!isEmpty(account)) {
       dispatch(requestFavorites())
     }
   }, [account])
