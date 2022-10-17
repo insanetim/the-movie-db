@@ -1,5 +1,5 @@
 import { useEffect } from 'react'
-import * as Cookies from 'js-cookie'
+import Cookies from 'js-cookie'
 import { useDispatch } from 'react-redux'
 
 import { requestAccount, setSession } from 'src/store/actions'

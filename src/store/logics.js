@@ -1,6 +1,6 @@
 import { createLogic } from 'redux-logic'
 import { notification as AntdNotification } from 'antd'
-import * as Cookies from 'js-cookie'
+import Cookies from 'js-cookie'
 import { merge } from 'lodash'
 
 import * as endpoints from 'src/constants/endpoints'
