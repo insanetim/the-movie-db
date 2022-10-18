@@ -211,7 +211,7 @@ const addToList = createLogic({
         }
       )
       .then(() => {
-        const message = `${movie.title} was added to ${list.name}`
+        const message = `${movie.title} added to ${list.name}`
         dispatch(actions.showNotification({ type: 'success', message }))
       })
       .catch(() => {
@@ -250,7 +250,7 @@ const removeFromList = createLogic({
         }
       )
       .then(() => {
-        const message = `${movie.title} was removed from ${list.name}`
+        const message = `${movie.title} removed from ${list.name}`
         dispatch(actions.showNotification({ type: 'success', message }))
         dispatch(actions.requestList(listId))
       })
@@ -319,9 +319,8 @@ const requestMovie = createLogic({
     })
     data.credits = credits
     data.images = images.backdrops.slice(0, 6)
+    data.accountStates = accountStates
     dispatch(actions.setMovie(data))
-    dispatch(actions.setMovieInFavorite({ inFavorite: accountStates.favorite }))
-    dispatch(actions.setMovieInWatchlist({ inWatchlist: accountStates.watchlist }))
     dispatch(actions.requestLists())
     if (cb) cb()
     done()
@@ -354,9 +353,7 @@ const changeMovieInFavorite = createLogic({
         { params: { session_id: sessionId } }
       )
       .then(() => {
-        const message = inFavorite
-          ? `${movie.title} was added to Favorites`
-          : `${movie.title} was removed from Favorites`
+        const message = inFavorite ? `${movie.title} added to Favorites` : `${movie.title} removed from Favorites`
         dispatch(actions.showNotification({ type: 'success', message }))
         dispatch(actions.setMovieInFavorite({ inFavorite }))
         dispatch(actions.requestFavorites())
@@ -391,9 +388,7 @@ const changeMovieInWatchlist = createLogic({
         { params: { session_id: sessionId } }
       )
       .then(() => {
-        const message = inWatchlist
-          ? `${movie.title} was added to Watchlist`
-          : `${movie.title} was removed from Watchlist`
+        const message = inWatchlist ? `${movie.title} added to Watchlist` : `${movie.title} removed from Watchlist`
         dispatch(actions.showNotification({ type: 'success', message }))
         dispatch(actions.setMovieInWatchlist({ inWatchlist }))
         dispatch(actions.requestWatchlist())
