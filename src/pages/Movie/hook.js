@@ -12,6 +12,7 @@ export const useContainer = () => {
   const movieInFavorite = useSelector(state => state.movieInFavorite)
   const movieInWatchlist = useSelector(state => state.movieInWatchlist)
   const [loading, setLoading] = useState(true)
+  const [popoverOpen, setPopoverOpen] = useState(false)
 
   const handleFavoriteClick = () => {
     dispatch(
@@ -41,6 +42,8 @@ export const useContainer = () => {
     movieInWatchlist,
     loading,
     handleFavoriteClick,
-    handleWatchlistClick
+    handleWatchlistClick,
+    popoverOpen,
+    setPopoverOpen
   }
 }

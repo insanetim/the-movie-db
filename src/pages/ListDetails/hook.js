@@ -2,7 +2,7 @@ import { Modal } from 'antd'
 import { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate, useParams } from 'react-router-dom'
-import { deleteList, requestList } from 'src/store/actions'
+import { deleteList, removeFromList, requestList } from 'src/store/actions'
 
 export const useContainer = () => {
   const { listId } = useParams()
@@ -20,11 +20,13 @@ export const useContainer = () => {
     })
   }
 
-  const handleMovieDelete = event => {
+  const handleMovieDelete = (event, movieId) => {
     event.stopPropagation()
     Modal.confirm({
       title: 'Do you want to delete movie from this list?',
-      onOk() {}
+      onOk() {
+        dispatch(removeFromList({ listId, movieId }))
+      }
     })
   }
 

@@ -8,6 +8,8 @@ export const searchMovies = '/search/movie'
 export const getCreatedLists = accountId => `/account/${accountId}/lists`
 export const getListDetails = listId => `/list/${listId}`
 export const createList = '/list'
+export const addToList = listId => `/list/${listId}/add_item`
+export const removeFromList = listId => `/list/${listId}/remove_item`
 export const deleteList = listId => `/list/${listId}`
 export const getWatchlist = accountId => `/account/${accountId}/watchlist/movies`
 export const getFavorites = accountId => `/account/${accountId}/favorite/movies`

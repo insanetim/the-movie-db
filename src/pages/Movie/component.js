@@ -1,5 +1,5 @@
 import React from 'react'
-import { Row, Col, Typography, Tag, Popover, Button } from 'antd'
+import { Row, Col, Typography, Tag, Popover } from 'antd'
 import Icon, { HeartOutlined, HeartFilled, BookOutlined, BookFilled, PlusCircleOutlined } from '@ant-design/icons'
 import { upperCase } from 'lodash'
 import { format } from 'date-fns'
@@ -8,34 +8,21 @@ import ISO6391 from 'iso-639-1'
 import Loading from 'src/components/Loading'
 import CreditsItem from 'src/components/Movie/CreditsItem'
 import ImageGallery from 'src/components/Movie/ImageGallery'
+import PopoverContent from 'src/components/Movie/PopoverContent'
 import { convertDuration, convertMoney } from 'src/utils'
 import { useContainer } from './hook'
 
-const PopoverContent = () => (
-  <>
-    <div>
-      <Button
-        type='link'
-        onClick={() => {}}
-      >
-        Create new list ...
-      </Button>
-    </div>
-    <div>
-      <Button type='link'>List 1</Button>
-    </div>
-    <div>
-      <Button type='link'>List 2</Button>
-    </div>
-    <div>
-      <Button type='link'>List 3</Button>
-    </div>
-  </>
-)
-
 const Movie = () => {
-  const { movie, movieInFavorite, movieInWatchlist, loading, handleFavoriteClick, handleWatchlistClick } =
-    useContainer()
+  const {
+    movie,
+    movieInFavorite,
+    movieInWatchlist,
+    loading,
+    handleFavoriteClick,
+    handleWatchlistClick,
+    popoverOpen,
+    setPopoverOpen
+  } = useContainer()
 
   if (loading) {
     return (
@@ -61,7 +48,14 @@ const Movie = () => {
                 trigger='click'
                 placement='top'
                 destroyTooltipOnHide
-                content={<PopoverContent />}
+                open={popoverOpen}
+                onOpenChange={open => setPopoverOpen(open)}
+                content={
+                  <PopoverContent
+                    movieId={movie.id}
+                    setPopoverOpen={setPopoverOpen}
+                  />
+                }
               >
                 <PlusCircleOutlined />
               </Popover>{' '}

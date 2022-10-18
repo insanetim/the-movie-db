@@ -1,7 +1,7 @@
 import { useDispatch } from 'react-redux'
 import { createList, hideModal } from 'src/store/actions'
 
-export const useContainer = form => {
+export const useContainer = (form, cb) => {
   const dispatch = useDispatch()
 
   const handleOk = () => {
@@ -10,7 +10,7 @@ export const useContainer = form => {
 
   const handleSubmit = value => {
     dispatch(hideModal())
-    dispatch(createList(value))
+    dispatch(createList(value, cb))
   }
 
   const handleAfterClose = () => {

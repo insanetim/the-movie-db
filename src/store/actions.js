@@ -102,8 +102,19 @@ export const setList = payload => ({
   payload
 })
 
-export const createList = payload => ({
+export const createList = (payload, cb) => ({
   type: types.CREATE_LIST,
+  payload,
+  cb
+})
+
+export const addToList = payload => ({
+  type: types.ADD_TO_LIST,
+  payload
+})
+
+export const removeFromList = payload => ({
+  type: types.REMOVE_FROM_LIST,
   payload
 })
 

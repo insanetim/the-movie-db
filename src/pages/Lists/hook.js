@@ -18,7 +18,7 @@ export const useContainer = () => {
   }
 
   useEffect(() => {
-    if (!isEmpty(account) && isEmpty(lists)) {
+    if (!isEmpty(account)) {
       dispatch(requestLists())
     }
   }, [account])

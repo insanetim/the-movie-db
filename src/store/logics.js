@@ -150,8 +150,8 @@ const requestLists = createLogic({
 const requestList = createLogic({
   type: types.REQUEST_LIST,
   latest: true,
-  async process({ httpClient, action: { payload: id, cb } }, dispatch, done) {
-    const { data } = await httpClient.get(endpoints.getListDetails(id))
+  async process({ httpClient, action: { payload: listId, cb } }, dispatch, done) {
+    const { data } = await httpClient.get(endpoints.getListDetails(listId))
     dispatch(actions.setList(data))
     if (cb) cb()
     done()
@@ -161,20 +161,99 @@ const requestList = createLogic({
 const createList = createLogic({
   type: types.CREATE_LIST,
   latest: true,
-  async process({ httpClient, getState, action: { payload } }, dispatch, done) {
+  async process({ httpClient, getState, action: { payload, cb } }, dispatch, done) {
     const { sessionId } = getState()
-    const { data } = await httpClient.post(
-      endpoints.createList,
-      { ...payload },
-      {
-        params: {
-          session_id: sessionId
+    await httpClient
+      .post(
+        endpoints.createList,
+        { ...payload },
+        {
+          params: {
+            session_id: sessionId
+          }
         }
+      )
+      .then(({ data }) => {
+        if (cb) cb(data.list_id)
+      })
+      .finally(() => {
+        dispatch(actions.requestLists())
+      })
+    done()
+  }
+})
+
+const addToList = createLogic({
+  type: types.ADD_TO_LIST,
+  latest: true,
+  async process(
+    {
+      httpClient,
+      getState,
+      action: {
+        payload: { listId, movieId }
       }
-    )
-    if (data.success) {
-      dispatch(actions.requestLists())
-    }
+    },
+    dispatch,
+    done
+  ) {
+    const { sessionId } = getState()
+    const { data: movie } = await httpClient.get(endpoints.getMovieDetails(movieId))
+    const { data: list } = await httpClient.get(endpoints.getListDetails(listId))
+    await httpClient
+      .post(
+        endpoints.addToList(listId),
+        { media_id: movieId },
+        {
+          params: {
+            session_id: sessionId
+          }
+        }
+      )
+      .then(() => {
+        const message = `${movie.title} was added to ${list.name}`
+        dispatch(actions.showNotification({ type: 'success', message }))
+      })
+      .catch(() => {
+        const message = `${movie.title} is already in ${list.name}`
+        dispatch(actions.showNotification({ type: 'error', message }))
+      })
+    done()
+  }
+})
+
+const removeFromList = createLogic({
+  type: types.REMOVE_FROM_LIST,
+  latest: true,
+  async process(
+    {
+      httpClient,
+      getState,
+      action: {
+        payload: { listId, movieId }
+      }
+    },
+    dispatch,
+    done
+  ) {
+    const { sessionId } = getState()
+    const { data: movie } = await httpClient.get(endpoints.getMovieDetails(movieId))
+    const { data: list } = await httpClient.get(endpoints.getListDetails(listId))
+    await httpClient
+      .post(
+        endpoints.removeFromList(listId),
+        { media_id: movieId },
+        {
+          params: {
+            session_id: sessionId
+          }
+        }
+      )
+      .then(() => {
+        const message = `${movie.title} was removed from ${list.name}`
+        dispatch(actions.showNotification({ type: 'success', message }))
+        dispatch(actions.requestList(listId))
+      })
     done()
   }
 })
@@ -243,6 +322,7 @@ const requestMovie = createLogic({
     dispatch(actions.setMovie(data))
     dispatch(actions.setMovieInFavorite({ inFavorite: accountStates.favorite }))
     dispatch(actions.setMovieInWatchlist({ inWatchlist: accountStates.watchlist }))
+    dispatch(actions.requestLists())
     if (cb) cb()
     done()
   }
@@ -267,17 +347,20 @@ const changeMovieInFavorite = createLogic({
       account: { id: accountId }
     } = getState()
     const { data: movie } = await httpClient.get(endpoints.getMovieDetails(movieId))
-    const { data } = await httpClient.post(
-      endpoints.addToFovorite(accountId),
-      { media_type: 'movie', media_id: movieId, favorite: inFavorite },
-      { params: { session_id: sessionId } }
-    )
-    if (data.success) {
-      const message = inFavorite ? `${movie.title} added to Favorites` : `${movie.title} removed from Favorites`
-      dispatch(actions.showNotification({ type: 'success', message }))
-      dispatch(actions.setMovieInFavorite({ inFavorite }))
-      dispatch(actions.requestFavorites())
-    }
+    await httpClient
+      .post(
+        endpoints.addToFovorite(accountId),
+        { media_type: 'movie', media_id: movieId, favorite: inFavorite },
+        { params: { session_id: sessionId } }
+      )
+      .then(() => {
+        const message = inFavorite
+          ? `${movie.title} was added to Favorites`
+          : `${movie.title} was removed from Favorites`
+        dispatch(actions.showNotification({ type: 'success', message }))
+        dispatch(actions.setMovieInFavorite({ inFavorite }))
+        dispatch(actions.requestFavorites())
+      })
     done()
   }
 })
@@ -301,17 +384,20 @@ const changeMovieInWatchlist = createLogic({
       account: { id: accountId }
     } = getState()
     const { data: movie } = await httpClient.get(endpoints.getMovieDetails(movieId))
-    const { data } = await httpClient.post(
-      endpoints.addToWatchlist(accountId),
-      { media_type: 'movie', media_id: movieId, watchlist: inWatchlist },
-      { params: { session_id: sessionId } }
-    )
-    if (data.success) {
-      const message = inWatchlist ? `${movie.title} added to Watchlist` : `${movie.title} removed from Watchlist`
-      dispatch(actions.showNotification({ type: 'success', message }))
-      dispatch(actions.setMovieInWatchlist({ inWatchlist }))
-      dispatch(actions.requestWatchlist())
-    }
+    await httpClient
+      .post(
+        endpoints.addToWatchlist(accountId),
+        { media_type: 'movie', media_id: movieId, watchlist: inWatchlist },
+        { params: { session_id: sessionId } }
+      )
+      .then(() => {
+        const message = inWatchlist
+          ? `${movie.title} was added to Watchlist`
+          : `${movie.title} was removed from Watchlist`
+        dispatch(actions.showNotification({ type: 'success', message }))
+        dispatch(actions.setMovieInWatchlist({ inWatchlist }))
+        dispatch(actions.requestWatchlist())
+      })
     done()
   }
 })
@@ -327,6 +413,8 @@ export default [
   requestLists,
   requestList,
   createList,
+  addToList,
+  removeFromList,
   deleteList,
   requestWatchlist,
   requestFavorites,
