@@ -1,18 +1,19 @@
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 
 import { clearSearch, requestSearch } from 'src/store/actions'
 
-export const useContainer = () => {
+export const useContainer = setSearch => {
   const dispatch = useDispatch()
-  const selectQuery = useSelector(state => state.searchQuery)
 
   const handleSearch = value => {
     if (value.trim()) {
       dispatch(requestSearch({ query: value }))
+      setSearch({ search: value })
     } else {
       dispatch(clearSearch())
+      setSearch({})
     }
   }
 
-  return { selectQuery, handleSearch }
+  return { handleSearch }
 }

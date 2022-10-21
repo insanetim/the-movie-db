@@ -6,8 +6,8 @@ import Loading from 'src/components/Loading'
 import MoviesList from 'src/components/MoviesList'
 import { useContainer } from './hook'
 
-const DashboardSearchResult = ({ movies }) => {
-  const { handlePagination } = useContainer()
+const DashboardSearchResult = ({ searchQuery }) => {
+  const { movies, handlePagination } = useContainer(searchQuery)
 
   if (isEmpty(movies)) {
     return <Loading />
@@ -23,23 +23,7 @@ const DashboardSearchResult = ({ movies }) => {
 }
 
 DashboardSearchResult.propTypes = {
-  movies: PropTypes.shape({
-    page: PropTypes.number,
-    results: PropTypes.arrayOf(
-      PropTypes.shape({
-        id: PropTypes.number,
-        title: PropTypes.string,
-        overview: PropTypes.string,
-        poster_path: PropTypes.string
-      })
-    ),
-    total_pages: PropTypes.number,
-    total_results: PropTypes.number
-  })
-}
-
-DashboardSearchResult.defaultProps = {
-  movies: {}
+  searchQuery: PropTypes.string.isRequired
 }
 
 export default DashboardSearchResult

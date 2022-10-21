@@ -66,13 +66,8 @@ export const requestSearch = payload => ({
   payload
 })
 
-export const setSearchQuery = payload => ({
-  type: types.SET_SEARCH_QUERY,
-  payload
-})
-
-export const setSearchResult = payload => ({
-  type: types.SET_SEARCH_RESULT,
+export const setSearch = payload => ({
+  type: types.SET_SEARCH,
   payload
 })
 

@@ -1,20 +1,7 @@
-import { useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { isEmpty } from 'lodash'
-
-import { requestTrending } from 'src/store/actions'
+import { useSearchParams } from 'react-router-dom'
 
 export const useContainer = () => {
-  const dispatch = useDispatch()
-  const searchQuery = useSelector(state => state.searchQuery)
-  const searchResult = useSelector(state => state.searchResult)
-  const trending = useSelector(state => state.trending)
+  const [search, setSearch] = useSearchParams()
 
-  useEffect(() => {
-    if (isEmpty(trending)) {
-      dispatch(requestTrending())
-    }
-  }, [])
-
-  return { searchQuery, searchResult, trending }
+  return { searchQuery: search.get('search'), setSearch }
 }

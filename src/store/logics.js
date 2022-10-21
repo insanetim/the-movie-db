@@ -121,11 +121,10 @@ const requestSearch = createLogic({
     dispatch,
     done
   ) {
-    dispatch(actions.setSearchQuery(query))
     const { data } = await httpClient.get(endpoints.searchMovies, {
       params: { query, page }
     })
-    dispatch(actions.setSearchResult(data))
+    dispatch(actions.setSearch(data))
     done()
   }
 })

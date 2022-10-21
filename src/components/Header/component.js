@@ -1,7 +1,7 @@
 import React from 'react'
 import { Typography, Row, Col, Avatar, Dropdown, Menu, Layout } from 'antd'
 import { CaretDownOutlined, UserOutlined } from '@ant-design/icons'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import { isEmpty } from 'lodash'
 
 import { APP_NAME } from 'src/constants'
@@ -9,9 +9,10 @@ import { useContainer } from './hook'
 
 const Header = () => {
   const { account, handleLogout } = useContainer()
+  const location = useLocation()
 
   const items = [
-    { label: <Link to='/'>Dashboard</Link> },
+    { label: <Link to={`/${location.search}`}>Dashboard</Link> },
     { type: 'divider' },
     { label: <Link to='/lists'>My Lists</Link> },
     { label: <Link to='/watchlist'>Watchlist</Link> },

@@ -1,10 +1,11 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { Row, Col, Input } from 'antd'
 
 import { useContainer } from './hook'
 
-const DashboardSearchInput = () => {
-  const { selectQuery, handleSearch } = useContainer()
+const DashboardSearchInput = ({ searchQuery, setSearch }) => {
+  const { handleSearch } = useContainer(setSearch)
 
   return (
     <Row
@@ -29,12 +30,21 @@ const DashboardSearchInput = () => {
           size='large'
           enterButton='Search'
           allowClear
-          defaultValue={selectQuery}
+          defaultValue={searchQuery}
           onSearch={handleSearch}
         />
       </Col>
     </Row>
   )
+}
+
+DashboardSearchInput.propTypes = {
+  searchQuery: PropTypes.string,
+  setSearch: PropTypes.func.isRequired
+}
+
+DashboardSearchInput.defaultProps = {
+  searchQuery: ''
 }
 
 export default DashboardSearchInput

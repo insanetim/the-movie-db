@@ -6,13 +6,16 @@ import DashboardTrending from 'src/components/Dashboard/DashboardTrending'
 import { useContainer } from './hook'
 
 const Dashboard = () => {
-  const { searchQuery, searchResult, trending } = useContainer()
+  const { searchQuery, setSearch } = useContainer()
 
   return (
     <>
-      <DashboardSearchInput />
+      <DashboardSearchInput
+        searchQuery={searchQuery}
+        setSearch={setSearch}
+      />
       <div className='top-margin'>
-        {searchQuery ? <DashboardSearchResult movies={searchResult} /> : <DashboardTrending movies={trending} />}
+        {searchQuery ? <DashboardSearchResult searchQuery={searchQuery} /> : <DashboardTrending />}
       </div>
     </>
   )
