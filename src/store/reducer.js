@@ -5,6 +5,7 @@ const initialState = {
   account: {},
   trending: {},
   search: {},
+  searchQuery: null,
   movie: {},
   movieInFavorite: null,
   movieInWatchlist: null,
@@ -37,8 +38,10 @@ export default function reducer(state = initialState, action) {
       return { ...state, trending: action.payload }
     case types.SET_SEARCH:
       return { ...state, search: action.payload }
+    case types.SET_SEARCH_QUERY:
+      return { ...state, searchQuery: action.payload }
     case types.CLEAR_SEARCH:
-      return { ...state, search: {} }
+      return { ...state, search: {}, searchQuery: null }
     case types.SET_LISTS:
       return { ...state, lists: action.payload }
     case types.SET_LIST:

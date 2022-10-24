@@ -71,6 +71,11 @@ export const setSearch = payload => ({
   payload
 })
 
+export const setSearchQuery = payload => ({
+  type: types.SET_SEARCH_QUERY,
+  payload
+})
+
 export const clearSearch = () => ({
   type: types.CLEAR_SEARCH
 })

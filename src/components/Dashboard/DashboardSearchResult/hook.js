@@ -4,8 +4,9 @@ import { isEmpty } from 'lodash'
 
 import { requestSearch } from 'src/store/actions'
 
-export const useContainer = searchQuery => {
+export const useContainer = () => {
   const dispatch = useDispatch()
+  const searchQuery = useSelector(state => state.searchQuery)
   const search = useSelector(state => state.search)
 
   const handlePagination = page => {
@@ -16,7 +17,7 @@ export const useContainer = searchQuery => {
     if (isEmpty(search)) {
       dispatch(requestSearch({ query: searchQuery }))
     }
-  }, [])
+  }, [searchQuery])
 
   return { movies: search, handlePagination }
 }

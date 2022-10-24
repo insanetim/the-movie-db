@@ -125,6 +125,7 @@ const requestSearch = createLogic({
       params: { query, page }
     })
     dispatch(actions.setSearch(data))
+    dispatch(actions.setSearchQuery(query))
     done()
   }
 })
