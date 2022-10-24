@@ -319,8 +319,9 @@ const requestMovie = createLogic({
     })
     data.credits = credits
     data.images = images.backdrops.slice(0, 6)
-    data.accountStates = accountStates
     dispatch(actions.setMovie(data))
+    dispatch(actions.setMovieInFavorite(accountStates.favorite))
+    dispatch(actions.setMovieInWatchlist(accountStates.watchlist))
     dispatch(actions.requestLists())
     if (cb) cb()
     done()
@@ -355,7 +356,7 @@ const changeMovieInFavorite = createLogic({
       .then(() => {
         const message = inFavorite ? `${movie.title} added to Favorites` : `${movie.title} removed from Favorites`
         dispatch(actions.showNotification({ type: 'success', message }))
-        dispatch(actions.setMovieInFavorite({ inFavorite }))
+        dispatch(actions.setMovieInFavorite(inFavorite))
         dispatch(actions.requestFavorites())
       })
     done()
@@ -390,7 +391,7 @@ const changeMovieInWatchlist = createLogic({
       .then(() => {
         const message = inWatchlist ? `${movie.title} added to Watchlist` : `${movie.title} removed from Watchlist`
         dispatch(actions.showNotification({ type: 'success', message }))
-        dispatch(actions.setMovieInWatchlist({ inWatchlist }))
+        dispatch(actions.setMovieInWatchlist(inWatchlist))
         dispatch(actions.requestWatchlist())
       })
     done()

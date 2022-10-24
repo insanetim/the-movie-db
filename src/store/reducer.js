@@ -55,9 +55,9 @@ export default function reducer(state = initialState, action) {
     case types.SET_MOVIE:
       return { ...state, movie: action.payload }
     case types.SET_MOVIE_IN_FAVORITE:
-      return { ...state, movieInFavorite: action.payload.inFavorite }
+      return { ...state, movieInFavorite: action.payload }
     case types.SET_MOVIE_IN_WATCHLIST:
-      return { ...state, movieInWatchlist: action.payload.inWatchlist }
+      return { ...state, movieInWatchlist: action.payload }
     default:
       return state
   }
