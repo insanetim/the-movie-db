@@ -2,12 +2,16 @@ import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Modal } from 'antd'
 import { isEmpty } from 'lodash'
-import { changeMovieInFavorite, requestFavorites } from 'src/store/actions'
+
+import { requestFavorites } from 'src/state/favorites/actions'
+import { changeMovieInFavorites } from 'src/state/movie/actions'
+import { accountSelector } from 'src/state/session/selectors'
+import { favoritesSelector } from 'src/state/favorites/selectors'
 
 export const useContainer = () => {
   const dispatch = useDispatch()
-  const account = useSelector(state => state.account)
-  const favorites = useSelector(state => state.favorites)
+  const account = useSelector(accountSelector)
+  const favorites = useSelector(favoritesSelector)
 
   const handlePagination = page => {
     dispatch(requestFavorites(page))
@@ -18,7 +22,7 @@ export const useContainer = () => {
     Modal.confirm({
       title: 'Do you want to delete movie from favorites?',
       onOk() {
-        dispatch(changeMovieInFavorite({ movieId, inFavorite: false }))
+        dispatch(changeMovieInFavorites({ movieId, inFavorite: false }))
       }
     })
   }

@@ -2,12 +2,13 @@ import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { isEmpty } from 'lodash'
 
-import { requestSearch } from 'src/store/actions'
+import { requestSearch } from 'src/state/dashboard/actions'
+import { searchQuerySelector, searchSelector } from 'src/state/dashboard/selectors'
 
 export const useContainer = () => {
   const dispatch = useDispatch()
-  const searchQuery = useSelector(state => state.searchQuery)
-  const search = useSelector(state => state.search)
+  const searchQuery = useSelector(searchQuerySelector)
+  const search = useSelector(searchSelector)
 
   const handlePagination = page => {
     dispatch(requestSearch({ query: searchQuery, page }))

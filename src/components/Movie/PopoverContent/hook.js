@@ -1,9 +1,12 @@
 import { useDispatch, useSelector } from 'react-redux'
-import { addToList, showModal } from 'src/store/actions'
+
+import { showModal } from 'src/state/app/actions'
+import { addToList } from 'src/state/lists/actions'
+import { listsSelector } from 'src/state/lists/selectors'
 
 export const useContainer = ({ movieId, setPopoverOpen }) => {
   const dispatch = useDispatch()
-  const lists = useSelector(state => state.lists)
+  const lists = useSelector(listsSelector)
 
   const handleAddToNewList = () => {
     dispatch(

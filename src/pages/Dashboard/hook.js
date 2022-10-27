@@ -3,11 +3,12 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useLocation } from 'react-router-dom'
 import { createBrowserHistory } from '@remix-run/router'
 
-import { setSearchQuery } from 'src/store/actions'
+import { setSearchQuery } from 'src/state/dashboard/actions'
+import { searchQuerySelector } from 'src/state/dashboard/selectors'
 
 export const useContainer = () => {
   const dispatch = useDispatch()
-  const searchQuery = useSelector(state => state.searchQuery)
+  const searchQuery = useSelector(searchQuerySelector)
   const location = useLocation()
   const history = createBrowserHistory()
 

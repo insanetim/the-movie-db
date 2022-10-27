@@ -1,5 +1,6 @@
 import { useDispatch } from 'react-redux'
-import { createList, hideModal } from 'src/store/actions'
+import { hideModal } from 'src/state/app/actions'
+import { createList } from 'src/state/lists/actions'
 
 export const useContainer = (form, cb) => {
   const dispatch = useDispatch()

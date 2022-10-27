@@ -5,7 +5,7 @@ import { BrowserRouter } from 'react-router-dom'
 import './assets/styles/app.scss'
 
 import App from './App'
-import store from './store'
+import store from './state/store'
 
 const rootElement = document.getElementById('app')
 

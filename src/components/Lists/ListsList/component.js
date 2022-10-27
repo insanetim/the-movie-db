@@ -8,7 +8,7 @@ import ListItem from '../ListItem'
 import { useContainer } from './hook'
 
 const ListsList = ({ lists }) => {
-  const { handleChange } = useContainer()
+  const { handlePaginationChange } = useContainer()
 
   if (!lists.results.length) {
     return <Empty description='No results' />
@@ -40,7 +40,7 @@ const ListsList = ({ lists }) => {
           current={lists.page}
           pageSize={20}
           total={lists.total_results}
-          onChange={handleChange}
+          onChange={handlePaginationChange}
         />
       )}
     </>

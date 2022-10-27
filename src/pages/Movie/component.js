@@ -15,7 +15,7 @@ import { useContainer } from './hook'
 const Movie = () => {
   const {
     movie,
-    movieInFavorite,
+    movieInFavorites,
     movieInWatchlist,
     loading,
     handleFavoriteClick,
@@ -60,7 +60,7 @@ const Movie = () => {
                 <PlusCircleOutlined />
               </Popover>{' '}
               <Icon
-                component={movieInFavorite ? HeartFilled : HeartOutlined}
+                component={movieInFavorites ? HeartFilled : HeartOutlined}
                 onClick={handleFavoriteClick}
               />{' '}
               <Icon

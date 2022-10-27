@@ -1,0 +1,6 @@
+export const REQUEST_TRENDING = 'dashboard/REQUEST_TRENDING'
+export const SET_TRENDING = 'dashboard/SET_TRENDING'
+export const REQUEST_SEARCH = 'dashboard/REQUEST_SEARCH'
+export const SET_SEARCH = 'dashboard/SET_SEARCH'
+export const SET_SEARCH_QUERY = 'dashboard/SET_SEARCH_QUERY'
+export const CLEAR_SEARCH = 'dashboard/CLEAR_SEARCH'

@@ -1,14 +1,16 @@
-import { Modal } from 'antd'
 import { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate, useParams } from 'react-router-dom'
-import { deleteList, removeFromList, requestList } from 'src/store/actions'
+import { Modal } from 'antd'
+
+import { deleteList, removeFromList, requestList } from 'src/state/lists/actions'
+import { listSelector } from 'src/state/lists/selectors'
 
 export const useContainer = () => {
-  const { listId } = useParams()
   const dispatch = useDispatch()
+  const list = useSelector(listSelector)
+  const { listId } = useParams()
   const navigate = useNavigate()
-  const list = useSelector(state => state.list)
   const [loading, setLoading] = useState(true)
 
   const handleListDelete = () => {

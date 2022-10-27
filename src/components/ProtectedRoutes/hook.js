@@ -1,8 +1,8 @@
 import { useEffect } from 'react'
-import Cookies from 'js-cookie'
 import { useDispatch } from 'react-redux'
+import Cookies from 'js-cookie'
 
-import { requestAccount, setSession } from 'src/store/actions'
+import { requestAccount, setSession } from 'src/state/session/actions'
 
 export const useContainer = () => {
   const dispatch = useDispatch()

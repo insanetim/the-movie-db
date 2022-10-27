@@ -1,0 +1,7 @@
+export const LOG_IN = 'session/LOG_IN'
+export const LOG_IN_CANCEL = 'session/LOG_IN_CANCEL'
+export const LOG_OUT = 'session/LOG_OUT'
+export const SET_SESSION = 'session/SET_SESSION'
+export const DELETE_SESSION = 'session/DELETE_SESSION'
+export const REQUEST_ACCOUNT = 'session/REQUEST_ACCOUNT'
+export const SET_ACCOUNT = 'session/SET_ACCOUNT'
