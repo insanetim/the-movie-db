@@ -2,7 +2,7 @@ import { configureStore } from '@reduxjs/toolkit'
 import { createLogicMiddleware } from 'redux-logic'
 
 import httpClient from 'src/api/httpClient'
-import reducer from './reducer'
+import rootReducer from './reducer'
 import appOperations from '../app/operations'
 import sessionOperations from '../session/operations'
 import dashboardOperations from '../dashboard/operations'
@@ -24,7 +24,7 @@ const operationsDependencies = { httpClient }
 const logicMiddleware = createLogicMiddleware(operations, operationsDependencies)
 
 const store = configureStore({
-  reducer,
+  reducer: rootReducer,
   middleware: [logicMiddleware],
   devTools: process.env.NODE_ENV !== 'production'
 })
