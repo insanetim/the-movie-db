@@ -8,7 +8,7 @@ const baseURL = API_URL
 
 jest.mock('axios', () => ({ create: jest.fn() }))
 
-it('httpClient axios instance', () => {
+it('should be axios instance', () => {
   const instance = mockAxios()
   jest.mocked(axios.create).mockReturnValue(instance)
 
