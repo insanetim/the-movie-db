@@ -47,7 +47,7 @@ module.exports = {
     modules: [path.resolve(__dirname, 'src'), 'node_modules'],
     extensions: ['*', '.js'],
     alias: {
-      src: path.resolve(__dirname, '/src')
+      src: path.resolve(__dirname, 'src')
     }
   },
   devtool: 'source-map'

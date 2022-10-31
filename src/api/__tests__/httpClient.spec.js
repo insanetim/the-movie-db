@@ -1,0 +1,23 @@
+import axios from 'axios'
+
+import { API_URL } from 'src/constants'
+import mockAxios from 'src/__mocks__/axios_mock'
+import requestInterceptor from '../requestInterceptor'
+
+const baseURL = API_URL
+
+jest.mock('axios', () => ({ create: jest.fn() }))
+
+it('httpClient axios instance', () => {
+  const instance = mockAxios()
+  jest.mocked(axios.create).mockReturnValue(instance)
+
+  const httpClient = jest.requireActual('../httpClient').default
+
+  expect(axios.create).toHaveBeenCalledWith({
+    baseURL,
+    timeout: 10000
+  })
+  expect(httpClient).toBe(instance)
+  expect(instance.interceptors.request.use).toHaveBeenCalledWith(requestInterceptor)
+})

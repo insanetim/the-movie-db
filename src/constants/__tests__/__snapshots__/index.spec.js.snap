@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`constants matches snapshot 1`] = `
+{
+  "API_KEY": "57dbb283c800ccd0bc9a7352c7f5fa3b",
+  "API_URL": "https://api.themoviedb.org/3/",
+  "APP_NAME": "THE MOVIE DB",
+}
+`;

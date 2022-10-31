@@ -1,7 +1,7 @@
 import axios from 'axios'
-import { merge } from 'lodash'
 
-import { API_KEY, API_URL } from 'src/constants'
+import { API_URL } from 'src/constants'
+import requestInterceptor from './requestInterceptor'
 
 const baseURL = API_URL
 
@@ -10,12 +10,6 @@ const httpClient = axios.create({
   timeout: 10000
 })
 
-httpClient.interceptors.request.use(config =>
-  merge(config, {
-    params: {
-      api_key: API_KEY
-    }
-  })
-)
+httpClient.interceptors.request.use(requestInterceptor)
 
 export default httpClient

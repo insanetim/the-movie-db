@@ -1,12 +1,9 @@
 {
   "compilerOptions": {
-    "target": "es2016",
-    "allowSyntheticDefaultImports": false,
     "baseUrl": ".",
     "paths": {
       "*": ["*"]
-    },
-    "module": "commonjs"
+    }
   },
   "exclude": ["node_modules", "dist"]
 }
