@@ -1,8 +1,9 @@
 import * as actions from '../actions'
+import * as types from '../types'
 
 it('loadingOn', () => {
   const expectedAction = {
-    type: 'app/LOADING_ON'
+    type: types.LOADING_ON
   }
 
   expect(actions.loadingOn()).toEqual(expectedAction)
@@ -10,7 +11,7 @@ it('loadingOn', () => {
 
 it('loadingOff', () => {
   const expectedAction = {
-    type: 'app/LOADING_OFF'
+    type: types.LOADING_OFF
   }
 
   expect(actions.loadingOff()).toEqual(expectedAction)
@@ -18,7 +19,7 @@ it('loadingOff', () => {
 
 it('showNotification', () => {
   const expectedAction = {
-    type: 'app/SHOW_NOTIFICATION',
+    type: types.SHOW_NOTIFICATION,
     payload: {}
   }
 
@@ -27,7 +28,7 @@ it('showNotification', () => {
 
 it('showModal', () => {
   const expectedAction = {
-    type: 'app/SHOW_MODAL',
+    type: types.SHOW_MODAL,
     payload: {}
   }
 
@@ -36,7 +37,7 @@ it('showModal', () => {
 
 it('hideModal', () => {
   const expectedAction = {
-    type: 'app/HIDE_MODAL'
+    type: types.HIDE_MODAL
   }
 
   expect(actions.hideModal()).toEqual(expectedAction)
