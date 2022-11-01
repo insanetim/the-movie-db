@@ -1,23 +1,13 @@
 import * as types from '../types'
-import reducer from '../reducers'
+import { lists, list } from '../reducers'
 
 describe('listsReducer', () => {
-  it('should return initialState', () => {
-    expect(reducer(undefined, {})).toEqual({
-      lists: {},
-      list: {}
-    })
-  })
-
   it('should handle SET_LISTS', () => {
     const action = {
       type: types.SET_LISTS,
       payload: { id: 1 }
     }
-    expect(reducer(undefined, action)).toEqual({
-      lists: { id: 1 },
-      list: {}
-    })
+    expect(lists(undefined, action)).toEqual({ id: 1 })
   })
 
   it('should handle SET_LIST', () => {
@@ -25,9 +15,6 @@ describe('listsReducer', () => {
       type: types.SET_LIST,
       payload: { id: 1 }
     }
-    expect(reducer(undefined, action)).toEqual({
-      lists: {},
-      list: { id: 1 }
-    })
+    expect(list(undefined, action)).toEqual({ id: 1 })
   })
 })

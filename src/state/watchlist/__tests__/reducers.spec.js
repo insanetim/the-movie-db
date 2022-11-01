@@ -3,9 +3,7 @@ import reducer from '../reducers'
 
 describe('watchlistReducer', () => {
   it('should return initialState', () => {
-    expect(reducer(undefined, {})).toEqual({
-      watchlist: {}
-    })
+    expect(reducer(undefined, {})).toEqual({})
   })
 
   it('should handle SET_WATCHLIST', () => {
@@ -13,8 +11,6 @@ describe('watchlistReducer', () => {
       type: types.SET_WATCHLIST,
       payload: { id: 1 }
     }
-    expect(reducer(undefined, action)).toEqual({
-      watchlist: { id: 1 }
-    })
+    expect(reducer(undefined, action)).toEqual({ id: 1 })
   })
 })

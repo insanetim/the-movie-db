@@ -3,9 +3,7 @@ import reducer from '../reducers'
 
 describe('favoritesReducer', () => {
   it('should return initialState', () => {
-    expect(reducer(undefined, {})).toEqual({
-      favorites: {}
-    })
+    expect(reducer(undefined, {})).toEqual({})
   })
 
   it('should handle SET_FAVORITES', () => {
@@ -13,8 +11,6 @@ describe('favoritesReducer', () => {
       type: types.SET_FAVORITES,
       payload: { id: 1 }
     }
-    expect(reducer(undefined, action)).toEqual({
-      favorites: { id: 1 }
-    })
+    expect(reducer(undefined, action)).toEqual({ id: 1 })
   })
 })

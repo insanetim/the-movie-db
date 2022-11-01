@@ -1,1 +1,3 @@
-export const watchlistSelector = state => state.watchlist.watchlist
+import * as R from 'ramda'
+
+export const watchlistSelector = R.path(['watchlist'])

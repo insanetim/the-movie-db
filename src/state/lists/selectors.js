@@ -1,2 +1,4 @@
-export const listsSelector = state => state.lists.lists
-export const listSelector = state => state.lists.list
+import * as R from 'ramda'
+
+export const listsSelector = R.path(['lists', 'lists'])
+export const listSelector = R.path(['lists', 'list'])

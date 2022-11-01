@@ -1,25 +1,13 @@
 import * as types from '../types'
-import reducer from '../reducers'
+import { trending, search } from '../reducers'
 
 describe('dashboardReducer', () => {
-  it('should return initialState', () => {
-    expect(reducer(undefined, {})).toEqual({
-      trending: {},
-      search: {},
-      searchQuery: null
-    })
-  })
-
   it('should handle SET_TRENDING', () => {
     const action = {
       type: types.SET_TRENDING,
       payload: { id: 1 }
     }
-    expect(reducer(undefined, action)).toEqual({
-      trending: { id: 1 },
-      search: {},
-      searchQuery: null
-    })
+    expect(trending(undefined, action)).toEqual({ id: 1 })
   })
 
   it('should handle SET_SEARCH', () => {
@@ -27,8 +15,7 @@ describe('dashboardReducer', () => {
       type: types.SET_SEARCH,
       payload: { id: 1 }
     }
-    expect(reducer(undefined, action)).toEqual({
-      trending: {},
+    expect(search(undefined, action)).toEqual({
       search: { id: 1 },
       searchQuery: null
     })
@@ -39,8 +26,7 @@ describe('dashboardReducer', () => {
       type: types.SET_SEARCH_QUERY,
       payload: 'test/searchQuery'
     }
-    expect(reducer(undefined, action)).toEqual({
-      trending: {},
+    expect(search(undefined, action)).toEqual({
       search: {},
       searchQuery: 'test/searchQuery'
     })
@@ -50,8 +36,7 @@ describe('dashboardReducer', () => {
     const action = {
       type: types.CLEAR_SEARCH
     }
-    expect(reducer(undefined, action)).toEqual({
-      trending: {},
+    expect(search(undefined, action)).toEqual({
       search: {},
       searchQuery: null
     })

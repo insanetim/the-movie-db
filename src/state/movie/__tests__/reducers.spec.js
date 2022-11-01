@@ -1,25 +1,13 @@
 import * as types from '../types'
-import reducer from '../reducers'
+import { movie, movieInFavorites, movieInWatchlist } from '../reducers'
 
 describe('movieReducer', () => {
-  it('should return initialState', () => {
-    expect(reducer(undefined, {})).toEqual({
-      movie: {},
-      movieInFavorites: null,
-      movieInWatchlist: null
-    })
-  })
-
   it('should handle SET_MOVIE', () => {
     const action = {
       type: types.SET_MOVIE,
       payload: { id: 1 }
     }
-    expect(reducer(undefined, action)).toEqual({
-      movie: { id: 1 },
-      movieInFavorites: null,
-      movieInWatchlist: null
-    })
+    expect(movie(undefined, action)).toEqual({ id: 1 })
   })
 
   it('should handle SET_MOVIE_IN_FAVORITES', () => {
@@ -27,11 +15,7 @@ describe('movieReducer', () => {
       type: types.SET_MOVIE_IN_FAVORITES,
       payload: true
     }
-    expect(reducer(undefined, action)).toEqual({
-      movie: {},
-      movieInFavorites: true,
-      movieInWatchlist: null
-    })
+    expect(movieInFavorites(undefined, action)).toBe(true)
   })
 
   it('should handle SET_MOVIE_IN_WATCHLIST', () => {
@@ -39,10 +23,6 @@ describe('movieReducer', () => {
       type: types.SET_MOVIE_IN_WATCHLIST,
       payload: true
     }
-    expect(reducer(undefined, action)).toEqual({
-      movie: {},
-      movieInFavorites: null,
-      movieInWatchlist: true
-    })
+    expect(movieInWatchlist(undefined, action)).toBe(true)
   })
 })

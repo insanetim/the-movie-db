@@ -1,20 +1,34 @@
+import { combineReducers } from 'redux'
+
 import * as types from './types'
 
-const initialState = {
-  movie: {},
-  movieInFavorites: null,
-  movieInWatchlist: null
-}
-
-export default function movieReducer(state = initialState, action) {
+export const movie = (state = {}, action) => {
   switch (action.type) {
     case types.SET_MOVIE:
-      return { ...state, movie: action.payload }
-    case types.SET_MOVIE_IN_FAVORITES:
-      return { ...state, movieInFavorites: action.payload }
-    case types.SET_MOVIE_IN_WATCHLIST:
-      return { ...state, movieInWatchlist: action.payload }
+      return action.payload
     default:
       return state
   }
 }
+
+export const movieInFavorites = (state = null, action) => {
+  switch (action.type) {
+    case types.SET_MOVIE_IN_FAVORITES:
+      return action.payload
+    default:
+      return state
+  }
+}
+
+export const movieInWatchlist = (state = null, action) => {
+  switch (action.type) {
+    case types.SET_MOVIE_IN_WATCHLIST:
+      return action.payload
+    default:
+      return state
+  }
+}
+
+const movieReducer = combineReducers({ movie, movieInFavorites, movieInWatchlist })
+
+export default movieReducer

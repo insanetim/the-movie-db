@@ -6,14 +6,14 @@ describe('appReducer', () => {
     const action = {
       type: types.LOADING_ON
     }
-    expect(loading(undefined, action)).toEqual(true)
+    expect(loading(undefined, action)).toBe(true)
   })
 
   it('should handle LOADING_OFF', () => {
     const action = {
       type: types.LOADING_OFF
     }
-    expect(loading(undefined, action)).toEqual(false)
+    expect(loading(undefined, action)).toBe(false)
   })
 
   it('should handle SHOW_MODAL', () => {

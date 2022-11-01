@@ -1,13 +1,9 @@
 import * as types from './types'
 
-const initialState = {
-  watchlist: {}
-}
-
-export default function watchlistReducer(state = initialState, action) {
+export default function watchlistReducer(state = {}, action) {
   switch (action.type) {
     case types.SET_WATCHLIST:
-      return { ...state, watchlist: action.payload }
+      return action.payload
     default:
       return state
   }

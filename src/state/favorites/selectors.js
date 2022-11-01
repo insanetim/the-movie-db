@@ -1,1 +1,3 @@
-export const favoritesSelector = state => state.favorites.favorites
+import * as R from 'ramda'
+
+export const favoritesSelector = R.path(['favorites'])
