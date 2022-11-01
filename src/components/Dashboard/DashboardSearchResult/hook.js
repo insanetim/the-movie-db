@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { isEmpty } from 'lodash'
+import * as R from 'ramda'
 
 import { requestSearch } from 'src/state/dashboard/actions'
 import { searchQuerySelector, searchSelector } from 'src/state/dashboard/selectors'
@@ -15,7 +15,7 @@ export const useContainer = () => {
   }
 
   useEffect(() => {
-    if (isEmpty(search)) {
+    if (R.isEmpty(search)) {
       dispatch(requestSearch({ query: searchQuery }))
     }
   }, [searchQuery])

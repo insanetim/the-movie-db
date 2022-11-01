@@ -1,7 +1,7 @@
 import React from 'react'
 import { Row, Col, Typography, Tag, Popover } from 'antd'
 import Icon, { HeartOutlined, HeartFilled, BookOutlined, BookFilled, PlusCircleOutlined } from '@ant-design/icons'
-import { upperCase } from 'lodash'
+import * as R from 'ramda'
 import { format } from 'date-fns'
 import ISO6391 from 'iso-639-1'
 
@@ -112,7 +112,7 @@ const Movie = () => {
               <Typography.Paragraph>
                 <b>Genres: </b>
                 {movie.genres.map(({ id, name }) => (
-                  <Tag key={id}>{upperCase(name)}</Tag>
+                  <Tag key={id}>{R.toUpper(name)}</Tag>
                 ))}
               </Typography.Paragraph>
             </Col>

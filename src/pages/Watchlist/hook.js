@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Modal } from 'antd'
-import { isEmpty } from 'lodash'
+import * as R from 'ramda'
 
 import { requestWatchlist } from 'src/state/watchlist/actions'
 import { changeMovieInWatchlist } from 'src/state/movie/actions'
@@ -28,7 +28,7 @@ export const useContainer = () => {
   }
 
   useEffect(() => {
-    if (!isEmpty(account)) {
+    if (R.not(R.isEmpty(account))) {
       dispatch(requestWatchlist())
     }
   }, [account])

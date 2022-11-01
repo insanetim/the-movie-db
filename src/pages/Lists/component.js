@@ -1,7 +1,7 @@
 import React from 'react'
 import { Row, Col, Typography } from 'antd'
 import { PlusCircleOutlined } from '@ant-design/icons'
-import { isEmpty } from 'lodash'
+import * as R from 'ramda'
 
 import ListsList from 'src/components/Lists/ListsList'
 import Loading from 'src/components/Loading'
@@ -21,7 +21,7 @@ const Lists = () => {
           </div>
         </Col>
       </Row>
-      {isEmpty(lists) ? <Loading /> : <ListsList lists={lists} />}
+      {R.isEmpty(lists) ? <Loading /> : <ListsList lists={lists} />}
     </>
   )
 }

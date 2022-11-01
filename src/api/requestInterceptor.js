@@ -1,9 +1,9 @@
-import { merge } from 'lodash'
+import * as R from 'ramda'
 
 import { API_KEY } from 'src/constants'
 
 const requestInterceptor = config =>
-  merge(config, {
+  R.mergeDeepLeft(config, {
     params: {
       api_key: API_KEY
     }

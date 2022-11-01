@@ -1,35 +1,19 @@
 import * as types from '../types'
-import reducer from '../reducers'
+import { loading, modal } from '../reducers'
 
 describe('appReducer', () => {
-  it('should return initialState', () => {
-    expect(reducer(undefined, {})).toEqual({
-      loading: false,
-      modalType: null,
-      modalProps: {}
-    })
-  })
-
   it('should handle LOADING_ON', () => {
     const action = {
       type: types.LOADING_ON
     }
-    expect(reducer(undefined, action)).toEqual({
-      loading: true,
-      modalType: null,
-      modalProps: {}
-    })
+    expect(loading(undefined, action)).toEqual(true)
   })
 
   it('should handle LOADING_OFF', () => {
     const action = {
       type: types.LOADING_OFF
     }
-    expect(reducer(undefined, action)).toEqual({
-      loading: false,
-      modalType: null,
-      modalProps: {}
-    })
+    expect(loading(undefined, action)).toEqual(false)
   })
 
   it('should handle SHOW_MODAL', () => {
@@ -42,8 +26,7 @@ describe('appReducer', () => {
         }
       }
     }
-    expect(reducer(undefined, action)).toEqual({
-      loading: false,
+    expect(modal(undefined, action)).toEqual({
       modalType: 'test/modalType',
       modalProps: { id: 1 }
     })
@@ -53,8 +36,7 @@ describe('appReducer', () => {
     const action = {
       type: types.HIDE_MODAL
     }
-    expect(reducer(undefined, action)).toEqual({
-      loading: false,
+    expect(modal(undefined, action)).toEqual({
       modalType: null,
       modalProps: { open: false }
     })

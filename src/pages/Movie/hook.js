@@ -1,14 +1,14 @@
 import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
-import { isEqual } from 'lodash'
+import * as R from 'ramda'
 
 import { changeMovieInFavorites, changeMovieInWatchlist, requestMovie } from 'src/state/movie/actions'
 import { movieInFavoritesSelector, movieInWatchlistSelector, movieSelector } from 'src/state/movie/selectors'
 
 export const useContainer = () => {
   const dispatch = useDispatch()
-  const movie = useSelector(movieSelector, isEqual)
+  const movie = useSelector(movieSelector, R.equals)
   const movieInFavorites = useSelector(movieInFavoritesSelector)
   const movieInWatchlist = useSelector(movieInWatchlistSelector)
   const { movieId } = useParams()

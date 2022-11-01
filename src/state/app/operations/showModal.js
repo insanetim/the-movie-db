@@ -1,5 +1,5 @@
 import { createLogic } from 'redux-logic'
-import { merge } from 'lodash'
+import * as R from 'ramda'
 
 import * as types from '../types'
 
@@ -7,14 +7,7 @@ const showModal = createLogic({
   type: types.SHOW_MODAL,
   latest: true,
   transform({ action }, next) {
-    const newAction = merge(action, {
-      payload: {
-        modalProps: {
-          open: true
-        }
-      }
-    })
-    next(newAction)
+    next(R.mergeDeepLeft(action, { payload: { modalProps: { open: true } } }))
   }
 })
 

@@ -12,7 +12,7 @@ const showNotification = createLogic({
         payload: { type, message }
       }
     },
-    dispatch,
+    _,
     done
   ) {
     AntdNotification[type]({ message, duration: 2.5 })
