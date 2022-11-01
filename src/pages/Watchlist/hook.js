@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Modal } from 'antd'
 import * as R from 'ramda'
 
-import { requestWatchlist } from 'src/state/watchlist/actions'
+import { fetchWatchlist } from 'src/state/watchlist/actions'
 import { changeMovieInWatchlist } from 'src/state/movie/actions'
 import { accountSelector } from 'src/state/session/selectors'
 import { watchlistSelector } from 'src/state/watchlist/selectors'
@@ -14,7 +14,7 @@ export const useContainer = () => {
   const watchlist = useSelector(watchlistSelector)
 
   const handlePagination = page => {
-    dispatch(requestWatchlist(page))
+    dispatch(fetchWatchlist(page))
   }
 
   const handleDelete = (event, movieId) => {
@@ -29,7 +29,7 @@ export const useContainer = () => {
 
   useEffect(() => {
     if (R.not(R.isEmpty(account))) {
-      dispatch(requestWatchlist())
+      dispatch(fetchWatchlist())
     }
   }, [account])
 

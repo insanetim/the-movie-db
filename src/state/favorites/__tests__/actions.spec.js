@@ -1,13 +1,13 @@
 import * as actions from '../actions'
 import * as types from '../types'
 
-it('requestFavorites', () => {
+it('fetchFavorites', () => {
   const expectedAction = {
-    type: types.REQUEST_FAVORITES,
+    type: types.FETCH_FAVORITES,
     payload: {}
   }
 
-  expect(actions.requestFavorites({})).toEqual(expectedAction)
+  expect(actions.fetchFavorites({})).toEqual(expectedAction)
 })
 
 it('setFavorites', () => {

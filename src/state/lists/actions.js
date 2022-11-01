@@ -1,7 +1,7 @@
 import * as types from './types'
 
-export const requestLists = (payload, cb) => ({
-  type: types.REQUEST_LISTS,
+export const fetchLists = (payload, cb) => ({
+  type: types.FETCH_LISTS,
   payload,
   cb
 })
@@ -11,8 +11,8 @@ export const setLists = payload => ({
   payload
 })
 
-export const requestList = (payload, cb) => ({
-  type: types.REQUEST_LIST,
+export const fetchList = (payload, cb) => ({
+  type: types.FETCH_LIST,
   payload,
   cb
 })

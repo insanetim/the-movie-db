@@ -1,7 +1,7 @@
 import * as types from './types'
 
-export const requestWatchlist = payload => ({
-  type: types.REQUEST_WATCHLIST,
+export const fetchWatchlist = payload => ({
+  type: types.FETCH_WATCHLIST,
   payload
 })
 

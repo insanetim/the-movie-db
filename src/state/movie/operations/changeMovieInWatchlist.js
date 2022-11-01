@@ -2,9 +2,9 @@ import { createLogic } from 'redux-logic'
 
 import * as endpoints from 'src/constants/endpoints'
 import { showNotification } from 'src/state/app/actions'
-import { requestWatchlist } from 'src/state/watchlist/actions'
-import { setMovieInWatchlist } from '../actions'
+import { fetchWatchlist } from 'src/state/watchlist/actions'
 import * as types from '../types'
+import { setMovieInWatchlist } from '../actions'
 
 const changeMovieInWatchlist = createLogic({
   type: types.CHANGE_MOVIE_IN_WATCHLIST,
@@ -37,7 +37,7 @@ const changeMovieInWatchlist = createLogic({
         const message = inWatchlist ? `${movie.title} added to Watchlist` : `${movie.title} removed from Watchlist`
         dispatch(showNotification({ type: 'success', message }))
         dispatch(setMovieInWatchlist(inWatchlist))
-        dispatch(requestWatchlist())
+        dispatch(fetchWatchlist())
       })
     done()
   }

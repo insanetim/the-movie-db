@@ -1,11 +1,11 @@
 import { createLogic } from 'redux-logic'
 
 import * as endpoints from 'src/constants/endpoints'
-import { setAccount } from '../actions'
 import * as types from '../types'
+import { setAccount } from '../actions'
 
-const requestAccount = createLogic({
-  type: types.REQUEST_ACCOUNT,
+const fetchAccount = createLogic({
+  type: types.FETCH_ACCOUNT,
   latest: true,
   async process({ httpClient, getState }, dispatch, done) {
     const {
@@ -21,4 +21,4 @@ const requestAccount = createLogic({
   }
 })
 
-export default requestAccount
+export default fetchAccount

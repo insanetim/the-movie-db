@@ -1,11 +1,11 @@
 import { createLogic } from 'redux-logic'
 
 import * as endpoints from 'src/constants/endpoints'
-import { setFavorites } from '../actions'
 import * as types from '../types'
+import { setFavorites } from '../actions'
 
-const requestFavorites = createLogic({
-  type: types.REQUEST_FAVORITES,
+const fetchFavorites = createLogic({
+  type: types.FETCH_FAVORITES,
   latest: true,
   async process({ httpClient, getState, action: { payload: page = 1 } }, dispatch, done) {
     const {
@@ -22,4 +22,4 @@ const requestFavorites = createLogic({
   }
 })
 
-export default requestFavorites
+export default fetchFavorites

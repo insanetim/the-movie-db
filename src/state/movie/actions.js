@@ -1,7 +1,7 @@
 import * as types from './types'
 
-export const requestMovie = (payload, cb) => ({
-  type: types.REQUEST_MOVIE,
+export const fetchMovie = (payload, cb) => ({
+  type: types.FETCH_MOVIE,
   payload,
   cb
 })

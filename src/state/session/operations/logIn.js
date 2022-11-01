@@ -5,7 +5,7 @@ import * as endpoints from 'src/constants/endpoints'
 import { loadingOn, loadingOff, showNotification } from 'src/state/app/actions'
 import * as types from '../types'
 
-const login = createLogic({
+const logIn = createLogic({
   type: types.LOG_IN,
   cancelType: types.LOG_IN_CANCEL,
   latest: true,
@@ -33,4 +33,4 @@ const login = createLogic({
   }
 })
 
-export default login
+export default logIn

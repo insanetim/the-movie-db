@@ -1,8 +1,8 @@
 import { createLogic } from 'redux-logic'
 
 import * as endpoints from 'src/constants/endpoints'
-import { requestLists } from '../actions'
 import * as types from '../types'
+import { fetchLists } from '../actions'
 
 const createList = createLogic({
   type: types.CREATE_LIST,
@@ -25,7 +25,7 @@ const createList = createLogic({
         if (cb) cb(data.list_id)
       })
       .finally(() => {
-        dispatch(requestLists())
+        dispatch(fetchLists())
       })
     done()
   }

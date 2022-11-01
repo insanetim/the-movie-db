@@ -3,14 +3,14 @@ import * as types from '../types'
 
 const cb = jest.fn()
 
-it('requestMovie', () => {
+it('fetchMovie', () => {
   const expectedAction = {
-    type: types.REQUEST_MOVIE,
+    type: types.FETCH_MOVIE,
     payload: {},
     cb
   }
 
-  expect(actions.requestMovie({}, cb)).toEqual(expectedAction)
+  expect(actions.fetchMovie({}, cb)).toEqual(expectedAction)
 })
 
 it('setMovie', () => {

@@ -1,5 +1,5 @@
-import login from './login'
-import logout from './logout'
-import requestAccount from './requestAccount'
+import logIn from './logIn'
+import logOut from './logOut'
+import fetchAccount from './fetchAccount'
 
-export default [login, logout, requestAccount]
+export default [logIn, logOut, fetchAccount]

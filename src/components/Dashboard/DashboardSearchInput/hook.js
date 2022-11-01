@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { createBrowserHistory } from '@remix-run/router'
 
-import { clearSearch, requestSearch } from 'src/state/dashboard/actions'
+import { clearSearch, fetchSearch } from 'src/state/dashboard/actions'
 import { searchQuerySelector } from 'src/state/dashboard/selectors'
 
 export const useContainer = () => {
@@ -17,7 +17,7 @@ export const useContainer = () => {
 
   const handleSearch = value => {
     if (value.trim()) {
-      dispatch(requestSearch({ query: value }))
+      dispatch(fetchSearch({ query: value }))
       history.push({
         search: `search=${value}`
       })

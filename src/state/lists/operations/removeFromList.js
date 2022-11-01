@@ -2,8 +2,8 @@ import { createLogic } from 'redux-logic'
 
 import * as endpoints from 'src/constants/endpoints'
 import { showNotification } from 'src/state/app/actions'
-import { requestList } from '../actions'
 import * as types from '../types'
+import { fetchList } from '../actions'
 
 const removeFromList = createLogic({
   type: types.REMOVE_FROM_LIST,
@@ -37,7 +37,7 @@ const removeFromList = createLogic({
       .then(() => {
         const message = `${movie.title} removed from ${list.name}`
         dispatch(showNotification({ type: 'success', message }))
-        dispatch(requestList(listId))
+        dispatch(fetchList(listId))
       })
     done()
   }

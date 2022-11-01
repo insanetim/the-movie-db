@@ -2,7 +2,7 @@ import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import * as R from 'ramda'
 
-import { requestTrending } from 'src/state/dashboard/actions'
+import { fetchTrending } from 'src/state/dashboard/actions'
 import { trendingSelector } from 'src/state/dashboard/selectors'
 
 export const useContainer = () => {
@@ -10,12 +10,12 @@ export const useContainer = () => {
   const trending = useSelector(trendingSelector)
 
   const handlePagination = page => {
-    dispatch(requestTrending(page))
+    dispatch(fetchTrending(page))
   }
 
   useEffect(() => {
     if (R.isEmpty(trending)) {
-      dispatch(requestTrending())
+      dispatch(fetchTrending())
     }
   }, [])
 

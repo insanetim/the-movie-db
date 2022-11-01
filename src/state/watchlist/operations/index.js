@@ -1,3 +1,3 @@
-import requestWatchlist from './requestWatchlist'
+import fetchWatchlist from './fetchWatchlist'
 
-export default [requestWatchlist]
+export default [fetchWatchlist]

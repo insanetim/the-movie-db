@@ -1,13 +1,13 @@
 import * as actions from '../actions'
 import * as types from '../types'
 
-it('requestWatchlist', () => {
+it('fetchWatchlist', () => {
   const expectedAction = {
-    type: types.REQUEST_WATCHLIST,
+    type: types.FETCH_WATCHLIST,
     payload: {}
   }
 
-  expect(actions.requestWatchlist({})).toEqual(expectedAction)
+  expect(actions.fetchWatchlist({})).toEqual(expectedAction)
 })
 
 it('setWatchlist', () => {

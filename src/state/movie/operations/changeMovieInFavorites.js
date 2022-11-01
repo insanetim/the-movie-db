@@ -2,9 +2,9 @@ import { createLogic } from 'redux-logic'
 
 import * as endpoints from 'src/constants/endpoints'
 import { showNotification } from 'src/state/app/actions'
-import { requestFavorites } from 'src/state/favorites/actions'
-import { setMovieInFavorites } from '../actions'
+import { fetchFavorites } from 'src/state/favorites/actions'
 import * as types from '../types'
+import { setMovieInFavorites } from '../actions'
 
 const changeMovieInFavorites = createLogic({
   type: types.CHANGE_MOVIE_IN_FAVORITES,
@@ -37,7 +37,7 @@ const changeMovieInFavorites = createLogic({
         const message = inFavorite ? `${movie.title} added to Favorites` : `${movie.title} removed from Favorites`
         dispatch(showNotification({ type: 'success', message }))
         dispatch(setMovieInFavorites(inFavorite))
-        dispatch(requestFavorites())
+        dispatch(fetchFavorites())
       })
     done()
   }

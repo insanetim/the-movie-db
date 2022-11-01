@@ -1,12 +1,12 @@
 import * as types from './types'
 
-export const login = (payload, cb) => ({
+export const logIn = (payload, cb) => ({
   type: types.LOG_IN,
   payload,
   cb
 })
 
-export const logout = cb => ({
+export const logOut = cb => ({
   type: types.LOG_OUT,
   cb
 })
@@ -20,8 +20,8 @@ export const deleteSession = () => ({
   type: types.DELETE_SESSION
 })
 
-export const requestAccount = () => ({
-  type: types.REQUEST_ACCOUNT
+export const fetchAccount = () => ({
+  type: types.FETCH_ACCOUNT
 })
 
 export const setAccount = payload => ({

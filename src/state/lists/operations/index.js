@@ -1,8 +1,8 @@
-import requestLists from './requestLists'
-import requestList from './requestList'
+import fetchLists from './fetchLists'
+import fetchList from './fetchList'
 import createList from './createList'
 import addToList from './addToList'
 import removeFromList from './removeFromList'
 import deleteList from './deleteList'
 
-export default [requestLists, requestList, createList, addToList, removeFromList, deleteList]
+export default [fetchLists, fetchList, createList, addToList, removeFromList, deleteList]

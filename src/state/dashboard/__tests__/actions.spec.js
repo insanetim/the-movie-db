@@ -1,13 +1,13 @@
 import * as actions from '../actions'
 import * as types from '../types'
 
-it('requestTrending', () => {
+it('fetchTrending', () => {
   const expectedAction = {
-    type: types.REQUEST_TRENDING,
+    type: types.FETCH_TRENDING,
     payload: {}
   }
 
-  expect(actions.requestTrending({})).toEqual(expectedAction)
+  expect(actions.fetchTrending({})).toEqual(expectedAction)
 })
 
 it('setTrending', () => {
@@ -19,13 +19,13 @@ it('setTrending', () => {
   expect(actions.setTrending({})).toEqual(expectedAction)
 })
 
-it('requestSearch', () => {
+it('fetchSearch', () => {
   const expectedAction = {
-    type: types.REQUEST_SEARCH,
+    type: types.FETCH_SEARCH,
     payload: {}
   }
 
-  expect(actions.requestSearch({})).toEqual(expectedAction)
+  expect(actions.fetchSearch({})).toEqual(expectedAction)
 })
 
 it('setSearch', () => {

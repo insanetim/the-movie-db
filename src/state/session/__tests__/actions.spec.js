@@ -3,23 +3,23 @@ import * as types from '../types'
 
 const cb = jest.fn()
 
-it('login', () => {
+it('logIn', () => {
   const expectedAction = {
     type: types.LOG_IN,
     payload: {},
     cb
   }
 
-  expect(actions.login({}, cb)).toEqual(expectedAction)
+  expect(actions.logIn({}, cb)).toEqual(expectedAction)
 })
 
-it('logout', () => {
+it('logOut', () => {
   const expectedAction = {
     type: types.LOG_OUT,
     cb
   }
 
-  expect(actions.logout(cb)).toEqual(expectedAction)
+  expect(actions.logOut(cb)).toEqual(expectedAction)
 })
 
 it('setSession', () => {
@@ -39,12 +39,12 @@ it('deleteSession', () => {
   expect(actions.deleteSession()).toEqual(expectedAction)
 })
 
-it('requestAccount', () => {
+it('fetchAccount', () => {
   const expectedAction = {
-    type: types.REQUEST_ACCOUNT
+    type: types.FETCH_ACCOUNT
   }
 
-  expect(actions.requestAccount()).toEqual(expectedAction)
+  expect(actions.fetchAccount()).toEqual(expectedAction)
 })
 
 it('setAccount', () => {

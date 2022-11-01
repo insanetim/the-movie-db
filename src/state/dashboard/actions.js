@@ -1,7 +1,7 @@
 import * as types from './types'
 
-export const requestTrending = payload => ({
-  type: types.REQUEST_TRENDING,
+export const fetchTrending = payload => ({
+  type: types.FETCH_TRENDING,
   payload
 })
 
@@ -10,8 +10,8 @@ export const setTrending = payload => ({
   payload
 })
 
-export const requestSearch = payload => ({
-  type: types.REQUEST_SEARCH,
+export const fetchSearch = payload => ({
+  type: types.FETCH_SEARCH,
   payload
 })
 

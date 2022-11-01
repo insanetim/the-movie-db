@@ -2,11 +2,11 @@ import { createLogic } from 'redux-logic'
 
 import * as endpoints from 'src/constants/endpoints'
 import { accountSelector, sessionIdSelector } from 'src/state/session/selectors'
-import { setWatchlist } from '../actions'
 import * as types from '../types'
+import { setWatchlist } from '../actions'
 
-const requestWatchlist = createLogic({
-  type: types.REQUEST_WATCHLIST,
+const fetchWatchlist = createLogic({
+  type: types.FETCH_WATCHLIST,
   latest: true,
   async process({ httpClient, getState, action: { payload: page = 1 } }, dispatch, done) {
     const sessionId = sessionIdSelector(getState())
@@ -19,4 +19,4 @@ const requestWatchlist = createLogic({
   }
 })
 
-export default requestWatchlist
+export default fetchWatchlist

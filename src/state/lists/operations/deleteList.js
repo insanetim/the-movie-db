@@ -1,8 +1,8 @@
 import { createLogic } from 'redux-logic'
 
 import * as endpoints from 'src/constants/endpoints'
-import { requestLists } from '../actions'
 import * as types from '../types'
+import { fetchLists } from '../actions'
 
 const deleteList = createLogic({
   type: types.DELETE_LIST,
@@ -16,7 +16,7 @@ const deleteList = createLogic({
         params: { session_id: sessionId }
       })
       .finally(() => {
-        dispatch(requestLists(1, cb))
+        dispatch(fetchLists(1, cb))
         done()
       })
   }

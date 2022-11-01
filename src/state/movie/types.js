@@ -1,4 +1,4 @@
-export const REQUEST_MOVIE = 'movie/REQUEST_MOVIE'
+export const FETCH_MOVIE = 'movie/FETCH_MOVIE'
 export const SET_MOVIE = 'movie/SET_MOVIE'
 export const SET_MOVIE_IN_FAVORITES = 'movie/SET_MOVIE_IN_FAVORITES'
 export const SET_MOVIE_IN_WATCHLIST = 'movie/SET_MOVIE_IN_WATCHLIST'

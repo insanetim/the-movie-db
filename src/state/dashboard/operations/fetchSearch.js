@@ -1,11 +1,11 @@
 import { createLogic } from 'redux-logic'
 
 import * as endpoints from 'src/constants/endpoints'
-import { setSearch, setSearchQuery } from '../actions'
 import * as types from '../types'
+import { setSearch, setSearchQuery } from '../actions'
 
-const requestSearch = createLogic({
-  type: types.REQUEST_SEARCH,
+const fetchSearch = createLogic({
+  type: types.FETCH_SEARCH,
   latest: true,
   async process(
     {
@@ -26,4 +26,4 @@ const requestSearch = createLogic({
   }
 })
 
-export default requestSearch
+export default fetchSearch

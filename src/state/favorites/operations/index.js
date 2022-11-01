@@ -1,3 +1,3 @@
-import requestFavorites from './requestFavorites'
+import fetchFavorites from './fetchFavorites'
 
-export default [requestFavorites]
+export default [fetchFavorites]

@@ -3,14 +3,14 @@ import * as types from '../types'
 
 const cb = jest.fn()
 
-it('requestLists', () => {
+it('fetchLists', () => {
   const expectedAction = {
-    type: types.REQUEST_LISTS,
+    type: types.FETCH_LISTS,
     payload: {},
     cb
   }
 
-  expect(actions.requestLists({}, cb)).toEqual(expectedAction)
+  expect(actions.fetchLists({}, cb)).toEqual(expectedAction)
 })
 
 it('setLists', () => {
@@ -22,14 +22,14 @@ it('setLists', () => {
   expect(actions.setLists({})).toEqual(expectedAction)
 })
 
-it('requestList', () => {
+it('fetchList', () => {
   const expectedAction = {
-    type: types.REQUEST_LIST,
+    type: types.FETCH_LIST,
     payload: {},
     cb
   }
 
-  expect(actions.requestList({}, cb)).toEqual(expectedAction)
+  expect(actions.fetchList({}, cb)).toEqual(expectedAction)
 })
 
 it('setList', () => {

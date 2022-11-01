@@ -1,4 +1,4 @@
-import requestTrending from './requestTrending'
-import requestSearch from './requestSearch'
+import fetchTrending from './fetchTrending'
+import fetchSearch from './fetchSearch'
 
-export default [requestTrending, requestSearch]
+export default [fetchTrending, fetchSearch]

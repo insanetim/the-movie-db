@@ -1,7 +1,7 @@
 import * as types from './types'
 
-export const requestFavorites = payload => ({
-  type: types.REQUEST_FAVORITES,
+export const fetchFavorites = payload => ({
+  type: types.FETCH_FAVORITES,
   payload
 })
 

@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux'
 import { useLocation, useNavigate } from 'react-router-dom'
 
-import { logout } from 'src/state/session/actions'
+import { logOut } from 'src/state/session/actions'
 import { accountSelector } from 'src/state/session/selectors'
 
 export const useContainer = () => {
@@ -11,7 +11,7 @@ export const useContainer = () => {
   const navigate = useNavigate()
 
   const handleLogout = () => {
-    dispatch(logout(() => navigate('/login', { state: { from: location } })))
+    dispatch(logOut(() => navigate('/login', { state: { from: location } })))
   }
 
   return { account, handleLogout }

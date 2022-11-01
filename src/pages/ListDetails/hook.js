@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate, useParams } from 'react-router-dom'
 import { Modal } from 'antd'
 
-import { deleteList, removeFromList, requestList } from 'src/state/lists/actions'
+import { deleteList, removeFromList, fetchList } from 'src/state/lists/actions'
 import { listSelector } from 'src/state/lists/selectors'
 
 export const useContainer = () => {
@@ -33,7 +33,7 @@ export const useContainer = () => {
   }
 
   useEffect(() => {
-    dispatch(requestList(listId, () => setLoading(false)))
+    dispatch(fetchList(listId, () => setLoading(false)))
   }, [listId])
 
   return { list, loading, handleListDelete, handleMovieDelete }

@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Modal } from 'antd'
 import * as R from 'ramda'
 
-import { requestFavorites } from 'src/state/favorites/actions'
+import { fetchFavorites } from 'src/state/favorites/actions'
 import { changeMovieInFavorites } from 'src/state/movie/actions'
 import { accountSelector } from 'src/state/session/selectors'
 import { favoritesSelector } from 'src/state/favorites/selectors'
@@ -14,7 +14,7 @@ export const useContainer = () => {
   const favorites = useSelector(favoritesSelector)
 
   const handlePagination = page => {
-    dispatch(requestFavorites(page))
+    dispatch(fetchFavorites(page))
   }
 
   const handleDelete = (event, movieId) => {
@@ -29,7 +29,7 @@ export const useContainer = () => {
 
   useEffect(() => {
     if (R.not(R.isEmpty(account))) {
-      dispatch(requestFavorites())
+      dispatch(fetchFavorites())
     }
   }, [account])
 

@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux'
 import { useLocation, useNavigate } from 'react-router-dom'
 
-import { login } from 'src/state/session/actions'
+import { logIn } from 'src/state/session/actions'
 import { loadingSelector } from 'src/state/app/selectors'
 
 export const useContainer = () => {
@@ -12,7 +12,7 @@ export const useContainer = () => {
 
   const handleLogin = ({ username, password }) => {
     const from = location.state?.from?.pathname || '/'
-    dispatch(login({ username, password }, () => navigate(from, { replace: true })))
+    dispatch(logIn({ username, password }, () => navigate(from, { replace: true })))
   }
 
   return { handleLogin, loading }

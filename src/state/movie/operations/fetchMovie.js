@@ -1,12 +1,12 @@
 import { createLogic } from 'redux-logic'
 
 import * as endpoints from 'src/constants/endpoints'
-import { requestLists } from 'src/state/lists/actions'
-import { setMovie, setMovieInFavorites, setMovieInWatchlist } from '../actions'
+import { fetchLists } from 'src/state/lists/actions'
 import * as types from '../types'
+import { setMovie, setMovieInFavorites, setMovieInWatchlist } from '../actions'
 
-const requestMovie = createLogic({
-  type: types.REQUEST_MOVIE,
+const fetchMovie = createLogic({
+  type: types.FETCH_MOVIE,
   latest: true,
   async process({ httpClient, getState, action: { payload: movieId, cb } }, dispatch, done) {
     const {
@@ -23,10 +23,10 @@ const requestMovie = createLogic({
     dispatch(setMovie(data))
     dispatch(setMovieInFavorites(accountStates.favorite))
     dispatch(setMovieInWatchlist(accountStates.watchlist))
-    dispatch(requestLists())
+    dispatch(fetchLists())
     if (cb) cb()
     done()
   }
 })
 
-export default requestMovie
+export default fetchMovie

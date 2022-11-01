@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
 import * as R from 'ramda'
 
-import { changeMovieInFavorites, changeMovieInWatchlist, requestMovie } from 'src/state/movie/actions'
+import { changeMovieInFavorites, changeMovieInWatchlist, fetchMovie } from 'src/state/movie/actions'
 import { movieInFavoritesSelector, movieInWatchlistSelector, movieSelector } from 'src/state/movie/selectors'
 
 export const useContainer = () => {
@@ -34,7 +34,7 @@ export const useContainer = () => {
   }
 
   useEffect(() => {
-    dispatch(requestMovie(movieId, () => setLoading(false)))
+    dispatch(fetchMovie(movieId, () => setLoading(false)))
   }, [movieId])
 
   return {

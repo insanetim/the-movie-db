@@ -5,7 +5,7 @@ import * as endpoints from 'src/constants/endpoints'
 import * as types from '../types'
 import { deleteSession } from '../actions'
 
-const logout = createLogic({
+const logOut = createLogic({
   type: types.LOG_OUT,
   latest: true,
   async process({ httpClient, getState, action: { cb } }, dispatch, done) {
@@ -24,4 +24,4 @@ const logout = createLogic({
   }
 })
 
-export default logout
+export default logOut

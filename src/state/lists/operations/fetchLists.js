@@ -1,11 +1,11 @@
 import { createLogic } from 'redux-logic'
 
 import * as endpoints from 'src/constants/endpoints'
-import { setLists } from '../actions'
 import * as types from '../types'
+import { setLists } from '../actions'
 
-const requestLists = createLogic({
-  type: types.REQUEST_LISTS,
+const fetchLists = createLogic({
+  type: types.FETCH_LISTS,
   latest: true,
   async process({ httpClient, getState, action: { payload: page = 1, cb } }, dispatch, done) {
     const {
@@ -23,4 +23,4 @@ const requestLists = createLogic({
   }
 })
 
-export default requestLists
+export default fetchLists

@@ -1,12 +1,12 @@
 import { useDispatch } from 'react-redux'
 
-import { requestLists } from 'src/state/lists/actions'
+import { fetchLists } from 'src/state/lists/actions'
 
 export const useContainer = () => {
   const dispatch = useDispatch()
 
   const handlePaginationChange = page => {
-    dispatch(requestLists(page))
+    dispatch(fetchLists(page))
   }
 
   return { handlePaginationChange }

@@ -1,6 +1,6 @@
-export const REQUEST_LISTS = 'lists/REQUEST_LISTS'
+export const FETCH_LISTS = 'lists/FETCH_LISTS'
 export const SET_LISTS = 'lists/SET_LISTS'
-export const REQUEST_LIST = 'lists/REQUEST_LIST'
+export const FETCH_LIST = 'lists/FETCH_LIST'
 export const SET_LIST = 'lists/SET_LIST'
 export const CREATE_LIST = 'lists/CREATE_LIST'
 export const DELETE_LIST = 'lists/DELETE_LIST'
