@@ -1,11 +1,7 @@
 import * as actions from '../actions'
 import * as types from '../types'
 
-let cb
-
-beforeEach(() => {
-  cb = jest.fn()
-})
+const cb = jest.fn()
 
 it('requestLists', () => {
   const expectedAction = {

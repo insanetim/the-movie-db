@@ -20,11 +20,11 @@ export const deleteSession = () => ({
   type: types.DELETE_SESSION
 })
 
+export const requestAccount = () => ({
+  type: types.REQUEST_ACCOUNT
+})
+
 export const setAccount = payload => ({
   type: types.SET_ACCOUNT,
   payload
-})
-
-export const requestAccount = () => ({
-  type: types.REQUEST_ACCOUNT
 })
