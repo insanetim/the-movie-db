@@ -18,9 +18,6 @@ export const useContainer = () => {
   const handleSearch = value => {
     if (value.trim()) {
       dispatch(fetchSearch({ query: value }))
-      history.push({
-        search: `search=${value}`
-      })
     } else {
       dispatch(clearSearch())
       history.push('/')

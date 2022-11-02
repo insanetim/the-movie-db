@@ -8,7 +8,7 @@ exports[`showNotification has valid attributes 1`] = `
   "name": undefined,
   "process": [Function],
   "processOptions": {
-    "dispatchMultiple": true,
+    "dispatchReturn": true,
   },
   "throttle": 0,
   "transform": undefined,

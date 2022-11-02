@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`matches snapshot 1`] = `
+<Row>
+  <Col
+    span={24}
+  >
+    <ForwardRef
+      autoplay={true}
+    >
+      <div
+        className="movie-image"
+        key="test/image"
+      >
+        <img
+          alt=""
+          src="https://image.tmdb.org/t/p/originaltest/image"
+        />
+      </div>
+    </ForwardRef>
+  </Col>
+</Row>
+`;

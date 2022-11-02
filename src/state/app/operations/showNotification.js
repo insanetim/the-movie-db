@@ -6,10 +6,12 @@ import * as types from '../types'
 const showNotification = createLogic({
   type: types.SHOW_NOTIFICATION,
   latest: true,
-  process({ action }, _, done) {
-    const { type, message } = action.payload
+  process({
+    action: {
+      payload: { type, message }
+    }
+  }) {
     notification[type]({ message, duration: 2.5 })
-    done()
   }
 })
 

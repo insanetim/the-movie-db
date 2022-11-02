@@ -1,0 +1,142 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`matches snapshot 1`] = `
+<Fragment>
+  <Row
+    gutter={16}
+    justify="center"
+  >
+    <Col
+      span={20}
+    >
+      <Row
+        gutter={
+          {
+            "lg": 32,
+            "md": 24,
+            "sm": 16,
+            "xs": 8,
+          }
+        }
+      >
+        <Col
+          key="1"
+          lg={
+            {
+              "span": 8,
+            }
+          }
+          md={
+            {
+              "span": 8,
+            }
+          }
+          sm={
+            {
+              "span": 12,
+            }
+          }
+          xl={
+            {
+              "span": 6,
+            }
+          }
+          xs={
+            {
+              "span": 24,
+            }
+          }
+        >
+          <Movie
+            actions={[]}
+            movie={
+              {
+                "id": 1,
+                "overview": "test/overview",
+                "poster_path": "test/image",
+                "title": "test/title",
+              }
+            }
+          />
+        </Col>
+      </Row>
+    </Col>
+  </Row>
+  <Pagination
+    onChange={[MockFunction]}
+    pageSize={20}
+    total={200}
+  />
+</Fragment>
+`;
+
+exports[`matches snapshot with 1 page 1`] = `
+<Fragment>
+  <Row
+    gutter={16}
+    justify="center"
+  >
+    <Col
+      span={20}
+    >
+      <Row
+        gutter={
+          {
+            "lg": 32,
+            "md": 24,
+            "sm": 16,
+            "xs": 8,
+          }
+        }
+      >
+        <Col
+          key="1"
+          lg={
+            {
+              "span": 8,
+            }
+          }
+          md={
+            {
+              "span": 8,
+            }
+          }
+          sm={
+            {
+              "span": 12,
+            }
+          }
+          xl={
+            {
+              "span": 6,
+            }
+          }
+          xs={
+            {
+              "span": 24,
+            }
+          }
+        >
+          <Movie
+            actions={[]}
+            movie={
+              {
+                "id": 1,
+                "overview": "test/overview",
+                "poster_path": "test/image",
+                "title": "test/title",
+              }
+            }
+          />
+        </Col>
+      </Row>
+    </Col>
+  </Row>
+</Fragment>
+`;
+
+exports[`matches snapshot with no movies 1`] = `
+<Empty
+  description="No results"
+/>
+`;

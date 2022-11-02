@@ -1,0 +1,95 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`matches snapshot 1`] = `
+<Col
+  lg={
+    {
+      "span": 8,
+    }
+  }
+  md={
+    {
+      "span": 8,
+    }
+  }
+  sm={
+    {
+      "span": 12,
+    }
+  }
+  xl={
+    {
+      "span": 6,
+    }
+  }
+  xs={
+    {
+      "span": 24,
+    }
+  }
+>
+  <ForwardRef
+    className="top-margin"
+    cover={
+      <img
+        alt="Profile"
+        src="https://image.tmdb.org/t/p/w500test/image"
+      />
+    }
+  >
+    <Meta
+      description=""
+      title=""
+    />
+  </ForwardRef>
+</Col>
+`;
+
+exports[`matches snapshot with NoImage 1`] = `
+<Col
+  lg={
+    {
+      "span": 8,
+    }
+  }
+  md={
+    {
+      "span": 8,
+    }
+  }
+  sm={
+    {
+      "span": 12,
+    }
+  }
+  xl={
+    {
+      "span": 6,
+    }
+  }
+  xs={
+    {
+      "span": 24,
+    }
+  }
+>
+  <ForwardRef
+    className="top-margin"
+    cover={
+      <div
+        className="ant-card-cover--no-image"
+      >
+        <img
+          alt=""
+          src="test-file-stub"
+        />
+      </div>
+    }
+  >
+    <Meta
+      description=""
+      title=""
+    />
+  </ForwardRef>
+</Col>
+`;

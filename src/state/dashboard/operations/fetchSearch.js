@@ -1,6 +1,8 @@
 import { createLogic } from 'redux-logic'
+import { createBrowserHistory } from '@remix-run/router'
 
 import * as endpoints from 'src/constants/endpoints'
+import { showNotification } from 'src/state/app/actions'
 import * as types from '../types'
 import { setSearch, setSearchQuery } from '../actions'
 
@@ -17,11 +19,19 @@ const fetchSearch = createLogic({
     dispatch,
     done
   ) {
-    const { data } = await httpClient.get(endpoints.searchMovies, {
-      params: { query, page }
-    })
-    dispatch(setSearch(data))
-    dispatch(setSearchQuery(query))
+    const history = createBrowserHistory()
+    try {
+      const { data } = await httpClient.get(endpoints.searchMovies, {
+        params: { query, page }
+      })
+      dispatch(setSearch(data))
+      dispatch(setSearchQuery(query))
+      history.push({
+        search: `search=${query}`
+      })
+    } catch (error) {
+      dispatch(showNotification({ type: 'error', message: error.message }))
+    }
     done()
   }
 })

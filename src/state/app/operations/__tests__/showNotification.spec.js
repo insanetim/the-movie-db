@@ -17,28 +17,20 @@ describe('showNotification', () => {
   })
 
   it('calls notification success', () => {
-    showNotification.process(
-      {
-        action: {
-          payload: { type: 'success', message }
-        }
-      },
-      jest.fn(),
-      jest.fn()
-    )
+    showNotification.process({
+      action: {
+        payload: { type: 'success', message }
+      }
+    })
     expect(notification.success).toHaveBeenCalledWith({ message, duration: 2.5 })
   })
 
   it('calls notification error', () => {
-    showNotification.process(
-      {
-        action: {
-          payload: { type: 'error', message }
-        }
-      },
-      jest.fn(),
-      jest.fn()
-    )
+    showNotification.process({
+      action: {
+        payload: { type: 'error', message }
+      }
+    })
     expect(notification.error).toHaveBeenCalledWith({ message, duration: 2.5 })
   })
 })
