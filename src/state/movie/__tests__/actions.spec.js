@@ -13,6 +13,15 @@ it('fetchMovie', () => {
   expect(actions.fetchMovie({}, cb)).toEqual(expectedAction)
 })
 
+it('fetchMovieStates', () => {
+  const expectedAction = {
+    type: types.FETCH_MOVIE_STATES,
+    payload: {}
+  }
+
+  expect(actions.fetchMovieStates({})).toEqual(expectedAction)
+})
+
 it('setMovie', () => {
   const expectedAction = {
     type: types.SET_MOVIE,
@@ -22,22 +31,13 @@ it('setMovie', () => {
   expect(actions.setMovie({})).toEqual(expectedAction)
 })
 
-it('setMovieInFavorites', () => {
+it('setMovieStates', () => {
   const expectedAction = {
-    type: types.SET_MOVIE_IN_FAVORITES,
+    type: types.SET_MOVIE_STATES,
     payload: {}
   }
 
-  expect(actions.setMovieInFavorites({})).toEqual(expectedAction)
-})
-
-it('setMovieInWatchlist', () => {
-  const expectedAction = {
-    type: types.SET_MOVIE_IN_WATCHLIST,
-    payload: {}
-  }
-
-  expect(actions.setMovieInWatchlist({})).toEqual(expectedAction)
+  expect(actions.setMovieStates({})).toEqual(expectedAction)
 })
 
 it('changeMovieInFavorites', () => {

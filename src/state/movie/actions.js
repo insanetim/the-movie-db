@@ -6,18 +6,18 @@ export const fetchMovie = (payload, cb) => ({
   cb
 })
 
+export const fetchMovieStates = payload => ({
+  type: types.FETCH_MOVIE_STATES,
+  payload
+})
+
 export const setMovie = payload => ({
   type: types.SET_MOVIE,
   payload
 })
 
-export const setMovieInFavorites = payload => ({
-  type: types.SET_MOVIE_IN_FAVORITES,
-  payload
-})
-
-export const setMovieInWatchlist = payload => ({
-  type: types.SET_MOVIE_IN_WATCHLIST,
+export const setMovieStates = payload => ({
+  type: types.SET_MOVIE_STATES,
   payload
 })
 

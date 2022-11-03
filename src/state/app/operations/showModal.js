@@ -7,7 +7,7 @@ const showModal = createLogic({
   type: types.SHOW_MODAL,
   latest: true,
   transform({ action }, next) {
-    next(R.mergeDeepLeft(action, { payload: { modalProps: { open: true } } }))
+    next(R.mergeDeepRight(action, { payload: { modalProps: { open: true } } }))
   }
 })
 

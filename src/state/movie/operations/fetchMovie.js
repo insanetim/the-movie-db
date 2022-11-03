@@ -5,7 +5,7 @@ import { showNotification } from 'src/state/app/actions'
 import { fetchLists } from 'src/state/lists/actions'
 import { sessionIdSelector } from 'src/state/session/selectors'
 import * as types from '../types'
-import { setMovie, setMovieInFavorites, setMovieInWatchlist } from '../actions'
+import { setMovie } from '../actions'
 
 const fetchMovie = createLogic({
   type: types.FETCH_MOVIE,
@@ -21,9 +21,8 @@ const fetchMovie = createLogic({
       })
       data.credits = credits
       data.images = images.backdrops.slice(0, 6)
+      data.accountStates = accountStates
       dispatch(setMovie(data))
-      dispatch(setMovieInFavorites(accountStates.favorite))
-      dispatch(setMovieInWatchlist(accountStates.watchlist))
       dispatch(fetchLists())
       if (typeof cb === 'function') cb()
     } catch (error) {

@@ -3,8 +3,9 @@ import { createLogic } from 'redux-logic'
 import * as endpoints from 'src/constants/endpoints'
 import { showNotification } from 'src/state/app/actions'
 import { fetchFavorites } from 'src/state/favorites/actions'
+import { accountSelector, sessionIdSelector } from 'src/state/session/selectors'
+import { fetchMovieStates } from '../actions'
 import * as types from '../types'
-import { setMovieInFavorites } from '../actions'
 
 const changeMovieInFavorites = createLogic({
   type: types.CHANGE_MOVIE_IN_FAVORITES,
@@ -14,31 +15,28 @@ const changeMovieInFavorites = createLogic({
       httpClient,
       getState,
       action: {
-        payload: { movieId, inFavorite }
+        payload: { movieId, inFavorites }
       }
     },
     dispatch,
     done
   ) {
-    const {
-      session: {
-        sessionId,
-        account: { id }
-      }
-    } = getState()
-    const { data: movie } = await httpClient.get(endpoints.getMovieDetails(movieId))
-    await httpClient
-      .post(
-        endpoints.addToFovorite(id),
-        { media_type: 'movie', media_id: movieId, favorite: inFavorite },
+    const sessionId = sessionIdSelector(getState())
+    const { id: accountId } = accountSelector(getState())
+    try {
+      const { data: movie } = await httpClient.get(endpoints.getMovieDetails(movieId))
+      await httpClient.post(
+        endpoints.addToFovorite(accountId),
+        { media_type: 'movie', media_id: movieId, favorite: inFavorites },
         { params: { session_id: sessionId } }
       )
-      .then(() => {
-        const message = inFavorite ? `${movie.title} added to Favorites` : `${movie.title} removed from Favorites`
-        dispatch(showNotification({ type: 'success', message }))
-        dispatch(setMovieInFavorites(inFavorite))
-        dispatch(fetchFavorites())
-      })
+      const message = inFavorites ? `${movie.title} added to Favorites` : `${movie.title} removed from Favorites`
+      dispatch(showNotification({ type: 'success', message }))
+      dispatch(fetchMovieStates(movieId))
+      dispatch(fetchFavorites())
+    } catch (error) {
+      dispatch(showNotification({ type: 'error', message: error.message }))
+    }
     done()
   }
 })

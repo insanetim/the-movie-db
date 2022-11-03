@@ -1,28 +1,26 @@
 import * as types from '../types'
-import { movie, movieInFavorites, movieInWatchlist } from '../reducers'
+import reducer from '../reducers'
 
 describe('movieReducer', () => {
+  it('should return initialState', () => {
+    expect(reducer(undefined, {})).toEqual({})
+  })
+
   it('should handle SET_MOVIE', () => {
     const action = {
       type: types.SET_MOVIE,
       payload: { id: 1 }
     }
-    expect(movie(undefined, action)).toEqual({ id: 1 })
+    expect(reducer(undefined, action)).toEqual({ id: 1 })
   })
 
-  it('should handle SET_MOVIE_IN_FAVORITES', () => {
+  it('should handle SET_MOVIE_STATES', () => {
     const action = {
-      type: types.SET_MOVIE_IN_FAVORITES,
-      payload: true
+      type: types.SET_MOVIE_STATES,
+      payload: { favorite: true, watchlist: true }
     }
-    expect(movieInFavorites(undefined, action)).toBe(true)
-  })
-
-  it('should handle SET_MOVIE_IN_WATCHLIST', () => {
-    const action = {
-      type: types.SET_MOVIE_IN_WATCHLIST,
-      payload: true
-    }
-    expect(movieInWatchlist(undefined, action)).toBe(true)
+    expect(reducer({ accountStates: { favorite: false } }, action)).toEqual({
+      accountStates: { favorite: true, watchlist: true }
+    })
   })
 })

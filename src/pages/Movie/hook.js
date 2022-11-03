@@ -4,13 +4,11 @@ import { useParams } from 'react-router-dom'
 import * as R from 'ramda'
 
 import { changeMovieInFavorites, changeMovieInWatchlist, fetchMovie } from 'src/state/movie/actions'
-import { movieInFavoritesSelector, movieInWatchlistSelector, movieSelector } from 'src/state/movie/selectors'
+import { movieSelector } from 'src/state/movie/selectors'
 
 export const useContainer = () => {
   const dispatch = useDispatch()
   const movie = useSelector(movieSelector, R.equals)
-  const movieInFavorites = useSelector(movieInFavoritesSelector)
-  const movieInWatchlist = useSelector(movieInWatchlistSelector)
   const { movieId } = useParams()
   const [loading, setLoading] = useState(true)
   const [popoverOpen, setPopoverOpen] = useState(false)
@@ -19,7 +17,7 @@ export const useContainer = () => {
     dispatch(
       changeMovieInFavorites({
         movieId,
-        inFavorite: !movieInFavorites
+        inFavorites: !movie.accountStates.favorite
       })
     )
   }
@@ -28,7 +26,7 @@ export const useContainer = () => {
     dispatch(
       changeMovieInWatchlist({
         movieId,
-        inWatchlist: !movieInWatchlist
+        inWatchlist: !movie.accountStates.watchlist
       })
     )
   }
@@ -39,8 +37,6 @@ export const useContainer = () => {
 
   return {
     movie,
-    movieInFavorites,
-    movieInWatchlist,
     loading,
     handleFavoriteClick,
     handleWatchlistClick,

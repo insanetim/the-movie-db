@@ -13,16 +13,7 @@ import { convertDuration, convertMoney } from 'src/utils'
 import { useContainer } from './hook'
 
 const Movie = () => {
-  const {
-    movie,
-    movieInFavorites,
-    movieInWatchlist,
-    loading,
-    handleFavoriteClick,
-    handleWatchlistClick,
-    popoverOpen,
-    setPopoverOpen
-  } = useContainer()
+  const { movie, loading, handleFavoriteClick, handleWatchlistClick, popoverOpen, setPopoverOpen } = useContainer()
 
   if (loading) {
     return (
@@ -60,11 +51,11 @@ const Movie = () => {
                 <PlusCircleOutlined />
               </Popover>{' '}
               <Icon
-                component={movieInFavorites ? HeartFilled : HeartOutlined}
+                component={movie.accountStates.favorite ? HeartFilled : HeartOutlined}
                 onClick={handleFavoriteClick}
               />{' '}
               <Icon
-                component={movieInWatchlist ? BookFilled : BookOutlined}
+                component={movie.accountStates.watchlist ? BookFilled : BookOutlined}
                 onClick={handleWatchlistClick}
               />
             </Typography.Title>
