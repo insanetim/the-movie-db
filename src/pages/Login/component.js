@@ -2,7 +2,7 @@ import React from 'react'
 import { Button, Col, Form, Input, Layout, Row, Typography } from 'antd'
 import { UserOutlined, LockOutlined } from '@ant-design/icons'
 
-import { useContainer } from './hook'
+import useContainer from './hook'
 
 const Login = () => {
   const { handleLogin, loading } = useContainer()

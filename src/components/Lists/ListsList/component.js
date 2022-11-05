@@ -5,7 +5,7 @@ import { Row, Col } from 'antd'
 import Pagination from 'src/components/Pagination'
 import Empty from 'src/components/Empty'
 import ListItem from '../ListItem'
-import { useContainer } from './hook'
+import useContainer from './hook'
 
 const ListsList = ({ lists }) => {
   const { handlePaginationChange } = useContainer()

@@ -5,7 +5,7 @@ import * as R from 'ramda'
 
 import ListsList from 'src/components/Lists/ListsList'
 import Loading from 'src/components/Loading'
-import { useContainer } from './hook'
+import useContainer from './hook'
 
 const Lists = () => {
   const { lists, handleClick } = useContainer()

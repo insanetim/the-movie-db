@@ -8,7 +8,7 @@ import { changeMovieInWatchlist } from 'src/state/movie/actions'
 import { accountSelector } from 'src/state/session/selectors'
 import { watchlistSelector } from 'src/state/watchlist/selectors'
 
-export const useContainer = () => {
+const useContainer = () => {
   const dispatch = useDispatch()
   const account = useSelector(accountSelector)
   const watchlist = useSelector(watchlistSelector)
@@ -35,3 +35,5 @@ export const useContainer = () => {
 
   return { watchlist, handlePagination, handleDelete }
 }
+
+export default useContainer

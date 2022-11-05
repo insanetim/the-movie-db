@@ -2,7 +2,7 @@ import { useDispatch } from 'react-redux'
 
 import { fetchLists } from 'src/state/lists/actions'
 
-export const useContainer = () => {
+const useContainer = () => {
   const dispatch = useDispatch()
 
   const handlePaginationChange = page => {
@@ -11,3 +11,5 @@ export const useContainer = () => {
 
   return { handlePaginationChange }
 }
+
+export default useContainer

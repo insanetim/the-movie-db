@@ -7,7 +7,7 @@ import { fetchLists } from 'src/state/lists/actions'
 import { accountSelector } from 'src/state/session/selectors'
 import { listsSelector } from 'src/state/lists/selectors'
 
-export const useContainer = () => {
+const useContainer = () => {
   const dispatch = useDispatch()
   const account = useSelector(accountSelector)
   const lists = useSelector(listsSelector)
@@ -28,3 +28,5 @@ export const useContainer = () => {
 
   return { lists, handleClick }
 }
+
+export default useContainer

@@ -8,7 +8,7 @@ import { changeMovieInFavorites } from 'src/state/movie/actions'
 import { accountSelector } from 'src/state/session/selectors'
 import { favoritesSelector } from 'src/state/favorites/selectors'
 
-export const useContainer = () => {
+const useContainer = () => {
   const dispatch = useDispatch()
   const account = useSelector(accountSelector)
   const favorites = useSelector(favoritesSelector)
@@ -22,7 +22,7 @@ export const useContainer = () => {
     Modal.confirm({
       title: 'Do you want to delete movie from favorites?',
       onOk() {
-        dispatch(changeMovieInFavorites({ movieId, inFavorite: false }))
+        dispatch(changeMovieInFavorites({ movieId, inFavorites: false }))
       }
     })
   }
@@ -35,3 +35,5 @@ export const useContainer = () => {
 
   return { favorites, handlePagination, handleDelete }
 }
+
+export default useContainer

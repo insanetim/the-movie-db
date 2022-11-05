@@ -2,12 +2,8 @@ import { notification } from 'antd'
 
 import showNotification from '../showNotification'
 
-jest.mock('antd', () => ({
-  notification: {
-    success: jest.fn(),
-    error: jest.fn()
-  }
-}))
+jest.spyOn(notification, 'success')
+jest.spyOn(notification, 'error')
 
 describe('showNotification', () => {
   const message = 'test/message'

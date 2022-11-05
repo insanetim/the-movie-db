@@ -3,7 +3,7 @@ import * as R from 'ramda'
 
 import Loading from 'src/components/Loading'
 import MoviesList from 'src/components/MoviesList'
-import { useContainer } from './hook'
+import useContainer from './hook'
 
 const DashboardTrending = () => {
   const { movies, handlePagination } = useContainer()

@@ -1,0 +1,157 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CreateListModal component tests matches snapshot 1`] = `
+<Header>
+  <Row
+    justify="space-between"
+  >
+    <Col>
+      <ForwardRef(Text)>
+        THE MOVIE DB
+      </ForwardRef(Text)>
+    </Col>
+    <Col>
+      <Dropdown
+        overlay={
+          <Menu
+            items={
+              [
+                {
+                  "label": <Link
+                    to="/"
+                  >
+                    Dashboard
+                  </Link>,
+                },
+                {
+                  "type": "divider",
+                },
+                {
+                  "label": <Link
+                    to="/lists"
+                  >
+                    My Lists
+                  </Link>,
+                },
+                {
+                  "label": <Link
+                    to="/watchlist"
+                  >
+                    Watchlist
+                  </Link>,
+                },
+                {
+                  "label": <Link
+                    to="/favorites"
+                  >
+                    Favorites
+                  </Link>,
+                },
+                {
+                  "type": "divider",
+                },
+                {
+                  "label": "Logout",
+                  "onClick": [MockFunction],
+                },
+              ]
+            }
+          />
+        }
+      >
+        <ForwardRef(Text)>
+          <Avatar
+            src="https://www.gravatar.com/avatar/test/avatar"
+          />
+           
+          <span
+            className="hide-sm-down"
+          >
+            test/username
+          </span>
+           
+          <ForwardRef(CaretDownOutlined) />
+        </ForwardRef(Text)>
+      </Dropdown>
+    </Col>
+  </Row>
+</Header>
+`;
+
+exports[`CreateListModal component tests matches snapshot with empty account 1`] = `
+<Header>
+  <Row
+    justify="space-between"
+  >
+    <Col>
+      <ForwardRef(Text)>
+        THE MOVIE DB
+      </ForwardRef(Text)>
+    </Col>
+    <Col>
+      <Dropdown
+        overlay={
+          <Menu
+            items={
+              [
+                {
+                  "label": <Link
+                    to="/"
+                  >
+                    Dashboard
+                  </Link>,
+                },
+                {
+                  "type": "divider",
+                },
+                {
+                  "label": <Link
+                    to="/lists"
+                  >
+                    My Lists
+                  </Link>,
+                },
+                {
+                  "label": <Link
+                    to="/watchlist"
+                  >
+                    Watchlist
+                  </Link>,
+                },
+                {
+                  "label": <Link
+                    to="/favorites"
+                  >
+                    Favorites
+                  </Link>,
+                },
+                {
+                  "type": "divider",
+                },
+                {
+                  "label": "Logout",
+                  "onClick": [MockFunction],
+                },
+              ]
+            }
+          />
+        }
+      >
+        <ForwardRef(Text)>
+          <Avatar
+            icon={<ForwardRef(UserOutlined) />}
+          />
+           
+          <span
+            className="hide-sm-down"
+          >
+            Username
+          </span>
+           
+          <ForwardRef(CaretDownOutlined) />
+        </ForwardRef(Text)>
+      </Dropdown>
+    </Col>
+  </Row>
+</Header>
+`;

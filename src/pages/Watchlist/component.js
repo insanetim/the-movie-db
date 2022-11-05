@@ -5,7 +5,7 @@ import * as R from 'ramda'
 
 import MoviesList from 'src/components/MoviesList'
 import Loading from 'src/components/Loading'
-import { useContainer } from './hook'
+import useContainer from './hook'
 
 const Watchlist = () => {
   const { watchlist, handlePagination, handleDelete } = useContainer()

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { Col, Card, Typography } from 'antd'
 import { DeleteOutlined } from '@ant-design/icons'
 
-import { useContainer } from './hook'
+import useContainer from './hook'
 
 const ListItem = ({ list }) => {
   const { handleClick, handleDelete } = useContainer(list.id)

@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom'
 
 import { deleteList } from 'src/state/lists/actions'
 
-export const useContainer = listId => {
+const useContainer = listId => {
   const dispatch = useDispatch()
   const navigate = useNavigate()
 
@@ -22,3 +22,5 @@ export const useContainer = listId => {
 
   return { handleClick, handleDelete }
 }
+
+export default useContainer

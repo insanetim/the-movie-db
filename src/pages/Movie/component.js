@@ -10,7 +10,7 @@ import CreditsItem from 'src/components/Movie/CreditsItem'
 import ImageGallery from 'src/components/Movie/ImageGallery'
 import PopoverContent from 'src/components/Movie/PopoverContent'
 import { convertDuration, convertMoney } from 'src/utils'
-import { useContainer } from './hook'
+import useContainer from './hook'
 
 const Movie = () => {
   const { movie, loading, handleFavoriteClick, handleWatchlistClick, popoverOpen, setPopoverOpen } = useContainer()

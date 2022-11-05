@@ -6,7 +6,7 @@ import { Modal } from 'antd'
 import { deleteList, removeFromList, fetchList } from 'src/state/lists/actions'
 import { listSelector } from 'src/state/lists/selectors'
 
-export const useContainer = () => {
+const useContainer = () => {
   const dispatch = useDispatch()
   const list = useSelector(listSelector)
   const { listId } = useParams()
@@ -38,3 +38,5 @@ export const useContainer = () => {
 
   return { list, loading, handleListDelete, handleMovieDelete }
 }
+
+export default useContainer

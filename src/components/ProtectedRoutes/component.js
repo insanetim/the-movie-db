@@ -1,7 +1,7 @@
 import React from 'react'
 import { Outlet, Navigate, useLocation } from 'react-router-dom'
 
-import { useContainer } from './hook'
+import useContainer from './hook'
 
 const ProtectedRoutes = () => {
   const { sessionId } = useContainer()

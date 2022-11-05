@@ -4,7 +4,7 @@ import { MinusCircleOutlined, DeleteOutlined } from '@ant-design/icons'
 
 import Loading from 'src/components/Loading'
 import ListContent from 'src/components/ListContent'
-import { useContainer } from './hook'
+import useContainer from './hook'
 
 const ListDetails = () => {
   const { list, loading, handleListDelete, handleMovieDelete } = useContainer()

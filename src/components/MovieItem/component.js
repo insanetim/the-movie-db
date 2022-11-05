@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { Card } from 'antd'
 
 import NoImage from 'src/assets/images/no-image.svg'
-import { useContainer } from './hook'
+import useContainer from './hook'
 
 const Movie = ({ movie, actions }) => {
   const { handleClick } = useContainer(movie.id)

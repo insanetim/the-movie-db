@@ -4,7 +4,7 @@ import { showModal } from 'src/state/app/actions'
 import { addToList } from 'src/state/lists/actions'
 import { listsSelector } from 'src/state/lists/selectors'
 
-export const useContainer = ({ movieId, setPopoverOpen }) => {
+const useContainer = ({ movieId, setPopoverOpen }) => {
   const dispatch = useDispatch()
   const lists = useSelector(listsSelector)
 
@@ -29,3 +29,5 @@ export const useContainer = ({ movieId, setPopoverOpen }) => {
 
   return { lists, handleAddToNewList, handleAddToList }
 }
+
+export default useContainer

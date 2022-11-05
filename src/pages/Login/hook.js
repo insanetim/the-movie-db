@@ -4,7 +4,7 @@ import { useLocation, useNavigate } from 'react-router-dom'
 import { logIn } from 'src/state/session/actions'
 import { loadingSelector } from 'src/state/app/selectors'
 
-export const useContainer = () => {
+const useContainer = () => {
   const dispatch = useDispatch()
   const loading = useSelector(loadingSelector)
   const location = useLocation()
@@ -17,3 +17,5 @@ export const useContainer = () => {
 
   return { handleLogin, loading }
 }
+
+export default useContainer

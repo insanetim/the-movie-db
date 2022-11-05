@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { useContainer } from './hook'
+import useContainer from './hook'
 import MODAL_COMPONENTS from './modalComponents'
 
 const ModalRoot = () => {

@@ -6,7 +6,7 @@ import * as R from 'ramda'
 import { changeMovieInFavorites, changeMovieInWatchlist, fetchMovie } from 'src/state/movie/actions'
 import { movieSelector } from 'src/state/movie/selectors'
 
-export const useContainer = () => {
+const useContainer = () => {
   const dispatch = useDispatch()
   const movie = useSelector(movieSelector, R.equals)
   const { movieId } = useParams()
@@ -44,3 +44,5 @@ export const useContainer = () => {
     setPopoverOpen
   }
 }
+
+export default useContainer

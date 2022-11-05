@@ -1,7 +1,7 @@
 import React from 'react'
 import { Row, Col, Input } from 'antd'
 
-import { useContainer } from './hook'
+import useContainer from './hook'
 
 const DashboardSearchInput = () => {
   const { currentValue, handleChange, handleSearch } = useContainer()

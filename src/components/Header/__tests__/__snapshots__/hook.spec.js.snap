@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Header useContainer hook matches snapshot 1`] = `
+{
+  "account": {
+    "id": 1,
+  },
+  "handleLogout": [Function],
+}
+`;

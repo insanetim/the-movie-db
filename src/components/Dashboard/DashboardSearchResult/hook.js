@@ -5,7 +5,7 @@ import * as R from 'ramda'
 import { fetchSearch } from 'src/state/dashboard/actions'
 import { searchQuerySelector, searchSelector } from 'src/state/dashboard/selectors'
 
-export const useContainer = () => {
+const useContainer = () => {
   const dispatch = useDispatch()
   const searchQuery = useSelector(searchQuerySelector)
   const search = useSelector(searchSelector)
@@ -22,3 +22,5 @@ export const useContainer = () => {
 
   return { movies: search, handlePagination }
 }
+
+export default useContainer

@@ -5,7 +5,7 @@ import * as R from 'ramda'
 import { fetchTrending } from 'src/state/dashboard/actions'
 import { trendingSelector } from 'src/state/dashboard/selectors'
 
-export const useContainer = () => {
+const useContainer = () => {
   const dispatch = useDispatch()
   const trending = useSelector(trendingSelector)
 
@@ -21,3 +21,5 @@ export const useContainer = () => {
 
   return { movies: trending, handlePagination }
 }
+
+export default useContainer

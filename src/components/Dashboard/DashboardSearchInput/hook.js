@@ -5,7 +5,7 @@ import { createBrowserHistory } from '@remix-run/router'
 import { clearSearch, fetchSearch } from 'src/state/dashboard/actions'
 import { searchQuerySelector } from 'src/state/dashboard/selectors'
 
-export const useContainer = () => {
+const useContainer = () => {
   const dispatch = useDispatch()
   const searchQuery = useSelector(searchQuerySelector)
   const [currentValue, setCurrentValue] = useState(null)
@@ -30,3 +30,5 @@ export const useContainer = () => {
 
   return { currentValue, handleChange, handleSearch }
 }
+
+export default useContainer

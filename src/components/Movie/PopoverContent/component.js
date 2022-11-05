@@ -1,7 +1,7 @@
 import React from 'react'
 import { Button } from 'antd'
 
-import { useContainer } from './hook'
+import useContainer from './hook'
 
 const PopoverContent = props => {
   const { lists, handleAddToNewList, handleAddToList } = useContainer(props)
