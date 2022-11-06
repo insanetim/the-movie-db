@@ -1,11 +1,14 @@
 import { act, renderHook } from '@testing-library/react-hooks'
 
 import { dispatch } from 'src/__mocks__/react-redux'
+import { logOut } from 'src/state/session/actions'
 import useContainer from '../hook'
 
 jest.mock('src/state/session/selectors', () => ({
   accountSelector: jest.fn(() => ({ id: 1 }))
 }))
+
+jest.mock('src/state/session/actions')
 
 describe('Header useContainer hook', () => {
   let result = null
@@ -25,6 +28,6 @@ describe('Header useContainer hook', () => {
       result.current.handleLogout()
     })
 
-    expect(dispatch).toHaveBeenCalled()
+    expect(dispatch).toHaveBeenCalledWith(logOut())
   })
 })

@@ -1,5 +1,11 @@
-import store from '../index'
+import { configureStore } from '@reduxjs/toolkit'
 
-it('matches snapshot', () => {
-  expect(store).toMatchSnapshot()
+jest.mock('@reduxjs/toolkit', () => ({
+  configureStore: jest.fn()
+}))
+
+it('creates store', () => {
+  jest.requireActual('../index')
+
+  expect(configureStore).toHaveBeenCalled()
 })
