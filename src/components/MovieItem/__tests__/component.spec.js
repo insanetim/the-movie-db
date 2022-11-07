@@ -7,6 +7,10 @@ const mockedHookData = {
 }
 jest.mock('../hook', () => jest.fn(() => mockedHookData))
 
+jest.mock('src/utils', () => ({
+  bindId: jest.fn(node => node)
+}))
+
 describe('MovieItem component', () => {
   it('matches snapshot', () => {
     const props = {

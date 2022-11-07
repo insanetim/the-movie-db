@@ -1,3 +1,4 @@
+import 'jsdom-global/register'
 import { notification } from 'antd'
 
 import showNotification from '../showNotification'

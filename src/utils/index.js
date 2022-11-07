@@ -1,4 +1,5 @@
 import { m, h, ms } from 'time-convert'
+import * as R from 'ramda'
 
 export const convertDuration = minutes => {
   const duration = ms.to(h, m)(1000 * 60 * minutes)
@@ -12,3 +13,14 @@ export const convertMoney = value =>
   new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(value)
 
 export const redirect = (url, location, navigate) => () => navigate(url, { state: { from: location } })
+
+export const bindId = (array, id) =>
+  array.map(action =>
+    R.mergeDeepRight(action, {
+      props: {
+        onClick: event => {
+          action.props.onClick(event, id)
+        }
+      }
+    })
+  )

@@ -4,9 +4,7 @@ exports[`MovieItem component matches snapshot 1`] = `
 <ForwardRef
   actions={
     [
-      <div
-        onClick={[Function]}
-      />,
+      <div />,
     ]
   }
   className="top-margin"

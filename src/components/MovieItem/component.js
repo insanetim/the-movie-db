@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import { Card } from 'antd'
 
 import NoImage from 'src/assets/images/no-image.svg'
+import { bindId } from 'src/utils'
 import useContainer from './hook'
 
 const Movie = ({ movie, actions }) => {
@@ -27,15 +28,7 @@ const Movie = ({ movie, actions }) => {
         )
       }
       className='top-margin'
-      actions={actions.map(action => ({
-        ...action,
-        props: {
-          ...action.props,
-          onClick: event => {
-            action.props.onClick(event, movie.id)
-          }
-        }
-      }))}
+      actions={bindId(actions, movie.id)}
       onClick={handleClick}
     >
       <Card.Meta

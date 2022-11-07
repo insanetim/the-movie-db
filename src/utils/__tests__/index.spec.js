@@ -1,4 +1,4 @@
-import { convertDuration, convertMoney, redirect } from '../index'
+import { convertDuration, convertMoney, redirect, bindId } from '../index'
 
 describe('convertDuration', () => {
   it('should return correct result with value 30', () => {
@@ -28,5 +28,21 @@ describe('redirect', () => {
     redirect(url, location, navigate)()
 
     expect(navigate).toHaveBeenCalledWith(url, { state: { from: location } })
+  })
+})
+
+describe('bindId', () => {
+  it('should return correct result', () => {
+    const mockFn = jest.fn()
+    const action = {
+      props: {
+        onClick: mockFn
+      }
+    }
+    const result = bindId([action], 1)
+    result[0].props.onClick('event')
+
+    expect(result).toBeInstanceOf(Array)
+    expect(mockFn).toHaveBeenCalledWith('event', 1)
   })
 })
