@@ -1,0 +1,64 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`matches snapshot 1`] = `
+<Fragment>
+  <Row>
+    <Col
+      offset={2}
+      span={20}
+    >
+      <div
+        className="top-margin"
+      >
+        <ForwardRef>
+          Watchlist
+        </ForwardRef>
+      </div>
+    </Col>
+  </Row>
+  <MoviesList
+    actions={
+      [
+        <ForwardRef(DeleteOutlined)
+          onClick={[MockFunction]}
+        />,
+      ]
+    }
+    emptyText="No results"
+    handleDelete={[MockFunction]}
+    handlePagination={[MockFunction]}
+    movies={
+      {
+        "results": [
+          {
+            "id": 1,
+            "overview": "test/overview",
+            "poster_path": "test/image",
+            "title": "test/title",
+          },
+        ],
+      }
+    }
+  />
+</Fragment>
+`;
+
+exports[`matches snapshot with loading 1`] = `
+<Fragment>
+  <Row>
+    <Col
+      offset={2}
+      span={20}
+    >
+      <div
+        className="top-margin"
+      >
+        <ForwardRef>
+          Watchlist
+        </ForwardRef>
+      </div>
+    </Col>
+  </Row>
+  <Loading />
+</Fragment>
+`;

@@ -20,7 +20,12 @@ describe('MovieItem component', () => {
         overview: 'test/overview',
         poster_path: 'test/image'
       },
-      actions: [<div key='delete' />]
+      actions: [
+        <div
+          key='delete'
+          onClick={jest.fn()}
+        />
+      ]
     }
     const component = shallow(<MovieItem {...props} />)
     expect(component).toMatchSnapshot()

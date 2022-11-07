@@ -1,0 +1,42 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`matches snapshot 1`] = `
+<Fragment>
+  <Row>
+    <Col
+      offset={2}
+      span={20}
+    >
+      <div
+        className="top-margin"
+      >
+        <ForwardRef>
+          Test list
+           
+          <ForwardRef(MinusCircleOutlined)
+            onClick={[MockFunction]}
+          />
+        </ForwardRef>
+      </div>
+    </Col>
+  </Row>
+  <ListContent
+    actions={
+      [
+        <ForwardRef(DeleteOutlined)
+          onClick={[MockFunction]}
+        />,
+      ]
+    }
+    movies={[]}
+  />
+</Fragment>
+`;
+
+exports[`matches snapshot with loading 1`] = `
+<div
+  className="top-margin"
+>
+  <Loading />
+</div>
+`;

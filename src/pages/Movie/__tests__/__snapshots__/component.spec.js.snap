@@ -1,0 +1,459 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Movie component tests Popover matches snapshot 1`] = `""`;
+
+exports[`Movie component tests matches snapshot 1`] = `
+<Fragment>
+  <ImageGallery
+    images={
+      [
+        {
+          "file_path": "test/image",
+        },
+      ]
+    }
+  />
+  <div
+    className="top-margin"
+  >
+    <Row
+      justify="center"
+    >
+      <Col
+        span={20}
+      >
+        <ForwardRef>
+          <span>
+            test/title
+             (2022)
+          </span>
+           
+          <Popover
+            content={
+              <PopoverContent
+                movieId={1}
+                setPopoverOpen={[MockFunction]}
+              />
+            }
+            destroyTooltipOnHide={true}
+            onOpenChange={[Function]}
+            open={false}
+            placement="top"
+            title="Add movie to list"
+            trigger="click"
+          >
+            <ForwardRef(PlusCircleOutlined) />
+          </Popover>
+           
+          <AntdIcon
+            component={
+              {
+                "$$typeof": Symbol(react.forward_ref),
+                "render": [Function],
+              }
+            }
+            onClick={[MockFunction]}
+          />
+           
+          <AntdIcon
+            component={
+              {
+                "$$typeof": Symbol(react.forward_ref),
+                "render": [Function],
+              }
+            }
+            onClick={[MockFunction]}
+          />
+        </ForwardRef>
+        <ForwardRef
+          level={3}
+        >
+          Overview
+        </ForwardRef>
+        <ForwardRef>
+          test/overview
+        </ForwardRef>
+      </Col>
+    </Row>
+    <Row
+      justify="center"
+    >
+      <Col
+        span={20}
+      >
+        <ForwardRef>
+          <b>
+            Original Language: 
+          </b>
+          <span />
+        </ForwardRef>
+      </Col>
+      <Col
+        span={20}
+      >
+        <ForwardRef>
+          <b>
+            Runtime: 
+          </b>
+          <span>
+            1h 30m
+          </span>
+        </ForwardRef>
+      </Col>
+      <Col
+        span={20}
+      >
+        <ForwardRef>
+          <b>
+            Budget: 
+          </b>
+          <span>
+            $1,000,000.00
+          </span>
+        </ForwardRef>
+      </Col>
+      <Col
+        span={20}
+      >
+        <ForwardRef>
+          <b>
+            Revenue: 
+          </b>
+          <span>
+            $1,500,000.00
+          </span>
+        </ForwardRef>
+      </Col>
+      <Col
+        span={20}
+      >
+        <ForwardRef>
+          <b>
+            Genres: 
+          </b>
+          <Tag
+            key="1"
+          >
+            ACTION
+          </Tag>
+          <Tag
+            key="2"
+          >
+            HORROR
+          </Tag>
+        </ForwardRef>
+      </Col>
+    </Row>
+    <Row>
+      <Col
+        className="top-margin"
+        offset={2}
+        span={10}
+      >
+        <ForwardRef
+          level={3}
+        >
+          Casts
+        </ForwardRef>
+      </Col>
+    </Row>
+    <Row
+      gutter={8}
+      justify="center"
+    >
+      <Col
+        span={20}
+      >
+        <Row
+          gutter={
+            {
+              "lg": 32,
+              "md": 24,
+              "sm": 16,
+              "xs": 8,
+            }
+          }
+        >
+          <CreditsItem
+            description="Neo"
+            key="1"
+            profilePath="test/image"
+            title="John Doe"
+          />
+        </Row>
+      </Col>
+    </Row>
+    <Row>
+      <Col
+        className="top-margin"
+        offset={2}
+        span={10}
+      >
+        <ForwardRef
+          level={3}
+        >
+          Crew
+        </ForwardRef>
+      </Col>
+    </Row>
+    <Row
+      gutter={8}
+      justify="center"
+    >
+      <Col
+        span={20}
+      >
+        <Row
+          gutter={
+            {
+              "lg": 32,
+              "md": 24,
+              "sm": 16,
+              "xs": 8,
+            }
+          }
+        >
+          <CreditsItem
+            description="Director"
+            key="1"
+            profilePath="test/image"
+            title="John Doe"
+          />
+        </Row>
+      </Col>
+    </Row>
+  </div>
+</Fragment>
+`;
+
+exports[`Movie component tests matches snapshot with loading 1`] = `
+<div
+  className="top-margin"
+>
+  <Loading />
+</div>
+`;
+
+exports[`Movie component tests matches snapshot with other data 1`] = `
+<Fragment>
+  <ImageGallery
+    images={
+      [
+        {
+          "file_path": "test/image",
+        },
+      ]
+    }
+  />
+  <div
+    className="top-margin"
+  >
+    <Row
+      justify="center"
+    >
+      <Col
+        span={20}
+      >
+        <ForwardRef>
+          <span>
+            test/title
+             (2022)
+          </span>
+           
+          <Popover
+            content={
+              <PopoverContent
+                movieId={1}
+                setPopoverOpen={[MockFunction]}
+              />
+            }
+            destroyTooltipOnHide={true}
+            onOpenChange={[Function]}
+            open={true}
+            placement="top"
+            title="Add movie to list"
+            trigger="click"
+          >
+            <ForwardRef(PlusCircleOutlined) />
+          </Popover>
+           
+          <AntdIcon
+            component={
+              {
+                "$$typeof": Symbol(react.forward_ref),
+                "render": [Function],
+              }
+            }
+            onClick={[MockFunction]}
+          />
+           
+          <AntdIcon
+            component={
+              {
+                "$$typeof": Symbol(react.forward_ref),
+                "render": [Function],
+              }
+            }
+            onClick={[MockFunction]}
+          />
+        </ForwardRef>
+        <ForwardRef
+          level={3}
+        >
+          Overview
+        </ForwardRef>
+        <ForwardRef>
+          test/overview
+        </ForwardRef>
+      </Col>
+    </Row>
+    <Row
+      justify="center"
+    >
+      <Col
+        span={20}
+      >
+        <ForwardRef>
+          <b>
+            Original Language: 
+          </b>
+          <span />
+        </ForwardRef>
+      </Col>
+      <Col
+        span={20}
+      >
+        <ForwardRef>
+          <b>
+            Runtime: 
+          </b>
+          <span>
+            1h 30m
+          </span>
+        </ForwardRef>
+      </Col>
+      <Col
+        span={20}
+      >
+        <ForwardRef>
+          <b>
+            Budget: 
+          </b>
+          <span>
+            $1,000,000.00
+          </span>
+        </ForwardRef>
+      </Col>
+      <Col
+        span={20}
+      >
+        <ForwardRef>
+          <b>
+            Revenue: 
+          </b>
+          <span>
+            $1,500,000.00
+          </span>
+        </ForwardRef>
+      </Col>
+      <Col
+        span={20}
+      >
+        <ForwardRef>
+          <b>
+            Genres: 
+          </b>
+          <Tag
+            key="1"
+          >
+            ACTION
+          </Tag>
+          <Tag
+            key="2"
+          >
+            HORROR
+          </Tag>
+        </ForwardRef>
+      </Col>
+    </Row>
+    <Row>
+      <Col
+        className="top-margin"
+        offset={2}
+        span={10}
+      >
+        <ForwardRef
+          level={3}
+        >
+          Casts
+        </ForwardRef>
+      </Col>
+    </Row>
+    <Row
+      gutter={8}
+      justify="center"
+    >
+      <Col
+        span={20}
+      >
+        <Row
+          gutter={
+            {
+              "lg": 32,
+              "md": 24,
+              "sm": 16,
+              "xs": 8,
+            }
+          }
+        >
+          <CreditsItem
+            description="Neo"
+            key="1"
+            profilePath="test/image"
+            title="John Doe"
+          />
+        </Row>
+      </Col>
+    </Row>
+    <Row>
+      <Col
+        className="top-margin"
+        offset={2}
+        span={10}
+      >
+        <ForwardRef
+          level={3}
+        >
+          Crew
+        </ForwardRef>
+      </Col>
+    </Row>
+    <Row
+      gutter={8}
+      justify="center"
+    >
+      <Col
+        span={20}
+      >
+        <Row
+          gutter={
+            {
+              "lg": 32,
+              "md": 24,
+              "sm": 16,
+              "xs": 8,
+            }
+          }
+        >
+          <CreditsItem
+            description="Director"
+            key="1"
+            profilePath="test/image"
+            title="John Doe"
+          />
+        </Row>
+      </Col>
+    </Row>
+  </div>
+</Fragment>
+`;

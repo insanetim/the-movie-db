@@ -1,0 +1,175 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`matches snapshot 1`] = `
+<div
+  className="center"
+>
+  <Layout>
+    <Content>
+      <Row
+        justify="center"
+      >
+        <Col>
+          <ForwardRef(InternalForm)
+            autoComplete="off"
+            onFinish={[MockFunction]}
+          >
+            <ForwardRef>
+              The Movie DB
+            </ForwardRef>
+            <InternalFormItem
+              name="username"
+              rules={
+                [
+                  {
+                    "message": "Username is required",
+                    "required": true,
+                  },
+                ]
+              }
+            >
+              <ForwardRef
+                placeholder="Username"
+                prefix={
+                  <ForwardRef(UserOutlined)
+                    style={
+                      {
+                        "color": "rgba(0,0,0,.25)",
+                      }
+                    }
+                  />
+                }
+              />
+            </InternalFormItem>
+            <InternalFormItem
+              name="password"
+              rules={
+                [
+                  {
+                    "message": "Password is required",
+                    "required": true,
+                  },
+                  {
+                    "message": "Password must be at least 4 characters",
+                    "min": 4,
+                  },
+                ]
+              }
+            >
+              <ForwardRef
+                placeholder="Password"
+                prefix={
+                  <ForwardRef(LockOutlined)
+                    style={
+                      {
+                        "color": "rgba(0,0,0,.25)",
+                      }
+                    }
+                  />
+                }
+                type="password"
+              />
+            </InternalFormItem>
+            <InternalFormItem>
+              <Button
+                htmlType="submit"
+                loading={false}
+                type="primary"
+              >
+                Log in
+              </Button>
+            </InternalFormItem>
+          </ForwardRef(InternalForm)>
+        </Col>
+      </Row>
+    </Content>
+  </Layout>
+</div>
+`;
+
+exports[`matches snapshot with loading 1`] = `
+<div
+  className="center"
+>
+  <Layout>
+    <Content>
+      <Row
+        justify="center"
+      >
+        <Col>
+          <ForwardRef(InternalForm)
+            autoComplete="off"
+            onFinish={[MockFunction]}
+          >
+            <ForwardRef>
+              The Movie DB
+            </ForwardRef>
+            <InternalFormItem
+              name="username"
+              rules={
+                [
+                  {
+                    "message": "Username is required",
+                    "required": true,
+                  },
+                ]
+              }
+            >
+              <ForwardRef
+                placeholder="Username"
+                prefix={
+                  <ForwardRef(UserOutlined)
+                    style={
+                      {
+                        "color": "rgba(0,0,0,.25)",
+                      }
+                    }
+                  />
+                }
+              />
+            </InternalFormItem>
+            <InternalFormItem
+              name="password"
+              rules={
+                [
+                  {
+                    "message": "Password is required",
+                    "required": true,
+                  },
+                  {
+                    "message": "Password must be at least 4 characters",
+                    "min": 4,
+                  },
+                ]
+              }
+            >
+              <ForwardRef
+                placeholder="Password"
+                prefix={
+                  <ForwardRef(LockOutlined)
+                    style={
+                      {
+                        "color": "rgba(0,0,0,.25)",
+                      }
+                    }
+                  />
+                }
+                type="password"
+              />
+            </InternalFormItem>
+            <InternalFormItem>
+              <Button
+                htmlType="submit"
+                loading={true}
+                type="primary"
+              >
+                Log in
+              </Button>
+            </InternalFormItem>
+          </ForwardRef(InternalForm)>
+        </Col>
+      </Row>
+    </Content>
+  </Layout>
+</div>
+`;

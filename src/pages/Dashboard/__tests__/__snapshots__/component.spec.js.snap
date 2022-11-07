@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`matches snapshot 1`] = `
+<Fragment>
+  <DashboardSearchInput />
+  <div
+    className="top-margin"
+  >
+    <DashboardTrending />
+  </div>
+</Fragment>
+`;
+
+exports[`matches snapshot with searchQuery 1`] = `
+<Fragment>
+  <DashboardSearchInput />
+  <div
+    className="top-margin"
+  >
+    <DashboardSearchResult />
+  </div>
+</Fragment>
+`;

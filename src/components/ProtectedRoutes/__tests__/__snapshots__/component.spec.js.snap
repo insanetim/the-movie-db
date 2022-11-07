@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`matches snapshot 1`] = `<Outlet />`;
+
+exports[`matches snapshot without session_id 1`] = `
+<Navigate
+  replace={true}
+  state={
+    {
+      "from": {},
+    }
+  }
+  to="/login"
+/>
+`;
