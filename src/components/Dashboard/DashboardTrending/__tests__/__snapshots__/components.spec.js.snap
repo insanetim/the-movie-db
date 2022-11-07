@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CreateListModal component tests matches snapshot 1`] = `
+<MoviesList
+  actions={[]}
+  emptyText="No movies found"
+  handlePagination={[Function]}
+  movies={
+    {
+      "results": [
+        {
+          "id": 1,
+          "overview": "test/overview",
+          "poster_path": "test/image",
+          "title": "test/title",
+        },
+      ],
+      "total_pages": 10,
+      "total_results": 200,
+    }
+  }
+/>
+`;
+
+exports[`CreateListModal component tests matches snapshot without movies 1`] = `<Loading />`;

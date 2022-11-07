@@ -14,7 +14,7 @@
   "license": "MIT",
   "devDependencies": {
     "@babel/core": "^7.19.3",
-    "@babel/preset-env": "^7.19.4",
+    "@babel/preset-env": "^7.20.2",
     "@babel/preset-react": "^7.18.6",
     "@testing-library/react-hooks": "^8.0.1",
     "@wojtekmaj/enzyme-adapter-react-17": "^0.6.7",
@@ -80,6 +80,13 @@
     ],
     "coveragePathIgnorePatterns": [
       "<rootDir>/src/index.js"
+    ],
+    "moduleFileExtensions": [
+      "js",
+      "jsx"
+    ],
+    "moduleDirectories": [
+      "node_modules"
     ],
     "moduleNameMapper": {
       "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/src/__mocks__/file_mock.js",

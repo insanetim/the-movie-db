@@ -63,7 +63,7 @@ exports[`matches snapshot 1`] = `
 </Row>
 `;
 
-exports[`matches snapshot with no movies 1`] = `
+exports[`matches snapshot without movies 1`] = `
 <Empty
   description="No results"
 />

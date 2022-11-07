@@ -1,0 +1,54 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CreateListModal component tests matches snapshot 1`] = `
+<Row
+  gutter={
+    {
+      "lg": 22,
+      "md": 24,
+      "sm": 16,
+      "xs": 8,
+    }
+  }
+  justify="center"
+>
+  <Col
+    lg={
+      {
+        "span": 12,
+      }
+    }
+    md={
+      {
+        "span": 14,
+      }
+    }
+    sm={
+      {
+        "span": 20,
+      }
+    }
+    xl={
+      {
+        "span": 10,
+      }
+    }
+    xs={
+      {
+        "span": 20,
+      }
+    }
+  >
+    <Search
+      allowClear={true}
+      className="top-margin"
+      enterButton="Search"
+      onChange={[MockFunction]}
+      onSearch={[MockFunction]}
+      placeholder="Enter movie name"
+      size="large"
+      value="xxx"
+    />
+  </Col>
+</Row>
+`;

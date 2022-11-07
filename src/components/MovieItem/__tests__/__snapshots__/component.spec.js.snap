@@ -1,0 +1,51 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MovieItem component matches snapshot 1`] = `
+<ForwardRef
+  actions={
+    [
+      <div
+        onClick={[Function]}
+      />,
+    ]
+  }
+  className="top-margin"
+  cover={
+    <img
+      alt="Poster"
+      src="https://image.tmdb.org/t/p/w500test/image"
+    />
+  }
+  hoverable={true}
+  onClick={[MockFunction]}
+>
+  <Meta
+    description="test/overview"
+    title="test/title"
+  />
+</ForwardRef>
+`;
+
+exports[`MovieItem component matches snapshot with NoImage 1`] = `
+<ForwardRef
+  actions={[]}
+  className="top-margin"
+  cover={
+    <div
+      className="ant-card-cover--no-image"
+    >
+      <img
+        alt=""
+        src="test-file-stub"
+      />
+    </div>
+  }
+  hoverable={true}
+  onClick={[MockFunction]}
+>
+  <Meta
+    description="test/overview"
+    title="test/title"
+  />
+</ForwardRef>
+`;

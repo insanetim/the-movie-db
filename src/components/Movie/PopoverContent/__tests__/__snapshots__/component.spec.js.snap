@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`matches snapshot 1`] = `
+<Fragment>
+  <div>
+    <Button
+      onClick={[MockFunction]}
+      type="link"
+    >
+      Create new list ...
+    </Button>
+  </div>
+  <div
+    key="1"
+  >
+    <Button
+      onClick={[Function]}
+      type="link"
+    >
+      Test list
+    </Button>
+  </div>
+</Fragment>
+`;

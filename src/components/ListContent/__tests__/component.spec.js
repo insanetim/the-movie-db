@@ -16,7 +16,7 @@ it('matches snapshot', () => {
   expect(component).toMatchSnapshot()
 })
 
-it('matches snapshot with no movies', () => {
+it('matches snapshot without movies', () => {
   const component = shallow(<ListContent />)
 
   expect(component).toMatchSnapshot()

@@ -7,5 +7,11 @@ jest.mock('@reduxjs/toolkit', () => ({
 it('creates store', () => {
   jest.requireActual('../index')
 
-  expect(configureStore).toHaveBeenCalled()
+  expect(configureStore).toHaveBeenCalledWith(
+    expect.objectContaining({
+      reducer: expect.any(Function),
+      middleware: expect.any(Array),
+      devTools: expect.any(Boolean)
+    })
+  )
 })

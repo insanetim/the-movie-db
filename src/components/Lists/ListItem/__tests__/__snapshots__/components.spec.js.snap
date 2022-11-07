@@ -1,0 +1,47 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`matches snapshot 1`] = `
+<Col
+  lg={
+    {
+      "span": 8,
+    }
+  }
+  md={
+    {
+      "span": 8,
+    }
+  }
+  sm={
+    {
+      "span": 12,
+    }
+  }
+  span={24}
+  xl={
+    {
+      "span": 6,
+    }
+  }
+>
+  <ForwardRef
+    actions={
+      [
+        <ForwardRef(DeleteOutlined)
+          onClick={[MockFunction]}
+        />,
+      ]
+    }
+    className="top-margin"
+    hoverable={true}
+    onClick={[MockFunction]}
+  >
+    <ForwardRef
+      level={4}
+    >
+      Test list
+    </ForwardRef>
+    Test description
+  </ForwardRef>
+</Col>
+`;

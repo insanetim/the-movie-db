@@ -135,7 +135,7 @@ exports[`matches snapshot with 1 page 1`] = `
 </Fragment>
 `;
 
-exports[`matches snapshot with no movies 1`] = `
+exports[`matches snapshot without movies 1`] = `
 <Empty
   description="No results"
 />

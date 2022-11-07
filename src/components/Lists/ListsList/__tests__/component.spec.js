@@ -1,9 +1,14 @@
 import { shallow } from 'enzyme'
 
-import MoviesList from '../component'
+import ListList from '../component'
+
+const mockedHookData = {
+  handlePaginationChange: jest.fn()
+}
+jest.mock('../hook', () => jest.fn(() => mockedHookData))
 
 it('matches snapshot', () => {
-  const mockedMovies = {
+  const mockedLists = {
     results: [
       {
         id: 1,
@@ -15,19 +20,13 @@ it('matches snapshot', () => {
     total_pages: 10,
     total_results: 200
   }
-
-  const component = shallow(
-    <MoviesList
-      movies={mockedMovies}
-      handlePagination={jest.fn()}
-    />
-  )
+  const component = shallow(<ListList lists={mockedLists} />)
 
   expect(component).toMatchSnapshot()
 })
 
 it('matches snapshot with 1 page', () => {
-  const mockedMovies = {
+  const mockedLists = {
     results: [
       {
         id: 1,
@@ -39,27 +38,16 @@ it('matches snapshot with 1 page', () => {
     total_pages: 1,
     total_results: 20
   }
-
-  const component = shallow(
-    <MoviesList
-      movies={mockedMovies}
-      handlePagination={jest.fn()}
-    />
-  )
+  const component = shallow(<ListList lists={mockedLists} />)
 
   expect(component).toMatchSnapshot()
 })
 
-it('matches snapshot without movies', () => {
-  const mockedMovies = {
+it('matches snapshot without lists', () => {
+  const mockedLists = {
     results: []
   }
-  const component = shallow(
-    <MoviesList
-      movies={mockedMovies}
-      handlePagination={jest.fn()}
-    />
-  )
+  const component = shallow(<ListList lists={mockedLists} />)
 
   expect(component).toMatchSnapshot()
 })

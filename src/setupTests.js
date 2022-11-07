@@ -1,4 +1,5 @@
-import Enzyme from 'enzyme' // eslint-disable-line import/no-extraneous-dependencies
-import Adapter from '@wojtekmaj/enzyme-adapter-react-17' // eslint-disable-line import/no-extraneous-dependencies
+/* eslint-disable import/no-extraneous-dependencies */
+import { configure } from 'enzyme'
+import Adapter from '@wojtekmaj/enzyme-adapter-react-17'
 
-Enzyme.configure({ adapter: new Adapter() })
+configure({ adapter: new Adapter() })

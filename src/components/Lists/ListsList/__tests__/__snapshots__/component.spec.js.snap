@@ -1,0 +1,82 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`matches snapshot 1`] = `
+<Fragment>
+  <Row
+    justify="center"
+  >
+    <Col
+      span={20}
+    >
+      <Row
+        gutter={
+          {
+            "lg": 32,
+            "md": 24,
+            "sm": 16,
+            "xs": 8,
+          }
+        }
+      >
+        <ListItem
+          key="1"
+          list={
+            {
+              "id": 1,
+              "overview": "test/overview",
+              "poster_path": "test/image",
+              "title": "test/title",
+            }
+          }
+        />
+      </Row>
+    </Col>
+  </Row>
+  <Pagination
+    onChange={[MockFunction]}
+    pageSize={20}
+    total={200}
+  />
+</Fragment>
+`;
+
+exports[`matches snapshot with 1 page 1`] = `
+<Fragment>
+  <Row
+    justify="center"
+  >
+    <Col
+      span={20}
+    >
+      <Row
+        gutter={
+          {
+            "lg": 32,
+            "md": 24,
+            "sm": 16,
+            "xs": 8,
+          }
+        }
+      >
+        <ListItem
+          key="1"
+          list={
+            {
+              "id": 1,
+              "overview": "test/overview",
+              "poster_path": "test/image",
+              "title": "test/title",
+            }
+          }
+        />
+      </Row>
+    </Col>
+  </Row>
+</Fragment>
+`;
+
+exports[`matches snapshot without lists 1`] = `
+<Empty
+  description="No results"
+/>
+`;
