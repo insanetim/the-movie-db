@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom'
 import { act, renderHook } from '@testing-library/react-hooks'
 
 import { dispatch } from 'src/__mocks__/react-redux'
@@ -12,6 +13,9 @@ jest.mock('src/state/session/actions')
 
 describe('Header useContainer hook', () => {
   let result = null
+
+  const navigate = jest.fn()
+  useNavigate.mockReturnValue(navigate)
 
   beforeEach(() => {
     ;({ result } = renderHook(useContainer))
@@ -29,5 +33,13 @@ describe('Header useContainer hook', () => {
     })
 
     expect(dispatch).toHaveBeenCalledWith(logOut())
+  })
+
+  it('checks `cb` method', () => {
+    act(() => {
+      result.current.cb()
+    })
+
+    expect(navigate).toHaveBeenCalledWith('/login', { state: { from: {} } })
   })
 })

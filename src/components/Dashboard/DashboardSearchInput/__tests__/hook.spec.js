@@ -1,9 +1,9 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom'
 import { act, renderHook } from '@testing-library/react-hooks'
 
 import { dispatch } from 'src/__mocks__/react-redux'
 import { clearSearch, fetchSearch } from 'src/state/dashboard/actions'
-import { useNavigate } from 'react-router-dom'
 import useContainer from '../hook'
 
 jest.mock('src/state/dashboard/selectors', () => ({

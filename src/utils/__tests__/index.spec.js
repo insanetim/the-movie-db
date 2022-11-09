@@ -1,4 +1,4 @@
-import { convertDuration, convertMoney, redirect, bindId } from '../index'
+import { convertDuration, convertMoney, bindId } from '../index'
 
 describe('convertDuration', () => {
   it('should return correct result with value 30', () => {
@@ -17,17 +17,6 @@ describe('convertDuration', () => {
 describe('convertMoney', () => {
   it('should return correct result', () => {
     expect(convertMoney(1000)).toEqual('$1,000.00')
-  })
-})
-
-describe('redirect', () => {
-  it('should return correct result', () => {
-    const url = '/login'
-    const location = {}
-    const navigate = jest.fn()
-    redirect(url, location, navigate)()
-
-    expect(navigate).toHaveBeenCalledWith(url, { state: { from: location } })
   })
 })
 

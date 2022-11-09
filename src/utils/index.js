@@ -12,8 +12,6 @@ export const convertDuration = minutes => {
 export const convertMoney = value =>
   new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(value)
 
-export const redirect = (url, location, navigate) => () => navigate(url, { state: { from: location } })
-
 export const bindId = (array, id) =>
   array.map(action =>
     R.mergeDeepRight(action, {

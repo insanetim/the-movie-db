@@ -7,6 +7,7 @@ import { deleteList } from 'src/state/lists/actions'
 const useContainer = listId => {
   const dispatch = useDispatch()
   const navigate = useNavigate()
+  const onOk = () => dispatch(deleteList(listId))
 
   const handleClick = () => navigate(`/list/${listId}`)
 
@@ -14,13 +15,11 @@ const useContainer = listId => {
     event.stopPropagation()
     Modal.confirm({
       title: 'Do you want to delete list?',
-      onOk() {
-        dispatch(deleteList(listId))
-      }
+      onOk
     })
   }
 
-  return { handleClick, handleDelete }
+  return { handleClick, handleDelete, onOk }
 }
 
 export default useContainer
