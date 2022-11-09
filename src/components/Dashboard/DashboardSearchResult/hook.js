@@ -7,8 +7,8 @@ import { searchQuerySelector, searchSelector } from 'src/state/dashboard/selecto
 
 const useContainer = () => {
   const dispatch = useDispatch()
-  const searchQuery = useSelector(searchQuerySelector)
   const search = useSelector(searchSelector)
+  const searchQuery = useSelector(searchQuerySelector)
 
   const handlePagination = page => {
     dispatch(fetchSearch({ query: searchQuery, page }))
