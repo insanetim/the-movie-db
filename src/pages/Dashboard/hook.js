@@ -16,9 +16,7 @@ const useContainer = () => {
       const params = new URLSearchParams(location.search)
       dispatch(setSearchQuery(params.get('search')))
     } else {
-      navigate({
-        search: `search=${searchQuery}`
-      })
+      navigate({ search: `search=${searchQuery}` })
     }
   }, [])
 

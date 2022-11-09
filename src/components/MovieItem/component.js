@@ -7,7 +7,7 @@ import { bindId } from 'src/utils'
 import useContainer from './hook'
 
 const Movie = ({ movie, actions }) => {
-  const { handleClick } = useContainer(movie.id)
+  const { handleClick } = useContainer({ movieId: movie.id })
 
   return (
     <Card

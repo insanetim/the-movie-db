@@ -6,7 +6,7 @@ import { DeleteOutlined } from '@ant-design/icons'
 import useContainer from './hook'
 
 const ListItem = ({ list }) => {
-  const { handleClick, handleDelete } = useContainer(list.id)
+  const { handleClick, handleDelete } = useContainer({ listId: list.id })
 
   return (
     <Col

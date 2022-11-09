@@ -9,6 +9,9 @@ import useContainer from '../hook'
 
 describe('ListItem useContainer hook', () => {
   let result = null
+  const props = {
+    listId: 1
+  }
 
   const navigate = jest.fn()
   useNavigate.mockReturnValue(navigate)
@@ -16,7 +19,7 @@ describe('ListItem useContainer hook', () => {
   jest.spyOn(Modal, 'confirm')
 
   beforeEach(() => {
-    ;({ result } = renderHook(() => useContainer(1)))
+    ;({ result } = renderHook(() => useContainer(props)))
 
     jest.clearAllMocks()
   })

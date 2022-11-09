@@ -1,9 +1,9 @@
 import { useNavigate } from 'react-router-dom'
 
-const useContainer = id => {
+const useContainer = ({ movieId }) => {
   const navigate = useNavigate()
 
-  const handleClick = () => navigate(`/movie/${id}`)
+  const handleClick = () => navigate(`/movie/${movieId}`)
 
   return { handleClick }
 }

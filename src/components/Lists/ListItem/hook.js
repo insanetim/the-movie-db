@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom'
 
 import { deleteList } from 'src/state/lists/actions'
 
-const useContainer = listId => {
+const useContainer = ({ listId }) => {
   const dispatch = useDispatch()
   const navigate = useNavigate()
   const onOk = () => dispatch(deleteList(listId))
