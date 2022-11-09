@@ -7,16 +7,13 @@ import { listsSelector } from 'src/state/lists/selectors'
 const useContainer = ({ movieId, setPopoverOpen }) => {
   const dispatch = useDispatch()
   const lists = useSelector(listsSelector)
+  const cb = listId => dispatch(addToList({ listId, movieId }))
 
   const handleAddToNewList = () => {
     dispatch(
       showModal({
         modalType: 'CREATE_LIST_MODAL',
-        modalProps: {
-          cb: listId => {
-            dispatch(addToList({ listId, movieId }))
-          }
-        }
+        modalProps: { cb }
       })
     )
     setPopoverOpen(false)
@@ -27,7 +24,7 @@ const useContainer = ({ movieId, setPopoverOpen }) => {
     setPopoverOpen(false)
   }
 
-  return { lists, handleAddToNewList, handleAddToList }
+  return { lists, handleAddToNewList, handleAddToList, cb }
 }
 
 export default useContainer

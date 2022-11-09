@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ModalRoot component matches snapshot 1`] = `
+<CreateListModal
+  cb={null}
+  onCancel={[MockFunction]}
+/>
+`;
+
+exports[`ModalRoot component return null unless modalType present 1`] = `""`;
