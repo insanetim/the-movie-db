@@ -16,7 +16,7 @@ const mockedHookData = {
     },
     username: 'test/username'
   },
-  handleLogout: jest.fn()
+  handleLogOut: jest.fn()
 }
 jest.mock('../hook', () => jest.fn(() => mockedHookData))
 

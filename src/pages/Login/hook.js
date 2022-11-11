@@ -10,12 +10,15 @@ const useContainer = () => {
   const location = useLocation()
   const navigate = useNavigate()
 
-  const handleLogin = ({ username, password }) => {
+  const handleLogIn = ({ username, password }) => {
     const from = location.state?.from?.pathname || '/'
-    dispatch(logIn({ username, password }, () => navigate(from, { replace: true })))
+    const cb = () => navigate(from, { replace: true })
+    dispatch(logIn({ username, password }, cb))
+
+    return cb
   }
 
-  return { handleLogin, loading }
+  return { loading, handleLogIn }
 }
 
 export default useContainer

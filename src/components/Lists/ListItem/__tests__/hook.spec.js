@@ -37,18 +37,16 @@ describe('ListItem useContainer hook', () => {
   })
 
   it('checks `handleDelete` method', () => {
+    let onOk
     act(() => {
-      result.current.handleDelete({ stopPropagation: jest.fn() })
+      onOk = result.current.handleDelete({ stopPropagation: jest.fn() })
     })
+    onOk()
 
-    expect(Modal.confirm).toHaveBeenCalled()
-  })
-
-  it('checks `onOk` method', () => {
-    act(() => {
-      result.current.onOk()
+    expect(Modal.confirm).toHaveBeenCalledWith({
+      title: 'Do you want to delete list?',
+      onOk
     })
-
     expect(dispatch).toHaveBeenCalledWith(deleteList(1))
   })
 })

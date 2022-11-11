@@ -19,12 +19,15 @@ const useContainer = () => {
 
   const handleDelete = (event, movieId) => {
     event.stopPropagation()
+    const onOk = () => {
+      dispatch(changeMovieInWatchlist({ movieId, inWatchlist: false }))
+    }
     Modal.confirm({
       title: 'Do you want to delete movie from watchlist?',
-      onOk() {
-        dispatch(changeMovieInWatchlist({ movieId, inWatchlist: false }))
-      }
+      onOk
     })
+
+    return onOk
   }
 
   useEffect(() => {

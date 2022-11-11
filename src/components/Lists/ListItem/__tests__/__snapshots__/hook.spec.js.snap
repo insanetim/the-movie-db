@@ -4,6 +4,5 @@ exports[`ListItem useContainer hook matches snapshot 1`] = `
 {
   "handleClick": [Function],
   "handleDelete": [Function],
-  "onOk": [Function],
 }
 `;

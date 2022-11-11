@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Favotites useContainer hook matches snapshot 1`] = `
+{
+  "favorites": {},
+  "handleDelete": [Function],
+  "handlePagination": [Function],
+}
+`;

@@ -3,8 +3,8 @@ import { shallow } from 'enzyme'
 import Login from '../component'
 
 const mockedHookData = {
-  handleLogin: jest.fn(),
-  loading: false
+  loading: false,
+  handleLogIn: jest.fn()
 }
 jest.mock('../hook', () => jest.fn(() => mockedHookData))
 

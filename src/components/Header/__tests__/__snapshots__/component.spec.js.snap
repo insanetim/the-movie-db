@@ -12,51 +12,56 @@ exports[`CreateListModal component tests matches snapshot 1`] = `
     </Col>
     <Col>
       <Dropdown
-        overlay={
-          <Menu
-            items={
-              [
-                {
-                  "label": <Link
-                    to="/"
-                  >
-                    Dashboard
-                  </Link>,
-                },
-                {
-                  "type": "divider",
-                },
-                {
-                  "label": <Link
-                    to="/lists"
-                  >
-                    My Lists
-                  </Link>,
-                },
-                {
-                  "label": <Link
-                    to="/watchlist"
-                  >
-                    Watchlist
-                  </Link>,
-                },
-                {
-                  "label": <Link
-                    to="/favorites"
-                  >
-                    Favorites
-                  </Link>,
-                },
-                {
-                  "type": "divider",
-                },
-                {
-                  "label": "Logout",
-                  "onClick": [MockFunction],
-                },
-              ]
-            }
-          />
+        menu={
+          {
+            "items": [
+              {
+                "key": "item-1",
+                "label": <Link
+                  to="/"
+                >
+                  Dashboard
+                </Link>,
+              },
+              {
+                "key": "item-2",
+                "type": "divider",
+              },
+              {
+                "key": "item-3",
+                "label": <Link
+                  to="/lists"
+                >
+                  My Lists
+                </Link>,
+              },
+              {
+                "key": "item-4",
+                "label": <Link
+                  to="/watchlist"
+                >
+                  Watchlist
+                </Link>,
+              },
+              {
+                "key": "item-5",
+                "label": <Link
+                  to="/favorites"
+                >
+                  Favorites
+                </Link>,
+              },
+              {
+                "key": "item-6",
+                "type": "divider",
+              },
+              {
+                "key": "item-7",
+                "label": "Logout",
+                "onClick": [MockFunction],
+              },
+            ],
+          }
         }
       >
         <ForwardRef(Text)>
@@ -90,51 +95,56 @@ exports[`CreateListModal component tests matches snapshot with empty account 1`]
     </Col>
     <Col>
       <Dropdown
-        overlay={
-          <Menu
-            items={
-              [
-                {
-                  "label": <Link
-                    to="/"
-                  >
-                    Dashboard
-                  </Link>,
-                },
-                {
-                  "type": "divider",
-                },
-                {
-                  "label": <Link
-                    to="/lists"
-                  >
-                    My Lists
-                  </Link>,
-                },
-                {
-                  "label": <Link
-                    to="/watchlist"
-                  >
-                    Watchlist
-                  </Link>,
-                },
-                {
-                  "label": <Link
-                    to="/favorites"
-                  >
-                    Favorites
-                  </Link>,
-                },
-                {
-                  "type": "divider",
-                },
-                {
-                  "label": "Logout",
-                  "onClick": [MockFunction],
-                },
-              ]
-            }
-          />
+        menu={
+          {
+            "items": [
+              {
+                "key": "item-1",
+                "label": <Link
+                  to="/"
+                >
+                  Dashboard
+                </Link>,
+              },
+              {
+                "key": "item-2",
+                "type": "divider",
+              },
+              {
+                "key": "item-3",
+                "label": <Link
+                  to="/lists"
+                >
+                  My Lists
+                </Link>,
+              },
+              {
+                "key": "item-4",
+                "label": <Link
+                  to="/watchlist"
+                >
+                  Watchlist
+                </Link>,
+              },
+              {
+                "key": "item-5",
+                "label": <Link
+                  to="/favorites"
+                >
+                  Favorites
+                </Link>,
+              },
+              {
+                "key": "item-6",
+                "type": "divider",
+              },
+              {
+                "key": "item-7",
+                "label": "Logout",
+                "onClick": [MockFunction],
+              },
+            ],
+          }
         }
       >
         <ForwardRef(Text)>

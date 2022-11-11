@@ -12,11 +12,13 @@ const useContainer = () => {
   const navigate = useNavigate()
   const cb = useCallback(() => navigate('/login', { state: { from: location } }), [location, navigate])
 
-  const handleLogout = () => {
+  const handleLogOut = () => {
     dispatch(logOut(cb))
+
+    return cb
   }
 
-  return { account, handleLogout, cb }
+  return { account, handleLogOut }
 }
 
 export default useContainer

@@ -20,7 +20,7 @@ describe('ProtectedRoutes useContainer hook', () => {
     expect(result.current).toMatchSnapshot()
   })
 
-  it('check useEffect method with session_id', () => {
+  it('checks `useEffect` method with session_id', () => {
     ;({ result } = renderHook(useContainer))
 
     expect(dispatch).toHaveBeenCalledWith(setSession('12345'))
@@ -28,7 +28,7 @@ describe('ProtectedRoutes useContainer hook', () => {
     expect(dispatch.mock.calls.length).toBe(2)
   })
 
-  it('check useEffect method with undefined session_id', () => {
+  it('checks `useEffect` method with undefined session_id', () => {
     Cookies.get.mockReturnValue(undefined)
     ;({ result } = renderHook(useContainer))
 

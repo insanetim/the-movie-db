@@ -9,34 +9,45 @@ import { listSelector } from 'src/state/lists/selectors'
 const useContainer = () => {
   const dispatch = useDispatch()
   const list = useSelector(listSelector)
-  const { listId } = useParams()
   const navigate = useNavigate()
+  const { listId } = useParams()
   const [loading, setLoading] = useState(true)
 
   const handleListDelete = () => {
+    const cb = () => {
+      navigate('/lists')
+    }
+    const onOk = () => {
+      dispatch(deleteList(listId, cb))
+    }
     Modal.confirm({
       title: 'Do you want to delete list?',
-      onOk() {
-        dispatch(deleteList(listId, () => navigate('/lists')))
-      }
+      onOk
     })
+
+    return { cb, onOk }
   }
 
   const handleMovieDelete = (event, movieId) => {
     event.stopPropagation()
+    const onOk = () => {
+      dispatch(removeFromList({ listId, movieId }))
+    }
     Modal.confirm({
       title: 'Do you want to delete movie from this list?',
-      onOk() {
-        dispatch(removeFromList({ listId, movieId }))
-      }
+      onOk
     })
+
+    return onOk
   }
 
+  const onFinish = () => setLoading(false)
+
   useEffect(() => {
-    dispatch(fetchList(listId, () => setLoading(false)))
+    dispatch(fetchList(listId, onFinish))
   }, [listId])
 
-  return { list, loading, handleListDelete, handleMovieDelete }
+  return { list, loading, handleListDelete, handleMovieDelete, onFinish }
 }
 
 export default useContainer

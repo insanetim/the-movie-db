@@ -5,7 +5,7 @@ import { UserOutlined, LockOutlined } from '@ant-design/icons'
 import useContainer from './hook'
 
 const Login = () => {
-  const { handleLogin, loading } = useContainer()
+  const { loading, handleLogIn } = useContainer()
 
   return (
     <div className='center'>
@@ -14,7 +14,7 @@ const Login = () => {
           <Row justify='center'>
             <Col>
               <Form
-                onFinish={handleLogin}
+                onFinish={handleLogIn}
                 autoComplete='off'
               >
                 <Typography.Title>The Movie DB</Typography.Title>

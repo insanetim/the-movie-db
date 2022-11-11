@@ -31,7 +31,7 @@ describe('DashboardSearchResult useContainer hook', () => {
     expect(dispatch).toHaveBeenCalledWith(fetchSearch({ query: null, page: 3 }))
   })
 
-  it('check useEffect method', () => {
+  it('check `useEffect` method', () => {
     searchSelector.mockReturnValue({ data: 'test/data' })
     ;({ result } = renderHook(useContainer))
 

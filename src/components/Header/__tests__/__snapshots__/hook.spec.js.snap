@@ -5,7 +5,6 @@ exports[`Header useContainer hook matches snapshot 1`] = `
   "account": {
     "id": 1,
   },
-  "cb": [Function],
-  "handleLogout": [Function],
+  "handleLogOut": [Function],
 }
 `;

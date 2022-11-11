@@ -19,12 +19,15 @@ const useContainer = () => {
 
   const handleDelete = (event, movieId) => {
     event.stopPropagation()
+    const onOk = () => {
+      dispatch(changeMovieInFavorites({ movieId, inFavorites: false }))
+    }
     Modal.confirm({
       title: 'Do you want to delete movie from favorites?',
-      onOk() {
-        dispatch(changeMovieInFavorites({ movieId, inFavorites: false }))
-      }
+      onOk
     })
+
+    return onOk
   }
 
   useEffect(() => {

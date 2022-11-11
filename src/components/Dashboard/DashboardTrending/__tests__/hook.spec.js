@@ -30,7 +30,7 @@ describe('DashboardSearchResult useContainer hook', () => {
     expect(dispatch).toHaveBeenCalledWith(fetchTrending(3))
   })
 
-  it('check useEffect method', () => {
+  it('checks `useEffect` method', () => {
     trendingSelector.mockReturnValue({ data: 'test/data' })
     ;({ result } = renderHook(useContainer))
 

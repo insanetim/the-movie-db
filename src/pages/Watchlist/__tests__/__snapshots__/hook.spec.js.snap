@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Watchlist useContainer hook matches snapshot 1`] = `
+{
+  "handleDelete": [Function],
+  "handlePagination": [Function],
+  "watchlist": {},
+}
+`;

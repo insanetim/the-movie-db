@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Movie useContainer hook matches snapshot 1`] = `
+{
+  "handleFavoriteClick": [Function],
+  "handleWatchlistClick": [Function],
+  "loading": true,
+  "movie": {
+    "accountStates": {
+      "favorite": false,
+      "watchlist": false,
+    },
+  },
+  "onFinish": [Function],
+  "popoverOpen": false,
+  "setPopoverOpen": [MockFunction],
+}
+`;

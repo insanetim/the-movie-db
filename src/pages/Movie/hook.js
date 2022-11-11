@@ -31,8 +31,10 @@ const useContainer = () => {
     )
   }
 
+  const onFinish = () => setLoading(false)
+
   useEffect(() => {
-    dispatch(fetchMovie(movieId, () => setLoading(false)))
+    dispatch(fetchMovie(movieId, onFinish))
   }, [movieId])
 
   return {
@@ -41,7 +43,8 @@ const useContainer = () => {
     handleFavoriteClick,
     handleWatchlistClick,
     popoverOpen,
-    setPopoverOpen
+    setPopoverOpen,
+    onFinish
   }
 }
 
