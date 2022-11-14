@@ -43,6 +43,6 @@ describe('Favotites useContainer hook', () => {
     accountSelector.mockReturnValueOnce({ id: 1 })
     ;({ result } = renderHook(useContainer))
 
-    expect(dispatch).toHaveBeenCalledWith(fetchLists())
+    expect(dispatch).toHaveBeenCalledWith(fetchLists(1))
   })
 })

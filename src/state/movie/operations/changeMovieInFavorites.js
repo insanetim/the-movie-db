@@ -33,7 +33,7 @@ const changeMovieInFavorites = createLogic({
       const message = inFavorites ? `${movie.title} added to Favorites` : `${movie.title} removed from Favorites`
       dispatch(showNotification({ type: 'success', message }))
       dispatch(fetchMovieStates(movieId))
-      dispatch(fetchFavorites())
+      dispatch(fetchFavorites(1))
     } catch (error) {
       dispatch(showNotification({ type: 'error', message: error.message }))
     }

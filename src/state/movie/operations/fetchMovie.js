@@ -23,7 +23,7 @@ const fetchMovie = createLogic({
       data.images = images.backdrops.slice(0, 6)
       data.accountStates = accountStates
       dispatch(setMovie(data))
-      dispatch(fetchLists())
+      dispatch(fetchLists(1))
       if (typeof cb === 'function') cb()
     } catch (error) {
       dispatch(showNotification({ type: 'error', message: error.message }))

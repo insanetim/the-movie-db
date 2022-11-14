@@ -1,26 +1,21 @@
 import mockHttpClient from 'src/__mocks__/mockHttpClient'
 import { showNotification } from 'src/state/app/actions'
 import * as types from '../../types'
-import { setFavorites } from '../../actions'
-import fetchFavorites from '../fetchFavorites'
+import { setTrending } from '../../actions'
+import fetchTrending from '../fetchTrending'
 
-jest.mock('src/state/session/selectors', () => ({
-  sessionIdSelector: jest.fn(() => 'session_id'),
-  accountSelector: jest.fn(() => ({ id: 123 }))
-}))
-
-describe('fetchFavorites', () => {
+describe('fetchTrending', () => {
   let dispatch = null
 
   const action = {
-    type: types.FETCH_FAVORITES,
+    type: types.FETCH_TRENDING,
     payload: 1
   }
 
-  const url = '/account/123/favorite/movies'
+  const url = '/trending/movie/day'
 
   const body = {
-    params: { session_id: 'session_id', page: 1 }
+    params: { page: 1 }
   }
 
   const response = {
@@ -34,7 +29,7 @@ describe('fetchFavorites', () => {
 
   const beforeFunction = httpClient => () => {
     dispatch = jest.fn()
-    fetchFavorites.process(
+    fetchTrending.process(
       {
         httpClient,
         action,
@@ -50,7 +45,7 @@ describe('fetchFavorites', () => {
   })
 
   it('has valid attributes', () => {
-    expect(fetchFavorites).toMatchSnapshot()
+    expect(fetchTrending).toMatchSnapshot()
   })
 
   describe('success', () => {
@@ -65,7 +60,7 @@ describe('fetchFavorites', () => {
     it('dispatches actions', () => {
       expect(dispatch).toHaveBeenCalledTimes(1)
 
-      expect(dispatch).toHaveBeenNthCalledWith(1, setFavorites(response.data))
+      expect(dispatch).toHaveBeenNthCalledWith(1, setTrending(response.data))
     })
   })
 

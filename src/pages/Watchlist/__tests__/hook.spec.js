@@ -62,6 +62,6 @@ describe('Watchlist useContainer hook', () => {
     accountSelector.mockReturnValueOnce({ id: 1 })
     ;({ result } = renderHook(useContainer))
 
-    expect(dispatch).toHaveBeenCalledWith(fetchWatchlist())
+    expect(dispatch).toHaveBeenCalledWith(fetchWatchlist(1))
   })
 })

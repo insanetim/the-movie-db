@@ -32,7 +32,7 @@ const useContainer = () => {
 
   useEffect(() => {
     if (R.not(R.isEmpty(account))) {
-      dispatch(fetchFavorites())
+      dispatch(fetchFavorites(1))
     }
   }, [account])
 

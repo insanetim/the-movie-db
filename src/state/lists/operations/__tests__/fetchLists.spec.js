@@ -1,26 +1,30 @@
 import mockHttpClient from 'src/__mocks__/mockHttpClient'
 import { showNotification } from 'src/state/app/actions'
 import * as types from '../../types'
-import { setFavorites } from '../../actions'
-import fetchFavorites from '../fetchFavorites'
+import { setLists } from '../../actions'
+import fetchLists from '../fetchLists'
 
 jest.mock('src/state/session/selectors', () => ({
   sessionIdSelector: jest.fn(() => 'session_id'),
   accountSelector: jest.fn(() => ({ id: 123 }))
 }))
 
-describe('fetchFavorites', () => {
+describe('fetchLists', () => {
   let dispatch = null
+  const cb = jest.fn()
 
   const action = {
-    type: types.FETCH_FAVORITES,
+    type: types.FETCH_LISTS,
     payload: 1
   }
 
-  const url = '/account/123/favorite/movies'
+  const url = '/account/123/lists'
 
   const body = {
-    params: { session_id: 'session_id', page: 1 }
+    params: {
+      session_id: 'session_id',
+      page: 1
+    }
   }
 
   const response = {
@@ -34,7 +38,7 @@ describe('fetchFavorites', () => {
 
   const beforeFunction = httpClient => () => {
     dispatch = jest.fn()
-    fetchFavorites.process(
+    fetchLists.process(
       {
         httpClient,
         action,
@@ -50,7 +54,7 @@ describe('fetchFavorites', () => {
   })
 
   it('has valid attributes', () => {
-    expect(fetchFavorites).toMatchSnapshot()
+    expect(fetchLists).toMatchSnapshot()
   })
 
   describe('success', () => {
@@ -65,7 +69,38 @@ describe('fetchFavorites', () => {
     it('dispatches actions', () => {
       expect(dispatch).toHaveBeenCalledTimes(1)
 
-      expect(dispatch).toHaveBeenNthCalledWith(1, setFavorites(response.data))
+      expect(dispatch).toHaveBeenNthCalledWith(1, setLists(response.data))
+    })
+
+    it('does not call callback', () => {
+      expect(cb).not.toHaveBeenCalled()
+    })
+  })
+
+  describe('with callback', () => {
+    const httpClient = mockHttpClient({ method: 'get', response })
+
+    const newAction = {
+      type: types.FETCH_LISTS,
+      payload: 1,
+      cb
+    }
+
+    beforeEach(() => {
+      dispatch = jest.fn()
+      fetchLists.process(
+        {
+          httpClient,
+          action: newAction,
+          getState: jest.fn()
+        },
+        dispatch,
+        jest.fn()
+      )
+    })
+
+    it('calls callback', () => {
+      expect(cb).toHaveBeenCalledTimes(1)
     })
   })
 

@@ -32,7 +32,7 @@ const useContainer = () => {
 
   useEffect(() => {
     if (R.not(R.isEmpty(account))) {
-      dispatch(fetchWatchlist())
+      dispatch(fetchWatchlist(1))
     }
   }, [account])
 

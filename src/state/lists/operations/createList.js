@@ -22,10 +22,10 @@ const createList = createLogic({
         }
       )
       .then(({ data }) => {
-        if (cb) cb(data.list_id)
+        if (typeof cb === 'function') cb(data.list_id)
       })
       .finally(() => {
-        dispatch(fetchLists())
+        dispatch(fetchLists(1))
       })
     done()
   }

@@ -22,7 +22,7 @@ const useContainer = () => {
 
   useEffect(() => {
     if (R.not(R.isEmpty(account))) {
-      dispatch(fetchLists())
+      dispatch(fetchLists(1))
     }
   }, [account])
 

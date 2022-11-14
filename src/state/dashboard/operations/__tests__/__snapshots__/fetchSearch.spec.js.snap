@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`fetchFavorites has valid attributes 1`] = `
+exports[`fetchSearch has valid attributes 1`] = `
 {
   "cancelType": undefined,
   "debounce": 0,
@@ -12,7 +12,7 @@ exports[`fetchFavorites has valid attributes 1`] = `
   },
   "throttle": 0,
   "transform": undefined,
-  "type": "favorites/FETCH_FAVORITES",
+  "type": "dashboard/REQUEST_SEARCH",
   "validate": undefined,
   "warnTimeout": 60000,
 }

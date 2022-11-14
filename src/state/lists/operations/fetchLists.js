@@ -9,7 +9,7 @@ import { setLists } from '../actions'
 const fetchLists = createLogic({
   type: types.FETCH_LISTS,
   latest: true,
-  async process({ httpClient, getState, action: { payload: page = 1, cb } }, dispatch, done) {
+  async process({ httpClient, getState, action: { payload: page, cb } }, dispatch, done) {
     const sessionId = sessionIdSelector(getState())
     const { id: accountId } = accountSelector(getState())
     try {

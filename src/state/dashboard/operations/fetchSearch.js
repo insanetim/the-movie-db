@@ -12,7 +12,7 @@ const fetchSearch = createLogic({
     {
       httpClient,
       action: {
-        payload: { query, page = 1 }
+        payload: { query, page }
       }
     },
     dispatch,

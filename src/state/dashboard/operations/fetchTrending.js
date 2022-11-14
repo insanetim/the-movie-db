@@ -8,7 +8,7 @@ import { setTrending } from '../actions'
 const fetchTrending = createLogic({
   type: types.FETCH_TRENDING,
   latest: true,
-  async process({ httpClient, action: { payload: page = 1 } }, dispatch, done) {
+  async process({ httpClient, action: { payload: page } }, dispatch, done) {
     try {
       const { data } = await httpClient.get(endpoints.getTrending, {
         params: {
