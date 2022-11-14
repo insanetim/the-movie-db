@@ -6,13 +6,15 @@ import Header from 'src/components/Header'
 import ModalRoot from 'src/components/ModalRoot'
 
 const Layout = () => (
-  <AntdLayout>
-    <Header />
-    <AntdLayout.Content>
-      <Outlet />
-    </AntdLayout.Content>
+  <>
+    <AntdLayout>
+      <Header />
+      <AntdLayout.Content>
+        <Outlet />
+      </AntdLayout.Content>
+    </AntdLayout>
     <ModalRoot />
-  </AntdLayout>
+  </>
 )
 
 export default Layout

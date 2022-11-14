@@ -1,11 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`matches snapshot 1`] = `
-<Layout>
-  <Header />
-  <Content>
-    <Outlet />
-  </Content>
+<Fragment>
+  <Layout>
+    <Header />
+    <Content>
+      <Outlet />
+    </Content>
+  </Layout>
   <ModalRoot />
-</Layout>
+</Fragment>
 `;
