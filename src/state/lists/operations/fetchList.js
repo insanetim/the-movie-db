@@ -1,5 +1,5 @@
 import { createLogic } from 'redux-logic'
-import { path, pathOr } from 'ramda'
+import { or, path, pathOr } from 'ramda'
 
 import * as endpoints from 'src/constants/endpoints'
 import { showNotification } from 'src/state/app/actions'
@@ -19,7 +19,8 @@ const fetchList = createLogic({
       dispatch(setList(data))
       if (typeof callback === 'function') callback()
     } catch (error) {
-      dispatch(showNotification({ type: 'error', message: error.message }))
+      const errorMessage = or(path(['response', 'data', 'status_message'], error), error.message)
+      dispatch(showNotification({ type: 'error', message: errorMessage }))
     }
 
     done()

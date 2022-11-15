@@ -1,5 +1,5 @@
 import { createLogic } from 'redux-logic'
-import { pathOr } from 'ramda'
+import { or, path, pathOr } from 'ramda'
 
 import * as endpoints from 'src/constants/endpoints'
 import { accountSelector, sessionIdSelector } from 'src/state/session/selectors'
@@ -22,7 +22,8 @@ const fetchFavorites = createLogic({
       })
       dispatch(setFavorites(data))
     } catch (error) {
-      dispatch(showNotification({ type: 'error', message: error.message }))
+      const errorMessage = or(path(['response', 'data', 'status_message'], error), error.message)
+      dispatch(showNotification({ type: 'error', message: errorMessage }))
     }
 
     done()

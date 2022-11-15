@@ -1,32 +1,43 @@
 import mockHttpClient from 'src/__mocks__/mockHttpClient'
 import { showNotification } from 'src/state/app/actions'
 import * as types from '../../types'
-import { setList } from '../../actions'
-import fetchList from '../fetchList'
+import { fetchLists } from '../../actions'
+import createList from '../createList'
 
-describe('fetchList', () => {
+jest.mock('src/state/session/selectors', () => ({
+  sessionIdSelector: jest.fn(() => 'session_id')
+}))
+
+describe('createList', () => {
   const dispatch = jest.fn()
   const callback = jest.fn()
 
   const action = {
-    type: types.FETCH_LIST,
-    payload: 123
+    type: types.CREATE_LIST,
+    payload: {
+      name: 'test/list',
+      description: 'test/description'
+    }
   }
 
-  const url = '/list/123'
+  const url = '/list'
+
+  const body = { ...action.payload }
+
+  const config = { params: { session_id: 'session_id' } }
 
   const response = {
     data: {
-      id: 123,
-      items: []
+      list_id: 123
     }
   }
 
   const beforeFunction = httpClient => () => {
-    fetchList.process(
+    createList.process(
       {
         httpClient,
-        action
+        action,
+        getState: jest.fn()
       },
       dispatch,
       jest.fn()
@@ -38,26 +49,26 @@ describe('fetchList', () => {
   })
 
   it('has valid attributes', () => {
-    expect(fetchList).toMatchSnapshot()
+    expect(createList).toMatchSnapshot()
   })
 
   describe('success', () => {
-    const httpClient = mockHttpClient({ method: 'get', response })
+    const httpClient = mockHttpClient({ method: 'post', response })
 
     beforeEach(beforeFunction(httpClient))
 
     it('calls right endpoint', () => {
-      expect(httpClient.get).toHaveBeenCalledWith(url)
+      expect(httpClient.post).toHaveBeenCalledWith(url, body, config)
     })
 
     it('dispatches actions', () => {
       expect(dispatch).toHaveBeenCalledTimes(1)
-      expect(dispatch).toHaveBeenCalledWith(setList(response.data))
+      expect(dispatch).toHaveBeenCalledWith(fetchLists())
     })
   })
 
   describe('callback', () => {
-    const httpClient = mockHttpClient({ method: 'get', response })
+    const httpClient = mockHttpClient({ method: 'post', response })
 
     const actionExt = {
       ...action,
@@ -65,16 +76,17 @@ describe('fetchList', () => {
     }
 
     it('calls callback', async () => {
-      await fetchList.process(
+      await createList.process(
         {
           httpClient,
-          action: actionExt
+          action: actionExt,
+          getState: jest.fn()
         },
         dispatch,
         jest.fn()
       )
 
-      expect(callback).toHaveBeenCalledTimes(1)
+      expect(callback).toHaveBeenCalledWith(response.data.list_id)
     })
   })
 
@@ -82,7 +94,7 @@ describe('fetchList', () => {
     const error = new Error('test/error')
 
     const httpClient = mockHttpClient({
-      method: 'get',
+      method: 'post',
       reject: true,
       response: error
     })
