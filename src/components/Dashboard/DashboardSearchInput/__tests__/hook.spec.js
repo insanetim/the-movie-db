@@ -46,7 +46,7 @@ describe('DashboardSearchInput useContainer hook', () => {
       result.current.handleSearch('value')
     })
 
-    expect(dispatch).toHaveBeenCalledWith(fetchSearch({ query: 'value', page: 1 }))
+    expect(dispatch).toHaveBeenCalledWith(fetchSearch({ query: 'value' }))
     expect(navigate).toHaveBeenCalledWith({ search: 'search=value' })
   })
 

@@ -15,7 +15,7 @@ const useContainer = () => {
 
   useEffect(() => {
     if (R.isEmpty(trending)) {
-      dispatch(fetchTrending(1))
+      dispatch(fetchTrending())
     }
   }, [])
 

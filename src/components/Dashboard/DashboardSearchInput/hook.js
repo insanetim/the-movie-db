@@ -17,7 +17,7 @@ const useContainer = () => {
 
   const handleSearch = value => {
     if (value.trim()) {
-      dispatch(fetchSearch({ query: value, page: 1 }))
+      dispatch(fetchSearch({ query: value }))
       navigate({ search: `search=${value}` })
     } else {
       dispatch(clearSearch())

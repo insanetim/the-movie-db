@@ -16,7 +16,7 @@ const useContainer = () => {
 
   useEffect(() => {
     if (R.isEmpty(search)) {
-      dispatch(fetchSearch({ query: searchQuery, page: 1 }))
+      dispatch(fetchSearch({ query: searchQuery }))
     }
   }, [searchQuery])
 
