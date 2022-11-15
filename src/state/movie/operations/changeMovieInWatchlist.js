@@ -33,7 +33,7 @@ const changeMovieInWatchlist = createLogic({
       const message = inWatchlist ? `${movie.title} added to Watchlist` : `${movie.title} removed from Watchlist`
       dispatch(showNotification({ type: 'success', message }))
       dispatch(fetchMovieStates(movieId))
-      dispatch(fetchWatchlist(1))
+      dispatch(fetchWatchlist())
     } catch (error) {
       dispatch(showNotification({ type: 'error', message: error.message }))
     }
