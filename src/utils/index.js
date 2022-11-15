@@ -1,5 +1,5 @@
 import { m, h, ms } from 'time-convert'
-import * as R from 'ramda'
+import { mergeDeepRight } from 'ramda'
 
 export const convertDuration = minutes => {
   const duration = ms.to(h, m)(1000 * 60 * minutes)
@@ -14,7 +14,7 @@ export const convertMoney = value =>
 
 export const bindId = (array, id) =>
   array.map(action =>
-    R.mergeDeepRight(action, {
+    mergeDeepRight(action, {
       props: {
         onClick: event => {
           action.props.onClick(event, id)

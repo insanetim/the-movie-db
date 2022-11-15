@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import * as R from 'ramda'
+import { isEmpty } from 'ramda'
 
 import { fetchTrending } from 'src/state/dashboard/actions'
 import { trendingSelector } from 'src/state/dashboard/selectors'
@@ -14,7 +14,7 @@ const useContainer = () => {
   }
 
   useEffect(() => {
-    if (R.isEmpty(trending)) {
+    if (isEmpty(trending)) {
       dispatch(fetchTrending())
     }
   }, [])

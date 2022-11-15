@@ -1,9 +1,9 @@
 import React from 'react'
 import { Row, Col, Typography, Tag, Popover } from 'antd'
 import Icon, { HeartOutlined, HeartFilled, BookOutlined, BookFilled, PlusCircleOutlined } from '@ant-design/icons'
-import * as R from 'ramda'
 import { format } from 'date-fns'
 import ISO6391 from 'iso-639-1'
+import { toUpper } from 'ramda'
 
 import Loading from 'src/components/Loading'
 import CreditsItem from 'src/components/Movie/CreditsItem'
@@ -103,7 +103,7 @@ const Movie = () => {
               <Typography.Paragraph>
                 <b>Genres: </b>
                 {movie.genres.map(({ id, name }) => (
-                  <Tag key={id}>{R.toUpper(name)}</Tag>
+                  <Tag key={id}>{toUpper(name)}</Tag>
                 ))}
               </Typography.Paragraph>
             </Col>

@@ -1,5 +1,5 @@
-import * as R from 'ramda'
+import { path } from 'ramda'
 
-export const trendingSelector = R.path(['dashboard', 'trending'])
-export const searchSelector = R.path(['dashboard', 'search', 'search'])
-export const searchQuerySelector = R.path(['dashboard', 'search', 'searchQuery'])
+export const trendingSelector = path(['dashboard', 'trending'])
+export const searchSelector = path(['dashboard', 'search', 'search'])
+export const searchQuerySelector = path(['dashboard', 'search', 'searchQuery'])

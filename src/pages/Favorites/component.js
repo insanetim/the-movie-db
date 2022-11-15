@@ -1,7 +1,7 @@
 import React from 'react'
 import { Row, Col, Typography } from 'antd'
 import { DeleteOutlined } from '@ant-design/icons'
-import * as R from 'ramda'
+import { isEmpty } from 'ramda'
 
 import MoviesList from 'src/components/MoviesList'
 import Loading from 'src/components/Loading'
@@ -22,7 +22,7 @@ const Favorites = () => {
           </div>
         </Col>
       </Row>
-      {R.isEmpty(favorites) ? (
+      {isEmpty(favorites) ? (
         <Loading />
       ) : (
         <MoviesList

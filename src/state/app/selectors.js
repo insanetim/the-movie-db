@@ -1,5 +1,5 @@
-import * as R from 'ramda'
+import { path } from 'ramda'
 
-export const loadingSelector = R.path(['app', 'loading'])
-export const modalTypeSelector = R.path(['app', 'modal', 'modalType'])
-export const modalPropsSelector = R.path(['app', 'modal', 'modalProps'])
+export const loadingSelector = path(['app', 'loading'])
+export const modalTypeSelector = path(['app', 'modal', 'modalType'])
+export const modalPropsSelector = path(['app', 'modal', 'modalProps'])

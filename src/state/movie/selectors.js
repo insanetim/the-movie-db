@@ -1,3 +1,3 @@
-import * as R from 'ramda'
+import { path } from 'ramda'
 
-export const movieSelector = R.path(['movie'])
+export const movieSelector = path(['movie'])

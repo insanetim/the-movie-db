@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Modal } from 'antd'
-import * as R from 'ramda'
+import { not, isEmpty } from 'ramda'
 
 import { fetchFavorites } from 'src/state/favorites/actions'
 import { changeMovieInFavorites } from 'src/state/movie/actions'
@@ -31,7 +31,7 @@ const useContainer = () => {
   }
 
   useEffect(() => {
-    if (R.not(R.isEmpty(account))) {
+    if (not(isEmpty(account))) {
       dispatch(fetchFavorites())
     }
   }, [account])

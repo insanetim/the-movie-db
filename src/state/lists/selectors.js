@@ -1,4 +1,4 @@
-import * as R from 'ramda'
+import { path } from 'ramda'
 
-export const listsSelector = R.path(['lists', 'lists'])
-export const listSelector = R.path(['lists', 'list'])
+export const listsSelector = path(['lists', 'lists'])
+export const listSelector = path(['lists', 'list'])

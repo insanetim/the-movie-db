@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux'
-import * as R from 'ramda'
+import { path } from 'ramda'
 
 import * as types from './types'
 
@@ -23,8 +23,8 @@ export const modal = (state = modalInitialState, action) => {
   switch (action.type) {
     case types.SHOW_MODAL:
       return {
-        modalType: R.path(['payload', 'modalType'], action),
-        modalProps: R.path(['payload', 'modalProps'], action)
+        modalType: path(['payload', 'modalType'], action),
+        modalProps: path(['payload', 'modalProps'], action)
       }
     case types.HIDE_MODAL:
       return { ...state, modalProps: { open: false } }

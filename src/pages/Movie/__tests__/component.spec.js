@@ -1,5 +1,5 @@
 import { shallow } from 'enzyme'
-import * as R from 'ramda'
+import { mergeDeepRight } from 'ramda'
 
 import Movie from '../component'
 import useContainer from '../hook'
@@ -47,7 +47,7 @@ describe('Movie component tests', () => {
 
   it('matches snapshot with other data', () => {
     useContainer.mockReturnValueOnce(
-      R.mergeDeepRight(mockedHookData, {
+      mergeDeepRight(mockedHookData, {
         movie: {
           accountStates: {
             favorite: true,

@@ -1,9 +1,9 @@
-import * as R from 'ramda'
+import { mergeDeepRight } from 'ramda'
 
 import { API_KEY } from 'src/constants'
 
 const requestInterceptor = config =>
-  R.mergeDeepRight(config, {
+  mergeDeepRight(config, {
     params: {
       api_key: API_KEY
     }

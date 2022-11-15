@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import * as R from 'ramda'
+import { not, isEmpty } from 'ramda'
 
 import { showModal } from 'src/state/app/actions'
 import { fetchLists } from 'src/state/lists/actions'
@@ -21,7 +21,7 @@ const useContainer = () => {
   }
 
   useEffect(() => {
-    if (R.not(R.isEmpty(account))) {
+    if (not(isEmpty(account))) {
       dispatch(fetchLists(1))
     }
   }, [account])

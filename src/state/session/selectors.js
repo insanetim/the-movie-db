@@ -1,4 +1,4 @@
-import * as R from 'ramda'
+import { path } from 'ramda'
 
-export const sessionIdSelector = R.path(['session', 'sessionId'])
-export const accountSelector = R.path(['session', 'account'])
+export const sessionIdSelector = path(['session', 'sessionId'])
+export const accountSelector = path(['session', 'account'])

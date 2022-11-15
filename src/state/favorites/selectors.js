@@ -1,3 +1,3 @@
-import * as R from 'ramda'
+import { path } from 'ramda'
 
-export const favoritesSelector = R.path(['favorites'])
+export const favoritesSelector = path(['favorites'])

@@ -2,7 +2,7 @@ import React from 'react'
 import { Typography, Row, Col, Avatar, Dropdown, Layout } from 'antd'
 import { CaretDownOutlined, UserOutlined } from '@ant-design/icons'
 import { Link } from 'react-router-dom'
-import * as R from 'ramda'
+import { isEmpty } from 'ramda'
 
 import { APP_NAME } from 'src/constants'
 import useContainer from './hook'
@@ -29,12 +29,12 @@ const Header = () => {
         <Col>
           <Dropdown menu={{ items }}>
             <Typography.Text>
-              {R.isEmpty(account) ? (
+              {isEmpty(account) ? (
                 <Avatar icon={<UserOutlined />} />
               ) : (
                 <Avatar src={`https://www.gravatar.com/avatar/${account.avatar.gravatar.hash}`} />
               )}{' '}
-              <span className='hide-sm-down'>{R.isEmpty(account) ? 'Username' : account.username}</span>{' '}
+              <span className='hide-sm-down'>{isEmpty(account) ? 'Username' : account.username}</span>{' '}
               <CaretDownOutlined />
             </Typography.Text>
           </Dropdown>

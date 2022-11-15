@@ -1,3 +1,3 @@
-import * as R from 'ramda'
+import { path } from 'ramda'
 
-export const watchlistSelector = R.path(['watchlist'])
+export const watchlistSelector = path(['watchlist'])

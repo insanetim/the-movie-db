@@ -1,4 +1,4 @@
-import * as R from 'ramda'
+import { mergeDeepRight } from 'ramda'
 
 import * as types from './types'
 
@@ -7,7 +7,7 @@ export default function movieReducer(state = {}, action) {
     case types.SET_MOVIE:
       return action.payload
     case types.SET_MOVIE_STATES:
-      return R.mergeDeepRight(state, { accountStates: action.payload })
+      return mergeDeepRight(state, { accountStates: action.payload })
     default:
       return state
   }
