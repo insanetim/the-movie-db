@@ -9,6 +9,7 @@ import { setTrending } from '../actions'
 const fetchTrending = createLogic({
   type: types.FETCH_TRENDING,
   latest: true,
+
   async process({ httpClient, action }, dispatch, done) {
     const page = pathOr(1, ['payload'], action)
 

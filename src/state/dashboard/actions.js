@@ -1,6 +1,6 @@
 import * as types from './types'
 
-export const fetchTrending = (payload = 1) => ({
+export const fetchTrending = payload => ({
   type: types.FETCH_TRENDING,
   payload
 })

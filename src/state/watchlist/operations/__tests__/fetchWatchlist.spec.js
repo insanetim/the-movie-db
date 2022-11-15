@@ -10,7 +10,7 @@ jest.mock('src/state/session/selectors', () => ({
 }))
 
 describe('fetchWatchlist', () => {
-  let dispatch = null
+  const dispatch = jest.fn()
 
   const action = {
     type: types.FETCH_WATCHLIST,
@@ -33,7 +33,6 @@ describe('fetchWatchlist', () => {
   }
 
   const beforeFunction = httpClient => () => {
-    dispatch = jest.fn()
     fetchWatchlist.process(
       {
         httpClient,
@@ -64,8 +63,7 @@ describe('fetchWatchlist', () => {
 
     it('dispatches actions', () => {
       expect(dispatch).toHaveBeenCalledTimes(1)
-
-      expect(dispatch).toHaveBeenNthCalledWith(1, setWatchlist(response.data))
+      expect(dispatch).toHaveBeenCalledWith(setWatchlist(response.data))
     })
   })
 
@@ -82,8 +80,7 @@ describe('fetchWatchlist', () => {
 
     it('dispatches actions', () => {
       expect(dispatch).toHaveBeenCalledTimes(1)
-
-      expect(dispatch).toHaveBeenNthCalledWith(1, showNotification({ type: 'error', message: 'test/error' }))
+      expect(dispatch).toHaveBeenCalledWith(showNotification({ type: 'error', message: 'test/error' }))
     })
   })
 })

@@ -7,6 +7,7 @@ import * as types from '../types'
 const showNotification = createLogic({
   type: types.SHOW_NOTIFICATION,
   latest: true,
+
   process({ action }) {
     const type = path(['payload', 'type'], action)
     const message = path(['payload', 'message'], action)

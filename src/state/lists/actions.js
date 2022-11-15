@@ -1,9 +1,9 @@
 import * as types from './types'
 
-export const fetchLists = (payload, cb) => ({
+export const fetchLists = (payload, callback) => ({
   type: types.FETCH_LISTS,
   payload,
-  cb
+  callback
 })
 
 export const setLists = payload => ({
@@ -11,10 +11,10 @@ export const setLists = payload => ({
   payload
 })
 
-export const fetchList = (payload, cb) => ({
+export const fetchList = (payload, callback) => ({
   type: types.FETCH_LIST,
   payload,
-  cb
+  callback
 })
 
 export const setList = payload => ({
@@ -22,10 +22,10 @@ export const setList = payload => ({
   payload
 })
 
-export const createList = (payload, cb) => ({
+export const createList = (payload, callback) => ({
   type: types.CREATE_LIST,
   payload,
-  cb
+  callback
 })
 
 export const addToList = payload => ({
@@ -38,8 +38,8 @@ export const removeFromList = payload => ({
   payload
 })
 
-export const deleteList = (payload, cb) => ({
+export const deleteList = (payload, callback) => ({
   type: types.DELETE_LIST,
   payload,
-  cb
+  callback
 })

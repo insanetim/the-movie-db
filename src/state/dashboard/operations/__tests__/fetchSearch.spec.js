@@ -5,7 +5,7 @@ import { setSearch, setSearchQuery } from '../../actions'
 import fetchSearch from '../fetchSearch'
 
 describe('fetchSearch', () => {
-  let dispatch = null
+  const dispatch = jest.fn()
 
   const action = {
     type: types.FETCH_SEARCH,
@@ -34,12 +34,10 @@ describe('fetchSearch', () => {
   }
 
   const beforeFunction = httpClient => () => {
-    dispatch = jest.fn()
     fetchSearch.process(
       {
         httpClient,
-        action,
-        getState: jest.fn()
+        action
       },
       dispatch,
       jest.fn()
@@ -65,7 +63,6 @@ describe('fetchSearch', () => {
 
     it('dispatches actions', () => {
       expect(dispatch).toHaveBeenCalledTimes(2)
-
       expect(dispatch).toHaveBeenNthCalledWith(1, setSearch(response.data))
       expect(dispatch).toHaveBeenNthCalledWith(2, setSearchQuery('test/search'))
     })
@@ -84,8 +81,7 @@ describe('fetchSearch', () => {
 
     it('dispatches actions', () => {
       expect(dispatch).toHaveBeenCalledTimes(1)
-
-      expect(dispatch).toHaveBeenNthCalledWith(1, showNotification({ type: 'error', message: 'test/error' }))
+      expect(dispatch).toHaveBeenCalledWith(showNotification({ type: 'error', message: 'test/error' }))
     })
   })
 })

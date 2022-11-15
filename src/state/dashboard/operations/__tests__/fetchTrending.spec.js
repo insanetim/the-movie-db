@@ -5,7 +5,7 @@ import { setTrending } from '../../actions'
 import fetchTrending from '../fetchTrending'
 
 describe('fetchTrending', () => {
-  let dispatch = null
+  let dispatch = jest.fn()
 
   const action = {
     type: types.FETCH_TRENDING,
@@ -32,8 +32,7 @@ describe('fetchTrending', () => {
     fetchTrending.process(
       {
         httpClient,
-        action,
-        getState: jest.fn()
+        action
       },
       dispatch,
       jest.fn()
@@ -59,8 +58,7 @@ describe('fetchTrending', () => {
 
     it('dispatches actions', () => {
       expect(dispatch).toHaveBeenCalledTimes(1)
-
-      expect(dispatch).toHaveBeenNthCalledWith(1, setTrending(response.data))
+      expect(dispatch).toHaveBeenCalledWith(setTrending(response.data))
     })
   })
 
@@ -77,8 +75,7 @@ describe('fetchTrending', () => {
 
     it('dispatches actions', () => {
       expect(dispatch).toHaveBeenCalledTimes(1)
-
-      expect(dispatch).toHaveBeenNthCalledWith(1, showNotification({ type: 'error', message: 'test/error' }))
+      expect(dispatch).toHaveBeenCalledWith(showNotification({ type: 'error', message: 'test/error' }))
     })
   })
 })

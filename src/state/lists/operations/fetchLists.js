@@ -1,4 +1,5 @@
 import { createLogic } from 'redux-logic'
+import { pathOr } from 'ramda'
 
 import * as endpoints from 'src/constants/endpoints'
 import { accountSelector, sessionIdSelector } from 'src/state/session/selectors'
@@ -9,18 +10,23 @@ import { setLists } from '../actions'
 const fetchLists = createLogic({
   type: types.FETCH_LISTS,
   latest: true,
-  async process({ httpClient, getState, action: { payload: page, cb } }, dispatch, done) {
+
+  async process({ httpClient, getState, action }, dispatch, done) {
     const sessionId = sessionIdSelector(getState())
     const { id: accountId } = accountSelector(getState())
+    const page = pathOr(1, ['payload'], action)
+    const callback = pathOr(null, ['callback'], action)
+
     try {
       const { data } = await httpClient.get(endpoints.getCreatedLists(accountId), {
         params: { session_id: sessionId, page }
       })
       dispatch(setLists(data))
-      if (typeof cb === 'function') cb()
+      if (typeof callback === 'function') callback()
     } catch (error) {
       dispatch(showNotification({ type: 'error', message: error.message }))
     }
+
     done()
   }
 })

@@ -9,6 +9,7 @@ import { setSearch, setSearchQuery } from '../actions'
 const fetchSearch = createLogic({
   type: types.FETCH_SEARCH,
   latest: true,
+
   async process({ httpClient, action }, dispatch, done) {
     const query = path(['payload', 'query'], action)
     const page = pathOr(1, ['payload', 'page'], action)

@@ -10,6 +10,7 @@ import { setFavorites } from '../actions'
 const fetchFavorites = createLogic({
   type: types.FETCH_FAVORITES,
   latest: true,
+
   async process({ httpClient, getState, action }, dispatch, done) {
     const sessionId = sessionIdSelector(getState())
     const { id: accountId } = accountSelector(getState())

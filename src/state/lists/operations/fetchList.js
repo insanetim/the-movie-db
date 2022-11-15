@@ -1,4 +1,5 @@
 import { createLogic } from 'redux-logic'
+import { path, pathOr } from 'ramda'
 
 import * as endpoints from 'src/constants/endpoints'
 import { showNotification } from 'src/state/app/actions'
@@ -8,14 +9,19 @@ import { setList } from '../actions'
 const fetchList = createLogic({
   type: types.FETCH_LIST,
   latest: true,
-  async process({ httpClient, action: { payload: listId, cb } }, dispatch, done) {
+
+  async process({ httpClient, action }, dispatch, done) {
+    const listId = path(['payload'], action)
+    const callback = pathOr(null, ['callback'], action)
+
     try {
       const { data } = await httpClient.get(endpoints.getListDetails(listId))
       dispatch(setList(data))
-      if (typeof cb === 'function') cb()
+      if (typeof callback === 'function') callback()
     } catch (error) {
       dispatch(showNotification({ type: 'error', message: error.message }))
     }
+
     done()
   }
 })

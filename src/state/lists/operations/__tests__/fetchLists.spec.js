@@ -10,8 +10,8 @@ jest.mock('src/state/session/selectors', () => ({
 }))
 
 describe('fetchLists', () => {
-  let dispatch = null
-  const cb = jest.fn()
+  const dispatch = jest.fn()
+  const callback = jest.fn()
 
   const action = {
     type: types.FETCH_LISTS,
@@ -37,7 +37,6 @@ describe('fetchLists', () => {
   }
 
   const beforeFunction = httpClient => () => {
-    dispatch = jest.fn()
     fetchLists.process(
       {
         httpClient,
@@ -68,39 +67,30 @@ describe('fetchLists', () => {
 
     it('dispatches actions', () => {
       expect(dispatch).toHaveBeenCalledTimes(1)
-
-      expect(dispatch).toHaveBeenNthCalledWith(1, setLists(response.data))
-    })
-
-    it('does not call callback', () => {
-      expect(cb).not.toHaveBeenCalled()
+      expect(dispatch).toHaveBeenCalledWith(setLists(response.data))
     })
   })
 
-  describe('with callback', () => {
+  describe('callback', () => {
     const httpClient = mockHttpClient({ method: 'get', response })
 
-    const newAction = {
-      type: types.FETCH_LISTS,
-      payload: 1,
-      cb
+    const actionExt = {
+      ...action,
+      callback
     }
 
-    beforeEach(() => {
-      dispatch = jest.fn()
-      fetchLists.process(
+    it('calls callback', async () => {
+      await fetchLists.process(
         {
           httpClient,
-          action: newAction,
+          action: actionExt,
           getState: jest.fn()
         },
         dispatch,
         jest.fn()
       )
-    })
 
-    it('calls callback', () => {
-      expect(cb).toHaveBeenCalledTimes(1)
+      expect(callback).toHaveBeenCalledTimes(1)
     })
   })
 
@@ -117,8 +107,7 @@ describe('fetchLists', () => {
 
     it('dispatches actions', () => {
       expect(dispatch).toHaveBeenCalledTimes(1)
-
-      expect(dispatch).toHaveBeenNthCalledWith(1, showNotification({ type: 'error', message: 'test/error' }))
+      expect(dispatch).toHaveBeenCalledWith(showNotification({ type: 'error', message: 'test/error' }))
     })
   })
 })

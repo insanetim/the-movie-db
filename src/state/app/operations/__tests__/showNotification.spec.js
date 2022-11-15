@@ -19,6 +19,7 @@ describe('showNotification', () => {
         payload: { type: 'success', message }
       }
     })
+
     expect(notification.success).toHaveBeenCalledWith({ message, duration: 2.5 })
   })
 
@@ -28,6 +29,7 @@ describe('showNotification', () => {
         payload: { type: 'error', message }
       }
     })
+
     expect(notification.error).toHaveBeenCalledWith({ message, duration: 2.5 })
   })
 })

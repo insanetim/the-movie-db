@@ -1,16 +1,16 @@
 import * as actions from '../actions'
 import * as types from '../types'
 
-const cb = jest.fn()
+const callback = jest.fn()
 
 it('fetchLists', () => {
   const expectedAction = {
     type: types.FETCH_LISTS,
     payload: {},
-    cb
+    callback
   }
 
-  expect(actions.fetchLists({}, cb)).toEqual(expectedAction)
+  expect(actions.fetchLists({}, callback)).toEqual(expectedAction)
 })
 
 it('setLists', () => {
@@ -26,10 +26,10 @@ it('fetchList', () => {
   const expectedAction = {
     type: types.FETCH_LIST,
     payload: {},
-    cb
+    callback
   }
 
-  expect(actions.fetchList({}, cb)).toEqual(expectedAction)
+  expect(actions.fetchList({}, callback)).toEqual(expectedAction)
 })
 
 it('setList', () => {
@@ -45,10 +45,10 @@ it('createList', () => {
   const expectedAction = {
     type: types.CREATE_LIST,
     payload: {},
-    cb
+    callback
   }
 
-  expect(actions.createList({}, cb)).toEqual(expectedAction)
+  expect(actions.createList({}, callback)).toEqual(expectedAction)
 })
 
 it('addToList', () => {
@@ -73,8 +73,8 @@ it('deleteList', () => {
   const expectedAction = {
     type: types.DELETE_LIST,
     payload: {},
-    cb
+    callback
   }
 
-  expect(actions.deleteList({}, cb)).toEqual(expectedAction)
+  expect(actions.deleteList({}, callback)).toEqual(expectedAction)
 })

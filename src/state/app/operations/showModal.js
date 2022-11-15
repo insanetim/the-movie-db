@@ -6,6 +6,7 @@ import * as types from '../types'
 const showModal = createLogic({
   type: types.SHOW_MODAL,
   latest: true,
+
   transform({ action }, next) {
     next(mergeDeepRight(action, { payload: { modalProps: { open: true } } }))
   }

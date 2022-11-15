@@ -10,6 +10,7 @@ import { setWatchlist } from '../actions'
 const fetchWatchlist = createLogic({
   type: types.FETCH_WATCHLIST,
   latest: true,
+
   async process({ httpClient, getState, action }, dispatch, done) {
     const sessionId = sessionIdSelector(getState())
     const { id: accountId } = accountSelector(getState())
