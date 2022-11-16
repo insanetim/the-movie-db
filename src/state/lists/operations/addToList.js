@@ -19,7 +19,6 @@ const addToList = createLogic({
       const { data: movie } = await httpClient.get(endpoints.getMovieDetails(movieId))
       const { data: list } = await httpClient.get(endpoints.getListDetails(listId))
       await httpClient.post(endpoints.addToList(listId), { media_id: movieId }, { params: { session_id: sessionId } })
-
       const message = `${movie.title} added to ${list.name}`
       dispatch(showNotification({ type: 'success', message }))
     } catch (error) {
