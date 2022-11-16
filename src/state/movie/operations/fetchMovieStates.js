@@ -1,4 +1,5 @@
 import { createLogic } from 'redux-logic'
+import { or, path } from 'ramda'
 
 import * as endpoints from 'src/constants/endpoints'
 import { showNotification } from 'src/state/app/actions'
@@ -9,17 +10,22 @@ import { setMovieStates } from '../actions'
 const fetchMovieStates = createLogic({
   type: types.FETCH_MOVIE_STATES,
   latest: true,
-  async process({ httpClient, getState, action: { payload: movieId } }, dispatch, done) {
+
+  async process({ httpClient, getState, action }, dispatch, done) {
     const sessionId = sessionIdSelector(getState())
+    const movieId = path(['payload'], action)
+
     try {
       const { data } = await httpClient.get(endpoints.getMovieAccountStates(movieId), {
         params: { session_id: sessionId }
       })
       dispatch(setMovieStates(data))
-      done()
     } catch (error) {
-      dispatch(showNotification({ type: 'error', message: error.message }))
+      const errorMessage = or(path(['response', 'data', 'status_message'], error), error.message)
+      dispatch(showNotification({ type: 'error', message: errorMessage }))
     }
+
+    done()
   }
 })
 

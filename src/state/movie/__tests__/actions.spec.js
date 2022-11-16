@@ -1,16 +1,16 @@
 import * as actions from '../actions'
 import * as types from '../types'
 
-const cb = jest.fn()
+const callback = jest.fn()
 
 it('fetchMovie', () => {
   const expectedAction = {
     type: types.FETCH_MOVIE,
     payload: {},
-    cb
+    callback
   }
 
-  expect(actions.fetchMovie({}, cb)).toEqual(expectedAction)
+  expect(actions.fetchMovie({}, callback)).toEqual(expectedAction)
 })
 
 it('fetchMovieStates', () => {

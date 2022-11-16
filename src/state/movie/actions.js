@@ -1,9 +1,9 @@
 import * as types from './types'
 
-export const fetchMovie = (payload, cb) => ({
+export const fetchMovie = (payload, callback) => ({
   type: types.FETCH_MOVIE,
   payload,
-  cb
+  callback
 })
 
 export const fetchMovieStates = payload => ({

@@ -1,4 +1,5 @@
 import { createLogic } from 'redux-logic'
+import { always, equals, ifElse, or, path, T } from 'ramda'
 
 import * as endpoints from 'src/constants/endpoints'
 import { showNotification } from 'src/state/app/actions'
@@ -10,19 +11,13 @@ import * as types from '../types'
 const changeMovieInFavorites = createLogic({
   type: types.CHANGE_MOVIE_IN_FAVORITES,
   latest: true,
-  async process(
-    {
-      httpClient,
-      getState,
-      action: {
-        payload: { movieId, inFavorites }
-      }
-    },
-    dispatch,
-    done
-  ) {
+
+  async process({ httpClient, getState, action }, dispatch, done) {
     const sessionId = sessionIdSelector(getState())
     const { id: accountId } = accountSelector(getState())
+    const movieId = path(['payload', 'movieId'], action)
+    const inFavorites = path(['payload', 'inFavorites'], action)
+
     try {
       const { data: movie } = await httpClient.get(endpoints.getMovieDetails(movieId))
       await httpClient.post(
@@ -30,13 +25,19 @@ const changeMovieInFavorites = createLogic({
         { media_type: 'movie', media_id: movieId, favorite: inFavorites },
         { params: { session_id: sessionId } }
       )
-      const message = inFavorites ? `${movie.title} added to Favorites` : `${movie.title} removed from Favorites`
-      dispatch(showNotification({ type: 'success', message }))
       dispatch(fetchMovieStates(movieId))
       dispatch(fetchFavorites())
+      const message = ifElse(
+        equals(T()),
+        always(`${movie.title} added to Favorites`),
+        always(`${movie.title} removed from Favorites`)
+      )(inFavorites)
+      dispatch(showNotification({ type: 'success', message }))
     } catch (error) {
-      dispatch(showNotification({ type: 'error', message: error.message }))
+      const errorMessage = or(path(['response', 'data', 'status_message'], error), error.message)
+      dispatch(showNotification({ type: 'error', message: errorMessage }))
     }
+
     done()
   }
 })

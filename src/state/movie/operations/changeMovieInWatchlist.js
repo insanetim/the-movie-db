@@ -1,4 +1,5 @@
 import { createLogic } from 'redux-logic'
+import { always, equals, ifElse, or, path, T } from 'ramda'
 
 import * as endpoints from 'src/constants/endpoints'
 import { showNotification } from 'src/state/app/actions'
@@ -10,19 +11,13 @@ import * as types from '../types'
 const changeMovieInWatchlist = createLogic({
   type: types.CHANGE_MOVIE_IN_WATCHLIST,
   latest: true,
-  async process(
-    {
-      httpClient,
-      getState,
-      action: {
-        payload: { movieId, inWatchlist }
-      }
-    },
-    dispatch,
-    done
-  ) {
+
+  async process({ httpClient, getState, action }, dispatch, done) {
     const sessionId = sessionIdSelector(getState())
     const { id: accountId } = accountSelector(getState())
+    const movieId = path(['payload', 'movieId'], action)
+    const inWatchlist = path(['payload', 'inWatchlist'], action)
+
     try {
       const { data: movie } = await httpClient.get(endpoints.getMovieDetails(movieId))
       await httpClient.post(
@@ -30,13 +25,19 @@ const changeMovieInWatchlist = createLogic({
         { media_type: 'movie', media_id: movieId, watchlist: inWatchlist },
         { params: { session_id: sessionId } }
       )
-      const message = inWatchlist ? `${movie.title} added to Watchlist` : `${movie.title} removed from Watchlist`
-      dispatch(showNotification({ type: 'success', message }))
       dispatch(fetchMovieStates(movieId))
       dispatch(fetchWatchlist())
+      const message = ifElse(
+        equals(T()),
+        always(`${movie.title} added to Watchlist`),
+        always(`${movie.title} removed from Watchlist`)
+      )(inWatchlist)
+      dispatch(showNotification({ type: 'success', message }))
     } catch (error) {
-      dispatch(showNotification({ type: 'error', message: error.message }))
+      const errorMessage = or(path(['response', 'data', 'status_message'], error), error.message)
+      dispatch(showNotification({ type: 'error', message: errorMessage }))
     }
+
     done()
   }
 })
