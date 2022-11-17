@@ -20,6 +20,7 @@ describe('showNotification', () => {
       }
     })
 
+    expect(notification.success).toHaveBeenCalledTimes(1)
     expect(notification.success).toHaveBeenCalledWith({ message, duration: 2.5 })
   })
 
@@ -30,6 +31,7 @@ describe('showNotification', () => {
       }
     })
 
+    expect(notification.error).toHaveBeenCalledTimes(1)
     expect(notification.error).toHaveBeenCalledWith({ message, duration: 2.5 })
   })
 })

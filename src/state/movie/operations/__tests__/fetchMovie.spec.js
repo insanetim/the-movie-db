@@ -19,23 +19,22 @@ describe('fetchMovie', () => {
   }
 
   const movieUrl = '/movie/123'
-  const imagesUrl = '/movie/123/images'
-  const statesUrl = '/movie/123/account_states'
-  const creditsUrl = '/movie/123/credits'
-
-  const statesBody = {
-    params: { session_id: 'session_id' }
-  }
-
   const movieResponse = {
     data: {
       id: 123
     }
   }
+
+  const imagesUrl = '/movie/123/images'
   const imagesResponse = {
     data: {
       backdrops: []
     }
+  }
+
+  const statesUrl = '/movie/123/account_states'
+  const statesBody = {
+    params: { session_id: 'session_id' }
   }
   const statesResponse = {
     data: {
@@ -43,12 +42,15 @@ describe('fetchMovie', () => {
       watchlist: false
     }
   }
+
+  const creditsUrl = '/movie/123/credits'
   const creditsResponse = {
     data: {
       cast: [],
       crew: []
     }
   }
+
   const resultData = {
     ...movieResponse.data,
     images: imagesResponse.data.backdrops,
@@ -95,6 +97,7 @@ describe('fetchMovie', () => {
         jest.fn()
       )
 
+      expect(httpClient.get).toHaveBeenCalledTimes(4)
       expect(httpClient.get).toHaveBeenNthCalledWith(1, movieUrl)
       expect(httpClient.get).toHaveBeenNthCalledWith(2, imagesUrl)
       expect(httpClient.get).toHaveBeenNthCalledWith(3, statesUrl, statesBody)

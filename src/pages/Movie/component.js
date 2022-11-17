@@ -3,7 +3,7 @@ import { Row, Col, Typography, Tag, Popover } from 'antd'
 import Icon, { HeartOutlined, HeartFilled, BookOutlined, BookFilled, PlusCircleOutlined } from '@ant-design/icons'
 import { format } from 'date-fns'
 import ISO6391 from 'iso-639-1'
-import { toUpper } from 'ramda'
+import { take, toUpper } from 'ramda'
 
 import Loading from 'src/components/Loading'
 import CreditsItem from 'src/components/Movie/CreditsItem'
@@ -133,7 +133,7 @@ const Movie = () => {
                     lg: 32
                   }}
                 >
-                  {movie.credits.cast.slice(0, 12).map(item => (
+                  {take(12, movie.credits.cast).map(item => (
                     <CreditsItem
                       key={item.credit_id}
                       profilePath={item.profile_path}
@@ -170,7 +170,7 @@ const Movie = () => {
                     lg: 32
                   }}
                 >
-                  {movie.credits.crew.slice(0, 12).map(item => (
+                  {take(12, movie.credits.crew).map(item => (
                     <CreditsItem
                       key={item.credit_id}
                       profilePath={item.profile_path}

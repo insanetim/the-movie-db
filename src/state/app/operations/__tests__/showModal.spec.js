@@ -11,12 +11,10 @@ describe('showModal', () => {
     }
     const next = jest.fn()
     showModal.transform({ action }, next)
+
+    expect(next).toHaveBeenCalledTimes(1)
     expect(next).toHaveBeenCalledWith({
-      payload: {
-        modalProps: {
-          open: true
-        }
-      }
+      payload: { modalProps: { open: true } }
     })
   })
 })

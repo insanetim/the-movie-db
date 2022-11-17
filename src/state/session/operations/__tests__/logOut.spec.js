@@ -1,39 +1,37 @@
+import Cookies from 'js-cookie'
+
 import mockHttpClient from 'src/__mocks__/mockHttpClient'
 import { showNotification } from 'src/state/app/actions'
 import * as types from '../../types'
-import { fetchLists } from '../../actions'
-import createList from '../createList'
+import { deleteSession } from '../../actions'
+import logOut from '../logOut'
 
 jest.mock('src/state/session/selectors', () => ({
   sessionIdSelector: jest.fn(() => 'session_id')
 }))
 
-describe('createList', () => {
+jest.spyOn(Cookies, 'remove')
+
+describe('logOut', () => {
   const dispatch = jest.fn()
   const callback = jest.fn()
 
   const action = {
-    type: types.CREATE_LIST,
-    payload: {
-      name: 'test/list',
-      description: 'test/description'
-    }
+    type: types.LOG_OUT
   }
 
-  const url = '/list'
+  const url = '/authentication/session'
 
-  const body = { ...action.payload }
-
-  const config = { params: { session_id: 'session_id' } }
+  const body = { data: { session_id: 'session_id' } }
 
   const response = {
     data: {
-      list_id: 123
+      success: true
     }
   }
 
   const beforeFunction = httpClient => () => {
-    createList.process(
+    logOut.process(
       {
         httpClient,
         action,
@@ -49,27 +47,27 @@ describe('createList', () => {
   })
 
   it('has valid attributes', () => {
-    expect(createList).toMatchSnapshot()
+    expect(logOut).toMatchSnapshot()
   })
 
   describe('success', () => {
-    const httpClient = mockHttpClient({ method: 'post', response })
+    const httpClient = mockHttpClient({ method: 'delete', response })
 
     beforeEach(beforeFunction(httpClient))
 
     it('calls right endpoint', () => {
-      expect(httpClient.post).toHaveBeenCalledTimes(1)
-      expect(httpClient.post).toHaveBeenCalledWith(url, body, config)
+      expect(httpClient.delete).toHaveBeenCalledTimes(1)
+      expect(httpClient.delete).toHaveBeenCalledWith(url, body)
     })
 
     it('dispatches actions', () => {
       expect(dispatch).toHaveBeenCalledTimes(1)
-      expect(dispatch).toHaveBeenCalledWith(fetchLists())
+      expect(dispatch).toHaveBeenCalledWith(deleteSession())
     })
   })
 
   describe('callback', () => {
-    const httpClient = mockHttpClient({ method: 'post', response })
+    const httpClient = mockHttpClient({ method: 'delete', response })
 
     const actionExt = {
       ...action,
@@ -77,7 +75,7 @@ describe('createList', () => {
     }
 
     it('calls callback', async () => {
-      await createList.process(
+      await logOut.process(
         {
           httpClient,
           action: actionExt,
@@ -88,7 +86,6 @@ describe('createList', () => {
       )
 
       expect(callback).toHaveBeenCalledTimes(1)
-      expect(callback).toHaveBeenCalledWith(response.data.list_id)
     })
   })
 
@@ -96,7 +93,7 @@ describe('createList', () => {
     const error = new Error('test/error')
 
     const httpClient = mockHttpClient({
-      method: 'post',
+      method: 'delete',
       reject: true,
       response: error
     })

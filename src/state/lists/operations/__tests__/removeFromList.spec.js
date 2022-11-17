@@ -20,22 +20,23 @@ describe('removeFromList', () => {
   }
 
   const movieUrl = '/movie/123'
-  const listUrl = '/list/123'
-  const removeFromListUrl = '/list/123/remove_item'
-
-  const removeFromListBody = { media_id: 123 }
-  const removeFromListConfig = { params: { session_id: 'session_id' } }
-
   const movieResponse = {
     data: {
       title: 'test/movie'
     }
   }
+
+  const listUrl = '/list/123'
   const listResponse = {
     data: {
       name: 'test/list'
     }
   }
+
+  const removeFromListUrl = '/list/123/remove_item'
+  const removeFromListBody = { media_id: 123 }
+  const removeFromListConfig = { params: { session_id: 'session_id' } }
+  const removeFromListResponse = { data: { success: true } }
 
   const beforeFunction = httpClient => () => {
     removeFromList.process(
@@ -62,7 +63,7 @@ describe('removeFromList', () => {
       const httpClient = mockMultiHttpClient([
         { method: 'get', response: movieResponse },
         { method: 'get', response: listResponse },
-        { method: 'post', response: { data: { success: true } } }
+        { method: 'post', response: removeFromListResponse }
       ])
 
       await removeFromList.process(
@@ -75,8 +76,10 @@ describe('removeFromList', () => {
         jest.fn()
       )
 
+      expect(httpClient.get).toHaveBeenCalledTimes(2)
       expect(httpClient.get).toHaveBeenNthCalledWith(1, movieUrl)
       expect(httpClient.get).toHaveBeenNthCalledWith(2, listUrl)
+      expect(httpClient.post).toHaveBeenCalledTimes(1)
       expect(httpClient.post).toHaveBeenCalledWith(removeFromListUrl, removeFromListBody, removeFromListConfig)
     })
 
@@ -84,7 +87,7 @@ describe('removeFromList', () => {
       const httpClient = mockMultiHttpClient([
         { method: 'get', response: movieResponse },
         { method: 'get', response: listResponse },
-        { method: 'post', response: { data: { success: true } } }
+        { method: 'post', response: removeFromListResponse }
       ])
 
       await removeFromList.process(

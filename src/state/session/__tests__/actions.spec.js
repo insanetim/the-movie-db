@@ -1,25 +1,25 @@
 import * as actions from '../actions'
 import * as types from '../types'
 
-const cb = jest.fn()
+const callback = jest.fn()
 
 it('logIn', () => {
   const expectedAction = {
     type: types.LOG_IN,
     payload: {},
-    cb
+    callback
   }
 
-  expect(actions.logIn({}, cb)).toEqual(expectedAction)
+  expect(actions.logIn({}, callback)).toEqual(expectedAction)
 })
 
 it('logOut', () => {
   const expectedAction = {
     type: types.LOG_OUT,
-    cb
+    callback
   }
 
-  expect(actions.logOut(cb)).toEqual(expectedAction)
+  expect(actions.logOut(callback)).toEqual(expectedAction)
 })
 
 it('setSession', () => {

@@ -22,21 +22,20 @@ describe('changeMovieInWatchlist', () => {
   }
 
   const movieUrl = '/movie/123'
-  const watchlistUrl = '/account/123/watchlist'
-
-  const watchlistBody = {
-    media_type: 'movie',
-    media_id: 123,
-    watchlist: true
-  }
-
-  const watchlistConfig = { params: { session_id: 'session_id' } }
-
   const movieResponse = {
     data: {
       title: 'test/movie'
     }
   }
+
+  const watchlistUrl = '/account/123/watchlist'
+  const watchlistBody = {
+    media_type: 'movie',
+    media_id: 123,
+    watchlist: true
+  }
+  const watchlistConfig = { params: { session_id: 'session_id' } }
+  const watchlistResponse = { data: { success: true } }
 
   const beforeFunction = httpClient => () => {
     changeMovieInWatchlist.process(
@@ -62,7 +61,7 @@ describe('changeMovieInWatchlist', () => {
     it('calls right endpoint', async () => {
       const httpClient = mockMultiHttpClient([
         { method: 'get', response: movieResponse },
-        { method: 'post', response: { data: { success: true } } }
+        { method: 'post', response: watchlistResponse }
       ])
 
       await changeMovieInWatchlist.process(
@@ -75,14 +74,16 @@ describe('changeMovieInWatchlist', () => {
         jest.fn()
       )
 
+      expect(httpClient.get).toHaveBeenCalledTimes(1)
       expect(httpClient.get).toHaveBeenCalledWith(movieUrl)
+      expect(httpClient.post).toHaveBeenCalledTimes(1)
       expect(httpClient.post).toHaveBeenCalledWith(watchlistUrl, watchlistBody, watchlistConfig)
     })
 
     it('dispatches actions', async () => {
       const httpClient = mockMultiHttpClient([
         { method: 'get', response: movieResponse },
-        { method: 'post', response: { data: { success: true } } }
+        { method: 'post', response: watchlistResponse }
       ])
 
       await changeMovieInWatchlist.process(

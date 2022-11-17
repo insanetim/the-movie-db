@@ -22,21 +22,20 @@ describe('changeMovieInFavorites', () => {
   }
 
   const movieUrl = '/movie/123'
-  const favoriteUrl = '/account/123/favorite'
-
-  const favoriteBody = {
-    media_type: 'movie',
-    media_id: 123,
-    favorite: true
-  }
-
-  const favoriteConfig = { params: { session_id: 'session_id' } }
-
   const movieResponse = {
     data: {
       title: 'test/movie'
     }
   }
+
+  const favoriteUrl = '/account/123/favorite'
+  const favoriteBody = {
+    media_type: 'movie',
+    media_id: 123,
+    favorite: true
+  }
+  const favoriteConfig = { params: { session_id: 'session_id' } }
+  const favoriteResponse = { data: { success: true } }
 
   const beforeFunction = httpClient => () => {
     changeMovieInFavorites.process(
@@ -62,7 +61,7 @@ describe('changeMovieInFavorites', () => {
     it('calls right endpoint', async () => {
       const httpClient = mockMultiHttpClient([
         { method: 'get', response: movieResponse },
-        { method: 'post', response: { data: { success: true } } }
+        { method: 'post', response: favoriteResponse }
       ])
 
       await changeMovieInFavorites.process(
@@ -75,14 +74,16 @@ describe('changeMovieInFavorites', () => {
         jest.fn()
       )
 
+      expect(httpClient.get).toHaveBeenCalledTimes(1)
       expect(httpClient.get).toHaveBeenCalledWith(movieUrl)
+      expect(httpClient.post).toHaveBeenCalledTimes(1)
       expect(httpClient.post).toHaveBeenCalledWith(favoriteUrl, favoriteBody, favoriteConfig)
     })
 
     it('dispatches actions', async () => {
       const httpClient = mockMultiHttpClient([
         { method: 'get', response: movieResponse },
-        { method: 'post', response: { data: { success: true } } }
+        { method: 'post', response: favoriteResponse }
       ])
 
       await changeMovieInFavorites.process(

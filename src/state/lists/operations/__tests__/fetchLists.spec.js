@@ -62,6 +62,7 @@ describe('fetchLists', () => {
     beforeEach(beforeFunction(httpClient))
 
     it('calls right endpoint', () => {
+      expect(httpClient.get).toHaveBeenCalledTimes(1)
       expect(httpClient.get).toHaveBeenCalledWith(url, body)
     })
 

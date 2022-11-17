@@ -19,15 +19,15 @@ describe('deleteList', () => {
   }
 
   const listUrl = '/list/123'
-  const deleteUrl = '/list/123'
-
-  const deleteBody = { params: { session_id: 'session_id' } }
-
   const listResponse = {
     data: {
       name: 'test/list'
     }
   }
+
+  const deleteUrl = '/list/123'
+  const deleteBody = { params: { session_id: 'session_id' } }
+  const deleteResponse = { data: { success: true } }
 
   beforeEach(() => {
     jest.clearAllMocks()
@@ -41,7 +41,7 @@ describe('deleteList', () => {
     it('calls right endpoint', async () => {
       const httpClient = mockMultiHttpClient([
         { method: 'get', response: listResponse },
-        { method: 'delete', response: { data: { success: true } } }
+        { method: 'delete', response: deleteResponse }
       ])
 
       await deleteList.process(
@@ -54,14 +54,16 @@ describe('deleteList', () => {
         jest.fn()
       )
 
+      expect(httpClient.get).toHaveBeenCalledTimes(1)
       expect(httpClient.get).toHaveBeenCalledWith(listUrl)
+      expect(httpClient.delete).toHaveBeenCalledTimes(1)
       expect(httpClient.delete).toHaveBeenCalledWith(deleteUrl, deleteBody)
     })
 
     it('dispatches actions', async () => {
       const httpClient = mockMultiHttpClient([
         { method: 'get', response: listResponse },
-        { method: 'delete', response: { data: { success: true } } }
+        { method: 'delete', response: deleteResponse }
       ])
 
       await deleteList.process(
@@ -98,7 +100,9 @@ describe('deleteList', () => {
         jest.fn()
       )
 
-      expect(dispatch).toHaveBeenCalledWith(
+      expect(dispatch).toHaveBeenCalledTimes(2)
+      expect(dispatch).toHaveBeenNthCalledWith(
+        1,
         showNotification({
           type: 'success',
           message: 'test/list list has been removed'

@@ -19,22 +19,23 @@ describe('addToList', () => {
   }
 
   const movieUrl = '/movie/123'
-  const listUrl = '/list/123'
-  const addToListUrl = '/list/123/add_item'
-
-  const addToListBody = { media_id: 123 }
-  const addToListConfig = { params: { session_id: 'session_id' } }
-
   const movieResponse = {
     data: {
       title: 'test/movie'
     }
   }
+
+  const listUrl = '/list/123'
   const listResponse = {
     data: {
       name: 'test/list'
     }
   }
+
+  const addToListUrl = '/list/123/add_item'
+  const addToListBody = { media_id: 123 }
+  const addToListConfig = { params: { session_id: 'session_id' } }
+  const addToListResponse = { data: { success: true } }
 
   const beforeFunction = httpClient => () => {
     addToList.process(
@@ -61,7 +62,7 @@ describe('addToList', () => {
       const httpClient = mockMultiHttpClient([
         { method: 'get', response: movieResponse },
         { method: 'get', response: listResponse },
-        { method: 'post', response: { data: { success: true } } }
+        { method: 'post', response: addToListResponse }
       ])
 
       await addToList.process(
@@ -74,8 +75,10 @@ describe('addToList', () => {
         jest.fn()
       )
 
+      expect(httpClient.get).toHaveBeenCalledTimes(2)
       expect(httpClient.get).toHaveBeenNthCalledWith(1, movieUrl)
       expect(httpClient.get).toHaveBeenNthCalledWith(2, listUrl)
+      expect(httpClient.post).toHaveBeenCalledTimes(1)
       expect(httpClient.post).toHaveBeenCalledWith(addToListUrl, addToListBody, addToListConfig)
     })
 
@@ -83,7 +86,7 @@ describe('addToList', () => {
       const httpClient = mockMultiHttpClient([
         { method: 'get', response: movieResponse },
         { method: 'get', response: listResponse },
-        { method: 'post', response: { data: { success: true } } }
+        { method: 'post', response: addToListResponse }
       ])
 
       await addToList.process(

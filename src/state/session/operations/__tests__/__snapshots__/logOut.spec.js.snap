@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`logOut has valid attributes 1`] = `
+{
+  "cancelType": undefined,
+  "debounce": 0,
+  "latest": true,
+  "name": undefined,
+  "process": [Function],
+  "processOptions": {
+    "dispatchMultiple": true,
+  },
+  "throttle": 0,
+  "transform": undefined,
+  "type": "session/LOG_OUT",
+  "validate": undefined,
+  "warnTimeout": 60000,
+}
+`;

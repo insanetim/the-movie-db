@@ -1,14 +1,14 @@
 import * as types from './types'
 
-export const logIn = (payload, cb) => ({
+export const logIn = (payload, callback) => ({
   type: types.LOG_IN,
   payload,
-  cb
+  callback
 })
 
-export const logOut = cb => ({
+export const logOut = callback => ({
   type: types.LOG_OUT,
-  cb
+  callback
 })
 
 export const setSession = payload => ({
