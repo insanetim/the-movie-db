@@ -38,7 +38,7 @@
     "jsdom": "^20.0.2",
     "jsdom-global": "^3.0.2",
     "mini-css-extract-plugin": "^2.7.0",
-    "prettier": "^2.7.1",
+    "prettier": "^2.8.0",
     "sass": "^1.56.1",
     "sass-loader": "^13.2.0",
     "webpack": "^5.75.0",
