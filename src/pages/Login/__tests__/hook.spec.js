@@ -26,14 +26,14 @@ describe('Favotites useContainer hook', () => {
   })
 
   it('checks `handleLogIn` method', () => {
-    let cb
+    let callback
     const data = { username: 'user', password: 'password' }
     act(() => {
-      cb = result.current.handleLogIn(data)
+      callback = result.current.handleLogIn(data)
     })
-    cb()
+    callback()
 
-    expect(dispatch).toHaveBeenCalledWith(logIn(data, cb))
+    expect(dispatch).toHaveBeenCalledWith(logIn(data, callback))
     expect(navigate).toHaveBeenCalledWith('/', { replace: true })
   })
 })

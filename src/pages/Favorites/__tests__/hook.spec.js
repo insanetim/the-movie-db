@@ -42,7 +42,7 @@ describe('Favotites useContainer hook', () => {
   it('checks `handleDelete` method', () => {
     let onOk
     act(() => {
-      onOk = result.current.handleDelete({ stopPropagation: jest.fn() }, 1)
+      onOk = result.current.handleDelete(123, { stopPropagation: jest.fn() })
     })
     onOk()
 
@@ -52,14 +52,14 @@ describe('Favotites useContainer hook', () => {
     })
     expect(dispatch).toHaveBeenCalledWith(
       changeMovieInFavorites({
-        movieId: 1,
+        movieId: 123,
         inFavorites: false
       })
     )
   })
 
   it('checks `useEffect` method with account', () => {
-    accountSelector.mockReturnValueOnce({ id: 1 })
+    accountSelector.mockReturnValueOnce({ id: 123 })
     ;({ result } = renderHook(useContainer))
 
     expect(dispatch).toHaveBeenCalledWith(fetchFavorites())

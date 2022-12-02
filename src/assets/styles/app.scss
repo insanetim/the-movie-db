@@ -1,8 +1,6 @@
-// Ant Design
-@import '~antd/dist/antd.css';
-
 body,
 #app {
+  margin: 0;
   overflow-x: hidden;
 }
 
@@ -56,6 +54,10 @@ body,
   }
 }
 
+.ant-card-actions {
+  background-color: transparent !important;
+}
+
 .ant-card-cover--no-image {
   display: flex;
   justify-content: center;
@@ -70,4 +72,8 @@ body,
 
 .icon-btn {
   cursor: pointer;
+}
+
+.anticon {
+  display: inline-flex;
 }

@@ -16,9 +16,7 @@ export const bindId = (array, id) =>
   array.map(action =>
     mergeDeepRight(action, {
       props: {
-        onClick: event => {
-          action.props.onClick(event, id)
-        }
+        onClick: action.props.onClick.bind(null, id)
       }
     })
   )

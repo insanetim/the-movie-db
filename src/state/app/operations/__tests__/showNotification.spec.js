@@ -1,6 +1,7 @@
 import 'jsdom-global/register'
 import { notification } from 'antd'
 
+import { NOTIFICATION_DURATION } from 'src/constants'
 import showNotification from '../showNotification'
 
 jest.spyOn(notification, 'success')
@@ -21,7 +22,7 @@ describe('showNotification', () => {
     })
 
     expect(notification.success).toHaveBeenCalledTimes(1)
-    expect(notification.success).toHaveBeenCalledWith({ message, duration: 2.5 })
+    expect(notification.success).toHaveBeenCalledWith({ message, duration: NOTIFICATION_DURATION })
   })
 
   it('calls notification error', () => {
@@ -32,6 +33,6 @@ describe('showNotification', () => {
     })
 
     expect(notification.error).toHaveBeenCalledTimes(1)
-    expect(notification.error).toHaveBeenCalledWith({ message, duration: 2.5 })
+    expect(notification.error).toHaveBeenCalledWith({ message, duration: NOTIFICATION_DURATION })
   })
 })

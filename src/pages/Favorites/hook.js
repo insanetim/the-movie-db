@@ -17,7 +17,7 @@ const useContainer = () => {
     dispatch(fetchFavorites(page))
   }
 
-  const handleDelete = (event, movieId) => {
+  const handleDelete = (movieId, event) => {
     event.stopPropagation()
     const onOk = () => {
       dispatch(changeMovieInFavorites({ movieId, inFavorites: false }))

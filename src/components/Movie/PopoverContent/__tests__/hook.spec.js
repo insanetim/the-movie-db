@@ -44,9 +44,9 @@ describe('PopoverContent useContainer hook', () => {
     expect(setPopoverOpen).toHaveBeenCalledWith(false)
   })
 
-  it('checks `cb` method', () => {
+  it('checks `callback` method', () => {
     act(() => {
-      result.current.cb(3)
+      result.current.callback(3)
     })
 
     expect(dispatch).toHaveBeenCalledWith(addToList({ listId: 3, movieId: 1 }))

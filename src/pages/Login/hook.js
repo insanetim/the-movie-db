@@ -12,10 +12,10 @@ const useContainer = () => {
 
   const handleLogIn = ({ username, password }) => {
     const from = location.state?.from?.pathname || '/'
-    const cb = () => navigate(from, { replace: true })
-    dispatch(logIn({ username, password }, cb))
+    const callback = () => navigate(from, { replace: true })
+    dispatch(logIn({ username, password }, callback))
 
-    return cb
+    return callback
   }
 
   return { loading, handleLogIn }

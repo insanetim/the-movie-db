@@ -3,9 +3,9 @@ import PropTypes from 'prop-types'
 import { Modal, Form, Input } from 'antd'
 import useContainer from './hook'
 
-const CreateListModal = ({ onCancel, cb, ...rest }) => {
+const CreateListModal = ({ onCancel, callback, ...rest }) => {
   const [form] = Form.useForm()
-  const { handleOk, handleSubmit, handleAfterClose } = useContainer({ form, cb })
+  const { handleOk, handleSubmit, handleAfterClose } = useContainer({ form, callback })
 
   return (
     <Modal
@@ -41,11 +41,11 @@ const CreateListModal = ({ onCancel, cb, ...rest }) => {
 
 CreateListModal.propTypes = {
   onCancel: PropTypes.func.isRequired,
-  cb: PropTypes.func
+  callback: PropTypes.func
 }
 
 CreateListModal.defaultProps = {
-  cb: null
+  callback: null
 }
 
 export default CreateListModal

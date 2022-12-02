@@ -28,10 +28,10 @@ describe('bindId', () => {
         onClick: mockFn
       }
     }
-    const result = bindId([action], 1)
+    const result = bindId([action], 123)
     result[0].props.onClick('event')
 
     expect(result).toBeInstanceOf(Array)
-    expect(mockFn).toHaveBeenCalledWith('event', 1)
+    expect(mockFn).toHaveBeenCalledWith(123, 'event')
   })
 })

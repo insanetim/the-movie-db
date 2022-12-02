@@ -14,21 +14,21 @@ const useContainer = () => {
   const [loading, setLoading] = useState(true)
 
   const handleListDelete = () => {
-    const cb = () => {
+    const callback = () => {
       navigate('/lists')
     }
     const onOk = () => {
-      dispatch(deleteList(listId, cb))
+      dispatch(deleteList(listId, callback))
     }
     Modal.confirm({
       title: 'Do you want to delete list?',
       onOk
     })
 
-    return { cb, onOk }
+    return { callback, onOk }
   }
 
-  const handleMovieDelete = (event, movieId) => {
+  const handleMovieDelete = (movieId, event) => {
     event.stopPropagation()
     const onOk = () => {
       dispatch(removeFromList({ listId, movieId }))

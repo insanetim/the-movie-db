@@ -28,11 +28,11 @@ describe('Header useContainer hook', () => {
   })
 
   it('checks `handleLogOut` method', () => {
-    let cb
+    let callback
     act(() => {
-      cb = result.current.handleLogOut()
+      callback = result.current.handleLogOut()
     })
-    cb()
+    callback()
 
     expect(dispatch).toHaveBeenCalledWith(logOut())
     expect(navigate).toHaveBeenCalledWith('/login', { state: { from: {} } })

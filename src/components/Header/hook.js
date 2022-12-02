@@ -10,12 +10,12 @@ const useContainer = () => {
   const account = useSelector(accountSelector)
   const location = useLocation()
   const navigate = useNavigate()
-  const cb = useCallback(() => navigate('/login', { state: { from: location } }), [location, navigate])
+  const callback = useCallback(() => navigate('/login', { state: { from: location } }), [location, navigate])
 
   const handleLogOut = () => {
-    dispatch(logOut(cb))
+    dispatch(logOut(callback))
 
-    return cb
+    return callback
   }
 
   return { account, handleLogOut }

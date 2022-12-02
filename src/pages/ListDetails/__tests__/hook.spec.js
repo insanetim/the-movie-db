@@ -20,7 +20,7 @@ describe('ListDetails useContainer hook', () => {
 
   const navigate = jest.fn()
   useNavigate.mockReturnValue(navigate)
-  useParams.mockReturnValue({ listId: 1 })
+  useParams.mockReturnValue({ listId: 123 })
 
   jest.spyOn(Modal, 'confirm')
 
@@ -40,20 +40,20 @@ describe('ListDetails useContainer hook', () => {
       res = result.current.handleListDelete()
     })
     res.onOk()
-    res.cb()
+    res.callback()
 
     expect(Modal.confirm).toHaveBeenCalledWith({
       title: 'Do you want to delete list?',
       onOk: res.onOk
     })
-    expect(dispatch).toHaveBeenCalledWith(deleteList(1, res.cb))
+    expect(dispatch).toHaveBeenCalledWith(deleteList(123, res.callback))
     expect(navigate).toHaveBeenCalledWith('/lists')
   })
 
   it('checks `handleMovieDelete` method', () => {
     let onOk
     act(() => {
-      onOk = result.current.handleMovieDelete({ stopPropagation: jest.fn() }, 1)
+      onOk = result.current.handleMovieDelete(123, { stopPropagation: jest.fn() })
     })
     onOk()
 
@@ -61,7 +61,7 @@ describe('ListDetails useContainer hook', () => {
       title: 'Do you want to delete movie from this list?',
       onOk
     })
-    expect(dispatch).toHaveBeenCalledWith(removeFromList({ listId: 1, movieId: 1 }))
+    expect(dispatch).toHaveBeenCalledWith(removeFromList({ listId: 123, movieId: 123 }))
   })
 
   it('check `useEffect` method', () => {
@@ -70,7 +70,7 @@ describe('ListDetails useContainer hook', () => {
       result.current.onFinish()
     })
 
-    expect(dispatch).toHaveBeenCalledWith(fetchList(1, result.current.onFinish))
+    expect(dispatch).toHaveBeenCalledWith(fetchList(123, result.current.onFinish))
     expect(setState).toHaveBeenCalledWith(false)
   })
 })

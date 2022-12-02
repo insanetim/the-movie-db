@@ -17,7 +17,7 @@ const useContainer = () => {
     dispatch(fetchWatchlist(page))
   }
 
-  const handleDelete = (event, movieId) => {
+  const handleDelete = (movieId, event) => {
     event.stopPropagation()
     const onOk = () => {
       dispatch(changeMovieInWatchlist({ movieId, inWatchlist: false }))

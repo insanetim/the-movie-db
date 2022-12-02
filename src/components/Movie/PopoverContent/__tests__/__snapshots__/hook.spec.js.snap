@@ -2,7 +2,7 @@
 
 exports[`PopoverContent useContainer hook matches snapshot 1`] = `
 {
-  "cb": [Function],
+  "callback": [Function],
   "handleAddToList": [Function],
   "handleAddToNewList": [Function],
   "lists": {},
