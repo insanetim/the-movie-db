@@ -9,5 +9,6 @@ exports[`matches snapshot 1`] = `
     </Content>
   </Layout>
   <ModalRoot />
+  <NotificationsRoot />
 </Fragment>
 `;

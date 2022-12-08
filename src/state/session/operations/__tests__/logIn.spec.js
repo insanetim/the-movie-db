@@ -7,6 +7,10 @@ import logIn from '../logIn'
 
 jest.spyOn(Cookies, 'set')
 
+jest.mock('uuid', () => ({
+  v4: jest.fn(() => 'uuid/v4')
+}))
+
 describe('logIn', () => {
   const dispatch = jest.fn()
   const callback = jest.fn()
@@ -153,7 +157,7 @@ describe('logIn', () => {
 
     it('dispatches actions', () => {
       expect(dispatch).toHaveBeenCalledTimes(3)
-      expect(dispatch).toHaveBeenNthCalledWith(2, showNotification({ type: 'error', message: 'test/error' }))
+      expect(dispatch).toHaveBeenNthCalledWith(2, showNotification({ messageType: 'error', messageText: 'test/error' }))
     })
   })
 })

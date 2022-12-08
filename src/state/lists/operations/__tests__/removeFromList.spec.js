@@ -8,6 +8,10 @@ jest.mock('src/state/session/selectors', () => ({
   sessionIdSelector: jest.fn(() => 'session_id')
 }))
 
+jest.mock('uuid', () => ({
+  v4: jest.fn(() => 'uuid/v4')
+}))
+
 describe('removeFromList', () => {
   const dispatch = jest.fn()
 
@@ -103,10 +107,7 @@ describe('removeFromList', () => {
       expect(dispatch).toHaveBeenCalledTimes(2)
       expect(dispatch).toHaveBeenNthCalledWith(
         1,
-        showNotification({
-          type: 'success',
-          message: 'test/movie removed from test/list'
-        })
+        showNotification({ messageText: 'test/movie removed from test/list' })
       )
       expect(dispatch).toHaveBeenNthCalledWith(2, fetchList(123))
     })
@@ -125,7 +126,7 @@ describe('removeFromList', () => {
 
     it('dispatches actions', () => {
       expect(dispatch).toHaveBeenCalledTimes(1)
-      expect(dispatch).toHaveBeenCalledWith(showNotification({ type: 'error', message: 'test/error' }))
+      expect(dispatch).toHaveBeenCalledWith(showNotification({ messageType: 'error', messageText: 'test/error' }))
     })
   })
 })

@@ -4,6 +4,10 @@ import * as types from '../../types'
 import { setSearch, setSearchQuery } from '../../actions'
 import fetchSearch from '../fetchSearch'
 
+jest.mock('uuid', () => ({
+  v4: jest.fn(() => 'uuid/v4')
+}))
+
 describe('fetchSearch', () => {
   const dispatch = jest.fn()
 
@@ -82,7 +86,7 @@ describe('fetchSearch', () => {
 
     it('dispatches actions', () => {
       expect(dispatch).toHaveBeenCalledTimes(1)
-      expect(dispatch).toHaveBeenCalledWith(showNotification({ type: 'error', message: 'test/error' }))
+      expect(dispatch).toHaveBeenCalledWith(showNotification({ messageType: 'error', messageText: 'test/error' }))
     })
   })
 })

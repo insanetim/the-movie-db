@@ -8,6 +8,10 @@ jest.mock('src/state/session/selectors', () => ({
   sessionIdSelector: jest.fn(() => 'session_id')
 }))
 
+jest.mock('uuid', () => ({
+  v4: jest.fn(() => 'uuid/v4')
+}))
+
 describe('deleteList', () => {
   const dispatch = jest.fn()
   const callback = jest.fn()
@@ -104,8 +108,8 @@ describe('deleteList', () => {
       expect(dispatch).toHaveBeenNthCalledWith(
         1,
         showNotification({
-          type: 'success',
-          message: 'test/list list has been removed'
+          messageType: 'success',
+          messageText: 'test/list list has been removed'
         })
       )
     })

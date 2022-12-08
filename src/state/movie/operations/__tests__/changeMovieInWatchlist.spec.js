@@ -10,6 +10,10 @@ jest.mock('src/state/session/selectors', () => ({
   accountSelector: jest.fn(() => ({ id: 123 }))
 }))
 
+jest.mock('uuid', () => ({
+  v4: jest.fn(() => 'uuid/v4')
+}))
+
 describe('changeMovieInWatchlist', () => {
   const dispatch = jest.fn()
 
@@ -99,10 +103,7 @@ describe('changeMovieInWatchlist', () => {
       expect(dispatch).toHaveBeenCalledTimes(3)
       expect(dispatch).toHaveBeenNthCalledWith(1, fetchMovieStates(123))
       expect(dispatch).toHaveBeenNthCalledWith(2, fetchWatchlist())
-      expect(dispatch).toHaveBeenNthCalledWith(
-        3,
-        showNotification({ type: 'success', message: 'test/movie added to Watchlist' })
-      )
+      expect(dispatch).toHaveBeenNthCalledWith(3, showNotification({ messageText: 'test/movie added to Watchlist' }))
     })
   })
 
@@ -119,7 +120,7 @@ describe('changeMovieInWatchlist', () => {
 
     it('dispatches actions', () => {
       expect(dispatch).toHaveBeenCalledTimes(1)
-      expect(dispatch).toHaveBeenCalledWith(showNotification({ type: 'error', message: 'test/error' }))
+      expect(dispatch).toHaveBeenCalledWith(showNotification({ messageType: 'error', messageText: 'test/error' }))
     })
   })
 })

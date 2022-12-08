@@ -4,6 +4,10 @@ import * as types from '../../types'
 import { setTrending } from '../../actions'
 import fetchTrending from '../fetchTrending'
 
+jest.mock('uuid', () => ({
+  v4: jest.fn(() => 'uuid/v4')
+}))
+
 describe('fetchTrending', () => {
   let dispatch = jest.fn()
 
@@ -76,7 +80,7 @@ describe('fetchTrending', () => {
 
     it('dispatches actions', () => {
       expect(dispatch).toHaveBeenCalledTimes(1)
-      expect(dispatch).toHaveBeenCalledWith(showNotification({ type: 'error', message: 'test/error' }))
+      expect(dispatch).toHaveBeenCalledWith(showNotification({ messageType: 'error', messageText: 'test/error' }))
     })
   })
 })

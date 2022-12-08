@@ -9,6 +9,10 @@ jest.mock('src/state/session/selectors', () => ({
   accountSelector: jest.fn(() => ({ id: 123 }))
 }))
 
+jest.mock('uuid', () => ({
+  v4: jest.fn(() => 'uuid/v4')
+}))
+
 describe('fetchLists', () => {
   const dispatch = jest.fn()
   const callback = jest.fn()
@@ -108,7 +112,7 @@ describe('fetchLists', () => {
 
     it('dispatches actions', () => {
       expect(dispatch).toHaveBeenCalledTimes(1)
-      expect(dispatch).toHaveBeenCalledWith(showNotification({ type: 'error', message: 'test/error' }))
+      expect(dispatch).toHaveBeenCalledWith(showNotification({ messageType: 'error', messageText: 'test/error' }))
     })
   })
 })
