@@ -61,7 +61,8 @@
     "react-router-dom": "^6.4.1",
     "redux": "^4.2.0",
     "redux-logic": "^3.0.3",
-    "time-convert": "^0.0.2"
+    "time-convert": "^0.0.2",
+    "uuid": "^9.0.0"
   },
   "jest": {
     "setupFilesAfterEnv": [

@@ -22,7 +22,7 @@ const deleteList = createLogic({
       await httpClient.delete(endpoints.deleteList(listId), { params: { session_id: sessionId } })
     } catch (error) {
       const errorMessage = `${list.data.name} list has been removed`
-      dispatch(showNotification({ type: 'success', message: errorMessage }))
+      dispatch(showNotification({ messageText: errorMessage }))
     } finally {
       dispatch(fetchLists(null, callback))
     }

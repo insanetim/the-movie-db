@@ -23,7 +23,7 @@ const logOut = createLogic({
       if (typeof callback === 'function') callback()
     } catch (error) {
       const errorMessage = or(path(['response', 'data', 'status_message'], error), error.message)
-      dispatch(showNotification({ type: 'error', message: errorMessage }))
+      dispatch(showNotification({ messageType: 'error', messageText: errorMessage }))
     }
 
     done()

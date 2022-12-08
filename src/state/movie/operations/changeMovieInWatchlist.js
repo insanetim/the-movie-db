@@ -27,15 +27,15 @@ const changeMovieInWatchlist = createLogic({
       )
       dispatch(fetchMovieStates(movieId))
       dispatch(fetchWatchlist())
-      const message = ifElse(
+      const messageText = ifElse(
         equals(T()),
         always(`${movie.title} added to Watchlist`),
         always(`${movie.title} removed from Watchlist`)
       )(inWatchlist)
-      dispatch(showNotification({ type: 'success', message }))
+      dispatch(showNotification({ messageText }))
     } catch (error) {
       const errorMessage = or(path(['response', 'data', 'status_message'], error), error.message)
-      dispatch(showNotification({ type: 'error', message: errorMessage }))
+      dispatch(showNotification({ messageType: 'error', messageText: errorMessage }))
     }
 
     done()

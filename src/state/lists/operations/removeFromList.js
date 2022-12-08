@@ -24,12 +24,12 @@ const removeFromList = createLogic({
         { media_id: movieId },
         { params: { session_id: sessionId } }
       )
-      const message = `${movie.title} removed from ${list.name}`
-      dispatch(showNotification({ type: 'success', message }))
+      const messageText = `${movie.title} removed from ${list.name}`
+      dispatch(showNotification({ messageText }))
       dispatch(fetchList(listId))
     } catch (error) {
       const errorMessage = or(path(['response', 'data', 'status_message'], error), error.message)
-      dispatch(showNotification({ type: 'error', message: errorMessage }))
+      dispatch(showNotification({ messageType: 'error', messageText: errorMessage }))
     }
 
     done()

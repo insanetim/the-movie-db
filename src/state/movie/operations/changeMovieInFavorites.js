@@ -27,15 +27,15 @@ const changeMovieInFavorites = createLogic({
       )
       dispatch(fetchMovieStates(movieId))
       dispatch(fetchFavorites())
-      const message = ifElse(
+      const messageText = ifElse(
         equals(T()),
         always(`${movie.title} added to Favorites`),
         always(`${movie.title} removed from Favorites`)
       )(inFavorites)
-      dispatch(showNotification({ type: 'success', message }))
+      dispatch(showNotification({ messageText }))
     } catch (error) {
       const errorMessage = or(path(['response', 'data', 'status_message'], error), error.message)
-      dispatch(showNotification({ type: 'error', message: errorMessage }))
+      dispatch(showNotification({ messageType: 'error', messageText: errorMessage }))
     }
 
     done()
