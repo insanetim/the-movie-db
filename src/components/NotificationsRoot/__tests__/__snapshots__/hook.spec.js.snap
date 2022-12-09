@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NotificationsRoot useContainer hook matches snapshot 1`] = `
+{
+  "hideNotification": [Function],
+  "notifications": [
+    {
+      "duration": 2.5,
+      "id": "test/id",
+      "messageText": "test/message",
+      "messageType": "success",
+    },
+  ],
+}
+`;
