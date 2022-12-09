@@ -1,3 +1,1 @@
-import ImageGallery from './component'
-
-export default ImageGallery
+export { default } from './component'

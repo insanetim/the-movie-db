@@ -1,3 +1,1 @@
-import Login from './component'
-
-export default Login
+export { default } from './component'

@@ -1,3 +1,1 @@
-import sessionReducer from './reducers'
-
-export default sessionReducer
+export { default } from './reducer'

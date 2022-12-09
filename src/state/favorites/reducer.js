@@ -1,6 +1,6 @@
 import * as types from './types'
 
-export default function favoritesReducer(state = {}, action) {
+const favoritesReducer = (state = {}, action) => {
   switch (action.type) {
     case types.SET_FAVORITES:
       return action.payload
@@ -8,3 +8,5 @@ export default function favoritesReducer(state = {}, action) {
       return state
   }
 }
+
+export default favoritesReducer

@@ -1,3 +1,1 @@
-import watchlistReducer from './reducers'
-
-export default watchlistReducer
+export { default } from './reducer'

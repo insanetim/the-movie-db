@@ -1,3 +1,1 @@
-import listsReducer from './reducers'
-
-export default listsReducer
+export { default } from './reducer'

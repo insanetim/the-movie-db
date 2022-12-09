@@ -1,3 +1,1 @@
-import movieReducer from './reducers'
-
-export default movieReducer
+export { default } from './reducer'

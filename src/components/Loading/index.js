@@ -1,3 +1,1 @@
-import Loading from './component'
-
-export default Loading
+export { default } from './component'

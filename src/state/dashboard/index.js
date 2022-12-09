@@ -1,3 +1,1 @@
-import dashboardReducer from './reducers'
-
-export default dashboardReducer
+export { default } from './reducer'

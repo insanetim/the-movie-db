@@ -1,3 +1,1 @@
-import Dashboard from './component'
-
-export default Dashboard
+export { default } from './component'

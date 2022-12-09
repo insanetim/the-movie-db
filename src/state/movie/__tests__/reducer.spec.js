@@ -1,17 +1,17 @@
 import * as types from '../types'
-import reducer from '../reducers'
+import reducer from '../reducer'
 
 describe('movieReducer', () => {
-  it('should return initialState', () => {
-    expect(reducer(undefined, {})).toEqual({})
+  it('returns initial state', () => {
+    expect(reducer(undefined, { type: 'unknown' })).toEqual({})
   })
 
   it('should handle SET_MOVIE', () => {
     const action = {
       type: types.SET_MOVIE,
-      payload: { id: 1 }
+      payload: { id: 123 }
     }
-    expect(reducer(undefined, action)).toEqual({ id: 1 })
+    expect(reducer(undefined, action)).toEqual({ id: 123 })
   })
 
   it('should handle SET_MOVIE_STATES', () => {
@@ -19,7 +19,7 @@ describe('movieReducer', () => {
       type: types.SET_MOVIE_STATES,
       payload: { favorite: true, watchlist: true }
     }
-    expect(reducer({ accountStates: { favorite: false } }, action)).toEqual({
+    expect(reducer({ accountStates: { favorite: false, watchlist: false } }, action)).toEqual({
       accountStates: { favorite: true, watchlist: true }
     })
   })

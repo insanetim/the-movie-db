@@ -1,3 +1,1 @@
-import DashboardSearchResult from './component'
-
-export default DashboardSearchResult
+export { default } from './component'

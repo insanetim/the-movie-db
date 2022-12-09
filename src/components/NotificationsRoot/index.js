@@ -1,3 +1,1 @@
-import NotificationsRoot from './component'
-
-export default NotificationsRoot
+export { default } from './component'

@@ -2,7 +2,7 @@ import { mergeDeepRight } from 'ramda'
 
 import * as types from './types'
 
-export default function movieReducer(state = {}, action) {
+const movieReducer = (state = {}, action) => {
   switch (action.type) {
     case types.SET_MOVIE:
       return action.payload
@@ -12,3 +12,5 @@ export default function movieReducer(state = {}, action) {
       return state
   }
 }
+
+export default movieReducer

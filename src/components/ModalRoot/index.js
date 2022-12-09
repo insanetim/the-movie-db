@@ -1,3 +1,1 @@
-import ModalRoot from './component'
-
-export default ModalRoot
+export { default } from './component'

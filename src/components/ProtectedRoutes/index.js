@@ -1,3 +1,1 @@
-import ProtectedRoutes from './component'
-
-export default ProtectedRoutes
+export { default } from './component'

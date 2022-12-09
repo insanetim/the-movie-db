@@ -1,3 +1,1 @@
-import favoritesReducer from './reducers'
-
-export default favoritesReducer
+export { default } from './reducer'

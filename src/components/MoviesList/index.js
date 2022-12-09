@@ -1,3 +1,1 @@
-import MoviesList from './component'
-
-export default MoviesList
+export { default } from './component'

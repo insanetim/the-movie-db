@@ -1,3 +1,1 @@
-import PopoverContent from './component'
-
-export default PopoverContent
+export { default } from './component'
