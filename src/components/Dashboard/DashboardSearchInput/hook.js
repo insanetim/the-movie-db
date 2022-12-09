@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
 
 import { clearSearch, fetchSearch } from 'src/state/dashboard/actions'
 import { searchQuerySelector } from 'src/state/dashboard/selectors'
-import { useNavigate } from 'react-router-dom'
 
 const useContainer = () => {
   const dispatch = useDispatch()

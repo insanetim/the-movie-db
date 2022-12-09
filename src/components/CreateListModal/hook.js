@@ -1,4 +1,5 @@
 import { useDispatch } from 'react-redux'
+
 import { hideModal } from 'src/state/app/actions'
 import { createList } from 'src/state/lists/actions'
 
