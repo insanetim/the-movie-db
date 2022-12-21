@@ -59,12 +59,12 @@ body,
 }
 
 .ant-card-cover--no-image {
-  display: flex;
+  display: flex !important;
   justify-content: center;
   align-items: center;
-  width: 100%;
   aspect-ratio: calc(5 / 7.5);
   background-color: #dbdbdb;
+  border-radius: 8px 8px 0 0;
   img {
     width: 50%;
   }
