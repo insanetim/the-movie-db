@@ -28,7 +28,7 @@ exports[`matches snapshot 1`] = `
     }
   }
 >
-  <ForwardRef
+  <Card
     className="top-margin"
     cover={
       <img
@@ -41,7 +41,7 @@ exports[`matches snapshot 1`] = `
       description=""
       title=""
     />
-  </ForwardRef>
+  </Card>
 </Col>
 `;
 
@@ -73,7 +73,7 @@ exports[`matches snapshot with NoImage 1`] = `
     }
   }
 >
-  <ForwardRef
+  <Card
     className="top-margin"
     cover={
       <div
@@ -90,6 +90,6 @@ exports[`matches snapshot with NoImage 1`] = `
       description=""
       title=""
     />
-  </ForwardRef>
+  </Card>
 </Col>
 `;

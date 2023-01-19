@@ -5,7 +5,7 @@ exports[`matches snapshot 1`] = `
   <Col
     span={24}
   >
-    <ForwardRef
+    <Carousel
       autoplay={true}
     >
       <div
@@ -17,7 +17,7 @@ exports[`matches snapshot 1`] = `
           src="https://image.tmdb.org/t/p/originaltest/image"
         />
       </div>
-    </ForwardRef>
+    </Carousel>
   </Col>
 </Row>
 `;

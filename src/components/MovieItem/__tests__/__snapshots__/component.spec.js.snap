@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`MovieItem component matches snapshot 1`] = `
-<ForwardRef
+<Card
   actions={
     [
       <div
@@ -23,11 +23,11 @@ exports[`MovieItem component matches snapshot 1`] = `
     description="test/overview"
     title="test/title"
   />
-</ForwardRef>
+</Card>
 `;
 
 exports[`MovieItem component matches snapshot with NoImage 1`] = `
-<ForwardRef
+<Card
   actions={[]}
   className="top-margin"
   cover={
@@ -47,5 +47,5 @@ exports[`MovieItem component matches snapshot with NoImage 1`] = `
     description="test/overview"
     title="test/title"
   />
-</ForwardRef>
+</Card>
 `;

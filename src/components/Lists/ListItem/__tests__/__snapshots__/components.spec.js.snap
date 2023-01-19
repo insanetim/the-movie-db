@@ -24,7 +24,7 @@ exports[`matches snapshot 1`] = `
     }
   }
 >
-  <ForwardRef
+  <Card
     actions={
       [
         <ForwardRef(DeleteOutlined)
@@ -42,6 +42,6 @@ exports[`matches snapshot 1`] = `
       Test list
     </ForwardRef>
     Test description
-  </ForwardRef>
+  </Card>
 </Col>
 `;

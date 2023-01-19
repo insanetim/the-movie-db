@@ -25,7 +25,7 @@ exports[`Movie component tests matches snapshot 1`] = `
         <ForwardRef>
           <span>
             test/title
-             (2022)
+             (2023)
           </span>
            
           <Popover
@@ -257,7 +257,7 @@ exports[`Movie component tests matches snapshot with other data 1`] = `
         <ForwardRef>
           <span>
             test/title
-             (2022)
+             (2023)
           </span>
            
           <Popover

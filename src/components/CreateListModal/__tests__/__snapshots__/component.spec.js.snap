@@ -50,7 +50,7 @@ exports[`CreateListModal component tests matches snapshot 1`] = `
         ]
       }
     >
-      <ForwardRef
+      <Input
         placeholder="Name"
       />
     </InternalFormItem>
@@ -65,7 +65,7 @@ exports[`CreateListModal component tests matches snapshot 1`] = `
         ]
       }
     >
-      <ForwardRef
+      <Input
         placeholder="Description"
       />
     </InternalFormItem>
