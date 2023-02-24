@@ -2,7 +2,9 @@
 
 exports[`matches snapshot 1`] = `
 <Fragment>
-  <DashboardSearchInput />
+  <DashboardSearchInput
+    searchQuery={null}
+  />
   <div
     className="top-margin"
   >
@@ -13,11 +15,15 @@ exports[`matches snapshot 1`] = `
 
 exports[`matches snapshot with searchQuery 1`] = `
 <Fragment>
-  <DashboardSearchInput />
+  <DashboardSearchInput
+    searchQuery="test/search"
+  />
   <div
     className="top-margin"
   >
-    <DashboardSearchResult />
+    <DashboardSearchResult
+      searchQuery="test/search"
+    />
   </div>
 </Fragment>
 `;

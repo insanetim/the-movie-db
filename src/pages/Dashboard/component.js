@@ -10,8 +10,10 @@ const Dashboard = () => {
 
   return (
     <>
-      <DashboardSearchInput />
-      <div className='top-margin'>{searchQuery ? <DashboardSearchResult /> : <DashboardTrending />}</div>
+      <DashboardSearchInput searchQuery={searchQuery} />
+      <div className='top-margin'>
+        {searchQuery ? <DashboardSearchResult searchQuery={searchQuery} /> : <DashboardTrending />}
+      </div>
     </>
   )
 }

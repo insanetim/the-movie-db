@@ -1,7 +1,7 @@
 import mockHttpClient from 'src/__mocks__/mockHttpClient'
 import { showNotification } from 'src/state/app/actions'
 import * as types from '../../types'
-import { setSearch, setSearchQuery } from '../../actions'
+import { setSearch } from '../../actions'
 import fetchSearch from '../fetchSearch'
 
 jest.mock('uuid', () => ({
@@ -67,9 +67,8 @@ describe('fetchSearch', () => {
     })
 
     it('dispatches actions', () => {
-      expect(dispatch).toHaveBeenCalledTimes(2)
-      expect(dispatch).toHaveBeenNthCalledWith(1, setSearch(response.data))
-      expect(dispatch).toHaveBeenNthCalledWith(2, setSearchQuery('test/search'))
+      expect(dispatch).toHaveBeenCalledTimes(1)
+      expect(dispatch).toHaveBeenCalledWith(setSearch(response.data))
     })
   })
 

@@ -9,14 +9,7 @@ it('trendingSelector', () => {
 
 it('searchSelector', () => {
   const search = 'test/search'
-  const state = { dashboard: { search: { search } } }
+  const state = { dashboard: { search } }
 
   expect(selectors.searchSelector(state)).toEqual(search)
-})
-
-it('searchQuerySelector', () => {
-  const searchQuery = 'test/searchQuery'
-  const state = { dashboard: { search: { searchQuery } } }
-
-  expect(selectors.searchQuerySelector(state)).toEqual(searchQuery)
 })

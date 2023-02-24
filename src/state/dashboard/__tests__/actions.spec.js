@@ -37,15 +37,6 @@ it('setSearch', () => {
   expect(actions.setSearch({})).toEqual(expectedAction)
 })
 
-it('setSearchQuery', () => {
-  const expectedAction = {
-    type: types.SET_SEARCH_QUERY,
-    payload: {}
-  }
-
-  expect(actions.setSearchQuery({})).toEqual(expectedAction)
-})
-
 it('clearSearch', () => {
   const expectedAction = {
     type: types.CLEAR_SEARCH

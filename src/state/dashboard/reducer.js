@@ -11,19 +11,12 @@ export const trending = (state = {}, action) => {
   }
 }
 
-const searchInitialState = {
-  search: {},
-  searchQuery: null
-}
-
-export const search = (state = searchInitialState, action) => {
+export const search = (state = {}, action) => {
   switch (action.type) {
     case types.SET_SEARCH:
-      return { ...state, search: action.payload }
-    case types.SET_SEARCH_QUERY:
-      return { ...state, searchQuery: action.payload }
+      return action.payload
     case types.CLEAR_SEARCH:
-      return { search: {}, searchQuery: null }
+      return {}
     default:
       return state
   }

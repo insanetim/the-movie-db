@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import { act, renderHook } from '@testing-library/react-hooks'
 
 import { dispatch } from 'src/__mocks__/react-redux'
-import { clearSearch, fetchSearch } from 'src/state/dashboard/actions'
+import { clearSearch } from 'src/state/dashboard/actions'
 import useContainer from '../hook'
 
 jest.mock('src/state/dashboard/selectors', () => ({
@@ -20,7 +20,7 @@ describe('DashboardSearchInput useContainer hook', () => {
   useNavigate.mockReturnValue(navigate)
 
   beforeEach(() => {
-    ;({ result } = renderHook(useContainer))
+    ;({ result } = renderHook(() => useContainer(null)))
 
     jest.clearAllMocks()
   })
@@ -46,8 +46,7 @@ describe('DashboardSearchInput useContainer hook', () => {
       result.current.handleSearch('value')
     })
 
-    expect(dispatch).toHaveBeenCalledWith(fetchSearch({ query: 'value' }))
-    expect(navigate).toHaveBeenCalledWith({ search: 'search=value' })
+    expect(navigate).toHaveBeenCalledWith({ pathname: '/', search: 'search=value' })
   })
 
   it('checks `handleSearch` method without value', () => {

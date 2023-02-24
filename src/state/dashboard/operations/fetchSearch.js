@@ -4,7 +4,7 @@ import { or, path, pathOr } from 'ramda'
 import * as endpoints from 'src/constants/endpoints'
 import { showNotification } from 'src/state/app/actions'
 import * as types from '../types'
-import { setSearch, setSearchQuery } from '../actions'
+import { setSearch } from '../actions'
 
 const fetchSearch = createLogic({
   type: types.FETCH_SEARCH,
@@ -19,7 +19,6 @@ const fetchSearch = createLogic({
         params: { query, page }
       })
       dispatch(setSearch(data))
-      dispatch(setSearchQuery(query))
     } catch (error) {
       const errorMessage = or(path(['response', 'data', 'status_message'], error), error.message)
       dispatch(showNotification({ messageType: 'error', messageText: errorMessage }))
