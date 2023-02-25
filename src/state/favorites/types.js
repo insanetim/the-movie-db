@@ -1,2 +1,5 @@
-export const FETCH_FAVORITES = 'favorites/FETCH_FAVORITES'
-export const SET_FAVORITES = 'favorites/SET_FAVORITES'
+export const FETCH_FAVORITES = 'watchlist/FETCH_FAVORITES'
+export const FETCH_FAVORITES_REQUEST = 'watchlist/FETCH_FAVORITES_REQUEST'
+export const FETCH_FAVORITES_SUCCESS = 'watchlist/FETCH_FAVORITES_SUCCESS'
+export const FETCH_FAVORITES_FAILURE = 'watchlist/FETCH_FAVORITES_FAILURE'
+export const SET_FAVORITES_PAGE = 'watchlist/SET_FAVORITES_PAGE'

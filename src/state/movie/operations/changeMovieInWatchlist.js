@@ -26,7 +26,7 @@ const changeMovieInWatchlist = createLogic({
         { params: { session_id: sessionId } }
       )
       dispatch(fetchMovieStates(movieId))
-      dispatch(fetchWatchlist())
+      dispatch(fetchWatchlist(1))
       const messageText = ifElse(
         equals(T()),
         always(`${movie.title} added to Watchlist`),

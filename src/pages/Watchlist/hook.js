@@ -3,18 +3,26 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Modal } from 'antd'
 import { not, isEmpty } from 'ramda'
 
-import { fetchWatchlist } from 'src/state/watchlist/actions'
+import { fetchWatchlist, setWatchlistPage } from 'src/state/watchlist/actions'
 import { changeMovieInWatchlist } from 'src/state/movie/actions'
 import { accountSelector } from 'src/state/session/selectors'
-import { watchlistSelector } from 'src/state/watchlist/selectors'
+import {
+  watchlistMoviesSelector,
+  watchlistPageSelector,
+  watchlistLoadingSelector,
+  watchlistErrorSelector
+} from 'src/state/watchlist/selectors'
 
 const useContainer = () => {
   const dispatch = useDispatch()
   const account = useSelector(accountSelector)
-  const watchlist = useSelector(watchlistSelector)
+  const movies = useSelector(watchlistMoviesSelector)
+  const page = useSelector(watchlistPageSelector)
+  const loading = useSelector(watchlistLoadingSelector)
+  const error = useSelector(watchlistErrorSelector)
 
-  const handlePagination = page => {
-    dispatch(fetchWatchlist(page))
+  const handlePagination = nextPage => {
+    dispatch(setWatchlistPage(nextPage))
   }
 
   const handleDelete = (movieId, event) => {
@@ -32,11 +40,11 @@ const useContainer = () => {
 
   useEffect(() => {
     if (not(isEmpty(account))) {
-      dispatch(fetchWatchlist())
+      dispatch(fetchWatchlist(page))
     }
-  }, [account])
+  }, [account, page])
 
-  return { watchlist, handlePagination, handleDelete }
+  return { movies, loading, error, handlePagination, handleDelete }
 }
 
 export default useContainer

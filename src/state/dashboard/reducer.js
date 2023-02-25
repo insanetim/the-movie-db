@@ -13,8 +13,8 @@ export const trending = (state = trendingInitalState, action) => {
   switch (action.type) {
     case types.FETCH_TRENDING_REQUEST:
       return {
-        ...state,
         movies: {},
+        page: action.payload,
         loading: true,
         error: null
       }
@@ -25,7 +25,7 @@ export const trending = (state = trendingInitalState, action) => {
         loading: false,
         error: null
       }
-    case types.FETCH_TRENDING_ERROR:
+    case types.FETCH_TRENDING_FAILURE:
       return {
         movies: {},
         page: 1,
@@ -53,8 +53,8 @@ export const search = (state = searchInitalState, action) => {
   switch (action.type) {
     case types.FETCH_SEARCH_REQUEST:
       return {
-        ...state,
         movies: {},
+        page: action.payload,
         loading: true,
         error: null
       }
@@ -65,7 +65,7 @@ export const search = (state = searchInitalState, action) => {
         loading: false,
         error: null
       }
-    case types.FETCH_SEARCH_ERROR:
+    case types.FETCH_SEARCH_FAILURE:
       return {
         movies: {},
         page: 1,

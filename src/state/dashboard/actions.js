@@ -5,8 +5,9 @@ export const fetchTrending = page => ({
   payload: page
 })
 
-export const fetchTrendingRequest = () => ({
-  type: types.FETCH_TRENDING_REQUEST
+export const fetchTrendingRequest = page => ({
+  type: types.FETCH_TRENDING_REQUEST,
+  payload: page
 })
 
 export const fetchTrendingSuccess = movies => ({
@@ -14,8 +15,8 @@ export const fetchTrendingSuccess = movies => ({
   payload: movies
 })
 
-export const fetchTrendingError = error => ({
-  type: types.FETCH_TRENDING_ERROR,
+export const fetchTrendingFailure = error => ({
+  type: types.FETCH_TRENDING_FAILURE,
   payload: error
 })
 
@@ -29,8 +30,9 @@ export const fetchSearch = ({ page, query }) => ({
   payload: { page, query }
 })
 
-export const fetchSearchRequest = () => ({
-  type: types.FETCH_SEARCH_REQUEST
+export const fetchSearchRequest = page => ({
+  type: types.FETCH_SEARCH_REQUEST,
+  payload: page
 })
 
 export const fetchSearchSuccess = movies => ({
@@ -38,8 +40,8 @@ export const fetchSearchSuccess = movies => ({
   payload: movies
 })
 
-export const fetchSearchError = error => ({
-  type: types.FETCH_SEARCH_ERROR,
+export const fetchSearchFailure = error => ({
+  type: types.FETCH_SEARCH_FAILURE,
   payload: error
 })
 

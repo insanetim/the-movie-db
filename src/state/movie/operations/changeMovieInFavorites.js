@@ -26,7 +26,7 @@ const changeMovieInFavorites = createLogic({
         { params: { session_id: sessionId } }
       )
       dispatch(fetchMovieStates(movieId))
-      dispatch(fetchFavorites())
+      dispatch(fetchFavorites(1))
       const messageText = ifElse(
         equals(T()),
         always(`${movie.title} added to Favorites`),

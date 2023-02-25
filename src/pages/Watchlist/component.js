@@ -1,14 +1,15 @@
 import React from 'react'
 import { Row, Col, Typography } from 'antd'
 import { DeleteOutlined } from '@ant-design/icons'
-import { isEmpty } from 'ramda'
+import { isEmpty, not } from 'ramda'
 
 import MoviesList from 'src/components/MoviesList'
 import Loading from 'src/components/Loading'
+import Error from 'src/components/Error'
 import useContainer from './hook'
 
 const Watchlist = () => {
-  const { watchlist, handlePagination, handleDelete } = useContainer()
+  const { movies, loading, error, handlePagination, handleDelete } = useContainer()
 
   return (
     <>
@@ -22,11 +23,11 @@ const Watchlist = () => {
           </div>
         </Col>
       </Row>
-      {isEmpty(watchlist) ? (
-        <Loading />
-      ) : (
+      {loading && <Loading />}
+      {error && <Error error={error} />}
+      {not(isEmpty(movies)) && (
         <MoviesList
-          movies={watchlist}
+          movies={movies}
           actions={[
             <DeleteOutlined
               key='delete'

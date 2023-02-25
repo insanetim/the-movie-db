@@ -3,18 +3,26 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Modal } from 'antd'
 import { not, isEmpty } from 'ramda'
 
-import { fetchFavorites } from 'src/state/favorites/actions'
+import { fetchFavorites, setFavoritesPage } from 'src/state/favorites/actions'
 import { changeMovieInFavorites } from 'src/state/movie/actions'
 import { accountSelector } from 'src/state/session/selectors'
-import { favoritesSelector } from 'src/state/favorites/selectors'
+import {
+  favoritesMoviesSelector,
+  favoritesPageSelector,
+  favoritesLoadingSelector,
+  favoritesErrorSelector
+} from 'src/state/favorites/selectors'
 
 const useContainer = () => {
   const dispatch = useDispatch()
   const account = useSelector(accountSelector)
-  const favorites = useSelector(favoritesSelector)
+  const movies = useSelector(favoritesMoviesSelector)
+  const page = useSelector(favoritesPageSelector)
+  const loading = useSelector(favoritesLoadingSelector)
+  const error = useSelector(favoritesErrorSelector)
 
-  const handlePagination = page => {
-    dispatch(fetchFavorites(page))
+  const handlePagination = nextPage => {
+    dispatch(setFavoritesPage(nextPage))
   }
 
   const handleDelete = (movieId, event) => {
@@ -32,11 +40,11 @@ const useContainer = () => {
 
   useEffect(() => {
     if (not(isEmpty(account))) {
-      dispatch(fetchFavorites())
+      dispatch(fetchFavorites(page))
     }
-  }, [account])
+  }, [account, page])
 
-  return { favorites, handlePagination, handleDelete }
+  return { movies, loading, error, handlePagination, handleDelete }
 }
 
 export default useContainer

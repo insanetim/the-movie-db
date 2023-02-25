@@ -1,11 +1,26 @@
 import * as types from './types'
 
-export const fetchFavorites = payload => ({
+export const fetchFavorites = page => ({
   type: types.FETCH_FAVORITES,
-  payload
+  payload: page
 })
 
-export const setFavorites = payload => ({
-  type: types.SET_FAVORITES,
-  payload
+export const fetchFavoritesRequest = page => ({
+  type: types.FETCH_FAVORITES_REQUEST,
+  payload: page
+})
+
+export const fetchFavoritesSuccess = movies => ({
+  type: types.FETCH_FAVORITES_SUCCESS,
+  payload: movies
+})
+
+export const fetchFavoritesFailure = error => ({
+  type: types.FETCH_FAVORITES_FAILURE,
+  payload: error
+})
+
+export const setFavoritesPage = page => ({
+  type: types.SET_FAVORITES_PAGE,
+  payload: page
 })
