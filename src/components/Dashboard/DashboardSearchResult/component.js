@@ -1,16 +1,20 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { isEmpty } from 'ramda'
 
-import Loading from 'src/components/Loading'
 import MoviesList from 'src/components/MoviesList'
+import Loading from 'src/components/Loading'
+import Error from 'src/components/Error'
 import useContainer from './hook'
 
 const DashboardSearchResult = ({ searchQuery }) => {
-  const { movies, handlePagination } = useContainer(searchQuery)
+  const { movies, loading, error, handlePagination } = useContainer(searchQuery)
 
-  if (isEmpty(movies)) {
+  if (loading) {
     return <Loading />
+  }
+
+  if (error) {
+    return <Error error={error} />
   }
 
   return (

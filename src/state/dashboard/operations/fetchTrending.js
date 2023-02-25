@@ -1,24 +1,23 @@
 import { createLogic } from 'redux-logic'
-import { or, path, pathOr } from 'ramda'
 
 import * as endpoints from 'src/constants/endpoints'
-import { showNotification } from 'src/state/app/actions'
 import * as types from '../types'
-import { setTrending } from '../actions'
+import { fetchTrendingRequest, fetchTrendingSuccess, fetchTrendingError } from '../actions'
 
 const fetchTrending = createLogic({
   type: types.FETCH_TRENDING,
   latest: true,
 
   async process({ httpClient, action }, dispatch, done) {
-    const page = pathOr(1, ['payload'], action)
+    const { page } = action
+
+    dispatch(fetchTrendingRequest())
 
     try {
       const { data } = await httpClient.get(endpoints.getTrending, { params: { page } })
-      dispatch(setTrending(data))
+      dispatch(fetchTrendingSuccess(data))
     } catch (error) {
-      const errorMessage = or(path(['response', 'data', 'status_message'], error), error.message)
-      dispatch(showNotification({ messageType: 'error', messageText: errorMessage }))
+      dispatch(fetchTrendingError(error))
     }
 
     done()

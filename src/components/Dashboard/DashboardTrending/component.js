@@ -1,15 +1,19 @@
 import React from 'react'
-import { isEmpty } from 'ramda'
 
-import Loading from 'src/components/Loading'
 import MoviesList from 'src/components/MoviesList'
+import Loading from 'src/components/Loading'
+import Error from 'src/components/Error'
 import useContainer from './hook'
 
 const DashboardTrending = () => {
-  const { movies, handlePagination } = useContainer()
+  const { movies, loading, error, handlePagination } = useContainer()
 
-  if (isEmpty(movies)) {
+  if (loading) {
     return <Loading />
+  }
+
+  if (error) {
+    return <Error error={error} />
   }
 
   return (

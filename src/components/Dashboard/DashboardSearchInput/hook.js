@@ -1,10 +1,7 @@
 import { useState, useEffect } from 'react'
-import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
-import { clearSearch } from 'src/state/dashboard/actions'
 
 const useContainer = searchQuery => {
-  const dispatch = useDispatch()
   const [currentValue, setCurrentValue] = useState(searchQuery)
   const navigate = useNavigate()
 
@@ -16,7 +13,6 @@ const useContainer = searchQuery => {
     if (value.trim()) {
       navigate({ pathname: '/', search: `search=${value}` })
     } else {
-      dispatch(clearSearch())
       navigate('/')
     }
   }

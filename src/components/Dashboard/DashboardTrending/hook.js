@@ -1,25 +1,30 @@
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { isEmpty } from 'ramda'
 
-import { fetchTrending } from 'src/state/dashboard/actions'
-import { trendingSelector } from 'src/state/dashboard/selectors'
+import { fetchTrending, setTrendingPage } from 'src/state/dashboard/actions'
+import {
+  trendingMoviesSelector,
+  trendingPageSelector,
+  trendingLoadingSelector,
+  trendingErrorSelector
+} from 'src/state/dashboard/selectors'
 
 const useContainer = () => {
   const dispatch = useDispatch()
-  const trending = useSelector(trendingSelector)
+  const movies = useSelector(trendingMoviesSelector)
+  const page = useSelector(trendingPageSelector)
+  const loading = useSelector(trendingLoadingSelector)
+  const error = useSelector(trendingErrorSelector)
 
-  const handlePagination = page => {
-    dispatch(fetchTrending(page))
+  const handlePagination = nextPage => {
+    dispatch(setTrendingPage(nextPage))
   }
 
   useEffect(() => {
-    if (isEmpty(trending)) {
-      dispatch(fetchTrending())
-    }
-  }, [])
+    dispatch(fetchTrending(page))
+  }, [page])
 
-  return { movies: trending, handlePagination }
+  return { movies, loading, error, handlePagination }
 }
 
 export default useContainer
