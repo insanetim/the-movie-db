@@ -8,6 +8,25 @@ module.exports = (env = {}) => {
 
   const getStyleLoaders = () => [isDev ? 'style-loader' : MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader']
 
+  const getPlugins = () => {
+    const plugins = [
+      new HtmlWebpackPlugin({
+        template: path.join(__dirname, 'public', 'index.html'),
+        filename: 'index.html'
+      })
+    ]
+
+    if (!isDev) {
+      plugins.push(
+        new MiniCssExtractPlugin({
+          filename: 'style.css'
+        })
+      )
+    }
+
+    return plugins
+  }
+
   return {
     mode,
 
@@ -36,15 +55,7 @@ module.exports = (env = {}) => {
       ]
     },
 
-    plugins: [
-      new HtmlWebpackPlugin({
-        template: path.join(__dirname, 'public', 'index.html'),
-        filename: 'index.html'
-      }),
-      new MiniCssExtractPlugin({
-        filename: 'style.css'
-      })
-    ],
+    plugins: getPlugins(),
 
     devServer: {
       open: true,
@@ -63,12 +74,12 @@ module.exports = (env = {}) => {
       }
     },
 
-    devtool: isDev ? 'eval-source-map' : false,
-
     performance: {
       hints: false,
       maxEntrypointSize: 512000,
       maxAssetSize: 512000
-    }
+    },
+
+    devtool: isDev ? 'eval-source-map' : false
   }
 }
