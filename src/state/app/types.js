@@ -1,5 +1,3 @@
-export const LOADING_ON = 'app/LOADING_ON'
-export const LOADING_OFF = 'app/LOADING_OFF'
 export const SHOW_MODAL = 'app/SHOW_MODAL'
 export const HIDE_MODAL = 'app/HIDE_MODAL'
 export const SHOW_NOTIFICATION = 'app/SHOW_NOTIFICATION'

@@ -1,6 +1,6 @@
 import { createLogic } from 'redux-logic'
 import Cookies from 'js-cookie'
-import { or, path, pathOr } from 'ramda'
+import { or, path } from 'ramda'
 
 import * as endpoints from 'src/constants/endpoints'
 import { showNotification } from 'src/state/app/actions'
@@ -14,7 +14,7 @@ const logOut = createLogic({
 
   async process({ httpClient, getState, action }, dispatch, done) {
     const sessionId = sessionIdSelector(getState())
-    const callback = pathOr(null, ['callback'], action)
+    const callback = action.payload
 
     try {
       await httpClient.delete(endpoints.deleteSession, { data: { session_id: sessionId } })

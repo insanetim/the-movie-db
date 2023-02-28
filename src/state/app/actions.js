@@ -4,14 +4,6 @@ import { NOTIFICATION_DURATION, NOTIFICATION_TYPE } from 'src/constants'
 
 import * as types from './types'
 
-export const loadingOn = () => ({
-  type: types.LOADING_ON
-})
-
-export const loadingOff = () => ({
-  type: types.LOADING_OFF
-})
-
 export const showModal = payload => ({
   type: types.SHOW_MODAL,
   payload

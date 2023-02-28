@@ -1,7 +1,7 @@
 import mockHttpClient from 'src/__mocks__/mockHttpClient'
 import { showNotification } from 'src/state/app/actions'
 import * as types from '../../types'
-import { setAccount } from '../../actions'
+import { fetchAccountSuccess } from '../../actions'
 import fetchAccount from '../fetchAccount'
 
 jest.mock('src/state/session/selectors', () => ({
@@ -63,7 +63,7 @@ describe('fetchAccount', () => {
 
     it('dispatches actions', () => {
       expect(dispatch).toHaveBeenCalledTimes(1)
-      expect(dispatch).toHaveBeenCalledWith(setAccount(response.data))
+      expect(dispatch).toHaveBeenCalledWith(fetchAccountSuccess(response.data))
     })
   })
 

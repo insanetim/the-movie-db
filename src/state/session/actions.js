@@ -1,19 +1,18 @@
 import * as types from './types'
 
-export const logIn = (payload, callback) => ({
+export const logIn = ({ userData, callback }) => ({
   type: types.LOG_IN,
-  payload,
-  callback
+  payload: { userData, callback }
 })
 
 export const logOut = callback => ({
   type: types.LOG_OUT,
-  callback
+  payload: callback
 })
 
-export const setSession = payload => ({
+export const setSession = sessionId => ({
   type: types.SET_SESSION,
-  payload
+  payload: sessionId
 })
 
 export const deleteSession = () => ({
@@ -24,7 +23,15 @@ export const fetchAccount = () => ({
   type: types.FETCH_ACCOUNT
 })
 
-export const setAccount = payload => ({
-  type: types.SET_ACCOUNT,
-  payload
+export const fetchAccountSuccess = account => ({
+  type: types.FETCH_ACCOUNT_SUCCESS,
+  payload: account
+})
+
+export const loadingOn = () => ({
+  type: types.LOADING_ON
+})
+
+export const loadingOff = () => ({
+  type: types.LOADING_OFF
 })

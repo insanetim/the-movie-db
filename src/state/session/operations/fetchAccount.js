@@ -4,7 +4,7 @@ import { or, path } from 'ramda'
 import * as endpoints from 'src/constants/endpoints'
 import { showNotification } from 'src/state/app/actions'
 import * as types from '../types'
-import { setAccount } from '../actions'
+import { fetchAccountSuccess } from '../actions'
 import { sessionIdSelector } from '../selectors'
 
 const fetchAccount = createLogic({
@@ -16,7 +16,7 @@ const fetchAccount = createLogic({
 
     try {
       const { data } = await httpClient.get(endpoints.getAccountDetails, { params: { session_id: sessionId } })
-      dispatch(setAccount(data))
+      dispatch(fetchAccountSuccess(data))
     } catch (error) {
       const errorMessage = or(path(['response', 'data', 'status_message'], error), error.message)
       dispatch(showNotification({ messageType: 'error', messageText: errorMessage }))

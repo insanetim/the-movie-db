@@ -3,17 +3,6 @@ import { path } from 'ramda'
 
 import * as types from './types'
 
-export const loading = (state = false, action) => {
-  switch (action.type) {
-    case types.LOADING_ON:
-      return true
-    case types.LOADING_OFF:
-      return false
-    default:
-      return state
-  }
-}
-
 const modalInitialState = {
   modalType: null,
   modalProps: {}
@@ -44,6 +33,6 @@ export const notifications = (state = [], action) => {
   }
 }
 
-const appReducer = combineReducers({ loading, modal, notifications })
+const appReducer = combineReducers({ modal, notifications })
 
 export default appReducer

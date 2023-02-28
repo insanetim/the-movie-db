@@ -53,5 +53,5 @@ it('setAccount', () => {
     payload: {}
   }
 
-  expect(actions.setAccount({})).toEqual(expectedAction)
+  expect(actions.fetchAccountSuccess({})).toEqual(expectedAction)
 })

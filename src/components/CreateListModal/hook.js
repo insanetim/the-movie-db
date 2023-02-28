@@ -10,9 +10,9 @@ const useContainer = ({ form, callback }) => {
     form.submit()
   }
 
-  const handleSubmit = value => {
+  const handleSubmit = listData => {
     dispatch(hideModal())
-    dispatch(createList({ value, callback }))
+    dispatch(createList({ listData, callback }))
   }
 
   const handleAfterClose = () => {

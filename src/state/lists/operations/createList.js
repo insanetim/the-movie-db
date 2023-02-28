@@ -13,10 +13,14 @@ const createList = createLogic({
 
   async process({ httpClient, getState, action }, dispatch, done) {
     const sessionId = sessionIdSelector(getState())
-    const { value, callback } = action.payload
+    const { listData, callback } = action.payload
 
     try {
-      const { data } = await httpClient.post(endpoints.createList, { ...value }, { params: { session_id: sessionId } })
+      const { data } = await httpClient.post(
+        endpoints.createList,
+        { ...listData },
+        { params: { session_id: sessionId } }
+      )
       if (typeof callback === 'function') callback(data.list_id)
       dispatch(fetchLists({ page: 1 }))
     } catch (error) {

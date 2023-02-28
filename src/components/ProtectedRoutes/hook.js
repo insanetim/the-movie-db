@@ -1,15 +1,14 @@
 import { useEffect } from 'react'
-import { useDispatch } from 'react-redux'
-import Cookies from 'js-cookie'
+import { useDispatch, useSelector } from 'react-redux'
 
-import { fetchAccount, setSession } from 'src/state/session/actions'
+import { sessionIdSelector } from 'src/state/session/selectors'
+import { fetchAccount } from 'src/state/session/actions'
 
 const useContainer = () => {
   const dispatch = useDispatch()
-  const sessionId = Cookies.get('session_id') || null
+  const sessionId = useSelector(sessionIdSelector)
 
   useEffect(() => {
-    dispatch(setSession(sessionId))
     if (sessionId) {
       dispatch(fetchAccount())
     }
