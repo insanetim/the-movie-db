@@ -4,9 +4,9 @@ import { NOTIFICATION_DURATION, NOTIFICATION_TYPE } from 'src/constants'
 
 import * as types from './types'
 
-export const showModal = payload => ({
+export const showModal = ({ modalType, modalProps }) => ({
   type: types.SHOW_MODAL,
-  payload
+  payload: { modalType, modalProps }
 })
 
 export const hideModal = () => ({
@@ -28,7 +28,7 @@ export const showNotification = ({
   }
 })
 
-export const hideNotification = payload => ({
+export const hideNotification = id => ({
   type: types.HIDE_NOTIFICATION,
-  payload
+  payload: id
 })
