@@ -5,20 +5,30 @@ import { format } from 'date-fns'
 import ISO6391 from 'iso-639-1'
 import { take, toUpper } from 'ramda'
 
-import Loading from 'src/components/Loading'
 import CreditsItem from 'src/components/Movie/CreditsItem'
 import ImageGallery from 'src/components/Movie/ImageGallery'
 import PopoverContent from 'src/components/Movie/PopoverContent'
+import Loading from 'src/components/Loading'
+import Error from 'src/components/Error'
 import { convertDuration, convertMoney } from 'src/utils'
 import useContainer from './hook'
 
 const Movie = () => {
-  const { movie, loading, handleFavoriteClick, handleWatchlistClick, popoverOpen, setPopoverOpen } = useContainer()
+  const { movie, loading, error, handleFavoriteClick, handleWatchlistClick, popoverOpen, setPopoverOpen } =
+    useContainer()
 
   if (loading) {
     return (
       <div className='top-margin'>
         <Loading />
+      </div>
+    )
+  }
+
+  if (error) {
+    return (
+      <div className='top-margin'>
+        <Error error={error} />
       </div>
     )
   }

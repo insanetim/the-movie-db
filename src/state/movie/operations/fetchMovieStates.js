@@ -5,7 +5,7 @@ import * as endpoints from 'src/constants/endpoints'
 import { showNotification } from 'src/state/app/actions'
 import { sessionIdSelector } from 'src/state/session/selectors'
 import * as types from '../types'
-import { setMovieStates } from '../actions'
+import { updateMovieStates } from '../actions'
 
 const fetchMovieStates = createLogic({
   type: types.FETCH_MOVIE_STATES,
@@ -13,13 +13,13 @@ const fetchMovieStates = createLogic({
 
   async process({ httpClient, getState, action }, dispatch, done) {
     const sessionId = sessionIdSelector(getState())
-    const movieId = path(['payload'], action)
+    const movieId = action.payload
 
     try {
       const { data } = await httpClient.get(endpoints.getMovieAccountStates(movieId), {
         params: { session_id: sessionId }
       })
-      dispatch(setMovieStates(data))
+      dispatch(updateMovieStates(data))
     } catch (error) {
       const errorMessage = or(path(['response', 'data', 'status_message'], error), error.message)
       dispatch(showNotification({ messageType: 'error', messageText: errorMessage }))

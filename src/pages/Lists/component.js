@@ -1,14 +1,14 @@
 import React from 'react'
 import { Row, Col, Typography } from 'antd'
 import { PlusCircleOutlined } from '@ant-design/icons'
-import { isEmpty } from 'ramda'
 
 import ListsList from 'src/components/Lists/ListsList'
 import Loading from 'src/components/Loading'
+import Error from 'src/components/Error'
 import useContainer from './hook'
 
 const Lists = () => {
-  const { lists, handleClick } = useContainer()
+  const { lists, loading, error, handleClick } = useContainer()
 
   return (
     <>
@@ -21,7 +21,9 @@ const Lists = () => {
           </div>
         </Col>
       </Row>
-      {isEmpty(lists) ? <Loading /> : <ListsList lists={lists} />}
+      {loading && <Loading />}
+      {error && <Error error={error} />}
+      {!loading && !error && <ListsList lists={lists} />}
     </>
   )
 }

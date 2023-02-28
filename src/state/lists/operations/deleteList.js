@@ -1,5 +1,4 @@
 import { createLogic } from 'redux-logic'
-import { path, pathOr } from 'ramda'
 
 import * as endpoints from 'src/constants/endpoints'
 import { sessionIdSelector } from 'src/state/session/selectors'
@@ -13,8 +12,7 @@ const deleteList = createLogic({
 
   async process({ httpClient, getState, action }, dispatch, done) {
     const sessionId = sessionIdSelector(getState())
-    const listId = path(['payload'], action)
-    const callback = pathOr(null, ['callback'], action)
+    const { listId, callback } = action.payload
     let list
 
     try {
@@ -24,7 +22,7 @@ const deleteList = createLogic({
       const errorMessage = `${list.data.name} list has been removed`
       dispatch(showNotification({ messageText: errorMessage }))
     } finally {
-      dispatch(fetchLists(null, callback))
+      dispatch(fetchLists({ page: 1, callback }))
     }
 
     done()

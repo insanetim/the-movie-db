@@ -13,7 +13,7 @@ const useContainer = ({ listId }) => {
   const handleDelete = event => {
     event.stopPropagation()
     const onOk = () => {
-      dispatch(deleteList(listId))
+      dispatch(deleteList({ listId }))
     }
     Modal.confirm({
       title: 'Do you want to delete list?',

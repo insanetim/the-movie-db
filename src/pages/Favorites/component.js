@@ -1,7 +1,6 @@
 import React from 'react'
 import { Row, Col, Typography } from 'antd'
 import { DeleteOutlined } from '@ant-design/icons'
-import { isEmpty, not } from 'ramda'
 
 import MoviesList from 'src/components/MoviesList'
 import Loading from 'src/components/Loading'
@@ -25,7 +24,7 @@ const Favorites = () => {
       </Row>
       {loading && <Loading />}
       {error && <Error error={error} />}
-      {not(isEmpty(movies)) && (
+      {!loading && !error && (
         <MoviesList
           movies={movies}
           actions={[

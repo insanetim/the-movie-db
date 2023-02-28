@@ -13,8 +13,7 @@ const removeFromList = createLogic({
 
   async process({ httpClient, getState, action }, dispatch, done) {
     const sessionId = sessionIdSelector(getState())
-    const listId = path(['payload', 'listId'], action)
-    const movieId = path(['payload', 'movieId'], action)
+    const { listId, movieId } = action.payload
 
     try {
       const { data: movie } = await httpClient.get(endpoints.getMovieDetails(movieId))

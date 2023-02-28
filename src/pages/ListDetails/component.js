@@ -2,17 +2,26 @@ import React from 'react'
 import { Row, Col, Typography } from 'antd'
 import { MinusCircleOutlined, DeleteOutlined } from '@ant-design/icons'
 
-import Loading from 'src/components/Loading'
 import ListContent from 'src/components/ListContent'
+import Loading from 'src/components/Loading'
+import Error from 'src/components/Error'
 import useContainer from './hook'
 
 const ListDetails = () => {
-  const { list, loading, handleListDelete, handleMovieDelete } = useContainer()
+  const { list, loading, error, handleListDelete, handleMovieDelete } = useContainer()
 
   if (loading) {
     return (
       <div className='top-margin'>
         <Loading />
+      </div>
+    )
+  }
+
+  if (error) {
+    return (
+      <div className='top-margin'>
+        <Error error={error} />
       </div>
     )
   }

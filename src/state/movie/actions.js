@@ -1,32 +1,40 @@
 import * as types from './types'
 
-export const fetchMovie = (payload, callback) => ({
+export const fetchMovie = movieId => ({
   type: types.FETCH_MOVIE,
-  payload,
-  callback
+  payload: movieId
 })
 
-export const fetchMovieStates = payload => ({
+export const fetchMovieRequest = () => ({
+  type: types.FETCH_MOVIE_REQUEST
+})
+
+export const fetchMovieSuccess = movie => ({
+  type: types.FETCH_MOVIE_SUCCESS,
+  payload: movie
+})
+
+export const fetchMovieFailure = error => ({
+  type: types.FETCH_MOVIE_FAILURE,
+  payload: error
+})
+
+export const fetchMovieStates = movieId => ({
   type: types.FETCH_MOVIE_STATES,
-  payload
+  payload: movieId
 })
 
-export const setMovie = payload => ({
-  type: types.SET_MOVIE,
-  payload
+export const updateMovieStates = movieStates => ({
+  type: types.UPDATE_MOVIE_STATES,
+  payload: movieStates
 })
 
-export const setMovieStates = payload => ({
-  type: types.SET_MOVIE_STATES,
-  payload
-})
-
-export const changeMovieInFavorites = payload => ({
+export const changeMovieInFavorites = ({ movieId, inFavorites }) => ({
   type: types.CHANGE_MOVIE_IN_FAVORITES,
-  payload
+  payload: { movieId, inFavorites }
 })
 
-export const changeMovieInWatchlist = payload => ({
+export const changeMovieInWatchlist = ({ movieId, inWatchlist }) => ({
   type: types.CHANGE_MOVIE_IN_WATCHLIST,
-  payload
+  payload: { movieId, inWatchlist }
 })

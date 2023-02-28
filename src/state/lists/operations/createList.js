@@ -1,5 +1,5 @@
 import { createLogic } from 'redux-logic'
-import { or, path, pathOr } from 'ramda'
+import { or, path } from 'ramda'
 
 import * as endpoints from 'src/constants/endpoints'
 import { sessionIdSelector } from 'src/state/session/selectors'
@@ -13,17 +13,12 @@ const createList = createLogic({
 
   async process({ httpClient, getState, action }, dispatch, done) {
     const sessionId = sessionIdSelector(getState())
-    const payload = path(['payload'], action)
-    const callback = pathOr(null, ['callback'], action)
+    const { value, callback } = action.payload
 
     try {
-      const { data } = await httpClient.post(
-        endpoints.createList,
-        { ...payload },
-        { params: { session_id: sessionId } }
-      )
+      const { data } = await httpClient.post(endpoints.createList, { ...value }, { params: { session_id: sessionId } })
       if (typeof callback === 'function') callback(data.list_id)
-      dispatch(fetchLists())
+      dispatch(fetchLists({ page: 1 }))
     } catch (error) {
       const errorMessage = or(path(['response', 'data', 'status_message'], error), error.message)
       dispatch(showNotification({ messageType: 'error', messageText: errorMessage }))
