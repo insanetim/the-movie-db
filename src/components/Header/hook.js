@@ -1,4 +1,3 @@
-import { useCallback } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useLocation, useNavigate } from 'react-router-dom'
 
@@ -10,12 +9,10 @@ const useContainer = () => {
   const account = useSelector(accountSelector)
   const location = useLocation()
   const navigate = useNavigate()
-  const callback = useCallback(() => navigate('/login', { state: { from: location } }), [location, navigate])
 
-  const handleLogOut = () => {
-    dispatch(logOut(callback))
-
-    return callback
+  const handleLogOut = async () => {
+    await dispatch(logOut()).unwrap()
+    navigate('/login', { state: { from: location } })
   }
 
   return { account, handleLogOut }

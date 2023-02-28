@@ -25,7 +25,10 @@ const logicMiddleware = createLogicMiddleware(operations, operationsDependencies
 
 const store = configureStore({
   reducer: rootReducer,
-  middleware: [logicMiddleware],
+  middleware: getDefaultMiddleware =>
+    getDefaultMiddleware({
+      serializableCheck: null
+    }).concat(logicMiddleware),
   devTools: process.env.NODE_ENV !== 'production'
 })
 
