@@ -3,12 +3,12 @@ import * as reducer from '../reducer'
 
 describe('dashboardReducer', () => {
   describe('trending reducer', () => {
-    const initalState = { movies: {}, page: 1, loading: true, error: null }
+    const initialState = { movies: {}, page: 1, loading: true, error: null }
 
     it('returns initial state', () => {
       const action = { type: 'unknown' }
 
-      expect(reducer.trending(initalState, action)).toEqual(initalState)
+      expect(reducer.trending(initialState, action)).toEqual(initialState)
     })
 
     it('should handle FETCH_TRENDING_REQUEST', () => {
@@ -18,7 +18,7 @@ describe('dashboardReducer', () => {
       }
       const expectedResult = { movies: {}, page: 1, loading: true, error: null }
 
-      expect(reducer.trending(initalState, action)).toEqual(expectedResult)
+      expect(reducer.trending(initialState, action)).toEqual(expectedResult)
     })
 
     it('should handle FETCH_TRENDING_SUCCESS', () => {
@@ -28,7 +28,7 @@ describe('dashboardReducer', () => {
       }
       const expectedResult = { movies: { id: 123 }, page: 1, loading: false, error: null }
 
-      expect(reducer.trending(initalState, action)).toEqual(expectedResult)
+      expect(reducer.trending(initialState, action)).toEqual(expectedResult)
     })
 
     it('should handle FETCH_TRENDING_FAILURE', () => {
@@ -38,7 +38,7 @@ describe('dashboardReducer', () => {
       }
       const expectedResult = { movies: {}, page: 1, loading: false, error: { message: 'test/error' } }
 
-      expect(reducer.trending(initalState, action)).toEqual(expectedResult)
+      expect(reducer.trending(initialState, action)).toEqual(expectedResult)
     })
 
     it('should handle SET_TRENDING_PAGE', () => {
@@ -48,17 +48,17 @@ describe('dashboardReducer', () => {
       }
       const expectedResult = { movies: {}, page: 3, loading: true, error: null }
 
-      expect(reducer.trending(initalState, action)).toEqual(expectedResult)
+      expect(reducer.trending(initialState, action)).toEqual(expectedResult)
     })
   })
 
   describe('search reducer', () => {
-    const initalState = { movies: {}, page: 1, loading: true, error: null }
+    const initialState = { movies: {}, page: 1, loading: true, error: null }
 
     it('returns initial state', () => {
       const action = { type: 'unknown' }
 
-      expect(reducer.search(initalState, action)).toEqual(initalState)
+      expect(reducer.search(initialState, action)).toEqual(initialState)
     })
 
     it('should handle FETCH_SEARCH_REQUEST', () => {
@@ -68,7 +68,7 @@ describe('dashboardReducer', () => {
       }
       const expectedResult = { movies: {}, page: 1, loading: true, error: null }
 
-      expect(reducer.search(initalState, action)).toEqual(expectedResult)
+      expect(reducer.search(initialState, action)).toEqual(expectedResult)
     })
 
     it('should handle FETCH_SEARCH_SUCCESS', () => {
@@ -78,7 +78,7 @@ describe('dashboardReducer', () => {
       }
       const expectedResult = { movies: { id: 123 }, page: 1, loading: false, error: null }
 
-      expect(reducer.search(initalState, action)).toEqual(expectedResult)
+      expect(reducer.search(initialState, action)).toEqual(expectedResult)
     })
 
     it('should handle FETCH_SEARCH_FAILURE', () => {
@@ -88,7 +88,7 @@ describe('dashboardReducer', () => {
       }
       const expectedResult = { movies: {}, page: 1, loading: false, error: { message: 'test/error' } }
 
-      expect(reducer.search(initalState, action)).toEqual(expectedResult)
+      expect(reducer.search(initialState, action)).toEqual(expectedResult)
     })
 
     it('should handle SET_SEARCH_PAGE', () => {
@@ -98,7 +98,7 @@ describe('dashboardReducer', () => {
       }
       const expectedResult = { movies: {}, page: 3, loading: true, error: null }
 
-      expect(reducer.search(initalState, action)).toEqual(expectedResult)
+      expect(reducer.search(initialState, action)).toEqual(expectedResult)
     })
   })
 })

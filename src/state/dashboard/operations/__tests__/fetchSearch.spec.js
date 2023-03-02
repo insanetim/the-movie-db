@@ -4,6 +4,7 @@ import { fetchSearchRequest, fetchSearchSuccess, fetchSearchFailure } from '../.
 import fetchSearch from '../fetchSearch'
 
 describe('fetchSearch', () => {
+  const dispatch = jest.fn()
   const action = {
     type: types.FETCH_SEARCH,
     payload: {
@@ -26,7 +27,6 @@ describe('fetchSearch', () => {
       total_results: 0
     }
   }
-  const dispatch = jest.fn()
 
   const beforeFunction = httpClient => () => {
     fetchSearch.process(

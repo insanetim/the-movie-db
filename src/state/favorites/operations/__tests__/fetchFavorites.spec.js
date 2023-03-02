@@ -1,7 +1,6 @@
 import mockHttpClient from 'src/__mocks__/mockHttpClient'
-import { showNotification } from 'src/state/app/actions'
 import * as types from '../../types'
-import { setFavorites } from '../../actions'
+import { fetchFavoritesRequest, fetchFavoritesSuccess, fetchFavoritesFailure } from '../../actions'
 import fetchFavorites from '../fetchFavorites'
 
 jest.mock('src/state/session/selectors', () => ({
@@ -9,24 +8,16 @@ jest.mock('src/state/session/selectors', () => ({
   accountSelector: jest.fn(() => ({ id: 123 }))
 }))
 
-jest.mock('uuid', () => ({
-  v4: jest.fn(() => 'uuid/v4')
-}))
-
 describe('fetchFavorites', () => {
   const dispatch = jest.fn()
-
   const action = {
     type: types.FETCH_FAVORITES,
     payload: 1
   }
-
   const url = '/account/123/favorite/movies'
-
   const body = {
     params: { session_id: 'session_id', page: 1 }
   }
-
   const response = {
     data: {
       page: 1,
@@ -67,8 +58,9 @@ describe('fetchFavorites', () => {
     })
 
     it('dispatches actions', () => {
-      expect(dispatch).toHaveBeenCalledTimes(1)
-      expect(dispatch).toHaveBeenCalledWith(setFavorites(response.data))
+      expect(dispatch).toHaveBeenCalledTimes(2)
+      expect(dispatch).toHaveBeenNthCalledWith(1, fetchFavoritesRequest(1))
+      expect(dispatch).toHaveBeenNthCalledWith(2, fetchFavoritesSuccess(response.data))
     })
   })
 
@@ -84,8 +76,9 @@ describe('fetchFavorites', () => {
     beforeEach(beforeFunction(httpClient))
 
     it('dispatches actions', () => {
-      expect(dispatch).toHaveBeenCalledTimes(1)
-      expect(dispatch).toHaveBeenCalledWith(showNotification({ messageType: 'error', messageText: 'test/error' }))
+      expect(dispatch).toHaveBeenCalledTimes(2)
+      expect(dispatch).toHaveBeenNthCalledWith(1, fetchFavoritesRequest(1))
+      expect(dispatch).toHaveBeenNthCalledWith(2, fetchFavoritesFailure(error))
     })
   })
 })

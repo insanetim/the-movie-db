@@ -3,12 +3,12 @@ import * as reducer from '../reducer'
 
 describe('appReducer', () => {
   describe('modal reducer', () => {
-    const inintialState = { modalType: null, modalProps: {} }
+    const initialState = { modalType: null, modalProps: {} }
 
     it('returns initial state', () => {
       const action = { type: 'unknown' }
 
-      expect(reducer.modal(inintialState, action)).toEqual(inintialState)
+      expect(reducer.modal(initialState, action)).toEqual(initialState)
     })
 
     it('should handle SHOW_MODAL', () => {
@@ -18,7 +18,7 @@ describe('appReducer', () => {
       }
       const expectedResult = { modalType: 'test/modalType', modalProps: 'test/modalProps' }
 
-      expect(reducer.modal(inintialState, action)).toEqual(expectedResult)
+      expect(reducer.modal(initialState, action)).toEqual(expectedResult)
     })
 
     it('should handle HIDE_MODAL', () => {
@@ -27,17 +27,17 @@ describe('appReducer', () => {
       }
       const expectedResult = { modalType: null, modalProps: { open: false } }
 
-      expect(reducer.modal(inintialState, action)).toEqual(expectedResult)
+      expect(reducer.modal(initialState, action)).toEqual(expectedResult)
     })
   })
 
   describe('notifications reducer', () => {
-    const inintialState = []
+    const initialState = []
 
     it('returns initial state', () => {
       const action = { type: 'unknown' }
 
-      expect(reducer.notifications(inintialState, action)).toEqual(inintialState)
+      expect(reducer.notifications(initialState, action)).toEqual(initialState)
     })
 
     it('should handle SHOW_NOTIFICATION', () => {
@@ -47,7 +47,7 @@ describe('appReducer', () => {
       }
       const expectedResult = [{ id: 123, messageType: 'success', messageText: 'test/message', duration: 2.5 }]
 
-      expect(reducer.notifications(inintialState, action)).toEqual(expectedResult)
+      expect(reducer.notifications(initialState, action)).toEqual(expectedResult)
     })
 
     it('should handle HIDE_NOTIFICATION', () => {

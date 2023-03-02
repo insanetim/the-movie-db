@@ -4,6 +4,7 @@ import { fetchTrendingFailure, fetchTrendingRequest, fetchTrendingSuccess } from
 import fetchTrending from '../fetchTrending'
 
 describe('fetchTrending', () => {
+  const dispatch = jest.fn()
   const action = {
     type: types.FETCH_TRENDING,
     payload: 1
@@ -20,7 +21,6 @@ describe('fetchTrending', () => {
       total_results: 0
     }
   }
-  const dispatch = jest.fn()
 
   const beforeFunction = httpClient => () => {
     fetchTrending.process(
