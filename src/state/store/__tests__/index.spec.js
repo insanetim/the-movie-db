@@ -1,17 +1,14 @@
-import { configureStore } from '@reduxjs/toolkit'
-
-jest.mock('@reduxjs/toolkit', () => ({
-  configureStore: jest.fn()
-}))
+import setupStore from '../index'
 
 it('creates store', () => {
-  jest.requireActual('../index')
+  const store = setupStore()
 
-  expect(configureStore).toHaveBeenCalledWith(
+  expect(store).toEqual(
     expect.objectContaining({
-      reducer: expect.any(Function),
-      middleware: expect.any(Array),
-      devTools: expect.any(Boolean)
+      dispatch: expect.any(Function),
+      subscribe: expect.any(Function),
+      getState: expect.any(Function),
+      replaceReducer: expect.any(Function)
     })
   )
 })

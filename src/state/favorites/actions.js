@@ -1,6 +1,6 @@
 import * as types from './types'
 
-export const fetchFavorites = page => ({
+export const fetchFavorites = (page = 1) => ({
   type: types.FETCH_FAVORITES,
   payload: page
 })

@@ -26,11 +26,7 @@ describe('changeMovieInWatchlist', () => {
   }
 
   const movieUrl = '/movie/123'
-  const movieResponse = {
-    data: {
-      title: 'test/movie'
-    }
-  }
+  const movieResponse = { data: { title: 'test/movie' } }
 
   const watchlistUrl = '/account/123/watchlist'
   const watchlistBody = {
@@ -103,7 +99,12 @@ describe('changeMovieInWatchlist', () => {
       expect(dispatch).toHaveBeenCalledTimes(3)
       expect(dispatch).toHaveBeenNthCalledWith(1, fetchMovieStates(123))
       expect(dispatch).toHaveBeenNthCalledWith(2, fetchWatchlist())
-      expect(dispatch).toHaveBeenNthCalledWith(3, showNotification({ messageText: 'test/movie added to Watchlist' }))
+      expect(dispatch).toHaveBeenNthCalledWith(
+        3,
+        showNotification({
+          messageText: 'test/movie added to Watchlist'
+        })
+      )
     })
   })
 

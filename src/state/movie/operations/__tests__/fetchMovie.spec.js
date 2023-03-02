@@ -1,7 +1,6 @@
 import mockHttpClient, { mockMultiHttpClient } from 'src/__mocks__/mockHttpClient'
-import { showNotification } from 'src/state/app/actions'
 import { fetchLists } from 'src/state/lists/actions'
-import { setMovie } from '../../actions'
+import { fetchMovieRequest, fetchMovieSuccess, fetchMovieFailure } from '../../actions'
 import * as types from '../../types'
 import fetchMovie from '../fetchMovie'
 
@@ -9,13 +8,8 @@ jest.mock('src/state/session/selectors', () => ({
   sessionIdSelector: jest.fn(() => 'session_id')
 }))
 
-jest.mock('uuid', () => ({
-  v4: jest.fn(() => 'uuid/v4')
-}))
-
 describe('fetchMovie', () => {
   const dispatch = jest.fn()
-  const callback = jest.fn()
 
   const action = {
     type: types.FETCH_MOVIE,
@@ -23,37 +17,17 @@ describe('fetchMovie', () => {
   }
 
   const movieUrl = '/movie/123'
-  const movieResponse = {
-    data: {
-      id: 123
-    }
-  }
+  const movieResponse = { data: { id: 123 } }
 
   const imagesUrl = '/movie/123/images'
-  const imagesResponse = {
-    data: {
-      backdrops: []
-    }
-  }
+  const imagesResponse = { data: { backdrops: [] } }
 
   const statesUrl = '/movie/123/account_states'
-  const statesBody = {
-    params: { session_id: 'session_id' }
-  }
-  const statesResponse = {
-    data: {
-      favorite: false,
-      watchlist: false
-    }
-  }
+  const statesBody = { params: { session_id: 'session_id' } }
+  const statesResponse = { data: { favorite: false, watchlist: false } }
 
   const creditsUrl = '/movie/123/credits'
-  const creditsResponse = {
-    data: {
-      cast: [],
-      crew: []
-    }
-  }
+  const creditsResponse = { data: { cast: [], crew: [] } }
 
   const resultData = {
     ...movieResponse.data,
@@ -126,37 +100,10 @@ describe('fetchMovie', () => {
         jest.fn()
       )
 
-      expect(dispatch).toHaveBeenCalledTimes(2)
-      expect(dispatch).toHaveBeenNthCalledWith(1, setMovie(resultData))
-      expect(dispatch).toHaveBeenNthCalledWith(2, fetchLists())
-    })
-  })
-
-  describe('callback', () => {
-    const httpClient = mockMultiHttpClient([
-      { method: 'get', response: movieResponse },
-      { method: 'get', response: imagesResponse },
-      { method: 'get', response: statesResponse },
-      { method: 'get', response: creditsResponse }
-    ])
-
-    const actionExt = {
-      ...action,
-      callback
-    }
-
-    it('calls callback', async () => {
-      await fetchMovie.process(
-        {
-          httpClient,
-          action: actionExt,
-          getState: jest.fn()
-        },
-        dispatch,
-        jest.fn()
-      )
-
-      expect(callback).toHaveBeenCalledTimes(1)
+      expect(dispatch).toHaveBeenCalledTimes(3)
+      expect(dispatch).toHaveBeenNthCalledWith(1, fetchMovieRequest())
+      expect(dispatch).toHaveBeenNthCalledWith(2, fetchLists({ page: 1 }))
+      expect(dispatch).toHaveBeenNthCalledWith(3, fetchMovieSuccess(resultData))
     })
   })
 
@@ -172,8 +119,9 @@ describe('fetchMovie', () => {
     beforeEach(beforeFunction(httpClient))
 
     it('dispatches actions', () => {
-      expect(dispatch).toHaveBeenCalledTimes(1)
-      expect(dispatch).toHaveBeenCalledWith(showNotification({ messageType: 'error', messageText: 'test/error' }))
+      expect(dispatch).toHaveBeenCalledTimes(2)
+      expect(dispatch).toHaveBeenNthCalledWith(1, fetchMovieRequest())
+      expect(dispatch).toHaveBeenNthCalledWith(2, fetchMovieFailure(error))
     })
   })
 })

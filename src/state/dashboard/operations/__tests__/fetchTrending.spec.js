@@ -5,10 +5,12 @@ import fetchTrending from '../fetchTrending'
 
 describe('fetchTrending', () => {
   const dispatch = jest.fn()
+
   const action = {
     type: types.FETCH_TRENDING,
     payload: 1
   }
+
   const url = '/trending/movie/day'
   const body = {
     params: { page: 1 }

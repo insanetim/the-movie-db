@@ -1,16 +1,12 @@
 import mockHttpClient from 'src/__mocks__/mockHttpClient'
-import { showNotification } from 'src/state/app/actions'
+import { mergeDeepRight } from 'ramda'
 import * as types from '../../types'
-import { setLists } from '../../actions'
+import { fetchListsRequest, fetchListsSuccess, fetchListsFailure } from '../../actions'
 import fetchLists from '../fetchLists'
 
 jest.mock('src/state/session/selectors', () => ({
   sessionIdSelector: jest.fn(() => 'session_id'),
   accountSelector: jest.fn(() => ({ id: 123 }))
-}))
-
-jest.mock('uuid', () => ({
-  v4: jest.fn(() => 'uuid/v4')
 }))
 
 describe('fetchLists', () => {
@@ -19,18 +15,16 @@ describe('fetchLists', () => {
 
   const action = {
     type: types.FETCH_LISTS,
-    payload: 1
+    payload: { page: 1 }
   }
 
   const url = '/account/123/lists'
-
   const body = {
     params: {
       session_id: 'session_id',
       page: 1
     }
   }
-
   const response = {
     data: {
       page: 1,
@@ -71,18 +65,15 @@ describe('fetchLists', () => {
     })
 
     it('dispatches actions', () => {
-      expect(dispatch).toHaveBeenCalledTimes(1)
-      expect(dispatch).toHaveBeenCalledWith(setLists(response.data))
+      expect(dispatch).toHaveBeenNthCalledWith(1, fetchListsRequest(1))
+      expect(dispatch).toHaveBeenNthCalledWith(2, fetchListsSuccess(response.data))
     })
   })
 
   describe('callback', () => {
     const httpClient = mockHttpClient({ method: 'get', response })
 
-    const actionExt = {
-      ...action,
-      callback
-    }
+    const actionExt = mergeDeepRight(action, { payload: { callback } })
 
     it('calls callback', async () => {
       await fetchLists.process(
@@ -111,8 +102,9 @@ describe('fetchLists', () => {
     beforeEach(beforeFunction(httpClient))
 
     it('dispatches actions', () => {
-      expect(dispatch).toHaveBeenCalledTimes(1)
-      expect(dispatch).toHaveBeenCalledWith(showNotification({ messageType: 'error', messageText: 'test/error' }))
+      expect(dispatch).toHaveBeenCalledTimes(2)
+      expect(dispatch).toHaveBeenNthCalledWith(1, fetchListsRequest(1))
+      expect(dispatch).toHaveBeenNthCalledWith(2, fetchListsFailure(error))
     })
   })
 })

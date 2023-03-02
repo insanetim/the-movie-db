@@ -1,5 +1,6 @@
 import mockHttpClient from 'src/__mocks__/mockHttpClient'
 import { showNotification } from 'src/state/app/actions'
+import { mergeDeepRight } from 'ramda'
 import * as types from '../../types'
 import { fetchLists } from '../../actions'
 import createList from '../createList'
@@ -18,18 +19,12 @@ describe('createList', () => {
 
   const action = {
     type: types.CREATE_LIST,
-    payload: {
-      name: 'test/list',
-      description: 'test/description'
-    }
+    payload: { listData: { name: 'test/list', description: 'test/description' } }
   }
 
   const url = '/list'
-
-  const body = { ...action.payload }
-
+  const body = { ...action.payload.listData }
   const config = { params: { session_id: 'session_id' } }
-
   const response = {
     data: {
       list_id: 123
@@ -68,17 +63,14 @@ describe('createList', () => {
 
     it('dispatches actions', () => {
       expect(dispatch).toHaveBeenCalledTimes(1)
-      expect(dispatch).toHaveBeenCalledWith(fetchLists())
+      expect(dispatch).toHaveBeenCalledWith(fetchLists({ page: 1 }))
     })
   })
 
   describe('callback', () => {
     const httpClient = mockHttpClient({ method: 'post', response })
 
-    const actionExt = {
-      ...action,
-      callback
-    }
+    const actionExt = mergeDeepRight(action, { payload: { callback } })
 
     it('calls callback', async () => {
       await createList.process(

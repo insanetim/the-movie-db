@@ -7,7 +7,7 @@ it('fetchFavorites', () => {
     payload: 1
   }
 
-  expect(actions.fetchFavorites(1)).toEqual(expectedAction)
+  expect(actions.fetchFavorites()).toEqual(expectedAction)
 })
 
 it('fetchFavoritesRequest', () => {
@@ -22,19 +22,19 @@ it('fetchFavoritesRequest', () => {
 it('fetchFavoritesSuccess', () => {
   const expectedAction = {
     type: types.FETCH_FAVORITES_SUCCESS,
-    payload: {}
+    payload: { id: 123 }
   }
 
-  expect(actions.fetchFavoritesSuccess({})).toEqual(expectedAction)
+  expect(actions.fetchFavoritesSuccess({ id: 123 })).toEqual(expectedAction)
 })
 
 it('fetchFavoritesFailure', () => {
   const expectedAction = {
     type: types.FETCH_FAVORITES_FAILURE,
-    payload: {}
+    payload: { message: 'test/error' }
   }
 
-  expect(actions.fetchFavoritesFailure({})).toEqual(expectedAction)
+  expect(actions.fetchFavoritesFailure({ message: 'test/error' })).toEqual(expectedAction)
 })
 
 it('setFavoritesPage', () => {

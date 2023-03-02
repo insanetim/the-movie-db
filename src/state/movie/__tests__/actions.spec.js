@@ -1,59 +1,73 @@
 import * as actions from '../actions'
 import * as types from '../types'
 
-const callback = jest.fn()
-
 it('fetchMovie', () => {
   const expectedAction = {
     type: types.FETCH_MOVIE,
-    payload: {},
-    callback
+    payload: 123
   }
 
-  expect(actions.fetchMovie({}, callback)).toEqual(expectedAction)
+  expect(actions.fetchMovie(123)).toEqual(expectedAction)
+})
+
+it('fetchMovieRequest', () => {
+  const expectedAction = {
+    type: types.FETCH_MOVIE_REQUEST
+  }
+
+  expect(actions.fetchMovieRequest()).toEqual(expectedAction)
+})
+
+it('fetchMovieSuccess', () => {
+  const expectedAction = {
+    type: types.FETCH_MOVIE_SUCCESS,
+    payload: { id: 123 }
+  }
+
+  expect(actions.fetchMovieSuccess({ id: 123 })).toEqual(expectedAction)
+})
+
+it('fetchMovieFailure', () => {
+  const expectedAction = {
+    type: types.FETCH_MOVIE_FAILURE,
+    payload: { message: 'test/error' }
+  }
+
+  expect(actions.fetchMovieFailure({ message: 'test/error' })).toEqual(expectedAction)
 })
 
 it('fetchMovieStates', () => {
   const expectedAction = {
     type: types.FETCH_MOVIE_STATES,
-    payload: {}
+    payload: 123
   }
 
-  expect(actions.fetchMovieStates({})).toEqual(expectedAction)
+  expect(actions.fetchMovieStates(123)).toEqual(expectedAction)
 })
 
-it('setMovie', () => {
+it('updateMovieStates', () => {
   const expectedAction = {
-    type: types.SET_MOVIE,
-    payload: {}
+    type: types.UPDATE_MOVIE_STATES,
+    payload: { favorite: true, watchlist: true }
   }
 
-  expect(actions.setMovie({})).toEqual(expectedAction)
-})
-
-it('setMovieStates', () => {
-  const expectedAction = {
-    type: types.SET_MOVIE_STATES,
-    payload: {}
-  }
-
-  expect(actions.setMovieStates({})).toEqual(expectedAction)
+  expect(actions.updateMovieStates({ favorite: true, watchlist: true })).toEqual(expectedAction)
 })
 
 it('changeMovieInFavorites', () => {
   const expectedAction = {
     type: types.CHANGE_MOVIE_IN_FAVORITES,
-    payload: {}
+    payload: { movieId: 123, inFavorites: true }
   }
 
-  expect(actions.changeMovieInFavorites({})).toEqual(expectedAction)
+  expect(actions.changeMovieInFavorites({ movieId: 123, inFavorites: true })).toEqual(expectedAction)
 })
 
 it('changeMovieInWatchlist', () => {
   const expectedAction = {
     type: types.CHANGE_MOVIE_IN_WATCHLIST,
-    payload: {}
+    payload: { movieId: 123, inWatchlist: true }
   }
 
-  expect(actions.changeMovieInWatchlist({})).toEqual(expectedAction)
+  expect(actions.changeMovieInWatchlist({ movieId: 123, inWatchlist: true })).toEqual(expectedAction)
 })

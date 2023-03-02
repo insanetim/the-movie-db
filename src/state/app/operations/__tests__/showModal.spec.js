@@ -10,6 +10,7 @@ describe('showModal', () => {
       payload: {}
     }
     const next = jest.fn()
+
     showModal.transform({ action }, next)
 
     expect(next).toHaveBeenCalledTimes(1)

@@ -16,10 +16,7 @@ describe('addToList', () => {
 
   const action = {
     type: types.ADD_TO_LIST,
-    payload: {
-      listId: 123,
-      movieId: 123
-    }
+    payload: { listId: 123, movieId: 123 }
   }
 
   const movieUrl = '/movie/123'

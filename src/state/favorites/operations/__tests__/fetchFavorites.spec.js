@@ -10,10 +10,12 @@ jest.mock('src/state/session/selectors', () => ({
 
 describe('fetchFavorites', () => {
   const dispatch = jest.fn()
+
   const action = {
     type: types.FETCH_FAVORITES,
     payload: 1
   }
+
   const url = '/account/123/favorite/movies'
   const body = {
     params: { session_id: 'session_id', page: 1 }

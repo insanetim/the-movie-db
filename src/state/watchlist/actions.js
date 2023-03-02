@@ -1,6 +1,6 @@
 import * as types from './types'
 
-export const fetchWatchlist = page => ({
+export const fetchWatchlist = (page = 1) => ({
   type: types.FETCH_WATCHLIST,
   payload: page
 })

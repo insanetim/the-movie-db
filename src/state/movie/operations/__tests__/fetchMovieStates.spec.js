@@ -1,7 +1,7 @@
 import mockHttpClient from 'src/__mocks__/mockHttpClient'
 import { showNotification } from 'src/state/app/actions'
 import * as types from '../../types'
-import { setMovieStates } from '../../actions'
+import { updateMovieStates } from '../../actions'
 import fetchMovieStates from '../fetchMovieStates'
 
 jest.mock('src/state/session/selectors', () => ({
@@ -21,17 +21,8 @@ describe('fetchMovieStates', () => {
   }
 
   const url = '/movie/123/account_states'
-
-  const body = {
-    params: { session_id: 'session_id' }
-  }
-
-  const response = {
-    data: {
-      favorite: false,
-      watchlist: false
-    }
-  }
+  const body = { params: { session_id: 'session_id' } }
+  const response = { data: { favorite: true, watchlist: true } }
 
   const beforeFunction = httpClient => () => {
     fetchMovieStates.process(
@@ -65,7 +56,7 @@ describe('fetchMovieStates', () => {
 
     it('dispatches actions', () => {
       expect(dispatch).toHaveBeenCalledTimes(1)
-      expect(dispatch).toHaveBeenCalledWith(setMovieStates(response.data))
+      expect(dispatch).toHaveBeenCalledWith(updateMovieStates(response.data))
     })
   })
 

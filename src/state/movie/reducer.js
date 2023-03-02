@@ -2,13 +2,13 @@ import { mergeDeepRight } from 'ramda'
 
 import * as types from './types'
 
-const movieInitialState = {
+const initialState = {
   movie: {},
   loading: true,
   error: null
 }
 
-const movieReducer = (state = movieInitialState, action) => {
+const movieReducer = (state = initialState, action) => {
   switch (action.type) {
     case types.FETCH_MOVIE_REQUEST:
       return {

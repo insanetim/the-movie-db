@@ -4,10 +4,11 @@ import { Provider } from 'react-redux'
 import { BrowserRouter } from 'react-router-dom'
 
 import App from './App'
-import store from './state/store'
+import setupStore from './state/store'
 import './assets/styles/app.scss'
 
 const rootElement = document.getElementById('app')
+const store = setupStore()
 
 render(
   <Provider store={store}>

@@ -22,19 +22,19 @@ it('fetchTrendingRequest', () => {
 it('fetchTrendingSuccess', () => {
   const expectedAction = {
     type: types.FETCH_TRENDING_SUCCESS,
-    payload: {}
+    payload: { id: 123 }
   }
 
-  expect(actions.fetchTrendingSuccess({})).toEqual(expectedAction)
+  expect(actions.fetchTrendingSuccess({ id: 123 })).toEqual(expectedAction)
 })
 
 it('fetchTrendingFailure', () => {
   const expectedAction = {
     type: types.FETCH_TRENDING_FAILURE,
-    payload: {}
+    payload: { message: 'test/error' }
   }
 
-  expect(actions.fetchTrendingFailure({})).toEqual(expectedAction)
+  expect(actions.fetchTrendingFailure({ message: 'test/error' })).toEqual(expectedAction)
 })
 
 it('setTrendingPage', () => {
@@ -67,19 +67,19 @@ it('fetchSearchRequest', () => {
 it('fetchSearchSuccess', () => {
   const expectedAction = {
     type: types.FETCH_SEARCH_SUCCESS,
-    payload: {}
+    payload: { id: 123 }
   }
 
-  expect(actions.fetchSearchSuccess({})).toEqual(expectedAction)
+  expect(actions.fetchSearchSuccess({ id: 123 })).toEqual(expectedAction)
 })
 
 it('fetchSearchFailure', () => {
   const expectedAction = {
     type: types.FETCH_SEARCH_FAILURE,
-    payload: {}
+    payload: { message: 'test/error' }
   }
 
-  expect(actions.fetchSearchFailure({})).toEqual(expectedAction)
+  expect(actions.fetchSearchFailure({ message: 'test/error' })).toEqual(expectedAction)
 })
 
 it('setSearchPage', () => {

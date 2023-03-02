@@ -1,13 +1,13 @@
 import * as types from './types'
 
-const favoritesInitialState = {
+const initialState = {
   movies: {},
   page: 1,
   loading: true,
   error: null
 }
 
-const favoritesReducer = (state = favoritesInitialState, action) => {
+const favoritesReducer = (state = initialState, action) => {
   switch (action.type) {
     case types.FETCH_FAVORITES_REQUEST:
       return {

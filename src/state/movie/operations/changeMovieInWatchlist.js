@@ -4,6 +4,7 @@ import { always, equals, ifElse, or, path, T } from 'ramda'
 import * as endpoints from 'src/constants/endpoints'
 import { showNotification } from 'src/state/app/actions'
 import { accountSelector, sessionIdSelector } from 'src/state/session/selectors'
+import { fetchWatchlist } from 'src/state/watchlist/actions'
 import { fetchMovieStates } from '../actions'
 import * as types from '../types'
 
@@ -24,6 +25,7 @@ const changeMovieInWatchlist = createLogic({
         { params: { session_id: sessionId } }
       )
       dispatch(fetchMovieStates(movieId))
+      dispatch(fetchWatchlist())
       const messageText = ifElse(
         equals(T()),
         always(`${movie.title} added to Watchlist`),

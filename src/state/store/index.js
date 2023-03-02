@@ -23,13 +23,14 @@ const operations = [
 const operationsDependencies = { httpClient }
 const logicMiddleware = createLogicMiddleware(operations, operationsDependencies)
 
-const store = configureStore({
-  reducer: rootReducer,
-  middleware: getDefaultMiddleware =>
-    getDefaultMiddleware({
-      serializableCheck: null
-    }).concat(logicMiddleware),
-  devTools: process.env.NODE_ENV !== 'production'
-})
+const setupStore = () =>
+  configureStore({
+    reducer: rootReducer,
+    middleware: getDefaultMiddleware =>
+      getDefaultMiddleware({
+        serializableCheck: false
+      }).concat(logicMiddleware),
+    devTools: process.env.NODE_ENV !== 'production'
+  })
 
-export default store
+export default setupStore

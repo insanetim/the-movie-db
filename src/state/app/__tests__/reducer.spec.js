@@ -8,7 +8,7 @@ describe('appReducer', () => {
     it('returns initial state', () => {
       const action = { type: 'unknown' }
 
-      expect(reducer.modal(initialState, action)).toEqual(initialState)
+      expect(reducer.modal(undefined, action)).toEqual(initialState)
     })
 
     it('should handle SHOW_MODAL', () => {
@@ -16,18 +16,18 @@ describe('appReducer', () => {
         type: types.SHOW_MODAL,
         payload: { modalType: 'test/modalType', modalProps: 'test/modalProps' }
       }
-      const expectedResult = { modalType: 'test/modalType', modalProps: 'test/modalProps' }
+      const expectedState = { modalType: 'test/modalType', modalProps: 'test/modalProps' }
 
-      expect(reducer.modal(initialState, action)).toEqual(expectedResult)
+      expect(reducer.modal(initialState, action)).toEqual(expectedState)
     })
 
     it('should handle HIDE_MODAL', () => {
       const action = {
         type: types.HIDE_MODAL
       }
-      const expectedResult = { modalType: null, modalProps: { open: false } }
+      const expectedState = { modalType: null, modalProps: { open: false } }
 
-      expect(reducer.modal(initialState, action)).toEqual(expectedResult)
+      expect(reducer.modal(initialState, action)).toEqual(expectedState)
     })
   })
 
@@ -45,17 +45,17 @@ describe('appReducer', () => {
         type: types.SHOW_NOTIFICATION,
         payload: { id: 123, messageType: 'success', messageText: 'test/message', duration: 2.5 }
       }
-      const expectedResult = [{ id: 123, messageType: 'success', messageText: 'test/message', duration: 2.5 }]
+      const expectedState = [{ id: 123, messageType: 'success', messageText: 'test/message', duration: 2.5 }]
 
-      expect(reducer.notifications(initialState, action)).toEqual(expectedResult)
+      expect(reducer.notifications(initialState, action)).toEqual(expectedState)
     })
 
     it('should handle HIDE_NOTIFICATION', () => {
       const state = [{ id: 123 }]
       const action = { type: types.HIDE_NOTIFICATION, payload: 123 }
-      const expectedResult = []
+      const expectedState = []
 
-      expect(reducer.notifications(state, action)).toEqual(expectedResult)
+      expect(reducer.notifications(state, action)).toEqual(expectedState)
     })
   })
 })

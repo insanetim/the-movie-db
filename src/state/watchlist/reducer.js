@@ -1,13 +1,13 @@
 import * as types from './types'
 
-const watchlistInitialState = {
+const initialState = {
   movies: {},
   page: 1,
   loading: true,
   error: null
 }
 
-const watchlistReducer = (state = watchlistInitialState, action) => {
+const watchlistReducer = (state = initialState, action) => {
   switch (action.type) {
     case types.FETCH_WATCHLIST_REQUEST:
       return {

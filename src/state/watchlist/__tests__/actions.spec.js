@@ -7,7 +7,7 @@ it('fetchWatchlist', () => {
     payload: 1
   }
 
-  expect(actions.fetchWatchlist(1)).toEqual(expectedAction)
+  expect(actions.fetchWatchlist()).toEqual(expectedAction)
 })
 
 it('fetchWatchlistRequest', () => {
@@ -22,19 +22,19 @@ it('fetchWatchlistRequest', () => {
 it('fetchWatchlistSuccess', () => {
   const expectedAction = {
     type: types.FETCH_WATCHLIST_SUCCESS,
-    payload: {}
+    payload: { id: 123 }
   }
 
-  expect(actions.fetchWatchlistSuccess({})).toEqual(expectedAction)
+  expect(actions.fetchWatchlistSuccess({ id: 123 })).toEqual(expectedAction)
 })
 
 it('fetchWatchlistFailure', () => {
   const expectedAction = {
     type: types.FETCH_WATCHLIST_FAILURE,
-    payload: {}
+    payload: { message: 'test/error' }
   }
 
-  expect(actions.fetchWatchlistFailure({})).toEqual(expectedAction)
+  expect(actions.fetchWatchlistFailure({ message: 'test/error' })).toEqual(expectedAction)
 })
 
 it('setWatchlistPage', () => {

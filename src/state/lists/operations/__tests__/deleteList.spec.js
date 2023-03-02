@@ -18,8 +18,7 @@ describe('deleteList', () => {
 
   const action = {
     type: types.DELETE_LIST,
-    payload: 123,
-    callback
+    payload: { listId: 123, callback }
   }
 
   const listUrl = '/list/123'
@@ -81,7 +80,7 @@ describe('deleteList', () => {
       )
 
       expect(dispatch).toHaveBeenCalledTimes(1)
-      expect(dispatch).toHaveBeenCalledWith(fetchLists(null, callback))
+      expect(dispatch).toHaveBeenCalledWith(fetchLists({ page: 1, callback }))
     })
   })
 
@@ -107,10 +106,7 @@ describe('deleteList', () => {
       expect(dispatch).toHaveBeenCalledTimes(2)
       expect(dispatch).toHaveBeenNthCalledWith(
         1,
-        showNotification({
-          messageType: 'success',
-          messageText: 'test/list list has been removed'
-        })
+        showNotification({ messageType: 'success', messageText: 'test/list list has been removed' })
       )
     })
   })

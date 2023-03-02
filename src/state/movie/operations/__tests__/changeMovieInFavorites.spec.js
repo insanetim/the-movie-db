@@ -26,11 +26,7 @@ describe('changeMovieInFavorites', () => {
   }
 
   const movieUrl = '/movie/123'
-  const movieResponse = {
-    data: {
-      title: 'test/movie'
-    }
-  }
+  const movieResponse = { data: { title: 'test/movie' } }
 
   const favoriteUrl = '/account/123/favorite'
   const favoriteBody = {
@@ -103,7 +99,12 @@ describe('changeMovieInFavorites', () => {
       expect(dispatch).toHaveBeenCalledTimes(3)
       expect(dispatch).toHaveBeenNthCalledWith(1, fetchMovieStates(123))
       expect(dispatch).toHaveBeenNthCalledWith(2, fetchFavorites())
-      expect(dispatch).toHaveBeenNthCalledWith(3, showNotification({ messageText: 'test/movie added to Favorites' }))
+      expect(dispatch).toHaveBeenNthCalledWith(
+        3,
+        showNotification({
+          messageText: 'test/movie added to Favorites'
+        })
+      )
     })
   })
 

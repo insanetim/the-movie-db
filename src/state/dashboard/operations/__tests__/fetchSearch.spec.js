@@ -5,6 +5,7 @@ import fetchSearch from '../fetchSearch'
 
 describe('fetchSearch', () => {
   const dispatch = jest.fn()
+
   const action = {
     type: types.FETCH_SEARCH,
     payload: {
@@ -12,6 +13,7 @@ describe('fetchSearch', () => {
       page: 1
     }
   }
+
   const url = '/search/movie'
   const body = {
     params: {
