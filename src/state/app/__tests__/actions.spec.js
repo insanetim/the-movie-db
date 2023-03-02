@@ -6,29 +6,21 @@ jest.mock('uuid', () => ({
   v4: jest.fn(() => 'uuid/v4')
 }))
 
-it('loadingOn', () => {
-  const expectedAction = {
-    type: types.LOADING_ON
-  }
-
-  expect(actions.loadingOn()).toEqual(expectedAction)
-})
-
-it('loadingOff', () => {
-  const expectedAction = {
-    type: types.LOADING_OFF
-  }
-
-  expect(actions.loadingOff()).toEqual(expectedAction)
-})
-
 it('showModal', () => {
   const expectedAction = {
     type: types.SHOW_MODAL,
-    payload: {}
+    payload: {
+      modalType: 'test/modalType',
+      modalProps: 'test/modalProps'
+    }
   }
 
-  expect(actions.showModal({})).toEqual(expectedAction)
+  expect(
+    actions.showModal({
+      modalType: 'test/modalType',
+      modalProps: 'test/modalProps'
+    })
+  ).toEqual(expectedAction)
 })
 
 it('hideModal', () => {

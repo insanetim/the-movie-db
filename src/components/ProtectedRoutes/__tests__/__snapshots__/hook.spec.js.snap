@@ -2,6 +2,6 @@
 
 exports[`ProtectedRoutes useContainer hook matches snapshot 1`] = `
 {
-  "sessionId": "12345",
+  "sessionId": [Function],
 }
 `;

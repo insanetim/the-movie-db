@@ -3,6 +3,6 @@
 exports[`Favotites useContainer hook matches snapshot 1`] = `
 {
   "handleLogIn": [Function],
-  "loading": false,
+  "loading": [Function],
 }
 `;

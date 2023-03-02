@@ -1,12 +1,5 @@
 import * as selectors from '../selectors'
 
-it('loadingSelector', () => {
-  const loading = 'test/loading'
-  const state = { app: { loading } }
-
-  expect(selectors.loadingSelector(state)).toEqual(loading)
-})
-
 it('modalTypeSelector', () => {
   const modalType = 'test/modalType'
   const state = { app: { modal: { modalType } } }
@@ -19,4 +12,11 @@ it('modalPropsSelector', () => {
   const state = { app: { modal: { modalProps } } }
 
   expect(selectors.modalPropsSelector(state)).toEqual(modalProps)
+})
+
+it('notificationsSelector', () => {
+  const notifications = 'test/notifications'
+  const state = { app: { notifications } }
+
+  expect(selectors.notificationsSelector(state)).toEqual(notifications)
 })

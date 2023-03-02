@@ -36,4 +36,18 @@ describe('sessionReducer', () => {
       expect(reducer.account(undefined, action)).toEqual({ id: 123 })
     })
   })
+
+  it('should handle LOADING_ON', () => {
+    const action = {
+      type: types.LOADING_ON
+    }
+    expect(reducer.loading(undefined, action)).toBe(true)
+  })
+
+  it('should handle LOADING_OFF', () => {
+    const action = {
+      type: types.LOADING_OFF
+    }
+    expect(reducer.loading(undefined, action)).toBe(false)
+  })
 })

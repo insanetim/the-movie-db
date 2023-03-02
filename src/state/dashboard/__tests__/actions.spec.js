@@ -4,43 +4,89 @@ import * as types from '../types'
 it('fetchTrending', () => {
   const expectedAction = {
     type: types.FETCH_TRENDING,
-    payload: {}
+    payload: 1
   }
 
-  expect(actions.fetchTrending({})).toEqual(expectedAction)
+  expect(actions.fetchTrending(1)).toEqual(expectedAction)
 })
 
-it('setTrending', () => {
+it('fetchTrendingRequest', () => {
   const expectedAction = {
-    type: types.SET_TRENDING,
+    type: types.FETCH_TRENDING_REQUEST,
+    payload: 1
+  }
+
+  expect(actions.fetchTrendingRequest(1)).toEqual(expectedAction)
+})
+
+it('fetchTrendingSuccess', () => {
+  const expectedAction = {
+    type: types.FETCH_TRENDING_SUCCESS,
     payload: {}
   }
 
-  expect(actions.setTrending({})).toEqual(expectedAction)
+  expect(actions.fetchTrendingSuccess({})).toEqual(expectedAction)
+})
+
+it('fetchTrendingFailure', () => {
+  const expectedAction = {
+    type: types.FETCH_TRENDING_FAILURE,
+    payload: {}
+  }
+
+  expect(actions.fetchTrendingFailure({})).toEqual(expectedAction)
+})
+
+it('setTrendingPage', () => {
+  const expectedAction = {
+    type: types.SET_TRENDING_PAGE,
+    payload: 3
+  }
+
+  expect(actions.setTrendingPage(3)).toEqual(expectedAction)
 })
 
 it('fetchSearch', () => {
   const expectedAction = {
     type: types.FETCH_SEARCH,
+    payload: { page: 1, query: 'test/search' }
+  }
+
+  expect(actions.fetchSearch({ page: 1, query: 'test/search' })).toEqual(expectedAction)
+})
+
+it('fetchSearchRequest', () => {
+  const expectedAction = {
+    type: types.FETCH_SEARCH_REQUEST,
+    payload: 1
+  }
+
+  expect(actions.fetchSearchRequest(1)).toEqual(expectedAction)
+})
+
+it('fetchSearchSuccess', () => {
+  const expectedAction = {
+    type: types.FETCH_SEARCH_SUCCESS,
     payload: {}
   }
 
-  expect(actions.fetchSearch({})).toEqual(expectedAction)
+  expect(actions.fetchSearchSuccess({})).toEqual(expectedAction)
 })
 
-it('setSearch', () => {
+it('fetchSearchFailure', () => {
   const expectedAction = {
-    type: types.SET_SEARCH,
+    type: types.FETCH_SEARCH_FAILURE,
     payload: {}
   }
 
-  expect(actions.setSearch({})).toEqual(expectedAction)
+  expect(actions.fetchSearchFailure({})).toEqual(expectedAction)
 })
 
-it('clearSearch', () => {
+it('setSearchPage', () => {
   const expectedAction = {
-    type: types.CLEAR_SEARCH
+    type: types.SET_SEARCH_PAGE,
+    payload: 3
   }
 
-  expect(actions.clearSearch()).toEqual(expectedAction)
+  expect(actions.setSearchPage(3)).toEqual(expectedAction)
 })

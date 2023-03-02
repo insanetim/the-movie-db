@@ -1,27 +1,17 @@
 import mockHttpClient from 'src/__mocks__/mockHttpClient'
-import { showNotification } from 'src/state/app/actions'
 import * as types from '../../types'
-import { setTrending } from '../../actions'
+import { fetchTrendingFailure, fetchTrendingRequest, fetchTrendingSuccess } from '../../actions'
 import fetchTrending from '../fetchTrending'
 
-jest.mock('uuid', () => ({
-  v4: jest.fn(() => 'uuid/v4')
-}))
-
 describe('fetchTrending', () => {
-  let dispatch = jest.fn()
-
   const action = {
     type: types.FETCH_TRENDING,
     payload: 1
   }
-
   const url = '/trending/movie/day'
-
   const body = {
     params: { page: 1 }
   }
-
   const response = {
     data: {
       page: 1,
@@ -30,9 +20,9 @@ describe('fetchTrending', () => {
       total_results: 0
     }
   }
+  const dispatch = jest.fn()
 
   const beforeFunction = httpClient => () => {
-    dispatch = jest.fn()
     fetchTrending.process(
       {
         httpClient,
@@ -62,8 +52,9 @@ describe('fetchTrending', () => {
     })
 
     it('dispatches actions', () => {
-      expect(dispatch).toHaveBeenCalledTimes(1)
-      expect(dispatch).toHaveBeenCalledWith(setTrending(response.data))
+      expect(dispatch).toHaveBeenCalledTimes(2)
+      expect(dispatch).toHaveBeenNthCalledWith(1, fetchTrendingRequest(1))
+      expect(dispatch).toHaveBeenNthCalledWith(2, fetchTrendingSuccess(response.data))
     })
   })
 
@@ -79,8 +70,9 @@ describe('fetchTrending', () => {
     beforeEach(beforeFunction(httpClient))
 
     it('dispatches actions', () => {
-      expect(dispatch).toHaveBeenCalledTimes(1)
-      expect(dispatch).toHaveBeenCalledWith(showNotification({ messageType: 'error', messageText: 'test/error' }))
+      expect(dispatch).toHaveBeenCalledTimes(2)
+      expect(dispatch).toHaveBeenNthCalledWith(1, fetchTrendingRequest(1))
+      expect(dispatch).toHaveBeenNthCalledWith(2, fetchTrendingFailure(error))
     })
   })
 })

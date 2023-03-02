@@ -22,4 +22,11 @@ exports[`CreateListModal component tests matches snapshot 1`] = `
 />
 `;
 
-exports[`CreateListModal component tests matches snapshot without movies 1`] = `<Loading />`;
+exports[`CreateListModal component tests matches snapshot without movies 1`] = `
+<MoviesList
+  actions={[]}
+  emptyText="No movies found"
+  handlePagination={[Function]}
+  movies={{}}
+/>
+`;

@@ -57,6 +57,8 @@ exports[`matches snapshot with loading 1`] = `
       </div>
     </Col>
   </Row>
-  <Loading />
+  <ListsList
+    lists={{}}
+  />
 </Fragment>
 `;

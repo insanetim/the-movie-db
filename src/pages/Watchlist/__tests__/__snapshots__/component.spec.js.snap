@@ -27,18 +27,7 @@ exports[`matches snapshot 1`] = `
     emptyText="No results"
     handleDelete={[MockFunction]}
     handlePagination={[MockFunction]}
-    movies={
-      {
-        "results": [
-          {
-            "id": 1,
-            "overview": "test/overview",
-            "poster_path": "test/image",
-            "title": "test/title",
-          },
-        ],
-      }
-    }
+    movies={[]}
   />
 </Fragment>
 `;
@@ -59,6 +48,18 @@ exports[`matches snapshot with loading 1`] = `
       </div>
     </Col>
   </Row>
-  <Loading />
+  <MoviesList
+    actions={
+      [
+        <ForwardRef(DeleteOutlined)
+          onClick={[MockFunction]}
+        />,
+      ]
+    }
+    emptyText="No results"
+    handleDelete={[MockFunction]}
+    handlePagination={[MockFunction]}
+    movies={[]}
+  />
 </Fragment>
 `;
