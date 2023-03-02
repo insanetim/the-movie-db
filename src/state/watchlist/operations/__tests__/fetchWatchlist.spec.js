@@ -1,7 +1,6 @@
 import mockHttpClient from 'src/__mocks__/mockHttpClient'
-import { showNotification } from 'src/state/app/actions'
 import * as types from '../../types'
-import { setWatchlist } from '../../actions'
+import { fetchWatchlistRequest, fetchWatchlistSuccess, fetchWatchlistFailure } from '../../actions'
 import fetchWatchlist from '../fetchWatchlist'
 
 jest.mock('src/state/session/selectors', () => ({
@@ -9,24 +8,16 @@ jest.mock('src/state/session/selectors', () => ({
   accountSelector: jest.fn(() => ({ id: 123 }))
 }))
 
-jest.mock('uuid', () => ({
-  v4: jest.fn(() => 'uuid/v4')
-}))
-
 describe('fetchWatchlist', () => {
   const dispatch = jest.fn()
-
   const action = {
     type: types.FETCH_WATCHLIST,
     payload: 1
   }
-
   const url = '/account/123/watchlist/movies'
-
   const body = {
     params: { session_id: 'session_id', page: 1 }
   }
-
   const response = {
     data: {
       page: 1,
@@ -66,8 +57,9 @@ describe('fetchWatchlist', () => {
     })
 
     it('dispatches actions', () => {
-      expect(dispatch).toHaveBeenCalledTimes(1)
-      expect(dispatch).toHaveBeenCalledWith(setWatchlist(response.data))
+      expect(dispatch).toHaveBeenCalledTimes(2)
+      expect(dispatch).toHaveBeenNthCalledWith(1, fetchWatchlistRequest(1))
+      expect(dispatch).toHaveBeenNthCalledWith(2, fetchWatchlistSuccess(response.data))
     })
   })
 
@@ -83,8 +75,9 @@ describe('fetchWatchlist', () => {
     beforeEach(beforeFunction(httpClient))
 
     it('dispatches actions', () => {
-      expect(dispatch).toHaveBeenCalledTimes(1)
-      expect(dispatch).toHaveBeenCalledWith(showNotification({ messageType: 'error', messageText: 'test/error' }))
+      expect(dispatch).toHaveBeenCalledTimes(2)
+      expect(dispatch).toHaveBeenNthCalledWith(1, fetchWatchlistRequest(1))
+      expect(dispatch).toHaveBeenNthCalledWith(2, fetchWatchlistFailure(error))
     })
   })
 })
