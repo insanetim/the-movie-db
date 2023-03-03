@@ -22,6 +22,18 @@ exports[`CreateListModal component tests matches snapshot 1`] = `
 />
 `;
 
+exports[`CreateListModal component tests matches snapshot with error 1`] = `
+<Error
+  error={
+    {
+      "message": "test/error",
+    }
+  }
+/>
+`;
+
+exports[`CreateListModal component tests matches snapshot with loading 1`] = `<Loading />`;
+
 exports[`CreateListModal component tests matches snapshot without movies 1`] = `
 <MoviesList
   actions={[]}

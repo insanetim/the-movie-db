@@ -2,7 +2,7 @@
 
 exports[`DashboardSearchInput useContainer hook matches snapshot 1`] = `
 {
-  "currentValue": null,
+  "currentValue": "test/searchQuery",
   "handleChange": [Function],
   "handleSearch": [Function],
 }

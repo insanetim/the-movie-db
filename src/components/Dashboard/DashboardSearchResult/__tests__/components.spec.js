@@ -15,6 +15,8 @@ const mockedHookData = {
     total_pages: 10,
     total_results: 200
   },
+  loading: false,
+  error: null,
   handlePagination: () => jest.fn()
 }
 jest.mock('../hook', () => jest.fn(() => mockedHookData))
@@ -28,6 +30,21 @@ describe('CreateListModal component tests', () => {
 
   it('matches snapshot without movies', () => {
     mockedHookData.movies = {}
+    component = shallow(<DashboardSearchResult />)
+
+    expect(component).toMatchSnapshot()
+  })
+
+  it('matches snapshot with loading', () => {
+    mockedHookData.loading = true
+    component = shallow(<DashboardSearchResult />)
+
+    expect(component).toMatchSnapshot()
+  })
+
+  it('matches snapshot with error', () => {
+    mockedHookData.loading = false
+    mockedHookData.error = { message: 'test/error' }
     component = shallow(<DashboardSearchResult />)
 
     expect(component).toMatchSnapshot()

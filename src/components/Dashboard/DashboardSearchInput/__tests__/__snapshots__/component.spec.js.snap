@@ -47,7 +47,7 @@ exports[`CreateListModal component tests matches snapshot 1`] = `
       onSearch={[MockFunction]}
       placeholder="Enter movie name"
       size="large"
-      value="xxx"
+      value="test/searchQuery"
     />
   </Col>
 </Row>

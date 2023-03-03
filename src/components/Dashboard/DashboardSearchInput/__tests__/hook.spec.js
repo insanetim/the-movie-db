@@ -2,8 +2,6 @@ import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import { act, renderHook } from '@testing-library/react-hooks'
 
-import { dispatch } from 'src/__mocks__/react-redux'
-import { clearSearch } from 'src/state/dashboard/actions'
 import useContainer from '../hook'
 
 jest.mock('src/state/dashboard/selectors', () => ({
@@ -12,6 +10,7 @@ jest.mock('src/state/dashboard/selectors', () => ({
 
 describe('DashboardSearchInput useContainer hook', () => {
   let result = null
+  const props = 'test/searchQuery'
   const setState = jest.fn()
   const useStateSpy = jest.spyOn(React, 'useState')
   useStateSpy.mockImplementation(initialState => [initialState, setState])
@@ -20,7 +19,7 @@ describe('DashboardSearchInput useContainer hook', () => {
   useNavigate.mockReturnValue(navigate)
 
   beforeEach(() => {
-    ;({ result } = renderHook(() => useContainer(null)))
+    ;({ result } = renderHook(() => useContainer(props)))
 
     jest.clearAllMocks()
   })
@@ -54,7 +53,6 @@ describe('DashboardSearchInput useContainer hook', () => {
       result.current.handleSearch('')
     })
 
-    expect(dispatch).toHaveBeenCalledWith(clearSearch())
     expect(navigate).toHaveBeenCalledWith('/')
   })
 })

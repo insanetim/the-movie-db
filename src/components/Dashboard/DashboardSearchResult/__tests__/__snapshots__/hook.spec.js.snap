@@ -2,7 +2,9 @@
 
 exports[`DashboardSearchResult useContainer hook matches snapshot 1`] = `
 {
+  "error": null,
   "handlePagination": [Function],
+  "loading": true,
   "movies": {},
 }
 `;

@@ -1,12 +1,14 @@
 import { act, renderHook } from '@testing-library/react-hooks'
 
 import { dispatch } from 'src/__mocks__/react-redux'
-import { trendingSelector } from 'src/state/dashboard/selectors'
-import { fetchTrending } from 'src/state/dashboard/actions'
+import { fetchTrending, setTrendingPage } from 'src/state/dashboard/actions'
 import useContainer from '../hook'
 
 jest.mock('src/state/dashboard/selectors', () => ({
-  trendingSelector: jest.fn(() => ({}))
+  trendingMoviesSelector: jest.fn(() => ({})),
+  trendingPageSelector: jest.fn(() => 1),
+  trendingLoadingSelector: jest.fn(() => true),
+  trendingErrorSelector: jest.fn(() => null)
 }))
 
 describe('DashboardSearchResult useContainer hook', () => {
@@ -27,13 +29,12 @@ describe('DashboardSearchResult useContainer hook', () => {
       result.current.handlePagination(3)
     })
 
-    expect(dispatch).toHaveBeenCalledWith(fetchTrending(3))
+    expect(dispatch).toHaveBeenCalledWith(setTrendingPage(3))
   })
 
   it('checks `useEffect` method', () => {
-    trendingSelector.mockReturnValue({ data: 'test/data' })
     ;({ result } = renderHook(useContainer))
 
-    expect(dispatch).not.toHaveBeenCalled()
+    expect(dispatch).toHaveBeenCalledWith(fetchTrending(1))
   })
 })

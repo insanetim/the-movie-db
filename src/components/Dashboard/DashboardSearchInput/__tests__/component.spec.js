@@ -3,7 +3,7 @@ import { shallow } from 'enzyme'
 import DashboardSearchInput from '../component'
 
 const mockedHookData = {
-  currentValue: 'xxx',
+  currentValue: 'test/searchQuery',
   handleChange: jest.fn(),
   handleSearch: jest.fn()
 }

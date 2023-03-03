@@ -7,11 +7,10 @@ import useContainer from '../hook'
 
 describe('CreateListModal useContainer hook', () => {
   let result = null
+  const callback = jest.fn()
   const props = {
-    form: {
-      submit: jest.fn(),
-      resetFields: jest.fn()
-    }
+    form: { submit: jest.fn(), resetFields: jest.fn() },
+    callback
   }
 
   beforeEach(() => {
@@ -33,12 +32,15 @@ describe('CreateListModal useContainer hook', () => {
   })
 
   it('checks `handleSubmit` method', () => {
+    const listData = { name: 'test/name', description: 'test/description' }
+
     act(() => {
-      result.current.handleSubmit()
+      result.current.handleSubmit(listData)
     })
 
-    expect(dispatch).toHaveBeenCalledWith(hideModal())
-    expect(dispatch).toHaveBeenCalledWith(createList())
+    expect(dispatch).toHaveBeenCalledTimes(2)
+    expect(dispatch).toHaveBeenNthCalledWith(1, hideModal())
+    expect(dispatch).toHaveBeenNthCalledWith(2, createList({ listData, callback: props.callback }))
   })
 
   it('checks `handleAfterClose` method', () => {
