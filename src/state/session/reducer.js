@@ -2,13 +2,13 @@ import Cookies from 'js-cookie'
 
 import * as types from './types'
 
-const sessionInitialState = {
+const initialState = {
   sessionId: Cookies.get('session_id') || null,
   account: {},
   loading: false
 }
 
-const sessionReducer = (state = sessionInitialState, action) => {
+const sessionReducer = (state = initialState, action) => {
   switch (action.type) {
     case types.SET_SESSION:
       return {

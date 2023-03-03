@@ -1,53 +1,59 @@
 import * as types from '../types'
-import * as reducer from '../reducer'
+import reducer from '../reducer'
 
 describe('sessionReducer', () => {
-  describe('sessionId reducer', () => {
-    it('returns initial state', () => {
-      expect(reducer.sessionId(undefined, { type: 'unknown' })).toBe(null)
-    })
+  const initialState = { sessionId: null, account: {}, loading: false }
 
-    it('should handle SET_SESSION', () => {
-      const action = {
-        type: types.SET_SESSION,
-        payload: 'test/sessionId'
-      }
-      expect(reducer.sessionId(undefined, action)).toBe('test/sessionId')
-    })
+  it('returns initial state', () => {
+    const action = { type: 'unknown' }
 
-    it('should handle DELETE_SESSION', () => {
-      const action = {
-        type: types.DELETE_SESSION
-      }
-      expect(reducer.sessionId(undefined, action)).toBe(null)
-    })
+    expect(reducer(undefined, action)).toEqual(initialState)
   })
 
-  describe('account reducer', () => {
-    it('returns initial state', () => {
-      expect(reducer.account(undefined, { type: 'unknown' })).toEqual({})
-    })
+  it('should handle SET_SESSION', () => {
+    const action = {
+      type: types.SET_SESSION,
+      payload: 'test/sessionId'
+    }
+    const expectedState = { sessionId: 'test/sessionId', account: {}, loading: false }
 
-    it('should handle SET_ACCOUNT', () => {
-      const action = {
-        type: types.SET_ACCOUNT,
-        payload: { id: 123 }
-      }
-      expect(reducer.account(undefined, action)).toEqual({ id: 123 })
-    })
+    expect(reducer(initialState, action)).toEqual(expectedState)
+  })
+
+  it('should handle DELETE_SESSION', () => {
+    const action = {
+      type: types.DELETE_SESSION
+    }
+    const expectedState = { sessionId: null, account: {}, loading: false }
+
+    expect(reducer(initialState, action)).toEqual(expectedState)
+  })
+
+  it('should handle FETCH_ACCOUNT_SUCCESS', () => {
+    const action = {
+      type: types.FETCH_ACCOUNT_SUCCESS,
+      payload: { id: 123 }
+    }
+    const expectedState = { sessionId: null, account: { id: 123 }, loading: false }
+
+    expect(reducer(initialState, action)).toEqual(expectedState)
   })
 
   it('should handle LOADING_ON', () => {
     const action = {
       type: types.LOADING_ON
     }
-    expect(reducer.loading(undefined, action)).toBe(true)
+    const expectedState = { sessionId: null, account: {}, loading: true }
+
+    expect(reducer(initialState, action)).toEqual(expectedState)
   })
 
   it('should handle LOADING_OFF', () => {
     const action = {
       type: types.LOADING_OFF
     }
-    expect(reducer.loading(undefined, action)).toBe(false)
+    const expectedState = { sessionId: null, account: {}, loading: false }
+
+    expect(reducer(initialState, action)).toEqual(expectedState)
   })
 })
