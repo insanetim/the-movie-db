@@ -10,9 +10,10 @@ const useContainer = () => {
   const location = useLocation()
   const navigate = useNavigate()
 
-  const handleLogOut = async () => {
-    await dispatch(logOut()).unwrap()
-    navigate('/login', { state: { from: location } })
+  const handleLogOut = () => {
+    dispatch(logOut()).then(() => {
+      navigate('/login', { state: { from: location } })
+    })
   }
 
   return { account, handleLogOut }

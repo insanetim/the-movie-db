@@ -11,6 +11,8 @@ jest.mock('src/state/session/selectors', () => ({
 
 jest.mock('src/state/session/actions')
 
+dispatch.mockImplementationOnce(() => Promise.resolve())
+
 describe('Header useContainer hook', () => {
   let result = null
 
@@ -27,12 +29,10 @@ describe('Header useContainer hook', () => {
     expect(result.current).toMatchSnapshot()
   })
 
-  it('checks `handleLogOut` method', () => {
-    let callback
-    act(() => {
-      callback = result.current.handleLogOut()
+  it('checks `handleLogOut` method', async () => {
+    await act(async () => {
+      await result.current.handleLogOut()
     })
-    callback()
 
     expect(dispatch).toHaveBeenCalledWith(logOut())
     expect(navigate).toHaveBeenCalledWith('/login', { state: { from: {} } })
