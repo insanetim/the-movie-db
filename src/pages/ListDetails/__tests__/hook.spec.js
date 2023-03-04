@@ -1,5 +1,4 @@
 import 'jsdom-global/register'
-import React from 'react'
 import { Modal } from 'antd'
 import { useNavigate, useParams } from 'react-router-dom'
 import { act, renderHook } from '@testing-library/react-hooks'
@@ -9,20 +8,19 @@ import { deleteList, removeFromList, fetchList } from 'src/state/lists/actions'
 import useContainer from '../hook'
 
 jest.mock('src/state/lists/selectors', () => ({
-  listSelector: jest.fn(() => ({}))
+  listSelector: jest.fn(() => ({})),
+  listLoadingSelector: jest.fn(() => true),
+  listErrorSelector: jest.fn(() => null)
 }))
 
 describe('ListDetails useContainer hook', () => {
   let result = null
-  const setState = jest.fn()
-  const useStateSpy = jest.spyOn(React, 'useState')
-  useStateSpy.mockImplementation(initialState => [initialState, setState])
 
   const navigate = jest.fn()
   useNavigate.mockReturnValue(navigate)
   useParams.mockReturnValue({ listId: 123 })
 
-  jest.spyOn(Modal, 'confirm')
+  const confirmSpy = jest.spyOn(Modal, 'confirm')
 
   beforeEach(() => {
     ;({ result } = renderHook(useContainer))
@@ -42,35 +40,43 @@ describe('ListDetails useContainer hook', () => {
     res.onOk()
     res.callback()
 
-    expect(Modal.confirm).toHaveBeenCalledWith({
+    expect(confirmSpy).toHaveBeenCalledWith({
       title: 'Do you want to delete list?',
       onOk: res.onOk
     })
-    expect(dispatch).toHaveBeenCalledWith(deleteList(123, res.callback))
+    expect(dispatch).toHaveBeenCalledWith(
+      deleteList({
+        listId: 123,
+        callback: res.callback
+      })
+    )
     expect(navigate).toHaveBeenCalledWith('/lists')
   })
 
   it('checks `handleMovieDelete` method', () => {
     let onOk
     act(() => {
-      onOk = result.current.handleMovieDelete(123, { stopPropagation: jest.fn() })
+      onOk = result.current.handleMovieDelete(123, {
+        stopPropagation: jest.fn()
+      })
     })
     onOk()
 
-    expect(Modal.confirm).toHaveBeenCalledWith({
+    expect(confirmSpy).toHaveBeenCalledWith({
       title: 'Do you want to delete movie from this list?',
       onOk
     })
-    expect(dispatch).toHaveBeenCalledWith(removeFromList({ listId: 123, movieId: 123 }))
+    expect(dispatch).toHaveBeenCalledWith(
+      removeFromList({
+        listId: 123,
+        movieId: 123
+      })
+    )
   })
 
   it('check `useEffect` method', () => {
     ;({ result } = renderHook(useContainer))
-    act(() => {
-      result.current.onFinish()
-    })
 
-    expect(dispatch).toHaveBeenCalledWith(fetchList(123, result.current.onFinish))
-    expect(setState).toHaveBeenCalledWith(false)
+    expect(dispatch).toHaveBeenCalledWith(fetchList(123))
   })
 })

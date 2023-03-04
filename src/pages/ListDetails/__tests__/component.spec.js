@@ -8,20 +8,30 @@ const mockedHookData = {
     items: []
   },
   loading: false,
+  error: null,
   handleListDelete: jest.fn(),
   handleMovieDelete: jest.fn()
 }
 jest.mock('../hook', () => jest.fn(() => mockedHookData))
 
-it('matches snapshot', () => {
-  const component = shallow(<ListDetails />)
+describe('ListDetails components tests', () => {
+  let component = shallow(<ListDetails />)
+  it('matches snapshot', () => {
+    expect(component).toMatchSnapshot()
+  })
 
-  expect(component).toMatchSnapshot()
-})
+  it('matches snapshot with loading', () => {
+    mockedHookData.loading = true
+    component = shallow(<ListDetails />)
 
-it('matches snapshot with loading', () => {
-  mockedHookData.loading = true
-  const component = shallow(<ListDetails />)
+    expect(component).toMatchSnapshot()
+  })
 
-  expect(component).toMatchSnapshot()
+  it('matches snapshot with error', () => {
+    mockedHookData.loading = false
+    mockedHookData.error = { message: 'test/error' }
+    component = shallow(<ListDetails />)
+
+    expect(component).toMatchSnapshot()
+  })
 })

@@ -2,8 +2,10 @@
 
 exports[`Watchlist useContainer hook matches snapshot 1`] = `
 {
+  "error": null,
   "handleDelete": [Function],
   "handlePagination": [Function],
-  "watchlist": {},
+  "loading": true,
+  "movies": {},
 }
 `;

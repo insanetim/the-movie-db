@@ -2,8 +2,10 @@
 
 exports[`Favotites useContainer hook matches snapshot 1`] = `
 {
-  "favorites": {},
+  "error": null,
   "handleDelete": [Function],
   "handlePagination": [Function],
+  "loading": true,
+  "movies": {},
 }
 `;

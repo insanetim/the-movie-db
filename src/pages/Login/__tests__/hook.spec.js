@@ -5,9 +5,13 @@ import { dispatch } from 'src/__mocks__/react-redux'
 import { logIn } from 'src/state/session/actions'
 import useContainer from '../hook'
 
-jest.mock('src/state/app/selectors', () => ({
+jest.mock('src/state/session/selectors', () => ({
   loadingSelector: jest.fn(() => false)
 }))
+
+jest.mock('src/state/session/actions')
+
+dispatch.mockImplementationOnce(() => Promise.resolve())
 
 describe('Favotites useContainer hook', () => {
   let result = null
@@ -25,15 +29,13 @@ describe('Favotites useContainer hook', () => {
     expect(result.current).toMatchSnapshot()
   })
 
-  it('checks `handleLogIn` method', () => {
-    let callback
-    const data = { username: 'user', password: 'password' }
-    act(() => {
-      callback = result.current.handleLogIn(data)
+  it('checks `handleLogIn` method', async () => {
+    const userData = { username: 'user', password: 'password' }
+    await act(async () => {
+      await result.current.handleLogIn(userData)
     })
-    callback()
 
-    expect(dispatch).toHaveBeenCalledWith(logIn(data, callback))
+    expect(dispatch).toHaveBeenCalledWith(logIn(userData))
     expect(navigate).toHaveBeenCalledWith('/', { replace: true })
   })
 })

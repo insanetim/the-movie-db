@@ -7,15 +7,17 @@ const mockedHookData = {
 }
 jest.mock('../hook', () => jest.fn(() => mockedHookData))
 
-it('matches snapshot', () => {
-  const component = shallow(<Dashboard />)
+describe('Dashboard component tests', () => {
+  let component = shallow(<Dashboard />)
 
-  expect(component).toMatchSnapshot()
-})
+  it('matches snapshot', () => {
+    expect(component).toMatchSnapshot()
+  })
 
-it('matches snapshot with searchQuery', () => {
-  mockedHookData.searchQuery = 'test/search'
-  const component = shallow(<Dashboard />)
+  it('matches snapshot with searchQuery', () => {
+    mockedHookData.searchQuery = 'test/searchQuery'
+    component = shallow(<Dashboard />)
 
-  expect(component).toMatchSnapshot()
+    expect(component).toMatchSnapshot()
+  })
 })

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`matches snapshot 1`] = `
+exports[`Watchlist components tests matches snapshot 1`] = `
 <Fragment>
   <Row>
     <Col
@@ -27,12 +27,23 @@ exports[`matches snapshot 1`] = `
     emptyText="No results"
     handleDelete={[MockFunction]}
     handlePagination={[MockFunction]}
-    movies={[]}
+    movies={
+      {
+        "results": [
+          {
+            "id": 1,
+            "overview": "test/overview",
+            "poster_path": "test/image",
+            "title": "test/title",
+          },
+        ],
+      }
+    }
   />
 </Fragment>
 `;
 
-exports[`matches snapshot with loading 1`] = `
+exports[`Watchlist components tests matches snapshot with error 1`] = `
 <Fragment>
   <Row>
     <Col
@@ -48,18 +59,32 @@ exports[`matches snapshot with loading 1`] = `
       </div>
     </Col>
   </Row>
-  <MoviesList
-    actions={
-      [
-        <ForwardRef(DeleteOutlined)
-          onClick={[MockFunction]}
-        />,
-      ]
+  <Error
+    error={
+      {
+        "message": "test/error",
+      }
     }
-    emptyText="No results"
-    handleDelete={[MockFunction]}
-    handlePagination={[MockFunction]}
-    movies={[]}
   />
+</Fragment>
+`;
+
+exports[`Watchlist components tests matches snapshot with loading 1`] = `
+<Fragment>
+  <Row>
+    <Col
+      offset={2}
+      span={20}
+    >
+      <div
+        className="top-margin"
+      >
+        <ForwardRef>
+          Watchlist
+        </ForwardRef>
+      </div>
+    </Col>
+  </Row>
+  <Loading />
 </Fragment>
 `;

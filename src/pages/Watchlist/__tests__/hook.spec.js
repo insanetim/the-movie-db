@@ -4,7 +4,7 @@ import { act, renderHook } from '@testing-library/react-hooks'
 
 import { dispatch } from 'src/__mocks__/react-redux'
 import { accountSelector } from 'src/state/session/selectors'
-import { fetchWatchlist } from 'src/state/watchlist/actions'
+import { fetchWatchlist, setWatchlistPage } from 'src/state/watchlist/actions'
 import { changeMovieInWatchlist } from 'src/state/movie/actions'
 import useContainer from '../hook'
 
@@ -13,13 +13,16 @@ jest.mock('src/state/session/selectors', () => ({
 }))
 
 jest.mock('src/state/watchlist/selectors', () => ({
-  watchlistSelector: jest.fn(() => ({}))
+  watchlistMoviesSelector: jest.fn(() => ({})),
+  watchlistPageSelector: jest.fn(() => 1),
+  watchlistLoadingSelector: jest.fn(() => true),
+  watchlistErrorSelector: jest.fn(() => null)
 }))
 
 describe('Watchlist useContainer hook', () => {
   let result = null
 
-  jest.spyOn(Modal, 'confirm')
+  const confirmSpy = jest.spyOn(Modal, 'confirm')
 
   beforeEach(() => {
     ;({ result } = renderHook(useContainer))
@@ -33,10 +36,10 @@ describe('Watchlist useContainer hook', () => {
 
   it('checks `handlePagination` method', () => {
     act(() => {
-      result.current.handlePagination(1)
+      result.current.handlePagination(3)
     })
 
-    expect(dispatch).toHaveBeenCalledWith(fetchWatchlist(1))
+    expect(dispatch).toHaveBeenCalledWith(setWatchlistPage(3))
   })
 
   it('checks `handleDelete` method', () => {
@@ -46,7 +49,7 @@ describe('Watchlist useContainer hook', () => {
     })
     onOk()
 
-    expect(Modal.confirm).toHaveBeenCalledWith({
+    expect(confirmSpy).toHaveBeenCalledWith({
       title: 'Do you want to delete movie from watchlist?',
       onOk
     })
@@ -62,6 +65,6 @@ describe('Watchlist useContainer hook', () => {
     accountSelector.mockReturnValueOnce({ id: 123 })
     ;({ result } = renderHook(useContainer))
 
-    expect(dispatch).toHaveBeenCalledWith(fetchWatchlist())
+    expect(dispatch).toHaveBeenCalledWith(fetchWatchlist(1))
   })
 })

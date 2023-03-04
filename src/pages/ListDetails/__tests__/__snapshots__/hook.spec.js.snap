@@ -2,10 +2,10 @@
 
 exports[`ListDetails useContainer hook matches snapshot 1`] = `
 {
+  "error": null,
   "handleListDelete": [Function],
   "handleMovieDelete": [Function],
   "list": {},
   "loading": true,
-  "onFinish": [Function],
 }
 `;

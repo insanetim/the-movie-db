@@ -3,7 +3,7 @@ import { shallow } from 'enzyme'
 import Watchlist from '../component'
 
 const mockedHookData = {
-  watchlist: {
+  movies: {
     results: [
       {
         id: 1,
@@ -13,20 +13,32 @@ const mockedHookData = {
       }
     ]
   },
+  loading: false,
+  error: null,
   handlePagination: jest.fn(),
   handleDelete: jest.fn()
 }
 jest.mock('../hook', () => jest.fn(() => mockedHookData))
 
-it('matches snapshot', () => {
-  const component = shallow(<Watchlist />)
+describe('Watchlist components tests', () => {
+  let component = shallow(<Watchlist />)
 
-  expect(component).toMatchSnapshot()
-})
+  it('matches snapshot', () => {
+    expect(component).toMatchSnapshot()
+  })
 
-it('matches snapshot with loading', () => {
-  mockedHookData.watchlist = {}
-  const component = shallow(<Watchlist />)
+  it('matches snapshot with loading', () => {
+    mockedHookData.loading = true
+    component = shallow(<Watchlist />)
 
-  expect(component).toMatchSnapshot()
+    expect(component).toMatchSnapshot()
+  })
+
+  it('matches snapshot with error', () => {
+    mockedHookData.loading = false
+    mockedHookData.error = { message: 'test/error' }
+    component = shallow(<Watchlist />)
+
+    expect(component).toMatchSnapshot()
+  })
 })

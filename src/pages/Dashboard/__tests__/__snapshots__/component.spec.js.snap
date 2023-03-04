@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`matches snapshot 1`] = `
+exports[`Dashboard component tests matches snapshot 1`] = `
 <Fragment>
   <DashboardSearchInput
     searchQuery={null}
@@ -13,16 +13,16 @@ exports[`matches snapshot 1`] = `
 </Fragment>
 `;
 
-exports[`matches snapshot with searchQuery 1`] = `
+exports[`Dashboard component tests matches snapshot with searchQuery 1`] = `
 <Fragment>
   <DashboardSearchInput
-    searchQuery="test/search"
+    searchQuery="test/searchQuery"
   />
   <div
     className="top-margin"
   >
     <DashboardSearchResult
-      searchQuery="test/search"
+      searchQuery="test/searchQuery"
     />
   </div>
 </Fragment>

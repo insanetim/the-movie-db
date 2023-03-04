@@ -31,9 +31,11 @@ const useContainer = () => {
 
   const handleMovieDelete = (movieId, event) => {
     event.stopPropagation()
+
     const onOk = () => {
       dispatch(removeFromList({ listId, movieId }))
     }
+
     Modal.confirm({
       title: 'Do you want to delete movie from this list?',
       onOk

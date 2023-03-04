@@ -11,7 +11,10 @@ jest.mock('src/state/session/selectors', () => ({
 }))
 
 jest.mock('src/state/lists/selectors', () => ({
-  listsSelector: jest.fn(() => ({}))
+  listsSelector: jest.fn(() => ({})),
+  listsPageSelector: jest.fn(() => 1),
+  listsLoadingSelector: jest.fn(() => true),
+  listsErrorSelector: jest.fn(() => null)
 }))
 
 describe('Favotites useContainer hook', () => {
@@ -40,9 +43,9 @@ describe('Favotites useContainer hook', () => {
   })
 
   it('checks `useEffect` method with account', () => {
-    accountSelector.mockReturnValueOnce({ id: 1 })
+    accountSelector.mockReturnValueOnce({ id: 123 })
     ;({ result } = renderHook(useContainer))
 
-    expect(dispatch).toHaveBeenCalledWith(fetchLists(1))
+    expect(dispatch).toHaveBeenCalledWith(fetchLists({ page: 1 }))
   })
 })

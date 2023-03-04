@@ -29,6 +29,7 @@ const mockedHookData = {
     }
   },
   loading: false,
+  error: null,
   handleFavoriteClick: jest.fn(),
   handleWatchlistClick: jest.fn(),
   popoverOpen: false,
@@ -37,11 +38,9 @@ const mockedHookData = {
 jest.mock('../hook', () => jest.fn(() => mockedHookData))
 
 describe('Movie component tests', () => {
-  let component
+  let component = shallow(<Movie />)
 
   it('matches snapshot', () => {
-    component = shallow(<Movie />)
-
     expect(component).toMatchSnapshot()
   })
 
@@ -62,18 +61,24 @@ describe('Movie component tests', () => {
     expect(component).toMatchSnapshot()
   })
 
+  it('Popover matches snapshot', () => {
+    component = shallow(<Movie />)
+
+    expect(component.find('Popover').renderProp('onOpenChange')()).toMatchSnapshot()
+  })
+
   it('matches snapshot with loading', () => {
-    useContainer.mockReturnValueOnce({
-      loading: true
-    })
+    mockedHookData.loading = true
     component = shallow(<Movie />)
 
     expect(component).toMatchSnapshot()
   })
 
-  it('Popover matches snapshot', () => {
+  it('matches snapshot with error', () => {
+    mockedHookData.loading = false
+    mockedHookData.error = { message: 'test/error' }
     component = shallow(<Movie />)
 
-    expect(component.find('Popover').renderProp('onOpenChange')()).toMatchSnapshot()
+    expect(component).toMatchSnapshot()
   })
 })

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`matches snapshot 1`] = `
+exports[`Lists component tests matches snapshot 1`] = `
 <Fragment>
   <Row
     justify="center"
@@ -37,7 +37,7 @@ exports[`matches snapshot 1`] = `
 </Fragment>
 `;
 
-exports[`matches snapshot with loading 1`] = `
+exports[`Lists component tests matches snapshot with error 1`] = `
 <Fragment>
   <Row
     justify="center"
@@ -57,8 +57,36 @@ exports[`matches snapshot with loading 1`] = `
       </div>
     </Col>
   </Row>
-  <ListsList
-    lists={{}}
+  <Error
+    error={
+      {
+        "message": "test/error",
+      }
+    }
   />
+</Fragment>
+`;
+
+exports[`Lists component tests matches snapshot with loading 1`] = `
+<Fragment>
+  <Row
+    justify="center"
+  >
+    <Col
+      span={20}
+    >
+      <div
+        className="top-margin"
+      >
+        <ForwardRef>
+          My Lists 
+          <ForwardRef(PlusCircleOutlined)
+            onClick={[MockFunction]}
+          />
+        </ForwardRef>
+      </div>
+    </Col>
+  </Row>
+  <Loading />
 </Fragment>
 `;

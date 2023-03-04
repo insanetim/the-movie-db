@@ -13,19 +13,30 @@ const mockedHookData = {
       }
     ]
   },
+  loading: false,
+  error: null,
   handleClick: jest.fn()
 }
 jest.mock('../hook', () => jest.fn(() => mockedHookData))
 
-it('matches snapshot', () => {
-  const component = shallow(<Lists />)
+describe('Lists component tests', () => {
+  let component = shallow(<Lists />)
+  it('matches snapshot', () => {
+    expect(component).toMatchSnapshot()
+  })
 
-  expect(component).toMatchSnapshot()
-})
+  it('matches snapshot with loading', () => {
+    mockedHookData.loading = true
+    component = shallow(<Lists />)
 
-it('matches snapshot with loading', () => {
-  mockedHookData.lists = {}
-  const component = shallow(<Lists />)
+    expect(component).toMatchSnapshot()
+  })
 
-  expect(component).toMatchSnapshot()
+  it('matches snapshot with error', () => {
+    mockedHookData.loading = false
+    mockedHookData.error = { message: 'test/error' }
+    component = shallow(<Lists />)
+
+    expect(component).toMatchSnapshot()
+  })
 })
