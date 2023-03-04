@@ -8,13 +8,17 @@ const useContainer = ({ listId }) => {
   const dispatch = useDispatch()
   const navigate = useNavigate()
 
-  const handleClick = () => navigate(`/list/${listId}`)
+  const handleClick = () => {
+    navigate(`/list/${listId}`)
+  }
 
   const handleDelete = event => {
     event.stopPropagation()
+
     const onOk = () => {
       dispatch(deleteList({ listId }))
     }
+
     Modal.confirm({
       title: 'Do you want to delete list?',
       onOk

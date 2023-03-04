@@ -2,7 +2,7 @@
 
 exports[`matches snapshot 1`] = `<Outlet />`;
 
-exports[`matches snapshot without session_id 1`] = `
+exports[`matches snapshot without sessionId 1`] = `
 <Navigate
   replace={true}
   state={

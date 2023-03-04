@@ -10,7 +10,7 @@ jest.mock('react-router-dom', () => ({
 }))
 
 const mockedHookData = {
-  sessionId: 'session_id'
+  sessionId: 'test/sessionId'
 }
 jest.mock('../hook', () => jest.fn(() => mockedHookData))
 
@@ -20,7 +20,7 @@ it('matches snapshot', () => {
   expect(component).toMatchSnapshot()
 })
 
-it('matches snapshot without session_id', () => {
+it('matches snapshot without sessionId', () => {
   mockedHookData.sessionId = null
   const component = shallow(<ProtectedRoutes />)
 

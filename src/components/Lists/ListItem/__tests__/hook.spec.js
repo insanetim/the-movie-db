@@ -9,9 +9,7 @@ import useContainer from '../hook'
 
 describe('ListItem useContainer hook', () => {
   let result = null
-  const props = {
-    listId: 1
-  }
+  const props = { listId: 123 }
 
   const navigate = jest.fn()
   useNavigate.mockReturnValue(navigate)
@@ -33,7 +31,7 @@ describe('ListItem useContainer hook', () => {
       result.current.handleClick()
     })
 
-    expect(navigate).toHaveBeenCalledWith('/list/1')
+    expect(navigate).toHaveBeenCalledWith('/list/123')
   })
 
   it('checks `handleDelete` method', () => {
@@ -43,10 +41,7 @@ describe('ListItem useContainer hook', () => {
     })
     onOk()
 
-    expect(Modal.confirm).toHaveBeenCalledWith({
-      title: 'Do you want to delete list?',
-      onOk
-    })
-    expect(dispatch).toHaveBeenCalledWith(deleteList(1))
+    expect(Modal.confirm).toHaveBeenCalledWith({ title: 'Do you want to delete list?', onOk })
+    expect(dispatch).toHaveBeenCalledWith(deleteList({ listId: 123 }))
   })
 })

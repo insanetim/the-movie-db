@@ -1,14 +1,14 @@
 import { act, renderHook } from '@testing-library/react-hooks'
 
 import { dispatch } from 'src/__mocks__/react-redux'
-import { fetchLists } from 'src/state/lists/actions'
+import { setListsPage } from 'src/state/lists/actions'
 import useContainer from '../hook'
 
 describe('ListsList useContainer hook', () => {
   let result = null
 
   beforeEach(() => {
-    ;({ result } = renderHook(() => useContainer(1)))
+    ;({ result } = renderHook(useContainer))
 
     jest.clearAllMocks()
   })
@@ -19,9 +19,9 @@ describe('ListsList useContainer hook', () => {
 
   it('checks `handlePaginationChange` method', () => {
     act(() => {
-      result.current.handlePaginationChange(1)
+      result.current.handlePaginationChange(3)
     })
 
-    expect(dispatch).toHaveBeenCalledWith(fetchLists(1))
+    expect(dispatch).toHaveBeenCalledWith(setListsPage(3))
   })
 })
