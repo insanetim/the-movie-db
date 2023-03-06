@@ -63,7 +63,7 @@ describe('createList', () => {
 
     it('dispatches actions', () => {
       expect(dispatch).toHaveBeenCalledTimes(1)
-      expect(dispatch).toHaveBeenCalledWith(fetchLists({ page: 1 }))
+      expect(dispatch).toHaveBeenCalledWith(fetchLists())
     })
   })
 

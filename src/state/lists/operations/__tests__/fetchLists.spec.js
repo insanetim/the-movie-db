@@ -1,5 +1,4 @@
 import mockHttpClient from 'src/__mocks__/mockHttpClient'
-import { mergeDeepRight } from 'ramda'
 import * as types from '../../types'
 import { fetchListsRequest, fetchListsSuccess, fetchListsFailure } from '../../actions'
 import fetchLists from '../fetchLists'
@@ -11,11 +10,10 @@ jest.mock('src/state/session/selectors', () => ({
 
 describe('fetchLists', () => {
   const dispatch = jest.fn()
-  const callback = jest.fn()
 
   const action = {
     type: types.FETCH_LISTS,
-    payload: { page: 1 }
+    payload: 1
   }
 
   const url = '/account/123/lists'
@@ -67,26 +65,6 @@ describe('fetchLists', () => {
     it('dispatches actions', () => {
       expect(dispatch).toHaveBeenNthCalledWith(1, fetchListsRequest(1))
       expect(dispatch).toHaveBeenNthCalledWith(2, fetchListsSuccess(response.data))
-    })
-  })
-
-  describe('callback', () => {
-    const httpClient = mockHttpClient({ method: 'get', response })
-
-    const actionExt = mergeDeepRight(action, { payload: { callback } })
-
-    it('calls callback', async () => {
-      await fetchLists.process(
-        {
-          httpClient,
-          action: actionExt,
-          getState: jest.fn()
-        },
-        dispatch,
-        jest.fn()
-      )
-
-      expect(callback).toHaveBeenCalledTimes(1)
     })
   })
 

@@ -13,6 +13,8 @@ jest.mock('src/state/lists/selectors', () => ({
   listErrorSelector: jest.fn(() => null)
 }))
 
+jest.mock('src/state/lists/actions')
+
 describe('ListDetails useContainer hook', () => {
   let result = null
 
@@ -32,29 +34,26 @@ describe('ListDetails useContainer hook', () => {
     expect(result.current).toMatchSnapshot()
   })
 
-  it('checks `handleListDelete` method', () => {
-    let res
+  it('checks `handleListDelete` method', async () => {
+    dispatch.mockImplementationOnce(() => Promise.resolve())
+    let onOk
+
     act(() => {
-      res = result.current.handleListDelete()
+      onOk = result.current.handleListDelete()
     })
-    res.onOk()
-    res.callback()
+    await onOk()
 
     expect(confirmSpy).toHaveBeenCalledWith({
       title: 'Do you want to delete list?',
-      onOk: res.onOk
+      onOk
     })
-    expect(dispatch).toHaveBeenCalledWith(
-      deleteList({
-        listId: 123,
-        callback: res.callback
-      })
-    )
+    expect(dispatch).toHaveBeenCalledWith(deleteList(123))
     expect(navigate).toHaveBeenCalledWith('/lists')
   })
 
   it('checks `handleMovieDelete` method', () => {
     let onOk
+
     act(() => {
       onOk = result.current.handleMovieDelete(123, {
         stopPropagation: jest.fn()

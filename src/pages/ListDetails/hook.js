@@ -15,18 +15,18 @@ const useContainer = () => {
   const { listId } = useParams()
 
   const handleListDelete = () => {
-    const callback = () => {
-      navigate('/lists')
-    }
     const onOk = () => {
-      dispatch(deleteList({ listId, callback }))
+      dispatch(deleteList(listId)).then(() => {
+        navigate('/lists')
+      })
     }
+
     Modal.confirm({
       title: 'Do you want to delete list?',
       onOk
     })
 
-    return { callback, onOk }
+    return onOk
   }
 
   const handleMovieDelete = (movieId, event) => {

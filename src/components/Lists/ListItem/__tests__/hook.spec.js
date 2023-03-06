@@ -7,6 +7,8 @@ import { dispatch } from 'src/__mocks__/react-redux'
 import { deleteList } from 'src/state/lists/actions'
 import useContainer from '../hook'
 
+jest.mock('src/state/lists/actions')
+
 describe('ListItem useContainer hook', () => {
   let result = null
   const props = { listId: 123 }
@@ -14,7 +16,7 @@ describe('ListItem useContainer hook', () => {
   const navigate = jest.fn()
   useNavigate.mockReturnValue(navigate)
 
-  jest.spyOn(Modal, 'confirm')
+  const confirmSpy = jest.spyOn(Modal, 'confirm')
 
   beforeEach(() => {
     ;({ result } = renderHook(() => useContainer(props)))
@@ -36,12 +38,13 @@ describe('ListItem useContainer hook', () => {
 
   it('checks `handleDelete` method', () => {
     let onOk
+
     act(() => {
       onOk = result.current.handleDelete({ stopPropagation: jest.fn() })
     })
     onOk()
 
-    expect(Modal.confirm).toHaveBeenCalledWith({ title: 'Do you want to delete list?', onOk })
-    expect(dispatch).toHaveBeenCalledWith(deleteList({ listId: 123 }))
+    expect(confirmSpy).toHaveBeenCalledWith({ title: 'Do you want to delete list?', onOk })
+    expect(dispatch).toHaveBeenCalledWith(deleteList(123))
   })
 })

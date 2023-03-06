@@ -102,7 +102,7 @@ describe('fetchMovie', () => {
 
       expect(dispatch).toHaveBeenCalledTimes(3)
       expect(dispatch).toHaveBeenNthCalledWith(1, fetchMovieRequest())
-      expect(dispatch).toHaveBeenNthCalledWith(2, fetchLists({ page: 1 }))
+      expect(dispatch).toHaveBeenNthCalledWith(2, fetchLists())
       expect(dispatch).toHaveBeenNthCalledWith(3, fetchMovieSuccess(resultData))
     })
   })

@@ -1,8 +1,14 @@
+import { createAsyncThunk } from '@reduxjs/toolkit'
+
+import httpClient from 'src/api/httpClient'
+import * as endpoints from 'src/constants/endpoints'
+import { sessionIdSelector } from 'src/state/session/selectors'
+import { showNotification } from 'src/state/app/actions'
 import * as types from './types'
 
-export const fetchLists = ({ page, callback }) => ({
+export const fetchLists = (page = 1) => ({
   type: types.FETCH_LISTS,
-  payload: { page, callback }
+  payload: page
 })
 
 export const fetchListsRequest = page => ({
@@ -59,7 +65,17 @@ export const removeFromList = ({ listId, movieId }) => ({
   payload: { listId, movieId }
 })
 
-export const deleteList = ({ listId, callback }) => ({
-  type: types.DELETE_LIST,
-  payload: { listId, callback }
+export const deleteList = createAsyncThunk(types.DELETE_LIST, async (listId, { dispatch, getState }) => {
+  const sessionId = sessionIdSelector(getState())
+  let list
+
+  try {
+    list = await httpClient.get(endpoints.getListDetails(listId))
+    await httpClient.delete(endpoints.deleteList(listId), { params: { session_id: sessionId } })
+  } catch (error) {
+    const errorMessage = `${list.data.name} list has been removed`
+    dispatch(showNotification({ messageText: errorMessage }))
+  } finally {
+    dispatch(fetchLists())
+  }
 })

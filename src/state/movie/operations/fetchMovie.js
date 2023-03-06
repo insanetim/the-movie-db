@@ -27,7 +27,7 @@ const fetchMovie = createLogic({
       data.images = take(6, images.backdrops)
       data.accountStates = accountStates
       data.credits = credits
-      dispatch(fetchLists({ page: 1 }))
+      dispatch(fetchLists())
       dispatch(fetchMovieSuccess(data))
     } catch (error) {
       dispatch(fetchMovieFailure(error))

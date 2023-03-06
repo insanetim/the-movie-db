@@ -1,3 +1,5 @@
+import httpClient from 'src/api/httpClient'
+import { showNotification } from 'src/state/app/actions'
 import * as actions from '../actions'
 import * as types from '../types'
 
@@ -112,11 +114,56 @@ it('removeFromList', () => {
   expect(actions.removeFromList({ listId: 123, movieId: 123 })).toEqual(expectedAction)
 })
 
-it('deleteList', () => {
-  const expectedAction = {
-    type: types.DELETE_LIST,
-    payload: { listId: 123, callback }
-  }
+jest.mock('src/state/session/selectors', () => ({
+  sessionIdSelector: jest.fn(() => 'session_id')
+}))
 
-  expect(actions.deleteList({ listId: 123, callback })).toEqual(expectedAction)
+jest.mock('uuid', () => ({
+  v4: jest.fn(() => 'uuid/v4')
+}))
+
+describe('deleteList', () => {
+  const dispatch = jest.fn()
+  const getState = jest.fn()
+
+  const listId = 123
+
+  const deleteListThunk = actions.deleteList(listId)
+
+  const listUrl = '/list/123'
+  const listResponse = { data: { name: 'test/list' } }
+
+  const deleteUrl = '/list/123'
+  const deleteBody = { params: { session_id: 'session_id' } }
+  const deleteResponse = { data: { success: true } }
+
+  beforeEach(() => {
+    jest.clearAllMocks()
+  })
+
+  it('success', async () => {
+    const getSpy = jest.spyOn(httpClient, 'get').mockResolvedValueOnce(listResponse)
+    const deleteSpy = jest.spyOn(httpClient, 'delete').mockResolvedValueOnce(deleteResponse)
+
+    await deleteListThunk(dispatch, getState)
+
+    expect(getSpy).toHaveBeenCalledTimes(1)
+    expect(getSpy).toHaveBeenCalledWith(listUrl)
+    expect(deleteSpy).toHaveBeenCalledTimes(1)
+    expect(deleteSpy).toHaveBeenCalledWith(deleteUrl, deleteBody)
+
+    expect(dispatch).toHaveBeenCalledWith(actions.fetchLists())
+  })
+
+  it('failure', async () => {
+    const error = new Error('test/error')
+    jest.spyOn(httpClient, 'get').mockResolvedValueOnce(listResponse)
+    jest.spyOn(httpClient, 'delete').mockRejectedValueOnce(error)
+
+    await deleteListThunk(dispatch, getState)
+
+    expect(dispatch).toHaveBeenCalledWith(
+      showNotification({ messageType: 'success', messageText: 'test/list list has been removed' })
+    )
+  })
 })

@@ -85,7 +85,7 @@ describe('logIn', () => {
   })
 
   it('success', async () => {
-    jest.spyOn(Cookies, 'set')
+    const cookiesSpy = jest.spyOn(Cookies, 'set')
     const getSpy = jest.spyOn(httpClient, 'get').mockResolvedValueOnce(requestTokenResponse)
     const postSpy = jest
       .spyOn(httpClient, 'post')
@@ -101,7 +101,7 @@ describe('logIn', () => {
     expect(postSpy).toHaveBeenNthCalledWith(2, sessionUrl, sessionBody)
 
     expect(dispatch).toHaveBeenCalledWith(actions.loadingOn())
-    expect(Cookies.set).toHaveBeenCalledWith('session_id', 'test/session_id')
+    expect(cookiesSpy).toHaveBeenCalledWith('session_id', 'test/session_id')
     expect(dispatch).toHaveBeenCalledWith(actions.setSession('test/session_id'))
     expect(dispatch).toHaveBeenCalledWith(actions.loadingOff())
   })
@@ -135,7 +135,7 @@ describe('logOut', () => {
   })
 
   it('success', async () => {
-    jest.spyOn(Cookies, 'remove')
+    const cookiesSpy = jest.spyOn(Cookies, 'remove')
     const deleteSpy = jest.spyOn(httpClient, 'delete').mockResolvedValueOnce(response)
 
     await logOutThunk(dispatch, getState)
@@ -144,7 +144,7 @@ describe('logOut', () => {
     expect(deleteSpy).toHaveBeenCalledWith(url, body)
 
     expect(dispatch).toHaveBeenCalledWith(actions.deleteSession())
-    expect(Cookies.remove).toHaveBeenCalledWith('session_id')
+    expect(cookiesSpy).toHaveBeenCalledWith('session_id')
   })
 
   it('failure', async () => {

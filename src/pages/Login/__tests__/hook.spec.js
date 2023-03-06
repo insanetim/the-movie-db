@@ -11,8 +11,6 @@ jest.mock('src/state/session/selectors', () => ({
 
 jest.mock('src/state/session/actions')
 
-dispatch.mockImplementationOnce(() => Promise.resolve())
-
 describe('Favotites useContainer hook', () => {
   let result = null
 
@@ -30,9 +28,11 @@ describe('Favotites useContainer hook', () => {
   })
 
   it('checks `handleLogIn` method', async () => {
+    dispatch.mockImplementationOnce(() => Promise.resolve())
     const userData = { username: 'user', password: 'password' }
-    await act(async () => {
-      await result.current.handleLogIn(userData)
+
+    await act(() => {
+      result.current.handleLogIn(userData)
     })
 
     expect(dispatch).toHaveBeenCalledWith(logIn(userData))

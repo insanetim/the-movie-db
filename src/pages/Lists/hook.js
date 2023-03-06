@@ -25,7 +25,7 @@ const useContainer = () => {
 
   useEffect(() => {
     if (not(isEmpty(account))) {
-      dispatch(fetchLists({ page }))
+      dispatch(fetchLists(page))
     }
   }, [account, page])
 

@@ -22,7 +22,7 @@ const createList = createLogic({
         { params: { session_id: sessionId } }
       )
       if (typeof callback === 'function') callback(data.list_id)
-      dispatch(fetchLists({ page: 1 }))
+      dispatch(fetchLists())
     } catch (error) {
       const errorMessage = or(path(['response', 'data', 'status_message'], error), error.message)
       dispatch(showNotification({ messageType: 'error', messageText: errorMessage }))

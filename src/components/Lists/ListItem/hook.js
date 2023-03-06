@@ -16,7 +16,7 @@ const useContainer = ({ listId }) => {
     event.stopPropagation()
 
     const onOk = () => {
-      dispatch(deleteList({ listId }))
+      dispatch(deleteList(listId))
     }
 
     Modal.confirm({

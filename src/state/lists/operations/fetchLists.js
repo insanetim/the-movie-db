@@ -12,7 +12,7 @@ const fetchLists = createLogic({
   async process({ httpClient, getState, action }, dispatch, done) {
     const sessionId = sessionIdSelector(getState())
     const { id: accountId } = accountSelector(getState())
-    const { page, callback } = action.payload
+    const page = action.payload
 
     dispatch(fetchListsRequest(page))
 
@@ -21,7 +21,6 @@ const fetchLists = createLogic({
         params: { session_id: sessionId, page }
       })
       dispatch(fetchListsSuccess(data))
-      if (typeof callback === 'function') callback()
     } catch (error) {
       dispatch(fetchListsFailure(error))
     }

@@ -34,7 +34,7 @@ export const loadingOff = () => ({
   type: types.LOADING_OFF
 })
 
-export const logIn = createAsyncThunk('session/LOG_IN', async (userData, { dispatch }) => {
+export const logIn = createAsyncThunk(types.LOG_IN, async (userData, { dispatch }) => {
   dispatch(loadingOn())
 
   try {
@@ -54,7 +54,7 @@ export const logIn = createAsyncThunk('session/LOG_IN', async (userData, { dispa
   dispatch(loadingOff())
 })
 
-export const logOut = createAsyncThunk('session/LOG_OUT', async (_, { dispatch, getState }) => {
+export const logOut = createAsyncThunk(types.LOG_OUT, async (_, { dispatch, getState }) => {
   const sessionId = sessionIdSelector(getState())
 
   try {
