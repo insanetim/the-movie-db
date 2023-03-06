@@ -4,16 +4,15 @@ import { Modal, Form, Input } from 'antd'
 
 import useContainer from './hook'
 
-const CreateListModal = ({ onCancel, callback, ...rest }) => {
+const CreateListModal = ({ movieId, ...rest }) => {
   const [form] = Form.useForm()
-  const { handleOk, handleSubmit, handleAfterClose } = useContainer({ form, callback })
+  const { handleOk, handleSubmit, handleAfterClose } = useContainer({ form, movieId })
 
   return (
     <Modal
       destroyOnClose
       title='Create list'
       okText='Create'
-      onCancel={onCancel}
       onOk={handleOk}
       afterClose={handleAfterClose}
       {...rest}
@@ -41,12 +40,11 @@ const CreateListModal = ({ onCancel, callback, ...rest }) => {
 }
 
 CreateListModal.propTypes = {
-  onCancel: PropTypes.func.isRequired,
-  callback: PropTypes.func
+  movieId: PropTypes.number
 }
 
 CreateListModal.defaultProps = {
-  callback: null
+  movieId: undefined
 }
 
 export default CreateListModal

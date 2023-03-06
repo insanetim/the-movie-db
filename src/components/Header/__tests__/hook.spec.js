@@ -30,8 +30,8 @@ describe('Header useContainer hook', () => {
   it('checks `handleLogOut` method', async () => {
     dispatch.mockImplementationOnce(() => Promise.resolve())
 
-    await act(() => {
-      result.current.handleLogOut()
+    await act(async () => {
+      await result.current.handleLogOut()
     })
 
     expect(dispatch).toHaveBeenCalledWith(logOut())

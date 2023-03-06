@@ -14,7 +14,7 @@ jest.mock('src/state/app/actions')
 describe('PopoverContent useContainer hook', () => {
   let result = null
   const setPopoverOpen = jest.fn()
-  const props = { movieId: 1, setPopoverOpen }
+  const props = { movieId: 123, setPopoverOpen }
 
   beforeEach(() => {
     ;({ result } = renderHook(() => useContainer(props)))
@@ -31,24 +31,26 @@ describe('PopoverContent useContainer hook', () => {
       result.current.handleAddToNewList()
     })
 
-    expect(dispatch).toHaveBeenCalledWith(showModal())
+    expect(dispatch).toHaveBeenCalledWith(
+      showModal({
+        modalType: 'CREATE_LIST_MODAL',
+        modalProps: { movieId: 123 }
+      })
+    )
     expect(setPopoverOpen).toHaveBeenCalledWith(false)
   })
 
   it('checks `handleAddToList` method', () => {
     act(() => {
-      result.current.handleAddToList(1)
+      result.current.handleAddToList(123)
     })
 
-    expect(dispatch).toHaveBeenCalledWith(addToList({ listId: 1, movieId: 1 }))
+    expect(dispatch).toHaveBeenCalledWith(
+      addToList({
+        listId: 123,
+        movieId: 123
+      })
+    )
     expect(setPopoverOpen).toHaveBeenCalledWith(false)
-  })
-
-  it('checks `callback` method', () => {
-    act(() => {
-      result.current.callback(3)
-    })
-
-    expect(dispatch).toHaveBeenCalledWith(addToList({ listId: 3, movieId: 1 }))
   })
 })

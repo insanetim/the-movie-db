@@ -2,7 +2,6 @@
 
 exports[`ModalRoot component matches snapshot 1`] = `
 <CreateListModal
-  callback={null}
   onCancel={[MockFunction]}
 />
 `;

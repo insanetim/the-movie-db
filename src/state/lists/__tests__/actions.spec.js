@@ -88,12 +88,12 @@ it('fetchListFailure', () => {
 it('createList', () => {
   const expectedAction = {
     type: types.CREATE_LIST,
-    payload: { listData: { name: 'test/name', description: 'test/description' }, callback }
+    payload: { listData: { name: 'test/name', description: 'test/description' }, movieId: 123 }
   }
 
-  expect(actions.createList({ listData: { name: 'test/name', description: 'test/description' }, callback })).toEqual(
-    expectedAction
-  )
+  expect(
+    actions.createList({ listData: { name: 'test/name', description: 'test/description' }, movieId: 123 })
+  ).toEqual(expectedAction)
 })
 
 it('addToList', () => {

@@ -50,9 +50,9 @@ export const fetchListFailure = error => ({
   payload: error
 })
 
-export const createList = ({ listData, callback }) => ({
+export const createList = ({ listData, movieId }) => ({
   type: types.CREATE_LIST,
-  payload: { listData, callback }
+  payload: { listData, movieId }
 })
 
 export const addToList = ({ listId, movieId }) => ({

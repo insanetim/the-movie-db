@@ -2,7 +2,7 @@ import mockHttpClient from 'src/__mocks__/mockHttpClient'
 import { showNotification } from 'src/state/app/actions'
 import { mergeDeepRight } from 'ramda'
 import * as types from '../../types'
-import { fetchLists } from '../../actions'
+import { addToList, fetchLists } from '../../actions'
 import createList from '../createList'
 
 jest.mock('src/state/session/selectors', () => ({
@@ -15,7 +15,6 @@ jest.mock('uuid', () => ({
 
 describe('createList', () => {
   const dispatch = jest.fn()
-  const callback = jest.fn()
 
   const action = {
     type: types.CREATE_LIST,
@@ -67,12 +66,12 @@ describe('createList', () => {
     })
   })
 
-  describe('callback', () => {
+  describe('with movieId', () => {
     const httpClient = mockHttpClient({ method: 'post', response })
 
-    const actionExt = mergeDeepRight(action, { payload: { callback } })
+    const actionExt = mergeDeepRight(action, { payload: { movieId: 123 } })
 
-    it('calls callback', async () => {
+    it('dispatches actions', async () => {
       await createList.process(
         {
           httpClient,
@@ -83,8 +82,15 @@ describe('createList', () => {
         jest.fn()
       )
 
-      expect(callback).toHaveBeenCalledTimes(1)
-      expect(callback).toHaveBeenCalledWith(response.data.list_id)
+      expect(dispatch).toHaveBeenCalledTimes(2)
+      expect(dispatch).toHaveBeenNthCalledWith(
+        1,
+        addToList({
+          listId: response.data.list_id,
+          movieId: 123
+        })
+      )
+      expect(dispatch).toHaveBeenNthCalledWith(2, fetchLists())
     })
   })
 

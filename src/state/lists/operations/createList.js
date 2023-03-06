@@ -4,7 +4,7 @@ import { or, path } from 'ramda'
 import * as endpoints from 'src/constants/endpoints'
 import { sessionIdSelector } from 'src/state/session/selectors'
 import { showNotification } from 'src/state/app/actions'
-import { fetchLists } from '../actions'
+import { addToList, fetchLists } from '../actions'
 import * as types from '../types'
 
 const createList = createLogic({
@@ -13,7 +13,7 @@ const createList = createLogic({
 
   async process({ httpClient, getState, action }, dispatch, done) {
     const sessionId = sessionIdSelector(getState())
-    const { listData, callback } = action.payload
+    const { listData, movieId } = action.payload
 
     try {
       const { data } = await httpClient.post(
@@ -21,7 +21,13 @@ const createList = createLogic({
         { ...listData },
         { params: { session_id: sessionId } }
       )
-      if (typeof callback === 'function') callback(data.list_id)
+      if (typeof movieId !== 'undefined')
+        dispatch(
+          addToList({
+            listId: data.list_id,
+            movieId
+          })
+        )
       dispatch(fetchLists())
     } catch (error) {
       const errorMessage = or(path(['response', 'data', 'status_message'], error), error.message)

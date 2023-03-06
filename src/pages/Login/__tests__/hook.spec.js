@@ -31,8 +31,8 @@ describe('Favotites useContainer hook', () => {
     dispatch.mockImplementationOnce(() => Promise.resolve())
     const userData = { username: 'user', password: 'password' }
 
-    await act(() => {
-      result.current.handleLogIn(userData)
+    await act(async () => {
+      await result.current.handleLogIn(userData)
     })
 
     expect(dispatch).toHaveBeenCalledWith(logIn(userData))
