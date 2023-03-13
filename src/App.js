@@ -1,6 +1,6 @@
 import React from 'react'
 import { Provider } from 'react-redux'
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
 
 import setupStore from './state/store'
 import ProtectedRoutes from './components/ProtectedRoutes'
@@ -18,7 +18,7 @@ const store = setupStore()
 
 const App = () => (
   <Provider store={store}>
-    <Router>
+    <BrowserRouter>
       <Routes>
         <Route element={<ProtectedRoutes />}>
           <Route
@@ -56,7 +56,7 @@ const App = () => (
           element={<Login />}
         />
       </Routes>
-    </Router>
+    </BrowserRouter>
   </Provider>
 )
 

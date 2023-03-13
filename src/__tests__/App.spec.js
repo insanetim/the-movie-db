@@ -8,7 +8,7 @@ jest.mock('react-redux', () => ({
 }))
 
 jest.mock('react-router-dom', () => ({
-  Router: () => <></>,
+  BrowserRouter: () => <></>,
   Route: () => <></>,
   Routes: () => <></>
 }))

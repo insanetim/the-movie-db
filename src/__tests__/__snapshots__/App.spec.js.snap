@@ -12,7 +12,7 @@ exports[`matches snapshot 1`] = `
     }
   }
 >
-  <Component>
+  <BrowserRouter>
     <Routes>
       <Route
         element={<ProtectedRoutes />}
@@ -52,6 +52,6 @@ exports[`matches snapshot 1`] = `
         path="/login"
       />
     </Routes>
-  </Component>
+  </BrowserRouter>
 </Provider>
 `;
