@@ -10,11 +10,10 @@ const useContainer = () => {
   const location = useLocation()
   const navigate = useNavigate()
 
-  const handleLogIn = userData => {
+  const handleLogIn = async userData => {
     const from = location.state?.from?.pathname || '/'
-    dispatch(logIn(userData)).then(() => {
-      navigate(from, { replace: true })
-    })
+    await dispatch(logIn(userData))
+    navigate(from, { replace: true })
   }
 
   return { loading, handleLogIn }

@@ -15,10 +15,9 @@ const useContainer = () => {
   const { listId } = useParams()
 
   const handleListDelete = () => {
-    const onOk = () => {
-      dispatch(deleteList(listId)).then(() => {
-        navigate('/lists')
-      })
+    const onOk = async () => {
+      await dispatch(deleteList(listId))
+      navigate('/lists')
     }
 
     Modal.confirm({
