@@ -3,8 +3,8 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate, useParams } from 'react-router-dom'
 import { Modal } from 'antd'
 
-import { deleteList, removeFromList, fetchList } from 'src/state/lists/actions'
-import { listSelector, listErrorSelector, listLoadingSelector } from 'src/state/lists/selectors'
+import { deleteList, removeFromList, fetchList } from 'src/store/lists/actions'
+import { listSelector, listErrorSelector, listLoadingSelector } from 'src/store/lists/selectors'
 
 const useContainer = () => {
   const dispatch = useDispatch()

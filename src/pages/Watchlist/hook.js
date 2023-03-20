@@ -3,15 +3,15 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Modal } from 'antd'
 import { not, isEmpty } from 'ramda'
 
-import { fetchWatchlist, setWatchlistPage } from 'src/state/watchlist/actions'
-import { changeMovieInWatchlist } from 'src/state/movie/actions'
-import { accountSelector } from 'src/state/session/selectors'
+import { fetchWatchlist, setWatchlistPage } from 'src/store/watchlist/actions'
+import { changeMovieInWatchlist } from 'src/store/movie/actions'
+import { accountSelector } from 'src/store/session/selectors'
 import {
   watchlistMoviesSelector,
   watchlistPageSelector,
   watchlistLoadingSelector,
   watchlistErrorSelector
-} from 'src/state/watchlist/selectors'
+} from 'src/store/watchlist/selectors'
 
 const useContainer = () => {
   const dispatch = useDispatch()

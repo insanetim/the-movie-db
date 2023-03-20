@@ -2,14 +2,14 @@ import { useNavigate } from 'react-router-dom'
 import { act, renderHook } from '@testing-library/react-hooks'
 
 import { dispatch } from 'src/__mocks__/react-redux'
-import { logIn } from 'src/state/session/actions'
+import { logIn } from 'src/store/session/actions'
 import useContainer from '../hook'
 
-jest.mock('src/state/session/selectors', () => ({
+jest.mock('src/store/session/selectors', () => ({
   loadingSelector: jest.fn(() => false)
 }))
 
-jest.mock('src/state/session/actions')
+jest.mock('src/store/session/actions')
 
 describe('Favotites useContainer hook', () => {
   let result = null

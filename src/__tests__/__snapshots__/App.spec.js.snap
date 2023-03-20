@@ -1,57 +1,45 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`matches snapshot 1`] = `
-<Provider
-  store={
-    {
-      "@@observable": [Function],
-      "dispatch": [Function],
-      "getState": [Function],
-      "replaceReducer": [Function],
-      "subscribe": [Function],
-    }
-  }
->
-  <BrowserRouter>
-    <Routes>
+<BrowserRouter>
+  <Routes>
+    <Route
+      element={<ProtectedRoutes />}
+    >
       <Route
-        element={<ProtectedRoutes />}
+        element={<Layout />}
+        path="/"
       >
         <Route
-          element={<Layout />}
-          path="/"
-        >
-          <Route
-            element={<Dashboard />}
-            index={true}
-          />
-          <Route
-            element={<Lists />}
-            path="/lists"
-          />
-          <Route
-            element={<Watchlist />}
-            path="/watchlist"
-          />
-          <Route
-            element={<Favorites />}
-            path="/favorites"
-          />
-          <Route
-            element={<ListDetails />}
-            path="/list/:listId"
-          />
-          <Route
-            element={<Movie />}
-            path="/movie/:movieId"
-          />
-        </Route>
+          element={<Dashboard />}
+          index={true}
+        />
+        <Route
+          element={<Lists />}
+          path="/lists"
+        />
+        <Route
+          element={<Watchlist />}
+          path="/watchlist"
+        />
+        <Route
+          element={<Favorites />}
+          path="/favorites"
+        />
+        <Route
+          element={<ListDetails />}
+          path="/list/:listId"
+        />
+        <Route
+          element={<Movie />}
+          path="/movie/:movieId"
+        />
       </Route>
-      <Route
-        element={<Login />}
-        path="/login"
-      />
-    </Routes>
-  </BrowserRouter>
-</Provider>
+    </Route>
+    <Route
+      element={<Login />}
+      path="/login"
+    />
+  </Routes>
+</BrowserRouter>
 `;

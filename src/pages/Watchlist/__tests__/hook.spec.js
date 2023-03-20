@@ -3,16 +3,16 @@ import { Modal } from 'antd'
 import { act, renderHook } from '@testing-library/react-hooks'
 
 import { dispatch } from 'src/__mocks__/react-redux'
-import { accountSelector } from 'src/state/session/selectors'
-import { fetchWatchlist, setWatchlistPage } from 'src/state/watchlist/actions'
-import { changeMovieInWatchlist } from 'src/state/movie/actions'
+import { accountSelector } from 'src/store/session/selectors'
+import { fetchWatchlist, setWatchlistPage } from 'src/store/watchlist/actions'
+import { changeMovieInWatchlist } from 'src/store/movie/actions'
 import useContainer from '../hook'
 
-jest.mock('src/state/session/selectors', () => ({
+jest.mock('src/store/session/selectors', () => ({
   accountSelector: jest.fn(() => ({}))
 }))
 
-jest.mock('src/state/watchlist/selectors', () => ({
+jest.mock('src/store/watchlist/selectors', () => ({
   watchlistMoviesSelector: jest.fn(() => ({})),
   watchlistPageSelector: jest.fn(() => 1),
   watchlistLoadingSelector: jest.fn(() => true),

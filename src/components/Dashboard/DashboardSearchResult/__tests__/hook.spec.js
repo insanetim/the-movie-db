@@ -1,10 +1,10 @@
 import { act, renderHook } from '@testing-library/react-hooks'
 
 import { dispatch } from 'src/__mocks__/react-redux'
-import { fetchSearch, setSearchPage } from 'src/state/dashboard/actions'
+import { fetchSearch, setSearchPage } from 'src/store/dashboard/actions'
 import useContainer from '../hook'
 
-jest.mock('src/state/dashboard/selectors', () => ({
+jest.mock('src/store/dashboard/selectors', () => ({
   searchMoviesSelector: jest.fn(() => ({})),
   searchPageSelector: jest.fn(() => 1),
   searchLoadingSelector: jest.fn(() => true),

@@ -1,6 +1,6 @@
 import { useDispatch } from 'react-redux'
 
-import { setListsPage } from 'src/state/lists/actions'
+import { setListsPage } from 'src/store/lists/actions'
 
 const useContainer = () => {
   const dispatch = useDispatch()

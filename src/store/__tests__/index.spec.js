@@ -1,0 +1,13 @@
+import store from '../index'
+
+it('passes', () => {
+  expect(store).toEqual(
+    expect.objectContaining({
+      '@@observable': expect.any(Function),
+      dispatch: expect.any(Function),
+      getState: expect.any(Function),
+      replaceReducer: expect.any(Function),
+      subscribe: expect.any(Function)
+    })
+  )
+})

@@ -2,10 +2,10 @@ import { useParams } from 'react-router-dom'
 import { act, renderHook } from '@testing-library/react-hooks'
 
 import { dispatch } from 'src/__mocks__/react-redux'
-import { changeMovieInFavorites, changeMovieInWatchlist, fetchMovie } from 'src/state/movie/actions'
+import { changeMovieInFavorites, changeMovieInWatchlist, fetchMovie } from 'src/store/movie/actions'
 import useContainer from '../hook'
 
-jest.mock('src/state/movie/selectors', () => ({
+jest.mock('src/store/movie/selectors', () => ({
   movieSelector: jest.fn(() => ({
     accountStates: {
       favorite: false,

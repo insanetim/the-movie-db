@@ -1,15 +1,15 @@
 import { act, renderHook } from '@testing-library/react-hooks'
 
 import { dispatch } from 'src/__mocks__/react-redux'
-import { showModal } from 'src/state/app/actions'
-import { addToList } from 'src/state/lists/actions'
+import { showModal } from 'src/store/app/actions'
+import { addToList } from 'src/store/lists/actions'
 import useContainer from '../hook'
 
-jest.mock('src/state/lists/selectors', () => ({
+jest.mock('src/store/lists/selectors', () => ({
   listsSelector: jest.fn(() => ({}))
 }))
 
-jest.mock('src/state/app/actions')
+jest.mock('src/store/app/actions')
 
 describe('PopoverContent useContainer hook', () => {
   let result = null

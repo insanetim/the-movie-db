@@ -1,10 +1,10 @@
 import { act, renderHook } from '@testing-library/react-hooks'
 
 import { dispatch } from 'src/__mocks__/react-redux'
-import { hideModal } from 'src/state/app/actions'
+import { hideModal } from 'src/store/app/actions'
 import useContainer from '../hook'
 
-jest.mock('src/state/app/selectors', () => ({
+jest.mock('src/store/app/selectors', () => ({
   modalTypeSelector: jest.fn(() => 'CREATE_LIST_MODAL'),
   modalPropsSelector: jest.fn(() => ({}))
 }))

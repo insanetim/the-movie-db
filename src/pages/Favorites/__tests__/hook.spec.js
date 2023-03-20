@@ -3,16 +3,16 @@ import { Modal } from 'antd'
 import { act, renderHook } from '@testing-library/react-hooks'
 
 import { dispatch } from 'src/__mocks__/react-redux'
-import { accountSelector } from 'src/state/session/selectors'
-import { fetchFavorites, setFavoritesPage } from 'src/state/favorites/actions'
-import { changeMovieInFavorites } from 'src/state/movie/actions'
+import { accountSelector } from 'src/store/session/selectors'
+import { fetchFavorites, setFavoritesPage } from 'src/store/favorites/actions'
+import { changeMovieInFavorites } from 'src/store/movie/actions'
 import useContainer from '../hook'
 
-jest.mock('src/state/session/selectors', () => ({
+jest.mock('src/store/session/selectors', () => ({
   accountSelector: jest.fn(() => ({}))
 }))
 
-jest.mock('src/state/favorites/selectors', () => ({
+jest.mock('src/store/favorites/selectors', () => ({
   favoritesMoviesSelector: jest.fn(() => ({})),
   favoritesPageSelector: jest.fn(() => 1),
   favoritesLoadingSelector: jest.fn(() => true),

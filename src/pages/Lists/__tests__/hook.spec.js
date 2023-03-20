@@ -1,16 +1,16 @@
 import { act, renderHook } from '@testing-library/react-hooks'
 
 import { dispatch } from 'src/__mocks__/react-redux'
-import { accountSelector } from 'src/state/session/selectors'
-import { showModal } from 'src/state/app/actions'
-import { fetchLists } from 'src/state/lists/actions'
+import { accountSelector } from 'src/store/session/selectors'
+import { showModal } from 'src/store/app/actions'
+import { fetchLists } from 'src/store/lists/actions'
 import useContainer from '../hook'
 
-jest.mock('src/state/session/selectors', () => ({
+jest.mock('src/store/session/selectors', () => ({
   accountSelector: jest.fn(() => ({}))
 }))
 
-jest.mock('src/state/lists/selectors', () => ({
+jest.mock('src/store/lists/selectors', () => ({
   listsSelector: jest.fn(() => ({})),
   listsPageSelector: jest.fn(() => 1),
   listsLoadingSelector: jest.fn(() => true),

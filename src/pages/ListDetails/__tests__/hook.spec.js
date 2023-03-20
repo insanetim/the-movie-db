@@ -4,16 +4,16 @@ import { useNavigate, useParams } from 'react-router-dom'
 import { act, renderHook } from '@testing-library/react-hooks'
 
 import { dispatch } from 'src/__mocks__/react-redux'
-import { deleteList, removeFromList, fetchList } from 'src/state/lists/actions'
+import { deleteList, removeFromList, fetchList } from 'src/store/lists/actions'
 import useContainer from '../hook'
 
-jest.mock('src/state/lists/selectors', () => ({
+jest.mock('src/store/lists/selectors', () => ({
   listSelector: jest.fn(() => ({})),
   listLoadingSelector: jest.fn(() => true),
   listErrorSelector: jest.fn(() => null)
 }))
 
-jest.mock('src/state/lists/actions')
+jest.mock('src/store/lists/actions')
 
 describe('ListDetails useContainer hook', () => {
   let result = null

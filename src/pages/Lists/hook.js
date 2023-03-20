@@ -2,10 +2,10 @@ import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { not, isEmpty } from 'ramda'
 
-import { showModal } from 'src/state/app/actions'
-import { fetchLists } from 'src/state/lists/actions'
-import { accountSelector } from 'src/state/session/selectors'
-import { listsSelector, listsPageSelector, listsLoadingSelector, listsErrorSelector } from 'src/state/lists/selectors'
+import { showModal } from 'src/store/app/actions'
+import { fetchLists } from 'src/store/lists/actions'
+import { accountSelector } from 'src/store/session/selectors'
+import { listsSelector, listsPageSelector, listsLoadingSelector, listsErrorSelector } from 'src/store/lists/selectors'
 
 const useContainer = () => {
   const dispatch = useDispatch()

@@ -4,7 +4,7 @@ import { act, renderHook } from '@testing-library/react-hooks'
 
 import useContainer from '../hook'
 
-jest.mock('src/state/dashboard/selectors', () => ({
+jest.mock('src/store/dashboard/selectors', () => ({
   searchQuerySelector: jest.fn(() => null)
 }))
 

@@ -1,13 +1,13 @@
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
-import { fetchTrending, setTrendingPage } from 'src/state/dashboard/actions'
+import { fetchTrending, setTrendingPage } from 'src/store/dashboard/actions'
 import {
   trendingMoviesSelector,
   trendingPageSelector,
   trendingLoadingSelector,
   trendingErrorSelector
-} from 'src/state/dashboard/selectors'
+} from 'src/store/dashboard/selectors'
 
 const useContainer = () => {
   const dispatch = useDispatch()

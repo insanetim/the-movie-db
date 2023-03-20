@@ -1,8 +1,8 @@
 import { useDispatch, useSelector } from 'react-redux'
 import { useLocation, useNavigate } from 'react-router-dom'
 
-import { logIn } from 'src/state/session/actions'
-import { loadingSelector } from 'src/state/session/selectors'
+import { logIn } from 'src/store/session/actions'
+import { loadingSelector } from 'src/store/session/selectors'
 
 const useContainer = () => {
   const dispatch = useDispatch()

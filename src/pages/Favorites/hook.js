@@ -3,15 +3,15 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Modal } from 'antd'
 import { not, isEmpty } from 'ramda'
 
-import { fetchFavorites, setFavoritesPage } from 'src/state/favorites/actions'
-import { changeMovieInFavorites } from 'src/state/movie/actions'
-import { accountSelector } from 'src/state/session/selectors'
+import { fetchFavorites, setFavoritesPage } from 'src/store/favorites/actions'
+import { changeMovieInFavorites } from 'src/store/movie/actions'
+import { accountSelector } from 'src/store/session/selectors'
 import {
   favoritesMoviesSelector,
   favoritesPageSelector,
   favoritesLoadingSelector,
   favoritesErrorSelector
-} from 'src/state/favorites/selectors'
+} from 'src/store/favorites/selectors'
 
 const useContainer = () => {
   const dispatch = useDispatch()

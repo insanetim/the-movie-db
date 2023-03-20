@@ -4,10 +4,10 @@ import { useNavigate } from 'react-router-dom'
 import { act, renderHook } from '@testing-library/react-hooks'
 
 import { dispatch } from 'src/__mocks__/react-redux'
-import { deleteList } from 'src/state/lists/actions'
+import { deleteList } from 'src/store/lists/actions'
 import useContainer from '../hook'
 
-jest.mock('src/state/lists/actions')
+jest.mock('src/store/lists/actions')
 
 describe('ListItem useContainer hook', () => {
   let result = null

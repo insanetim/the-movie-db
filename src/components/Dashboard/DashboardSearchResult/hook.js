@@ -1,13 +1,13 @@
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
-import { fetchSearch, setSearchPage } from 'src/state/dashboard/actions'
+import { fetchSearch, setSearchPage } from 'src/store/dashboard/actions'
 import {
   searchMoviesSelector,
   searchPageSelector,
   searchLoadingSelector,
   searchErrorSelector
-} from 'src/state/dashboard/selectors'
+} from 'src/store/dashboard/selectors'
 
 const useContainer = searchQuery => {
   const dispatch = useDispatch()

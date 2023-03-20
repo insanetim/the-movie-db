@@ -2,10 +2,10 @@ import 'jsdom-global/register'
 import { act, renderHook } from '@testing-library/react-hooks/dom'
 
 import { dispatch } from 'src/__mocks__/react-redux'
-import { hideNotification as hideNotificationAction } from 'src/state/app/actions'
+import { hideNotification as hideNotificationAction } from 'src/store/app/actions'
 import useContainer from '../hook'
 
-jest.mock('src/state/app/selectors', () => ({
+jest.mock('src/store/app/selectors', () => ({
   notificationsSelector: jest.fn(() => [
     {
       id: 'test/id',

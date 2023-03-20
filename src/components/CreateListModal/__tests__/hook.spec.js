@@ -1,8 +1,8 @@
 import { act, renderHook } from '@testing-library/react-hooks'
 
 import { dispatch } from 'src/__mocks__/react-redux'
-import { hideModal } from 'src/state/app/actions'
-import { createList } from 'src/state/lists/actions'
+import { hideModal } from 'src/store/app/actions'
+import { createList } from 'src/store/lists/actions'
 import useContainer from '../hook'
 
 describe('CreateListModal useContainer hook', () => {

@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux'
 
-import { hideModal } from 'src/state/app/actions'
-import { modalPropsSelector, modalTypeSelector } from 'src/state/app/selectors'
+import { hideModal } from 'src/store/app/actions'
+import { modalPropsSelector, modalTypeSelector } from 'src/store/app/selectors'
 
 const useContainer = () => {
   const dispatch = useDispatch()

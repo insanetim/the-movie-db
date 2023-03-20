@@ -1,10 +1,10 @@
 import { act, renderHook } from '@testing-library/react-hooks'
 
 import { dispatch } from 'src/__mocks__/react-redux'
-import { fetchTrending, setTrendingPage } from 'src/state/dashboard/actions'
+import { fetchTrending, setTrendingPage } from 'src/store/dashboard/actions'
 import useContainer from '../hook'
 
-jest.mock('src/state/dashboard/selectors', () => ({
+jest.mock('src/store/dashboard/selectors', () => ({
   trendingMoviesSelector: jest.fn(() => ({})),
   trendingPageSelector: jest.fn(() => 1),
   trendingLoadingSelector: jest.fn(() => true),

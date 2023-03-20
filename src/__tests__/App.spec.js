@@ -3,10 +3,6 @@ import { shallow } from 'enzyme'
 
 import App from 'src/App'
 
-jest.mock('react-redux', () => ({
-  Provider: () => <></>
-}))
-
 jest.mock('react-router-dom', () => ({
   BrowserRouter: () => <></>,
   Route: () => <></>,

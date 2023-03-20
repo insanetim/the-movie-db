@@ -3,8 +3,8 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
 import { equals } from 'ramda'
 
-import { changeMovieInFavorites, changeMovieInWatchlist, fetchMovie } from 'src/state/movie/actions'
-import { movieSelector, movieLoadingSelector, movieErrorSelector } from 'src/state/movie/selectors'
+import { changeMovieInFavorites, changeMovieInWatchlist, fetchMovie } from 'src/store/movie/actions'
+import { movieSelector, movieLoadingSelector, movieErrorSelector } from 'src/store/movie/selectors'
 
 const useContainer = () => {
   const dispatch = useDispatch()

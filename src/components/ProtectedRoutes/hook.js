@@ -1,8 +1,8 @@
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
-import { sessionIdSelector } from 'src/state/session/selectors'
-import { fetchAccount } from 'src/state/session/actions'
+import { sessionIdSelector } from 'src/store/session/selectors'
+import { fetchAccount } from 'src/store/session/actions'
 
 const useContainer = () => {
   const dispatch = useDispatch()
