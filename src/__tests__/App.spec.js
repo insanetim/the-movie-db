@@ -4,7 +4,6 @@ import { shallow } from 'enzyme'
 import App from 'src/App'
 
 jest.mock('react-router-dom', () => ({
-  BrowserRouter: () => <></>,
   Route: () => <></>,
   Routes: () => <></>
 }))

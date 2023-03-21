@@ -1,45 +1,43 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`matches snapshot 1`] = `
-<BrowserRouter>
-  <Routes>
+<Routes>
+  <Route
+    element={<ProtectedRoutes />}
+  >
     <Route
-      element={<ProtectedRoutes />}
+      element={<Layout />}
+      path="/"
     >
       <Route
-        element={<Layout />}
-        path="/"
-      >
-        <Route
-          element={<Dashboard />}
-          index={true}
-        />
-        <Route
-          element={<Lists />}
-          path="/lists"
-        />
-        <Route
-          element={<Watchlist />}
-          path="/watchlist"
-        />
-        <Route
-          element={<Favorites />}
-          path="/favorites"
-        />
-        <Route
-          element={<ListDetails />}
-          path="/list/:listId"
-        />
-        <Route
-          element={<Movie />}
-          path="/movie/:movieId"
-        />
-      </Route>
+        element={<Dashboard />}
+        index={true}
+      />
+      <Route
+        element={<Lists />}
+        path="/lists"
+      />
+      <Route
+        element={<Watchlist />}
+        path="/watchlist"
+      />
+      <Route
+        element={<Favorites />}
+        path="/favorites"
+      />
+      <Route
+        element={<ListDetails />}
+        path="/list/:listId"
+      />
+      <Route
+        element={<Movie />}
+        path="/movie/:movieId"
+      />
     </Route>
-    <Route
-      element={<Login />}
-      path="/login"
-    />
-  </Routes>
-</BrowserRouter>
+  </Route>
+  <Route
+    element={<Login />}
+    path="/login"
+  />
+</Routes>
 `;
