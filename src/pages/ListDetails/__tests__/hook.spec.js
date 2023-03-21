@@ -1,4 +1,3 @@
-import 'jsdom-global/register'
 import { Modal } from 'antd'
 import { useNavigate, useParams } from 'react-router-dom'
 import { act, renderHook } from '@testing-library/react-hooks'

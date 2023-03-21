@@ -1,4 +1,3 @@
-import 'jsdom-global/register'
 import { act, renderHook } from '@testing-library/react-hooks/dom'
 
 import { dispatch } from 'src/__mocks__/react-redux'

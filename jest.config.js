@@ -1,4 +1,5 @@
 module.exports = {
+  testEnvironment: 'jsdom',
   setupFilesAfterEnv: ['<rootDir>/src/setupTests.js'],
   snapshotSerializers: ['enzyme-to-json/serializer'],
   coverageThreshold: {

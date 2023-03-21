@@ -1,4 +1,3 @@
-import 'jsdom-global/register'
 import { Modal } from 'antd'
 import { act, renderHook } from '@testing-library/react-hooks'
 
