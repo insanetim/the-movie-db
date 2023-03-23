@@ -1,6 +1,6 @@
-import { act, renderHook } from '@testing-library/react-hooks'
+import { useDispatch } from 'react-redux'
+import { act, renderHook } from '@testing-library/react'
 
-import { dispatch } from 'src/__mocks__/react-redux'
 import { accountSelector } from 'src/store/session/selectors'
 import { showModal } from 'src/store/app/actions'
 import { fetchLists } from 'src/store/lists/actions'
@@ -16,6 +16,14 @@ jest.mock('src/store/lists/selectors', () => ({
   listsLoadingSelector: jest.fn(() => true),
   listsErrorSelector: jest.fn(() => null)
 }))
+
+jest.mock('react-redux', () => ({
+  ...jest.requireActual('react-redux'),
+  useSelector: jest.fn(fn => fn()),
+  useDispatch: jest.fn()
+}))
+const dispatch = jest.fn()
+useDispatch.mockReturnValue(dispatch)
 
 describe('Favotites useContainer hook', () => {
   let result = null

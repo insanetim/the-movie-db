@@ -1,4 +1,3 @@
-import React from 'react'
 import { Button } from 'antd'
 
 import useContainer from './hook'
@@ -21,6 +20,7 @@ const PopoverContent = props => {
           <Button
             type='link'
             onClick={() => handleAddToList(list.id)}
+            data-testid='addToListButton'
           >
             {list.name}
           </Button>

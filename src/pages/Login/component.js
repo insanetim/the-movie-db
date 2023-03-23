@@ -1,4 +1,3 @@
-import React from 'react'
 import { Button, Col, Form, Input, Layout, Row, Typography } from 'antd'
 import { UserOutlined, LockOutlined } from '@ant-design/icons'
 

@@ -1,5 +1,8 @@
-import { shallow } from 'enzyme'
+import { Provider } from 'react-redux'
+import { MemoryRouter } from 'react-router-dom'
+import { render } from '@testing-library/react'
 
+import store from 'src/store'
 import MovieItem from '../component'
 
 const mockedHookData = {
@@ -27,8 +30,15 @@ describe('MovieItem component', () => {
         />
       ]
     }
-    const component = shallow(<MovieItem {...props} />)
-    expect(component).toMatchSnapshot()
+    const { asFragment } = render(
+      <Provider store={store}>
+        <MemoryRouter>
+          <MovieItem {...props} />
+        </MemoryRouter>
+      </Provider>
+    )
+
+    expect(asFragment()).toMatchSnapshot()
   })
 
   it('matches snapshot with NoImage', () => {
@@ -40,7 +50,14 @@ describe('MovieItem component', () => {
         poster_path: null
       }
     }
-    const component = shallow(<MovieItem {...props} />)
-    expect(component).toMatchSnapshot()
+    const { asFragment } = render(
+      <Provider store={store}>
+        <MemoryRouter>
+          <MovieItem {...props} />
+        </MemoryRouter>
+      </Provider>
+    )
+
+    expect(asFragment()).toMatchSnapshot()
   })
 })

@@ -1,24 +1,27 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`matches snapshot 1`] = `
-<Fragment>
+exports[`PopoverContent component matches snapshot 1`] = `
+<DocumentFragment>
   <div>
-    <Button
-      onClick={[MockFunction]}
-      type="link"
+    <button
+      class="ant-btn css-dev-only-do-not-override-ph9edi ant-btn-link"
+      type="button"
     >
-      Create new list ...
-    </Button>
+      <span>
+        Create new list ...
+      </span>
+    </button>
   </div>
-  <div
-    key="1"
-  >
-    <Button
-      onClick={[Function]}
-      type="link"
+  <div>
+    <button
+      class="ant-btn css-dev-only-do-not-override-ph9edi ant-btn-link"
+      data-testid="addToListButton"
+      type="button"
     >
-      Test list
-    </Button>
+      <span>
+        test/list
+      </span>
+    </button>
   </div>
-</Fragment>
+</DocumentFragment>
 `;

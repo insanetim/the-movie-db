@@ -1,6 +1,6 @@
-import { act, renderHook } from '@testing-library/react-hooks'
+import { useDispatch } from 'react-redux'
+import { act, renderHook } from '@testing-library/react'
 
-import { dispatch } from 'src/__mocks__/react-redux'
 import { fetchSearch, setSearchPage } from 'src/store/dashboard/actions'
 import useContainer from '../hook'
 
@@ -10,6 +10,14 @@ jest.mock('src/store/dashboard/selectors', () => ({
   searchLoadingSelector: jest.fn(() => true),
   searchErrorSelector: jest.fn(() => null)
 }))
+
+jest.mock('react-redux', () => ({
+  ...jest.requireActual('react-redux'),
+  useSelector: jest.fn(fn => fn()),
+  useDispatch: jest.fn()
+}))
+const dispatch = jest.fn()
+useDispatch.mockReturnValue(dispatch)
 
 describe('DashboardSearchResult useContainer hook', () => {
   let result = null

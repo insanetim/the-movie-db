@@ -1,11 +1,9 @@
-/* eslint-disable react/jsx-no-useless-fragment */
-import { shallow } from 'enzyme'
+import { Provider } from 'react-redux'
+import { MemoryRouter } from 'react-router-dom'
+import { render } from '@testing-library/react'
 
+import store from 'src/store'
 import Header from '../component'
-
-jest.mock('react-router-dom', () => ({
-  Link: () => <></>
-}))
 
 const mockedHookData = {
   account: {
@@ -20,17 +18,29 @@ const mockedHookData = {
 }
 jest.mock('../hook', () => jest.fn(() => mockedHookData))
 
-describe('CreateListModal component tests', () => {
-  let component = shallow(<Header />)
-
+describe('Header component', () => {
   it('matches snapshot', () => {
-    expect(component).toMatchSnapshot()
+    const { asFragment } = render(
+      <Provider store={store}>
+        <MemoryRouter>
+          <Header />
+        </MemoryRouter>
+      </Provider>
+    )
+
+    expect(asFragment()).toMatchSnapshot()
   })
 
   it('matches snapshot with empty account', () => {
     mockedHookData.account = {}
-    component = shallow(<Header />)
+    const { asFragment } = render(
+      <Provider store={store}>
+        <MemoryRouter>
+          <Header />
+        </MemoryRouter>
+      </Provider>
+    )
 
-    expect(component).toMatchSnapshot()
+    expect(asFragment()).toMatchSnapshot()
   })
 })

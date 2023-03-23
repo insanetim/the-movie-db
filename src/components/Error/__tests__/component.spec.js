@@ -1,13 +1,15 @@
-import { shallow } from 'enzyme'
+import { render } from '@testing-library/react'
 
 import Error from '../component'
 
-it('matches snapshot', () => {
-  const error = {
-    message: 'test/errorTitle',
-    response: { data: { status_message: 'test/errorSubtitle' } }
-  }
-  const component = shallow(<Error error={error} />)
+describe('Error component', () => {
+  it('matches snapshot', () => {
+    const error = {
+      message: 'test/errorTitle',
+      response: { data: { status_message: 'test/errorSubtitle' } }
+    }
+    const { asFragment } = render(<Error error={error} />)
 
-  expect(component).toMatchSnapshot()
+    expect(asFragment()).toMatchSnapshot()
+  })
 })

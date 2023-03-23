@@ -1,5 +1,8 @@
-import { shallow } from 'enzyme'
+import { Provider } from 'react-redux'
+import { MemoryRouter } from 'react-router-dom'
+import { render } from '@testing-library/react'
 
+import store from 'src/store'
 import Watchlist from '../component'
 
 const mockedHookData = {
@@ -20,25 +23,43 @@ const mockedHookData = {
 }
 jest.mock('../hook', () => jest.fn(() => mockedHookData))
 
-describe('Watchlist components tests', () => {
-  let component = shallow(<Watchlist />)
-
+describe('Watchlist component', () => {
   it('matches snapshot', () => {
-    expect(component).toMatchSnapshot()
+    const { asFragment } = render(
+      <Provider store={store}>
+        <MemoryRouter>
+          <Watchlist />
+        </MemoryRouter>
+      </Provider>
+    )
+
+    expect(asFragment()).toMatchSnapshot()
   })
 
   it('matches snapshot with loading', () => {
     mockedHookData.loading = true
-    component = shallow(<Watchlist />)
+    const { asFragment } = render(
+      <Provider store={store}>
+        <MemoryRouter>
+          <Watchlist />
+        </MemoryRouter>
+      </Provider>
+    )
 
-    expect(component).toMatchSnapshot()
+    expect(asFragment()).toMatchSnapshot()
   })
 
   it('matches snapshot with error', () => {
     mockedHookData.loading = false
     mockedHookData.error = { message: 'test/error' }
-    component = shallow(<Watchlist />)
+    const { asFragment } = render(
+      <Provider store={store}>
+        <MemoryRouter>
+          <Watchlist />
+        </MemoryRouter>
+      </Provider>
+    )
 
-    expect(component).toMatchSnapshot()
+    expect(asFragment()).toMatchSnapshot()
   })
 })

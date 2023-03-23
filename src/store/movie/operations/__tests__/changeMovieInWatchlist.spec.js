@@ -1,4 +1,4 @@
-import mockHttpClient, { mockMultiHttpClient } from 'src/__mocks__/mockHttpClient'
+import mockHttpClient, { mockMultiHttpClient } from 'src/__mocks__/httpClientMock'
 import { showNotification } from 'src/store/app/actions'
 import { fetchWatchlist } from 'src/store/watchlist/actions'
 import { fetchMovieStates } from '../../actions'

@@ -1,7 +1,7 @@
 import Notification from './Notification'
 import useContainer from './hook'
 
-export default function NotificationsRoot() {
+const NotificationsRoot = () => {
   const { notifications, hideNotification } = useContainer()
 
   return (
@@ -16,3 +16,5 @@ export default function NotificationsRoot() {
     </>
   )
 }
+
+export default NotificationsRoot

@@ -1,4 +1,4 @@
-import { shallow } from 'enzyme'
+import { render } from '@testing-library/react'
 
 import CreateListModal from '../component'
 
@@ -9,10 +9,10 @@ const mockedHookData = {
 }
 jest.mock('../hook', () => jest.fn(() => mockedHookData))
 
-describe('CreateListModal component tests', () => {
-  const component = shallow(<CreateListModal onCancel={jest.fn()} />)
-
+describe('CreateListModal component', () => {
   it('matches snapshot', () => {
-    expect(component).toMatchSnapshot()
+    const { asFragment } = render(<CreateListModal onCancel={jest.fn()} />)
+
+    expect(asFragment()).toMatchSnapshot()
   })
 })

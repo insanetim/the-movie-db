@@ -1,5 +1,3 @@
-import React from 'react'
-
 import MoviesList from 'src/components/MoviesList'
 import Loading from 'src/components/Loading'
 import Error from 'src/components/Error'

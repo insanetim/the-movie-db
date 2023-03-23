@@ -1,4 +1,4 @@
-import mockHttpClient from 'src/__mocks__/mockHttpClient'
+import mockHttpClient from 'src/__mocks__/httpClientMock'
 import { showNotification } from 'src/store/app/actions'
 import * as types from '../../types'
 import { updateMovieStates } from '../../actions'

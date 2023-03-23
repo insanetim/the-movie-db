@@ -1,5 +1,8 @@
-import { shallow } from 'enzyme'
+import { Provider } from 'react-redux'
+import { MemoryRouter } from 'react-router-dom'
+import { render } from '@testing-library/react'
 
+import store from 'src/store'
 import ModalRoot from '../component'
 
 let mockedHookData = {
@@ -10,18 +13,30 @@ let mockedHookData = {
 jest.mock('../hook', () => jest.fn(() => mockedHookData))
 
 describe('ModalRoot component', () => {
-  let component = shallow(<ModalRoot />)
-
   it('matches snapshot', () => {
-    expect(component).toMatchSnapshot()
+    const { asFragment } = render(
+      <Provider store={store}>
+        <MemoryRouter>
+          <ModalRoot />
+        </MemoryRouter>
+      </Provider>
+    )
+
+    expect(asFragment()).toMatchSnapshot()
   })
 
   it('return null unless modalType present', () => {
     mockedHookData = {
       modalType: undefined
     }
-    component = shallow(<ModalRoot />)
+    const { asFragment } = render(
+      <Provider store={store}>
+        <MemoryRouter>
+          <ModalRoot />
+        </MemoryRouter>
+      </Provider>
+    )
 
-    expect(component).toMatchSnapshot()
+    expect(asFragment()).toMatchSnapshot()
   })
 })

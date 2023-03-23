@@ -1,5 +1,8 @@
-import { shallow } from 'enzyme'
+import { Provider } from 'react-redux'
+import { MemoryRouter } from 'react-router-dom'
+import { render } from '@testing-library/react'
 
+import store from 'src/store'
 import Login from '../component'
 
 const mockedHookData = {
@@ -8,15 +11,29 @@ const mockedHookData = {
 }
 jest.mock('../hook', () => jest.fn(() => mockedHookData))
 
-it('matches snapshot', () => {
-  const component = shallow(<Login />)
+describe('Login component', () => {
+  it('matches snapshot', () => {
+    const { asFragment } = render(
+      <Provider store={store}>
+        <MemoryRouter>
+          <Login />
+        </MemoryRouter>
+      </Provider>
+    )
 
-  expect(component).toMatchSnapshot()
-})
+    expect(asFragment()).toMatchSnapshot()
+  })
 
-it('matches snapshot with loading', () => {
-  mockedHookData.loading = true
-  const component = shallow(<Login />)
+  it('matches snapshot with loading', () => {
+    mockedHookData.loading = true
+    const { asFragment } = render(
+      <Provider store={store}>
+        <MemoryRouter>
+          <Login />
+        </MemoryRouter>
+      </Provider>
+    )
 
-  expect(component).toMatchSnapshot()
+    expect(asFragment()).toMatchSnapshot()
+  })
 })

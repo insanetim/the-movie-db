@@ -1,28 +1,39 @@
 /* eslint-disable react/jsx-no-useless-fragment */
-import { shallow } from 'enzyme'
+import { render } from '@testing-library/react'
+import { MemoryRouter } from 'react-router-dom'
 
 import ProtectedRoutes from '../component'
 
-jest.mock('react-router-dom', () => ({
-  Outlet: () => <></>,
-  Navigate: () => <></>,
-  useLocation: jest.fn(() => ({}))
-}))
-
 const mockedHookData = {
-  sessionId: 'test/sessionId'
+  sessionId: 'test/sessionId',
+  location: {}
 }
 jest.mock('../hook', () => jest.fn(() => mockedHookData))
 
-it('matches snapshot', () => {
-  const component = shallow(<ProtectedRoutes />)
+jest.mock('react-router-dom', () => ({
+  ...jest.requireActual('react-router-dom'),
+  Navigate: () => <></>
+}))
 
-  expect(component).toMatchSnapshot()
-})
+describe('ProtectedRoutes component', () => {
+  it('matches snapshot', () => {
+    const { asFragment } = render(
+      <MemoryRouter>
+        <ProtectedRoutes />
+      </MemoryRouter>
+    )
 
-it('matches snapshot without sessionId', () => {
-  mockedHookData.sessionId = null
-  const component = shallow(<ProtectedRoutes />)
+    expect(asFragment()).toMatchSnapshot()
+  })
 
-  expect(component).toMatchSnapshot()
+  it('matches snapshot without sessionId', () => {
+    mockedHookData.sessionId = null
+    const { asFragment } = render(
+      <MemoryRouter>
+        <ProtectedRoutes />
+      </MemoryRouter>
+    )
+
+    expect(asFragment()).toMatchSnapshot()
+  })
 })

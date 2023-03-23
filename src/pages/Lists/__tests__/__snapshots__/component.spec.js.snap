@@ -1,92 +1,257 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Lists component tests matches snapshot 1`] = `
-<Fragment>
-  <Row
-    justify="center"
+exports[`Lists component matches snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="ant-row ant-row-center css-dev-only-do-not-override-ph9edi"
   >
-    <Col
-      span={20}
+    <div
+      class="ant-col ant-col-20 css-dev-only-do-not-override-ph9edi"
     >
       <div
-        className="top-margin"
+        class="top-margin"
       >
-        <ForwardRef>
+        <h1
+          class="ant-typography css-dev-only-do-not-override-ph9edi"
+        >
           My Lists 
-          <ForwardRef(PlusCircleOutlined)
-            onClick={[MockFunction]}
-          />
-        </ForwardRef>
+          <span
+            aria-label="plus-circle"
+            class="anticon anticon-plus-circle"
+            role="img"
+            tabindex="-1"
+          >
+            <svg
+              aria-hidden="true"
+              data-icon="plus-circle"
+              fill="currentColor"
+              focusable="false"
+              height="1em"
+              viewBox="64 64 896 896"
+              width="1em"
+            >
+              <path
+                d="M696 480H544V328c0-4.4-3.6-8-8-8h-48c-4.4 0-8 3.6-8 8v152H328c-4.4 0-8 3.6-8 8v48c0 4.4 3.6 8 8 8h152v152c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8V544h152c4.4 0 8-3.6 8-8v-48c0-4.4-3.6-8-8-8z"
+              />
+              <path
+                d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"
+              />
+            </svg>
+          </span>
+        </h1>
       </div>
-    </Col>
-  </Row>
-  <ListsList
-    lists={
-      {
-        "results": [
-          {
-            "id": 1,
-            "overview": "test/overview",
-            "poster_path": "test/image",
-            "title": "test/title",
-          },
-        ],
-      }
-    }
-  />
-</Fragment>
+    </div>
+  </div>
+  <div
+    class="ant-row ant-row-center css-dev-only-do-not-override-ph9edi"
+  >
+    <div
+      class="ant-col ant-col-20 css-dev-only-do-not-override-ph9edi"
+    >
+      <div
+        class="ant-row css-dev-only-do-not-override-ph9edi"
+        style="margin-left: -16px; margin-right: -16px;"
+      >
+        <div
+          class="ant-col ant-col-24 ant-col-sm-12 ant-col-md-8 ant-col-lg-8 ant-col-xl-6 css-dev-only-do-not-override-ph9edi"
+          style="padding-left: 16px; padding-right: 16px;"
+        >
+          <div
+            class="ant-card ant-card-bordered ant-card-hoverable top-margin css-dev-only-do-not-override-ph9edi"
+          >
+            <div
+              class="ant-card-body"
+            >
+              <h4
+                class="ant-typography css-dev-only-do-not-override-ph9edi"
+              />
+            </div>
+            <ul
+              class="ant-card-actions"
+            >
+              <li
+                style="width: 100%;"
+              >
+                <span>
+                  <span
+                    aria-label="delete"
+                    class="anticon anticon-delete"
+                    role="img"
+                    tabindex="-1"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      data-icon="delete"
+                      fill="currentColor"
+                      focusable="false"
+                      height="1em"
+                      viewBox="64 64 896 896"
+                      width="1em"
+                    >
+                      <path
+                        d="M360 184h-8c4.4 0 8-3.6 8-8v8h304v-8c0 4.4 3.6 8 8 8h-8v72h72v-80c0-35.3-28.7-64-64-64H352c-35.3 0-64 28.7-64 64v80h72v-72zm504 72H160c-17.7 0-32 14.3-32 32v32c0 4.4 3.6 8 8 8h60.4l24.7 523c1.6 34.1 29.8 61 63.9 61h454c34.2 0 62.3-26.8 63.9-61l24.7-523H888c4.4 0 8-3.6 8-8v-32c0-17.7-14.3-32-32-32zM731.3 840H292.7l-24.2-512h487l-24.2 512z"
+                      />
+                    </svg>
+                  </span>
+                </span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
 `;
 
-exports[`Lists component tests matches snapshot with error 1`] = `
-<Fragment>
-  <Row
-    justify="center"
+exports[`Lists component matches snapshot with error 1`] = `
+<DocumentFragment>
+  <div
+    class="ant-row ant-row-center css-dev-only-do-not-override-ph9edi"
   >
-    <Col
-      span={20}
+    <div
+      class="ant-col ant-col-20 css-dev-only-do-not-override-ph9edi"
     >
       <div
-        className="top-margin"
+        class="top-margin"
       >
-        <ForwardRef>
+        <h1
+          class="ant-typography css-dev-only-do-not-override-ph9edi"
+        >
           My Lists 
-          <ForwardRef(PlusCircleOutlined)
-            onClick={[MockFunction]}
-          />
-        </ForwardRef>
+          <span
+            aria-label="plus-circle"
+            class="anticon anticon-plus-circle"
+            role="img"
+            tabindex="-1"
+          >
+            <svg
+              aria-hidden="true"
+              data-icon="plus-circle"
+              fill="currentColor"
+              focusable="false"
+              height="1em"
+              viewBox="64 64 896 896"
+              width="1em"
+            >
+              <path
+                d="M696 480H544V328c0-4.4-3.6-8-8-8h-48c-4.4 0-8 3.6-8 8v152H328c-4.4 0-8 3.6-8 8v48c0 4.4 3.6 8 8 8h152v152c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8V544h152c4.4 0 8-3.6 8-8v-48c0-4.4-3.6-8-8-8z"
+              />
+              <path
+                d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"
+              />
+            </svg>
+          </span>
+        </h1>
       </div>
-    </Col>
-  </Row>
-  <Error
-    error={
-      {
-        "message": "test/error",
-      }
-    }
-  />
-</Fragment>
+    </div>
+  </div>
+  <div
+    class="ant-result ant-result-error css-dev-only-do-not-override-ph9edi"
+  >
+    <div
+      class="ant-result-icon"
+    >
+      <span
+        aria-label="close-circle"
+        class="anticon anticon-close-circle"
+        role="img"
+      >
+        <svg
+          aria-hidden="true"
+          data-icon="close-circle"
+          fill="currentColor"
+          focusable="false"
+          height="1em"
+          viewBox="64 64 896 896"
+          width="1em"
+        >
+          <path
+            d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm165.4 618.2l-66-.3L512 563.4l-99.3 118.4-66.1.3c-4.4 0-8-3.5-8-8 0-1.9.7-3.7 1.9-5.2l130.1-155L340.5 359a8.32 8.32 0 01-1.9-5.2c0-4.4 3.6-8 8-8l66.1.3L512 464.6l99.3-118.4 66-.3c4.4 0 8 3.5 8 8 0 1.9-.7 3.7-1.9 5.2L553.5 514l130 155c1.2 1.5 1.9 3.3 1.9 5.2 0 4.4-3.6 8-8 8z"
+          />
+        </svg>
+      </span>
+    </div>
+    <div
+      class="ant-result-title"
+    >
+      test/error
+    </div>
+  </div>
+</DocumentFragment>
 `;
 
-exports[`Lists component tests matches snapshot with loading 1`] = `
-<Fragment>
-  <Row
-    justify="center"
+exports[`Lists component matches snapshot with loading 1`] = `
+<DocumentFragment>
+  <div
+    class="ant-row ant-row-center css-dev-only-do-not-override-ph9edi"
   >
-    <Col
-      span={20}
+    <div
+      class="ant-col ant-col-20 css-dev-only-do-not-override-ph9edi"
     >
       <div
-        className="top-margin"
+        class="top-margin"
       >
-        <ForwardRef>
+        <h1
+          class="ant-typography css-dev-only-do-not-override-ph9edi"
+        >
           My Lists 
-          <ForwardRef(PlusCircleOutlined)
-            onClick={[MockFunction]}
-          />
-        </ForwardRef>
+          <span
+            aria-label="plus-circle"
+            class="anticon anticon-plus-circle"
+            role="img"
+            tabindex="-1"
+          >
+            <svg
+              aria-hidden="true"
+              data-icon="plus-circle"
+              fill="currentColor"
+              focusable="false"
+              height="1em"
+              viewBox="64 64 896 896"
+              width="1em"
+            >
+              <path
+                d="M696 480H544V328c0-4.4-3.6-8-8-8h-48c-4.4 0-8 3.6-8 8v152H328c-4.4 0-8 3.6-8 8v48c0 4.4 3.6 8 8 8h152v152c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8V544h152c4.4 0 8-3.6 8-8v-48c0-4.4-3.6-8-8-8z"
+              />
+              <path
+                d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"
+              />
+            </svg>
+          </span>
+        </h1>
       </div>
-    </Col>
-  </Row>
-  <Loading />
-</Fragment>
+    </div>
+  </div>
+  <div
+    class="ant-row ant-row-center css-dev-only-do-not-override-ph9edi"
+  >
+    <div
+      class="ant-col css-dev-only-do-not-override-ph9edi"
+    >
+      <div
+        aria-busy="true"
+        aria-live="polite"
+        class="ant-spin ant-spin-spinning css-dev-only-do-not-override-ph9edi"
+      >
+        <span
+          class="ant-spin-dot ant-spin-dot-spin"
+        >
+          <i
+            class="ant-spin-dot-item"
+          />
+          <i
+            class="ant-spin-dot-item"
+          />
+          <i
+            class="ant-spin-dot-item"
+          />
+          <i
+            class="ant-spin-dot-item"
+          />
+        </span>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
 `;

@@ -1,7 +1,8 @@
 module.exports = {
   testEnvironment: 'jsdom',
   setupFilesAfterEnv: ['<rootDir>/src/setupTests.js'],
-  snapshotSerializers: ['enzyme-to-json/serializer'],
+  collectCoverageFrom: ['<rootDir>/src/**/*.{js,jsx}'],
+  coveragePathIgnorePatterns: ['<rootDir>/src/index.js'],
   coverageThreshold: {
     global: {
       statements: 100,
@@ -10,8 +11,6 @@ module.exports = {
       lines: 100
     }
   },
-  collectCoverageFrom: ['<rootDir>/src/**/*.{js,jsx}'],
-  coveragePathIgnorePatterns: ['<rootDir>/src/index.js'],
   moduleFileExtensions: ['js', 'jsx'],
   moduleDirectories: ['node_modules'],
   moduleNameMapper: {

@@ -1,9 +1,11 @@
-import { shallow } from 'enzyme'
+import { render } from '@testing-library/react'
 
 import Loading from '../component'
 
-it('matches snapshot', () => {
-  const component = shallow(<Loading />)
+describe('Loading component', () => {
+  it('matches snapshot', () => {
+    const { asFragment } = render(<Loading />)
 
-  expect(component).toMatchSnapshot()
+    expect(asFragment()).toMatchSnapshot()
+  })
 })

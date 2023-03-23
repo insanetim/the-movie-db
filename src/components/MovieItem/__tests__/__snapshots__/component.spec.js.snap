@@ -1,51 +1,94 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`MovieItem component matches snapshot 1`] = `
-<Card
-  actions={
-    [
+<DocumentFragment>
+  <div
+    class="ant-card ant-card-bordered ant-card-hoverable top-margin css-dev-only-do-not-override-ph9edi"
+  >
+    <div
+      class="ant-card-cover"
+    >
+      <img
+        alt="Poster"
+        src="https://image.tmdb.org/t/p/w500test/image"
+      />
+    </div>
+    <div
+      class="ant-card-body"
+    >
       <div
-        onClick={[MockFunction]}
-      />,
-    ]
-  }
-  className="top-margin"
-  cover={
-    <img
-      alt="Poster"
-      src="https://image.tmdb.org/t/p/w500test/image"
-    />
-  }
-  hoverable={true}
-  onClick={[MockFunction]}
->
-  <Meta
-    description="test/overview"
-    title="test/title"
-  />
-</Card>
+        class="ant-card-meta"
+      >
+        <div
+          class="ant-card-meta-detail"
+        >
+          <div
+            class="ant-card-meta-title"
+          >
+            test/title
+          </div>
+          <div
+            class="ant-card-meta-description"
+          >
+            test/overview
+          </div>
+        </div>
+      </div>
+    </div>
+    <ul
+      class="ant-card-actions"
+    >
+      <li
+        style="width: 100%;"
+      >
+        <span>
+          <div />
+        </span>
+      </li>
+    </ul>
+  </div>
+</DocumentFragment>
 `;
 
 exports[`MovieItem component matches snapshot with NoImage 1`] = `
-<Card
-  actions={[]}
-  className="top-margin"
-  cover={
+<DocumentFragment>
+  <div
+    class="ant-card ant-card-bordered ant-card-hoverable top-margin css-dev-only-do-not-override-ph9edi"
+  >
     <div
-      className="ant-card-cover--no-image"
+      class="ant-card-cover"
     >
-      <img
-        alt=""
-        src="test-file-stub"
-      />
+      <div
+        class="ant-card-cover--no-image"
+      >
+        <img
+          alt=""
+          src="test-file-stub"
+        />
+      </div>
     </div>
-  }
-  hoverable={true}
-  onClick={[MockFunction]}
->
-  <Meta
-    description="test/overview"
-    title="test/title"
-  />
-</Card>
+    <div
+      class="ant-card-body"
+    >
+      <div
+        class="ant-card-meta"
+      >
+        <div
+          class="ant-card-meta-detail"
+        >
+          <div
+            class="ant-card-meta-title"
+          >
+            test/title
+          </div>
+          <div
+            class="ant-card-meta-description"
+          >
+            test/overview
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
 `;

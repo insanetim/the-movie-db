@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Endpoints constants matches snapshot 1`] = `
+exports[`endpoints constants matches snapshot 1`] = `
 {
   "addToFovorite": [Function],
   "addToList": [Function],

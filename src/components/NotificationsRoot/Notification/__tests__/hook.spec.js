@@ -1,5 +1,5 @@
 import { notification } from 'antd'
-import { act, renderHook } from '@testing-library/react-hooks/dom'
+import { act, renderHook } from '@testing-library/react'
 
 import useContainer from '../hook'
 

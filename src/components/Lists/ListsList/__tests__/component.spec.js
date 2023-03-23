@@ -1,5 +1,8 @@
-import { shallow } from 'enzyme'
+import { Provider } from 'react-redux'
+import { MemoryRouter } from 'react-router-dom'
+import { render } from '@testing-library/react'
 
+import store from 'src/store'
 import ListList from '../component'
 
 const mockedHookData = {
@@ -7,47 +10,67 @@ const mockedHookData = {
 }
 jest.mock('../hook', () => jest.fn(() => mockedHookData))
 
-it('matches snapshot', () => {
-  const mockedLists = {
-    results: [
-      {
-        id: 1,
-        title: 'test/title',
-        overview: 'test/overview',
-        poster_path: 'test/image'
-      }
-    ],
-    total_pages: 10,
-    total_results: 200
-  }
-  const component = shallow(<ListList lists={mockedLists} />)
+describe('ListsList component', () => {
+  it('matches snapshot', () => {
+    const mockedLists = {
+      results: [
+        {
+          id: 1,
+          title: 'test/title',
+          overview: 'test/overview',
+          poster_path: 'test/image'
+        }
+      ],
+      total_pages: 10,
+      total_results: 200
+    }
+    const { asFragment } = render(
+      <Provider store={store}>
+        <MemoryRouter>
+          <ListList lists={mockedLists} />
+        </MemoryRouter>
+      </Provider>
+    )
 
-  expect(component).toMatchSnapshot()
-})
+    expect(asFragment()).toMatchSnapshot()
+  })
 
-it('matches snapshot with 1 page', () => {
-  const mockedLists = {
-    results: [
-      {
-        id: 1,
-        title: 'test/title',
-        overview: 'test/overview',
-        poster_path: 'test/image'
-      }
-    ],
-    total_pages: 1,
-    total_results: 20
-  }
-  const component = shallow(<ListList lists={mockedLists} />)
+  it('matches snapshot with 1 page', () => {
+    const mockedLists = {
+      results: [
+        {
+          id: 1,
+          title: 'test/title',
+          overview: 'test/overview',
+          poster_path: 'test/image'
+        }
+      ],
+      total_pages: 1,
+      total_results: 20
+    }
+    const { asFragment } = render(
+      <Provider store={store}>
+        <MemoryRouter>
+          <ListList lists={mockedLists} />
+        </MemoryRouter>
+      </Provider>
+    )
 
-  expect(component).toMatchSnapshot()
-})
+    expect(asFragment()).toMatchSnapshot()
+  })
 
-it('matches snapshot without lists', () => {
-  const mockedLists = {
-    results: []
-  }
-  const component = shallow(<ListList lists={mockedLists} />)
+  it('matches snapshot without lists', () => {
+    const mockedLists = {
+      results: []
+    }
+    const { asFragment } = render(
+      <Provider store={store}>
+        <MemoryRouter>
+          <ListList lists={mockedLists} />
+        </MemoryRouter>
+      </Provider>
+    )
 
-  expect(component).toMatchSnapshot()
+    expect(asFragment()).toMatchSnapshot()
+  })
 })

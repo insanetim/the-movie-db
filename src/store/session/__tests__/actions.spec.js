@@ -5,54 +5,56 @@ import { showNotification } from 'src/store/app/actions'
 import * as actions from '../actions'
 import * as types from '../types'
 
-it('setSession', () => {
-  const expectedAction = {
-    type: types.SET_SESSION,
-    payload: 'test/sessionId'
-  }
+describe('session actions', () => {
+  it('setSession', () => {
+    const expectedAction = {
+      type: types.SET_SESSION,
+      payload: 'test/sessionId'
+    }
 
-  expect(actions.setSession('test/sessionId')).toEqual(expectedAction)
-})
+    expect(actions.setSession('test/sessionId')).toEqual(expectedAction)
+  })
 
-it('deleteSession', () => {
-  const expectedAction = {
-    type: types.DELETE_SESSION
-  }
+  it('deleteSession', () => {
+    const expectedAction = {
+      type: types.DELETE_SESSION
+    }
 
-  expect(actions.deleteSession()).toEqual(expectedAction)
-})
+    expect(actions.deleteSession()).toEqual(expectedAction)
+  })
 
-it('fetchAccount', () => {
-  const expectedAction = {
-    type: types.FETCH_ACCOUNT
-  }
+  it('fetchAccount', () => {
+    const expectedAction = {
+      type: types.FETCH_ACCOUNT
+    }
 
-  expect(actions.fetchAccount()).toEqual(expectedAction)
-})
+    expect(actions.fetchAccount()).toEqual(expectedAction)
+  })
 
-it('fetchAccountSuccess', () => {
-  const expectedAction = {
-    type: types.FETCH_ACCOUNT_SUCCESS,
-    payload: { id: 123 }
-  }
+  it('fetchAccountSuccess', () => {
+    const expectedAction = {
+      type: types.FETCH_ACCOUNT_SUCCESS,
+      payload: { id: 123 }
+    }
 
-  expect(actions.fetchAccountSuccess({ id: 123 })).toEqual(expectedAction)
-})
+    expect(actions.fetchAccountSuccess({ id: 123 })).toEqual(expectedAction)
+  })
 
-it('loadingOn', () => {
-  const expectedAction = {
-    type: types.LOADING_ON
-  }
+  it('loadingOn', () => {
+    const expectedAction = {
+      type: types.LOADING_ON
+    }
 
-  expect(actions.loadingOn()).toEqual(expectedAction)
-})
+    expect(actions.loadingOn()).toEqual(expectedAction)
+  })
 
-it('loadingOff', () => {
-  const expectedAction = {
-    type: types.LOADING_OFF
-  }
+  it('loadingOff', () => {
+    const expectedAction = {
+      type: types.LOADING_OFF
+    }
 
-  expect(actions.loadingOff()).toEqual(expectedAction)
+    expect(actions.loadingOff()).toEqual(expectedAction)
+  })
 })
 
 jest.mock('uuid', () => ({

@@ -1,14 +1,20 @@
-/* eslint-disable react/jsx-no-useless-fragment */
-import { shallow } from 'enzyme'
+import { render } from '@testing-library/react'
+import { Provider } from 'react-redux'
+import { MemoryRouter } from 'react-router-dom'
 
+import store from 'src/store'
 import Layout from '../component'
 
-jest.mock('react-router-dom', () => ({
-  Outlet: () => <></>
-}))
+describe('Layout component', () => {
+  it('matches snapshot', () => {
+    const { asFragment } = render(
+      <Provider store={store}>
+        <MemoryRouter>
+          <Layout />
+        </MemoryRouter>
+      </Provider>
+    )
 
-it('matches snapshot', () => {
-  const component = shallow(<Layout />)
-
-  expect(component).toMatchSnapshot()
+    expect(asFragment()).toMatchSnapshot()
+  })
 })

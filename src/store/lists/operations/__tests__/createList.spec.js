@@ -1,4 +1,4 @@
-import mockHttpClient from 'src/__mocks__/mockHttpClient'
+import mockHttpClient from 'src/__mocks__/httpClientMock'
 import { showNotification } from 'src/store/app/actions'
 import { mergeDeepRight } from 'ramda'
 import * as types from '../../types'

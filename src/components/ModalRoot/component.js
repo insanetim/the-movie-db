@@ -1,9 +1,7 @@
-import React from 'react'
-
 import useContainer from './hook'
 import MODAL_COMPONENTS from './modalComponents'
 
-export default function ModalRoot() {
+const ModalRoot = () => {
   const { modalType, modalProps, onCancel } = useContainer()
 
   if (!modalType) {
@@ -19,3 +17,5 @@ export default function ModalRoot() {
     />
   )
 }
+
+export default ModalRoot

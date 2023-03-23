@@ -1,14 +1,3 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`NotificationsRoot component tests matches snapshot 1`] = `
-<Fragment>
-  <Notification
-    duration={2.5}
-    hideNotification={[MockFunction]}
-    id="test/id"
-    key="test/id"
-    messageText="test/message"
-    messageType="success"
-  />
-</Fragment>
-`;
+exports[`NotificationsRoot component matches snapshot 1`] = `<DocumentFragment />`;

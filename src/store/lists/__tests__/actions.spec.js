@@ -3,115 +3,115 @@ import { showNotification } from 'src/store/app/actions'
 import * as actions from '../actions'
 import * as types from '../types'
 
-const callback = jest.fn()
+describe('lists actions', () => {
+  it('fetchLists', () => {
+    const expectedAction = {
+      type: types.FETCH_LISTS,
+      payload: 1
+    }
 
-it('fetchLists', () => {
-  const expectedAction = {
-    type: types.FETCH_LISTS,
-    payload: { page: 1, callback }
-  }
+    expect(actions.fetchLists(1)).toEqual(expectedAction)
+  })
 
-  expect(actions.fetchLists({ page: 1, callback })).toEqual(expectedAction)
-})
+  it('fetchListsRequest', () => {
+    const expectedAction = {
+      type: types.FETCH_LISTS_REQUEST,
+      payload: 1
+    }
 
-it('fetchListsRequest', () => {
-  const expectedAction = {
-    type: types.FETCH_LISTS_REQUEST,
-    payload: 1
-  }
+    expect(actions.fetchListsRequest(1)).toEqual(expectedAction)
+  })
 
-  expect(actions.fetchListsRequest(1)).toEqual(expectedAction)
-})
+  it('fetchListsSuccess', () => {
+    const expectedAction = {
+      type: types.FETCH_LISTS_SUCCESS,
+      payload: { id: 123 }
+    }
 
-it('fetchListsSuccess', () => {
-  const expectedAction = {
-    type: types.FETCH_LISTS_SUCCESS,
-    payload: { id: 123 }
-  }
+    expect(actions.fetchListsSuccess({ id: 123 })).toEqual(expectedAction)
+  })
 
-  expect(actions.fetchListsSuccess({ id: 123 })).toEqual(expectedAction)
-})
+  it('fetchListsFailure', () => {
+    const expectedAction = {
+      type: types.FETCH_LISTS_FAILURE,
+      payload: { message: 'test/error' }
+    }
 
-it('fetchListsFailure', () => {
-  const expectedAction = {
-    type: types.FETCH_LISTS_FAILURE,
-    payload: { message: 'test/error' }
-  }
+    expect(actions.fetchListsFailure({ message: 'test/error' })).toEqual(expectedAction)
+  })
 
-  expect(actions.fetchListsFailure({ message: 'test/error' })).toEqual(expectedAction)
-})
+  it('setListsPage', () => {
+    const expectedAction = {
+      type: types.SET_LISTS_PAGE,
+      payload: 3
+    }
 
-it('setListsPage', () => {
-  const expectedAction = {
-    type: types.SET_LISTS_PAGE,
-    payload: 3
-  }
+    expect(actions.setListsPage(3)).toEqual(expectedAction)
+  })
 
-  expect(actions.setListsPage(3)).toEqual(expectedAction)
-})
+  it('fetchList', () => {
+    const expectedAction = {
+      type: types.FETCH_LIST,
+      payload: 123
+    }
 
-it('fetchList', () => {
-  const expectedAction = {
-    type: types.FETCH_LIST,
-    payload: 123
-  }
+    expect(actions.fetchList(123)).toEqual(expectedAction)
+  })
 
-  expect(actions.fetchList(123)).toEqual(expectedAction)
-})
+  it('fetchListRequest', () => {
+    const expectedAction = {
+      type: types.FETCH_LIST_REQUEST
+    }
 
-it('fetchListRequest', () => {
-  const expectedAction = {
-    type: types.FETCH_LIST_REQUEST
-  }
+    expect(actions.fetchListRequest()).toEqual(expectedAction)
+  })
 
-  expect(actions.fetchListRequest()).toEqual(expectedAction)
-})
+  it('fetchListSuccess', () => {
+    const expectedAction = {
+      type: types.FETCH_LIST_SUCCESS,
+      payload: { id: 123 }
+    }
 
-it('fetchListSuccess', () => {
-  const expectedAction = {
-    type: types.FETCH_LIST_SUCCESS,
-    payload: { id: 123 }
-  }
+    expect(actions.fetchListSuccess({ id: 123 })).toEqual(expectedAction)
+  })
 
-  expect(actions.fetchListSuccess({ id: 123 })).toEqual(expectedAction)
-})
+  it('fetchListFailure', () => {
+    const expectedAction = {
+      type: types.FETCH_LIST_FAILURE,
+      payload: { message: 'test/error' }
+    }
 
-it('fetchListFailure', () => {
-  const expectedAction = {
-    type: types.FETCH_LIST_FAILURE,
-    payload: { message: 'test/error' }
-  }
+    expect(actions.fetchListFailure({ message: 'test/error' })).toEqual(expectedAction)
+  })
 
-  expect(actions.fetchListFailure({ message: 'test/error' })).toEqual(expectedAction)
-})
+  it('createList', () => {
+    const expectedAction = {
+      type: types.CREATE_LIST,
+      payload: { listData: { name: 'test/name', description: 'test/description' }, movieId: 123 }
+    }
 
-it('createList', () => {
-  const expectedAction = {
-    type: types.CREATE_LIST,
-    payload: { listData: { name: 'test/name', description: 'test/description' }, movieId: 123 }
-  }
+    expect(
+      actions.createList({ listData: { name: 'test/name', description: 'test/description' }, movieId: 123 })
+    ).toEqual(expectedAction)
+  })
 
-  expect(
-    actions.createList({ listData: { name: 'test/name', description: 'test/description' }, movieId: 123 })
-  ).toEqual(expectedAction)
-})
+  it('addToList', () => {
+    const expectedAction = {
+      type: types.ADD_TO_LIST,
+      payload: { listId: 123, movieId: 123 }
+    }
 
-it('addToList', () => {
-  const expectedAction = {
-    type: types.ADD_TO_LIST,
-    payload: { listId: 123, movieId: 123 }
-  }
+    expect(actions.addToList({ listId: 123, movieId: 123 })).toEqual(expectedAction)
+  })
 
-  expect(actions.addToList({ listId: 123, movieId: 123 })).toEqual(expectedAction)
-})
+  it('removeFromList', () => {
+    const expectedAction = {
+      type: types.REMOVE_FROM_LIST,
+      payload: { listId: 123, movieId: 123 }
+    }
 
-it('removeFromList', () => {
-  const expectedAction = {
-    type: types.REMOVE_FROM_LIST,
-    payload: { listId: 123, movieId: 123 }
-  }
-
-  expect(actions.removeFromList({ listId: 123, movieId: 123 })).toEqual(expectedAction)
+    expect(actions.removeFromList({ listId: 123, movieId: 123 })).toEqual(expectedAction)
+  })
 })
 
 jest.mock('src/store/session/selectors', () => ({

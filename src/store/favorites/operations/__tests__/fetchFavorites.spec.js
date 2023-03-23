@@ -1,4 +1,4 @@
-import mockHttpClient from 'src/__mocks__/mockHttpClient'
+import mockHttpClient from 'src/__mocks__/httpClientMock'
 import * as types from '../../types'
 import { fetchFavoritesRequest, fetchFavoritesSuccess, fetchFavoritesFailure } from '../../actions'
 import fetchFavorites from '../fetchFavorites'

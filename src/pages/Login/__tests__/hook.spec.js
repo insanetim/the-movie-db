@@ -1,7 +1,7 @@
+import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
-import { act, renderHook } from '@testing-library/react-hooks'
+import { act, renderHook } from '@testing-library/react'
 
-import { dispatch } from 'src/__mocks__/react-redux'
 import { logIn } from 'src/store/session/actions'
 import useContainer from '../hook'
 
@@ -11,11 +11,24 @@ jest.mock('src/store/session/selectors', () => ({
 
 jest.mock('src/store/session/actions')
 
+jest.mock('react-redux', () => ({
+  ...jest.requireActual('react-redux'),
+  useSelector: jest.fn(fn => fn()),
+  useDispatch: jest.fn()
+}))
+const dispatch = jest.fn()
+useDispatch.mockReturnValue(dispatch)
+
+jest.mock('react-router-dom', () => ({
+  ...jest.requireActual('react-router-dom'),
+  useNavigate: jest.fn(),
+  useLocation: jest.fn().mockImplementation(() => ({}))
+}))
+const navigate = jest.fn()
+useNavigate.mockReturnValue(navigate)
+
 describe('Favotites useContainer hook', () => {
   let result = null
-
-  const navigate = jest.fn()
-  useNavigate.mockReturnValue(navigate)
 
   beforeEach(() => {
     ;({ result } = renderHook(useContainer))

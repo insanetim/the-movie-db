@@ -1,4 +1,3 @@
-import React from 'react'
 import { Row, Col, Typography, Tag, Popover } from 'antd'
 import Icon, { HeartOutlined, HeartFilled, BookOutlined, BookFilled, PlusCircleOutlined } from '@ant-design/icons'
 import { format } from 'date-fns'
@@ -58,7 +57,7 @@ const Movie = () => {
                   />
                 }
               >
-                <PlusCircleOutlined />
+                <PlusCircleOutlined data-testid='addMovieToListPopover' />
               </Popover>{' '}
               <Icon
                 component={movie.accountStates.favorite ? HeartFilled : HeartOutlined}

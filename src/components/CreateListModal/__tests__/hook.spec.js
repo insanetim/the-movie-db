@@ -1,16 +1,24 @@
-import { act, renderHook } from '@testing-library/react-hooks'
+import { useDispatch } from 'react-redux'
+import { act, renderHook } from '@testing-library/react'
 
-import { dispatch } from 'src/__mocks__/react-redux'
 import { hideModal } from 'src/store/app/actions'
 import { createList } from 'src/store/lists/actions'
 import useContainer from '../hook'
 
+jest.mock('react-redux', () => ({
+  ...jest.requireActual('react-redux'),
+  useSelector: jest.fn(fn => fn()),
+  useDispatch: jest.fn()
+}))
+const dispatch = jest.fn()
+useDispatch.mockReturnValue(dispatch)
+
 describe('CreateListModal useContainer hook', () => {
   let result = null
-  const callback = jest.fn()
+
   const props = {
     form: { submit: jest.fn(), resetFields: jest.fn() },
-    callback
+    movieId: 123
   }
 
   beforeEach(() => {
@@ -40,7 +48,7 @@ describe('CreateListModal useContainer hook', () => {
 
     expect(dispatch).toHaveBeenCalledTimes(2)
     expect(dispatch).toHaveBeenNthCalledWith(1, hideModal())
-    expect(dispatch).toHaveBeenNthCalledWith(2, createList({ listData, callback: props.callback }))
+    expect(dispatch).toHaveBeenNthCalledWith(2, createList({ listData, movieId: props.movieId }))
   })
 
   it('checks `handleAfterClose` method', () => {

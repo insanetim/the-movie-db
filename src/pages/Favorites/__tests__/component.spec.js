@@ -1,5 +1,8 @@
-import { shallow } from 'enzyme'
+import { Provider } from 'react-redux'
+import { MemoryRouter } from 'react-router-dom'
+import { render } from '@testing-library/react'
 
+import store from 'src/store'
 import Favorites from '../component'
 
 const mockedHookData = {
@@ -20,25 +23,43 @@ const mockedHookData = {
 }
 jest.mock('../hook', () => jest.fn(() => mockedHookData))
 
-describe('Favorites component tests', () => {
-  let component = shallow(<Favorites />)
-
+describe('Favorites component', () => {
   it('matches snapshot', () => {
-    expect(component).toMatchSnapshot()
+    const { asFragment } = render(
+      <Provider store={store}>
+        <MemoryRouter>
+          <Favorites />
+        </MemoryRouter>
+      </Provider>
+    )
+
+    expect(asFragment()).toMatchSnapshot()
   })
 
   it('matches snapshot with loading', () => {
     mockedHookData.loading = true
-    component = shallow(<Favorites />)
+    const { asFragment } = render(
+      <Provider store={store}>
+        <MemoryRouter>
+          <Favorites />
+        </MemoryRouter>
+      </Provider>
+    )
 
-    expect(component).toMatchSnapshot()
+    expect(asFragment()).toMatchSnapshot()
   })
 
   it('matches snapshot with error', () => {
     mockedHookData.loading = false
     mockedHookData.error = { message: 'test/error' }
-    component = shallow(<Favorites />)
+    const { asFragment } = render(
+      <Provider store={store}>
+        <MemoryRouter>
+          <Favorites />
+        </MemoryRouter>
+      </Provider>
+    )
 
-    expect(component).toMatchSnapshot()
+    expect(asFragment()).toMatchSnapshot()
   })
 })

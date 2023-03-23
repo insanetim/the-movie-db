@@ -1,9 +1,11 @@
-import { shallow } from 'enzyme'
+import { render } from '@testing-library/react'
 
 import Pagination from '../component'
 
-it('matches snapshot', () => {
-  const component = shallow(<Pagination />)
+describe('Pagination component', () => {
+  it('matches snapshot', () => {
+    const { asFragment } = render(<Pagination />)
 
-  expect(component).toMatchSnapshot()
+    expect(asFragment()).toMatchSnapshot()
+  })
 })

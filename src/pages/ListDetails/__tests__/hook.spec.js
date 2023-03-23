@@ -1,8 +1,8 @@
+import { useDispatch } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
 import { Modal } from 'antd'
-import { useNavigate, useParams } from 'react-router-dom'
-import { act, renderHook } from '@testing-library/react-hooks'
+import { act, renderHook } from '@testing-library/react'
 
-import { dispatch } from 'src/__mocks__/react-redux'
 import { deleteList, removeFromList, fetchList } from 'src/store/lists/actions'
 import useContainer from '../hook'
 
@@ -14,12 +14,24 @@ jest.mock('src/store/lists/selectors', () => ({
 
 jest.mock('src/store/lists/actions')
 
+jest.mock('react-redux', () => ({
+  ...jest.requireActual('react-redux'),
+  useSelector: jest.fn(fn => fn()),
+  useDispatch: jest.fn()
+}))
+const dispatch = jest.fn()
+useDispatch.mockReturnValue(dispatch)
+
+jest.mock('react-router-dom', () => ({
+  ...jest.requireActual('react-router-dom'),
+  useNavigate: jest.fn(),
+  useParams: jest.fn().mockImplementation(() => ({ listId: 123 }))
+}))
+const navigate = jest.fn()
+useNavigate.mockReturnValue(navigate)
+
 describe('ListDetails useContainer hook', () => {
   let result = null
-
-  const navigate = jest.fn()
-  useNavigate.mockReturnValue(navigate)
-  useParams.mockReturnValue({ listId: 123 })
 
   const confirmSpy = jest.spyOn(Modal, 'confirm')
 

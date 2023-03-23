@@ -1,4 +1,3 @@
-import React from 'react'
 import PropTypes from 'prop-types'
 import { Row, Col } from 'antd'
 
@@ -7,7 +6,7 @@ import Movie from 'src/components/MovieItem'
 import Pagination from 'src/components/Pagination'
 
 const MoviesList = ({ movies, actions, emptyText, handlePagination }) => {
-  if (!movies.results.length) {
+  if (movies.results?.length === 0) {
     return <Empty description={emptyText} />
   }
 
@@ -26,7 +25,7 @@ const MoviesList = ({ movies, actions, emptyText, handlePagination }) => {
               lg: 32
             }}
           >
-            {movies.results.map(movie => (
+            {movies.results?.map(movie => (
               <Col
                 key={movie.id}
                 xs={{ span: 24 }}
@@ -76,7 +75,7 @@ MoviesList.propTypes = {
 }
 
 MoviesList.defaultProps = {
-  movies: [],
+  movies: {},
   actions: [],
   emptyText: 'No results'
 }

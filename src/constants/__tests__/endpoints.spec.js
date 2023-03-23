@@ -1,6 +1,6 @@
 import * as endpoints from '../endpoints'
 
-describe('Endpoints', () => {
+describe('endpoints', () => {
   it('constants matches snapshot', () => {
     expect(endpoints).toMatchSnapshot()
   })

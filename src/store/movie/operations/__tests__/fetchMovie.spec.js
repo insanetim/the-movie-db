@@ -1,4 +1,4 @@
-import mockHttpClient, { mockMultiHttpClient } from 'src/__mocks__/mockHttpClient'
+import mockHttpClient, { mockMultiHttpClient } from 'src/__mocks__/httpClientMock'
 import { fetchLists } from 'src/store/lists/actions'
 import { fetchMovieRequest, fetchMovieSuccess, fetchMovieFailure } from '../../actions'
 import * as types from '../../types'

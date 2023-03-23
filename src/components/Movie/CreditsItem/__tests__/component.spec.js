@@ -1,15 +1,17 @@
-import { shallow } from 'enzyme'
+import { render } from '@testing-library/react'
 
 import CreditsItem from '../component'
 
-it('matches snapshot', () => {
-  const component = shallow(<CreditsItem profilePath='test/image' />)
+describe('CreditsItem component', () => {
+  it('matches snapshot', () => {
+    const { asFragment } = render(<CreditsItem profilePath='test/image' />)
 
-  expect(component).toMatchSnapshot()
-})
+    expect(asFragment()).toMatchSnapshot()
+  })
 
-it('matches snapshot with NoImage', () => {
-  const component = shallow(<CreditsItem profilePath='' />)
+  it('matches snapshot with NoImage', () => {
+    const { asFragment } = render(<CreditsItem profilePath='' />)
 
-  expect(component).toMatchSnapshot()
+    expect(asFragment()).toMatchSnapshot()
+  })
 })

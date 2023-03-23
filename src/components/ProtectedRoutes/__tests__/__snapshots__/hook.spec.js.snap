@@ -2,6 +2,7 @@
 
 exports[`ProtectedRoutes useContainer hook matches snapshot 1`] = `
 {
+  "location": {},
   "sessionId": "test/sessionId",
 }
 `;

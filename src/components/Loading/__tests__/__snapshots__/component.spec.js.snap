@@ -1,11 +1,36 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`matches snapshot 1`] = `
-<Row
-  justify="center"
->
-  <Col>
-    <Spin />
-  </Col>
-</Row>
+exports[`Loading component matches snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="ant-row ant-row-center css-dev-only-do-not-override-ph9edi"
+  >
+    <div
+      class="ant-col css-dev-only-do-not-override-ph9edi"
+    >
+      <div
+        aria-busy="true"
+        aria-live="polite"
+        class="ant-spin ant-spin-spinning css-dev-only-do-not-override-ph9edi"
+      >
+        <span
+          class="ant-spin-dot ant-spin-dot-spin"
+        >
+          <i
+            class="ant-spin-dot-item"
+          />
+          <i
+            class="ant-spin-dot-item"
+          />
+          <i
+            class="ant-spin-dot-item"
+          />
+          <i
+            class="ant-spin-dot-item"
+          />
+        </span>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
 `;

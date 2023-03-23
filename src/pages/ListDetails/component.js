@@ -1,4 +1,3 @@
-import React from 'react'
 import { Row, Col, Typography } from 'antd'
 import { MinusCircleOutlined, DeleteOutlined } from '@ant-design/icons'
 

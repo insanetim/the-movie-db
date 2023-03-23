@@ -1,23 +1,38 @@
-import { shallow } from 'enzyme'
+import { Provider } from 'react-redux'
+import { MemoryRouter } from 'react-router-dom'
+import { render } from '@testing-library/react'
 
+import store from 'src/store'
 import Dashboard from '../component'
 
 const mockedHookData = {
   searchQuery: null
 }
-jest.mock('../hook', () => jest.fn(() => mockedHookData))
+jest.mock('../hook', () => jest.fn().mockImplementation(() => mockedHookData))
 
-describe('Dashboard component tests', () => {
-  let component = shallow(<Dashboard />)
-
+describe('Dashboard component', () => {
   it('matches snapshot', () => {
-    expect(component).toMatchSnapshot()
+    const { asFragment } = render(
+      <Provider store={store}>
+        <MemoryRouter>
+          <Dashboard />
+        </MemoryRouter>
+      </Provider>
+    )
+
+    expect(asFragment()).toMatchSnapshot()
   })
 
   it('matches snapshot with searchQuery', () => {
     mockedHookData.searchQuery = 'test/searchQuery'
-    component = shallow(<Dashboard />)
+    const { asFragment } = render(
+      <Provider store={store}>
+        <MemoryRouter>
+          <Dashboard />
+        </MemoryRouter>
+      </Provider>
+    )
 
-    expect(component).toMatchSnapshot()
+    expect(asFragment()).toMatchSnapshot()
   })
 })

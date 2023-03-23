@@ -1,4 +1,3 @@
-import React from 'react'
 import PropTypes from 'prop-types'
 import { Col, Card, Typography } from 'antd'
 import { DeleteOutlined } from '@ant-design/icons'

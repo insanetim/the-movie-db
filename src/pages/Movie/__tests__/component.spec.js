@@ -1,6 +1,9 @@
-import { shallow } from 'enzyme'
+import { Provider } from 'react-redux'
+import { MemoryRouter } from 'react-router-dom'
+import { fireEvent, render } from '@testing-library/react'
 import { mergeDeepRight } from 'ramda'
 
+import store from 'src/store'
 import Movie from '../component'
 import useContainer from '../hook'
 
@@ -37,11 +40,17 @@ const mockedHookData = {
 }
 jest.mock('../hook', () => jest.fn(() => mockedHookData))
 
-describe('Movie component tests', () => {
-  let component = shallow(<Movie />)
-
+describe('Movie component', () => {
   it('matches snapshot', () => {
-    expect(component).toMatchSnapshot()
+    const { asFragment } = render(
+      <Provider store={store}>
+        <MemoryRouter>
+          <Movie />
+        </MemoryRouter>
+      </Provider>
+    )
+
+    expect(asFragment()).toMatchSnapshot()
   })
 
   it('matches snapshot with other data', () => {
@@ -56,29 +65,54 @@ describe('Movie component tests', () => {
         popoverOpen: true
       })
     )
-    component = shallow(<Movie />)
+    const { asFragment } = render(
+      <Provider store={store}>
+        <MemoryRouter>
+          <Movie />
+        </MemoryRouter>
+      </Provider>
+    )
 
-    expect(component).toMatchSnapshot()
+    expect(asFragment()).toMatchSnapshot()
   })
 
-  it('Popover matches snapshot', () => {
-    component = shallow(<Movie />)
+  it('handles setPopoverOpen', () => {
+    const { getByTestId } = render(
+      <Provider store={store}>
+        <MemoryRouter>
+          <Movie />
+        </MemoryRouter>
+      </Provider>
+    )
+    fireEvent.click(getByTestId('addMovieToListPopover'))
 
-    expect(component.find('Popover').renderProp('onOpenChange')()).toMatchSnapshot()
+    expect(mockedHookData.setPopoverOpen).toHaveBeenCalled()
   })
 
   it('matches snapshot with loading', () => {
     mockedHookData.loading = true
-    component = shallow(<Movie />)
+    const { asFragment } = render(
+      <Provider store={store}>
+        <MemoryRouter>
+          <Movie />
+        </MemoryRouter>
+      </Provider>
+    )
 
-    expect(component).toMatchSnapshot()
+    expect(asFragment()).toMatchSnapshot()
   })
 
   it('matches snapshot with error', () => {
     mockedHookData.loading = false
     mockedHookData.error = { message: 'test/error' }
-    component = shallow(<Movie />)
+    const { asFragment } = render(
+      <Provider store={store}>
+        <MemoryRouter>
+          <Movie />
+        </MemoryRouter>
+      </Provider>
+    )
 
-    expect(component).toMatchSnapshot()
+    expect(asFragment()).toMatchSnapshot()
   })
 })

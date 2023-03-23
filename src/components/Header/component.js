@@ -1,4 +1,3 @@
-import React from 'react'
 import { Typography, Row, Col, Avatar, Dropdown, Layout } from 'antd'
 import { CaretDownOutlined, UserOutlined } from '@ant-design/icons'
 import { Link } from 'react-router-dom'

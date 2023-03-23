@@ -1,25 +1,42 @@
-import { shallow } from 'enzyme'
+import { Provider } from 'react-redux'
+import { MemoryRouter } from 'react-router-dom'
+import { fireEvent, render } from '@testing-library/react'
 
+import store from 'src/store'
 import PopoverContent from '../component'
 
 const mockedHookData = {
   lists: {
-    results: [{ id: 1, name: 'Test list' }]
+    results: [{ id: 123, name: 'test/list' }]
   },
   handleAddToNewList: jest.fn(),
   handleAddToList: jest.fn()
 }
 jest.mock('../hook', () => jest.fn(() => mockedHookData))
 
-it('matches snapshot', () => {
-  const component = shallow(<PopoverContent />)
+describe('PopoverContent component', () => {
+  it('matches snapshot', () => {
+    const { asFragment } = render(
+      <Provider store={store}>
+        <MemoryRouter>
+          <PopoverContent />
+        </MemoryRouter>
+      </Provider>
+    )
 
-  expect(component).toMatchSnapshot()
-})
+    expect(asFragment()).toMatchSnapshot()
+  })
 
-it('handles button click', () => {
-  const component = shallow(<PopoverContent />)
-  component.find('Button').last().simulate('click')
+  it('handles handleAddToList', () => {
+    const { getByTestId } = render(
+      <Provider store={store}>
+        <MemoryRouter>
+          <PopoverContent />
+        </MemoryRouter>
+      </Provider>
+    )
+    fireEvent.click(getByTestId('addToListButton'))
 
-  expect(mockedHookData.handleAddToList).toHaveBeenCalledWith(1)
+    expect(mockedHookData.handleAddToList).toHaveBeenCalledWith(123)
+  })
 })

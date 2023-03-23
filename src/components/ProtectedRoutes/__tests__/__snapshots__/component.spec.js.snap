@@ -1,15 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`matches snapshot 1`] = `<Outlet />`;
+exports[`ProtectedRoutes component matches snapshot 1`] = `<DocumentFragment />`;
 
-exports[`matches snapshot without sessionId 1`] = `
-<Navigate
-  replace={true}
-  state={
-    {
-      "from": {},
-    }
-  }
-  to="/login"
-/>
-`;
+exports[`ProtectedRoutes component matches snapshot without sessionId 1`] = `<DocumentFragment />`;

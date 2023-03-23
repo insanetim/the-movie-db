@@ -1,4 +1,3 @@
-import React from 'react'
 import { Route, Routes } from 'react-router-dom'
 
 import ProtectedRoutes from './components/ProtectedRoutes'
@@ -10,7 +9,6 @@ import Watchlist from './pages/Watchlist'
 import Favorites from './pages/Favorites'
 import ListDetails from './pages/ListDetails'
 import Movie from './pages/Movie'
-import './assets/styles/app.scss'
 
 const App = () => (
   <Routes>

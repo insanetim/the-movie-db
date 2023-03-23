@@ -1,14 +1,16 @@
-import { shallow } from 'enzyme'
+import { render } from '@testing-library/react'
 
 import ImageGallery from '../component'
 
-it('matches snapshot', () => {
-  const mockedImages = [
-    {
-      file_path: 'test/image'
-    }
-  ]
-  const component = shallow(<ImageGallery images={mockedImages} />)
+describe('ImageGallery component', () => {
+  it('matches snapshot', () => {
+    const mockedImages = [
+      {
+        file_path: 'test/image'
+      }
+    ]
+    const { asFragment } = render(<ImageGallery images={mockedImages} />)
 
-  expect(component).toMatchSnapshot()
+    expect(asFragment()).toMatchSnapshot()
+  })
 })

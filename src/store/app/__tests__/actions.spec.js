@@ -6,50 +6,52 @@ jest.mock('uuid', () => ({
   v4: jest.fn(() => 'uuid/v4')
 }))
 
-it('showModal', () => {
-  const expectedAction = {
-    type: types.SHOW_MODAL,
-    payload: {
-      modalType: 'test/modalType',
-      modalProps: 'test/modalProps'
+describe('app actions', () => {
+  it('showModal', () => {
+    const expectedAction = {
+      type: types.SHOW_MODAL,
+      payload: {
+        modalType: 'test/modalType',
+        modalProps: 'test/modalProps'
+      }
     }
-  }
 
-  expect(
-    actions.showModal({
-      modalType: 'test/modalType',
-      modalProps: 'test/modalProps'
-    })
-  ).toEqual(expectedAction)
-})
+    expect(
+      actions.showModal({
+        modalType: 'test/modalType',
+        modalProps: 'test/modalProps'
+      })
+    ).toEqual(expectedAction)
+  })
 
-it('hideModal', () => {
-  const expectedAction = {
-    type: types.HIDE_MODAL
-  }
-
-  expect(actions.hideModal()).toEqual(expectedAction)
-})
-
-it('showNotification', () => {
-  const expectedAction = {
-    type: types.SHOW_NOTIFICATION,
-    payload: {
-      id: 'uuid/v4',
-      messageType: NOTIFICATION_TYPE.SUCCESS,
-      messageText: 'test/message',
-      duration: NOTIFICATION_DURATION
+  it('hideModal', () => {
+    const expectedAction = {
+      type: types.HIDE_MODAL
     }
-  }
 
-  expect(actions.showNotification({ messageText: 'test/message' })).toEqual(expectedAction)
-})
+    expect(actions.hideModal()).toEqual(expectedAction)
+  })
 
-it('hideNotification', () => {
-  const expectedAction = {
-    type: types.HIDE_NOTIFICATION,
-    payload: 123
-  }
+  it('showNotification', () => {
+    const expectedAction = {
+      type: types.SHOW_NOTIFICATION,
+      payload: {
+        id: 'uuid/v4',
+        messageType: NOTIFICATION_TYPE.SUCCESS,
+        messageText: 'test/message',
+        duration: NOTIFICATION_DURATION
+      }
+    }
 
-  expect(actions.hideNotification(123)).toEqual(expectedAction)
+    expect(actions.showNotification({ messageText: 'test/message' })).toEqual(expectedAction)
+  })
+
+  it('hideNotification', () => {
+    const expectedAction = {
+      type: types.HIDE_NOTIFICATION,
+      payload: 123
+    }
+
+    expect(actions.hideNotification(123)).toEqual(expectedAction)
+  })
 })

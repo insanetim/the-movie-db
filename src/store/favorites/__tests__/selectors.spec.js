@@ -1,29 +1,31 @@
 import * as selectors from '../selectors'
 
-it('favoritesMoviesSelector', () => {
-  const movies = 'test/movies'
-  const state = { favorites: { movies } }
+describe('favorites selectors', () => {
+  it('favoritesMoviesSelector', () => {
+    const movies = 'test/movies'
+    const state = { favorites: { movies } }
 
-  expect(selectors.favoritesMoviesSelector(state)).toEqual(movies)
-})
+    expect(selectors.favoritesMoviesSelector(state)).toEqual(movies)
+  })
 
-it('favoritesPageSelector', () => {
-  const page = 'test/page'
-  const state = { favorites: { page } }
+  it('favoritesPageSelector', () => {
+    const page = 'test/page'
+    const state = { favorites: { page } }
 
-  expect(selectors.favoritesPageSelector(state)).toEqual(page)
-})
+    expect(selectors.favoritesPageSelector(state)).toEqual(page)
+  })
 
-it('favoritesLoadingSelector', () => {
-  const loading = 'test/loading'
-  const state = { favorites: { loading } }
+  it('favoritesLoadingSelector', () => {
+    const loading = 'test/loading'
+    const state = { favorites: { loading } }
 
-  expect(selectors.favoritesLoadingSelector(state)).toEqual(loading)
-})
+    expect(selectors.favoritesLoadingSelector(state)).toEqual(loading)
+  })
 
-it('favoritesErrorSelector', () => {
-  const error = 'test/error'
-  const state = { favorites: { error } }
+  it('favoritesErrorSelector', () => {
+    const error = 'test/error'
+    const state = { favorites: { error } }
 
-  expect(selectors.favoritesErrorSelector(state)).toEqual(error)
+    expect(selectors.favoritesErrorSelector(state)).toEqual(error)
+  })
 })
