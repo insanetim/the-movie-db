@@ -18,7 +18,7 @@ const Movie = () => {
 
   if (loading) {
     return (
-      <div className='top-margin'>
+      <div className='container top-margin'>
         <Loading />
       </div>
     )
@@ -26,7 +26,7 @@ const Movie = () => {
 
   if (error) {
     return (
-      <div className='top-margin'>
+      <div className='container top-margin'>
         <Error error={error} />
       </div>
     )
@@ -35,9 +35,9 @@ const Movie = () => {
   return (
     <>
       {movie.images.length > 0 && <ImageGallery images={movie.images} />}
-      <div className='top-margin'>
-        <Row justify='center'>
-          <Col span={20}>
+      <div className='container top-margin'>
+        <Row>
+          <Col span={24}>
             <Typography.Title>
               <span>
                 {movie.title}
@@ -75,16 +75,14 @@ const Movie = () => {
               </>
             )}
           </Col>
-        </Row>
-        <Row justify='center'>
-          <Col span={20}>
+          <Col span={24}>
             <Typography.Paragraph>
               <b>Original Language: </b>
               <span>{ISO6391.getName(movie.original_language)}</span>
             </Typography.Paragraph>
           </Col>
           {movie.runtime !== 0 && (
-            <Col span={20}>
+            <Col span={24}>
               <Typography.Paragraph>
                 <b>Runtime: </b>
                 <span>{convertDuration(movie.runtime)}</span>
@@ -92,7 +90,7 @@ const Movie = () => {
             </Col>
           )}
           {movie.budget !== 0 && (
-            <Col span={20}>
+            <Col span={24}>
               <Typography.Paragraph>
                 <b>Budget: </b>
                 <span>{convertMoney(movie.budget)}</span>
@@ -100,7 +98,7 @@ const Movie = () => {
             </Col>
           )}
           {movie.revenue !== 0 && (
-            <Col span={20}>
+            <Col span={24}>
               <Typography.Paragraph>
                 <b>Revenue: </b>
                 <span>{convertMoney(movie.revenue)}</span>
@@ -108,7 +106,7 @@ const Movie = () => {
             </Col>
           )}
           {movie.genres.length > 0 && (
-            <Col span={20}>
+            <Col span={24}>
               <Typography.Paragraph>
                 <b>Genres: </b>
                 {movie.genres.map(({ id, name }) => (
@@ -117,81 +115,62 @@ const Movie = () => {
               </Typography.Paragraph>
             </Col>
           )}
-        </Row>
-        {movie.credits.cast.length > 0 && (
-          <>
-            <Row>
-              <Col
-                className='top-margin'
-                span={10}
-                offset={2}
-              >
+
+          {movie.credits.cast.length > 0 && (
+            <>
+              <Col span={24}>
                 <Typography.Title level={3}>Casts</Typography.Title>
               </Col>
-            </Row>
-            <Row
-              gutter={8}
-              justify='center'
-            >
-              <Col span={20}>
-                <Row
-                  gutter={{
-                    xs: 8,
-                    sm: 16,
-                    md: 24,
-                    lg: 32
-                  }}
-                >
+              <Col span={24}>
+                <Row gutter={[24, 16]}>
                   {take(12, movie.credits.cast).map(item => (
-                    <CreditsItem
+                    <Col
                       key={item.credit_id}
-                      profilePath={item.profile_path}
-                      title={item.name}
-                      description={item.character}
-                    />
+                      span={24}
+                      sm={12}
+                      md={8}
+                      lg={8}
+                      xl={6}
+                    >
+                      <CreditsItem
+                        profilePath={item.profile_path}
+                        title={item.name}
+                        description={item.character}
+                      />
+                    </Col>
                   ))}
                 </Row>
               </Col>
-            </Row>
-          </>
-        )}
-        {movie.credits.crew.length > 0 && (
-          <>
-            <Row>
-              <Col
-                className='top-margin'
-                span={10}
-                offset={2}
-              >
+            </>
+          )}
+          {movie.credits.crew.length > 0 && (
+            <>
+              <Col span={24}>
                 <Typography.Title level={3}>Crew</Typography.Title>
               </Col>
-            </Row>
-            <Row
-              gutter={8}
-              justify='center'
-            >
-              <Col span={20}>
-                <Row
-                  gutter={{
-                    xs: 8,
-                    sm: 16,
-                    md: 24,
-                    lg: 32
-                  }}
-                >
+              <Col span={24}>
+                <Row gutter={[24, 16]}>
                   {take(12, movie.credits.crew).map(item => (
-                    <CreditsItem
+                    <Col
                       key={item.credit_id}
-                      profilePath={item.profile_path}
-                      title={item.name}
-                      description={item.job}
-                    />
+                      span={24}
+                      sm={12}
+                      md={8}
+                      lg={8}
+                      xl={6}
+                    >
+                      <CreditsItem
+                        profilePath={item.profile_path}
+                        title={item.name}
+                        description={item.job}
+                      />
+                    </Col>
                   ))}
                 </Row>
               </Col>
-            </Row>
-          </>
-        )}
+            </>
+          )}
+        </Row>
       </div>
     </>
   )

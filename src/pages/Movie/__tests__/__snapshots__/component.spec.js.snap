@@ -48,13 +48,13 @@ exports[`Movie component matches snapshot 1`] = `
     </div>
   </div>
   <div
-    class="top-margin"
+    class="container top-margin"
   >
     <div
-      class="ant-row ant-row-center css-dev-only-do-not-override-ph9edi"
+      class="ant-row css-dev-only-do-not-override-ph9edi"
     >
       <div
-        class="ant-col ant-col-20 css-dev-only-do-not-override-ph9edi"
+        class="ant-col ant-col-24 css-dev-only-do-not-override-ph9edi"
       >
         <h1
           class="ant-typography css-dev-only-do-not-override-ph9edi"
@@ -161,12 +161,8 @@ exports[`Movie component matches snapshot 1`] = `
           test/overview
         </div>
       </div>
-    </div>
-    <div
-      class="ant-row ant-row-center css-dev-only-do-not-override-ph9edi"
-    >
       <div
-        class="ant-col ant-col-20 css-dev-only-do-not-override-ph9edi"
+        class="ant-col ant-col-24 css-dev-only-do-not-override-ph9edi"
       >
         <div
           class="ant-typography css-dev-only-do-not-override-ph9edi"
@@ -178,7 +174,7 @@ exports[`Movie component matches snapshot 1`] = `
         </div>
       </div>
       <div
-        class="ant-col ant-col-20 css-dev-only-do-not-override-ph9edi"
+        class="ant-col ant-col-24 css-dev-only-do-not-override-ph9edi"
       >
         <div
           class="ant-typography css-dev-only-do-not-override-ph9edi"
@@ -192,7 +188,7 @@ exports[`Movie component matches snapshot 1`] = `
         </div>
       </div>
       <div
-        class="ant-col ant-col-20 css-dev-only-do-not-override-ph9edi"
+        class="ant-col ant-col-24 css-dev-only-do-not-override-ph9edi"
       >
         <div
           class="ant-typography css-dev-only-do-not-override-ph9edi"
@@ -206,7 +202,7 @@ exports[`Movie component matches snapshot 1`] = `
         </div>
       </div>
       <div
-        class="ant-col ant-col-20 css-dev-only-do-not-override-ph9edi"
+        class="ant-col ant-col-24 css-dev-only-do-not-override-ph9edi"
       >
         <div
           class="ant-typography css-dev-only-do-not-override-ph9edi"
@@ -220,7 +216,7 @@ exports[`Movie component matches snapshot 1`] = `
         </div>
       </div>
       <div
-        class="ant-col ant-col-20 css-dev-only-do-not-override-ph9edi"
+        class="ant-col ant-col-24 css-dev-only-do-not-override-ph9edi"
       >
         <div
           class="ant-typography css-dev-only-do-not-override-ph9edi"
@@ -240,12 +236,8 @@ exports[`Movie component matches snapshot 1`] = `
           </span>
         </div>
       </div>
-    </div>
-    <div
-      class="ant-row css-dev-only-do-not-override-ph9edi"
-    >
       <div
-        class="ant-col ant-col-10 ant-col-offset-2 top-margin css-dev-only-do-not-override-ph9edi"
+        class="ant-col ant-col-24 css-dev-only-do-not-override-ph9edi"
       >
         <h3
           class="ant-typography css-dev-only-do-not-override-ph9edi"
@@ -253,25 +245,19 @@ exports[`Movie component matches snapshot 1`] = `
           Casts
         </h3>
       </div>
-    </div>
-    <div
-      class="ant-row ant-row-center css-dev-only-do-not-override-ph9edi"
-      style="margin-left: -4px; margin-right: -4px;"
-    >
       <div
-        class="ant-col ant-col-20 css-dev-only-do-not-override-ph9edi"
-        style="padding-left: 4px; padding-right: 4px;"
+        class="ant-col ant-col-24 css-dev-only-do-not-override-ph9edi"
       >
         <div
           class="ant-row css-dev-only-do-not-override-ph9edi"
-          style="margin-left: -16px; margin-right: -16px;"
+          style="margin: -8px -12px -8px -12px;"
         >
           <div
-            class="ant-col ant-col-xs-24 ant-col-sm-12 ant-col-md-8 ant-col-lg-8 ant-col-xl-6 css-dev-only-do-not-override-ph9edi"
-            style="padding-left: 16px; padding-right: 16px;"
+            class="ant-col ant-col-24 ant-col-sm-12 ant-col-md-8 ant-col-lg-8 ant-col-xl-6 css-dev-only-do-not-override-ph9edi"
+            style="padding: 8px 12px 8px 12px;"
           >
             <div
-              class="ant-card ant-card-bordered top-margin css-dev-only-do-not-override-ph9edi"
+              class="ant-card ant-card-bordered css-dev-only-do-not-override-ph9edi"
             >
               <div
                 class="ant-card-cover"
@@ -307,12 +293,8 @@ exports[`Movie component matches snapshot 1`] = `
           </div>
         </div>
       </div>
-    </div>
-    <div
-      class="ant-row css-dev-only-do-not-override-ph9edi"
-    >
       <div
-        class="ant-col ant-col-10 ant-col-offset-2 top-margin css-dev-only-do-not-override-ph9edi"
+        class="ant-col ant-col-24 css-dev-only-do-not-override-ph9edi"
       >
         <h3
           class="ant-typography css-dev-only-do-not-override-ph9edi"
@@ -320,25 +302,19 @@ exports[`Movie component matches snapshot 1`] = `
           Crew
         </h3>
       </div>
-    </div>
-    <div
-      class="ant-row ant-row-center css-dev-only-do-not-override-ph9edi"
-      style="margin-left: -4px; margin-right: -4px;"
-    >
       <div
-        class="ant-col ant-col-20 css-dev-only-do-not-override-ph9edi"
-        style="padding-left: 4px; padding-right: 4px;"
+        class="ant-col ant-col-24 css-dev-only-do-not-override-ph9edi"
       >
         <div
           class="ant-row css-dev-only-do-not-override-ph9edi"
-          style="margin-left: -16px; margin-right: -16px;"
+          style="margin: -8px -12px -8px -12px;"
         >
           <div
-            class="ant-col ant-col-xs-24 ant-col-sm-12 ant-col-md-8 ant-col-lg-8 ant-col-xl-6 css-dev-only-do-not-override-ph9edi"
-            style="padding-left: 16px; padding-right: 16px;"
+            class="ant-col ant-col-24 ant-col-sm-12 ant-col-md-8 ant-col-lg-8 ant-col-xl-6 css-dev-only-do-not-override-ph9edi"
+            style="padding: 8px 12px 8px 12px;"
           >
             <div
-              class="ant-card ant-card-bordered top-margin css-dev-only-do-not-override-ph9edi"
+              class="ant-card ant-card-bordered css-dev-only-do-not-override-ph9edi"
             >
               <div
                 class="ant-card-cover"
@@ -382,7 +358,7 @@ exports[`Movie component matches snapshot 1`] = `
 exports[`Movie component matches snapshot with error 1`] = `
 <DocumentFragment>
   <div
-    class="top-margin"
+    class="container top-margin"
   >
     <div
       class="ant-result ant-result-error css-dev-only-do-not-override-ph9edi"
@@ -423,7 +399,7 @@ exports[`Movie component matches snapshot with error 1`] = `
 exports[`Movie component matches snapshot with loading 1`] = `
 <DocumentFragment>
   <div
-    class="top-margin"
+    class="container top-margin"
   >
     <div
       class="ant-row ant-row-center css-dev-only-do-not-override-ph9edi"
@@ -507,13 +483,13 @@ exports[`Movie component matches snapshot with other data 1`] = `
     </div>
   </div>
   <div
-    class="top-margin"
+    class="container top-margin"
   >
     <div
-      class="ant-row ant-row-center css-dev-only-do-not-override-ph9edi"
+      class="ant-row css-dev-only-do-not-override-ph9edi"
     >
       <div
-        class="ant-col ant-col-20 css-dev-only-do-not-override-ph9edi"
+        class="ant-col ant-col-24 css-dev-only-do-not-override-ph9edi"
       >
         <h1
           class="ant-typography css-dev-only-do-not-override-ph9edi"
@@ -620,12 +596,8 @@ exports[`Movie component matches snapshot with other data 1`] = `
           test/overview
         </div>
       </div>
-    </div>
-    <div
-      class="ant-row ant-row-center css-dev-only-do-not-override-ph9edi"
-    >
       <div
-        class="ant-col ant-col-20 css-dev-only-do-not-override-ph9edi"
+        class="ant-col ant-col-24 css-dev-only-do-not-override-ph9edi"
       >
         <div
           class="ant-typography css-dev-only-do-not-override-ph9edi"
@@ -637,7 +609,7 @@ exports[`Movie component matches snapshot with other data 1`] = `
         </div>
       </div>
       <div
-        class="ant-col ant-col-20 css-dev-only-do-not-override-ph9edi"
+        class="ant-col ant-col-24 css-dev-only-do-not-override-ph9edi"
       >
         <div
           class="ant-typography css-dev-only-do-not-override-ph9edi"
@@ -651,7 +623,7 @@ exports[`Movie component matches snapshot with other data 1`] = `
         </div>
       </div>
       <div
-        class="ant-col ant-col-20 css-dev-only-do-not-override-ph9edi"
+        class="ant-col ant-col-24 css-dev-only-do-not-override-ph9edi"
       >
         <div
           class="ant-typography css-dev-only-do-not-override-ph9edi"
@@ -665,7 +637,7 @@ exports[`Movie component matches snapshot with other data 1`] = `
         </div>
       </div>
       <div
-        class="ant-col ant-col-20 css-dev-only-do-not-override-ph9edi"
+        class="ant-col ant-col-24 css-dev-only-do-not-override-ph9edi"
       >
         <div
           class="ant-typography css-dev-only-do-not-override-ph9edi"
@@ -679,7 +651,7 @@ exports[`Movie component matches snapshot with other data 1`] = `
         </div>
       </div>
       <div
-        class="ant-col ant-col-20 css-dev-only-do-not-override-ph9edi"
+        class="ant-col ant-col-24 css-dev-only-do-not-override-ph9edi"
       >
         <div
           class="ant-typography css-dev-only-do-not-override-ph9edi"
@@ -699,12 +671,8 @@ exports[`Movie component matches snapshot with other data 1`] = `
           </span>
         </div>
       </div>
-    </div>
-    <div
-      class="ant-row css-dev-only-do-not-override-ph9edi"
-    >
       <div
-        class="ant-col ant-col-10 ant-col-offset-2 top-margin css-dev-only-do-not-override-ph9edi"
+        class="ant-col ant-col-24 css-dev-only-do-not-override-ph9edi"
       >
         <h3
           class="ant-typography css-dev-only-do-not-override-ph9edi"
@@ -712,25 +680,19 @@ exports[`Movie component matches snapshot with other data 1`] = `
           Casts
         </h3>
       </div>
-    </div>
-    <div
-      class="ant-row ant-row-center css-dev-only-do-not-override-ph9edi"
-      style="margin-left: -4px; margin-right: -4px;"
-    >
       <div
-        class="ant-col ant-col-20 css-dev-only-do-not-override-ph9edi"
-        style="padding-left: 4px; padding-right: 4px;"
+        class="ant-col ant-col-24 css-dev-only-do-not-override-ph9edi"
       >
         <div
           class="ant-row css-dev-only-do-not-override-ph9edi"
-          style="margin-left: -16px; margin-right: -16px;"
+          style="margin: -8px -12px -8px -12px;"
         >
           <div
-            class="ant-col ant-col-xs-24 ant-col-sm-12 ant-col-md-8 ant-col-lg-8 ant-col-xl-6 css-dev-only-do-not-override-ph9edi"
-            style="padding-left: 16px; padding-right: 16px;"
+            class="ant-col ant-col-24 ant-col-sm-12 ant-col-md-8 ant-col-lg-8 ant-col-xl-6 css-dev-only-do-not-override-ph9edi"
+            style="padding: 8px 12px 8px 12px;"
           >
             <div
-              class="ant-card ant-card-bordered top-margin css-dev-only-do-not-override-ph9edi"
+              class="ant-card ant-card-bordered css-dev-only-do-not-override-ph9edi"
             >
               <div
                 class="ant-card-cover"
@@ -766,12 +728,8 @@ exports[`Movie component matches snapshot with other data 1`] = `
           </div>
         </div>
       </div>
-    </div>
-    <div
-      class="ant-row css-dev-only-do-not-override-ph9edi"
-    >
       <div
-        class="ant-col ant-col-10 ant-col-offset-2 top-margin css-dev-only-do-not-override-ph9edi"
+        class="ant-col ant-col-24 css-dev-only-do-not-override-ph9edi"
       >
         <h3
           class="ant-typography css-dev-only-do-not-override-ph9edi"
@@ -779,25 +737,19 @@ exports[`Movie component matches snapshot with other data 1`] = `
           Crew
         </h3>
       </div>
-    </div>
-    <div
-      class="ant-row ant-row-center css-dev-only-do-not-override-ph9edi"
-      style="margin-left: -4px; margin-right: -4px;"
-    >
       <div
-        class="ant-col ant-col-20 css-dev-only-do-not-override-ph9edi"
-        style="padding-left: 4px; padding-right: 4px;"
+        class="ant-col ant-col-24 css-dev-only-do-not-override-ph9edi"
       >
         <div
           class="ant-row css-dev-only-do-not-override-ph9edi"
-          style="margin-left: -16px; margin-right: -16px;"
+          style="margin: -8px -12px -8px -12px;"
         >
           <div
-            class="ant-col ant-col-xs-24 ant-col-sm-12 ant-col-md-8 ant-col-lg-8 ant-col-xl-6 css-dev-only-do-not-override-ph9edi"
-            style="padding-left: 16px; padding-right: 16px;"
+            class="ant-col ant-col-24 ant-col-sm-12 ant-col-md-8 ant-col-lg-8 ant-col-xl-6 css-dev-only-do-not-override-ph9edi"
+            style="padding: 8px 12px 8px 12px;"
           >
             <div
-              class="ant-card ant-card-bordered top-margin css-dev-only-do-not-override-ph9edi"
+              class="ant-card ant-card-bordered css-dev-only-do-not-override-ph9edi"
             >
               <div
                 class="ant-card-cover"

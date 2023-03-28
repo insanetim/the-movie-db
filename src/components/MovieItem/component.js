@@ -5,7 +5,7 @@ import NoImage from 'src/assets/images/no-image.svg'
 import { bindId } from 'src/utils'
 import useContainer from './hook'
 
-const Movie = ({ movie, actions }) => {
+const MovieItem = ({ movie, actions }) => {
   const { handleClick } = useContainer({ movieId: movie.id })
 
   return (
@@ -26,7 +26,6 @@ const Movie = ({ movie, actions }) => {
           </div>
         )
       }
-      className='top-margin'
       actions={bindId(actions, movie.id)}
       onClick={handleClick}
     >
@@ -38,7 +37,7 @@ const Movie = ({ movie, actions }) => {
   )
 }
 
-Movie.propTypes = {
+MovieItem.propTypes = {
   movie: PropTypes.shape({
     id: PropTypes.number,
     title: PropTypes.string,
@@ -48,9 +47,9 @@ Movie.propTypes = {
   actions: PropTypes.arrayOf(PropTypes.node)
 }
 
-Movie.defaultProps = {
+MovieItem.defaultProps = {
   movie: {},
   actions: []
 }
 
-export default Movie
+export default MovieItem

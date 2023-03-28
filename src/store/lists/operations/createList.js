@@ -21,13 +21,14 @@ const createList = createLogic({
         { ...listData },
         { params: { session_id: sessionId } }
       )
-      if (typeof movieId !== 'undefined')
+      if (typeof movieId !== 'undefined') {
         dispatch(
           addToList({
             listId: data.list_id,
             movieId
           })
         )
+      }
       dispatch(fetchLists())
     } catch (error) {
       const errorMessage = or(path(['response', 'data', 'status_message'], error), error.message)

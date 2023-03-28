@@ -1,53 +1,57 @@
+import { lazy, Suspense } from 'react'
 import { Route, Routes } from 'react-router-dom'
 
 import ProtectedRoutes from './components/ProtectedRoutes'
 import Layout from './layout'
-import Login from './pages/Login'
-import Dashboard from './pages/Dashboard'
-import Lists from './pages/Lists'
-import Watchlist from './pages/Watchlist'
-import Favorites from './pages/Favorites'
-import ListDetails from './pages/ListDetails'
-import Movie from './pages/Movie'
+
+export const Login = lazy(() => import('./pages/Login'))
+export const Dashboard = lazy(() => import('./pages/Dashboard'))
+export const Lists = lazy(() => import('./pages/Lists'))
+export const Watchlist = lazy(() => import('./pages/Watchlist'))
+export const Favorites = lazy(() => import('./pages/Favorites'))
+export const ListDetails = lazy(() => import('./pages/ListDetails'))
+export const Movie = lazy(() => import('./pages/Movie'))
 
 const App = () => (
-  <Routes>
-    <Route element={<ProtectedRoutes />}>
-      <Route
-        path='/'
-        element={<Layout />}
-      >
-        <Route
-          index
-          element={<Dashboard />}
-        />
-        <Route
-          path='/lists'
-          element={<Lists />}
-        />
-        <Route
-          path='/watchlist'
-          element={<Watchlist />}
-        />
-        <Route
-          path='/favorites'
-          element={<Favorites />}
-        />
-        <Route
-          path='/list/:listId'
-          element={<ListDetails />}
-        />
-        <Route
-          path='/movie/:movieId'
-          element={<Movie />}
-        />
+  <Suspense fallback={null}>
+    <Routes>
+      <Route element={<ProtectedRoutes />}>
+        <Route element={<Layout />}>
+          <Route
+            index
+            element={<Dashboard />}
+          />
+          <Route
+            path='/lists'
+            element={<Lists />}
+          />
+          <Route
+            path='/list/:listId'
+            element={<ListDetails />}
+          />
+          <Route
+            path='/watchlist'
+            element={<Watchlist />}
+          />
+          <Route
+            path='/favorites'
+            element={<Favorites />}
+          />
+
+          <Route
+            path='/movie/:movieId'
+            element={<Movie />}
+          />
+        </Route>
       </Route>
-    </Route>
-    <Route
-      path='/login'
-      element={<Login />}
-    />
-  </Routes>
+      <Route
+        path='/login'
+        element={<Login />}
+      />
+    </Routes>
+  </Suspense>
 )
 
 export default App
+
+export {}

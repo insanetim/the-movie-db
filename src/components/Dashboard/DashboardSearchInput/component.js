@@ -7,21 +7,12 @@ const DashboardSearchInput = ({ searchQuery }) => {
   const { currentValue, handleChange, handleSearch } = useContainer(searchQuery)
 
   return (
-    <Row
-      justify='center'
-      gutter={{
-        xs: 8,
-        sm: 16,
-        md: 24,
-        lg: 22
-      }}
-    >
+    <Row justify='center'>
       <Col
-        xs={{ span: 20 }}
-        sm={{ span: 20 }}
-        md={{ span: 14 }}
-        lg={{ span: 12 }}
-        xl={{ span: 10 }}
+        span={24}
+        md={14}
+        lg={12}
+        xl={10}
       >
         <Input.Search
           className='top-margin'

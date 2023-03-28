@@ -15,24 +15,19 @@ const ListsList = ({ lists }) => {
 
   return (
     <>
-      <Row justify='center'>
-        <Col span={20}>
-          <Row
-            gutter={{
-              xs: 8,
-              sm: 16,
-              md: 24,
-              lg: 32
-            }}
+      <Row gutter={[24, 16]}>
+        {lists.results.map(list => (
+          <Col
+            key={list.id}
+            span={24}
+            sm={12}
+            md={8}
+            lg={8}
+            xl={6}
           >
-            {lists.results.map(list => (
-              <ListItem
-                key={list.id}
-                list={list}
-              />
-            ))}
-          </Row>
-        </Col>
+            <ListItem list={list} />
+          </Col>
+        ))}
       </Row>
       {lists.total_pages > 1 && (
         <Pagination

@@ -10,20 +10,22 @@ const Lists = () => {
   const { lists, loading, error, handleClick } = useContainer()
 
   return (
-    <>
-      <Row justify='center'>
-        <Col span={20}>
-          <div className='top-margin'>
-            <Typography.Title>
-              My Lists <PlusCircleOutlined onClick={handleClick} />
-            </Typography.Title>
-          </div>
+    <div className='container'>
+      <Row>
+        <Col span={24}>
+          <Typography.Title>
+            My Lists <PlusCircleOutlined onClick={handleClick} />
+          </Typography.Title>
         </Col>
       </Row>
-      {loading && <Loading />}
+      {loading && (
+        <div className='top-margin'>
+          <Loading />
+        </div>
+      )}
       {error && <Error error={error} />}
       {!loading && !error && <ListsList lists={lists} />}
-    </>
+    </div>
   )
 }
 

@@ -3,26 +3,22 @@
 exports[`CreditsItem component matches snapshot 1`] = `
 <DocumentFragment>
   <div
-    class="ant-col ant-col-xs-24 ant-col-sm-12 ant-col-md-8 ant-col-lg-8 ant-col-xl-6 css-dev-only-do-not-override-ph9edi"
+    class="ant-card ant-card-bordered css-dev-only-do-not-override-ph9edi"
   >
     <div
-      class="ant-card ant-card-bordered top-margin css-dev-only-do-not-override-ph9edi"
+      class="ant-card-cover"
+    >
+      <img
+        alt="Profile"
+        src="https://image.tmdb.org/t/p/w500test/image"
+      />
+    </div>
+    <div
+      class="ant-card-body"
     >
       <div
-        class="ant-card-cover"
-      >
-        <img
-          alt="Profile"
-          src="https://image.tmdb.org/t/p/w500test/image"
-        />
-      </div>
-      <div
-        class="ant-card-body"
-      >
-        <div
-          class="ant-card-meta"
-        />
-      </div>
+        class="ant-card-meta"
+      />
     </div>
   </div>
 </DocumentFragment>
@@ -31,30 +27,26 @@ exports[`CreditsItem component matches snapshot 1`] = `
 exports[`CreditsItem component matches snapshot with NoImage 1`] = `
 <DocumentFragment>
   <div
-    class="ant-col ant-col-xs-24 ant-col-sm-12 ant-col-md-8 ant-col-lg-8 ant-col-xl-6 css-dev-only-do-not-override-ph9edi"
+    class="ant-card ant-card-bordered css-dev-only-do-not-override-ph9edi"
   >
     <div
-      class="ant-card ant-card-bordered top-margin css-dev-only-do-not-override-ph9edi"
+      class="ant-card-cover"
     >
       <div
-        class="ant-card-cover"
+        class="ant-card-cover--no-image"
       >
-        <div
-          class="ant-card-cover--no-image"
-        >
-          <img
-            alt=""
-            src="test-file-stub"
-          />
-        </div>
-      </div>
-      <div
-        class="ant-card-body"
-      >
-        <div
-          class="ant-card-meta"
+        <img
+          alt=""
+          src="test-file-stub"
         />
       </div>
+    </div>
+    <div
+      class="ant-card-body"
+    >
+      <div
+        class="ant-card-meta"
+      />
     </div>
   </div>
 </DocumentFragment>

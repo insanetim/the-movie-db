@@ -3,91 +3,81 @@
 exports[`DashboardSearchResult component matches snapshot 1`] = `
 <DocumentFragment>
   <div
-    class="ant-row ant-row-center css-dev-only-do-not-override-ph9edi"
-    style="margin-left: -8px; margin-right: -8px;"
+    class="ant-row css-dev-only-do-not-override-ph9edi"
+    style="margin: -8px -12px -8px -12px;"
   >
     <div
-      class="ant-col ant-col-20 css-dev-only-do-not-override-ph9edi"
-      style="padding-left: 8px; padding-right: 8px;"
+      class="ant-col ant-col-24 ant-col-sm-12 ant-col-md-8 ant-col-lg-8 ant-col-xl-6 css-dev-only-do-not-override-ph9edi"
+      style="padding: 8px 12px 8px 12px;"
     >
       <div
-        class="ant-row css-dev-only-do-not-override-ph9edi"
-        style="margin-left: -16px; margin-right: -16px;"
+        class="ant-card ant-card-bordered ant-card-hoverable css-dev-only-do-not-override-ph9edi"
       >
         <div
-          class="ant-col ant-col-xs-24 ant-col-sm-12 ant-col-md-8 ant-col-lg-8 ant-col-xl-6 css-dev-only-do-not-override-ph9edi"
-          style="padding-left: 16px; padding-right: 16px;"
+          class="ant-card-cover"
+        >
+          <img
+            alt="Poster"
+            src="https://image.tmdb.org/t/p/w500test/image"
+          />
+        </div>
+        <div
+          class="ant-card-body"
         >
           <div
-            class="ant-card ant-card-bordered ant-card-hoverable top-margin css-dev-only-do-not-override-ph9edi"
+            class="ant-card-meta"
           >
             <div
-              class="ant-card-cover"
-            >
-              <img
-                alt="Poster"
-                src="https://image.tmdb.org/t/p/w500test/image"
-              />
-            </div>
-            <div
-              class="ant-card-body"
+              class="ant-card-meta-detail"
             >
               <div
-                class="ant-card-meta"
+                class="ant-card-meta-title"
               >
-                <div
-                  class="ant-card-meta-detail"
-                >
-                  <div
-                    class="ant-card-meta-title"
-                  >
-                    test/title
-                  </div>
-                  <div
-                    class="ant-card-meta-description"
-                  >
-                    test/overview
-                  </div>
-                </div>
+                test/title
+              </div>
+              <div
+                class="ant-card-meta-description"
+              >
+                test/overview
               </div>
             </div>
           </div>
         </div>
+      </div>
+    </div>
+    <div
+      class="ant-col ant-col-24 ant-col-sm-12 ant-col-md-8 ant-col-lg-8 ant-col-xl-6 css-dev-only-do-not-override-ph9edi"
+      style="padding: 8px 12px 8px 12px;"
+    >
+      <div
+        class="ant-card ant-card-bordered ant-card-hoverable css-dev-only-do-not-override-ph9edi"
+      >
         <div
-          class="ant-col ant-col-xs-24 ant-col-sm-12 ant-col-md-8 ant-col-lg-8 ant-col-xl-6 css-dev-only-do-not-override-ph9edi"
-          style="padding-left: 16px; padding-right: 16px;"
+          class="ant-card-cover"
+        >
+          <img
+            alt="Poster"
+            src="https://image.tmdb.org/t/p/w500test/image"
+          />
+        </div>
+        <div
+          class="ant-card-body"
         >
           <div
-            class="ant-card ant-card-bordered ant-card-hoverable top-margin css-dev-only-do-not-override-ph9edi"
+            class="ant-card-meta"
           >
             <div
-              class="ant-card-cover"
-            >
-              <img
-                alt="Poster"
-                src="https://image.tmdb.org/t/p/w500test/image"
-              />
-            </div>
-            <div
-              class="ant-card-body"
+              class="ant-card-meta-detail"
             >
               <div
-                class="ant-card-meta"
+                class="ant-card-meta-title"
               >
-                <div
-                  class="ant-card-meta-detail"
-                >
-                  <div
-                    class="ant-card-meta-title"
-                  >
-                    test/title
-                  </div>
-                  <div
-                    class="ant-card-meta-description"
-                  >
-                    test/overview
-                  </div>
-                </div>
+                test/title
+              </div>
+              <div
+                class="ant-card-meta-description"
+              >
+                test/overview
               </div>
             </div>
           </div>

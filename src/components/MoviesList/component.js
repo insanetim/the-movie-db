@@ -2,7 +2,7 @@ import PropTypes from 'prop-types'
 import { Row, Col } from 'antd'
 
 import Empty from 'src/components/Empty'
-import Movie from 'src/components/MovieItem'
+import MovieItem from 'src/components/MovieItem'
 import Pagination from 'src/components/Pagination'
 
 const MoviesList = ({ movies, actions, emptyText, handlePagination }) => {
@@ -12,36 +12,22 @@ const MoviesList = ({ movies, actions, emptyText, handlePagination }) => {
 
   return (
     <>
-      <Row
-        gutter={16}
-        justify='center'
-      >
-        <Col span={20}>
-          <Row
-            gutter={{
-              xs: 8,
-              sm: 16,
-              md: 24,
-              lg: 32
-            }}
+      <Row gutter={[24, 16]}>
+        {movies.results?.map(movie => (
+          <Col
+            key={movie.id}
+            span={24}
+            sm={12}
+            md={8}
+            lg={8}
+            xl={6}
           >
-            {movies.results?.map(movie => (
-              <Col
-                key={movie.id}
-                xs={{ span: 24 }}
-                sm={{ span: 12 }}
-                md={{ span: 8 }}
-                lg={{ span: 8 }}
-                xl={{ span: 6 }}
-              >
-                <Movie
-                  movie={movie}
-                  actions={actions}
-                />
-              </Col>
-            ))}
-          </Row>
-        </Col>
+            <MovieItem
+              movie={movie}
+              actions={actions}
+            />
+          </Col>
+        ))}
       </Row>
       {movies.total_pages > 1 && (
         <Pagination

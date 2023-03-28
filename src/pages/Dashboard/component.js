@@ -7,12 +7,12 @@ const Dashboard = () => {
   const { searchQuery } = useContainer()
 
   return (
-    <>
+    <div className='container'>
       <DashboardSearchInput searchQuery={searchQuery} />
       <div className='top-margin'>
         {searchQuery && <DashboardSearchResult searchQuery={searchQuery} />} {!searchQuery && <DashboardTrending />}
       </div>
-    </>
+    </div>
   )
 }
 

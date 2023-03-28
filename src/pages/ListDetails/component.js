@@ -11,7 +11,7 @@ const ListDetails = () => {
 
   if (loading) {
     return (
-      <div className='top-margin'>
+      <div className='container top-margin'>
         <Loading />
       </div>
     )
@@ -19,24 +19,19 @@ const ListDetails = () => {
 
   if (error) {
     return (
-      <div className='top-margin'>
+      <div className='container top-margin'>
         <Error error={error} />
       </div>
     )
   }
 
   return (
-    <>
+    <div className='container'>
       <Row>
-        <Col
-          offset={2}
-          span={20}
-        >
-          <div className='top-margin'>
-            <Typography.Title>
-              {list.name} <MinusCircleOutlined onClick={handleListDelete} />
-            </Typography.Title>
-          </div>
+        <Col span={24}>
+          <Typography.Title>
+            {list.name} <MinusCircleOutlined onClick={handleListDelete} />
+          </Typography.Title>
         </Col>
       </Row>
       <ListContent
@@ -48,7 +43,7 @@ const ListDetails = () => {
           />
         ]}
       />
-    </>
+    </div>
   )
 }
 

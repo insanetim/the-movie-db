@@ -10,47 +10,66 @@ const Login = () => {
     <div className='center'>
       <Layout>
         <Layout.Content>
-          <Row justify='center'>
-            <Col>
-              <Form
-                onFinish={handleLogIn}
-                autoComplete='off'
+          <div className='container'>
+            <Row justify='center'>
+              <Col
+                span={20}
+                md={12}
+                lg={8}
+                xl={6}
               >
-                <Typography.Title>The Movie DB</Typography.Title>
-                <Form.Item
-                  name='username'
-                  rules={[{ required: true, message: 'Username is required' }]}
+                <Form
+                  onFinish={handleLogIn}
+                  autoComplete='off'
                 >
-                  <Input
-                    prefix={<UserOutlined style={{ color: 'rgba(0,0,0,.25)' }} />}
-                    placeholder='Username'
-                  />
-                </Form.Item>
-                <Form.Item
-                  name='password'
-                  rules={[
-                    { required: true, message: 'Password is required' },
-                    { min: 4, message: 'Password must be at least 4 characters' }
-                  ]}
-                >
-                  <Input
-                    prefix={<LockOutlined style={{ color: 'rgba(0,0,0,.25)' }} />}
-                    type='password'
-                    placeholder='Password'
-                  />
-                </Form.Item>
-                <Form.Item>
-                  <Button
-                    loading={loading}
-                    type='primary'
-                    htmlType='submit'
+                  <Typography.Title>The Movie DB</Typography.Title>
+                  <Form.Item
+                    name='username'
+                    rules={[{ required: true, message: 'Username is required' }]}
                   >
-                    Log in
-                  </Button>
-                </Form.Item>
-              </Form>
-            </Col>
-          </Row>
+                    <Input
+                      prefix={<UserOutlined style={{ color: 'rgba(0,0,0,.25)' }} />}
+                      placeholder='Username'
+                    />
+                  </Form.Item>
+                  <Form.Item
+                    name='password'
+                    rules={[
+                      { required: true, message: 'Password is required' },
+                      { min: 4, message: 'Password must be at least 4 characters' }
+                    ]}
+                  >
+                    <Input
+                      prefix={<LockOutlined style={{ color: 'rgba(0,0,0,.25)' }} />}
+                      type='password'
+                      placeholder='Password'
+                    />
+                  </Form.Item>
+                  <Form.Item>
+                    <Button
+                      type='primary'
+                      htmlType='submit'
+                      loading={loading}
+                    >
+                      Log in
+                    </Button>
+                  </Form.Item>
+                </Form>
+              </Col>
+              <Col span={24}>
+                <p className='text-center'>
+                  Don&apos;t have The Movie Database account?{' '}
+                  <a
+                    href='https://www.themoviedb.org/signup'
+                    target='_blank'
+                    rel='noreferrer'
+                  >
+                    Sign up.
+                  </a>
+                </p>
+              </Col>
+            </Row>
+          </div>
         </Layout.Content>
       </Layout>
     </div>

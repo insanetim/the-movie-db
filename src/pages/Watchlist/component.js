@@ -10,18 +10,17 @@ const Watchlist = () => {
   const { movies, loading, error, handlePagination, handleDelete } = useContainer()
 
   return (
-    <>
+    <div className='container'>
       <Row>
-        <Col
-          offset={2}
-          span={20}
-        >
-          <div className='top-margin'>
-            <Typography.Title>Watchlist</Typography.Title>
-          </div>
+        <Col span={24}>
+          <Typography.Title>Watchlist</Typography.Title>
         </Col>
       </Row>
-      {loading && <Loading />}
+      {loading && (
+        <div className='top-margin'>
+          <Loading />
+        </div>
+      )}
       {error && <Error error={error} />}
       {!loading && !error && (
         <MoviesList
@@ -36,7 +35,7 @@ const Watchlist = () => {
           handlePagination={handlePagination}
         />
       )}
-    </>
+    </div>
   )
 }
 
