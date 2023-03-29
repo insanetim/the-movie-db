@@ -1,6 +1,6 @@
 import { render } from '@testing-library/react'
 
-import DashboardSearchInput from '../component'
+import SearchInput from '../component'
 
 const mockedHookData = {
   currentValue: 'test/searchQuery',
@@ -9,9 +9,9 @@ const mockedHookData = {
 }
 jest.mock('../hook', () => jest.fn(() => mockedHookData))
 
-describe('DashboardSearchInput component', () => {
+describe('SearchInput component', () => {
   it('matches snapshot', () => {
-    const { asFragment } = render(<DashboardSearchInput />)
+    const { asFragment } = render(<SearchInput />)
 
     expect(asFragment()).toMatchSnapshot()
   })

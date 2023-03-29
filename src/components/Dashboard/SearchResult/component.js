@@ -5,8 +5,8 @@ import Loading from 'src/components/Loading'
 import Error from 'src/components/Error'
 import useContainer from './hook'
 
-const DashboardSearchResult = ({ searchQuery }) => {
-  const { movies, loading, error, handlePagination } = useContainer(searchQuery)
+const SearchResult = ({ searchQuery }) => {
+  const { movies, loading, error, handlePagination } = useContainer({ searchQuery })
 
   if (loading) {
     return <Loading />
@@ -25,12 +25,12 @@ const DashboardSearchResult = ({ searchQuery }) => {
   )
 }
 
-DashboardSearchResult.propTypes = {
+SearchResult.propTypes = {
   searchQuery: PropTypes.string
 }
 
-DashboardSearchResult.defaultProps = {
+SearchResult.defaultProps = {
   searchQuery: null
 }
 
-export default DashboardSearchResult
+export default SearchResult

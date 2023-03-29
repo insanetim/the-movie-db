@@ -3,7 +3,7 @@ import Loading from 'src/components/Loading'
 import Error from 'src/components/Error'
 import useContainer from './hook'
 
-const DashboardTrending = () => {
+const Trending = () => {
   const { movies, loading, error, handlePagination } = useContainer()
 
   if (loading) {
@@ -23,4 +23,4 @@ const DashboardTrending = () => {
   )
 }
 
-export default DashboardTrending
+export default Trending

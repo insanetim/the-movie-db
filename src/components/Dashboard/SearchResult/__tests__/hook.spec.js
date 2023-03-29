@@ -19,9 +19,9 @@ jest.mock('react-redux', () => ({
 const dispatch = jest.fn()
 useDispatch.mockReturnValue(dispatch)
 
-describe('DashboardSearchResult useContainer hook', () => {
+describe('SearchResult useContainer hook', () => {
   let result = null
-  const props = 'test/searchQuery'
+  const props = { searchQuery: 'test/searchQuery' }
 
   beforeEach(() => {
     ;({ result } = renderHook(() => useContainer(props)))
@@ -44,6 +44,6 @@ describe('DashboardSearchResult useContainer hook', () => {
   it('check `useEffect` method', () => {
     ;({ result } = renderHook(() => useContainer(props)))
 
-    expect(dispatch).toHaveBeenCalledWith(fetchSearch({ query: props, page: 1 }))
+    expect(dispatch).toHaveBeenCalledWith(fetchSearch({ query: props.searchQuery, page: 1 }))
   })
 })

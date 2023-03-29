@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`DashboardSearchResult useContainer hook matches snapshot 1`] = `
+exports[`SearchResult useContainer hook matches snapshot 1`] = `
 {
   "error": null,
   "handlePagination": [Function],

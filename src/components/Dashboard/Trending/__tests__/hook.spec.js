@@ -19,7 +19,7 @@ jest.mock('react-redux', () => ({
 const dispatch = jest.fn()
 useDispatch.mockReturnValue(dispatch)
 
-describe('DashboardSearchResult useContainer hook', () => {
+describe('SearchResult useContainer hook', () => {
   let result = null
 
   beforeEach(() => {

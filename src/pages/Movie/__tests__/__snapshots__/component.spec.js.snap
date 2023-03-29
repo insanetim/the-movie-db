@@ -60,7 +60,7 @@ exports[`Movie component matches snapshot 1`] = `
           class="ant-typography css-dev-only-do-not-override-ph9edi"
         >
           <span>
-            test/title (2023)
+            test/title (1999)
           </span>
            
           <span
@@ -495,7 +495,7 @@ exports[`Movie component matches snapshot with other data 1`] = `
           class="ant-typography css-dev-only-do-not-override-ph9edi"
         >
           <span>
-            test/title (2023)
+            test/title (1999)
           </span>
            
           <span

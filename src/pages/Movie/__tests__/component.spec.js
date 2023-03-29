@@ -1,17 +1,15 @@
-import { Provider } from 'react-redux'
-import { MemoryRouter } from 'react-router-dom'
 import { fireEvent, render } from '@testing-library/react'
 import { mergeDeepRight } from 'ramda'
 
-import store from 'src/store'
 import Movie from '../component'
+import Wrapper from '../../../__mocks__/wrapperMock'
 import useContainer from '../hook'
 
 const mockedHookData = {
   movie: {
     id: 1,
     title: 'test/title',
-    release_date: new Date(),
+    release_date: new Date('March 31, 1999'),
     overview: 'test/overview',
     original_language: 'EN',
     runtime: 90,
@@ -41,14 +39,12 @@ const mockedHookData = {
 jest.mock('../hook', () => jest.fn(() => mockedHookData))
 
 describe('Movie component', () => {
+  afterAll(() => {
+    jest.unmock('../hook')
+  })
+
   it('matches snapshot', () => {
-    const { asFragment } = render(
-      <Provider store={store}>
-        <MemoryRouter>
-          <Movie />
-        </MemoryRouter>
-      </Provider>
-    )
+    const { asFragment } = render(<Movie />, { wrapper: Wrapper })
 
     expect(asFragment()).toMatchSnapshot()
   })
@@ -65,25 +61,13 @@ describe('Movie component', () => {
         popoverOpen: true
       })
     )
-    const { asFragment } = render(
-      <Provider store={store}>
-        <MemoryRouter>
-          <Movie />
-        </MemoryRouter>
-      </Provider>
-    )
+    const { asFragment } = render(<Movie />, { wrapper: Wrapper })
 
     expect(asFragment()).toMatchSnapshot()
   })
 
   it('handles setPopoverOpen', () => {
-    const { getByTestId } = render(
-      <Provider store={store}>
-        <MemoryRouter>
-          <Movie />
-        </MemoryRouter>
-      </Provider>
-    )
+    const { getByTestId } = render(<Movie />, { wrapper: Wrapper })
     fireEvent.click(getByTestId('addMovieToListPopover'))
 
     expect(mockedHookData.setPopoverOpen).toHaveBeenCalled()
@@ -91,13 +75,7 @@ describe('Movie component', () => {
 
   it('matches snapshot with loading', () => {
     mockedHookData.loading = true
-    const { asFragment } = render(
-      <Provider store={store}>
-        <MemoryRouter>
-          <Movie />
-        </MemoryRouter>
-      </Provider>
-    )
+    const { asFragment } = render(<Movie />, { wrapper: Wrapper })
 
     expect(asFragment()).toMatchSnapshot()
   })
@@ -105,13 +83,7 @@ describe('Movie component', () => {
   it('matches snapshot with error', () => {
     mockedHookData.loading = false
     mockedHookData.error = { message: 'test/error' }
-    const { asFragment } = render(
-      <Provider store={store}>
-        <MemoryRouter>
-          <Movie />
-        </MemoryRouter>
-      </Provider>
-    )
+    const { asFragment } = render(<Movie />, { wrapper: Wrapper })
 
     expect(asFragment()).toMatchSnapshot()
   })

@@ -1,9 +1,7 @@
-import { Provider } from 'react-redux'
-import { MemoryRouter } from 'react-router-dom'
 import { render } from '@testing-library/react'
 
-import store from 'src/store'
 import ListContent from '../component'
+import Wrapper from '../../../__mocks__/wrapperMock'
 
 describe('ListContent cpmponent', () => {
   it('matches snapshot', () => {
@@ -15,25 +13,13 @@ describe('ListContent cpmponent', () => {
         poster_path: 'test/poster_path'
       }
     ]
-    const { asFragment } = render(
-      <Provider store={store}>
-        <MemoryRouter>
-          <ListContent movies={mockedMovies} />
-        </MemoryRouter>
-      </Provider>
-    )
+    const { asFragment } = render(<ListContent movies={mockedMovies} />, { wrapper: Wrapper })
 
     expect(asFragment()).toMatchSnapshot()
   })
 
   it('matches snapshot without movies', () => {
-    const { asFragment } = render(
-      <Provider store={store}>
-        <MemoryRouter>
-          <ListContent />
-        </MemoryRouter>
-      </Provider>
-    )
+    const { asFragment } = render(<ListContent />, { wrapper: Wrapper })
 
     expect(asFragment()).toMatchSnapshot()
   })

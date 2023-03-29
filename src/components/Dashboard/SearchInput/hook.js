@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 
-const useContainer = searchQuery => {
+const useContainer = ({ searchQuery }) => {
   const [currentValue, setCurrentValue] = useState(searchQuery)
   const navigate = useNavigate()
 

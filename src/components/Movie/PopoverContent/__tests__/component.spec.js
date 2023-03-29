@@ -1,9 +1,7 @@
-import { Provider } from 'react-redux'
-import { MemoryRouter } from 'react-router-dom'
 import { fireEvent, render } from '@testing-library/react'
 
-import store from 'src/store'
 import PopoverContent from '../component'
+import Wrapper from '../../../../__mocks__/wrapperMock'
 
 const mockedHookData = {
   lists: {
@@ -16,25 +14,13 @@ jest.mock('../hook', () => jest.fn(() => mockedHookData))
 
 describe('PopoverContent component', () => {
   it('matches snapshot', () => {
-    const { asFragment } = render(
-      <Provider store={store}>
-        <MemoryRouter>
-          <PopoverContent />
-        </MemoryRouter>
-      </Provider>
-    )
+    const { asFragment } = render(<PopoverContent />, { wrapper: Wrapper })
 
     expect(asFragment()).toMatchSnapshot()
   })
 
   it('handles handleAddToList', () => {
-    const { getByTestId } = render(
-      <Provider store={store}>
-        <MemoryRouter>
-          <PopoverContent />
-        </MemoryRouter>
-      </Provider>
-    )
+    const { getByTestId } = render(<PopoverContent />, { wrapper: Wrapper })
     fireEvent.click(getByTestId('addToListButton'))
 
     expect(mockedHookData.handleAddToList).toHaveBeenCalledWith(123)

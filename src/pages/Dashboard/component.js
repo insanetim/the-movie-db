@@ -1,6 +1,6 @@
-import DashboardSearchInput from 'src/components/Dashboard/DashboardSearchInput'
-import DashboardSearchResult from 'src/components/Dashboard/DashboardSearchResult'
-import DashboardTrending from 'src/components/Dashboard/DashboardTrending'
+import SearchInput from 'src/components/Dashboard/SearchInput'
+import SearchResult from 'src/components/Dashboard/SearchResult'
+import Trending from 'src/components/Dashboard/Trending'
 import useContainer from './hook'
 
 const Dashboard = () => {
@@ -8,9 +8,9 @@ const Dashboard = () => {
 
   return (
     <div className='container'>
-      <DashboardSearchInput searchQuery={searchQuery} />
+      <SearchInput searchQuery={searchQuery} />
       <div className='top-margin'>
-        {searchQuery && <DashboardSearchResult searchQuery={searchQuery} />} {!searchQuery && <DashboardTrending />}
+        {searchQuery && <SearchResult searchQuery={searchQuery} />} {!searchQuery && <Trending />}
       </div>
     </div>
   )

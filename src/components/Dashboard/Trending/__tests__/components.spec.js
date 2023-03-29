@@ -1,9 +1,7 @@
-import { Provider } from 'react-redux'
-import { MemoryRouter } from 'react-router-dom'
 import { render } from '@testing-library/react'
 
-import store from 'src/store'
-import DashboardTrending from '../component'
+import Trending from '../component'
+import Wrapper from '../../../../__mocks__/wrapperMock'
 
 const mockedHookData = {
   movies: {
@@ -24,41 +22,23 @@ const mockedHookData = {
 }
 jest.mock('../hook', () => jest.fn(() => mockedHookData))
 
-describe('DashboardTrending component', () => {
+describe('Trending component', () => {
   it('matches snapshot', () => {
-    const { asFragment } = render(
-      <Provider store={store}>
-        <MemoryRouter>
-          <DashboardTrending />
-        </MemoryRouter>
-      </Provider>
-    )
+    const { asFragment } = render(<Trending />, { wrapper: Wrapper })
 
     expect(asFragment()).toMatchSnapshot()
   })
 
   it('matches snapshot without movies', () => {
     mockedHookData.movies = {}
-    const { asFragment } = render(
-      <Provider store={store}>
-        <MemoryRouter>
-          <DashboardTrending />
-        </MemoryRouter>
-      </Provider>
-    )
+    const { asFragment } = render(<Trending />, { wrapper: Wrapper })
 
     expect(asFragment()).toMatchSnapshot()
   })
 
   it('matches snapshot with loading', () => {
     mockedHookData.loading = true
-    const { asFragment } = render(
-      <Provider store={store}>
-        <MemoryRouter>
-          <DashboardTrending />
-        </MemoryRouter>
-      </Provider>
-    )
+    const { asFragment } = render(<Trending />, { wrapper: Wrapper })
 
     expect(asFragment()).toMatchSnapshot()
   })
@@ -66,13 +46,7 @@ describe('DashboardTrending component', () => {
   it('matches snapshot with error', () => {
     mockedHookData.loading = false
     mockedHookData.error = { message: 'test/error' }
-    const { asFragment } = render(
-      <Provider store={store}>
-        <MemoryRouter>
-          <DashboardTrending />
-        </MemoryRouter>
-      </Provider>
-    )
+    const { asFragment } = render(<Trending />, { wrapper: Wrapper })
 
     expect(asFragment()).toMatchSnapshot()
   })

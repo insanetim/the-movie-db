@@ -3,8 +3,8 @@ import { Row, Col, Input } from 'antd'
 
 import useContainer from './hook'
 
-const DashboardSearchInput = ({ searchQuery }) => {
-  const { currentValue, handleChange, handleSearch } = useContainer(searchQuery)
+const SearchInput = ({ searchQuery }) => {
+  const { currentValue, handleChange, handleSearch } = useContainer({ searchQuery })
 
   return (
     <Row justify='center'>
@@ -29,12 +29,12 @@ const DashboardSearchInput = ({ searchQuery }) => {
   )
 }
 
-DashboardSearchInput.propTypes = {
+SearchInput.propTypes = {
   searchQuery: PropTypes.string
 }
 
-DashboardSearchInput.defaultProps = {
+SearchInput.defaultProps = {
   searchQuery: null
 }
 
-export default DashboardSearchInput
+export default SearchInput

@@ -1,37 +1,27 @@
-import { Provider } from 'react-redux'
-import { MemoryRouter } from 'react-router-dom'
 import { render } from '@testing-library/react'
 
-import store from 'src/store'
 import Dashboard from '../component'
+import Wrapper from '../../../__mocks__/wrapperMock'
 
 const mockedHookData = {
   searchQuery: null
 }
-jest.mock('../hook', () => jest.fn().mockImplementation(() => mockedHookData))
+jest.mock('../hook', () => jest.fn(() => mockedHookData))
 
 describe('Dashboard component', () => {
+  afterAll(() => {
+    jest.unmock('../hook')
+  })
+
   it('matches snapshot', () => {
-    const { asFragment } = render(
-      <Provider store={store}>
-        <MemoryRouter>
-          <Dashboard />
-        </MemoryRouter>
-      </Provider>
-    )
+    const { asFragment } = render(<Dashboard />, { wrapper: Wrapper })
 
     expect(asFragment()).toMatchSnapshot()
   })
 
   it('matches snapshot with searchQuery', () => {
     mockedHookData.searchQuery = 'test/searchQuery'
-    const { asFragment } = render(
-      <Provider store={store}>
-        <MemoryRouter>
-          <Dashboard />
-        </MemoryRouter>
-      </Provider>
-    )
+    const { asFragment } = render(<Dashboard />, { wrapper: Wrapper })
 
     expect(asFragment()).toMatchSnapshot()
   })

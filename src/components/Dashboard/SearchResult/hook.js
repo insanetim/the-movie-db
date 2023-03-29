@@ -9,7 +9,7 @@ import {
   searchErrorSelector
 } from 'src/store/dashboard/selectors'
 
-const useContainer = searchQuery => {
+const useContainer = ({ searchQuery }) => {
   const dispatch = useDispatch()
   const movies = useSelector(searchMoviesSelector)
   const page = useSelector(searchPageSelector)

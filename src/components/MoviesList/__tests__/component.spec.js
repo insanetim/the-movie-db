@@ -1,9 +1,7 @@
-import { Provider } from 'react-redux'
-import { MemoryRouter } from 'react-router-dom'
 import { render } from '@testing-library/react'
 
-import store from 'src/store'
 import MoviesList from '../component'
+import Wrapper from '../../../__mocks__/wrapperMock'
 
 describe('MoviesList component', () => {
   it('matches snapshot', () => {
@@ -26,14 +24,11 @@ describe('MoviesList component', () => {
       total_results: 200
     }
     const { asFragment } = render(
-      <Provider store={store}>
-        <MemoryRouter>
-          <MoviesList
-            movies={mockedMovies}
-            handlePagination={jest.fn()}
-          />
-        </MemoryRouter>
-      </Provider>
+      <MoviesList
+        movies={mockedMovies}
+        handlePagination={jest.fn()}
+      />,
+      { wrapper: Wrapper }
     )
 
     expect(asFragment()).toMatchSnapshot()
@@ -53,14 +48,11 @@ describe('MoviesList component', () => {
       total_results: 20
     }
     const { asFragment } = render(
-      <Provider store={store}>
-        <MemoryRouter>
-          <MoviesList
-            movies={mockedMovies}
-            handlePagination={jest.fn()}
-          />
-        </MemoryRouter>
-      </Provider>
+      <MoviesList
+        movies={mockedMovies}
+        handlePagination={jest.fn()}
+      />,
+      { wrapper: Wrapper }
     )
 
     expect(asFragment()).toMatchSnapshot()
@@ -71,14 +63,11 @@ describe('MoviesList component', () => {
       results: []
     }
     const { asFragment } = render(
-      <Provider store={store}>
-        <MemoryRouter>
-          <MoviesList
-            movies={mockedMovies}
-            handlePagination={jest.fn()}
-          />
-        </MemoryRouter>
-      </Provider>
+      <MoviesList
+        movies={mockedMovies}
+        handlePagination={jest.fn()}
+      />,
+      { wrapper: Wrapper }
     )
 
     expect(asFragment()).toMatchSnapshot()

@@ -1,9 +1,7 @@
-import { Provider } from 'react-redux'
-import { MemoryRouter } from 'react-router-dom'
 import { render } from '@testing-library/react'
 
-import store from 'src/store'
 import MovieItem from '../component'
+import Wrapper from '../../../__mocks__/wrapperMock'
 
 const mockedHookData = {
   handleClick: jest.fn()
@@ -30,13 +28,7 @@ describe('MovieItem component', () => {
         />
       ]
     }
-    const { asFragment } = render(
-      <Provider store={store}>
-        <MemoryRouter>
-          <MovieItem {...props} />
-        </MemoryRouter>
-      </Provider>
-    )
+    const { asFragment } = render(<MovieItem {...props} />, { wrapper: Wrapper })
 
     expect(asFragment()).toMatchSnapshot()
   })
@@ -50,13 +42,7 @@ describe('MovieItem component', () => {
         poster_path: null
       }
     }
-    const { asFragment } = render(
-      <Provider store={store}>
-        <MemoryRouter>
-          <MovieItem {...props} />
-        </MemoryRouter>
-      </Provider>
-    )
+    const { asFragment } = render(<MovieItem {...props} />, { wrapper: Wrapper })
 
     expect(asFragment()).toMatchSnapshot()
   })

@@ -1,9 +1,7 @@
-import { Provider } from 'react-redux'
-import { MemoryRouter } from 'react-router-dom'
 import { render } from '@testing-library/react'
 
-import store from 'src/store'
 import Login from '../component'
+import Wrapper from '../../../__mocks__/wrapperMock'
 
 const mockedHookData = {
   loading: false,
@@ -12,27 +10,19 @@ const mockedHookData = {
 jest.mock('../hook', () => jest.fn(() => mockedHookData))
 
 describe('Login component', () => {
+  afterAll(() => {
+    jest.unmock('../hook')
+  })
+
   it('matches snapshot', () => {
-    const { asFragment } = render(
-      <Provider store={store}>
-        <MemoryRouter>
-          <Login />
-        </MemoryRouter>
-      </Provider>
-    )
+    const { asFragment } = render(<Login />, { wrapper: Wrapper })
 
     expect(asFragment()).toMatchSnapshot()
   })
 
   it('matches snapshot with loading', () => {
     mockedHookData.loading = true
-    const { asFragment } = render(
-      <Provider store={store}>
-        <MemoryRouter>
-          <Login />
-        </MemoryRouter>
-      </Provider>
-    )
+    const { asFragment } = render(<Login />, { wrapper: Wrapper })
 
     expect(asFragment()).toMatchSnapshot()
   })

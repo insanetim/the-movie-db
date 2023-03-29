@@ -1,9 +1,7 @@
-import { Provider } from 'react-redux'
-import { MemoryRouter } from 'react-router-dom'
 import { render } from '@testing-library/react'
 
-import store from 'src/store'
 import ListList from '../component'
+import Wrapper from '../../../../__mocks__/wrapperMock'
 
 const mockedHookData = {
   handlePaginationChange: jest.fn()
@@ -24,13 +22,7 @@ describe('ListsList component', () => {
       total_pages: 10,
       total_results: 200
     }
-    const { asFragment } = render(
-      <Provider store={store}>
-        <MemoryRouter>
-          <ListList lists={mockedLists} />
-        </MemoryRouter>
-      </Provider>
-    )
+    const { asFragment } = render(<ListList lists={mockedLists} />, { wrapper: Wrapper })
 
     expect(asFragment()).toMatchSnapshot()
   })
@@ -48,13 +40,7 @@ describe('ListsList component', () => {
       total_pages: 1,
       total_results: 20
     }
-    const { asFragment } = render(
-      <Provider store={store}>
-        <MemoryRouter>
-          <ListList lists={mockedLists} />
-        </MemoryRouter>
-      </Provider>
-    )
+    const { asFragment } = render(<ListList lists={mockedLists} />, { wrapper: Wrapper })
 
     expect(asFragment()).toMatchSnapshot()
   })
@@ -63,13 +49,7 @@ describe('ListsList component', () => {
     const mockedLists = {
       results: []
     }
-    const { asFragment } = render(
-      <Provider store={store}>
-        <MemoryRouter>
-          <ListList lists={mockedLists} />
-        </MemoryRouter>
-      </Provider>
-    )
+    const { asFragment } = render(<ListList lists={mockedLists} />, { wrapper: Wrapper })
 
     expect(asFragment()).toMatchSnapshot()
   })

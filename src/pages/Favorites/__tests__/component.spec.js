@@ -1,9 +1,7 @@
-import { Provider } from 'react-redux'
-import { MemoryRouter } from 'react-router-dom'
 import { render } from '@testing-library/react'
 
-import store from 'src/store'
 import Favorites from '../component'
+import Wrapper from '../../../__mocks__/wrapperMock'
 
 const mockedHookData = {
   movies: {
@@ -24,27 +22,19 @@ const mockedHookData = {
 jest.mock('../hook', () => jest.fn(() => mockedHookData))
 
 describe('Favorites component', () => {
+  afterAll(() => {
+    jest.unmock('../hook')
+  })
+
   it('matches snapshot', () => {
-    const { asFragment } = render(
-      <Provider store={store}>
-        <MemoryRouter>
-          <Favorites />
-        </MemoryRouter>
-      </Provider>
-    )
+    const { asFragment } = render(<Favorites />, { wrapper: Wrapper })
 
     expect(asFragment()).toMatchSnapshot()
   })
 
   it('matches snapshot with loading', () => {
     mockedHookData.loading = true
-    const { asFragment } = render(
-      <Provider store={store}>
-        <MemoryRouter>
-          <Favorites />
-        </MemoryRouter>
-      </Provider>
-    )
+    const { asFragment } = render(<Favorites />, { wrapper: Wrapper })
 
     expect(asFragment()).toMatchSnapshot()
   })
@@ -52,13 +42,7 @@ describe('Favorites component', () => {
   it('matches snapshot with error', () => {
     mockedHookData.loading = false
     mockedHookData.error = { message: 'test/error' }
-    const { asFragment } = render(
-      <Provider store={store}>
-        <MemoryRouter>
-          <Favorites />
-        </MemoryRouter>
-      </Provider>
-    )
+    const { asFragment } = render(<Favorites />, { wrapper: Wrapper })
 
     expect(asFragment()).toMatchSnapshot()
   })

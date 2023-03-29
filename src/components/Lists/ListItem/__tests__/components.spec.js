@@ -1,9 +1,7 @@
-import { Provider } from 'react-redux'
-import { MemoryRouter } from 'react-router-dom'
 import { render } from '@testing-library/react'
 
-import store from 'src/store'
 import ListItem from '../component'
+import Wrapper from '../../../../__mocks__/wrapperMock'
 
 const mockedHookData = {
   handleClick: jest.fn(),
@@ -18,13 +16,7 @@ describe('ListItem component', () => {
       name: 'test/name',
       description: 'test/description'
     }
-    const { asFragment } = render(
-      <Provider store={store}>
-        <MemoryRouter>
-          <ListItem list={mockedList} />
-        </MemoryRouter>
-      </Provider>
-    )
+    const { asFragment } = render(<ListItem list={mockedList} />, { wrapper: Wrapper })
 
     expect(asFragment()).toMatchSnapshot()
   })

@@ -15,9 +15,9 @@ jest.mock('react-router-dom', () => ({
 const navigate = jest.fn()
 useNavigate.mockReturnValue(navigate)
 
-describe('DashboardSearchInput useContainer hook', () => {
+describe('SearchInput useContainer hook', () => {
   let result = null
-  const props = 'test/searchQuery'
+  const props = { searchQuery: 'test/searchQuery' }
   const setState = jest.fn()
   const useStateSpy = jest.spyOn(React, 'useState')
   useStateSpy.mockImplementation(initialState => [initialState, setState])

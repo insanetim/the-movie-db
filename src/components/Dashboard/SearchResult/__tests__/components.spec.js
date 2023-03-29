@@ -1,9 +1,7 @@
-import { Provider } from 'react-redux'
-import { MemoryRouter } from 'react-router-dom'
 import { render } from '@testing-library/react'
 
-import store from 'src/store'
-import DashboardSearchResult from '../component'
+import SearchResult from '../component'
+import Wrapper from '../../../../__mocks__/wrapperMock'
 
 const mockedHookData = {
   movies: {
@@ -30,41 +28,23 @@ const mockedHookData = {
 }
 jest.mock('../hook', () => jest.fn(() => mockedHookData))
 
-describe('DashboardSearchResult component', () => {
+describe('SearchResult component', () => {
   it('matches snapshot', () => {
-    const { asFragment } = render(
-      <Provider store={store}>
-        <MemoryRouter>
-          <DashboardSearchResult />
-        </MemoryRouter>
-      </Provider>
-    )
+    const { asFragment } = render(<SearchResult />, { wrapper: Wrapper })
 
     expect(asFragment()).toMatchSnapshot()
   })
 
   it('matches snapshot without movies', () => {
     mockedHookData.movies = { results: [] }
-    const { asFragment } = render(
-      <Provider store={store}>
-        <MemoryRouter>
-          <DashboardSearchResult />
-        </MemoryRouter>
-      </Provider>
-    )
+    const { asFragment } = render(<SearchResult />, { wrapper: Wrapper })
 
     expect(asFragment()).toMatchSnapshot()
   })
 
   it('matches snapshot with loading', () => {
     mockedHookData.loading = true
-    const { asFragment } = render(
-      <Provider store={store}>
-        <MemoryRouter>
-          <DashboardSearchResult />
-        </MemoryRouter>
-      </Provider>
-    )
+    const { asFragment } = render(<SearchResult />, { wrapper: Wrapper })
 
     expect(asFragment()).toMatchSnapshot()
   })
@@ -72,13 +52,7 @@ describe('DashboardSearchResult component', () => {
   it('matches snapshot with error', () => {
     mockedHookData.loading = false
     mockedHookData.error = { message: 'test/error' }
-    const { asFragment } = render(
-      <Provider store={store}>
-        <MemoryRouter>
-          <DashboardSearchResult />
-        </MemoryRouter>
-      </Provider>
-    )
+    const { asFragment } = render(<SearchResult />, { wrapper: Wrapper })
 
     expect(asFragment()).toMatchSnapshot()
   })

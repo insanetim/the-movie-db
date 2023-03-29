@@ -1,8 +1,8 @@
 /* eslint-disable react/jsx-no-useless-fragment */
 import { render } from '@testing-library/react'
-import { MemoryRouter } from 'react-router-dom'
 
 import ProtectedRoutes from '../component'
+import Wrapper from '../../../__mocks__/wrapperMock'
 
 const mockedHookData = {
   sessionId: 'test/sessionId',
@@ -17,22 +17,14 @@ jest.mock('react-router-dom', () => ({
 
 describe('ProtectedRoutes component', () => {
   it('matches snapshot', () => {
-    const { asFragment } = render(
-      <MemoryRouter>
-        <ProtectedRoutes />
-      </MemoryRouter>
-    )
+    const { asFragment } = render(<ProtectedRoutes />, { wrapper: Wrapper })
 
     expect(asFragment()).toMatchSnapshot()
   })
 
   it('matches snapshot without sessionId', () => {
     mockedHookData.sessionId = null
-    const { asFragment } = render(
-      <MemoryRouter>
-        <ProtectedRoutes />
-      </MemoryRouter>
-    )
+    const { asFragment } = render(<ProtectedRoutes />, { wrapper: Wrapper })
 
     expect(asFragment()).toMatchSnapshot()
   })
