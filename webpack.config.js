@@ -6,7 +6,17 @@ module.exports = (env = {}) => {
   const { mode = 'development' } = env
   const isDev = mode === 'development'
 
-  const getStyleLoaders = () => [isDev ? 'style-loader' : MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader']
+  const getStyleLoaders = () => [
+    isDev ? 'style-loader' : MiniCssExtractPlugin.loader,
+    {
+      loader: 'css-loader',
+      options: {
+        importLoaders: 1
+      }
+    },
+    'sass-loader',
+    'postcss-loader'
+  ]
 
   const getPlugins = () => {
     const plugins = [

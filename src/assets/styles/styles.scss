@@ -74,7 +74,7 @@ body,
 }
 
 .hide-sm-down {
-  @media screen and (max-width: 575px) {
+  @media (max-width: 575px) {
     display: none;
   }
 }
