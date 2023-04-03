@@ -6,37 +6,37 @@ exports[`App component matches snapshot 1`] = `
     class="center"
   >
     <section
-      class="ant-layout css-dev-only-do-not-override-ph9edi"
+      class="ant-layout css-dev-only-do-not-override-1e3x2xa"
     >
       <main
-        class="ant-layout-content css-dev-only-do-not-override-ph9edi"
+        class="ant-layout-content css-dev-only-do-not-override-1e3x2xa"
       >
         <div
           class="container"
         >
           <div
-            class="ant-row ant-row-center css-dev-only-do-not-override-ph9edi"
+            class="ant-row ant-row-center css-dev-only-do-not-override-1e3x2xa"
           >
             <div
-              class="ant-col ant-col-20 ant-col-md-12 ant-col-lg-8 ant-col-xl-6 css-dev-only-do-not-override-ph9edi"
+              class="ant-col ant-col-20 ant-col-md-12 ant-col-lg-8 ant-col-xl-6 css-dev-only-do-not-override-1e3x2xa"
             >
               <form
                 autocomplete="off"
-                class="ant-form ant-form-horizontal css-dev-only-do-not-override-ph9edi"
+                class="ant-form ant-form-horizontal css-dev-only-do-not-override-1e3x2xa"
               >
                 <h1
-                  class="ant-typography css-dev-only-do-not-override-ph9edi"
+                  class="ant-typography css-dev-only-do-not-override-1e3x2xa"
                 >
                   The Movie DB
                 </h1>
                 <div
-                  class="ant-form-item css-dev-only-do-not-override-ph9edi"
+                  class="ant-form-item css-dev-only-do-not-override-1e3x2xa"
                 >
                   <div
-                    class="ant-row ant-form-item-row css-dev-only-do-not-override-ph9edi"
+                    class="ant-row ant-form-item-row css-dev-only-do-not-override-1e3x2xa"
                   >
                     <div
-                      class="ant-col ant-form-item-control css-dev-only-do-not-override-ph9edi"
+                      class="ant-col ant-form-item-control css-dev-only-do-not-override-1e3x2xa"
                     >
                       <div
                         class="ant-form-item-control-input"
@@ -45,7 +45,7 @@ exports[`App component matches snapshot 1`] = `
                           class="ant-form-item-control-input-content"
                         >
                           <span
-                            class="ant-input-affix-wrapper css-dev-only-do-not-override-ph9edi"
+                            class="ant-input-affix-wrapper css-dev-only-do-not-override-1e3x2xa"
                           >
                             <span
                               class="ant-input-prefix"
@@ -73,7 +73,7 @@ exports[`App component matches snapshot 1`] = `
                             </span>
                             <input
                               aria-required="true"
-                              class="ant-input css-dev-only-do-not-override-ph9edi"
+                              class="ant-input css-dev-only-do-not-override-1e3x2xa"
                               id="username"
                               placeholder="Username"
                               type="text"
@@ -86,13 +86,13 @@ exports[`App component matches snapshot 1`] = `
                   </div>
                 </div>
                 <div
-                  class="ant-form-item css-dev-only-do-not-override-ph9edi"
+                  class="ant-form-item css-dev-only-do-not-override-1e3x2xa"
                 >
                   <div
-                    class="ant-row ant-form-item-row css-dev-only-do-not-override-ph9edi"
+                    class="ant-row ant-form-item-row css-dev-only-do-not-override-1e3x2xa"
                   >
                     <div
-                      class="ant-col ant-form-item-control css-dev-only-do-not-override-ph9edi"
+                      class="ant-col ant-form-item-control css-dev-only-do-not-override-1e3x2xa"
                     >
                       <div
                         class="ant-form-item-control-input"
@@ -101,7 +101,7 @@ exports[`App component matches snapshot 1`] = `
                           class="ant-form-item-control-input-content"
                         >
                           <span
-                            class="ant-input-affix-wrapper css-dev-only-do-not-override-ph9edi"
+                            class="ant-input-affix-wrapper css-dev-only-do-not-override-1e3x2xa"
                           >
                             <span
                               class="ant-input-prefix"
@@ -129,7 +129,7 @@ exports[`App component matches snapshot 1`] = `
                             </span>
                             <input
                               aria-required="true"
-                              class="ant-input css-dev-only-do-not-override-ph9edi"
+                              class="ant-input css-dev-only-do-not-override-1e3x2xa"
                               id="password"
                               placeholder="Password"
                               type="password"
@@ -142,13 +142,13 @@ exports[`App component matches snapshot 1`] = `
                   </div>
                 </div>
                 <div
-                  class="ant-form-item css-dev-only-do-not-override-ph9edi"
+                  class="ant-form-item css-dev-only-do-not-override-1e3x2xa"
                 >
                   <div
-                    class="ant-row ant-form-item-row css-dev-only-do-not-override-ph9edi"
+                    class="ant-row ant-form-item-row css-dev-only-do-not-override-1e3x2xa"
                   >
                     <div
-                      class="ant-col ant-form-item-control css-dev-only-do-not-override-ph9edi"
+                      class="ant-col ant-form-item-control css-dev-only-do-not-override-1e3x2xa"
                     >
                       <div
                         class="ant-form-item-control-input"
@@ -157,7 +157,7 @@ exports[`App component matches snapshot 1`] = `
                           class="ant-form-item-control-input-content"
                         >
                           <button
-                            class="ant-btn css-dev-only-do-not-override-ph9edi ant-btn-primary"
+                            class="ant-btn css-dev-only-do-not-override-1e3x2xa ant-btn-primary"
                             type="submit"
                           >
                             <span>
@@ -172,7 +172,7 @@ exports[`App component matches snapshot 1`] = `
               </form>
             </div>
             <div
-              class="ant-col ant-col-24 css-dev-only-do-not-override-ph9edi"
+              class="ant-col ant-col-24 css-dev-only-do-not-override-1e3x2xa"
             >
               <p
                 class="text-center"
