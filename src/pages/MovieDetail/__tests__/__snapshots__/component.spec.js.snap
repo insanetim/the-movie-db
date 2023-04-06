@@ -242,7 +242,7 @@ exports[`MovieDetail component matches snapshot 1`] = `
         <h3
           class="ant-typography css-dev-only-do-not-override-1e3x2xa"
         >
-          Casts
+          Cast
         </h3>
       </div>
       <div
@@ -677,7 +677,7 @@ exports[`MovieDetail component matches snapshot with other data 1`] = `
         <h3
           class="ant-typography css-dev-only-do-not-override-1e3x2xa"
         >
-          Casts
+          Cast
         </h3>
       </div>
       <div
