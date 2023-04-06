@@ -21,8 +21,22 @@ const mockedHookData = {
     ],
     images: [{ file_path: 'test/image' }],
     credits: {
-      cast: [{ credit_id: 1, profile_path: 'test/image', name: 'John Doe', character: 'Neo' }],
-      crew: [{ credit_id: 1, profile_path: 'test/image', name: 'John Doe', job: 'Director' }]
+      cast: [
+        {
+          credit_id: 1,
+          profile_path: 'test/image',
+          name: 'John Doe',
+          character: 'Neo'
+        }
+      ],
+      crew: [
+        {
+          credit_id: 1,
+          profile_path: 'test/image',
+          name: 'John Doe',
+          job: 'Director'
+        }
+      ]
     },
     accountStates: {
       favorite: false,

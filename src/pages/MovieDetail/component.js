@@ -76,12 +76,14 @@ const Movie = () => {
               </>
             )}
           </Col>
-          <Col span={24}>
-            <Typography.Paragraph>
-              <b>Original Language: </b>
-              <span>{ISO6391.getName(movie.original_language)}</span>
-            </Typography.Paragraph>
-          </Col>
+          {movie.original_language && (
+            <Col span={24}>
+              <Typography.Paragraph>
+                <b>Original Language: </b>
+                <span>{ISO6391.getName(movie.original_language)}</span>
+              </Typography.Paragraph>
+            </Col>
+          )}
           {movie.runtime !== 0 && (
             <Col span={24}>
               <Typography.Paragraph>
