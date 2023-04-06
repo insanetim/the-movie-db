@@ -1,8 +1,8 @@
 /* eslint-disable react/jsx-no-useless-fragment */
 import { render } from '@testing-library/react'
 
+import Wrapper from 'src/__mocks__/wrapperMock'
 import ProtectedRoutes from '../component'
-import Wrapper from '../../../__mocks__/wrapperMock'
 
 const mockedHookData = {
   sessionId: 'test/sessionId',

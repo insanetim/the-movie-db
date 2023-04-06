@@ -2,11 +2,11 @@ import PropTypes from 'prop-types'
 import { Row, Col } from 'antd'
 
 import Empty from 'src/components/UI/Empty'
-import MovieItem from 'src/components/MovieItem'
+import MovieItem from 'src/components/Movies/MovieItem'
 
-const ListContent = ({ movies, actions }) => {
+const MoviesList = ({ movies, actions, emptyText }) => {
   if (!movies.length) {
-    return <Empty description='No results' />
+    return <Empty description={emptyText} />
   }
 
   return (
@@ -30,7 +30,7 @@ const ListContent = ({ movies, actions }) => {
   )
 }
 
-ListContent.propTypes = {
+MoviesList.propTypes = {
   movies: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.number,
@@ -39,12 +39,14 @@ ListContent.propTypes = {
       poster_path: PropTypes.string
     })
   ),
-  actions: PropTypes.arrayOf(PropTypes.node)
+  actions: PropTypes.arrayOf(PropTypes.node),
+  emptyText: PropTypes.string
 }
 
-ListContent.defaultProps = {
+MoviesList.defaultProps = {
   movies: [],
-  actions: []
+  actions: [],
+  emptyText: 'No results'
 }
 
-export default ListContent
+export default MoviesList

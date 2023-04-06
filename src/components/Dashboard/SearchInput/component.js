@@ -7,7 +7,10 @@ const SearchInput = ({ searchQuery }) => {
   const { currentValue, handleChange, handleSearch } = useContainer({ searchQuery })
 
   return (
-    <Row justify='center'>
+    <Row
+      className='top-margin'
+      justify='center'
+    >
       <Col
         span={24}
         md={14}
@@ -15,7 +18,6 @@ const SearchInput = ({ searchQuery }) => {
         xl={10}
       >
         <Input.Search
-          className='top-margin'
           placeholder='Enter movie name'
           size='large'
           enterButton='Search'

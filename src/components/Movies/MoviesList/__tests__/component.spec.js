@@ -1,7 +1,7 @@
 import { render } from '@testing-library/react'
 
+import Wrapper from 'src/__mocks__/wrapperMock'
 import MoviesList from '../component'
-import Wrapper from '../../../__mocks__/wrapperMock'
 
 describe('MoviesList component', () => {
   it('matches snapshot', () => {

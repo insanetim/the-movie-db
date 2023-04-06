@@ -3,13 +3,13 @@
 exports[`SearchInput component matches snapshot 1`] = `
 <DocumentFragment>
   <div
-    class="ant-row ant-row-center css-dev-only-do-not-override-1e3x2xa"
+    class="ant-row ant-row-center top-margin css-dev-only-do-not-override-1e3x2xa"
   >
     <div
       class="ant-col ant-col-24 ant-col-md-14 ant-col-lg-12 ant-col-xl-10 css-dev-only-do-not-override-1e3x2xa"
     >
       <span
-        class="ant-input-group-wrapper ant-input-search ant-input-search-large ant-input-search-with-button top-margin ant-input-group-wrapper-lg css-dev-only-do-not-override-1e3x2xa"
+        class="ant-input-group-wrapper ant-input-search ant-input-search-large ant-input-search-with-button ant-input-group-wrapper-lg css-dev-only-do-not-override-1e3x2xa"
       >
         <span
           class="ant-input-wrapper ant-input-group css-dev-only-do-not-override-1e3x2xa"

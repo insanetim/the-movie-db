@@ -1,7 +1,7 @@
 import { render } from '@testing-library/react'
 
+import Wrapper from 'src/__mocks__/wrapperMock'
 import MovieItem from '../component'
-import Wrapper from '../../../__mocks__/wrapperMock'
 
 const mockedHookData = {
   handleClick: jest.fn()

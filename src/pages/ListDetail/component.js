@@ -1,9 +1,9 @@
 import { Row, Col, Typography } from 'antd'
 import { MinusCircleOutlined, DeleteOutlined } from '@ant-design/icons'
 
-import ListContent from 'src/components/ListContent'
 import Loading from 'src/components/UI/Loading'
 import Error from 'src/components/UI/Error'
+import MoviesList from 'src/components/Movies/MoviesList'
 import useContainer from './hook'
 
 const ListDetails = () => {
@@ -34,7 +34,7 @@ const ListDetails = () => {
           </Typography.Title>
         </Col>
       </Row>
-      <ListContent
+      <MoviesList
         movies={list.items}
         actions={[
           <DeleteOutlined

@@ -1,8 +1,8 @@
 import { fireEvent, render } from '@testing-library/react'
 import { mergeDeepRight } from 'ramda'
 
+import Wrapper from 'src/__mocks__/wrapperMock'
 import Movie from '../component'
-import Wrapper from '../../../__mocks__/wrapperMock'
 import useContainer from '../hook'
 
 const mockedHookData = {
