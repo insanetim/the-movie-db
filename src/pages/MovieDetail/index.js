@@ -1,1 +1,3 @@
-export { default } from './component'
+import MovieDetail from './component'
+
+export default MovieDetail

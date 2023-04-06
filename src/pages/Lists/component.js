@@ -1,9 +1,9 @@
-import { Row, Col, Typography } from 'antd'
 import { PlusCircleOutlined } from '@ant-design/icons'
 
 import ListsList from 'src/components/Lists/ListsList'
 import Loading from 'src/components/UI/Loading'
 import Error from 'src/components/UI/Error'
+import PageTitle from 'src/components/UI/PageTitle'
 import useContainer from './hook'
 
 const Lists = () => {
@@ -11,13 +11,9 @@ const Lists = () => {
 
   return (
     <div className='container'>
-      <Row>
-        <Col span={24}>
-          <Typography.Title>
-            My Lists <PlusCircleOutlined onClick={handleClick} />
-          </Typography.Title>
-        </Col>
-      </Row>
+      <PageTitle>
+        My Lists <PlusCircleOutlined onClick={handleClick} />
+      </PageTitle>
       {loading && (
         <div className='top-margin'>
           <Loading />

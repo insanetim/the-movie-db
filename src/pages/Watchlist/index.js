@@ -1,1 +1,3 @@
-export { default } from './component'
+import Watchlist from './component'
+
+export default Watchlist

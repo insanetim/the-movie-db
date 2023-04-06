@@ -1,1 +1,3 @@
-export { default } from './component'
+import ListItem from './component'
+
+export default ListItem

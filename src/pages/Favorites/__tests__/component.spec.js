@@ -7,12 +7,20 @@ const mockedHookData = {
   movies: {
     results: [
       {
-        id: 1,
+        id: 123,
+        title: 'test/title',
+        overview: 'test/overview',
+        poster_path: 'test/image'
+      },
+      {
+        id: 321,
         title: 'test/title',
         overview: 'test/overview',
         poster_path: 'test/image'
       }
-    ]
+    ],
+    total_pages: 10,
+    total_results: 200
   },
   loading: false,
   error: null,
@@ -27,6 +35,24 @@ describe('Favorites component', () => {
   })
 
   it('matches snapshot', () => {
+    const { asFragment } = render(<Favorites />, { wrapper: Wrapper })
+
+    expect(asFragment()).toMatchSnapshot()
+  })
+
+  it('matches snapshot with 1 page', () => {
+    mockedHookData.movies = {
+      results: [
+        {
+          id: 123,
+          title: 'test/title',
+          overview: 'test/overview',
+          poster_path: 'test/image'
+        }
+      ],
+      total_pages: 1,
+      total_results: 20
+    }
     const { asFragment } = render(<Favorites />, { wrapper: Wrapper })
 
     expect(asFragment()).toMatchSnapshot()

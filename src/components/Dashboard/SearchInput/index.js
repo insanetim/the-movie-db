@@ -1,1 +1,3 @@
-export { default } from './component'
+import SearchInput from './component'
+
+export default SearchInput

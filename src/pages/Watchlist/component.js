@@ -1,10 +1,10 @@
-import { Row, Col, Typography } from 'antd'
 import { DeleteOutlined } from '@ant-design/icons'
 
 import Loading from 'src/components/UI/Loading'
 import Error from 'src/components/UI/Error'
 import MoviesList from 'src/components/Movies/MoviesList'
 import Pagination from 'src/components/UI/Pagination'
+import PageTitle from 'src/components/UI/PageTitle'
 import useContainer from './hook'
 
 const Watchlist = () => {
@@ -12,11 +12,7 @@ const Watchlist = () => {
 
   return (
     <div className='container'>
-      <Row>
-        <Col span={24}>
-          <Typography.Title>Watchlist</Typography.Title>
-        </Col>
-      </Row>
+      <PageTitle>Watchlist</PageTitle>
       {loading && (
         <div className='top-margin'>
           <Loading />

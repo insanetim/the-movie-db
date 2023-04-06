@@ -1,9 +1,9 @@
-import { Row, Col, Typography } from 'antd'
 import { MinusCircleOutlined, DeleteOutlined } from '@ant-design/icons'
 
 import Loading from 'src/components/UI/Loading'
 import Error from 'src/components/UI/Error'
 import MoviesList from 'src/components/Movies/MoviesList'
+import PageTitle from 'src/components/UI/PageTitle'
 import useContainer from './hook'
 
 const ListDetails = () => {
@@ -27,13 +27,9 @@ const ListDetails = () => {
 
   return (
     <div className='container'>
-      <Row>
-        <Col span={24}>
-          <Typography.Title>
-            {list.name} <MinusCircleOutlined onClick={handleListDelete} />
-          </Typography.Title>
-        </Col>
-      </Row>
+      <PageTitle>
+        {list.name} <MinusCircleOutlined onClick={handleListDelete} />
+      </PageTitle>
       <MoviesList
         movies={list.items}
         actions={[

@@ -115,7 +115,6 @@ const Movie = () => {
               </Typography.Paragraph>
             </Col>
           )}
-
           {movie.credits.cast.length > 0 && (
             <>
               <Col span={24}>

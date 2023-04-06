@@ -1,1 +1,3 @@
-export { default } from './component'
+import Trending from './component'
+
+export default Trending

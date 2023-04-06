@@ -1,1 +1,3 @@
-export { default } from './component'
+import Pagination from './component'
+
+export default Pagination

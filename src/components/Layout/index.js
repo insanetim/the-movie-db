@@ -1,1 +1,3 @@
-export { default } from './component'
+import Layout from './component'
+
+export default Layout

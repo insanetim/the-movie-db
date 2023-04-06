@@ -1,1 +1,3 @@
-export { default } from './component'
+import Empty from './component'
+
+export default Empty

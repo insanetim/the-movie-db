@@ -35,6 +35,24 @@ describe('SearchResult component', () => {
     expect(asFragment()).toMatchSnapshot()
   })
 
+  it('matches snapshot with 1 page', () => {
+    mockedHookData.movies = {
+      results: [
+        {
+          id: 123,
+          title: 'test/title',
+          overview: 'test/overview',
+          poster_path: 'test/image'
+        }
+      ],
+      total_pages: 1,
+      total_results: 20
+    }
+    const { asFragment } = render(<SearchResult />, { wrapper: Wrapper })
+
+    expect(asFragment()).toMatchSnapshot()
+  })
+
   it('matches snapshot without movies', () => {
     mockedHookData.movies = { results: [] }
     const { asFragment } = render(<SearchResult />, { wrapper: Wrapper })
