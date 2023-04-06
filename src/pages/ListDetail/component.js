@@ -2,8 +2,8 @@ import { Row, Col, Typography } from 'antd'
 import { MinusCircleOutlined, DeleteOutlined } from '@ant-design/icons'
 
 import ListContent from 'src/components/ListContent'
-import Loading from 'src/components/Loading'
-import Error from 'src/components/Error'
+import Loading from 'src/components/UI/Loading'
+import Error from 'src/components/UI/Error'
 import useContainer from './hook'
 
 const ListDetails = () => {

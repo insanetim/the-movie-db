@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Movie component matches snapshot 1`] = `
+exports[`MovieDetail component matches snapshot 1`] = `
 <DocumentFragment>
   <div
     class="ant-row css-dev-only-do-not-override-1e3x2xa"
@@ -355,7 +355,7 @@ exports[`Movie component matches snapshot 1`] = `
 </DocumentFragment>
 `;
 
-exports[`Movie component matches snapshot with error 1`] = `
+exports[`MovieDetail component matches snapshot with error 1`] = `
 <DocumentFragment>
   <div
     class="container top-margin"
@@ -396,7 +396,7 @@ exports[`Movie component matches snapshot with error 1`] = `
 </DocumentFragment>
 `;
 
-exports[`Movie component matches snapshot with loading 1`] = `
+exports[`MovieDetail component matches snapshot with loading 1`] = `
 <DocumentFragment>
   <div
     class="container top-margin"
@@ -435,7 +435,7 @@ exports[`Movie component matches snapshot with loading 1`] = `
 </DocumentFragment>
 `;
 
-exports[`Movie component matches snapshot with other data 1`] = `
+exports[`MovieDetail component matches snapshot with other data 1`] = `
 <DocumentFragment>
   <div
     class="ant-row css-dev-only-do-not-override-1e3x2xa"

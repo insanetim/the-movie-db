@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types'
 import { Row, Col } from 'antd'
 
-import Empty from 'src/components/Empty'
+import Empty from 'src/components/UI/Empty'
 import MovieItem from 'src/components/MovieItem'
 
 const ListContent = ({ movies, actions }) => {

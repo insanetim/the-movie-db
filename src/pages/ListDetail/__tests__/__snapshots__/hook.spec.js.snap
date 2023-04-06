@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ListDetails useContainer hook matches snapshot 1`] = `
+exports[`ListDetail useContainer hook matches snapshot 1`] = `
 {
   "error": null,
   "handleListDelete": [Function],

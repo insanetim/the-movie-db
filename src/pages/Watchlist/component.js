@@ -2,8 +2,8 @@ import { Row, Col, Typography } from 'antd'
 import { DeleteOutlined } from '@ant-design/icons'
 
 import MoviesList from 'src/components/MoviesList'
-import Loading from 'src/components/Loading'
-import Error from 'src/components/Error'
+import Loading from 'src/components/UI/Loading'
+import Error from 'src/components/UI/Error'
 import useContainer from './hook'
 
 const Watchlist = () => {

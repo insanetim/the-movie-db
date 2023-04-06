@@ -1,16 +1,16 @@
 import { lazy, Suspense } from 'react'
 import { Route, Routes } from 'react-router-dom'
 
-import ProtectedRoutes from './components/ProtectedRoutes'
-import Layout from './layout'
+import ProtectedRoutes from 'src/components/ProtectedRoutes'
+import Layout from 'src/components/Layout'
 
-export const Login = lazy(() => import('./pages/Login'))
-export const Dashboard = lazy(() => import('./pages/Dashboard'))
-export const Lists = lazy(() => import('./pages/Lists'))
-export const Watchlist = lazy(() => import('./pages/Watchlist'))
-export const Favorites = lazy(() => import('./pages/Favorites'))
-export const ListDetails = lazy(() => import('./pages/ListDetails'))
-export const Movie = lazy(() => import('./pages/Movie'))
+export const Login = lazy(() => import('src/pages/Login'))
+export const Dashboard = lazy(() => import('src/pages/Dashboard'))
+export const Lists = lazy(() => import('src/pages/Lists'))
+export const Watchlist = lazy(() => import('src/pages/Watchlist'))
+export const Favorites = lazy(() => import('src/pages/Favorites'))
+export const ListDetail = lazy(() => import('src/pages/ListDetail'))
+export const MovieDetail = lazy(() => import('src/pages/MovieDetail'))
 
 const App = () => (
   <Suspense fallback={null}>
@@ -27,7 +27,7 @@ const App = () => (
           />
           <Route
             path='/list/:listId'
-            element={<ListDetails />}
+            element={<ListDetail />}
           />
           <Route
             path='/watchlist'
@@ -40,7 +40,7 @@ const App = () => (
 
           <Route
             path='/movie/:movieId'
-            element={<Movie />}
+            element={<MovieDetail />}
           />
         </Route>
       </Route>

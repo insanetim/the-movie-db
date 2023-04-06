@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Movie useContainer hook matches snapshot 1`] = `
+exports[`MovieDetail useContainer hook matches snapshot 1`] = `
 {
   "error": null,
   "handleFavoriteClick": [Function],

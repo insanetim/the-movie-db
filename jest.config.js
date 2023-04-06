@@ -11,12 +11,13 @@ module.exports = {
       lines: 100
     }
   },
+  clearMocks: true,
+  modulePaths: ['<rootDir>/'],
   moduleFileExtensions: ['js', 'jsx'],
   moduleDirectories: ['node_modules'],
   moduleNameMapper: {
     '\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$':
       '<rootDir>/src/__mocks__/fileMock.js',
-    '\\.(s?css)$': 'identity-obj-proxy',
-    '^src/(.*)$': '<rootDir>/src/$1'
+    '\\.(s?css)$': 'identity-obj-proxy'
   }
 }

@@ -1,9 +1,9 @@
 import PropTypes from 'prop-types'
 import { Row, Col } from 'antd'
 
-import Empty from 'src/components/Empty'
+import Empty from 'src/components/UI/Empty'
 import MovieItem from 'src/components/MovieItem'
-import Pagination from 'src/components/Pagination'
+import Pagination from 'src/components/UI/Pagination'
 
 const MoviesList = ({ movies, actions, emptyText, handlePagination }) => {
   if (movies.results?.length === 0) {

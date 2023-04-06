@@ -1,7 +1,7 @@
 import { render } from '@testing-library/react'
 
 import Header from '../component'
-import Wrapper from '../../../__mocks__/wrapperMock'
+import Wrapper from '../../../../__mocks__/wrapperMock'
 
 const mockedHookData = {
   account: {

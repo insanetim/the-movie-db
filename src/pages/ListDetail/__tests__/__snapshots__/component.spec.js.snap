@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ListDetails component matches snapshot 1`] = `
+exports[`ListDetail component matches snapshot 1`] = `
 <DocumentFragment>
   <div
     class="container"
@@ -90,7 +90,7 @@ exports[`ListDetails component matches snapshot 1`] = `
 </DocumentFragment>
 `;
 
-exports[`ListDetails component matches snapshot with error 1`] = `
+exports[`ListDetail component matches snapshot with error 1`] = `
 <DocumentFragment>
   <div
     class="container top-margin"
@@ -131,7 +131,7 @@ exports[`ListDetails component matches snapshot with error 1`] = `
 </DocumentFragment>
 `;
 
-exports[`ListDetails component matches snapshot with loading 1`] = `
+exports[`ListDetail component matches snapshot with loading 1`] = `
 <DocumentFragment>
   <div
     class="container top-margin"

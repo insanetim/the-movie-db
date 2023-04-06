@@ -11,8 +11,7 @@ jest.mock('axios', () => ({ create: jest.fn() }))
 describe('httpClient', () => {
   it('should be axios instance', () => {
     const instance = mockAxios()
-    axios.create.mockReturnValue(instance)
-
+    axios.create.mockReturnValueOnce(instance)
     const httpClient = jest.requireActual('../httpClient').default
 
     expect(axios.create).toHaveBeenCalledWith({

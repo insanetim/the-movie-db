@@ -30,7 +30,7 @@ jest.mock('react-router-dom', () => ({
 const navigate = jest.fn()
 useNavigate.mockReturnValue(navigate)
 
-describe('ListDetails useContainer hook', () => {
+describe('ListDetail useContainer hook', () => {
   let result = null
 
   const confirmSpy = jest.spyOn(Modal, 'confirm')

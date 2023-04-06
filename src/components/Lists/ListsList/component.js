@@ -1,8 +1,8 @@
 import PropTypes from 'prop-types'
 import { Row, Col } from 'antd'
 
-import Pagination from 'src/components/Pagination'
-import Empty from 'src/components/Empty'
+import Pagination from 'src/components/UI/Pagination'
+import Empty from 'src/components/UI/Empty'
 import ListItem from '../ListItem'
 import useContainer from './hook'
 

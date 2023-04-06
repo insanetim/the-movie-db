@@ -28,7 +28,7 @@ jest.mock('react-router-dom', () => ({
   useParams: jest.fn().mockImplementation(() => ({ movieId: 123 }))
 }))
 
-describe('Movie useContainer hook', () => {
+describe('MovieDetail useContainer hook', () => {
   let result = null
 
   beforeEach(() => {

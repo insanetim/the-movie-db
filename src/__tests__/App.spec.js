@@ -2,8 +2,8 @@
 import { Suspense } from 'react'
 import { render } from '@testing-library/react'
 
-import App, { Dashboard, Login, Lists, Watchlist, Favorites, ListDetails, Movie } from 'src/App'
-import Wrapper from '../__mocks__/wrapperMock'
+import App, { Dashboard, Login, Lists, Watchlist, Favorites, ListDetail, MovieDetail } from 'src/App'
+import Wrapper from 'src/__mocks__/wrapperMock'
 
 describe('App component', () => {
   const WrapperWithSuspense = ({ children }) => (
@@ -43,13 +43,13 @@ describe('App component', () => {
   })
 
   it('renders ListDetails', () => {
-    const { asFragment } = render(<ListDetails />, { wrapper: WrapperWithSuspense })
+    const { asFragment } = render(<ListDetail />, { wrapper: WrapperWithSuspense })
 
     expect(asFragment()).toMatchSnapshot()
   })
 
   it('renders Movie', () => {
-    const { asFragment } = render(<Movie />, { wrapper: WrapperWithSuspense })
+    const { asFragment } = render(<MovieDetail />, { wrapper: WrapperWithSuspense })
 
     expect(asFragment()).toMatchSnapshot()
   })

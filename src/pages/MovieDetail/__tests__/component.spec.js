@@ -38,7 +38,7 @@ const mockedHookData = {
 }
 jest.mock('../hook', () => jest.fn(() => mockedHookData))
 
-describe('Movie component', () => {
+describe('MovieDetail component', () => {
   afterAll(() => {
     jest.unmock('../hook')
   })
