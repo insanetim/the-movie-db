@@ -1,6 +1,6 @@
-import { useDispatch } from 'react-redux'
 import { act, renderHook } from '@testing-library/react'
 
+import { dispatch } from 'src/__mocks__/react-redux'
 import { hideNotification as hideNotificationAction } from 'src/store/app/actions'
 import useContainer from '../hook'
 
@@ -14,14 +14,6 @@ jest.mock('src/store/app/selectors', () => ({
     }
   ])
 }))
-
-jest.mock('react-redux', () => ({
-  ...jest.requireActual('react-redux'),
-  useSelector: jest.fn(fn => fn()),
-  useDispatch: jest.fn()
-}))
-const dispatch = jest.fn()
-useDispatch.mockReturnValue(dispatch)
 
 describe('NotificationsRoot useContainer hook', () => {
   let result = null

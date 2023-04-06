@@ -1,6 +1,6 @@
-import { useDispatch } from 'react-redux'
 import { act, renderHook } from '@testing-library/react'
 
+import { dispatch } from 'src/__mocks__/react-redux'
 import { changeMovieInFavorites, changeMovieInWatchlist, fetchMovie } from 'src/store/movie/actions'
 import useContainer from '../hook'
 
@@ -14,14 +14,6 @@ jest.mock('src/store/movie/selectors', () => ({
   movieLoadingSelector: jest.fn(() => true),
   movieErrorSelector: jest.fn(() => null)
 }))
-
-jest.mock('react-redux', () => ({
-  ...jest.requireActual('react-redux'),
-  useSelector: jest.fn(fn => fn()),
-  useDispatch: jest.fn()
-}))
-const dispatch = jest.fn()
-useDispatch.mockReturnValue(dispatch)
 
 jest.mock('react-router-dom', () => ({
   ...jest.requireActual('react-router-dom'),

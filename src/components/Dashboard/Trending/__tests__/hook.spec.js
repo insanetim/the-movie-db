@@ -1,6 +1,6 @@
-import { useDispatch } from 'react-redux'
 import { act, renderHook } from '@testing-library/react'
 
+import { dispatch } from 'src/__mocks__/react-redux'
 import { fetchTrending, setTrendingPage } from 'src/store/dashboard/actions'
 import useContainer from '../hook'
 
@@ -10,14 +10,6 @@ jest.mock('src/store/dashboard/selectors', () => ({
   trendingLoadingSelector: jest.fn(() => true),
   trendingErrorSelector: jest.fn(() => null)
 }))
-
-jest.mock('react-redux', () => ({
-  ...jest.requireActual('react-redux'),
-  useSelector: jest.fn(fn => fn()),
-  useDispatch: jest.fn()
-}))
-const dispatch = jest.fn()
-useDispatch.mockReturnValue(dispatch)
 
 describe('SearchResult useContainer hook', () => {
   let result = null

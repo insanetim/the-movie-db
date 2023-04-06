@@ -1,7 +1,7 @@
-import { useDispatch } from 'react-redux'
 import { Modal } from 'antd'
 import { act, renderHook } from '@testing-library/react'
 
+import { dispatch } from 'src/__mocks__/react-redux'
 import { accountSelector } from 'src/store/session/selectors'
 import { fetchFavorites, setFavoritesPage } from 'src/store/favorites/actions'
 import { changeMovieInFavorites } from 'src/store/movie/actions'
@@ -17,14 +17,6 @@ jest.mock('src/store/favorites/selectors', () => ({
   favoritesLoadingSelector: jest.fn(() => true),
   favoritesErrorSelector: jest.fn(() => null)
 }))
-
-jest.mock('react-redux', () => ({
-  ...jest.requireActual('react-redux'),
-  useSelector: jest.fn(fn => fn()),
-  useDispatch: jest.fn()
-}))
-const dispatch = jest.fn()
-useDispatch.mockReturnValue(dispatch)
 
 describe('Favotites useContainer hook', () => {
   let result = null

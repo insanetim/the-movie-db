@@ -1,7 +1,7 @@
-import { useDispatch } from 'react-redux'
 import { Modal } from 'antd'
 import { act, renderHook } from '@testing-library/react'
 
+import { dispatch } from 'src/__mocks__/react-redux'
 import { accountSelector } from 'src/store/session/selectors'
 import { fetchWatchlist, setWatchlistPage } from 'src/store/watchlist/actions'
 import { changeMovieInWatchlist } from 'src/store/movie/actions'
@@ -17,14 +17,6 @@ jest.mock('src/store/watchlist/selectors', () => ({
   watchlistLoadingSelector: jest.fn(() => true),
   watchlistErrorSelector: jest.fn(() => null)
 }))
-
-jest.mock('react-redux', () => ({
-  ...jest.requireActual('react-redux'),
-  useSelector: jest.fn(fn => fn()),
-  useDispatch: jest.fn()
-}))
-const dispatch = jest.fn()
-useDispatch.mockReturnValue(dispatch)
 
 describe('Watchlist useContainer hook', () => {
   let result = null

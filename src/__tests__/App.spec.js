@@ -2,8 +2,13 @@
 import { Suspense } from 'react'
 import { render } from '@testing-library/react'
 
-import App, { Dashboard, Login, Lists, Watchlist, Favorites, ListDetail, MovieDetail } from 'src/App'
 import Wrapper from 'src/__mocks__/wrapperMock'
+import App, { Dashboard, Login, Lists, Watchlist, Favorites, ListDetail, MovieDetail } from 'src/App'
+
+const mockedSessionData = {
+  sessionId: null
+}
+jest.mock('../components/ProtectedRoutes/hook.js', () => jest.fn(() => mockedSessionData))
 
 describe('App component', () => {
   const WrapperWithSuspense = ({ children }) => (

@@ -1,23 +1,15 @@
-import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { act, renderHook } from '@testing-library/react'
 
+import { dispatch } from 'src/__mocks__/react-redux'
 import { logOut } from 'src/store/session/actions'
 import useContainer from '../hook'
 
 jest.mock('src/store/session/selectors', () => ({
-  accountSelector: jest.fn(() => ({ id: 1 }))
+  accountSelector: jest.fn(() => ({ id: 123 }))
 }))
 
 jest.mock('src/store/session/actions')
-
-jest.mock('react-redux', () => ({
-  ...jest.requireActual('react-redux'),
-  useSelector: jest.fn(fn => fn()),
-  useDispatch: jest.fn()
-}))
-const dispatch = jest.fn()
-useDispatch.mockReturnValue(dispatch)
 
 jest.mock('react-router-dom', () => ({
   ...jest.requireActual('react-router-dom'),
