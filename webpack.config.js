@@ -79,7 +79,7 @@ module.exports = (env = {}) => {
 
     resolve: {
       modules: [path.resolve(__dirname, 'src'), 'node_modules'],
-      extensions: ['*', '.js'],
+      extensions: ['.*', '.js', '.jsx'],
       alias: {
         src: path.resolve(__dirname, 'src')
       }
