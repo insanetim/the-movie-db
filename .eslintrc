@@ -1,4 +1,5 @@
 {
+  "root": true,
   "parser": "@babel/eslint-parser",
   "plugins": ["react", "prettier"],
   "extends": ["eslint:recommended", "plugin:react/recommended", "airbnb", "prettier"],
