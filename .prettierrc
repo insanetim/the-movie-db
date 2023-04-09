@@ -5,6 +5,5 @@
   "singleQuote": true,
   "trailingComma": "none",
   "printWidth": 120,
-  "proseWrap": "always",
   "singleAttributePerLine": true
 }
