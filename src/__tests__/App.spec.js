@@ -2,7 +2,7 @@
 import { Suspense } from 'react'
 import { render } from '@testing-library/react'
 
-import Wrapper from 'src/__mocks__/wrapperMock_'
+import Wrapper from 'src/__mocks__/wrapperMock'
 import App, { Dashboard, Login, Lists, Watchlist, Favorites, ListDetail, MovieDetail } from 'src/App'
 
 const mockedSessionData = {
