@@ -1,8 +1,8 @@
 module.exports = {
   testEnvironment: 'jsdom',
-  setupFilesAfterEnv: ['<rootDir>/src/setupTests.js'],
-  collectCoverageFrom: ['<rootDir>/src/**/*.{js,jsx}'],
-  coveragePathIgnorePatterns: ['<rootDir>/src/index.js'],
+  setupFilesAfterEnv: ['<rootDir>/src/setupTests.ts'],
+  collectCoverageFrom: ['<rootDir>/src/**/*.{js,jsx,ts,tsx}'],
+  coveragePathIgnorePatterns: ['<rootDir>/src/index.tsx'],
   coverageThreshold: {
     global: {
       statements: 100,
@@ -13,11 +13,10 @@ module.exports = {
   },
   clearMocks: true,
   modulePaths: ['<rootDir>/'],
-  moduleFileExtensions: ['js', 'jsx'],
   moduleDirectories: ['node_modules'],
   moduleNameMapper: {
     '\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$':
-      '<rootDir>/src/__mocks__/fileMock.js',
+      '<rootDir>/src/__mocks__/fileMock.ts',
     '\\.(s?css)$': 'identity-obj-proxy'
   }
 }

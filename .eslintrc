@@ -1,8 +1,8 @@
 {
   "root": true,
-  "parser": "@babel/eslint-parser",
-  "plugins": ["react", "prettier"],
-  "extends": ["eslint:recommended", "plugin:react/recommended", "airbnb", "prettier"],
+  "extends": ["eslint:recommended", "plugin:@typescript-eslint/recommended", "airbnb", "prettier"],
+  "parser": "@typescript-eslint/parser",
+  "plugins": ["@typescript-eslint", "react", "prettier"],
   "parserOptions": {
     "ecmaVersion": "latest"
   },

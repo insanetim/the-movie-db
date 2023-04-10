@@ -44,9 +44,14 @@ module.exports = (env = {}) => {
     module: {
       rules: [
         {
-          test: /\.(js|jsx)$/,
-          exclude: /node_modules/,
-          loader: 'babel-loader'
+          test: /\.tsx?$/,
+          use: 'ts-loader',
+          exclude: /node_modules/
+        },
+        {
+          test: /\.jsx?$/,
+          use: 'babel-loader',
+          exclude: /node_modules/
         },
         {
           test: /\.(sa|sc|c)ss$/,
@@ -79,7 +84,7 @@ module.exports = (env = {}) => {
 
     resolve: {
       modules: [path.resolve(__dirname, 'src'), 'node_modules'],
-      extensions: ['.*', '.js', '.jsx'],
+      extensions: ['.js', '.jsx', '.ts', '.tsx'],
       alias: {
         src: path.resolve(__dirname, 'src')
       }
