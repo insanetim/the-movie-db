@@ -12,9 +12,6 @@
     "es6": true,
     "jest": true
   },
-  "globals": {
-    "__DEV__": true
-  },
   "settings": {
     "import/resolver": {
       "node": {
@@ -48,6 +45,7 @@
     "import/no-extraneous-dependencies": 0,
     "max-classes-per-file": 0,
     "default-param-last": 0,
-    "no-restricted-exports": "off"
+    "no-restricted-exports": "off",
+    "@typescript-eslint/no-var-requires": 0
   }
 }
