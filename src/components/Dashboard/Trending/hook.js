@@ -22,7 +22,7 @@ const useContainer = () => {
 
   useEffect(() => {
     dispatch(fetchTrending(page))
-  }, [page])
+  }, [dispatch, page])
 
   return { movies, loading, error, handlePagination }
 }

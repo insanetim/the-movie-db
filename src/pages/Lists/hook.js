@@ -27,7 +27,7 @@ const useContainer = () => {
     if (not(isEmpty(account))) {
       dispatch(fetchLists(page))
     }
-  }, [account, page])
+  }, [account, dispatch, page])
 
   return { lists, loading, error, handleClick }
 }

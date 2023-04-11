@@ -45,7 +45,7 @@ const useContainer = () => {
 
   useEffect(() => {
     dispatch(fetchList(listId))
-  }, [listId])
+  }, [dispatch, listId])
 
   return { list, loading, error, handleListDelete, handleMovieDelete }
 }

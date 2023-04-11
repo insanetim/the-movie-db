@@ -42,7 +42,7 @@ const useContainer = () => {
     if (not(isEmpty(account))) {
       dispatch(fetchFavorites(page))
     }
-  }, [account, page])
+  }, [account, dispatch, page])
 
   return { movies, loading, error, handlePagination, handleDelete }
 }

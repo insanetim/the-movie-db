@@ -1,5 +1,5 @@
 {
-  "extends": ["stylelint-config-standard-scss", "stylelint-order-config-standard", "stylelint-config-prettier"],
+  "extends": ["stylelint-config-standard-scss", "stylelint-order-config-standard"],
   "plugins": ["stylelint-order"],
   "customSyntax": "postcss-scss",
   "rules": {

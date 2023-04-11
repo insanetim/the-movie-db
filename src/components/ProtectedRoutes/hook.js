@@ -14,7 +14,7 @@ const useContainer = () => {
     if (sessionId) {
       dispatch(fetchAccount())
     }
-  }, [sessionId])
+  }, [dispatch, sessionId])
 
   return { sessionId, location }
 }

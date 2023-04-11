@@ -1,4 +1,4 @@
 #!/usr/bin/env sh
 . "$(dirname -- "$0")/_/husky.sh"
 
-yarn lint:styles && npx pretty-quick --staged
+yarn stylelint && npx pretty-quick --staged

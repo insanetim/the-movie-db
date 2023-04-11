@@ -44,7 +44,7 @@ const useContainer = () => {
     if (not(isEmpty(account))) {
       dispatch(fetchWatchlist(page))
     }
-  }, [account, page])
+  }, [account, dispatch, page])
 
   return { movies, loading, error, handlePagination, handleDelete }
 }

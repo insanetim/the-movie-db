@@ -34,7 +34,7 @@ const useContainer = () => {
 
   useEffect(() => {
     dispatch(fetchMovie(movieId))
-  }, [movieId])
+  }, [dispatch, movieId])
 
   return {
     movie,

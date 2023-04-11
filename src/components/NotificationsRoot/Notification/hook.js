@@ -7,7 +7,7 @@ const useContainer = props => {
   const closeNotification = useCallback(() => {
     hideNotification(id)
     notification.destroy(id)
-  }, [])
+  }, [hideNotification, id])
 
   useEffect(() => {
     notification[messageType]({
@@ -16,7 +16,7 @@ const useContainer = props => {
       duration,
       onClose: closeNotification
     })
-  }, [])
+  }, [closeNotification, duration, id, messageText, messageType])
 
   return { closeNotification }
 }

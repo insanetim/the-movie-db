@@ -11,7 +11,7 @@
     "build": "webpack build --env mode=production",
     "test": "jest --coverage",
     "lint": "eslint --format codeframe src/",
-    "lint:styles": "stylelint '**/*.scss' --fix",
+    "stylelint": "stylelint '**/*.scss' --fix",
     "postinstall": "husky install"
   },
   "devDependencies": {
@@ -38,7 +38,6 @@
     "eslint-formatter-codeframe": "^7.32.1",
     "eslint-plugin-import": "^2.27.5",
     "eslint-plugin-jsx-a11y": "^6.7.1",
-    "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-react": "^7.32.2",
     "eslint-plugin-react-hooks": "^4.6.0",
     "file-loader": "^6.2.0",
@@ -64,7 +63,6 @@
     "sass-loader": "^13.2.2",
     "style-loader": "^3.3.2",
     "stylelint": "^15.4.0",
-    "stylelint-config-prettier": "^9.0.5",
     "stylelint-config-standard-scss": "^7.0.1",
     "stylelint-order": "^6.0.3",
     "stylelint-order-config-standard": "^0.1.3",

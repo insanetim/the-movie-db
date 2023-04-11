@@ -22,7 +22,7 @@ const useContainer = ({ searchQuery }) => {
 
   useEffect(() => {
     dispatch(fetchSearch({ query: searchQuery, page }))
-  }, [searchQuery, page])
+  }, [searchQuery, page, dispatch])
 
   return { movies, loading, error, handlePagination }
 }
