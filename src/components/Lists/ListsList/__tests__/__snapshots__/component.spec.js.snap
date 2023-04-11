@@ -3,21 +3,21 @@
 exports[`ListsList component matches snapshot 1`] = `
 <DocumentFragment>
   <div
-    class="ant-row css-dev-only-do-not-override-1e3x2xa"
+    class="ant-row css-dev-only-do-not-override-1vtf12y"
     style="margin: -8px -12px -8px -12px;"
   >
     <div
-      class="ant-col ant-col-24 ant-col-sm-12 ant-col-md-8 ant-col-lg-8 ant-col-xl-6 css-dev-only-do-not-override-1e3x2xa"
+      class="ant-col ant-col-24 ant-col-sm-12 ant-col-md-8 ant-col-lg-8 ant-col-xl-6 css-dev-only-do-not-override-1vtf12y"
       style="padding: 8px 12px 8px 12px;"
     >
       <div
-        class="ant-card ant-card-bordered ant-card-hoverable css-dev-only-do-not-override-1e3x2xa"
+        class="ant-card ant-card-bordered ant-card-hoverable css-dev-only-do-not-override-1vtf12y"
       >
         <div
           class="ant-card-body"
         >
           <h4
-            class="ant-typography css-dev-only-do-not-override-1e3x2xa"
+            class="ant-typography css-dev-only-do-not-override-1vtf12y"
           />
         </div>
         <ul
@@ -54,13 +54,13 @@ exports[`ListsList component matches snapshot 1`] = `
     </div>
   </div>
   <div
-    class="ant-row ant-row-center css-dev-only-do-not-override-1e3x2xa"
+    class="ant-row ant-row-center css-dev-only-do-not-override-1vtf12y"
   >
     <div
-      class="ant-col css-dev-only-do-not-override-1e3x2xa"
+      class="ant-col css-dev-only-do-not-override-1vtf12y"
     >
       <ul
-        class="ant-pagination pagination css-dev-only-do-not-override-1e3x2xa"
+        class="ant-pagination pagination css-dev-only-do-not-override-1vtf12y"
       >
         <li
           aria-disabled="true"
@@ -157,21 +157,21 @@ exports[`ListsList component matches snapshot 1`] = `
 exports[`ListsList component matches snapshot with 1 page 1`] = `
 <DocumentFragment>
   <div
-    class="ant-row css-dev-only-do-not-override-1e3x2xa"
+    class="ant-row css-dev-only-do-not-override-1vtf12y"
     style="margin: -8px -12px -8px -12px;"
   >
     <div
-      class="ant-col ant-col-24 ant-col-sm-12 ant-col-md-8 ant-col-lg-8 ant-col-xl-6 css-dev-only-do-not-override-1e3x2xa"
+      class="ant-col ant-col-24 ant-col-sm-12 ant-col-md-8 ant-col-lg-8 ant-col-xl-6 css-dev-only-do-not-override-1vtf12y"
       style="padding: 8px 12px 8px 12px;"
     >
       <div
-        class="ant-card ant-card-bordered ant-card-hoverable css-dev-only-do-not-override-1e3x2xa"
+        class="ant-card ant-card-bordered ant-card-hoverable css-dev-only-do-not-override-1vtf12y"
       >
         <div
           class="ant-card-body"
         >
           <h4
-            class="ant-typography css-dev-only-do-not-override-1e3x2xa"
+            class="ant-typography css-dev-only-do-not-override-1vtf12y"
           />
         </div>
         <ul
@@ -213,7 +213,7 @@ exports[`ListsList component matches snapshot with 1 page 1`] = `
 exports[`ListsList component matches snapshot without lists 1`] = `
 <DocumentFragment>
   <div
-    class="css-dev-only-do-not-override-1e3x2xa ant-empty ant-empty-normal"
+    class="css-dev-only-do-not-override-1vtf12y ant-empty ant-empty-normal"
   >
     <div
       class="ant-empty-image"
