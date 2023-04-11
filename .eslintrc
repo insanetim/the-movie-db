@@ -2,15 +2,18 @@
   "root": true,
   "extends": [
     "eslint:recommended",
+    "airbnb",
+    "airbnb-typescript",
     "plugin:@typescript-eslint/recommended",
     "plugin:react-hooks/recommended",
-    "airbnb",
+    "plugin:react/jsx-runtime",
     "prettier"
   ],
   "parser": "@typescript-eslint/parser",
   "plugins": ["@typescript-eslint"],
   "parserOptions": {
-    "ecmaVersion": "latest"
+    "ecmaVersion": "latest",
+    "project": "./tsconfig.json"
   },
   "env": {
     "browser": true,
@@ -27,7 +30,11 @@
     }
   },
   "rules": {
+    "semi": ["error", "never"],
     "comma-dangle": ["error", "never"],
+    "max-classes-per-file": "off",
+    "default-param-last": "off",
+    "no-restricted-exports": "off",
     "jsx-a11y/anchor-is-valid": [
       "error",
       {
@@ -40,18 +47,14 @@
     "jsx-a11y/label-has-for": "off",
     "jsx-a11y/no-noninteractive-element-interactions": "off",
     "jsx-a11y/no-static-element-interactions": "off",
-    "react/react-in-jsx-scope": 0,
     "react/jsx-filename-extension": "off",
     "react/jsx-max-props-per-line": ["error", { "maximum": 1, "when": "always" }],
-    "react/function-component-definition": 0,
-    "react/jsx-props-no-spreading": 0,
-    "semi": ["error", "never"],
+    "react/function-component-definition": "off",
+    "react/jsx-props-no-spreading": "off",
     "import/prefer-default-export": "off",
     "import/extensions": 0,
-    "import/no-extraneous-dependencies": 0,
-    "max-classes-per-file": 0,
-    "default-param-last": 0,
-    "no-restricted-exports": "off",
-    "@typescript-eslint/no-var-requires": 0
+    "import/no-extraneous-dependencies": "off",
+    "@typescript-eslint/no-var-requires": "off",
+    "@typescript-eslint/default-param-last": "off"
   }
 }
