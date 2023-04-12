@@ -73,6 +73,19 @@ module.exports = (env = {}) => {
 
     plugins: getPlugins(),
 
+    optimization: {
+      splitChunks: {
+        cacheGroups: {
+          commons: {
+            test: /[\\/]node_modules[\\/]/,
+            name: 'vendor',
+            chunks: 'all',
+            minSize: 0
+          }
+        }
+      }
+    },
+
     devServer: {
       open: true,
       port: 8080,
