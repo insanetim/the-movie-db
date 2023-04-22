@@ -6,28 +6,28 @@ exports[`Watchlist component matches snapshot 1`] = `
     class="container"
   >
     <div
-      class="ant-row css-dev-only-do-not-override-1vtf12y"
+      class="ant-row css-dev-only-do-not-override-htwhyh"
     >
       <div
-        class="ant-col ant-col-24 css-dev-only-do-not-override-1vtf12y"
+        class="ant-col ant-col-24 css-dev-only-do-not-override-htwhyh"
       >
         <h1
-          class="ant-typography css-dev-only-do-not-override-1vtf12y"
+          class="ant-typography css-dev-only-do-not-override-htwhyh"
         >
           Watchlist
         </h1>
       </div>
     </div>
     <div
-      class="ant-row css-dev-only-do-not-override-1vtf12y"
+      class="ant-row css-dev-only-do-not-override-htwhyh"
       style="margin: -8px -12px -8px -12px;"
     >
       <div
-        class="ant-col ant-col-24 ant-col-sm-12 ant-col-md-8 ant-col-lg-8 ant-col-xl-6 css-dev-only-do-not-override-1vtf12y"
+        class="ant-col ant-col-24 ant-col-sm-12 ant-col-md-8 ant-col-lg-8 ant-col-xl-6 css-dev-only-do-not-override-htwhyh"
         style="padding: 8px 12px 8px 12px;"
       >
         <div
-          class="ant-card ant-card-bordered ant-card-hoverable css-dev-only-do-not-override-1vtf12y"
+          class="ant-card ant-card-bordered ant-card-hoverable css-dev-only-do-not-override-htwhyh"
         >
           <div
             class="ant-card-cover"
@@ -92,11 +92,11 @@ exports[`Watchlist component matches snapshot 1`] = `
         </div>
       </div>
       <div
-        class="ant-col ant-col-24 ant-col-sm-12 ant-col-md-8 ant-col-lg-8 ant-col-xl-6 css-dev-only-do-not-override-1vtf12y"
+        class="ant-col ant-col-24 ant-col-sm-12 ant-col-md-8 ant-col-lg-8 ant-col-xl-6 css-dev-only-do-not-override-htwhyh"
         style="padding: 8px 12px 8px 12px;"
       >
         <div
-          class="ant-card ant-card-bordered ant-card-hoverable css-dev-only-do-not-override-1vtf12y"
+          class="ant-card ant-card-bordered ant-card-hoverable css-dev-only-do-not-override-htwhyh"
         >
           <div
             class="ant-card-cover"
@@ -162,13 +162,13 @@ exports[`Watchlist component matches snapshot 1`] = `
       </div>
     </div>
     <div
-      class="ant-row ant-row-center css-dev-only-do-not-override-1vtf12y"
+      class="ant-row ant-row-center css-dev-only-do-not-override-htwhyh"
     >
       <div
-        class="ant-col css-dev-only-do-not-override-1vtf12y"
+        class="ant-col css-dev-only-do-not-override-htwhyh"
       >
         <ul
-          class="ant-pagination pagination css-dev-only-do-not-override-1vtf12y"
+          class="ant-pagination pagination css-dev-only-do-not-override-htwhyh"
         >
           <li
             aria-disabled="true"
@@ -269,28 +269,28 @@ exports[`Watchlist component matches snapshot with 1 page 1`] = `
     class="container"
   >
     <div
-      class="ant-row css-dev-only-do-not-override-1vtf12y"
+      class="ant-row css-dev-only-do-not-override-htwhyh"
     >
       <div
-        class="ant-col ant-col-24 css-dev-only-do-not-override-1vtf12y"
+        class="ant-col ant-col-24 css-dev-only-do-not-override-htwhyh"
       >
         <h1
-          class="ant-typography css-dev-only-do-not-override-1vtf12y"
+          class="ant-typography css-dev-only-do-not-override-htwhyh"
         >
           Watchlist
         </h1>
       </div>
     </div>
     <div
-      class="ant-row css-dev-only-do-not-override-1vtf12y"
+      class="ant-row css-dev-only-do-not-override-htwhyh"
       style="margin: -8px -12px -8px -12px;"
     >
       <div
-        class="ant-col ant-col-24 ant-col-sm-12 ant-col-md-8 ant-col-lg-8 ant-col-xl-6 css-dev-only-do-not-override-1vtf12y"
+        class="ant-col ant-col-24 ant-col-sm-12 ant-col-md-8 ant-col-lg-8 ant-col-xl-6 css-dev-only-do-not-override-htwhyh"
         style="padding: 8px 12px 8px 12px;"
       >
         <div
-          class="ant-card ant-card-bordered ant-card-hoverable css-dev-only-do-not-override-1vtf12y"
+          class="ant-card ant-card-bordered ant-card-hoverable css-dev-only-do-not-override-htwhyh"
         >
           <div
             class="ant-card-cover"
@@ -365,20 +365,20 @@ exports[`Watchlist component matches snapshot with error 1`] = `
     class="container"
   >
     <div
-      class="ant-row css-dev-only-do-not-override-1vtf12y"
+      class="ant-row css-dev-only-do-not-override-htwhyh"
     >
       <div
-        class="ant-col ant-col-24 css-dev-only-do-not-override-1vtf12y"
+        class="ant-col ant-col-24 css-dev-only-do-not-override-htwhyh"
       >
         <h1
-          class="ant-typography css-dev-only-do-not-override-1vtf12y"
+          class="ant-typography css-dev-only-do-not-override-htwhyh"
         >
           Watchlist
         </h1>
       </div>
     </div>
     <div
-      class="ant-result ant-result-error css-dev-only-do-not-override-1vtf12y"
+      class="ant-result ant-result-error css-dev-only-do-not-override-htwhyh"
     >
       <div
         class="ant-result-icon"
@@ -419,13 +419,13 @@ exports[`Watchlist component matches snapshot with loading 1`] = `
     class="container"
   >
     <div
-      class="ant-row css-dev-only-do-not-override-1vtf12y"
+      class="ant-row css-dev-only-do-not-override-htwhyh"
     >
       <div
-        class="ant-col ant-col-24 css-dev-only-do-not-override-1vtf12y"
+        class="ant-col ant-col-24 css-dev-only-do-not-override-htwhyh"
       >
         <h1
-          class="ant-typography css-dev-only-do-not-override-1vtf12y"
+          class="ant-typography css-dev-only-do-not-override-htwhyh"
         >
           Watchlist
         </h1>
@@ -435,15 +435,15 @@ exports[`Watchlist component matches snapshot with loading 1`] = `
       class="top-margin"
     >
       <div
-        class="ant-row ant-row-center css-dev-only-do-not-override-1vtf12y"
+        class="ant-row ant-row-center css-dev-only-do-not-override-htwhyh"
       >
         <div
-          class="ant-col css-dev-only-do-not-override-1vtf12y"
+          class="ant-col css-dev-only-do-not-override-htwhyh"
         >
           <div
             aria-busy="true"
             aria-live="polite"
-            class="ant-spin ant-spin-spinning css-dev-only-do-not-override-1vtf12y"
+            class="ant-spin ant-spin-spinning css-dev-only-do-not-override-htwhyh"
           >
             <span
               class="ant-spin-dot ant-spin-dot-spin"

@@ -3,28 +3,28 @@
 exports[`Header component matches snapshot 1`] = `
 <DocumentFragment>
   <header
-    class="ant-layout-header css-dev-only-do-not-override-1vtf12y"
+    class="ant-layout-header css-dev-only-do-not-override-htwhyh"
   >
     <div
-      class="ant-row ant-row-space-between css-dev-only-do-not-override-1vtf12y"
+      class="ant-row ant-row-space-between css-dev-only-do-not-override-htwhyh"
     >
       <div
-        class="ant-col css-dev-only-do-not-override-1vtf12y"
+        class="ant-col css-dev-only-do-not-override-htwhyh"
       >
         <span
-          class="ant-typography css-dev-only-do-not-override-1vtf12y"
+          class="ant-typography css-dev-only-do-not-override-htwhyh"
         >
           THE MOVIE DB
         </span>
       </div>
       <div
-        class="ant-col css-dev-only-do-not-override-1vtf12y"
+        class="ant-col css-dev-only-do-not-override-htwhyh"
       >
         <span
-          class="ant-typography ant-dropdown-trigger css-dev-only-do-not-override-1vtf12y"
+          class="ant-typography ant-dropdown-trigger css-dev-only-do-not-override-htwhyh"
         >
           <span
-            class="ant-avatar ant-avatar-circle ant-avatar-image css-dev-only-do-not-override-1vtf12y"
+            class="ant-avatar ant-avatar-circle ant-avatar-image css-dev-only-do-not-override-htwhyh"
           >
             <img
               src="https://www.gravatar.com/avatar/test/avatar"
@@ -66,28 +66,28 @@ exports[`Header component matches snapshot 1`] = `
 exports[`Header component matches snapshot with empty account 1`] = `
 <DocumentFragment>
   <header
-    class="ant-layout-header css-dev-only-do-not-override-1vtf12y"
+    class="ant-layout-header css-dev-only-do-not-override-htwhyh"
   >
     <div
-      class="ant-row ant-row-space-between css-dev-only-do-not-override-1vtf12y"
+      class="ant-row ant-row-space-between css-dev-only-do-not-override-htwhyh"
     >
       <div
-        class="ant-col css-dev-only-do-not-override-1vtf12y"
+        class="ant-col css-dev-only-do-not-override-htwhyh"
       >
         <span
-          class="ant-typography css-dev-only-do-not-override-1vtf12y"
+          class="ant-typography css-dev-only-do-not-override-htwhyh"
         >
           THE MOVIE DB
         </span>
       </div>
       <div
-        class="ant-col css-dev-only-do-not-override-1vtf12y"
+        class="ant-col css-dev-only-do-not-override-htwhyh"
       >
         <span
-          class="ant-typography ant-dropdown-trigger css-dev-only-do-not-override-1vtf12y"
+          class="ant-typography ant-dropdown-trigger css-dev-only-do-not-override-htwhyh"
         >
           <span
-            class="ant-avatar ant-avatar-circle ant-avatar-icon css-dev-only-do-not-override-1vtf12y"
+            class="ant-avatar ant-avatar-circle ant-avatar-icon css-dev-only-do-not-override-htwhyh"
           >
             <span
               aria-label="user"

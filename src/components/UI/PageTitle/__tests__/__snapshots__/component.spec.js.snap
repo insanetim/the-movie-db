@@ -3,13 +3,13 @@
 exports[`PageTitle component matches snapshot 1`] = `
 <DocumentFragment>
   <div
-    class="ant-row css-dev-only-do-not-override-1vtf12y"
+    class="ant-row css-dev-only-do-not-override-htwhyh"
   >
     <div
-      class="ant-col ant-col-24 css-dev-only-do-not-override-1vtf12y"
+      class="ant-col ant-col-24 css-dev-only-do-not-override-htwhyh"
     >
       <h1
-        class="ant-typography css-dev-only-do-not-override-1vtf12y"
+        class="ant-typography css-dev-only-do-not-override-htwhyh"
       >
         test/title
       </h1>
