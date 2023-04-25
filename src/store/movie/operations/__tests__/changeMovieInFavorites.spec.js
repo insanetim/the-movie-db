@@ -10,10 +10,6 @@ jest.mock('src/store/session/selectors', () => ({
   accountSelector: jest.fn(() => ({ id: 123 }))
 }))
 
-jest.mock('uuid', () => ({
-  v4: jest.fn(() => 'uuid/v4')
-}))
-
 describe('changeMovieInFavorites', () => {
   const dispatch = jest.fn()
 

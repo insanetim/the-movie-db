@@ -12,7 +12,7 @@ export const Favorites = lazy(() => import('src/pages/Favorites'))
 export const ListDetail = lazy(() => import('src/pages/ListDetail'))
 export const MovieDetail = lazy(() => import('src/pages/MovieDetail'))
 
-const App = () => (
+const App = (): JSX.Element => (
   <Suspense fallback={null}>
     <Routes>
       <Route element={<ProtectedRoutes />}>

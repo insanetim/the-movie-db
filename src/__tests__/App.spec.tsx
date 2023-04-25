@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import { Suspense } from 'react'
+import { ReactNode, Suspense } from 'react'
 import { render } from '@testing-library/react'
 
 import Wrapper from 'src/__mocks__/wrapperMock'
@@ -11,7 +11,7 @@ const mockedSessionData = {
 jest.mock('../components/ProtectedRoutes/hook.js', () => jest.fn(() => mockedSessionData))
 
 describe('App component', () => {
-  const WrapperWithSuspense = ({ children }) => (
+  const WrapperWithSuspense = ({ children }: { children: ReactNode }) => (
     <Suspense fallback={null}>
       <Wrapper>{children}</Wrapper>
     </Suspense>

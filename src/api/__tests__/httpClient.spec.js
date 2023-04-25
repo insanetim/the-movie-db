@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 import { API_URL } from 'src/constants'
-import mockAxios from 'src/__mocks__/axiosMock'
+import mockAxios from 'src/utils/testHelpers/axiosMock'
 import requestInterceptor from '../requestInterceptor'
 
 const baseURL = API_URL

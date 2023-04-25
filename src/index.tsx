@@ -7,7 +7,7 @@ import store from 'src/store'
 import 'src/assets/styles/styles.scss'
 
 const rootElement = document.getElementById('root')
-const root = createRoot(rootElement)
+const root = createRoot(rootElement as HTMLElement)
 
 root.render(
   <Provider store={store}>

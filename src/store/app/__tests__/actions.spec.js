@@ -2,10 +2,6 @@ import { NOTIFICATION_DURATION, NOTIFICATION_TYPE } from 'src/constants'
 import * as actions from '../actions'
 import * as types from '../types'
 
-jest.mock('uuid', () => ({
-  v4: jest.fn(() => 'uuid/v4')
-}))
-
 describe('app actions', () => {
   it('showModal', () => {
     const expectedAction = {

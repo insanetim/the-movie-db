@@ -57,10 +57,6 @@ describe('session actions', () => {
   })
 })
 
-jest.mock('uuid', () => ({
-  v4: jest.fn(() => 'uuid/v4')
-}))
-
 describe('logIn', () => {
   const dispatch = jest.fn()
 

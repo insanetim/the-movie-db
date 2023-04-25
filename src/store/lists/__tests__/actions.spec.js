@@ -118,10 +118,6 @@ jest.mock('src/store/session/selectors', () => ({
   sessionIdSelector: jest.fn(() => 'session_id')
 }))
 
-jest.mock('uuid', () => ({
-  v4: jest.fn(() => 'uuid/v4')
-}))
-
 describe('deleteList', () => {
   const dispatch = jest.fn()
   const getState = jest.fn()
