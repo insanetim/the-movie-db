@@ -137,39 +137,39 @@ describe('App component', () => {
   })
 
   it('renders Login', async () => {
-    const { asFragment } = render(<Login />, { wrapper: WrapperWithSuspense })
+    const { findByText } = render(<Login />, { wrapper: WrapperWithSuspense })
 
-    expect(asFragment()).toMatchSnapshot()
+    expect(await findByText('Log in')).toBeInTheDocument()
   })
 
   it('renders Dashboard', async () => {
-    const { asFragment } = render(<Dashboard />, { wrapper: WrapperWithSuspense })
+    const { findByPlaceholderText } = render(<Dashboard />, { wrapper: WrapperWithSuspense })
 
-    expect(asFragment()).toMatchSnapshot()
+    expect(await findByPlaceholderText('Enter movie name')).toBeInTheDocument()
   })
 
   it('renders Lists', async () => {
-    const { asFragment } = render(<Lists />, { wrapper: WrapperWithSuspense })
+    const { findByText } = render(<Lists />, { wrapper: WrapperWithSuspense })
 
-    expect(asFragment()).toMatchSnapshot()
+    expect(await findByText('My Lists', { exact: false })).toBeInTheDocument()
   })
 
   it('renders Watchlist', async () => {
-    const { asFragment } = render(<Watchlist />, { wrapper: WrapperWithSuspense })
+    const { findByText } = render(<Watchlist />, { wrapper: WrapperWithSuspense })
 
-    expect(asFragment()).toMatchSnapshot()
+    expect(await findByText('Watchlist')).toBeInTheDocument()
   })
 
   it('renders Favorite', async () => {
-    const { asFragment } = render(<Favorite />, { wrapper: WrapperWithSuspense })
+    const { findByText } = render(<Favorite />, { wrapper: WrapperWithSuspense })
 
-    expect(asFragment()).toMatchSnapshot()
+    expect(await findByText('Favorite')).toBeInTheDocument()
   })
 
   it('renders ListDetail', async () => {
-    const { asFragment } = render(<ListDetail />, { wrapper: WrapperWithSuspense })
+    const { findByText } = render(<ListDetail />, { wrapper: WrapperWithSuspense })
 
-    expect(asFragment()).toMatchSnapshot()
+    expect(await findByText('test/title')).toBeInTheDocument()
   })
 
   it('renders MovieDetail', async () => {
