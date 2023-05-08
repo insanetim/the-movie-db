@@ -1,10 +1,10 @@
 import { Card } from 'antd'
 import { DeleteOutlined } from '@ant-design/icons'
 
-import NoImage from 'src/assets/images/no-image.svg'
 import type { MovieItemProps } from './types'
-import useContainer from './hook'
 import isNull from 'src/utils/helpers/isNull'
+import NoImage from 'src/assets/images/no-image.svg'
+import useContainer from './hook'
 
 const MovieItem: React.FC<MovieItemProps> = ({ movie, handleMovieDelete }) => {
   const { handleClick } = useContainer({ movieId: movie.id })

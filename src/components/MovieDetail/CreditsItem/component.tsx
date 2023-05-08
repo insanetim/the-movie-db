@@ -1,8 +1,8 @@
 import { Card } from 'antd'
 
 import type { CreditsItemProps } from './types'
-import NoImage from 'src/assets/images/no-image.svg'
 import isNull from 'src/utils/helpers/isNull'
+import NoImage from 'src/assets/images/no-image.svg'
 
 const CreditsItem: React.FC<CreditsItemProps> = ({ profilePath, title, description }) => {
   let cover = (

@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
-import { not, isNil } from 'ramda'
 
 import { useAppDispatch, useAppSelector } from 'src/hooks/useRedux'
+import isNull from 'src/utils/helpers/isNull'
 import { showModal } from 'src/store/app/actions'
 import { fetchLists } from 'src/store/lists/actions'
 import { accountSelector } from 'src/store/session/selectors'
@@ -24,7 +24,7 @@ const useContainer = (): ListsHook => {
   }
 
   useEffect(() => {
-    if (not(isNil(account))) {
+    if (!isNull(account)) {
       dispatch(fetchLists(1))
     }
   }, [account, dispatch])
