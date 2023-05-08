@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`apiRoutes matches snapshot 1`] = `
+{
+  "addToFovorite": [Function],
+  "addToList": [Function],
+  "addToWatchlist": [Function],
+  "createList": "/list",
+  "createRequestToken": "/authentication/token/new",
+  "createSession": "/authentication/session/new",
+  "createSessionWithLogin": "/authentication/token/validate_with_login",
+  "deleteList": [Function],
+  "deleteSession": "/authentication/session",
+  "getAccountDetails": "/account",
+  "getCreatedLists": [Function],
+  "getFavorite": [Function],
+  "getListDetails": [Function],
+  "getMovieAccountStates": [Function],
+  "getMovieCredits": [Function],
+  "getMovieDetails": [Function],
+  "getMovieImages": [Function],
+  "getTrending": "/trending/movie/day",
+  "getWatchlist": [Function],
+  "removeFromList": [Function],
+  "searchMovies": "/search/movie",
+}
+`;

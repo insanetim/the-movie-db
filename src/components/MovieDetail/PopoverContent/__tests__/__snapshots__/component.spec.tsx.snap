@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PopoverContent component matches snapshot 1`] = `
+<DocumentFragment>
+  <div>
+    <button
+      class="ant-btn css-dev-only-do-not-override-ed5zg0 ant-btn-link"
+      type="button"
+    >
+      <span>
+        Create new list ...
+      </span>
+    </button>
+  </div>
+  <div>
+    <button
+      class="ant-btn css-dev-only-do-not-override-ed5zg0 ant-btn-link"
+      data-testid="addToListButton"
+      type="button"
+    >
+      <span>
+        test/list
+      </span>
+    </button>
+  </div>
+</DocumentFragment>
+`;

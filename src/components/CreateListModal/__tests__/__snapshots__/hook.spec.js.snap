@@ -1,9 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`CreateListModal useContainer hook matches snapshot 1`] = `
-{
-  "handleAfterClose": [Function],
-  "handleOk": [Function],
-  "handleSubmit": [Function],
-}
-`;

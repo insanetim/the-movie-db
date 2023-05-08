@@ -1,0 +1,83 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CreditsItem component matches snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="ant-card ant-card-bordered css-dev-only-do-not-override-ed5zg0"
+  >
+    <div
+      class="ant-card-cover"
+    >
+      <img
+        alt="test/title"
+        src="https://image.tmdb.org/t/p/w500test/image"
+      />
+    </div>
+    <div
+      class="ant-card-body"
+    >
+      <div
+        class="ant-card-meta"
+      >
+        <div
+          class="ant-card-meta-detail"
+        >
+          <div
+            class="ant-card-meta-title"
+          >
+            test/title
+          </div>
+          <div
+            class="ant-card-meta-description"
+          >
+            test/description
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`CreditsItem component matches snapshot without profilePath 1`] = `
+<DocumentFragment>
+  <div
+    class="ant-card ant-card-bordered css-dev-only-do-not-override-ed5zg0"
+  >
+    <div
+      class="ant-card-cover"
+    >
+      <div
+        class="ant-card-cover--no-image"
+      >
+        <img
+          alt="test/title"
+          src="test-file-stub"
+        />
+      </div>
+    </div>
+    <div
+      class="ant-card-body"
+    >
+      <div
+        class="ant-card-meta"
+      >
+        <div
+          class="ant-card-meta-detail"
+        >
+          <div
+            class="ant-card-meta-title"
+          >
+            test/title
+          </div>
+          <div
+            class="ant-card-meta-description"
+          >
+            test/description
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
