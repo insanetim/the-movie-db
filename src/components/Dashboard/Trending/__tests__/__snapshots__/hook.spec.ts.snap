@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Trending useContainer hook matches snapshot 1`] = `
+{
+  "error": null,
+  "handlePagination": [Function],
+  "loading": true,
+  "movies": {},
+}
+`;

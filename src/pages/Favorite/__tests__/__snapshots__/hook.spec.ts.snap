@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Favotite useContainer hook matches snapshot 1`] = `
+{
+  "error": null,
+  "handleMovieDelete": [Function],
+  "handlePagination": [Function],
+  "loading": true,
+  "movies": null,
+}
+`;

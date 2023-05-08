@@ -1,8 +1,0 @@
-export const LOG_IN = 'session/LOG_IN'
-export const LOG_OUT = 'session/LOG_OUT'
-export const SET_SESSION = 'session/SET_SESSION'
-export const DELETE_SESSION = 'session/DELETE_SESSION'
-export const FETCH_ACCOUNT = 'session/FETCH_ACCOUNT'
-export const FETCH_ACCOUNT_SUCCESS = 'session/FETCH_ACCOUNT_SUCCESS'
-export const LOADING_ON = 'session/LOADING_ON'
-export const LOADING_OFF = 'session/LOADING_OFF'
