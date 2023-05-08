@@ -3,31 +3,31 @@
 exports[`Layout component matches snapshot 1`] = `
 <DocumentFragment>
   <section
-    class="ant-layout css-dev-only-do-not-override-htwhyh"
+    class="ant-layout css-dev-only-do-not-override-ed5zg0"
   >
     <header
-      class="ant-layout-header css-dev-only-do-not-override-htwhyh"
+      class="ant-layout-header css-dev-only-do-not-override-ed5zg0"
     >
       <div
-        class="ant-row ant-row-space-between css-dev-only-do-not-override-htwhyh"
+        class="ant-row ant-row-space-between css-dev-only-do-not-override-ed5zg0"
       >
         <div
-          class="ant-col css-dev-only-do-not-override-htwhyh"
+          class="ant-col css-dev-only-do-not-override-ed5zg0"
         >
           <span
-            class="ant-typography css-dev-only-do-not-override-htwhyh"
+            class="ant-typography css-dev-only-do-not-override-ed5zg0"
           >
             THE MOVIE DB
           </span>
         </div>
         <div
-          class="ant-col css-dev-only-do-not-override-htwhyh"
+          class="ant-col css-dev-only-do-not-override-ed5zg0"
         >
           <span
-            class="ant-typography ant-dropdown-trigger css-dev-only-do-not-override-htwhyh"
+            class="ant-typography ant-dropdown-trigger css-dev-only-do-not-override-ed5zg0"
           >
             <span
-              class="ant-avatar ant-avatar-circle ant-avatar-image css-dev-only-do-not-override-htwhyh"
+              class="ant-avatar ant-avatar-circle ant-avatar-image css-dev-only-do-not-override-ed5zg0"
             >
               <img
                 src="https://www.gravatar.com/avatar//image"
@@ -64,7 +64,7 @@ exports[`Layout component matches snapshot 1`] = `
       </div>
     </header>
     <main
-      class="ant-layout-content css-dev-only-do-not-override-htwhyh"
+      class="ant-layout-content css-dev-only-do-not-override-ed5zg0"
     />
   </section>
 </DocumentFragment>
