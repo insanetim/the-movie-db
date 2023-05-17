@@ -2,6 +2,7 @@ import { Outlet } from 'react-router-dom'
 import { Layout as AntdLayout } from 'antd'
 
 import Header from './Header'
+import Footer from './Footer'
 
 const Layout: React.FC = () => (
   <AntdLayout>
@@ -9,6 +10,7 @@ const Layout: React.FC = () => (
     <AntdLayout.Content>
       <Outlet />
     </AntdLayout.Content>
+    <Footer />
   </AntdLayout>
 )
 

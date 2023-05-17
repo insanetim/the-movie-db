@@ -66,6 +66,31 @@ exports[`Layout component matches snapshot 1`] = `
     <main
       class="ant-layout-content css-dev-only-do-not-override-ed5zg0"
     />
+    <footer
+      class="ant-layout-footer css-dev-only-do-not-override-ed5zg0"
+    >
+      <div
+        class="ant-row css-dev-only-do-not-override-ed5zg0"
+      >
+        <div
+          class="ant-col css-dev-only-do-not-override-ed5zg0"
+        >
+          <span
+            style="opacity: 0.8;"
+          >
+            Made with ❤ by 
+            <a
+              class="ant-typography css-dev-only-do-not-override-ed5zg0"
+              href="https://github.com/insanetim/frontend-internship"
+              rel="noreferrer"
+              target="_blank"
+            >
+              insanetim
+            </a>
+          </span>
+        </div>
+      </div>
+    </footer>
   </section>
 </DocumentFragment>
 `;

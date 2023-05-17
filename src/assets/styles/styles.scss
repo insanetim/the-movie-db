@@ -31,7 +31,7 @@ body,
 }
 
 .ant-layout-content {
-  padding-bottom: 12pt;
+  min-height: calc(100vh - 134px);
 }
 
 .ant-layout-header {
