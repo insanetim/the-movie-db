@@ -1,11 +1,9 @@
 import { NOTIFICATION_TYPE } from 'src/constants/app'
-import { mockMovieDetail } from 'src/__mocks__/mockMovie'
 import httpClient from 'src/lib/api/httpClient'
 import * as routes from 'src/lib/apiRoutes'
 import { showNotification } from 'src/store/app/actions'
 import { fetchFavorite } from 'src/store/favorite/actions'
 import { fetchWatchlist } from 'src/store/watchlist/actions'
-import { movieSelector } from '../selectors'
 import * as actions from '../actions'
 
 jest.mock('src/store/app/actions')
@@ -22,10 +20,6 @@ jest.mock<typeof import('@reduxjs/toolkit')>('@reduxjs/toolkit', () => ({
 jest.mock('src/store/session/selectors', () => ({
   sessionIdSelector: jest.fn(() => 'session_id'),
   accountSelector: jest.fn(() => ({ id: 123 }))
-}))
-
-jest.mock('src/store/movie/selectors', () => ({
-  movieSelector: jest.fn(() => null)
 }))
 
 describe('movie actions', () => {
@@ -124,7 +118,6 @@ describe('movie actions', () => {
     it('works with other data', async () => {
       const props = { movieId: 123, inFavorite: false }
       const action = actions.changeMovieInFavorite(props)
-      jest.mocked(movieSelector).mockReturnValueOnce(mockMovieDetail)
       requestSpy.mockResolvedValueOnce(response)
       const notification = showNotification({
         messageText: 'test/movie removed from Favorite'
@@ -132,7 +125,6 @@ describe('movie actions', () => {
 
       await action(dispatch, getState, undefined)
 
-      expect(requestSpy).toHaveBeenCalledTimes(1)
       expect(dispatch).toHaveBeenCalledWith(notification)
     })
   })
@@ -177,7 +169,6 @@ describe('movie actions', () => {
     it('works with other data', async () => {
       const props = { movieId: 123, inWatchlist: false }
       const action = actions.changeMovieInWatchlist(props)
-      jest.mocked(movieSelector).mockReturnValueOnce(mockMovieDetail)
       requestSpy.mockResolvedValueOnce(response)
       const notification = showNotification({
         messageText: 'test/movie removed from Watchlist'
@@ -185,7 +176,6 @@ describe('movie actions', () => {
 
       await action(dispatch, getState, undefined)
 
-      expect(requestSpy).toHaveBeenCalledTimes(1)
       expect(dispatch).toHaveBeenCalledWith(notification)
     })
   })

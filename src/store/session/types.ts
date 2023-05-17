@@ -17,8 +17,6 @@ export interface IRequestToken {
   success: boolean
 }
 
-export interface ISessionToken extends IRequestToken {}
-
 export interface ISession {
   session_id: string
   success: boolean

@@ -1,6 +1,6 @@
 // Auth
 export const createRequestToken = '/authentication/token/new'
-export const createSessionWithLogin = '/authentication/token/validate_with_login'
+export const validateWithLogin = '/authentication/token/validate_with_login'
 export const createSession = '/authentication/session/new'
 export const deleteSession = '/authentication/session'
 // Account

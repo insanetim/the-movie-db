@@ -18,7 +18,7 @@ export const fetchTrending = createAsyncThunk(
 
       return fulfillWithValue(data)
     } catch (error) {
-      const message = pathOr('Something went wrong!', ['message'], error)
+      const message = pathOr('Something went wrong!', ['response', 'data', 'status_message'], error)
 
       return rejectWithValue(message)
     }
@@ -36,7 +36,7 @@ export const fetchSearch = createAsyncThunk(
 
       return fulfillWithValue(data)
     } catch (error) {
-      const message = pathOr('Something went wrong!', ['message'], error)
+      const message = pathOr('Something went wrong!', ['response', 'data', 'status_message'], error)
 
       return rejectWithValue(message)
     }

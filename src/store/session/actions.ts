@@ -7,7 +7,7 @@ import httpClient from 'src/lib/api/httpClient'
 import * as routes from 'src/lib/apiRoutes'
 import type { RootState } from '../index'
 import type { IAccount } from 'src/interfaces/account.interface'
-import type { IRequestToken, ISession, ISessionToken, IUserData } from './types'
+import type { IRequestToken, ISession, IUserData } from './types'
 import { sessionIdSelector } from './selectors'
 import { showNotification } from 'src/store/app/actions'
 import { FETCH_ACCOUNT, LOG_IN, LOG_OUT } from './constants'
@@ -20,10 +20,8 @@ export const logIn = createAsyncThunk(LOG_IN, async (userData: IUserData, { disp
       url: routes.createRequestToken
     })
 
-    const {
-      data: { request_token: sessionToken }
-    } = await httpClient.request<ISessionToken>({
-      url: routes.createSessionWithLogin,
+    await httpClient.request({
+      url: routes.validateWithLogin,
       method: 'post',
       data: { ...userData, request_token: requestToken }
     })
@@ -33,14 +31,14 @@ export const logIn = createAsyncThunk(LOG_IN, async (userData: IUserData, { disp
     } = await httpClient.request<ISession>({
       url: routes.createSession,
       method: 'post',
-      data: { request_token: sessionToken }
+      data: { request_token: requestToken }
     })
 
     Cookies.set('session_id', sessionId)
 
     return fulfillWithValue(sessionId)
   } catch (error) {
-    const messageText = pathOr('Something went wrong!', ['message'], error)
+    const messageText = pathOr('Something went wrong!', ['response', 'data', 'status_message'], error)
 
     dispatch(
       showNotification({
@@ -63,7 +61,7 @@ export const logOut = createAsyncThunk(LOG_OUT, async (_, { dispatch, getState }
 
     Cookies.remove('session_id')
   } catch (error) {
-    const messageText = pathOr('Something went wrong!', ['message'], error)
+    const messageText = pathOr('Something went wrong!', ['response', 'data', 'status_message'], error)
 
     dispatch(
       showNotification({
@@ -85,7 +83,7 @@ export const fetchAccount = createAsyncThunk(FETCH_ACCOUNT, async (_, { dispatch
 
     return fulfillWithValue(data)
   } catch (error) {
-    const messageText = pathOr('Something went wrong!', ['message'], error)
+    const messageText = pathOr('Something went wrong!', ['response', 'data', 'status_message'], error)
 
     dispatch(
       showNotification({

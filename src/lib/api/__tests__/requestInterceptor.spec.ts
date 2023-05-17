@@ -1,13 +1,14 @@
-import { InternalAxiosRequestConfig } from 'axios'
+import type { InternalAxiosRequestConfig } from 'axios'
 
-import { API_KEY } from 'src/constants/app'
+import { ACCESS_TOKEN_AUTH } from 'src/constants/app'
 import requestInterceptor from '../requestInterceptor'
 
 describe('requestInterceptor', () => {
   it('should return correct result', () => {
-    expect(requestInterceptor({ params: {} } as InternalAxiosRequestConfig)).toEqual({
-      params: {
-        api_key: API_KEY
+    expect(requestInterceptor({ headers: {} } as InternalAxiosRequestConfig)).toEqual({
+      headers: {
+        accept: 'application/json',
+        Authorization: `Bearer ${ACCESS_TOKEN_AUTH}`
       }
     })
   })

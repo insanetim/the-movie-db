@@ -35,31 +35,30 @@ describe('session actions', () => {
 
     const requestTokenRequest = { url: routes.createRequestToken }
     const requestTokenResponse = { data: { request_token: 'test/request_token' } }
-    const sessionTokenRequest = {
-      url: routes.createSessionWithLogin,
+    const validateWithLoginRequest = {
+      url: routes.validateWithLogin,
       method: 'post',
       data: { ...userData, request_token: requestTokenResponse.data.request_token }
     }
-    const sessionTokenResponse = { data: { request_token: 'test/session_token' } }
-    const sessionRequest = {
+    const createSessionRequest = {
       url: routes.createSession,
       method: 'post',
-      data: { request_token: sessionTokenResponse.data.request_token }
+      data: { request_token: requestTokenResponse.data.request_token }
     }
     const sessionResponse = { data: { session_id: 'test/session_id' } }
 
     it('success', async () => {
       requestSpy
         .mockResolvedValueOnce(requestTokenResponse)
-        .mockResolvedValueOnce(sessionTokenResponse)
+        .mockResolvedValueOnce(requestTokenResponse)
         .mockResolvedValueOnce(sessionResponse)
 
       const result = await action(dispatch, getState, undefined)
 
       expect(requestSpy).toHaveBeenCalledTimes(3)
       expect(requestSpy).toHaveBeenNthCalledWith(1, requestTokenRequest)
-      expect(requestSpy).toHaveBeenNthCalledWith(2, sessionTokenRequest)
-      expect(requestSpy).toHaveBeenNthCalledWith(3, sessionRequest)
+      expect(requestSpy).toHaveBeenNthCalledWith(2, validateWithLoginRequest)
+      expect(requestSpy).toHaveBeenNthCalledWith(3, createSessionRequest)
       expect(cookiesSetSpy).toHaveBeenCalledWith('session_id', sessionResponse.data.session_id)
       expect(result.payload).toEqual(sessionResponse.data.session_id)
     })

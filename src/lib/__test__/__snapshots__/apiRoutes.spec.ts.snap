@@ -8,7 +8,6 @@ exports[`apiRoutes matches snapshot 1`] = `
   "createList": "/list",
   "createRequestToken": "/authentication/token/new",
   "createSession": "/authentication/session/new",
-  "createSessionWithLogin": "/authentication/token/validate_with_login",
   "deleteList": [Function],
   "deleteSession": "/authentication/session",
   "getAccountDetails": "/account",
@@ -23,5 +22,6 @@ exports[`apiRoutes matches snapshot 1`] = `
   "getWatchlist": [Function],
   "removeFromList": [Function],
   "searchMovies": "/search/movie",
+  "validateWithLogin": "/authentication/token/validate_with_login",
 }
 `;

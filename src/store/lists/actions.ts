@@ -28,7 +28,7 @@ export const fetchLists = createAsyncThunk(
 
       return fulfillWithValue(data)
     } catch (error) {
-      const message = pathOr('Something went wrong!', ['message'], error)
+      const message = pathOr('Something went wrong!', ['response', 'data', 'status_message'], error)
 
       return rejectWithValue(message)
     }
@@ -45,7 +45,7 @@ export const fetchList = createAsyncThunk(
 
       return fulfillWithValue(data)
     } catch (error) {
-      const message = pathOr('Something went wrong!', ['message'], error)
+      const message = pathOr('Something went wrong!', ['response', 'data', 'status_message'], error)
 
       return rejectWithValue(message)
     }
@@ -76,7 +76,7 @@ export const createList = createAsyncThunk(
         )
       }
     } catch (error) {
-      const messageText = pathOr('Something went wrong!', ['message'], error)
+      const messageText = pathOr('Something went wrong!', ['response', 'data', 'status_message'], error)
 
       dispatch(
         showNotification({
@@ -109,7 +109,7 @@ export const addToList = createAsyncThunk(
 
       dispatch(showNotification({ messageText }))
     } catch (error) {
-      const messageText = pathOr('Something went wrong!', ['message'], error)
+      const messageText = pathOr('Something went wrong!', ['response', 'data', 'status_message'], error)
 
       dispatch(
         showNotification({
@@ -143,7 +143,7 @@ export const removeFromList = createAsyncThunk(
 
       return fulfillWithValue(movieId)
     } catch (error) {
-      const messageText = pathOr('Something went wrong!', ['message'], error)
+      const messageText = pathOr('Something went wrong!', ['response', 'data', 'status_message'], error)
 
       dispatch(
         showNotification({

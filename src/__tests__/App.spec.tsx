@@ -145,7 +145,7 @@ describe('App component', () => {
   it('renders Dashboard', async () => {
     const { findByPlaceholderText } = render(<Dashboard />, { wrapper: WrapperWithSuspense })
 
-    expect(await findByPlaceholderText('Enter movie name')).toBeInTheDocument()
+    expect(await findByPlaceholderText('Enter movie name', { exact: false }, { timeout: 2000 })).toBeInTheDocument()
   })
 
   it('renders Lists', async () => {

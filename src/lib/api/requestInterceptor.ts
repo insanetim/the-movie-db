@@ -1,12 +1,13 @@
 import type { InternalAxiosRequestConfig } from 'axios'
 import { mergeDeepRight } from 'ramda'
 
-import { API_KEY } from 'src/constants/app'
+import { ACCESS_TOKEN_AUTH } from 'src/constants/app'
 
 const requestInterceptor = (config: InternalAxiosRequestConfig): InternalAxiosRequestConfig =>
   mergeDeepRight(config, {
-    params: {
-      api_key: API_KEY
+    headers: {
+      accept: 'application/json',
+      Authorization: `Bearer ${ACCESS_TOKEN_AUTH}`
     }
   })
 
