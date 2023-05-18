@@ -11,7 +11,7 @@
     "build": "webpack build --env mode=production",
     "test": "jest --coverage",
     "lint": "eslint --format codeframe src/",
-    "stylelint": "stylelint '**/*.scss' --fix",
+    "stylelint": "stylelint 'src/**/*.scss' --fix",
     "postinstall": "husky install"
   },
   "devDependencies": {

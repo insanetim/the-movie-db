@@ -2,6 +2,7 @@
   "extends": ["stylelint-config-standard-scss", "stylelint-order-config-standard"],
   "plugins": ["stylelint-order"],
   "customSyntax": "postcss-scss",
+  "ignoreFiles": ["dist/**.*"],
   "rules": {
     "selector-class-pattern": null
   }
