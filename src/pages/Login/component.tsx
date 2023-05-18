@@ -59,13 +59,13 @@ const Login: React.FC = () => {
               <Col span={24}>
                 <p className='text-center'>
                   Don&apos;t have The Movie Database account?{' '}
-                  <a
+                  <Typography.Link
                     href='https://www.themoviedb.org/signup'
                     target='_blank'
                     rel='noreferrer'
                   >
                     Sign up.
-                  </a>
+                  </Typography.Link>
                 </p>
               </Col>
             </Row>
