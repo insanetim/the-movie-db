@@ -41,6 +41,10 @@ module.exports = (env = {}) => {
   return {
     mode,
 
+    output: {
+      chunkFilename: '[id].js'
+    },
+
     module: {
       rules: [
         {

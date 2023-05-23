@@ -1,11 +1,12 @@
 {
   "compilerOptions": {
     "strict": true,
-    "module": "commonjs",
+    "lib": ["es5", "es2015", "es2016"],
+    "module": "esnext",
+    "moduleResolution": "node",
     "target": "es6",
     "jsx": "react-jsx",
     "allowJs": true,
-    "moduleResolution": "node",
     "esModuleInterop": true,
     "sourceMap": true,
     "outDir": "./dist/",
