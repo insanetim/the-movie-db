@@ -1,3 +1,4 @@
+import { dispatch, getState } from 'src/__mocks__/react-redux'
 import httpClient from 'src/lib/api/httpClient'
 import { getWatchlist } from 'src/lib/apiRoutes'
 import { fetchWatchlist } from '../actions'
@@ -8,10 +9,8 @@ jest.mock('src/store/session/selectors', () => ({
 }))
 
 describe('fetchWatchlist', () => {
-  const action = fetchWatchlist(1)
-  const dispatch = jest.fn()
-  const getState = jest.fn()
   const requestSpy = jest.spyOn(httpClient, 'request')
+  const action = fetchWatchlist(1)
 
   const request = {
     url: getWatchlist(123),

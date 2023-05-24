@@ -1,5 +1,6 @@
 import Cookies from 'js-cookie'
 
+import { dispatch, getState } from 'src/__mocks__/react-redux'
 import httpClient from 'src/lib/api/httpClient'
 import * as routes from 'src/lib/apiRoutes'
 import { showNotification } from 'src/store/app/actions'
@@ -16,8 +17,6 @@ jest.mock('src/store/session/selectors', () => ({
 }))
 
 describe('session actions', () => {
-  const dispatch = jest.fn()
-  const getState = jest.fn()
   const requestSpy = jest.spyOn(httpClient, 'request')
   const cookiesSetSpy = jest.spyOn(Cookies, 'set')
   const cookiesRemoveSpy = jest.spyOn(Cookies, 'remove')

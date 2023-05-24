@@ -1,3 +1,4 @@
+import { dispatch, getState } from 'src/__mocks__/react-redux'
 import { NOTIFICATION_TYPE } from 'src/constants/app'
 import httpClient from 'src/lib/api/httpClient'
 import * as routes from 'src/lib/apiRoutes'
@@ -23,8 +24,6 @@ jest.mock('src/store/session/selectors', () => ({
 }))
 
 describe('movie actions', () => {
-  const dispatch = jest.fn()
-  const getState = jest.fn()
   const requestSpy = jest.spyOn(httpClient, 'request')
   const errorNotification = showNotification({
     messageType: NOTIFICATION_TYPE.ERROR,

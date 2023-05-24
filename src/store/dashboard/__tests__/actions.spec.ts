@@ -1,10 +1,9 @@
+import { dispatch, getState } from 'src/__mocks__/react-redux'
 import httpClient from 'src/lib/api/httpClient'
 import { getTrending, searchMovies } from 'src/lib/apiRoutes'
 import { fetchSearch, fetchTrending, setSearchPage, setTrendingPage } from '../actions'
 
 describe('dashboard actions', () => {
-  const dispatch = jest.fn()
-  const getState = jest.fn()
   const requestSpy = jest.spyOn(httpClient, 'request')
 
   describe('fetchTrending', () => {
