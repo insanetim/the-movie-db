@@ -12,6 +12,7 @@
     "test": "jest --coverage",
     "lint": "eslint --format codeframe src/",
     "stylelint": "stylelint 'src/**/*.scss' --fix",
+    "deploy": "firebase deploy",
     "postinstall": "husky install"
   },
   "devDependencies": {
