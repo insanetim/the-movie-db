@@ -1,17 +1,17 @@
 import { act, renderHook } from '@testing-library/react'
-
 import { dispatch } from 'src/__mocks__/react-redux'
 import usePrevious from 'src/hooks/usePrevious'
 import { fetchSearch, setSearchPage } from 'src/store/dashboard/actions'
+
 import useContainer from '../hook'
 
 jest.mock('src/store/dashboard/actions')
 
 jest.mock('src/store/dashboard/selectors', () => ({
-  searchMoviesSelector: jest.fn(() => null),
-  searchPageSelector: jest.fn(() => 1),
+  searchErrorSelector: jest.fn(() => null),
   searchLoadingSelector: jest.fn(() => true),
-  searchErrorSelector: jest.fn(() => null)
+  searchMoviesSelector: jest.fn(() => null),
+  searchPageSelector: jest.fn(() => 1)
 }))
 
 jest.mock('src/hooks/usePrevious')
@@ -41,8 +41,8 @@ describe('SearchResult useContainer hook', () => {
 
     expect(dispatch).toHaveBeenCalledWith(
       fetchSearch({
-        query: props.query,
-        page: 1
+        page: 1,
+        query: props.query
       })
     )
   })
@@ -53,8 +53,8 @@ describe('SearchResult useContainer hook', () => {
 
     expect(dispatch).toHaveBeenCalledWith(
       fetchSearch({
-        query: props.query,
-        page: 1
+        page: 1,
+        query: props.query
       })
     )
   })

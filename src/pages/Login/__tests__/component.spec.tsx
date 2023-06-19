@@ -1,12 +1,13 @@
 import { render } from '@testing-library/react'
+import Wrapper from 'src/utils/testHelpers/wrapperMock'
 
 import type { LoginHook } from '../types'
-import Wrapper from 'src/utils/testHelpers/wrapperMock'
+
 import Login from '../component'
 
 const mockedHookData: LoginHook = {
-  loading: false,
-  handleLogIn: jest.fn()
+  handleLogIn: jest.fn(),
+  loading: false
 }
 jest.mock('../hook', () => jest.fn(() => mockedHookData))
 

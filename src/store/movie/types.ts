@@ -1,19 +1,19 @@
 import { IMovieDetailExtended } from 'src/interfaces/movie.interface'
 
 export interface IMovieState {
-  movieDetail: IMovieDetailExtended | null
+  error: null | string
   loading: boolean
-  error: string | null
+  movieDetail: IMovieDetailExtended | null
 }
 
-export type MovieId = string | number
+export type MovieId = number | string
 
 export interface ChangeMovieInFavoriteProps {
-  movieId: MovieId
   inFavorite: boolean
+  movieId: MovieId
 }
 
 export interface ChangeMovieInWatchlistProps {
-  movieId: MovieId
   inWatchlist: boolean
+  movieId: MovieId
 }

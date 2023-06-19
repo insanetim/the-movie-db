@@ -1,13 +1,15 @@
+import type { IMovieDetailExtended } from 'src/interfaces/movie.interface'
+
 import { createReducer } from '@reduxjs/toolkit'
 
-import type { IMovieDetailExtended } from 'src/interfaces/movie.interface'
 import type { IMovieState } from './types'
+
 import { changeMovieInFavorite, changeMovieInWatchlist, fetchMovie } from './actions'
 
 const initialState: IMovieState = {
-  movieDetail: null,
+  error: null,
   loading: true,
-  error: null
+  movieDetail: null
 }
 
 const movieReducer = createReducer(initialState, builder => {

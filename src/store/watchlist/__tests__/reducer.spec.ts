@@ -1,8 +1,8 @@
-import reducer from '../reducer'
 import { fetchWatchlist } from '../actions'
+import reducer from '../reducer'
 
 describe('watchlistReducer', () => {
-  const initialState = { movies: null, loading: true, error: null }
+  const initialState = { error: null, loading: true, movies: null }
 
   it('returns initial state', () => {
     const action = { type: 'unknown' }
@@ -14,27 +14,27 @@ describe('watchlistReducer', () => {
     const action = {
       type: fetchWatchlist.pending.toString()
     }
-    const expectedState = { movies: null, loading: true, error: null }
+    const expectedState = { error: null, loading: true, movies: null }
 
     expect(reducer(initialState, action)).toEqual(expectedState)
   })
 
   it('should handle FETCH_WATCHLIST/fulfilled', () => {
     const action = {
-      type: fetchWatchlist.fulfilled.toString(),
-      payload: 'test/data'
+      payload: 'test/data',
+      type: fetchWatchlist.fulfilled.toString()
     }
-    const expectedState = { movies: 'test/data', loading: false, error: null }
+    const expectedState = { error: null, loading: false, movies: 'test/data' }
 
     expect(reducer(initialState, action)).toEqual(expectedState)
   })
 
   it('should handle FETCH_WATCHLIST/rejected', () => {
     const action = {
-      type: fetchWatchlist.rejected.toString(),
-      payload: 'test/error'
+      payload: 'test/error',
+      type: fetchWatchlist.rejected.toString()
     }
-    const expectedState = { movies: null, loading: false, error: 'test/error' }
+    const expectedState = { error: 'test/error', loading: false, movies: null }
 
     expect(reducer(initialState, action)).toEqual(expectedState)
   })

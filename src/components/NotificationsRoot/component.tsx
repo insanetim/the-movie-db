@@ -2,7 +2,7 @@ import Notification from './Notification'
 import useContainer from './hook'
 
 const NotificationsRoot: React.FC = () => {
-  const { notifications, hideNotification } = useContainer()
+  const { hideNotification, notifications } = useContainer()
 
   return (
     <>

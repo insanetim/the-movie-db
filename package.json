@@ -10,7 +10,7 @@
     "start": "webpack serve",
     "build": "webpack build --env mode=production",
     "test": "jest --coverage",
-    "lint": "eslint --format codeframe src/",
+    "lint": "eslint --format codeframe src/ --fix",
     "stylelint": "stylelint 'src/**/*.scss' --fix",
     "deploy": "firebase deploy",
     "postinstall": "husky install"
@@ -37,6 +37,7 @@
     "eslint": "^8.43.0",
     "eslint-config-prettier": "^8.8.0",
     "eslint-formatter-codeframe": "^7.32.1",
+    "eslint-plugin-perfectionist": "^1.4.0",
     "eslint-plugin-react-hooks": "^4.6.0",
     "file-loader": "^6.2.0",
     "html-webpack-plugin": "^5.5.1",

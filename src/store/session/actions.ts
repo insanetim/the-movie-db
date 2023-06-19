@@ -1,16 +1,18 @@
+import type { IAccount } from 'src/interfaces/account.interface'
+
 import { createAsyncThunk } from '@reduxjs/toolkit'
 import Cookies from 'js-cookie'
 import { pathOr } from 'ramda'
-
 import { NOTIFICATION_TYPE } from 'src/constants/app'
 import httpClient from 'src/lib/api/httpClient'
 import * as routes from 'src/lib/apiRoutes'
-import type { RootState } from '../index'
-import type { IAccount } from 'src/interfaces/account.interface'
-import type { IRequestToken, ISession, IUserData } from './types'
-import { sessionIdSelector } from './selectors'
 import { showNotification } from 'src/store/app/actions'
+
+import type { RootState } from '../index'
+import type { IRequestToken, ISession, IUserData } from './types'
+
 import { FETCH_ACCOUNT, LOG_IN, LOG_OUT } from './constants'
+import { sessionIdSelector } from './selectors'
 
 export const logIn = createAsyncThunk(LOG_IN, async (userData: IUserData, { dispatch, fulfillWithValue }) => {
   try {
@@ -21,17 +23,17 @@ export const logIn = createAsyncThunk(LOG_IN, async (userData: IUserData, { disp
     })
 
     await httpClient.request({
-      url: routes.validateWithLogin,
+      data: { ...userData, request_token: requestToken },
       method: 'post',
-      data: { ...userData, request_token: requestToken }
+      url: routes.validateWithLogin
     })
 
     const {
       data: { session_id: sessionId }
     } = await httpClient.request<ISession>({
-      url: routes.createSession,
+      data: { request_token: requestToken },
       method: 'post',
-      data: { request_token: requestToken }
+      url: routes.createSession
     })
 
     Cookies.set('session_id', sessionId)
@@ -42,8 +44,8 @@ export const logIn = createAsyncThunk(LOG_IN, async (userData: IUserData, { disp
 
     dispatch(
       showNotification({
-        messageType: NOTIFICATION_TYPE.ERROR,
-        messageText
+        messageText,
+        messageType: NOTIFICATION_TYPE.ERROR
       })
     )
   }
@@ -54,9 +56,9 @@ export const logOut = createAsyncThunk(LOG_OUT, async (_, { dispatch, getState }
 
   try {
     await httpClient.request({
-      url: routes.deleteSession,
+      data: { session_id: sessionId },
       method: 'delete',
-      data: { session_id: sessionId }
+      url: routes.deleteSession
     })
 
     Cookies.remove('session_id')
@@ -65,20 +67,20 @@ export const logOut = createAsyncThunk(LOG_OUT, async (_, { dispatch, getState }
 
     dispatch(
       showNotification({
-        messageType: NOTIFICATION_TYPE.ERROR,
-        messageText
+        messageText,
+        messageType: NOTIFICATION_TYPE.ERROR
       })
     )
   }
 })
 
-export const fetchAccount = createAsyncThunk(FETCH_ACCOUNT, async (_, { dispatch, getState, fulfillWithValue }) => {
+export const fetchAccount = createAsyncThunk(FETCH_ACCOUNT, async (_, { dispatch, fulfillWithValue, getState }) => {
   const sessionId = sessionIdSelector(getState() as RootState)
 
   try {
     const { data } = await httpClient.request<IAccount>({
-      url: routes.getAccountDetails,
-      params: { session_id: sessionId }
+      params: { session_id: sessionId },
+      url: routes.getAccountDetails
     })
 
     return fulfillWithValue(data)
@@ -87,8 +89,8 @@ export const fetchAccount = createAsyncThunk(FETCH_ACCOUNT, async (_, { dispatch
 
     dispatch(
       showNotification({
-        messageType: NOTIFICATION_TYPE.ERROR,
-        messageText
+        messageText,
+        messageType: NOTIFICATION_TYPE.ERROR
       })
     )
   }

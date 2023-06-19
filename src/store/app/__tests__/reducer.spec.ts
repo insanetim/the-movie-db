@@ -1,11 +1,13 @@
-import type { INotification } from '../types'
-import { modalReducer, notificationsReducer } from '../reducer'
-import { hideModal, hideNotification, showModal, showNotification } from '../actions'
 import { NOTIFICATION_DURATION, NOTIFICATION_TYPE } from 'src/constants/app'
+
+import type { INotification } from '../types'
+
+import { hideModal, hideNotification, showModal, showNotification } from '../actions'
+import { modalReducer, notificationsReducer } from '../reducer'
 
 describe('appReducer', () => {
   describe('modalReducer', () => {
-    const initialState = { modalType: null, modalProps: null }
+    const initialState = { modalProps: null, modalType: null }
 
     it('returns initial state', () => {
       const action = { type: 'unknown' }
@@ -15,8 +17,8 @@ describe('appReducer', () => {
 
     it('should handle SHOW_MODAL', () => {
       const action = {
-        type: showModal.toString(),
-        payload: { modalType: 'test/modalType', modalProps: 'test/modalProps' }
+        payload: { modalProps: 'test/modalProps', modalType: 'test/modalType' },
+        type: showModal.toString()
       }
       const expectedState = action.payload
 
@@ -27,7 +29,7 @@ describe('appReducer', () => {
       const action = {
         type: hideModal.toString()
       }
-      const expectedState = { modalType: null, modalProps: { open: false } }
+      const expectedState = { modalProps: { open: false }, modalType: null }
 
       expect(modalReducer(initialState, action)).toEqual(expectedState)
     })
@@ -44,13 +46,13 @@ describe('appReducer', () => {
 
     it('should handle SHOW_NOTIFICATION', () => {
       const action = {
-        type: showNotification.toString(),
         payload: {
+          duration: NOTIFICATION_DURATION,
           id: 'nanoid',
-          messageType: NOTIFICATION_TYPE.SUCCESS,
           messageText: 'test/message',
-          duration: NOTIFICATION_DURATION
-        }
+          messageType: NOTIFICATION_TYPE.SUCCESS
+        },
+        type: showNotification.toString()
       }
       const expectedState = [action.payload]
 
@@ -59,15 +61,15 @@ describe('appReducer', () => {
 
     it('should handle HIDE_NOTIFICATION', () => {
       const action = {
-        type: hideNotification.toString(),
-        payload: 'nanoid'
+        payload: 'nanoid',
+        type: hideNotification.toString()
       }
       const initialState = [
         {
+          duration: NOTIFICATION_DURATION,
           id: 'nanoid',
-          messageType: NOTIFICATION_TYPE.SUCCESS,
           messageText: 'test/message',
-          duration: NOTIFICATION_DURATION
+          messageType: NOTIFICATION_TYPE.SUCCESS
         }
       ]
       const expectedState: INotification[] = []

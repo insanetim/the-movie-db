@@ -1,5 +1,7 @@
-import type { IModalState } from '../types'
 import { NOTIFICATION_DURATION, NOTIFICATION_TYPE } from 'src/constants/app'
+
+import type { IModalState } from '../types'
+
 import { hideModal, hideNotification, showModal, showNotification } from '../actions'
 
 jest.mock<typeof import('@reduxjs/toolkit')>('@reduxjs/toolkit', () => ({
@@ -9,18 +11,18 @@ jest.mock<typeof import('@reduxjs/toolkit')>('@reduxjs/toolkit', () => ({
 
 describe('app actions', () => {
   it('showModal', () => {
-    const expectedAction: { type: string; payload: IModalState } = {
-      type: showModal.toString(),
+    const expectedAction: { payload: IModalState; type: string } = {
       payload: {
-        modalType: 'MODAL_CREATE_LIST',
-        modalProps: { movieId: 123 }
-      }
+        modalProps: { movieId: 123 },
+        modalType: 'MODAL_CREATE_LIST'
+      },
+      type: showModal.toString()
     }
 
     expect(
       showModal({
-        modalType: 'MODAL_CREATE_LIST',
-        modalProps: { movieId: 123 }
+        modalProps: { movieId: 123 },
+        modalType: 'MODAL_CREATE_LIST'
       })
     ).toEqual(expectedAction)
   })
@@ -35,13 +37,13 @@ describe('app actions', () => {
 
   it('showNotification', () => {
     const expectedAction = {
-      type: showNotification.toString(),
       payload: {
+        duration: NOTIFICATION_DURATION,
         id: 'nonoid',
-        messageType: NOTIFICATION_TYPE.SUCCESS,
         messageText: 'test/message',
-        duration: NOTIFICATION_DURATION
-      }
+        messageType: NOTIFICATION_TYPE.SUCCESS
+      },
+      type: showNotification.toString()
     }
 
     expect(showNotification({ messageText: 'test/message' })).toEqual(expectedAction)
@@ -49,8 +51,8 @@ describe('app actions', () => {
 
   it('hideNotification', () => {
     const expectedAction = {
-      type: hideNotification.toString(),
-      payload: 'nonoid'
+      payload: 'nonoid',
+      type: hideNotification.toString()
     }
 
     expect(hideNotification('nonoid')).toEqual(expectedAction)

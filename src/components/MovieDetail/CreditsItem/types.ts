@@ -1,5 +1,5 @@
 export interface CreditsItemProps {
-  profilePath: string | null
-  title: string
   description: string
+  profilePath: null | string
+  title: string
 }

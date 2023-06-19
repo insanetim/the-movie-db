@@ -1,13 +1,14 @@
 import { combineReducers, createReducer } from '@reduxjs/toolkit'
 
 import type { IDashboardState } from './types'
+
 import { fetchSearch, fetchTrending, setSearchPage, setTrendingPage } from './actions'
 
 const initalState: IDashboardState = {
-  movies: null,
-  page: 1,
+  error: null,
   loading: true,
-  error: null
+  movies: null,
+  page: 1
 }
 
 export const trendingReducer = createReducer(initalState, builder => {
@@ -51,6 +52,6 @@ export const searchReducer = createReducer(initalState, builder => {
 })
 
 export default combineReducers({
-  trending: trendingReducer,
-  search: searchReducer
+  search: searchReducer,
+  trending: trendingReducer
 })

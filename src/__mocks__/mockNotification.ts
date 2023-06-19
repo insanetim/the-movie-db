@@ -1,10 +1,10 @@
 import { NOTIFICATION_DURATION, NOTIFICATION_TYPE } from 'src/constants/app'
 
 const mockNotification = {
+  duration: NOTIFICATION_DURATION,
   id: 'nanoid',
-  messageType: NOTIFICATION_TYPE.SUCCESS,
   messageText: 'test/message',
-  duration: NOTIFICATION_DURATION
+  messageType: NOTIFICATION_TYPE.SUCCESS
 }
 
 export default mockNotification

@@ -1,8 +1,8 @@
-import reducer from '../reducer'
 import { fetchFavorite } from '../actions'
+import reducer from '../reducer'
 
 describe('favoriteReducer', () => {
-  const initialState = { movies: null, loading: true, error: null }
+  const initialState = { error: null, loading: true, movies: null }
 
   it('returns initial state', () => {
     const action = { type: 'unknown' }
@@ -14,27 +14,27 @@ describe('favoriteReducer', () => {
     const action = {
       type: fetchFavorite.pending.toString()
     }
-    const expectedState = { movies: null, loading: true, error: null }
+    const expectedState = { error: null, loading: true, movies: null }
 
     expect(reducer(initialState, action)).toEqual(expectedState)
   })
 
   it('should handle FETCH_FAVORITE/fulfilled', () => {
     const action = {
-      type: fetchFavorite.fulfilled.toString(),
-      payload: 'test/data'
+      payload: 'test/data',
+      type: fetchFavorite.fulfilled.toString()
     }
-    const expectedState = { movies: 'test/data', loading: false, error: null }
+    const expectedState = { error: null, loading: false, movies: 'test/data' }
 
     expect(reducer(initialState, action)).toEqual(expectedState)
   })
 
   it('should handle FETCH_FAVORITE/rejected', () => {
     const action = {
-      type: fetchFavorite.rejected.toString(),
-      payload: 'test/error'
+      payload: 'test/error',
+      type: fetchFavorite.rejected.toString()
     }
-    const expectedState = { movies: null, loading: false, error: 'test/error' }
+    const expectedState = { error: 'test/error', loading: false, movies: null }
 
     expect(reducer(initialState, action)).toEqual(expectedState)
   })

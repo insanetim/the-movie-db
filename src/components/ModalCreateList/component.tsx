@@ -1,36 +1,37 @@
-import { Modal, Form, Input } from 'antd'
+import { Form, Input, Modal } from 'antd'
 
 import type { ModalCreateListProps } from './types'
+
 import useContainer from './hook'
 
 const ModalCreateList: React.FC<ModalCreateListProps> = ({ movieId, ...rest }) => {
   const [form] = Form.useForm()
-  const { handleOk, handleSubmit, handleAfterClose } = useContainer({ form, movieId })
+  const { handleAfterClose, handleOk, handleSubmit } = useContainer({ form, movieId })
 
   return (
     <Modal
-      open
-      title='Create list'
-      okText='Create'
-      onOk={handleOk}
       afterClose={handleAfterClose}
       destroyOnClose
+      okText='Create'
+      onOk={handleOk}
+      open
+      title='Create list'
       {...rest}
     >
       <Form
-        form={form}
         autoComplete='off'
+        form={form}
         onFinish={handleSubmit}
       >
         <Form.Item
           name='name'
-          rules={[{ required: true, message: 'Name is required' }]}
+          rules={[{ message: 'Name is required', required: true }]}
         >
           <Input placeholder='Name' />
         </Form.Item>
         <Form.Item
           name='description'
-          rules={[{ required: true, message: 'Description is required' }]}
+          rules={[{ message: 'Description is required', required: true }]}
         >
           <Input placeholder='Description' />
         </Form.Item>

@@ -1,7 +1,8 @@
 import { render } from '@testing-library/react'
+import { mockImage } from 'src/__mocks__/mockMovie'
 
 import type { ImageGalleryProps } from '../types'
-import { mockImage } from 'src/__mocks__/mockMovie'
+
 import ImageGallery from '../component'
 
 describe('ImageGallery component', () => {

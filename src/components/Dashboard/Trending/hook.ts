@@ -1,13 +1,13 @@
 import { useEffect } from 'react'
-
 import { useAppDispatch, useAppSelector } from 'src/hooks/useRedux'
-import {
-  trendingMoviesSelector,
-  trendingPageSelector,
-  trendingLoadingSelector,
-  trendingErrorSelector
-} from 'src/store/dashboard/selectors'
 import { fetchTrending, setTrendingPage } from 'src/store/dashboard/actions'
+import {
+  trendingErrorSelector,
+  trendingLoadingSelector,
+  trendingMoviesSelector,
+  trendingPageSelector
+} from 'src/store/dashboard/selectors'
+
 import { TrendingHook } from './types'
 
 const useContainer = (): TrendingHook => {
@@ -25,7 +25,7 @@ const useContainer = (): TrendingHook => {
     dispatch(fetchTrending(page))
   }, [page, dispatch])
 
-  return { movies, loading, error, handlePagination }
+  return { error, handlePagination, loading, movies }
 }
 
 export default useContainer

@@ -1,8 +1,8 @@
 const convertMoney = (value: number): string =>
   new Intl.NumberFormat('en-US', {
-    style: 'currency',
     currency: 'USD',
-    maximumFractionDigits: 0
+    maximumFractionDigits: 0,
+    style: 'currency'
   }).format(value)
 
 export default convertMoney

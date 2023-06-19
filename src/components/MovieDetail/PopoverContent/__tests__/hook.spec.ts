@@ -1,8 +1,8 @@
 import { act, renderHook } from '@testing-library/react'
-
 import { dispatch } from 'src/__mocks__/react-redux'
 import { showModal } from 'src/store/app/actions'
 import { addToList } from 'src/store/lists/actions'
+
 import useContainer from '../hook'
 
 jest.mock('src/store/app/actions')
@@ -32,8 +32,8 @@ describe('PopoverContent useContainer hook', () => {
 
     expect(dispatch).toHaveBeenCalledWith(
       showModal({
-        modalType: 'MODAL_CREATE_LIST',
-        modalProps: { movieId: 123 }
+        modalProps: { movieId: 123 },
+        modalType: 'MODAL_CREATE_LIST'
       })
     )
     expect(setPopoverOpen).toHaveBeenCalledWith(false)

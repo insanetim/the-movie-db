@@ -1,6 +1,7 @@
-import { Row, Col, Typography } from 'antd'
+import { Col, Row, Typography } from 'antd'
 
 import type { CastListProps } from './type'
+
 import CreditsItem from '../CreditsItem'
 
 const CastList: React.FC<CastListProps> = ({ cast }) => (
@@ -13,16 +14,16 @@ const CastList: React.FC<CastListProps> = ({ cast }) => (
         {cast.map(item => (
           <Col
             key={item.credit_id}
-            span={24}
-            sm={12}
-            md={8}
             lg={8}
+            md={8}
+            sm={12}
+            span={24}
             xl={6}
           >
             <CreditsItem
+              description={item.character}
               profilePath={item.profile_path}
               title={item.name}
-              description={item.character}
             />
           </Col>
         ))}

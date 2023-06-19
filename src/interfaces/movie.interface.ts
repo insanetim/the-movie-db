@@ -1,13 +1,13 @@
 export interface IMovie {
   adult: boolean
-  backdrop_path: string | null
+  backdrop_path: null | string
   genre_ids: number[]
   id: number
   original_language: string
   original_title: string
   overview: string
   popularity: number
-  poster_path: string | null
+  poster_path: null | string
   release_date: string
   title: string
   video: boolean
@@ -21,9 +21,9 @@ interface IGenre {
 }
 
 interface IProductionCompany {
-  name: string
   id: number
-  logo_path: string | null
+  logo_path: null | string
+  name: string
   origin_country: string
 }
 
@@ -41,22 +41,22 @@ export interface IMovieDetail extends IMovie {
   belongs_to_collection: null
   budget: number
   genres: IGenre[]
-  homepage: string | null
-  imdb_id: number | null
+  homepage: null | string
+  imdb_id: null | number
   production_companies: IProductionCompany[]
   production_countries: IProductionCountry[]
   revenue: number
   runtime: number
   spoken_languages: ISpokenLanguage[]
   status: string
-  tagline: string | null
+  tagline: null | string
 }
 
 export interface IBackdrop {
   aspect_ratio: number
   file_path: string
   height: number
-  iso_639_1: string | null
+  iso_639_1: null | string
   vote_average: number
   vote_count: number
   width: number
@@ -65,57 +65,57 @@ export interface IBackdrop {
 interface IPoster extends IBackdrop {}
 
 export interface IMovieImages {
-  id: number
   backdrops: IBackdrop[]
+  id: number
   posters: IPoster[]
 }
 
 export interface IMovieAccountStates {
-  id: number
   favorite: boolean
+  id: number
   rated: boolean
   watchlist: boolean
 }
 
 export interface ICast {
   adult: boolean
-  gender: number | null
-  id: number
-  known_for_department: string
-  name: string
-  original_name: string
-  popularity: number
-  profile_path: string | null
   cast_id: number
   character: string
   credit_id: string
+  gender: null | number
+  id: number
+  known_for_department: string
+  name: string
   order: number
+  original_name: string
+  popularity: number
+  profile_path: null | string
 }
 
 export interface ICrew {
   adult: boolean
-  gender: number | null
+  credit_id: string
+  department: string
+  gender: null | number
   id: number
+  job: string
   known_for_department: string
   name: string
   original_name: string
   popularity: number
-  profile_path: string | null
-  credit_id: string
-  department: string
-  job: string
+  profile_path: null | string
 }
 
 export interface IMovieCredits {
-  id: number
   cast: ICast[]
   crew: ICrew[]
+  id: number
 }
 
 export interface IMovieDetailExtended extends IMovieDetail {
-  images: IBackdrop[]
   accountStates: IMovieAccountStates
   credits: IMovieCredits
+  images: IBackdrop[]
 }
 
 export interface IMoviesList {

@@ -1,8 +1,8 @@
 import { act, renderHook } from '@testing-library/react'
-
 import mockNotification from 'src/__mocks__/mockNotification'
 import { dispatch } from 'src/__mocks__/react-redux'
 import { hideNotification as hideNotificationAction } from 'src/store/app/actions'
+
 import useContainer from '../hook'
 
 jest.mock('src/store/app/selectors', () => ({

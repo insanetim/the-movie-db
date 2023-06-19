@@ -1,13 +1,14 @@
 import { render } from '@testing-library/react'
 
 import type { CreditsItemProps } from '../types'
+
 import CreditsItem from '../component'
 
 describe('CreditsItem component', () => {
   const props: CreditsItemProps = {
+    description: 'test/description',
     profilePath: 'test/image',
-    title: 'test/title',
-    description: 'test/description'
+    title: 'test/title'
   }
   it('matches snapshot', () => {
     const { asFragment } = render(<CreditsItem {...props} />)

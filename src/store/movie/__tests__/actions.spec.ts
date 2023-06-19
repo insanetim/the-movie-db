@@ -5,6 +5,7 @@ import * as routes from 'src/lib/apiRoutes'
 import { showNotification } from 'src/store/app/actions'
 import { fetchFavorite } from 'src/store/favorite/actions'
 import { fetchWatchlist } from 'src/store/watchlist/actions'
+
 import * as actions from '../actions'
 
 jest.mock('src/store/app/actions')
@@ -19,15 +20,15 @@ jest.mock<typeof import('@reduxjs/toolkit')>('@reduxjs/toolkit', () => ({
 }))
 
 jest.mock('src/store/session/selectors', () => ({
-  sessionIdSelector: jest.fn(() => 'session_id'),
-  accountSelector: jest.fn(() => ({ id: 123 }))
+  accountSelector: jest.fn(() => ({ id: 123 })),
+  sessionIdSelector: jest.fn(() => 'session_id')
 }))
 
 describe('movie actions', () => {
   const requestSpy = jest.spyOn(httpClient, 'request')
   const errorNotification = showNotification({
-    messageType: NOTIFICATION_TYPE.ERROR,
-    messageText: 'Something went wrong!'
+    messageText: 'Something went wrong!',
+    messageType: NOTIFICATION_TYPE.ERROR
   })
 
   describe('fetchMovie', () => {
@@ -38,17 +39,17 @@ describe('movie actions', () => {
     const imagesRequest = { url: routes.getMovieImages('123') }
     const imagesResponse = { data: { backdrops: ['1', '2', '3'] } }
     const accountStatesRequest = {
-      url: routes.getMovieAccountStates('123'),
-      params: { session_id: 'session_id' }
+      params: { session_id: 'session_id' },
+      url: routes.getMovieAccountStates('123')
     }
     const accountStatesResponse = { data: { favorite: false, watchlist: false } }
     const creditsRequest = { url: routes.getMovieCredits('123') }
     const creditsResponse = { data: { cast: [], crew: [] } }
     const extentedData = {
       ...movieDetailResponse.data,
-      images: imagesResponse.data.backdrops.slice(0, 7),
       accountStates: accountStatesResponse.data,
-      credits: creditsResponse.data
+      credits: creditsResponse.data,
+      images: imagesResponse.data.backdrops.slice(0, 7)
     }
 
     it('success', async () => {
@@ -78,14 +79,14 @@ describe('movie actions', () => {
   })
 
   describe('changeMovieInFavorite', () => {
-    const props = { movieId: 123, inFavorite: true }
+    const props = { inFavorite: true, movieId: 123 }
     const action = actions.changeMovieInFavorite(props)
 
     const request = {
-      url: routes.addToFovorite(123),
+      data: { favorite: props.inFavorite, media_id: props.movieId, media_type: 'movie' },
       method: 'post',
       params: { session_id: 'session_id' },
-      data: { media_type: 'movie', media_id: props.movieId, favorite: props.inFavorite }
+      url: routes.addToFovorite(123)
     }
     const response = { data: { success: true } }
     const movieDetailRequest = { url: routes.getMovieDetails('123') }
@@ -115,7 +116,7 @@ describe('movie actions', () => {
     })
 
     it('works with other data', async () => {
-      const props = { movieId: 123, inFavorite: false }
+      const props = { inFavorite: false, movieId: 123 }
       const action = actions.changeMovieInFavorite(props)
       requestSpy.mockResolvedValueOnce(response)
       const notification = showNotification({
@@ -129,14 +130,14 @@ describe('movie actions', () => {
   })
 
   describe('changeMovieInWatchlist', () => {
-    const props = { movieId: 123, inWatchlist: true }
+    const props = { inWatchlist: true, movieId: 123 }
     const action = actions.changeMovieInWatchlist(props)
 
     const request = {
-      url: routes.addToWatchlist(123),
+      data: { media_id: props.movieId, media_type: 'movie', watchlist: props.inWatchlist },
       method: 'post',
       params: { session_id: 'session_id' },
-      data: { media_type: 'movie', media_id: props.movieId, watchlist: props.inWatchlist }
+      url: routes.addToWatchlist(123)
     }
     const response = { data: { success: true } }
     const movieDetailRequest = { url: routes.getMovieDetails('123') }
@@ -166,7 +167,7 @@ describe('movie actions', () => {
     })
 
     it('works with other data', async () => {
-      const props = { movieId: 123, inWatchlist: false }
+      const props = { inWatchlist: false, movieId: 123 }
       const action = actions.changeMovieInWatchlist(props)
       requestSpy.mockResolvedValueOnce(response)
       const notification = showNotification({

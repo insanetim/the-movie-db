@@ -1,11 +1,11 @@
-import { Modal } from 'antd'
 import { act, renderHook } from '@testing-library/react'
-
-import { dispatch } from 'src/__mocks__/react-redux'
+import { Modal } from 'antd'
 import mockAccount from 'src/__mocks__/mockAccount'
+import { dispatch } from 'src/__mocks__/react-redux'
+import { changeMovieInWatchlist } from 'src/store/movie/actions'
 import { accountSelector } from 'src/store/session/selectors'
 import { fetchWatchlist } from 'src/store/watchlist/actions'
-import { changeMovieInWatchlist } from 'src/store/movie/actions'
+
 import useContainer from '../hook'
 
 jest.mock('src/store/watchlist/actions')
@@ -17,10 +17,10 @@ jest.mock('src/store/session/selectors', () => ({
 }))
 
 jest.mock('src/store/watchlist/selectors', () => ({
-  watchlistMoviesSelector: jest.fn(() => null),
-  watchlistPageSelector: jest.fn(() => 1),
+  watchlistErrorSelector: jest.fn(() => null),
   watchlistLoadingSelector: jest.fn(() => true),
-  watchlistErrorSelector: jest.fn(() => null)
+  watchlistMoviesSelector: jest.fn(() => null),
+  watchlistPageSelector: jest.fn(() => 1)
 }))
 
 describe('Watchlist useContainer hook', () => {
@@ -54,13 +54,13 @@ describe('Watchlist useContainer hook', () => {
     onOk()
 
     expect(confirmSpy).toHaveBeenCalledWith({
-      title: 'Do you want to delete movie from watchlist?',
-      onOk
+      onOk,
+      title: 'Do you want to delete movie from watchlist?'
     })
     expect(dispatch).toHaveBeenCalledWith(
       changeMovieInWatchlist({
-        movieId: 123,
-        inWatchlist: false
+        inWatchlist: false,
+        movieId: 123
       })
     )
   })

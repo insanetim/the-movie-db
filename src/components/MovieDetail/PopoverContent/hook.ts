@@ -1,8 +1,9 @@
-import type { PopoverContentHook, PopoverContentHookProps } from './types'
 import { useAppDispatch, useAppSelector } from 'src/hooks/useRedux'
 import { showModal } from 'src/store/app/actions'
 import { addToList } from 'src/store/lists/actions'
 import { listsSelector } from 'src/store/lists/selectors'
+
+import type { PopoverContentHook, PopoverContentHookProps } from './types'
 
 const useContainer = ({ movieId, setPopoverOpen }: PopoverContentHookProps): PopoverContentHook => {
   const dispatch = useAppDispatch()
@@ -11,8 +12,8 @@ const useContainer = ({ movieId, setPopoverOpen }: PopoverContentHookProps): Pop
   const handleAddToNewList = () => {
     dispatch(
       showModal({
-        modalType: 'MODAL_CREATE_LIST',
-        modalProps: { movieId }
+        modalProps: { movieId },
+        modalType: 'MODAL_CREATE_LIST'
       })
     )
     setPopoverOpen(false)
@@ -23,7 +24,7 @@ const useContainer = ({ movieId, setPopoverOpen }: PopoverContentHookProps): Pop
     setPopoverOpen(false)
   }
 
-  return { lists, handleAddToNewList, handleAddToList }
+  return { handleAddToList, handleAddToNewList, lists }
 }
 
 export default useContainer

@@ -1,12 +1,13 @@
 import { render } from '@testing-library/react'
-
 import Wrapper from 'src/utils/testHelpers/wrapperMock'
+
 import type { ModalRootHook } from '../types'
+
 import ModalRoot from '../component'
 
 const mockedHookData: ModalRootHook = {
-  modalType: 'MODAL_CREATE_LIST',
   modalProps: null,
+  modalType: 'MODAL_CREATE_LIST',
   onCancel: jest.fn()
 }
 jest.mock('../hook', () => jest.fn(() => mockedHookData))

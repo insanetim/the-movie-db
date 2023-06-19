@@ -1,9 +1,10 @@
 import { render } from '@testing-library/react'
-
-import Wrapper from 'src/utils/testHelpers/wrapperMock'
-import type { ListItemHook } from '../types'
-import ListItem from '../component'
 import { mockList } from 'src/__mocks__/mockList'
+import Wrapper from 'src/utils/testHelpers/wrapperMock'
+
+import type { ListItemHook } from '../types'
+
+import ListItem from '../component'
 
 const mockedHookData: ListItemHook = {
   handleClick: jest.fn(),

@@ -1,9 +1,9 @@
 import { useEffect } from 'react'
 import { useLocation } from 'react-router-dom'
-
 import { useAppDispatch, useAppSelector } from 'src/hooks/useRedux'
-import { sessionIdSelector } from 'src/store/session/selectors'
 import { fetchAccount } from 'src/store/session/actions'
+import { sessionIdSelector } from 'src/store/session/selectors'
+
 import type { ProtectedRoutesHook } from './types'
 
 const useContainer = (): ProtectedRoutesHook => {
@@ -17,7 +17,7 @@ const useContainer = (): ProtectedRoutesHook => {
     }
   }, [dispatch, sessionId])
 
-  return { sessionId, location }
+  return { location, sessionId }
 }
 
 export default useContainer

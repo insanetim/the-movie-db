@@ -1,13 +1,15 @@
 import type { Location } from 'react-router-dom'
-import { render } from '@testing-library/react'
 
+import { render } from '@testing-library/react'
 import Wrapper from 'src/utils/testHelpers/wrapperMock'
-import ProtectedRoutes from '../component'
+
 import type { ProtectedRoutesHook } from '../types'
 
+import ProtectedRoutes from '../component'
+
 const mockedHookData: ProtectedRoutesHook = {
-  sessionId: 'test/sessionId',
-  location: {} as Location
+  location: {} as Location,
+  sessionId: 'test/sessionId'
 }
 jest.mock('../hook', () => jest.fn(() => mockedHookData))
 

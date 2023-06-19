@@ -1,24 +1,24 @@
 import { configureStore } from '@reduxjs/toolkit'
 
 import appReducer from './app'
-import sessionReducer from './session'
 import dashboardReducer from './dashboard'
-import listsReducer from './lists'
-import watchlistReducer from './watchlist'
 import favoriteReducer from './favorite'
+import listsReducer from './lists'
 import movieReducer from './movie'
+import sessionReducer from './session'
+import watchlistReducer from './watchlist'
 
 const store = configureStore({
+  devTools: process.env.NODE_ENV !== 'production',
   reducer: {
     app: appReducer,
-    session: sessionReducer,
     dashboard: dashboardReducer,
-    lists: listsReducer,
-    watchlist: watchlistReducer,
     favorite: favoriteReducer,
-    movie: movieReducer
-  },
-  devTools: process.env.NODE_ENV !== 'production'
+    lists: listsReducer,
+    movie: movieReducer,
+    session: sessionReducer,
+    watchlist: watchlistReducer
+  }
 })
 
 export default store

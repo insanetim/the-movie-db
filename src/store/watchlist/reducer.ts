@@ -1,12 +1,13 @@
 import { createReducer } from '@reduxjs/toolkit'
 
 import type { IWatchlistState } from './types'
+
 import { fetchWatchlist } from './actions'
 
 const initialState: IWatchlistState = {
-  movies: null,
+  error: null,
   loading: true,
-  error: null
+  movies: null
 }
 
 const watchlistReducer = createReducer(initialState, builder => {

@@ -3,56 +3,56 @@ import { RootState } from '../store/index'
 const mockState: RootState = {
   app: {
     modal: {
-      modalType: null,
-      modalProps: null
+      modalProps: null,
+      modalType: null
     },
     notifications: []
   },
-  session: {
-    sessionId: '',
-    account: null,
-    loading: false
-  },
   dashboard: {
-    trending: {
-      movies: null,
-      page: 1,
-      loading: true,
-      error: null
-    },
     search: {
-      movies: null,
-      page: 1,
+      error: null,
       loading: true,
-      error: null
+      movies: null,
+      page: 1
+    },
+    trending: {
+      error: null,
+      loading: true,
+      movies: null,
+      page: 1
     }
+  },
+  favorite: {
+    error: null,
+    loading: true,
+    movies: null
   },
   lists: {
     createdLists: {
+      error: null,
       lists: null,
-      loading: true,
-      error: null
+      loading: true
     },
     listDetail: {
+      error: null,
       list: null,
-      loading: true,
-      error: null
+      loading: true
     }
   },
-  watchlist: {
-    movies: null,
-    loading: true,
-    error: null
-  },
-  favorite: {
-    movies: null,
-    loading: true,
-    error: null
-  },
   movie: {
-    movieDetail: null,
+    error: null,
     loading: true,
-    error: null
+    movieDetail: null
+  },
+  session: {
+    account: null,
+    loading: false,
+    sessionId: ''
+  },
+  watchlist: {
+    error: null,
+    loading: true,
+    movies: null
   }
 }
 

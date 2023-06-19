@@ -1,10 +1,10 @@
+import { LockOutlined, UserOutlined } from '@ant-design/icons'
 import { Button, Col, Form, Input, Layout, Row, Typography } from 'antd'
-import { UserOutlined, LockOutlined } from '@ant-design/icons'
 
 import useContainer from './hook'
 
 const Login: React.FC = () => {
-  const { loading, handleLogIn } = useContainer()
+  const { handleLogIn, loading } = useContainer()
 
   return (
     <div className='center'>
@@ -13,43 +13,43 @@ const Login: React.FC = () => {
           <div className='container'>
             <Row justify='center'>
               <Col
-                span={20}
-                md={12}
                 lg={8}
+                md={12}
+                span={20}
                 xl={6}
               >
                 <Form
-                  onFinish={handleLogIn}
                   autoComplete='off'
+                  onFinish={handleLogIn}
                 >
                   <Typography.Title>The Movie DB</Typography.Title>
                   <Form.Item
                     name='username'
-                    rules={[{ required: true, message: 'Username is required' }]}
+                    rules={[{ message: 'Username is required', required: true }]}
                   >
                     <Input
-                      prefix={<UserOutlined style={{ color: 'rgba(0,0,0,.25)' }} />}
                       placeholder='Username'
+                      prefix={<UserOutlined style={{ color: 'rgba(0,0,0,.25)' }} />}
                     />
                   </Form.Item>
                   <Form.Item
-                    name='password'
                     rules={[
-                      { required: true, message: 'Password is required' },
-                      { min: 4, message: 'Password must be at least 4 characters' }
+                      { message: 'Password is required', required: true },
+                      { message: 'Password must be at least 4 characters', min: 4 }
                     ]}
+                    name='password'
                   >
                     <Input
+                      placeholder='Password'
                       prefix={<LockOutlined style={{ color: 'rgba(0,0,0,.25)' }} />}
                       type='password'
-                      placeholder='Password'
                     />
                   </Form.Item>
                   <Form.Item>
                     <Button
-                      type='primary'
                       htmlType='submit'
                       loading={loading}
+                      type='primary'
                     >
                       Log in
                     </Button>
@@ -61,8 +61,8 @@ const Login: React.FC = () => {
                   Don&apos;t have The Movie Database account?{' '}
                   <Typography.Link
                     href='https://www.themoviedb.org/signup'
-                    target='_blank'
                     rel='noreferrer'
+                    target='_blank'
                   >
                     Sign up.
                   </Typography.Link>

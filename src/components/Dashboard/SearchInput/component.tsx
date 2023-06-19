@@ -1,6 +1,7 @@
-import { Row, Col, Input } from 'antd'
+import { Col, Input, Row } from 'antd'
 
 import type { SearchInputProps } from './types'
+
 import useContainer from './hook'
 
 const SearchInput: React.FC<SearchInputProps> = ({ query }) => {
@@ -12,19 +13,19 @@ const SearchInput: React.FC<SearchInputProps> = ({ query }) => {
       justify='center'
     >
       <Col
-        span={24}
-        md={14}
         lg={12}
+        md={14}
+        span={24}
         xl={10}
       >
         <Input.Search
-          placeholder='Enter movie name'
-          size='large'
-          enterButton='Search'
           allowClear
-          value={currentValue}
+          enterButton='Search'
           onChange={handleChange}
           onSearch={handleSearch}
+          placeholder='Enter movie name'
+          size='large'
+          value={currentValue}
         />
       </Col>
     </Row>

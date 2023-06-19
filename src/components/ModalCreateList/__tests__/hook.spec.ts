@@ -1,16 +1,17 @@
-import { act, renderHook } from '@testing-library/react'
 import type { FormInstance } from 'antd'
 
+import { act, renderHook } from '@testing-library/react'
 import { dispatch } from 'src/__mocks__/react-redux'
 import { hideModal } from 'src/store/app/actions'
 import { createList } from 'src/store/lists/actions'
+
 import useContainer from '../hook'
 
 jest.mock('src/store/lists/actions')
 
 describe('ModalCreateList useContainer hook', () => {
   const props = {
-    form: { submit: jest.fn(), resetFields: jest.fn() } as unknown as FormInstance,
+    form: { resetFields: jest.fn(), submit: jest.fn() } as unknown as FormInstance,
     movieId: 123
   }
 
@@ -31,7 +32,7 @@ describe('ModalCreateList useContainer hook', () => {
   })
 
   it('checks `handleSubmit` method', () => {
-    const listData = { name: 'test/name', description: 'test/description' }
+    const listData = { description: 'test/description', name: 'test/name' }
     const { result } = renderHook(() => useContainer(props))
 
     act(() => {

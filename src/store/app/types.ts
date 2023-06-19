@@ -1,25 +1,25 @@
-import type { NOTIFICATION_TYPE } from 'src/constants/app'
 import type { ModalProps, ModalTypes } from 'src/components/ModalRoot/types'
+import type { NOTIFICATION_TYPE } from 'src/constants/app'
 
 export interface IModalState {
-  modalType: ModalTypes | null
   modalProps: ModalProps | null
+  modalType: ModalTypes | null
 }
 
 export interface INotification {
-  id: string
-  messageType: NOTIFICATION_TYPE
-  messageText: string
   duration: number
+  id: string
+  messageText: string
+  messageType: NOTIFICATION_TYPE
 }
 
 export interface ShowModalProps {
-  modalType: ModalTypes
   modalProps?: ModalProps
+  modalType: ModalTypes
 }
 
 export interface ShowNotificationProps {
-  messageType?: NOTIFICATION_TYPE
-  messageText: string
   duration?: number
+  messageText: string
+  messageType?: NOTIFICATION_TYPE
 }

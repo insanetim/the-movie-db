@@ -1,11 +1,12 @@
 import { dispatch, getState } from 'src/__mocks__/react-redux'
 import httpClient from 'src/lib/api/httpClient'
 import { getFavorite } from 'src/lib/apiRoutes'
+
 import { fetchFavorite } from '../actions'
 
 jest.mock('src/store/session/selectors', () => ({
-  sessionIdSelector: jest.fn(() => 'session_id'),
-  accountSelector: jest.fn(() => ({ id: 123 }))
+  accountSelector: jest.fn(() => ({ id: 123 })),
+  sessionIdSelector: jest.fn(() => 'session_id')
 }))
 
 describe('fetchFavorite', () => {
@@ -13,8 +14,8 @@ describe('fetchFavorite', () => {
   const action = fetchFavorite(1)
 
   const request = {
-    url: getFavorite(123),
-    params: { session_id: 'session_id', page: 1 }
+    params: { page: 1, session_id: 'session_id' },
+    url: getFavorite(123)
   }
   const response = { data: 'test/data' }
 

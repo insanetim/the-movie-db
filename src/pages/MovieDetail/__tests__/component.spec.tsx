@@ -1,18 +1,19 @@
 import { fireEvent, render } from '@testing-library/react'
 import { mergeDeepRight } from 'ramda'
-
-import type { MovieDetailHook } from '../types'
 import { mockMovieDetail } from 'src/__mocks__/mockMovie'
 import Wrapper from 'src/utils/testHelpers/wrapperMock'
+
+import type { MovieDetailHook } from '../types'
+
 import Movie from '../component'
 import useContainer from '../hook'
 
 const mockedHookData: MovieDetailHook = {
-  movie: mockMovieDetail,
-  loading: false,
   error: null,
   handleFavoriteClick: jest.fn(),
   handleWatchlistClick: jest.fn(),
+  loading: false,
+  movie: mockMovieDetail,
   popoverOpen: false,
   setPopoverOpen: jest.fn()
 }

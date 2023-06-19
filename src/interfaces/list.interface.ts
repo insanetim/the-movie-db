@@ -8,7 +8,7 @@ export interface IList {
   item_count: number
   list_type: string
   name: string
-  poster_path: string | null
+  poster_path: null | string
 }
 
 export interface IListDetail extends IList {

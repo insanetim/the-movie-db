@@ -1,6 +1,6 @@
 export interface IAvatar {
   gravatar: { hash: string }
-  tmdb: { avatar_path: string | null }
+  tmdb: { avatar_path: null | string }
 }
 
 export interface IAccount {

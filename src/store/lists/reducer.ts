@@ -1,13 +1,15 @@
+import type { IListDetail } from 'src/interfaces/list.interface'
+
 import { combineReducers, createReducer } from '@reduxjs/toolkit'
 
-import type { IListDetail } from 'src/interfaces/list.interface'
 import type { IListState, IListsState } from './types'
+
 import { fetchList, fetchLists, removeFromList } from './actions'
 
 const listsInitialState: IListsState = {
+  error: null,
   lists: null,
-  loading: true,
-  error: null
+  loading: true
 }
 
 export const createdListsReducer = createReducer(listsInitialState, builder => {
@@ -27,9 +29,9 @@ export const createdListsReducer = createReducer(listsInitialState, builder => {
 })
 
 const listInitialState: IListState = {
+  error: null,
   list: null,
-  loading: true,
-  error: null
+  loading: true
 }
 
 export const listDetailReducer = createReducer(listInitialState, builder => {

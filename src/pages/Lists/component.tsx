@@ -1,16 +1,16 @@
 import { PlusCircleOutlined } from '@ant-design/icons'
-
-import isNull from 'src/utils/helpers/isNull'
-import Loading from 'src/components/UI/Loading'
-import Error from 'src/components/UI/Error'
+import ListsList from 'src/components/Lists/ListsList'
 import Empty from 'src/components/UI/Empty/component'
+import Error from 'src/components/UI/Error'
+import Loading from 'src/components/UI/Loading'
 import PageTitle from 'src/components/UI/PageTitle'
 import Pagination from 'src/components/UI/Pagination'
-import ListsList from 'src/components/Lists/ListsList'
+import isNull from 'src/utils/helpers/isNull'
+
 import useContainer from './hook'
 
 const Lists: React.FC = () => {
-  const { lists, loading, error, handlePagination, handleCreateList } = useContainer()
+  const { error, handleCreateList, handlePagination, lists, loading } = useContainer()
 
   let content = <Empty />
 
@@ -31,9 +31,9 @@ const Lists: React.FC = () => {
         {lists.total_pages > 1 && (
           <Pagination
             current={lists.page}
+            onChange={handlePagination}
             pageSize={20}
             total={lists.total_results}
-            onChange={handlePagination}
           />
         )}
       </>

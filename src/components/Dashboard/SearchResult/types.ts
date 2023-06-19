@@ -7,8 +7,8 @@ export interface SearchResultProps {
 export interface SearchResultHookProps extends SearchResultProps {}
 
 export interface SearchResultHook {
-  movies: IMoviesList | null
-  loading: boolean
-  error: string | null
+  error: null | string
   handlePagination: (page: number) => void
+  loading: boolean
+  movies: IMoviesList | null
 }

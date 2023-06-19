@@ -1,9 +1,9 @@
+import { Modal } from 'antd'
 import { MouseEvent } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { Modal } from 'antd'
-
 import { useAppDispatch } from 'src/hooks/useRedux'
 import { deleteList } from 'src/store/lists/actions'
+
 import type { ListItemHook, ListItemHookProps } from './types'
 
 const useContainer = ({ listId }: ListItemHookProps): ListItemHook => {
@@ -22,8 +22,8 @@ const useContainer = ({ listId }: ListItemHookProps): ListItemHook => {
     }
 
     Modal.confirm({
-      title: 'Do you want to delete list?',
-      onOk
+      onOk,
+      title: 'Do you want to delete list?'
     })
 
     return onOk

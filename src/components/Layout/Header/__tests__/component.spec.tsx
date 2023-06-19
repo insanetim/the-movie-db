@@ -1,10 +1,11 @@
 import { render } from '@testing-library/react'
-
+import { mergeDeepRight } from 'ramda'
 import mockAccount from 'src/__mocks__/mockAccount'
 import Wrapper from 'src/utils/testHelpers/wrapperMock'
+
 import type { HeaderHook } from '../types'
+
 import Header from '../component'
-import { mergeDeepRight } from 'ramda'
 
 const mockedHookData: HeaderHook = {
   account: mockAccount,

@@ -1,14 +1,15 @@
 import { createReducer } from '@reduxjs/toolkit'
 import Cookies from 'js-cookie'
-
-import type { ISessionState } from './types'
-import { fetchAccount, logIn, logOut } from './actions'
 import { IAccount } from 'src/interfaces/account.interface'
 
+import type { ISessionState } from './types'
+
+import { fetchAccount, logIn, logOut } from './actions'
+
 const initialState: ISessionState = {
-  sessionId: Cookies.get('session_id') || '',
   account: null,
-  loading: false
+  loading: false,
+  sessionId: Cookies.get('session_id') || ''
 }
 
 const sessionReducer = createReducer(initialState, builder => {

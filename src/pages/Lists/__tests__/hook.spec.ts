@@ -1,10 +1,10 @@
 import { act, renderHook } from '@testing-library/react'
-
 import mockAccount from 'src/__mocks__/mockAccount'
 import { dispatch } from 'src/__mocks__/react-redux'
-import { accountSelector } from 'src/store/session/selectors'
 import { showModal } from 'src/store/app/actions'
 import { fetchLists } from 'src/store/lists/actions'
+import { accountSelector } from 'src/store/session/selectors'
+
 import useContainer from '../hook'
 
 jest.mock('src/store/lists/actions')
@@ -14,9 +14,9 @@ jest.mock('src/store/session/selectors', () => ({
 }))
 
 jest.mock('src/store/lists/selectors', () => ({
-  listsSelector: jest.fn(() => null),
+  listsErrorSelector: jest.fn(() => null),
   listsLoadingSelector: jest.fn(() => true),
-  listsErrorSelector: jest.fn(() => null)
+  listsSelector: jest.fn(() => null)
 }))
 
 describe('Favotites useContainer hook', () => {

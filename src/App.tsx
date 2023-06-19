@@ -1,10 +1,9 @@
-import { lazy, Suspense } from 'react'
+import { Suspense, lazy } from 'react'
 import { Route, Routes } from 'react-router-dom'
-
-import ProtectedRoutes from 'src/components/ProtectedRoutes'
 import Layout from 'src/components/Layout'
-import ModalRoot from './components/ModalRoot/component'
-import NotificationsRoot from './components/NotificationsRoot'
+import ModalRoot from 'src/components/ModalRoot/component'
+import NotificationsRoot from 'src/components/NotificationsRoot'
+import ProtectedRoutes from 'src/components/ProtectedRoutes'
 
 export const Login = lazy(() => import('src/pages/Login'))
 export const Dashboard = lazy(() => import('src/pages/Dashboard'))
@@ -20,35 +19,35 @@ const App: React.FC = () => (
       <Route element={<ProtectedRoutes />}>
         <Route element={<Layout />}>
           <Route
-            index
             element={<Dashboard />}
+            index
           />
           <Route
-            path='/lists'
             element={<Lists />}
+            path='/lists'
           />
           <Route
-            path='/list/:listId'
             element={<ListDetail />}
+            path='/list/:listId'
           />
           <Route
-            path='/watchlist'
             element={<Watchlist />}
+            path='/watchlist'
           />
           <Route
-            path='/favorite'
             element={<Favorite />}
+            path='/favorite'
           />
 
           <Route
-            path='/movie/:movieId'
             element={<MovieDetail />}
+            path='/movie/:movieId'
           />
         </Route>
       </Route>
       <Route
-        path='/login'
         element={<Login />}
+        path='/login'
       />
     </Routes>
     <ModalRoot />

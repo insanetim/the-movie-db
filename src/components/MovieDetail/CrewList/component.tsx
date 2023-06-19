@@ -1,6 +1,7 @@
-import { Row, Col, Typography } from 'antd'
+import { Col, Row, Typography } from 'antd'
 
 import type { CrewListProps } from './types'
+
 import CreditsItem from '../CreditsItem'
 
 const CrewList: React.FC<CrewListProps> = ({ crew }) => (
@@ -13,16 +14,16 @@ const CrewList: React.FC<CrewListProps> = ({ crew }) => (
         {crew.map(item => (
           <Col
             key={item.credit_id}
-            span={24}
-            sm={12}
-            md={8}
             lg={8}
+            md={8}
+            sm={12}
+            span={24}
             xl={6}
           >
             <CreditsItem
+              description={item.job}
               profilePath={item.profile_path}
               title={item.name}
-              description={item.job}
             />
           </Col>
         ))}

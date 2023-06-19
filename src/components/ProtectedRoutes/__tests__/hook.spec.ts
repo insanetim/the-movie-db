@@ -1,8 +1,8 @@
 import { renderHook } from '@testing-library/react'
-
 import { dispatch } from 'src/__mocks__/react-redux'
-import { sessionIdSelector } from 'src/store/session/selectors'
 import { fetchAccount } from 'src/store/session/actions'
+import { sessionIdSelector } from 'src/store/session/selectors'
+
 import useContainer from '../hook'
 
 jest.mock('src/store/session/actions')

@@ -1,11 +1,11 @@
+import { Modal } from 'antd'
 import { MouseEvent, useEffect } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
-import { Modal } from 'antd'
-
-import { deleteList, removeFromList, fetchList } from 'src/store/lists/actions'
-import { listSelector, listErrorSelector, listLoadingSelector } from 'src/store/lists/selectors'
-import { ListDetailHook } from './types'
 import { useAppDispatch, useAppSelector } from 'src/hooks/useRedux'
+import { deleteList, fetchList, removeFromList } from 'src/store/lists/actions'
+import { listErrorSelector, listLoadingSelector, listSelector } from 'src/store/lists/selectors'
+
+import { ListDetailHook } from './types'
 
 const useContainer = (): ListDetailHook => {
   const dispatch = useAppDispatch()
@@ -22,8 +22,8 @@ const useContainer = (): ListDetailHook => {
     }
 
     Modal.confirm({
-      title: 'Do you want to delete list?',
-      onOk
+      onOk,
+      title: 'Do you want to delete list?'
     })
 
     return onOk
@@ -37,8 +37,8 @@ const useContainer = (): ListDetailHook => {
     }
 
     Modal.confirm({
-      title: 'Do you want to delete movie from this list?',
-      onOk
+      onOk,
+      title: 'Do you want to delete movie from this list?'
     })
 
     return onOk
@@ -48,7 +48,7 @@ const useContainer = (): ListDetailHook => {
     dispatch(fetchList(listId))
   }, [dispatch, listId])
 
-  return { list, loading, error, handleListDelete, handleMovieDelete }
+  return { error, handleListDelete, handleMovieDelete, list, loading }
 }
 
 export default useContainer

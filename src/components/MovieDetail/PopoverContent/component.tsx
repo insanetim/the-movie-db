@@ -1,18 +1,19 @@
 import { Button } from 'antd'
+import isNull from 'src/utils/helpers/isNull'
 
 import type { PopoverContentProps } from './types'
-import isNull from 'src/utils/helpers/isNull'
+
 import useContainer from './hook'
 
 const PopoverContent: React.FC<PopoverContentProps> = props => {
-  const { lists, handleAddToNewList, handleAddToList } = useContainer(props)
+  const { handleAddToList, handleAddToNewList, lists } = useContainer(props)
 
   return (
     <>
       <div>
         <Button
-          type='link'
           onClick={handleAddToNewList}
+          type='link'
         >
           Create new list ...
         </Button>
@@ -21,9 +22,9 @@ const PopoverContent: React.FC<PopoverContentProps> = props => {
         lists.results.map(list => (
           <div key={list.id}>
             <Button
-              type='link'
-              onClick={() => handleAddToList(list.id)}
               data-testid='addToListButton'
+              onClick={() => handleAddToList(list.id)}
+              type='link'
             >
               {list.name}
             </Button>

@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
-
 import { useAppDispatch, useAppSelector } from 'src/hooks/useRedux'
 import { changeMovieInFavorite, changeMovieInWatchlist, fetchMovie } from 'src/store/movie/actions'
-import { movieSelector, movieLoadingSelector, movieErrorSelector } from 'src/store/movie/selectors'
+import { movieErrorSelector, movieLoadingSelector, movieSelector } from 'src/store/movie/selectors'
+
 import type { MovieDetailHook } from './types'
 
 const useContainer = (): MovieDetailHook => {
@@ -17,8 +17,8 @@ const useContainer = (): MovieDetailHook => {
   const handleFavoriteClick = () => {
     dispatch(
       changeMovieInFavorite({
-        movieId,
-        inFavorite: !movie?.accountStates.favorite
+        inFavorite: !movie?.accountStates.favorite,
+        movieId
       })
     )
   }
@@ -26,8 +26,8 @@ const useContainer = (): MovieDetailHook => {
   const handleWatchlistClick = () => {
     dispatch(
       changeMovieInWatchlist({
-        movieId,
-        inWatchlist: !movie?.accountStates.watchlist
+        inWatchlist: !movie?.accountStates.watchlist,
+        movieId
       })
     )
   }
@@ -37,11 +37,11 @@ const useContainer = (): MovieDetailHook => {
   }, [dispatch, movieId])
 
   return {
-    movie,
-    loading,
     error,
     handleFavoriteClick,
     handleWatchlistClick,
+    loading,
+    movie,
     popoverOpen,
     setPopoverOpen
   }

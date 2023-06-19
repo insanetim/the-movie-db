@@ -10,11 +10,11 @@ export const getTrending = '/trending/movie/day'
 export const searchMovies = '/search/movie'
 // Lists
 export const getCreatedLists = (accountId: number) => `/account/${accountId}/lists`
-export const getListDetails = (listId: string | number) => `/list/${listId}`
+export const getListDetails = (listId: number | string) => `/list/${listId}`
 export const createList = '/list'
-export const addToList = (listId: string | number) => `/list/${listId}/add_item`
-export const removeFromList = (listId: string | number) => `/list/${listId}/remove_item`
-export const deleteList = (listId: string | number) => `/list/${listId}`
+export const addToList = (listId: number | string) => `/list/${listId}/add_item`
+export const removeFromList = (listId: number | string) => `/list/${listId}/remove_item`
+export const deleteList = (listId: number | string) => `/list/${listId}`
 // Watchlist
 export const getWatchlist = (accountId: number) => `/account/${accountId}/watchlist/movies`
 export const addToWatchlist = (accountId: number) => `/account/${accountId}/watchlist`

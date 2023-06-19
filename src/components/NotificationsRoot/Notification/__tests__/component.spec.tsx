@@ -1,7 +1,8 @@
 import { render } from '@testing-library/react'
-
 import { NOTIFICATION_DURATION, NOTIFICATION_TYPE } from 'src/constants/app'
+
 import type { NotificationHook } from '../types'
+
 import Notification from '../component'
 
 const mockedHookData: NotificationHook = {
@@ -12,11 +13,11 @@ jest.mock('../hook', () => jest.fn(() => mockedHookData))
 describe('Notification component', () => {
   it('matches snapshot', () => {
     const props = {
-      id: 'nanoid',
-      messageType: NOTIFICATION_TYPE.SUCCESS,
-      messageText: 'test/message',
       duration: NOTIFICATION_DURATION,
-      hideNotification: jest.fn()
+      hideNotification: jest.fn(),
+      id: 'nanoid',
+      messageText: 'test/message',
+      messageType: NOTIFICATION_TYPE.SUCCESS
     }
     const { asFragment } = render(<Notification {...props} />)
 

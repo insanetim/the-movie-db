@@ -1,6 +1,6 @@
 import axios from 'axios'
-
 import { API_URL } from 'src/constants/app'
+
 import requestInterceptor from './requestInterceptor'
 
 const baseURL = API_URL

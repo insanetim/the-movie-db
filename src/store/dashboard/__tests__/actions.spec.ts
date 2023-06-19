@@ -1,6 +1,7 @@
 import { dispatch, getState } from 'src/__mocks__/react-redux'
 import httpClient from 'src/lib/api/httpClient'
 import { getTrending, searchMovies } from 'src/lib/apiRoutes'
+
 import { fetchSearch, fetchTrending, setSearchPage, setTrendingPage } from '../actions'
 
 describe('dashboard actions', () => {
@@ -9,7 +10,7 @@ describe('dashboard actions', () => {
   describe('fetchTrending', () => {
     const action = fetchTrending(1)
 
-    const request = { url: getTrending, params: { page: 1 } }
+    const request = { params: { page: 1 }, url: getTrending }
     const response = { data: 'test/data' }
 
     it('success', async () => {
@@ -35,8 +36,8 @@ describe('dashboard actions', () => {
     const action = fetchSearch({ page: 1, query: 'test/query' })
 
     const request = {
-      url: searchMovies,
-      params: { page: 1, query: 'test/query' }
+      params: { page: 1, query: 'test/query' },
+      url: searchMovies
     }
     const response = { data: 'test/data' }
 
@@ -61,8 +62,8 @@ describe('dashboard actions', () => {
 
   it('setTrendingPage', () => {
     const expectedAction = {
-      type: setTrendingPage.toString(),
-      payload: 3
+      payload: 3,
+      type: setTrendingPage.toString()
     }
 
     expect(setTrendingPage(3)).toEqual(expectedAction)
@@ -70,8 +71,8 @@ describe('dashboard actions', () => {
 
   it('setSearchPage', () => {
     const expectedAction = {
-      type: setSearchPage.toString(),
-      payload: 3
+      payload: 3,
+      type: setSearchPage.toString()
     }
 
     expect(setSearchPage(3)).toEqual(expectedAction)

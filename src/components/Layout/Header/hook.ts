@@ -1,8 +1,8 @@
 import { useLocation, useNavigate } from 'react-router-dom'
-
 import { useAppDispatch, useAppSelector } from 'src/hooks/useRedux'
-import { accountSelector } from 'src/store/session/selectors'
 import { logOut } from 'src/store/session/actions'
+import { accountSelector } from 'src/store/session/selectors'
+
 import type { HeaderHook } from './types'
 
 const useContainer = (): HeaderHook => {

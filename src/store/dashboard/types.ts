@@ -1,13 +1,13 @@
 import type { IMoviesList } from 'src/interfaces/movie.interface'
 
 export interface IDashboardState {
+  error: null | string
+  loading: boolean
   movies: IMoviesList | null
   page: number
-  loading: boolean
-  error: string | null
 }
 
 export interface FetchSearchProps {
   page: number
-  query: string | null
+  query: null | string
 }

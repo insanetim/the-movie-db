@@ -1,15 +1,15 @@
 import { MinusCircleOutlined } from '@ant-design/icons'
-
-import isNull from 'src/utils/helpers/isNull'
-import Loading from 'src/components/UI/Loading'
-import Error from 'src/components/UI/Error'
-import Empty from 'src/components/UI/Empty'
-import PageTitle from 'src/components/UI/PageTitle'
 import MoviesList from 'src/components/Movies/MoviesList'
+import Empty from 'src/components/UI/Empty'
+import Error from 'src/components/UI/Error'
+import Loading from 'src/components/UI/Loading'
+import PageTitle from 'src/components/UI/PageTitle'
+import isNull from 'src/utils/helpers/isNull'
+
 import useContainer from './hook'
 
 const ListDetails: React.FC = () => {
-  const { list, loading, error, handleListDelete, handleMovieDelete } = useContainer()
+  const { error, handleListDelete, handleMovieDelete, list, loading } = useContainer()
 
   if (loading) {
     return (
@@ -32,8 +32,8 @@ const ListDetails: React.FC = () => {
   if (!isNull(list) && list.items.length > 0) {
     content = (
       <MoviesList
-        movies={list.items}
         handleMovieDelete={handleMovieDelete}
+        movies={list.items}
       />
     )
   }

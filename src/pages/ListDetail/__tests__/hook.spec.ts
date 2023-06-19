@@ -1,15 +1,15 @@
-import { useNavigate, useParams } from 'react-router-dom'
-import { Modal } from 'antd'
 import { act, renderHook } from '@testing-library/react'
-
+import { Modal } from 'antd'
+import { useNavigate, useParams } from 'react-router-dom'
 import { dispatch } from 'src/__mocks__/react-redux'
-import { deleteList, removeFromList, fetchList } from 'src/store/lists/actions'
+import { deleteList, fetchList, removeFromList } from 'src/store/lists/actions'
+
 import useContainer from '../hook'
 
 jest.mock('src/store/lists/selectors', () => ({
-  listSelector: jest.fn(() => null),
+  listErrorSelector: jest.fn(() => null),
   listLoadingSelector: jest.fn(() => true),
-  listErrorSelector: jest.fn(() => null)
+  listSelector: jest.fn(() => null)
 }))
 
 jest.mock('src/store/lists/actions')
@@ -51,8 +51,8 @@ describe('ListDetail useContainer hook', () => {
     await onOk()
 
     expect(modalSpy).toHaveBeenCalledWith({
-      title: 'Do you want to delete list?',
-      onOk
+      onOk,
+      title: 'Do you want to delete list?'
     })
     expect(dispatch).toHaveBeenCalledWith(deleteList(123))
     expect(navigate).toHaveBeenCalledWith('/lists')
@@ -72,8 +72,8 @@ describe('ListDetail useContainer hook', () => {
     onOk()
 
     expect(modalSpy).toHaveBeenCalledWith({
-      title: 'Do you want to delete movie from this list?',
-      onOk
+      onOk,
+      title: 'Do you want to delete movie from this list?'
     })
     expect(dispatch).toHaveBeenCalledWith(removeFromList({ listId: 123, movieId: 123 }))
   })

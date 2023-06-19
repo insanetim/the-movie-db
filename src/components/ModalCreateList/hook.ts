@@ -1,7 +1,8 @@
 import { useAppDispatch } from 'src/hooks/useRedux'
 import { hideModal } from 'src/store/app/actions'
 import { createList } from 'src/store/lists/actions'
-import type { ModalCreateListHook, ModalCreateListHookProps, ListData } from './types'
+
+import type { ListData, ModalCreateListHook, ModalCreateListHookProps } from './types'
 
 const useContainer = ({ form, movieId }: ModalCreateListHookProps): ModalCreateListHook => {
   const dispatch = useAppDispatch()
@@ -19,7 +20,7 @@ const useContainer = ({ form, movieId }: ModalCreateListHookProps): ModalCreateL
     form.resetFields()
   }
 
-  return { handleOk, handleSubmit, handleAfterClose }
+  return { handleAfterClose, handleOk, handleSubmit }
 }
 
 export default useContainer

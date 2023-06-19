@@ -1,20 +1,21 @@
 import { render } from '@testing-library/react'
-
 import { mockMovie } from 'src/__mocks__/mockMovie'
 import Wrapper from 'src/utils/testHelpers/wrapperMock'
+
 import type { TrendingHook } from '../types'
+
 import Trending from '../component'
 
 const mockedHookData: TrendingHook = {
+  error: null,
+  handlePagination: () => jest.fn(),
+  loading: false,
   movies: {
     page: 1,
     results: [mockMovie],
     total_pages: 10,
     total_results: 200
-  },
-  loading: false,
-  error: null,
-  handlePagination: () => jest.fn()
+  }
 }
 jest.mock('../hook', () => jest.fn(() => mockedHookData))
 

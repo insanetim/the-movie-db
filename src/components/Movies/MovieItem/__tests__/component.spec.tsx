@@ -1,10 +1,11 @@
 import { fireEvent, render } from '@testing-library/react'
-
-import Wrapper from 'src/utils/testHelpers/wrapperMock'
-import type { MovieItemHook } from '../types'
-import MovieItem from '../component'
-import { mockMovie } from 'src/__mocks__/mockMovie'
 import { mergeDeepRight } from 'ramda'
+import { mockMovie } from 'src/__mocks__/mockMovie'
+import Wrapper from 'src/utils/testHelpers/wrapperMock'
+
+import type { MovieItemHook } from '../types'
+
+import MovieItem from '../component'
 
 const mockedHookData: MovieItemHook = {
   handleClick: jest.fn()
@@ -13,8 +14,8 @@ jest.mock('../hook', () => jest.fn(() => mockedHookData))
 
 describe('MovieItem component', () => {
   const props = {
-    movie: mockMovie,
-    handleMovieDelete: jest.fn()
+    handleMovieDelete: jest.fn(),
+    movie: mockMovie
   }
 
   it('matches snapshot', () => {

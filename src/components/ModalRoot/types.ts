@@ -5,7 +5,7 @@ export type ModalTypes = Extract<keyof ModalsMap, string>
 export type ModalProps = React.ComponentProps<ModalsMap[ModalTypes]>
 
 export interface ModalRootHook {
-  modalType: ModalTypes | null
   modalProps: ModalProps | null
+  modalType: ModalTypes | null
   onCancel: () => void
 }

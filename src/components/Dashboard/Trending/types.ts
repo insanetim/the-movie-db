@@ -1,8 +1,8 @@
 import type { IMoviesList } from 'src/interfaces/movie.interface'
 
 export interface TrendingHook {
-  movies: IMoviesList | null
-  loading: boolean
-  error: string | null
+  error: null | string
   handlePagination: (page: number) => void
+  loading: boolean
+  movies: IMoviesList | null
 }

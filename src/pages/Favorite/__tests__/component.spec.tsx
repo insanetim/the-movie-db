@@ -1,21 +1,22 @@
 import { render } from '@testing-library/react'
-
-import type { FavoriteHook } from '../types'
 import { mockMovie } from 'src/__mocks__/mockMovie'
 import Wrapper from 'src/utils/testHelpers/wrapperMock'
+
+import type { FavoriteHook } from '../types'
+
 import Favorite from '../component'
 
 const mockedHookData: FavoriteHook = {
+  error: null,
+  handleMovieDelete: jest.fn(),
+  handlePagination: jest.fn(),
+  loading: false,
   movies: {
     page: 1,
     results: [mockMovie],
     total_pages: 10,
     total_results: 200
-  },
-  loading: false,
-  error: null,
-  handlePagination: jest.fn(),
-  handleMovieDelete: jest.fn()
+  }
 }
 jest.mock('../hook', () => jest.fn(() => mockedHookData))
 

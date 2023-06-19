@@ -1,9 +1,3 @@
-import { createAsyncThunk } from '@reduxjs/toolkit'
-import { pathOr } from 'ramda'
-
-import { NOTIFICATION_TYPE } from 'src/constants/app'
-import httpClient from 'src/lib/api/httpClient'
-import * as routes from 'src/lib/apiRoutes'
 import type { IAccount } from 'src/interfaces/account.interface'
 import type {
   IMovieAccountStates,
@@ -12,18 +6,26 @@ import type {
   IMovieDetailExtended,
   IMovieImages
 } from 'src/interfaces/movie.interface'
+
+import { createAsyncThunk } from '@reduxjs/toolkit'
+import { pathOr } from 'ramda'
+import { NOTIFICATION_TYPE } from 'src/constants/app'
+import httpClient from 'src/lib/api/httpClient'
+import * as routes from 'src/lib/apiRoutes'
+import { accountSelector, sessionIdSelector } from 'src/store/session/selectors'
+
 import type { RootState } from '../index'
 import type { ChangeMovieInFavoriteProps, ChangeMovieInWatchlistProps, MovieId } from './types'
-import { accountSelector, sessionIdSelector } from 'src/store/session/selectors'
+
 import { showNotification } from '../app/actions'
-import { fetchLists } from '../lists/actions'
 import { fetchFavorite } from '../favorite/actions'
+import { fetchLists } from '../lists/actions'
 import { fetchWatchlist } from '../watchlist/actions'
 import { CHANGE_MOVIE_IN_FAVORITE, CHANGE_MOVIE_IN_WATCHLIST, FETCH_MOVIE } from './constants'
 
 export const fetchMovie = createAsyncThunk(
   FETCH_MOVIE,
-  async (movieId: MovieId, { dispatch, getState, rejectWithValue, fulfillWithValue }) => {
+  async (movieId: MovieId, { dispatch, fulfillWithValue, getState, rejectWithValue }) => {
     const sessionId = sessionIdSelector(getState() as RootState)
 
     try {
@@ -32,8 +34,8 @@ export const fetchMovie = createAsyncThunk(
         url: routes.getMovieImages(movieId.toString())
       })
       const { data: accountStates } = await httpClient.request<IMovieAccountStates>({
-        url: routes.getMovieAccountStates(movieId.toString()),
-        params: { session_id: sessionId }
+        params: { session_id: sessionId },
+        url: routes.getMovieAccountStates(movieId.toString())
       })
       const { data: credits } = await httpClient.request<IMovieCredits>({
         url: routes.getMovieCredits(movieId.toString())
@@ -41,9 +43,9 @@ export const fetchMovie = createAsyncThunk(
 
       const extendedData: IMovieDetailExtended = {
         ...data,
-        images: images.backdrops.slice(0, 7),
         accountStates,
-        credits
+        credits,
+        images: images.backdrops.slice(0, 7)
       }
 
       await dispatch(fetchLists(1))
@@ -59,16 +61,16 @@ export const fetchMovie = createAsyncThunk(
 
 export const changeMovieInFavorite = createAsyncThunk(
   CHANGE_MOVIE_IN_FAVORITE,
-  async ({ movieId, inFavorite }: ChangeMovieInFavoriteProps, { dispatch, getState }) => {
+  async ({ inFavorite, movieId }: ChangeMovieInFavoriteProps, { dispatch, getState }) => {
     const sessionId = sessionIdSelector(getState() as RootState)
     const { id: accountId } = accountSelector(getState() as RootState) as IAccount
 
     try {
       await httpClient.request({
-        url: routes.addToFovorite(accountId),
+        data: { favorite: inFavorite, media_id: movieId, media_type: 'movie' },
         method: 'post',
         params: { session_id: sessionId },
-        data: { media_type: 'movie', media_id: movieId, favorite: inFavorite }
+        url: routes.addToFovorite(accountId)
       })
 
       const {
@@ -84,8 +86,8 @@ export const changeMovieInFavorite = createAsyncThunk(
 
       dispatch(
         showNotification({
-          messageType: NOTIFICATION_TYPE.ERROR,
-          messageText
+          messageText,
+          messageType: NOTIFICATION_TYPE.ERROR
         })
       )
     }
@@ -94,16 +96,16 @@ export const changeMovieInFavorite = createAsyncThunk(
 
 export const changeMovieInWatchlist = createAsyncThunk(
   CHANGE_MOVIE_IN_WATCHLIST,
-  async ({ movieId, inWatchlist }: ChangeMovieInWatchlistProps, { dispatch, getState }) => {
+  async ({ inWatchlist, movieId }: ChangeMovieInWatchlistProps, { dispatch, getState }) => {
     const sessionId = sessionIdSelector(getState() as RootState)
     const { id: accountId } = accountSelector(getState() as RootState) as IAccount
 
     try {
       await httpClient.request({
-        url: routes.addToWatchlist(accountId),
+        data: { media_id: movieId, media_type: 'movie', watchlist: inWatchlist },
         method: 'post',
         params: { session_id: sessionId },
-        data: { media_type: 'movie', media_id: movieId, watchlist: inWatchlist }
+        url: routes.addToWatchlist(accountId)
       })
 
       const {
@@ -119,8 +121,8 @@ export const changeMovieInWatchlist = createAsyncThunk(
 
       dispatch(
         showNotification({
-          messageType: NOTIFICATION_TYPE.ERROR,
-          messageText
+          messageText,
+          messageType: NOTIFICATION_TYPE.ERROR
         })
       )
     }

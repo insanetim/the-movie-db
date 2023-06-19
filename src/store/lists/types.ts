@@ -1,19 +1,20 @@
-import { ListData } from 'src/components/ModalCreateList/types'
 import type { IListDetail, IListsList } from 'src/interfaces/list.interface'
 
+import { ListData } from 'src/components/ModalCreateList/types'
+
 export interface IListsState {
+  error: null | string
   lists: IListsList | null
   loading: boolean
-  error: string | null
 }
 
 export interface IListState {
+  error: null | string
   list: IListDetail | null
   loading: boolean
-  error: string | null
 }
 
-export type ListId = string | number
+export type ListId = number | string
 
 export interface CreateListProps {
   listData: ListData

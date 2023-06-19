@@ -1,13 +1,13 @@
-import { MouseEvent, useEffect } from 'react'
 import { Modal } from 'antd'
-
-import type { FavoriteHook } from './types'
+import { MouseEvent, useEffect } from 'react'
 import { useAppDispatch, useAppSelector } from 'src/hooks/useRedux'
-import isNull from 'src/utils/helpers/isNull'
 import { fetchFavorite } from 'src/store/favorite/actions'
+import { favoriteErrorSelector, favoriteLoadingSelector, favoriteMoviesSelector } from 'src/store/favorite/selectors'
 import { changeMovieInFavorite } from 'src/store/movie/actions'
 import { accountSelector } from 'src/store/session/selectors'
-import { favoriteMoviesSelector, favoriteLoadingSelector, favoriteErrorSelector } from 'src/store/favorite/selectors'
+import isNull from 'src/utils/helpers/isNull'
+
+import type { FavoriteHook } from './types'
 
 const useContainer = (): FavoriteHook => {
   const dispatch = useAppDispatch()
@@ -24,12 +24,12 @@ const useContainer = (): FavoriteHook => {
     event.stopPropagation()
 
     const onOk = () => {
-      dispatch(changeMovieInFavorite({ movieId, inFavorite: false }))
+      dispatch(changeMovieInFavorite({ inFavorite: false, movieId }))
     }
 
     Modal.confirm({
-      title: 'Do you want to delete movie from favorite?',
-      onOk
+      onOk,
+      title: 'Do you want to delete movie from favorite?'
     })
 
     return onOk
@@ -41,7 +41,7 @@ const useContainer = (): FavoriteHook => {
     }
   }, [account, dispatch])
 
-  return { movies, loading, error, handlePagination, handleMovieDelete }
+  return { error, handleMovieDelete, handlePagination, loading, movies }
 }
 
 export default useContainer

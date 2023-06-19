@@ -1,6 +1,7 @@
-import { Row, Col } from 'antd'
+import { Col, Row } from 'antd'
 
 import type { ListsListProps } from './types'
+
 import ListItem from '../ListItem'
 
 const ListsList: React.FC<ListsListProps> = ({ lists }) => {
@@ -9,10 +10,10 @@ const ListsList: React.FC<ListsListProps> = ({ lists }) => {
       {lists.map(list => (
         <Col
           key={list.id}
-          span={24}
-          sm={12}
-          md={8}
           lg={8}
+          md={8}
+          sm={12}
+          span={24}
           xl={6}
         >
           <ListItem list={list} />

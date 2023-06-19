@@ -1,4 +1,4 @@
-import { Row, Col, Spin } from 'antd'
+import { Col, Row, Spin } from 'antd'
 
 const Loading: React.FC = () => (
   <Row justify='center'>

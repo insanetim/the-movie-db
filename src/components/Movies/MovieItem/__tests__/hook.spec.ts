@@ -1,5 +1,5 @@
-import { useNavigate } from 'react-router-dom'
 import { act, renderHook } from '@testing-library/react'
+import { useNavigate } from 'react-router-dom'
 
 import useContainer from '../hook'
 

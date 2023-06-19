@@ -1,9 +1,10 @@
 import isNull from 'src/utils/helpers/isNull'
-import MODAL_COMPONENTS from './modalComponents'
+
 import useContainer from './hook'
+import MODAL_COMPONENTS from './modalComponents'
 
 const ModalRoot: React.FC = () => {
-  const { modalType, modalProps, onCancel } = useContainer()
+  const { modalProps, modalType, onCancel } = useContainer()
 
   if (isNull(modalType)) {
     return null

@@ -1,14 +1,15 @@
-import isNull from 'src/utils/helpers/isNull'
-import Loading from 'src/components/UI/Loading'
-import Error from 'src/components/UI/Error'
+import MoviesList from 'src/components/Movies/MoviesList'
 import Empty from 'src/components/UI/Empty'
+import Error from 'src/components/UI/Error'
+import Loading from 'src/components/UI/Loading'
 import PageTitle from 'src/components/UI/PageTitle'
 import Pagination from 'src/components/UI/Pagination'
-import MoviesList from 'src/components/Movies/MoviesList'
+import isNull from 'src/utils/helpers/isNull'
+
 import useContainer from './hook'
 
 const Watchlist: React.FC = () => {
-  const { movies, loading, error, handlePagination, handleMovieDelete } = useContainer()
+  const { error, handleMovieDelete, handlePagination, loading, movies } = useContainer()
 
   let content = <Empty />
 
@@ -26,15 +27,15 @@ const Watchlist: React.FC = () => {
     content = (
       <>
         <MoviesList
-          movies={movies.results}
           handleMovieDelete={handleMovieDelete}
+          movies={movies.results}
         />
         {movies.total_pages > 1 && (
           <Pagination
             current={movies.page}
+            onChange={handlePagination}
             pageSize={20}
             total={movies.total_results}
-            onChange={handlePagination}
           />
         )}
       </>

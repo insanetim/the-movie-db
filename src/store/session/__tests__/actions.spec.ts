@@ -1,11 +1,11 @@
 import Cookies from 'js-cookie'
-
 import { dispatch, getState } from 'src/__mocks__/react-redux'
+import { NOTIFICATION_TYPE } from 'src/constants/app'
 import httpClient from 'src/lib/api/httpClient'
 import * as routes from 'src/lib/apiRoutes'
 import { showNotification } from 'src/store/app/actions'
-import { logIn, logOut, fetchAccount } from '../actions'
-import { NOTIFICATION_TYPE } from 'src/constants/app'
+
+import { fetchAccount, logIn, logOut } from '../actions'
 
 jest.mock<typeof import('@reduxjs/toolkit')>('@reduxjs/toolkit', () => ({
   ...jest.requireActual('@reduxjs/toolkit'),
@@ -21,28 +21,28 @@ describe('session actions', () => {
   const cookiesSetSpy = jest.spyOn(Cookies, 'set')
   const cookiesRemoveSpy = jest.spyOn(Cookies, 'remove')
   const errorNotification = showNotification({
-    messageType: NOTIFICATION_TYPE.ERROR,
-    messageText: 'Something went wrong!'
+    messageText: 'Something went wrong!',
+    messageType: NOTIFICATION_TYPE.ERROR
   })
 
   describe('logIn', () => {
     const userData = {
-      username: 'test/username',
-      password: 'test/password'
+      password: 'test/password',
+      username: 'test/username'
     }
     const action = logIn(userData)
 
     const requestTokenRequest = { url: routes.createRequestToken }
     const requestTokenResponse = { data: { request_token: 'test/request_token' } }
     const validateWithLoginRequest = {
-      url: routes.validateWithLogin,
+      data: { ...userData, request_token: requestTokenResponse.data.request_token },
       method: 'post',
-      data: { ...userData, request_token: requestTokenResponse.data.request_token }
+      url: routes.validateWithLogin
     }
     const createSessionRequest = {
-      url: routes.createSession,
+      data: { request_token: requestTokenResponse.data.request_token },
       method: 'post',
-      data: { request_token: requestTokenResponse.data.request_token }
+      url: routes.createSession
     }
     const sessionResponse = { data: { session_id: 'test/session_id' } }
 
@@ -75,9 +75,9 @@ describe('session actions', () => {
     const action = logOut()
 
     const request = {
-      url: routes.deleteSession,
+      data: { session_id: 'session_id' },
       method: 'delete',
-      data: { session_id: 'session_id' }
+      url: routes.deleteSession
     }
     const response = { data: { success: true } }
 
@@ -104,8 +104,8 @@ describe('session actions', () => {
     const action = fetchAccount()
 
     const request = {
-      url: routes.getAccountDetails,
-      params: { session_id: 'session_id' }
+      params: { session_id: 'session_id' },
+      url: routes.getAccountDetails
     }
     const response = { data: 'test/data' }
 

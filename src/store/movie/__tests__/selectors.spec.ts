@@ -1,4 +1,5 @@
 import mockState from 'src/__mocks__/mockState'
+
 import * as selectors from '../selectors'
 
 describe('movie selectors', () => {

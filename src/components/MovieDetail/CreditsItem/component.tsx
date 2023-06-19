@@ -1,23 +1,23 @@
 import { Card } from 'antd'
+import NoImage from 'src/assets/images/no-image.svg'
+import isNull from 'src/utils/helpers/isNull'
 
 import type { CreditsItemProps } from './types'
-import isNull from 'src/utils/helpers/isNull'
-import NoImage from 'src/assets/images/no-image.svg'
 
-const CreditsItem: React.FC<CreditsItemProps> = ({ profilePath, title, description }) => {
+const CreditsItem: React.FC<CreditsItemProps> = ({ description, profilePath, title }) => {
   let cover = (
     <div className='ant-card-cover--no-image'>
       <img
-        src={NoImage}
         alt={title}
+        src={NoImage}
       />
     </div>
   )
   if (!isNull(profilePath)) {
     cover = (
       <img
-        src={`https://image.tmdb.org/t/p/w500${profilePath}`}
         alt={title}
+        src={`https://image.tmdb.org/t/p/w500${profilePath}`}
       />
     )
   }
@@ -25,8 +25,8 @@ const CreditsItem: React.FC<CreditsItemProps> = ({ profilePath, title, descripti
   return (
     <Card cover={cover}>
       <Card.Meta
-        title={title}
         description={description}
+        title={title}
       />
     </Card>
   )

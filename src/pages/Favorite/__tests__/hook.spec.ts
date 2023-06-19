@@ -1,11 +1,11 @@
-import { Modal } from 'antd'
 import { act, renderHook } from '@testing-library/react'
-
+import { Modal } from 'antd'
 import mockAccount from 'src/__mocks__/mockAccount'
 import { dispatch } from 'src/__mocks__/react-redux'
-import { accountSelector } from 'src/store/session/selectors'
 import { fetchFavorite } from 'src/store/favorite/actions'
 import { changeMovieInFavorite } from 'src/store/movie/actions'
+import { accountSelector } from 'src/store/session/selectors'
+
 import useContainer from '../hook'
 
 jest.mock('src/store/favorite/actions')
@@ -17,10 +17,10 @@ jest.mock('src/store/session/selectors', () => ({
 }))
 
 jest.mock('src/store/favorite/selectors', () => ({
-  favoriteMoviesSelector: jest.fn(() => null),
-  favoritePageSelector: jest.fn(() => 1),
+  favoriteErrorSelector: jest.fn(() => null),
   favoriteLoadingSelector: jest.fn(() => true),
-  favoriteErrorSelector: jest.fn(() => null)
+  favoriteMoviesSelector: jest.fn(() => null),
+  favoritePageSelector: jest.fn(() => 1)
 }))
 
 describe('Favotite useContainer hook', () => {
@@ -54,13 +54,13 @@ describe('Favotite useContainer hook', () => {
     onOk()
 
     expect(modalSpy).toHaveBeenCalledWith({
-      title: 'Do you want to delete movie from favorite?',
-      onOk
+      onOk,
+      title: 'Do you want to delete movie from favorite?'
     })
     expect(dispatch).toHaveBeenCalledWith(
       changeMovieInFavorite({
-        movieId: 123,
-        inFavorite: false
+        inFavorite: false,
+        movieId: 123
       })
     )
   })

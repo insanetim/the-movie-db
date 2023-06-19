@@ -1,9 +1,9 @@
-import { Outlet, Navigate } from 'react-router-dom'
+import { Navigate, Outlet } from 'react-router-dom'
 
 import useContainer from './hook'
 
 const ProtectedRoutes: React.FC = () => {
-  const { sessionId, location } = useContainer()
+  const { location, sessionId } = useContainer()
 
   return (
     <>
@@ -11,9 +11,9 @@ const ProtectedRoutes: React.FC = () => {
         <Outlet />
       ) : (
         <Navigate
-          to='/login'
           replace
           state={{ from: location }}
+          to='/login'
         />
       )}
     </>

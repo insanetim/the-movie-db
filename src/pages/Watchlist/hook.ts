@@ -1,17 +1,17 @@
-import { MouseEvent, useEffect } from 'react'
 import { Modal } from 'antd'
-
-import type { WatchlistHook } from './types'
+import { MouseEvent, useEffect } from 'react'
 import { useAppDispatch, useAppSelector } from 'src/hooks/useRedux'
-import isNull from 'src/utils/helpers/isNull'
-import { fetchWatchlist } from 'src/store/watchlist/actions'
 import { changeMovieInWatchlist } from 'src/store/movie/actions'
 import { accountSelector } from 'src/store/session/selectors'
+import { fetchWatchlist } from 'src/store/watchlist/actions'
 import {
-  watchlistMoviesSelector,
+  watchlistErrorSelector,
   watchlistLoadingSelector,
-  watchlistErrorSelector
+  watchlistMoviesSelector
 } from 'src/store/watchlist/selectors'
+import isNull from 'src/utils/helpers/isNull'
+
+import type { WatchlistHook } from './types'
 
 const useContainer = (): WatchlistHook => {
   const dispatch = useAppDispatch()
@@ -28,12 +28,12 @@ const useContainer = (): WatchlistHook => {
     event.stopPropagation()
 
     const onOk = () => {
-      dispatch(changeMovieInWatchlist({ movieId, inWatchlist: false }))
+      dispatch(changeMovieInWatchlist({ inWatchlist: false, movieId }))
     }
 
     Modal.confirm({
-      title: 'Do you want to delete movie from watchlist?',
-      onOk
+      onOk,
+      title: 'Do you want to delete movie from watchlist?'
     })
 
     return onOk
@@ -45,7 +45,7 @@ const useContainer = (): WatchlistHook => {
     }
   }, [account, dispatch])
 
-  return { movies, loading, error, handlePagination, handleMovieDelete }
+  return { error, handleMovieDelete, handlePagination, loading, movies }
 }
 
 export default useContainer

@@ -1,11 +1,12 @@
 import { combineReducers, createReducer } from '@reduxjs/toolkit'
 
 import type { IModalState, INotification } from './types'
+
 import { hideModal, hideNotification, showModal, showNotification } from './actions'
 
 const modalInitialState: IModalState = {
-  modalType: null,
-  modalProps: null
+  modalProps: null,
+  modalType: null
 }
 
 export const modalReducer = createReducer(modalInitialState, builder => {

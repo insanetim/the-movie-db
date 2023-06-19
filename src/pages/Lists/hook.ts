@@ -1,11 +1,11 @@
 import { useEffect } from 'react'
-
 import { useAppDispatch, useAppSelector } from 'src/hooks/useRedux'
-import isNull from 'src/utils/helpers/isNull'
 import { showModal } from 'src/store/app/actions'
 import { fetchLists } from 'src/store/lists/actions'
+import { listsErrorSelector, listsLoadingSelector, listsSelector } from 'src/store/lists/selectors'
 import { accountSelector } from 'src/store/session/selectors'
-import { listsSelector, listsLoadingSelector, listsErrorSelector } from 'src/store/lists/selectors'
+import isNull from 'src/utils/helpers/isNull'
+
 import type { ListsHook } from './types'
 
 const useContainer = (): ListsHook => {
@@ -29,7 +29,7 @@ const useContainer = (): ListsHook => {
     }
   }, [account, dispatch])
 
-  return { lists, loading, error, handlePagination, handleCreateList }
+  return { error, handleCreateList, handlePagination, lists, loading }
 }
 
 export default useContainer

@@ -1,6 +1,6 @@
 import SearchInput from 'src/components/Dashboard/SearchInput'
-import Trending from 'src/components/Dashboard/Trending/component'
 import SearchResult from 'src/components/Dashboard/SearchResult/component'
+import Trending from 'src/components/Dashboard/Trending/component'
 
 import useContainer from './hook'
 

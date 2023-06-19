@@ -1,8 +1,8 @@
-import { useNavigate } from 'react-router-dom'
 import { act, renderHook } from '@testing-library/react'
-
+import { useNavigate } from 'react-router-dom'
 import { dispatch } from 'src/__mocks__/react-redux'
 import { logOut } from 'src/store/session/actions'
+
 import useContainer from '../hook'
 
 jest.mock('src/store/session/selectors', () => ({
@@ -13,8 +13,8 @@ jest.mock('src/store/session/actions')
 
 jest.mock('react-router-dom', () => ({
   ...jest.requireActual('react-router-dom'),
-  useNavigate: jest.fn(),
-  useLocation: jest.fn().mockImplementation(() => ({}))
+  useLocation: jest.fn().mockImplementation(() => ({})),
+  useNavigate: jest.fn()
 }))
 const navigate = jest.fn()
 jest.mocked(useNavigate).mockReturnValue(navigate)

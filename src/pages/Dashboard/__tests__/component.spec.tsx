@@ -1,7 +1,8 @@
 import { render } from '@testing-library/react'
+import Wrapper from 'src/utils/testHelpers/wrapperMock'
 
 import type { DashboardHook } from '../types'
-import Wrapper from 'src/utils/testHelpers/wrapperMock'
+
 import Dashboard from '../component'
 
 const mockedHookData: DashboardHook = {
@@ -10,14 +11,14 @@ const mockedHookData: DashboardHook = {
 jest.mock('../hook', () => jest.fn(() => mockedHookData))
 
 jest.mock('src/store/dashboard/selectors', () => ({
-  trendingMoviesSelector: jest.fn(() => null),
-  trendingPageSelector: jest.fn(() => 1),
-  trendingLoadingSelector: jest.fn(() => true),
-  trendingErrorSelector: jest.fn(() => null),
+  searchErrorSelector: jest.fn(() => null),
+  searchLoadingSelector: jest.fn(() => true),
   searchMoviesSelector: jest.fn(() => null),
   searchPageSelector: jest.fn(() => 1),
-  searchLoadingSelector: jest.fn(() => true),
-  searchErrorSelector: jest.fn(() => null)
+  trendingErrorSelector: jest.fn(() => null),
+  trendingLoadingSelector: jest.fn(() => true),
+  trendingMoviesSelector: jest.fn(() => null),
+  trendingPageSelector: jest.fn(() => 1)
 }))
 
 describe('Dashboard component', () => {

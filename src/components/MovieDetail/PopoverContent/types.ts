@@ -8,7 +8,7 @@ export interface PopoverContentProps {
 export interface PopoverContentHookProps extends PopoverContentProps {}
 
 export interface PopoverContentHook {
-  lists: IListsList | null
-  handleAddToNewList: () => void
   handleAddToList: (listId: number) => void
+  handleAddToNewList: () => void
+  lists: IListsList | null
 }

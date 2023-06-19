@@ -1,24 +1,25 @@
-import type { ForwardRefExoticComponent } from 'react'
 import type { CustomIconComponentProps } from '@ant-design/icons/lib/components/Icon'
-import { Row, Col, Typography, Tag, Popover } from 'antd'
-import Icon, { HeartOutlined, HeartFilled, BookOutlined, BookFilled, PlusCircleOutlined } from '@ant-design/icons'
+import type { ForwardRefExoticComponent } from 'react'
+
+import Icon, { BookFilled, BookOutlined, HeartFilled, HeartOutlined, PlusCircleOutlined } from '@ant-design/icons'
+import { Col, Popover, Row, Tag, Typography } from 'antd'
 import { format } from 'date-fns'
 import ISO6391 from 'iso-639-1'
-
-import isNull from 'src/utils/helpers/isNull'
-import convertDuration from 'src/utils/convertDataHelpers/convertDuration'
-import convertMoney from 'src/utils/convertDataHelpers/convertMoney'
-import Loading from 'src/components/UI/Loading'
-import Error from 'src/components/UI/Error'
-import Empty from 'src/components/UI/Empty/component'
-import ImageGallery from 'src/components/MovieDetail/ImageGallery'
-import PopoverContent from 'src/components/MovieDetail/PopoverContent'
 import CastList from 'src/components/MovieDetail/CastList'
 import CrewList from 'src/components/MovieDetail/CrewList'
+import ImageGallery from 'src/components/MovieDetail/ImageGallery'
+import PopoverContent from 'src/components/MovieDetail/PopoverContent'
+import Empty from 'src/components/UI/Empty/component'
+import Error from 'src/components/UI/Error'
+import Loading from 'src/components/UI/Loading'
+import convertDuration from 'src/utils/convertDataHelpers/convertDuration'
+import convertMoney from 'src/utils/convertDataHelpers/convertMoney'
+import isNull from 'src/utils/helpers/isNull'
+
 import useContainer from './hook'
 
 const Movie: React.FC = () => {
-  const { movie, loading, error, handleFavoriteClick, handleWatchlistClick, popoverOpen, setPopoverOpen } =
+  const { error, handleFavoriteClick, handleWatchlistClick, loading, movie, popoverOpen, setPopoverOpen } =
     useContainer()
 
   if (loading) {
@@ -69,18 +70,18 @@ const Movie: React.FC = () => {
                 {movie.release_date && ` (${format(new Date(movie.release_date), 'yyyy')})`}
               </span>{' '}
               <Popover
-                title='Add movie to list'
-                trigger='click'
-                placement='top'
-                destroyTooltipOnHide
-                open={popoverOpen}
-                onOpenChange={open => setPopoverOpen(open)}
                 content={
                   <PopoverContent
                     movieId={movie.id}
                     setPopoverOpen={setPopoverOpen}
                   />
                 }
+                destroyTooltipOnHide
+                onOpenChange={open => setPopoverOpen(open)}
+                open={popoverOpen}
+                placement='top'
+                title='Add movie to list'
+                trigger='click'
               >
                 <PlusCircleOutlined data-testid='addMovieToListPopover' />
               </Popover>{' '}

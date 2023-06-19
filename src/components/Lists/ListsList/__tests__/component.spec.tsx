@@ -1,7 +1,7 @@
 import { render } from '@testing-library/react'
-
 import { mockList } from 'src/__mocks__/mockList'
 import Wrapper from 'src/utils/testHelpers/wrapperMock'
+
 import ListList from '../component'
 
 describe('ListsList component', () => {

@@ -1,8 +1,8 @@
-import { Link } from 'react-router-dom'
-import { Typography, Row, Col, Avatar, Dropdown, Layout } from 'antd'
 import { CaretDownOutlined, UserOutlined } from '@ant-design/icons'
-
+import { Avatar, Col, Dropdown, Layout, Row, Typography } from 'antd'
+import { Link } from 'react-router-dom'
 import { APP_NAME } from 'src/constants/app'
+
 import useContainer from './hook'
 
 const Header: React.FC = () => {

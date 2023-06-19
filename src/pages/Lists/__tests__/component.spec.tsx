@@ -1,21 +1,22 @@
 import { render } from '@testing-library/react'
-
-import type { ListsHook } from '../types'
 import { mockList } from 'src/__mocks__/mockList'
 import Wrapper from 'src/utils/testHelpers/wrapperMock'
+
+import type { ListsHook } from '../types'
+
 import Lists from '../component'
 
 const mockedHookData: ListsHook = {
+  error: null,
+  handleCreateList: jest.fn(),
+  handlePagination: jest.fn(),
   lists: {
     page: 1,
     results: [mockList],
     total_pages: 10,
     total_results: 200
   },
-  loading: false,
-  error: null,
-  handlePagination: jest.fn(),
-  handleCreateList: jest.fn()
+  loading: false
 }
 jest.mock('../hook', () => jest.fn(() => mockedHookData))
 

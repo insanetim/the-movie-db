@@ -1,6 +1,7 @@
 import { render } from '@testing-library/react'
 
 import type { SearchInputHook } from '../types'
+
 import SearchInput from '../component'
 
 const mockedHookData: SearchInputHook = {

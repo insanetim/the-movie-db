@@ -1,9 +1,9 @@
-import { useNavigate } from 'react-router-dom'
-import { Modal } from 'antd'
 import { act, renderHook } from '@testing-library/react'
-
+import { Modal } from 'antd'
+import { useNavigate } from 'react-router-dom'
 import { dispatch } from 'src/__mocks__/react-redux'
 import { deleteList } from 'src/store/lists/actions'
+
 import useContainer from '../hook'
 
 jest.mock('src/store/lists/actions')
@@ -46,7 +46,7 @@ describe('ListItem useContainer hook', () => {
     })
     onOk()
 
-    expect(modalSpy).toHaveBeenCalledWith({ title: 'Do you want to delete list?', onOk })
+    expect(modalSpy).toHaveBeenCalledWith({ onOk, title: 'Do you want to delete list?' })
     expect(dispatch).toHaveBeenCalledWith(deleteList(123))
   })
 })

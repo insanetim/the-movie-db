@@ -1,9 +1,10 @@
-import { useLocation, useNavigate } from 'react-router-dom'
+import type { IUserData } from 'src/store/session/types'
 
+import { useLocation, useNavigate } from 'react-router-dom'
 import { useAppDispatch, useAppSelector } from 'src/hooks/useRedux'
 import { logIn } from 'src/store/session/actions'
 import { loadingSelector } from 'src/store/session/selectors'
-import type { IUserData } from 'src/store/session/types'
+
 import type { LoginHook } from './types'
 
 const useContainer = (): LoginHook => {
@@ -18,7 +19,7 @@ const useContainer = (): LoginHook => {
     navigate(from, { replace: true })
   }
 
-  return { loading, handleLogIn }
+  return { handleLogIn, loading }
 }
 
 export default useContainer

@@ -1,4 +1,4 @@
-import { Row, Col, Pagination as AntdPagination, PaginationProps } from 'antd'
+import { Pagination as AntdPagination, Col, PaginationProps, Row } from 'antd'
 
 const Pagination: React.FC<PaginationProps> = props => (
   <Row justify='center'>

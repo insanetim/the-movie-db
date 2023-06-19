@@ -9,10 +9,10 @@ export interface ModalCreateListHookProps {
   movieId?: number
 }
 
-export type ListData = { name: string; description: string }
+export type ListData = { description: string; name: string }
 
 export interface ModalCreateListHook {
+  handleAfterClose: () => void
   handleOk: () => void
   handleSubmit: (listData: ListData) => void
-  handleAfterClose: () => void
 }

@@ -3,6 +3,7 @@ import { NOTIFICATION_TYPE } from 'src/constants/app'
 import httpClient from 'src/lib/api/httpClient'
 import * as routes from 'src/lib/apiRoutes'
 import { showNotification } from 'src/store/app/actions'
+
 import * as actions from '../actions'
 
 jest.mock<typeof import('@reduxjs/toolkit')>('@reduxjs/toolkit', () => ({
@@ -11,8 +12,8 @@ jest.mock<typeof import('@reduxjs/toolkit')>('@reduxjs/toolkit', () => ({
 }))
 
 jest.mock('src/store/session/selectors', () => ({
-  sessionIdSelector: jest.fn(() => 'session_id'),
-  accountSelector: jest.fn(() => ({ id: 123 }))
+  accountSelector: jest.fn(() => ({ id: 123 })),
+  sessionIdSelector: jest.fn(() => 'session_id')
 }))
 
 jest.mock('src/store/movie/selectors', () => ({
@@ -20,23 +21,23 @@ jest.mock('src/store/movie/selectors', () => ({
 }))
 
 jest.mock('src/store/lists/selectors', () => ({
-  listsSelector: jest.fn(() => ({ results: [{ id: 123, name: 'test/list' }] })),
-  listSelector: jest.fn(() => ({ items: [{ id: 123, title: 'tets/movie' }], name: 'test/list' }))
+  listSelector: jest.fn(() => ({ items: [{ id: 123, title: 'tets/movie' }], name: 'test/list' })),
+  listsSelector: jest.fn(() => ({ results: [{ id: 123, name: 'test/list' }] }))
 }))
 
 describe('lists actions', () => {
   const requestSpy = jest.spyOn(httpClient, 'request')
   const errorNotification = showNotification({
-    messageType: NOTIFICATION_TYPE.ERROR,
-    messageText: 'Something went wrong!'
+    messageText: 'Something went wrong!',
+    messageType: NOTIFICATION_TYPE.ERROR
   })
 
   describe('fetchLists', () => {
     const action = actions.fetchLists(1)
 
     const request = {
-      url: routes.getCreatedLists(123),
-      params: { session_id: 'session_id', page: 1 }
+      params: { page: 1, session_id: 'session_id' },
+      url: routes.getCreatedLists(123)
     }
     const response = { data: 'test/data' }
 
@@ -85,14 +86,14 @@ describe('lists actions', () => {
   })
 
   describe('createList', () => {
-    const listData = { name: 'test/name', description: 'test/description' }
+    const listData = { description: 'test/description', name: 'test/name' }
     const action = actions.createList({ listData, movieId: 123 })
 
     const request = {
-      url: routes.createList,
+      data: { ...listData },
       method: 'post',
       params: { session_id: 'session_id' },
-      data: { ...listData }
+      url: routes.createList
     }
     const response = { data: { list_id: 123 } }
 
@@ -128,10 +129,10 @@ describe('lists actions', () => {
     const action = actions.addToList({ listId: 123, movieId: 123 })
 
     const request = {
-      url: routes.addToList(123),
+      data: { media_id: 123 },
       method: 'post',
       params: { session_id: 'session_id' },
-      data: { media_id: 123 }
+      url: routes.addToList(123)
     }
     const response = { data: { success: true } }
 
@@ -162,10 +163,10 @@ describe('lists actions', () => {
     const action = actions.removeFromList({ listId: 123, movieId: 123 })
 
     const request = {
-      url: routes.removeFromList(123),
+      data: { media_id: 123 },
       method: 'post',
       params: { session_id: 'session_id' },
-      data: { media_id: 123 }
+      url: routes.removeFromList(123)
     }
     const response = { data: { success: true } }
 
@@ -193,9 +194,9 @@ describe('lists actions', () => {
     const action = actions.deleteList('123')
 
     const request = {
-      url: routes.deleteList('123'),
       method: 'delete',
-      params: { session_id: 'session_id' }
+      params: { session_id: 'session_id' },
+      url: routes.deleteList('123')
     }
     const response = { data: { success: true } }
 

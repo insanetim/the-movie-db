@@ -1,15 +1,15 @@
 import { useEffect } from 'react'
-
+import usePrevious from 'src/hooks/usePrevious'
 import { useAppDispatch, useAppSelector } from 'src/hooks/useRedux'
+import { fetchSearch, setSearchPage } from 'src/store/dashboard/actions'
 import {
   searchErrorSelector,
   searchLoadingSelector,
   searchMoviesSelector,
   searchPageSelector
 } from 'src/store/dashboard/selectors'
-import { fetchSearch, setSearchPage } from 'src/store/dashboard/actions'
+
 import { SearchResultHook, SearchResultHookProps } from './types'
-import usePrevious from 'src/hooks/usePrevious'
 
 const useContainer = ({ query }: SearchResultHookProps): SearchResultHook => {
   const dispatch = useAppDispatch()
@@ -31,7 +31,7 @@ const useContainer = ({ query }: SearchResultHookProps): SearchResultHook => {
     }
   }, [page, query, prevQuery, dispatch])
 
-  return { movies, loading, error, handlePagination }
+  return { error, handlePagination, loading, movies }
 }
 
 export default useContainer

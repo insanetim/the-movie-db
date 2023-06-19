@@ -1,27 +1,28 @@
-import { Card } from 'antd'
 import { DeleteOutlined } from '@ant-design/icons'
+import { Card } from 'antd'
+import NoImage from 'src/assets/images/no-image.svg'
+import isNull from 'src/utils/helpers/isNull'
 
 import type { MovieItemProps } from './types'
-import isNull from 'src/utils/helpers/isNull'
-import NoImage from 'src/assets/images/no-image.svg'
+
 import useContainer from './hook'
 
-const MovieItem: React.FC<MovieItemProps> = ({ movie, handleMovieDelete }) => {
+const MovieItem: React.FC<MovieItemProps> = ({ handleMovieDelete, movie }) => {
   const { handleClick } = useContainer({ movieId: movie.id })
 
   let cover = (
     <div className='ant-card-cover--no-image'>
       <img
-        src={NoImage}
         alt={movie.title}
+        src={NoImage}
       />
     </div>
   )
   if (!isNull(movie.poster_path)) {
     cover = (
       <img
-        src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
         alt='Poster'
+        src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
       />
     )
   }
@@ -30,23 +31,23 @@ const MovieItem: React.FC<MovieItemProps> = ({ movie, handleMovieDelete }) => {
   if (typeof handleMovieDelete !== 'undefined') {
     actions = [
       <DeleteOutlined
+        data-testid='deleteMovieAction'
         key='delete'
         onClick={e => handleMovieDelete(movie.id, e)}
-        data-testid='deleteMovieAction'
       />
     ]
   }
 
   return (
     <Card
-      hoverable
-      cover={cover}
       actions={actions}
+      cover={cover}
+      hoverable
       onClick={handleClick}
     >
       <Card.Meta
-        title={movie.title}
         description={movie.overview}
+        title={movie.title}
       />
     </Card>
   )

@@ -1,17 +1,17 @@
-import { useParams } from 'react-router-dom'
 import { act, renderHook } from '@testing-library/react'
-
+import { useParams } from 'react-router-dom'
 import { mockMovieDetail } from 'src/__mocks__/mockMovie'
 import { dispatch } from 'src/__mocks__/react-redux'
 import { changeMovieInFavorite, changeMovieInWatchlist, fetchMovie } from 'src/store/movie/actions'
+
 import useContainer from '../hook'
 
 jest.mock('src/store/movie/actions')
 
 jest.mock('src/store/movie/selectors', () => ({
-  movieSelector: jest.fn(() => mockMovieDetail),
+  movieErrorSelector: jest.fn(() => null),
   movieLoadingSelector: jest.fn(() => true),
-  movieErrorSelector: jest.fn(() => null)
+  movieSelector: jest.fn(() => mockMovieDetail)
 }))
 
 jest.mock('react-router-dom', () => ({
@@ -40,7 +40,7 @@ describe('MovieDetail useContainer hook', () => {
       result.current.handleFavoriteClick()
     })
 
-    expect(dispatch).toHaveBeenCalledWith(changeMovieInFavorite({ movieId: 123, inFavorite: true }))
+    expect(dispatch).toHaveBeenCalledWith(changeMovieInFavorite({ inFavorite: true, movieId: 123 }))
   })
 
   it('checks `handleWatchlistClick` method', () => {
@@ -50,7 +50,7 @@ describe('MovieDetail useContainer hook', () => {
       result.current.handleWatchlistClick()
     })
 
-    expect(dispatch).toHaveBeenCalledWith(changeMovieInWatchlist({ movieId: 123, inWatchlist: true }))
+    expect(dispatch).toHaveBeenCalledWith(changeMovieInWatchlist({ inWatchlist: true, movieId: 123 }))
   })
 
   it('checks `useEffect` method', () => {

@@ -1,14 +1,14 @@
 import type { IAccount } from 'src/interfaces/account.interface'
 
 export interface ISessionState {
-  sessionId: string
   account: IAccount | null
   loading: boolean
+  sessionId: string
 }
 
 export interface IUserData {
-  username: string
   password: string
+  username: string
 }
 
 export interface IRequestToken {

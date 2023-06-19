@@ -7,8 +7,8 @@ const Footer: React.FC = () => {
         Made with ❤ by{' '}
         <Typography.Link
           href='https://github.com/insanetim/frontend-internship'
-          target='_blank'
           rel='noreferrer'
+          target='_blank'
         >
           insanetim
         </Typography.Link>
