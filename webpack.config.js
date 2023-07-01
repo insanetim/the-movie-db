@@ -1,118 +1,132 @@
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin')
 
-module.exports = (env = {}) => {
-  const { mode = 'development' } = env
-  const isDev = mode === 'development'
+const isDev = process.env.NODE_ENV === 'development'
+const isProd = !isDev
 
-  const getStyleLoaders = () => [
-    isDev ? 'style-loader' : MiniCssExtractPlugin.loader,
-    {
-      loader: 'css-loader',
-      options: {
-        importLoaders: 1
-      }
-    },
-    'sass-loader',
-    'postcss-loader'
+const getFileName = ext => (isDev ? `[name].${ext}` : `[name].[contenthash].${ext}`)
+
+const getStyleLoaders = () => [
+  isDev ? 'style-loader' : MiniCssExtractPlugin.loader,
+  {
+    loader: 'css-loader',
+    options: {
+      importLoaders: 1
+    }
+  },
+  'sass-loader',
+  'postcss-loader'
+]
+
+const getPlugins = () => {
+  const plugins = [
+    new CleanWebpackPlugin(),
+    new HtmlWebpackPlugin({
+      favicon: path.resolve(__dirname, 'public/favicon.ico'),
+      filename: 'index.html',
+      minify: {
+        collapseWhitespace: isProd
+      },
+      template: path.resolve(__dirname, 'public/index.html')
+    })
   ]
 
-  const getPlugins = () => {
-    const plugins = [
-      new HtmlWebpackPlugin({
-        template: path.join(__dirname, 'public', 'index.html'),
-        filename: 'index.html',
-        favicon: path.join(__dirname, 'public', 'favicon.ico')
+  if (!isDev) {
+    plugins.push(
+      new MiniCssExtractPlugin({
+        filename: getFileName('css')
       })
-    ]
-
-    if (!isDev) {
-      plugins.push(
-        new MiniCssExtractPlugin({
-          filename: 'style.css'
-        })
-      )
-    }
-
-    return plugins
+    )
   }
 
-  return {
-    mode,
+  return plugins
+}
 
-    output: {
-      chunkFilename: '[id].js'
-    },
-
-    module: {
-      rules: [
-        {
-          test: /\.tsx?$/,
-          use: 'ts-loader',
-          exclude: /node_modules/
-        },
-        {
-          test: /\.jsx?$/,
-          use: 'babel-loader',
-          exclude: /node_modules/
-        },
-        {
-          test: /\.(sa|sc|c)ss$/,
-          use: getStyleLoaders()
-        },
-        {
-          test: /\.(png|jp(e*)g|svg|gif)$/,
-          use: [
-            {
-              loader: 'file-loader',
-              options: {
-                name: 'images/[name].[ext]'
-              }
-            }
-          ]
+const getOptimization = () => {
+  const config = {
+    minimize: isProd,
+    splitChunks: {
+      cacheGroups: {
+        commons: {
+          chunks: 'all',
+          minSize: 0,
+          name: 'vendor',
+          test: /[\\/]node_modules[\\/]/
         }
-      ]
-    },
+      },
+      chunks: 'all'
+    }
+  }
 
-    plugins: getPlugins(),
+  if (isProd) {
+    config.minimizer = ['...', new CssMinimizerPlugin()]
+  }
 
-    optimization: {
-      splitChunks: {
-        cacheGroups: {
-          commons: {
-            test: /[\\/]node_modules[\\/]/,
-            name: 'vendor',
-            chunks: 'all',
-            minSize: 0
-          }
-        }
+  return config
+}
+
+module.exports = {
+  devServer: {
+    historyApiFallback: true,
+    open: true,
+    port: 8080,
+    static: {
+      directory: path.resolve(__dirname, './public')
+    }
+  },
+
+  devtool: isDev ? 'eval-source-map' : false,
+
+  mode: isDev ? 'development' : 'production',
+
+  module: {
+    rules: [
+      {
+        exclude: /node_modules/,
+        test: /\.tsx?$/,
+        use: ['ts-loader']
+      },
+      {
+        exclude: /node_modules/,
+        test: /\.jsx?$/,
+        use: ['babel-loader']
+      },
+      {
+        test: /\.s[ac]ss$/,
+        use: getStyleLoaders()
+      },
+      {
+        test: /\.(png|jpe?g|svg|gif)$/,
+        type: 'asset/resource'
       }
-    },
+    ]
+  },
 
-    devServer: {
-      open: true,
-      port: 8080,
-      historyApiFallback: true,
-      static: {
-        directory: path.join(__dirname, './public')
-      }
-    },
+  optimization: getOptimization(),
 
-    resolve: {
-      modules: [path.resolve(__dirname, 'src'), 'node_modules'],
-      extensions: ['.js', '.jsx', '.ts', '.tsx'],
-      alias: {
-        src: path.resolve(__dirname, 'src')
-      }
-    },
+  output: {
+    assetModuleFilename: 'images/[name][ext]',
+    chunkFilename: getFileName('js'),
+    filename: getFileName('js'),
+    path: path.resolve(__dirname, 'dist')
+  },
 
-    performance: {
-      hints: false,
-      maxEntrypointSize: 512000,
-      maxAssetSize: 512000
-    },
+  performance: {
+    hints: false,
+    maxAssetSize: 512000,
+    maxEntrypointSize: 512000
+  },
 
-    devtool: isDev ? 'eval-source-map' : false
+  plugins: getPlugins(),
+
+  resolve: {
+    alias: {
+      src: path.resolve(__dirname, 'src')
+    },
+    extensions: ['.ts', '.tsx', '.js', '.jsx'],
+    modules: [path.resolve(__dirname, 'src'), 'node_modules']
   }
 }

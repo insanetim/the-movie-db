@@ -1,5 +1,5 @@
 /* eslint-disable global-require */
 module.exports = {
-  syntax: 'postcss-scss',
-  plugins: [require('autoprefixer'), require('postcss-nested')]
+  plugins: [require('autoprefixer'), require('postcss-nested')],
+  syntax: 'postcss-scss'
 }
