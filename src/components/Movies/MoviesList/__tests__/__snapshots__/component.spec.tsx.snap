@@ -17,8 +17,11 @@ exports[`MoviesList component matches snapshot 1`] = `
           class="ant-card-cover"
         >
           <img
-            alt="Poster"
+            alt="test/title"
+            height="750"
+            loading="lazy"
             src="https://image.tmdb.org/t/p/w500/image"
+            width="500"
           />
         </div>
         <div

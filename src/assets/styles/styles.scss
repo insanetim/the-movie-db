@@ -1,8 +1,15 @@
-body,
-#app {
+@import 'https://fonts.googleapis.com/css2?family=Ubuntu&display=swap';
+
+body {
   overflow-x: hidden;
 
   margin: 0;
+
+  font-family: Ubuntu, sans-serif;
+
+  * {
+    font-family: inherit !important;
+  }
 }
 
 .container {
@@ -88,8 +95,16 @@ body,
   }
 }
 
+.ant-card-meta-description {
+  color: rgb(0 0 0 / 55%) !important;
+}
+
 .ant-card-actions {
   background-color: transparent !important;
+}
+
+.ant-card-cover img {
+  height: auto;
 }
 
 .ant-card-cover--no-image {

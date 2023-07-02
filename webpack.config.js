@@ -32,16 +32,16 @@ const getPlugins = () => {
         collapseWhitespace: isProd
       },
       template: path.resolve(__dirname, 'public/index.html')
+    }),
+    new ESLintPlugin({
+      fix: true
     })
   ]
 
-  if (!isDev) {
+  if (isProd) {
     plugins.push(
       new MiniCssExtractPlugin({
         filename: getFileName('css')
-      }),
-      new ESLintPlugin({
-        fix: true
       })
     )
   }

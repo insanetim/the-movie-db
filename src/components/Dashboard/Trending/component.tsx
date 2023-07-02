@@ -29,7 +29,7 @@ const Trending: React.FC = () => {
           current={movies.page}
           onChange={handlePagination}
           pageSize={20}
-          total={movies.total_results}
+          total={10000}
         />
       )}
     </>

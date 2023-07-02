@@ -23,7 +23,12 @@ const Header: React.FC = () => {
     const url = account.avatar.tmdb.avatar_path
       ? `https://www.themoviedb.org/t/p/w32_and_h32_face${account.avatar.tmdb.avatar_path}`
       : `https://www.gravatar.com/avatar/${account.avatar.gravatar.hash}`
-    avatar = <Avatar src={url} />
+    avatar = (
+      <Avatar
+        alt='User avatar'
+        src={url}
+      />
+    )
   }
   let username = 'Username'
   if (account) {

@@ -17,8 +17,11 @@ exports[`Trending component matches snapshot 1`] = `
           class="ant-card-cover"
         >
           <img
-            alt="Poster"
+            alt="test/title"
+            height="750"
+            loading="lazy"
             src="https://image.tmdb.org/t/p/w500/image"
+            width="500"
           />
         </div>
         <div
@@ -181,14 +184,14 @@ exports[`Trending component matches snapshot 1`] = `
           </a>
         </li>
         <li
-          class="ant-pagination-item ant-pagination-item-10"
+          class="ant-pagination-item ant-pagination-item-500"
           tabindex="0"
-          title="10"
+          title="500"
         >
           <a
             rel="nofollow"
           >
-            10
+            500
           </a>
         </li>
         <li
@@ -246,8 +249,11 @@ exports[`Trending component matches snapshot with 1 page 1`] = `
           class="ant-card-cover"
         >
           <img
-            alt="Poster"
+            alt="test/title"
+            height="750"
+            loading="lazy"
             src="https://image.tmdb.org/t/p/w500/image"
+            width="500"
           />
         </div>
         <div

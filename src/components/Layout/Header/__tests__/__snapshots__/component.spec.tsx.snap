@@ -27,6 +27,7 @@ exports[`Header component matches snapshot 1`] = `
             class="ant-avatar ant-avatar-circle ant-avatar-image css-dev-only-do-not-override-12upa3x"
           >
             <img
+              alt="User avatar"
               src="https://www.gravatar.com/avatar//image"
             />
           </span>
@@ -90,6 +91,7 @@ exports[`Header component matches snapshot with avatar_path 1`] = `
             class="ant-avatar ant-avatar-circle ant-avatar-image css-dev-only-do-not-override-12upa3x"
           >
             <img
+              alt="User avatar"
               src="https://www.themoviedb.org/t/p/w32_and_h32_face/image"
             />
           </span>

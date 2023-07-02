@@ -30,6 +30,7 @@ exports[`Layout component matches snapshot 1`] = `
               class="ant-avatar ant-avatar-circle ant-avatar-image css-dev-only-do-not-override-12upa3x"
             >
               <img
+                alt="User avatar"
                 src="https://www.gravatar.com/avatar//image"
               />
             </span>
