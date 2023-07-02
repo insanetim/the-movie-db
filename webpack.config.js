@@ -78,7 +78,7 @@ module.exports = {
     }
   },
 
-  devtool: isDev ? 'eval-source-map' : false,
+  devtool: isDev ? 'source-map' : false,
 
   mode: isDev ? 'development' : 'production',
 
