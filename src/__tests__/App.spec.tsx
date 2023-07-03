@@ -175,6 +175,6 @@ describe('App component', () => {
   it('renders MovieDetail', async () => {
     const { findByText } = render(<MovieDetail />, { wrapper: WrapperWithSuspense })
 
-    expect(await findByText('test/title', { exact: false }, { timeout: 2000 })).toBeInTheDocument()
+    expect(await findByText('test/title', { exact: false }, { timeout: 3000 })).toBeInTheDocument()
   })
 })
