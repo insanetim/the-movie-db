@@ -3,6 +3,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin')
+const ESLintPlugin = require('eslint-webpack-plugin')
 
 const isDev = process.env.NODE_ENV === 'development'
 const isProd = !isDev
@@ -31,7 +32,8 @@ const getPlugins = () => {
         collapseWhitespace: isProd
       },
       template: path.resolve(__dirname, 'public/index.html')
-    })
+    }),
+    new ESLintPlugin({ fix: true })
   ]
 
   if (isProd) {
@@ -86,7 +88,12 @@ module.exports = {
     rules: [
       {
         exclude: /node_modules/,
-        test: /\.[tj]sx?$/,
+        test: /\.ts(x?)$/,
+        use: ['babel-loader', 'ts-loader']
+      },
+      {
+        exclude: /node_modules/,
+        test: /\.js(x?)$/,
         use: ['babel-loader']
       },
       {

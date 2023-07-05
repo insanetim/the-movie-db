@@ -7,7 +7,7 @@ module.exports = {
         useBuiltIns: 'usage'
       }
     ],
-    '@babel/typescript',
+    ['@babel/typescript'],
     [
       '@babel/react',
       {
