@@ -6,28 +6,28 @@ exports[`Favorite component matches snapshot 1`] = `
     class="container"
   >
     <div
-      class="ant-row css-dev-only-do-not-override-12upa3x"
+      class="ant-row css-dev-only-do-not-override-14wwjjs"
     >
       <div
-        class="ant-col ant-col-24 css-dev-only-do-not-override-12upa3x"
+        class="ant-col ant-col-24 css-dev-only-do-not-override-14wwjjs"
       >
         <h1
-          class="ant-typography css-dev-only-do-not-override-12upa3x"
+          class="ant-typography css-dev-only-do-not-override-14wwjjs"
         >
           Favorite
         </h1>
       </div>
     </div>
     <div
-      class="ant-row css-dev-only-do-not-override-12upa3x"
+      class="ant-row css-dev-only-do-not-override-14wwjjs"
       style="margin: -8px -12px -8px -12px;"
     >
       <div
-        class="ant-col ant-col-24 ant-col-sm-12 ant-col-md-8 ant-col-lg-8 ant-col-xl-6 css-dev-only-do-not-override-12upa3x"
+        class="ant-col ant-col-24 ant-col-sm-12 ant-col-md-8 ant-col-lg-8 ant-col-xl-6 css-dev-only-do-not-override-14wwjjs"
         style="padding: 8px 12px 8px 12px;"
       >
         <div
-          class="ant-card ant-card-bordered ant-card-hoverable css-dev-only-do-not-override-12upa3x"
+          class="ant-card ant-card-bordered ant-card-hoverable css-dev-only-do-not-override-14wwjjs"
         >
           <div
             class="ant-card-cover"
@@ -97,13 +97,13 @@ exports[`Favorite component matches snapshot 1`] = `
       </div>
     </div>
     <div
-      class="ant-row ant-row-center css-dev-only-do-not-override-12upa3x"
+      class="ant-row ant-row-center css-dev-only-do-not-override-14wwjjs"
     >
       <div
-        class="ant-col css-dev-only-do-not-override-12upa3x"
+        class="ant-col css-dev-only-do-not-override-14wwjjs"
       >
         <ul
-          class="ant-pagination pagination css-dev-only-do-not-override-12upa3x"
+          class="ant-pagination pagination css-dev-only-do-not-override-14wwjjs"
         >
           <li
             aria-disabled="true"
@@ -286,28 +286,28 @@ exports[`Favorite component matches snapshot with 1 page 1`] = `
     class="container"
   >
     <div
-      class="ant-row css-dev-only-do-not-override-12upa3x"
+      class="ant-row css-dev-only-do-not-override-14wwjjs"
     >
       <div
-        class="ant-col ant-col-24 css-dev-only-do-not-override-12upa3x"
+        class="ant-col ant-col-24 css-dev-only-do-not-override-14wwjjs"
       >
         <h1
-          class="ant-typography css-dev-only-do-not-override-12upa3x"
+          class="ant-typography css-dev-only-do-not-override-14wwjjs"
         >
           Favorite
         </h1>
       </div>
     </div>
     <div
-      class="ant-row css-dev-only-do-not-override-12upa3x"
+      class="ant-row css-dev-only-do-not-override-14wwjjs"
       style="margin: -8px -12px -8px -12px;"
     >
       <div
-        class="ant-col ant-col-24 ant-col-sm-12 ant-col-md-8 ant-col-lg-8 ant-col-xl-6 css-dev-only-do-not-override-12upa3x"
+        class="ant-col ant-col-24 ant-col-sm-12 ant-col-md-8 ant-col-lg-8 ant-col-xl-6 css-dev-only-do-not-override-14wwjjs"
         style="padding: 8px 12px 8px 12px;"
       >
         <div
-          class="ant-card ant-card-bordered ant-card-hoverable css-dev-only-do-not-override-12upa3x"
+          class="ant-card ant-card-bordered ant-card-hoverable css-dev-only-do-not-override-14wwjjs"
         >
           <div
             class="ant-card-cover"
@@ -386,20 +386,20 @@ exports[`Favorite component matches snapshot with empty movies 1`] = `
     class="container"
   >
     <div
-      class="ant-row css-dev-only-do-not-override-12upa3x"
+      class="ant-row css-dev-only-do-not-override-14wwjjs"
     >
       <div
-        class="ant-col ant-col-24 css-dev-only-do-not-override-12upa3x"
+        class="ant-col ant-col-24 css-dev-only-do-not-override-14wwjjs"
       >
         <h1
-          class="ant-typography css-dev-only-do-not-override-12upa3x"
+          class="ant-typography css-dev-only-do-not-override-14wwjjs"
         >
           Favorite
         </h1>
       </div>
     </div>
     <div
-      class="css-dev-only-do-not-override-12upa3x ant-empty ant-empty-normal"
+      class="css-dev-only-do-not-override-14wwjjs ant-empty ant-empty-normal"
     >
       <div
         class="ant-empty-image"
@@ -453,20 +453,20 @@ exports[`Favorite component matches snapshot with error 1`] = `
     class="container"
   >
     <div
-      class="ant-row css-dev-only-do-not-override-12upa3x"
+      class="ant-row css-dev-only-do-not-override-14wwjjs"
     >
       <div
-        class="ant-col ant-col-24 css-dev-only-do-not-override-12upa3x"
+        class="ant-col ant-col-24 css-dev-only-do-not-override-14wwjjs"
       >
         <h1
-          class="ant-typography css-dev-only-do-not-override-12upa3x"
+          class="ant-typography css-dev-only-do-not-override-14wwjjs"
         >
           Favorite
         </h1>
       </div>
     </div>
     <div
-      class="ant-result ant-result-error css-dev-only-do-not-override-12upa3x"
+      class="ant-result ant-result-error css-dev-only-do-not-override-14wwjjs"
     >
       <div
         class="ant-result-icon"
@@ -507,13 +507,13 @@ exports[`Favorite component matches snapshot with loading 1`] = `
     class="container"
   >
     <div
-      class="ant-row css-dev-only-do-not-override-12upa3x"
+      class="ant-row css-dev-only-do-not-override-14wwjjs"
     >
       <div
-        class="ant-col ant-col-24 css-dev-only-do-not-override-12upa3x"
+        class="ant-col ant-col-24 css-dev-only-do-not-override-14wwjjs"
       >
         <h1
-          class="ant-typography css-dev-only-do-not-override-12upa3x"
+          class="ant-typography css-dev-only-do-not-override-14wwjjs"
         >
           Favorite
         </h1>
@@ -523,15 +523,15 @@ exports[`Favorite component matches snapshot with loading 1`] = `
       class="top-margin"
     >
       <div
-        class="ant-row ant-row-center css-dev-only-do-not-override-12upa3x"
+        class="ant-row ant-row-center css-dev-only-do-not-override-14wwjjs"
       >
         <div
-          class="ant-col css-dev-only-do-not-override-12upa3x"
+          class="ant-col css-dev-only-do-not-override-14wwjjs"
         >
           <div
             aria-busy="true"
             aria-live="polite"
-            class="ant-spin ant-spin-spinning css-dev-only-do-not-override-12upa3x"
+            class="ant-spin ant-spin-spinning css-dev-only-do-not-override-14wwjjs"
           >
             <span
               class="ant-spin-dot ant-spin-dot-spin"

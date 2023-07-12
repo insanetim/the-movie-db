@@ -19,7 +19,7 @@ module.exports = {
     project: './tsconfig.json',
     sourceType: 'module'
   },
-  plugins: ['@typescript-eslint', 'perfectionist'],
+  plugins: ['@typescript-eslint', 'perfectionist', 'prettier'],
   root: true,
   rules: {
     '@typescript-eslint/no-empty-interface': [
