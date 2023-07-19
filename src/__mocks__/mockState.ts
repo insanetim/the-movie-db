@@ -12,14 +12,12 @@ const mockState: RootState = {
     search: {
       error: null,
       loading: true,
-      movies: null,
-      page: 1
+      movies: null
     },
     trending: {
       error: null,
       loading: true,
-      movies: null,
-      page: 1
+      movies: null
     }
   },
   favorite: {
