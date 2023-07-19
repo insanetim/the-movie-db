@@ -1,15 +1,11 @@
 import { renderHook } from '@testing-library/react'
+import Wrapper from 'src/utils/testHelpers/wrapperMock'
 
 import useContainer from '../hook'
 
-jest.mock('react-router-dom', () => ({
-  ...jest.requireActual('react-router-dom'),
-  useLocation: jest.fn().mockImplementation(() => ({}))
-}))
-
 describe('Dashboard useContainer hook', () => {
   it('matches snapshot', () => {
-    const { result } = renderHook(useContainer)
+    const { result } = renderHook(() => useContainer(), { wrapper: Wrapper })
 
     expect(result.current).toMatchSnapshot()
   })

@@ -1,12 +1,10 @@
-import { useLocation } from 'react-router-dom'
+import { useSearchParams } from 'react-router-dom'
 
 import type { DashboardHook } from './types'
 
 const useContainer = (): DashboardHook => {
-  const location = useLocation()
-
-  const params = new URLSearchParams(location.search)
-  const query = params.get('search') ?? ''
+  const searchParams = useSearchParams()[0]
+  const query = searchParams.get('search') ?? ''
 
   return { query }
 }

@@ -1,9 +1,13 @@
-import { fetchSearch, fetchTrending, setSearchPage, setTrendingPage } from '../actions'
+import { fetchSearch, fetchTrending } from '../actions'
 import { searchReducer, trendingReducer } from '../reducer'
 
 describe('dashboardReducer', () => {
   describe('trendingReducer', () => {
-    const initialState = { error: null, loading: true, movies: null, page: 1 }
+    const initialState = {
+      error: null,
+      loading: true,
+      movies: null
+    }
 
     it('returns initial state', () => {
       const action = { type: 'unknown' }
@@ -13,10 +17,13 @@ describe('dashboardReducer', () => {
 
     it('should handle FETCH_TRENDING/pending', () => {
       const action = {
-        meta: { arg: 1 },
         type: fetchTrending.pending.toString()
       }
-      const expectedState = { error: null, loading: true, movies: null, page: 1 }
+      const expectedState = {
+        error: null,
+        loading: true,
+        movies: null
+      }
 
       expect(trendingReducer(initialState, action)).toEqual(expectedState)
     })
@@ -26,7 +33,11 @@ describe('dashboardReducer', () => {
         payload: 'test/data',
         type: fetchTrending.fulfilled.toString()
       }
-      const expectedState = { error: null, loading: false, movies: 'test/data', page: 1 }
+      const expectedState = {
+        error: null,
+        loading: false,
+        movies: action.payload
+      }
 
       expect(trendingReducer(initialState, action)).toEqual(expectedState)
     })
@@ -36,24 +47,22 @@ describe('dashboardReducer', () => {
         payload: 'test/error',
         type: fetchTrending.rejected.toString()
       }
-      const expectedState = { error: 'test/error', loading: false, movies: null, page: 1 }
-
-      expect(trendingReducer(initialState, action)).toEqual(expectedState)
-    })
-
-    it('should handle SET_TRENDING_PAGE', () => {
-      const action = {
-        payload: 3,
-        type: setTrendingPage.toString()
+      const expectedState = {
+        error: action.payload,
+        loading: false,
+        movies: null
       }
-      const expectedState = { error: null, loading: true, movies: null, page: 3 }
 
       expect(trendingReducer(initialState, action)).toEqual(expectedState)
     })
   })
 
   describe('searchReducer', () => {
-    const initialState = { error: null, loading: true, movies: null, page: 1 }
+    const initialState = {
+      error: null,
+      loading: true,
+      movies: null
+    }
 
     it('returns initial state', () => {
       const action = { type: 'unknown' }
@@ -63,10 +72,13 @@ describe('dashboardReducer', () => {
 
     it('should handle FETCH_SEARCH/pending', () => {
       const action = {
-        meta: { arg: { page: 1 } },
         type: fetchSearch.pending.toString()
       }
-      const expectedState = { error: null, loading: true, movies: null, page: 1 }
+      const expectedState = {
+        error: null,
+        loading: true,
+        movies: null
+      }
 
       expect(searchReducer(initialState, action)).toEqual(expectedState)
     })
@@ -76,7 +88,11 @@ describe('dashboardReducer', () => {
         payload: 'test/data',
         type: fetchSearch.fulfilled.toString()
       }
-      const expectedState = { error: null, loading: false, movies: 'test/data', page: 1 }
+      const expectedState = {
+        error: null,
+        loading: false,
+        movies: action.payload
+      }
 
       expect(searchReducer(initialState, action)).toEqual(expectedState)
     })
@@ -86,17 +102,11 @@ describe('dashboardReducer', () => {
         payload: 'test/error',
         type: fetchSearch.rejected.toString()
       }
-      const expectedState = { error: 'test/error', loading: false, movies: null, page: 1 }
-
-      expect(searchReducer(initialState, action)).toEqual(expectedState)
-    })
-
-    it('should handle SET_SEARCH_PAGE', () => {
-      const action = {
-        payload: 3,
-        type: setSearchPage.toString()
+      const expectedState = {
+        error: action.payload,
+        loading: false,
+        movies: null
       }
-      const expectedState = { error: null, loading: true, movies: null, page: 3 }
 
       expect(searchReducer(initialState, action)).toEqual(expectedState)
     })

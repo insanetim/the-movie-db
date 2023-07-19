@@ -22,6 +22,7 @@ module.exports = {
   plugins: ['@typescript-eslint', 'perfectionist', 'prettier'],
   root: true,
   rules: {
+    '@typescript-eslint/no-empty-function': 'off',
     '@typescript-eslint/no-empty-interface': [
       'error',
       {

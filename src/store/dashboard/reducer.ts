@@ -2,19 +2,17 @@ import { combineReducers, createReducer } from '@reduxjs/toolkit'
 
 import type { IDashboardState } from './types'
 
-import { fetchSearch, fetchTrending, setSearchPage, setTrendingPage } from './actions'
+import { fetchSearch, fetchTrending } from './actions'
 
 const initalState: IDashboardState = {
   error: null,
   loading: true,
-  movies: null,
-  page: 1
+  movies: null
 }
 
 export const trendingReducer = createReducer(initalState, builder => {
-  builder.addCase(fetchTrending.pending, (state, action) => {
+  builder.addCase(fetchTrending.pending, state => {
     state.movies = null
-    state.page = action.meta.arg
     state.loading = true
     state.error = null
   })
@@ -26,15 +24,11 @@ export const trendingReducer = createReducer(initalState, builder => {
     state.error = action.payload as string
     state.loading = false
   })
-  builder.addCase(setTrendingPage, (state, action) => {
-    state.page = action.payload
-  })
 })
 
 export const searchReducer = createReducer(initalState, builder => {
-  builder.addCase(fetchSearch.pending, (state, action) => {
+  builder.addCase(fetchSearch.pending, state => {
     state.movies = null
-    state.page = action.meta.arg.page
     state.loading = true
     state.error = null
   })
@@ -45,9 +39,6 @@ export const searchReducer = createReducer(initalState, builder => {
   builder.addCase(fetchSearch.rejected, (state, action) => {
     state.error = action.payload as string
     state.loading = false
-  })
-  builder.addCase(setSearchPage, (state, action) => {
-    state.page = action.payload
   })
 })
 

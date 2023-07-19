@@ -1,6 +1,8 @@
 import { act, renderHook } from '@testing-library/react'
+import { useSearchParams } from 'react-router-dom'
 import { dispatch } from 'src/__mocks__/react-redux'
-import { fetchTrending, setTrendingPage } from 'src/store/dashboard/actions'
+import { fetchTrending } from 'src/store/dashboard/actions'
+import Wrapper from 'src/utils/testHelpers/wrapperMock'
 
 import useContainer from '../hook'
 
@@ -13,9 +15,19 @@ jest.mock('src/store/dashboard/selectors', () => ({
   trendingPageSelector: jest.fn(() => 1)
 }))
 
+jest.mock('react-router-dom', () => ({
+  ...jest.requireActual('react-router-dom'),
+  useSearchParams: jest.fn()
+}))
+const searchParams = {
+  get: () => {}
+} as unknown as URLSearchParams
+const setSearchParams = jest.fn()
+jest.mocked(useSearchParams).mockReturnValue([searchParams, setSearchParams])
+
 describe('Trending useContainer hook', () => {
   it('matches snapshot', () => {
-    const { result } = renderHook(useContainer)
+    const { result } = renderHook(() => useContainer(), { wrapper: Wrapper })
 
     expect(result.current).toMatchSnapshot()
   })
@@ -27,12 +39,16 @@ describe('Trending useContainer hook', () => {
       result.current.handlePagination(3)
     })
 
-    expect(dispatch).toHaveBeenCalledWith(setTrendingPage(3))
+    expect(setSearchParams).toHaveBeenCalledWith(
+      new URLSearchParams({
+        page: '3'
+      })
+    )
   })
 
   it('checks `useEffect` method', () => {
     renderHook(useContainer)
 
-    expect(dispatch).toHaveBeenCalledWith(fetchTrending(1))
+    expect(dispatch).toHaveBeenCalledWith(fetchTrending('1'))
   })
 })

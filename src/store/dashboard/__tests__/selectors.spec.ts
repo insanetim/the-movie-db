@@ -7,10 +7,6 @@ describe('dashboard selectors', () => {
     expect(selectors.trendingMoviesSelector(mockState)).toBe(null)
   })
 
-  it('trendingPageSelector', () => {
-    expect(selectors.trendingPageSelector(mockState)).toBe(1)
-  })
-
   it('trendingLoadingSelector', () => {
     expect(selectors.trendingLoadingSelector(mockState)).toBe(true)
   })
@@ -21,10 +17,6 @@ describe('dashboard selectors', () => {
 
   it('searchMoviesSelector', () => {
     expect(selectors.searchMoviesSelector(mockState)).toBe(null)
-  })
-
-  it('searchPageSelector', () => {
-    expect(selectors.searchPageSelector(mockState)).toBe(1)
   })
 
   it('searchLoadingSelector', () => {

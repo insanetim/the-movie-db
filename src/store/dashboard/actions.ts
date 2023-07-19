@@ -1,6 +1,6 @@
 import type { IMoviesList } from 'src/interfaces/movie.interface'
 
-import { createAction, createAsyncThunk } from '@reduxjs/toolkit'
+import { createAsyncThunk } from '@reduxjs/toolkit'
 import { pathOr } from 'ramda'
 import httpClient from 'src/lib/api/httpClient'
 import { getTrending, searchMovies } from 'src/lib/apiRoutes'
@@ -11,7 +11,7 @@ import * as types from './constants'
 
 export const fetchTrending = createAsyncThunk(
   types.FETCH_TRENDING,
-  async (page: number, { fulfillWithValue, rejectWithValue }) => {
+  async (page: string, { fulfillWithValue, rejectWithValue }) => {
     try {
       const { data } = await httpClient.request<IMoviesList>({
         params: { page },
@@ -44,7 +44,3 @@ export const fetchSearch = createAsyncThunk(
     }
   }
 )
-
-export const setTrendingPage = createAction<number>(types.SET_TRENDING_PAGE)
-
-export const setSearchPage = createAction<number>(types.SET_SEARCH_PAGE)

@@ -2,8 +2,6 @@
 
 exports[`SearchInput useContainer hook matches snapshot 1`] = `
 {
-  "currentValue": "",
-  "handleChange": [Function],
   "handleSearch": [Function],
 }
 `;
