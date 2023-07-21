@@ -77,10 +77,10 @@ export const changeMovieInFavorite = createAsyncThunk(
         data: { title: movieTitle }
       } = await httpClient.request<IMovieDetail>({ url: routes.getMovieDetails(movieId.toString()) })
 
-      const messageText = inFavorite ? `${movieTitle} added to Favorite` : `${movieTitle} removed from Favorite`
+      const messageText = `${movieTitle} ${inFavorite ? 'added to Favorite' : 'removed from Favorite'}`
 
       dispatch(showNotification({ messageText }))
-      dispatch(fetchFavorite(1))
+      dispatch(fetchFavorite('1'))
     } catch (error) {
       const messageText = pathOr('Something went wrong!', ['response', 'data', 'status_message'], error)
 
@@ -112,10 +112,10 @@ export const changeMovieInWatchlist = createAsyncThunk(
         data: { title: movieTitle }
       } = await httpClient.request<IMovieDetail>({ url: routes.getMovieDetails(movieId.toString()) })
 
-      const messageText = inWatchlist ? `${movieTitle} added to Watchlist` : `${movieTitle} removed from Watchlist`
+      const messageText = `${movieTitle} ${inWatchlist ? 'added to Watchlist' : 'removed from Watchlist'}`
 
       dispatch(showNotification({ messageText }))
-      dispatch(fetchWatchlist(1))
+      dispatch(fetchWatchlist('1'))
     } catch (error) {
       const messageText = pathOr('Something went wrong!', ['response', 'data', 'status_message'], error)
 

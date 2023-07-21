@@ -13,7 +13,7 @@ import { FETCH_FAVORITE } from './constants'
 
 export const fetchFavorite = createAsyncThunk(
   FETCH_FAVORITE,
-  async (page: number, { fulfillWithValue, getState, rejectWithValue }) => {
+  async (page: string, { fulfillWithValue, getState, rejectWithValue }) => {
     const sessionId = sessionIdSelector(getState() as RootState)
     const { id: accountId } = accountSelector(getState() as RootState) as IAccount
 

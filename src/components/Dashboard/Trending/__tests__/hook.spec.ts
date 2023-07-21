@@ -11,17 +11,14 @@ jest.mock('src/store/dashboard/actions')
 jest.mock('src/store/dashboard/selectors', () => ({
   trendingErrorSelector: jest.fn(() => null),
   trendingLoadingSelector: jest.fn(() => true),
-  trendingMoviesSelector: jest.fn(() => ({})),
-  trendingPageSelector: jest.fn(() => 1)
+  trendingMoviesSelector: jest.fn(() => ({}))
 }))
 
 jest.mock('react-router-dom', () => ({
   ...jest.requireActual('react-router-dom'),
   useSearchParams: jest.fn()
 }))
-const searchParams = {
-  get: () => {}
-} as unknown as URLSearchParams
+const searchParams = new URLSearchParams()
 const setSearchParams = jest.fn()
 jest.mocked(useSearchParams).mockReturnValue([searchParams, setSearchParams])
 

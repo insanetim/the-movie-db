@@ -11,10 +11,10 @@ jest.mock('src/store/session/selectors', () => ({
 
 describe('fetchFavorite', () => {
   const requestSpy = jest.spyOn(httpClient, 'request')
-  const action = fetchFavorite(1)
+  const action = fetchFavorite('1')
 
   const request = {
-    params: { page: 1, session_id: 'session_id' },
+    params: { page: '1', session_id: 'session_id' },
     url: getFavorite(123)
   }
   const response = { data: 'test/data' }

@@ -15,7 +15,7 @@ jest.mock('react-router-dom', () => ({
 }))
 const navigate = jest.fn()
 jest.mocked(useNavigate).mockReturnValue(navigate)
-const searchParams = {} as URLSearchParams
+const searchParams = new URLSearchParams()
 const setSearchParams = jest.fn()
 jest.mocked(useSearchParams).mockReturnValue([searchParams, setSearchParams])
 

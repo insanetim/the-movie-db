@@ -18,9 +18,7 @@ jest.mock('react-router-dom', () => ({
   ...jest.requireActual('react-router-dom'),
   useSearchParams: jest.fn()
 }))
-const searchParams = {
-  get: () => {}
-} as unknown as URLSearchParams
+const searchParams = new URLSearchParams()
 const setSearchParams = jest.fn()
 jest.mocked(useSearchParams).mockReturnValue([searchParams, setSearchParams])
 

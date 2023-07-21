@@ -1,8 +1,13 @@
 import { fetchAccount, logIn, logOut } from '../actions'
 import reducer from '../reducer'
+import { ISessionState } from '../types'
 
 describe('sessionReducer', () => {
-  const initialState = { account: null, loading: false, sessionId: '' }
+  const initialState: ISessionState = {
+    account: null,
+    loading: false,
+    sessionId: ''
+  }
 
   it('returns initial state', () => {
     const action = { type: 'unknown' }
@@ -14,7 +19,11 @@ describe('sessionReducer', () => {
     const action = {
       type: logIn.pending.toString()
     }
-    const expectedState = { account: null, loading: true, sessionId: '' }
+    const expectedState = {
+      account: null,
+      loading: true,
+      sessionId: ''
+    }
 
     expect(reducer(initialState, action)).toEqual(expectedState)
   })
@@ -24,7 +33,11 @@ describe('sessionReducer', () => {
       payload: 'test/data',
       type: logIn.fulfilled.toString()
     }
-    const expectedState = { account: null, loading: false, sessionId: 'test/data' }
+    const expectedState = {
+      account: null,
+      loading: false,
+      sessionId: action.payload
+    }
 
     expect(reducer(initialState, action)).toEqual(expectedState)
   })
@@ -33,7 +46,11 @@ describe('sessionReducer', () => {
     const action = {
       type: logIn.rejected.toString()
     }
-    const expectedState = { account: null, loading: false, sessionId: '' }
+    const expectedState = {
+      account: null,
+      loading: false,
+      sessionId: ''
+    }
 
     expect(reducer(initialState, action)).toEqual(expectedState)
   })
@@ -42,7 +59,11 @@ describe('sessionReducer', () => {
     const action = {
       type: logOut.fulfilled.toString()
     }
-    const expectedState = { account: null, loading: false, sessionId: '' }
+    const expectedState = {
+      account: null,
+      loading: false,
+      sessionId: ''
+    }
 
     expect(reducer(initialState, action)).toEqual(expectedState)
   })
@@ -52,7 +73,11 @@ describe('sessionReducer', () => {
       payload: 'test/data',
       type: fetchAccount.fulfilled.toString()
     }
-    const expectedState = { account: 'test/data', loading: false, sessionId: '' }
+    const expectedState = {
+      account: action.payload,
+      loading: false,
+      sessionId: ''
+    }
 
     expect(reducer(initialState, action)).toEqual(expectedState)
   })

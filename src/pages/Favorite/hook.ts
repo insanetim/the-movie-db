@@ -1,5 +1,6 @@
 import { Modal } from 'antd'
 import { MouseEvent, useEffect } from 'react'
+import { useSearchParams } from 'react-router-dom'
 import { useAppDispatch, useAppSelector } from 'src/hooks/useRedux'
 import { fetchFavorite } from 'src/store/favorite/actions'
 import { favoriteErrorSelector, favoriteLoadingSelector, favoriteMoviesSelector } from 'src/store/favorite/selectors'
@@ -15,9 +16,11 @@ const useContainer = (): FavoriteHook => {
   const movies = useAppSelector(favoriteMoviesSelector)
   const loading = useAppSelector(favoriteLoadingSelector)
   const error = useAppSelector(favoriteErrorSelector)
+  const [searchParams, setSearchParams] = useSearchParams()
+  const page = searchParams.get('page') ?? '1'
 
   const handlePagination = (page: number) => {
-    dispatch(fetchFavorite(page))
+    setSearchParams(new URLSearchParams({ page: page.toString() }))
   }
 
   const handleMovieDelete = (movieId: number, event: MouseEvent<HTMLSpanElement>): (() => void) => {
@@ -37,9 +40,9 @@ const useContainer = (): FavoriteHook => {
 
   useEffect(() => {
     if (!isNull(account)) {
-      dispatch(fetchFavorite(1))
+      dispatch(fetchFavorite(page))
     }
-  }, [account, dispatch])
+  }, [account, page, dispatch])
 
   return { error, handleMovieDelete, handlePagination, loading, movies }
 }

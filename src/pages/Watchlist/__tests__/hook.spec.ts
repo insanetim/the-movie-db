@@ -1,5 +1,6 @@
 import { act, renderHook } from '@testing-library/react'
 import { Modal } from 'antd'
+import { useSearchParams } from 'react-router-dom'
 import mockAccount from 'src/__mocks__/mockAccount'
 import { dispatch } from 'src/__mocks__/react-redux'
 import { changeMovieInWatchlist } from 'src/store/movie/actions'
@@ -19,9 +20,16 @@ jest.mock('src/store/session/selectors', () => ({
 jest.mock('src/store/watchlist/selectors', () => ({
   watchlistErrorSelector: jest.fn(() => null),
   watchlistLoadingSelector: jest.fn(() => true),
-  watchlistMoviesSelector: jest.fn(() => null),
-  watchlistPageSelector: jest.fn(() => 1)
+  watchlistMoviesSelector: jest.fn(() => null)
 }))
+
+jest.mock('react-router-dom', () => ({
+  ...jest.requireActual('react-router-dom'),
+  useSearchParams: jest.fn()
+}))
+const searchParams = new URLSearchParams()
+const setSearchParams = jest.fn()
+jest.mocked(useSearchParams).mockReturnValue([searchParams, setSearchParams])
 
 describe('Watchlist useContainer hook', () => {
   const confirmSpy = jest.spyOn(Modal, 'confirm')
@@ -39,7 +47,11 @@ describe('Watchlist useContainer hook', () => {
       result.current.handlePagination(3)
     })
 
-    expect(dispatch).toHaveBeenCalledWith(fetchWatchlist(3))
+    expect(setSearchParams).toHaveBeenCalledWith(
+      new URLSearchParams({
+        page: '3'
+      })
+    )
   })
 
   it('checks `handleMovieDelete` method', () => {
@@ -69,6 +81,6 @@ describe('Watchlist useContainer hook', () => {
     jest.mocked(accountSelector).mockReturnValueOnce(mockAccount)
     renderHook(useContainer)
 
-    expect(dispatch).toHaveBeenCalledWith(fetchWatchlist(1))
+    expect(dispatch).toHaveBeenCalledWith(fetchWatchlist('1'))
   })
 })

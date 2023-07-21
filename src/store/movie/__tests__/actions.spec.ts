@@ -104,7 +104,7 @@ describe('movie actions', () => {
       expect(requestSpy).toHaveBeenNthCalledWith(1, request)
       expect(requestSpy).toHaveBeenNthCalledWith(2, movieDetailRequest)
       expect(dispatch).toHaveBeenCalledWith(notification)
-      expect(dispatch).toHaveBeenCalledWith(fetchFavorite(1))
+      expect(dispatch).toHaveBeenCalledWith(fetchFavorite('1'))
     })
 
     it('failure', async () => {
@@ -155,7 +155,7 @@ describe('movie actions', () => {
       expect(requestSpy).toHaveBeenNthCalledWith(1, request)
       expect(requestSpy).toHaveBeenNthCalledWith(2, movieDetailRequest)
       expect(dispatch).toHaveBeenCalledWith(notification)
-      expect(dispatch).toHaveBeenCalledWith(fetchWatchlist(1))
+      expect(dispatch).toHaveBeenCalledWith(fetchWatchlist('1'))
     })
 
     it('failure', async () => {

@@ -14,11 +14,9 @@ jest.mock('src/store/dashboard/selectors', () => ({
   searchErrorSelector: jest.fn(() => null),
   searchLoadingSelector: jest.fn(() => true),
   searchMoviesSelector: jest.fn(() => null),
-  searchPageSelector: jest.fn(() => 1),
   trendingErrorSelector: jest.fn(() => null),
   trendingLoadingSelector: jest.fn(() => true),
-  trendingMoviesSelector: jest.fn(() => null),
-  trendingPageSelector: jest.fn(() => 1)
+  trendingMoviesSelector: jest.fn(() => null)
 }))
 
 describe('Dashboard component', () => {

@@ -1,9 +1,10 @@
 import { fetchSearch, fetchTrending } from '../actions'
 import { searchReducer, trendingReducer } from '../reducer'
+import { IDashboardState } from '../types'
 
 describe('dashboardReducer', () => {
   describe('trendingReducer', () => {
-    const initialState = {
+    const initialState: IDashboardState = {
       error: null,
       loading: true,
       movies: null
@@ -58,7 +59,7 @@ describe('dashboardReducer', () => {
   })
 
   describe('searchReducer', () => {
-    const initialState = {
+    const initialState: IDashboardState = {
       error: null,
       loading: true,
       movies: null

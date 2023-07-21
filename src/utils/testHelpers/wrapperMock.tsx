@@ -1,7 +1,7 @@
 import { ReactNode } from 'react'
-import { MemoryRouter } from 'react-router-dom'
+import { BrowserRouter } from 'react-router-dom'
 
 const Wrapper = ({ children }: { children: ReactNode }) => {
-  return <MemoryRouter>{children}</MemoryRouter>
+  return <BrowserRouter>{children}</BrowserRouter>
 }
 export default Wrapper

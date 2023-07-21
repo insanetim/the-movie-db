@@ -1,13 +1,16 @@
 import { NOTIFICATION_DURATION, NOTIFICATION_TYPE } from 'src/constants/app'
 
-import type { INotification } from '../types'
+import type { IModalState, INotification } from '../types'
 
 import { hideModal, hideNotification, showModal, showNotification } from '../actions'
 import { modalReducer, notificationsReducer } from '../reducer'
 
 describe('appReducer', () => {
   describe('modalReducer', () => {
-    const initialState = { modalProps: null, modalType: null }
+    const initialState: IModalState = {
+      modalProps: null,
+      modalType: null
+    }
 
     it('returns initial state', () => {
       const action = { type: 'unknown' }
@@ -17,7 +20,10 @@ describe('appReducer', () => {
 
     it('should handle SHOW_MODAL', () => {
       const action = {
-        payload: { modalProps: 'test/modalProps', modalType: 'test/modalType' },
+        payload: {
+          modalProps: 'test/modalProps',
+          modalType: 'test/modalType'
+        },
         type: showModal.toString()
       }
       const expectedState = action.payload
@@ -29,7 +35,10 @@ describe('appReducer', () => {
       const action = {
         type: hideModal.toString()
       }
-      const expectedState = { modalProps: { open: false }, modalType: null }
+      const expectedState = {
+        modalProps: { open: false },
+        modalType: null
+      }
 
       expect(modalReducer(initialState, action)).toEqual(expectedState)
     })

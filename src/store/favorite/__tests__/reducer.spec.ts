@@ -1,8 +1,13 @@
 import { fetchFavorite } from '../actions'
 import reducer from '../reducer'
+import { IFavoriteState } from '../types'
 
 describe('favoriteReducer', () => {
-  const initialState = { error: null, loading: true, movies: null }
+  const initialState: IFavoriteState = {
+    error: null,
+    loading: true,
+    movies: null
+  }
 
   it('returns initial state', () => {
     const action = { type: 'unknown' }
@@ -14,7 +19,11 @@ describe('favoriteReducer', () => {
     const action = {
       type: fetchFavorite.pending.toString()
     }
-    const expectedState = { error: null, loading: true, movies: null }
+    const expectedState = {
+      error: null,
+      loading: true,
+      movies: null
+    }
 
     expect(reducer(initialState, action)).toEqual(expectedState)
   })
@@ -24,7 +33,11 @@ describe('favoriteReducer', () => {
       payload: 'test/data',
       type: fetchFavorite.fulfilled.toString()
     }
-    const expectedState = { error: null, loading: false, movies: 'test/data' }
+    const expectedState = {
+      error: null,
+      loading: false,
+      movies: action.payload
+    }
 
     expect(reducer(initialState, action)).toEqual(expectedState)
   })
@@ -34,7 +47,11 @@ describe('favoriteReducer', () => {
       payload: 'test/error',
       type: fetchFavorite.rejected.toString()
     }
-    const expectedState = { error: 'test/error', loading: false, movies: null }
+    const expectedState = {
+      error: action.payload,
+      loading: false,
+      movies: null
+    }
 
     expect(reducer(initialState, action)).toEqual(expectedState)
   })
