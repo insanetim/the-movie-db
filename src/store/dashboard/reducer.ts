@@ -1,4 +1,4 @@
-import { combineReducers, createReducer } from '@reduxjs/toolkit'
+import { createReducer } from '@reduxjs/toolkit'
 
 import type { IDashboardState } from './types'
 
@@ -10,7 +10,7 @@ const initalState: IDashboardState = {
   movies: null
 }
 
-export const trendingReducer = createReducer(initalState, builder => {
+const dashboardReducer = createReducer(initalState, builder => {
   builder.addCase(fetchTrending.pending, state => {
     state.movies = null
     state.loading = true
@@ -24,9 +24,6 @@ export const trendingReducer = createReducer(initalState, builder => {
     state.error = action.payload as string
     state.loading = false
   })
-})
-
-export const searchReducer = createReducer(initalState, builder => {
   builder.addCase(fetchSearch.pending, state => {
     state.movies = null
     state.loading = true
@@ -42,7 +39,4 @@ export const searchReducer = createReducer(initalState, builder => {
   })
 })
 
-export default combineReducers({
-  search: searchReducer,
-  trending: trendingReducer
-})
+export default dashboardReducer

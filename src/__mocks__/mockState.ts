@@ -9,16 +9,9 @@ const mockState: RootState = {
     notifications: []
   },
   dashboard: {
-    search: {
-      error: null,
-      loading: true,
-      movies: null
-    },
-    trending: {
-      error: null,
-      loading: true,
-      movies: null
-    }
+    error: null,
+    loading: true,
+    movies: null
   },
   favorite: {
     error: null,

@@ -9,9 +9,9 @@ import useContainer from '../hook'
 jest.mock('src/store/dashboard/actions')
 
 jest.mock('src/store/dashboard/selectors', () => ({
-  trendingErrorSelector: jest.fn(() => null),
-  trendingLoadingSelector: jest.fn(() => true),
-  trendingMoviesSelector: jest.fn(() => ({}))
+  dashboardErrorSelector: jest.fn(() => null),
+  dashboardLoadingSelector: jest.fn(() => true),
+  dashboardMoviesSelector: jest.fn(() => ({}))
 }))
 
 jest.mock('react-router-dom', () => ({

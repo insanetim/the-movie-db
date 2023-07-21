@@ -11,12 +11,9 @@ const mockedHookData: DashboardHook = {
 jest.mock('../hook', () => jest.fn(() => mockedHookData))
 
 jest.mock('src/store/dashboard/selectors', () => ({
-  searchErrorSelector: jest.fn(() => null),
-  searchLoadingSelector: jest.fn(() => true),
-  searchMoviesSelector: jest.fn(() => null),
-  trendingErrorSelector: jest.fn(() => null),
-  trendingLoadingSelector: jest.fn(() => true),
-  trendingMoviesSelector: jest.fn(() => null)
+  dashboardErrorSelector: jest.fn(() => null),
+  dashboardLoadingSelector: jest.fn(() => true),
+  dashboardMoviesSelector: jest.fn(() => null)
 }))
 
 describe('Dashboard component', () => {
