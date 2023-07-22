@@ -14,7 +14,7 @@ import type { IRequestToken, ISession, IUserData } from './types'
 import { FETCH_ACCOUNT, LOG_IN, LOG_OUT } from './constants'
 import { sessionIdSelector } from './selectors'
 
-export const logIn = createAsyncThunk(LOG_IN, async (userData: IUserData, { dispatch, fulfillWithValue }) => {
+export const logIn = createAsyncThunk(LOG_IN, async (userData: IUserData, { dispatch }) => {
   try {
     const {
       data: { request_token: requestToken }
@@ -38,7 +38,7 @@ export const logIn = createAsyncThunk(LOG_IN, async (userData: IUserData, { disp
 
     Cookies.set('session_id', sessionId)
 
-    return fulfillWithValue(sessionId)
+    return sessionId
   } catch (error) {
     const messageText = pathOr('Something went wrong!', ['response', 'data', 'status_message'], error)
 
@@ -74,7 +74,7 @@ export const logOut = createAsyncThunk(LOG_OUT, async (_, { dispatch, getState }
   }
 })
 
-export const fetchAccount = createAsyncThunk(FETCH_ACCOUNT, async (_, { dispatch, fulfillWithValue, getState }) => {
+export const fetchAccount = createAsyncThunk(FETCH_ACCOUNT, async (_, { dispatch, getState }) => {
   const sessionId = sessionIdSelector(getState() as RootState)
 
   try {
@@ -83,7 +83,7 @@ export const fetchAccount = createAsyncThunk(FETCH_ACCOUNT, async (_, { dispatch
       url: routes.getAccountDetails
     })
 
-    return fulfillWithValue(data)
+    return data
   } catch (error) {
     const messageText = pathOr('Something went wrong!', ['response', 'data', 'status_message'], error)
 

@@ -1,8 +1,6 @@
 import { IMovieDetailExtended } from 'src/interfaces/movie.interface'
 
 export interface IMovieState {
-  error: null | string
-  loading: boolean
   movieDetail: IMovieDetailExtended | null
 }
 

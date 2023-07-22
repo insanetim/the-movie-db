@@ -2,14 +2,11 @@ import { Modal } from 'antd'
 import { MouseEvent, useEffect } from 'react'
 import { useSearchParams } from 'react-router-dom'
 import { useAppDispatch, useAppSelector } from 'src/hooks/useRedux'
+import useRequest from 'src/hooks/useRequest'
 import { changeMovieInWatchlist } from 'src/store/movie/actions'
 import { accountSelector } from 'src/store/session/selectors'
 import { fetchWatchlist } from 'src/store/watchlist/actions'
-import {
-  watchlistErrorSelector,
-  watchlistLoadingSelector,
-  watchlistMoviesSelector
-} from 'src/store/watchlist/selectors'
+import { watchlistMoviesSelector } from 'src/store/watchlist/selectors'
 import isNull from 'src/utils/helpers/isNull'
 
 import type { WatchlistHook } from './types'
@@ -18,10 +15,9 @@ const useContainer = (): WatchlistHook => {
   const dispatch = useAppDispatch()
   const account = useAppSelector(accountSelector)
   const movies = useAppSelector(watchlistMoviesSelector)
-  const loading = useAppSelector(watchlistLoadingSelector)
-  const error = useAppSelector(watchlistErrorSelector)
   const [searchParams, setSearchParams] = useSearchParams()
   const page = searchParams.get('page') ?? '1'
+  const { error, loading, request } = useRequest()
 
   const handlePagination = (page: number) => {
     setSearchParams(new URLSearchParams({ page: page.toString() }))
@@ -44,9 +40,9 @@ const useContainer = (): WatchlistHook => {
 
   useEffect(() => {
     if (!isNull(account)) {
-      dispatch(fetchWatchlist(page))
+      request(fetchWatchlist(page))
     }
-  }, [account, page, dispatch])
+  }, [account, page, request])
 
   return { error, handleMovieDelete, handlePagination, loading, movies }
 }

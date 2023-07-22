@@ -1,18 +1,18 @@
 import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { useAppDispatch, useAppSelector } from 'src/hooks/useRedux'
+import useRequest from 'src/hooks/useRequest'
 import { changeMovieInFavorite, changeMovieInWatchlist, fetchMovie } from 'src/store/movie/actions'
-import { movieErrorSelector, movieLoadingSelector, movieSelector } from 'src/store/movie/selectors'
+import { movieSelector } from 'src/store/movie/selectors'
 
 import type { MovieDetailHook } from './types'
 
 const useContainer = (): MovieDetailHook => {
   const dispatch = useAppDispatch()
   const movie = useAppSelector(movieSelector)
-  const loading = useAppSelector(movieLoadingSelector)
-  const error = useAppSelector(movieErrorSelector)
   const { movieId = '' } = useParams()
   const [popoverOpen, setPopoverOpen] = useState(false)
+  const { error, loading, request } = useRequest()
 
   const handleFavoriteClick = () => {
     dispatch(
@@ -33,8 +33,8 @@ const useContainer = (): MovieDetailHook => {
   }
 
   useEffect(() => {
-    dispatch(fetchMovie(movieId))
-  }, [dispatch, movieId])
+    request(fetchMovie(movieId))
+  }, [movieId, request])
 
   return {
     error,

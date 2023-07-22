@@ -25,7 +25,7 @@ import { CHANGE_MOVIE_IN_FAVORITE, CHANGE_MOVIE_IN_WATCHLIST, FETCH_MOVIE } from
 
 export const fetchMovie = createAsyncThunk(
   FETCH_MOVIE,
-  async (movieId: MovieId, { dispatch, fulfillWithValue, getState, rejectWithValue }) => {
+  async (movieId: MovieId, { dispatch, getState, rejectWithValue }) => {
     const sessionId = sessionIdSelector(getState() as RootState)
 
     try {
@@ -48,9 +48,9 @@ export const fetchMovie = createAsyncThunk(
         images: images.backdrops.slice(0, 7)
       }
 
-      await dispatch(fetchLists(1))
+      await dispatch(fetchLists('1'))
 
-      return fulfillWithValue(extendedData)
+      return extendedData
     } catch (error) {
       const message = pathOr('Something went wrong!', ['response', 'data', 'status_message'], error)
 

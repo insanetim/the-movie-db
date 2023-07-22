@@ -33,10 +33,10 @@ describe('lists actions', () => {
   })
 
   describe('fetchLists', () => {
-    const action = actions.fetchLists(1)
+    const action = actions.fetchLists('1')
 
     const request = {
-      params: { page: 1, session_id: 'session_id' },
+      params: { page: '1', session_id: 'session_id' },
       url: routes.getCreatedLists(123)
     }
     const response = { data: 'test/data' }

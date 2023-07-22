@@ -2,18 +2,18 @@ import { Modal } from 'antd'
 import { MouseEvent, useEffect } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import { useAppDispatch, useAppSelector } from 'src/hooks/useRedux'
+import useRequest from 'src/hooks/useRequest'
 import { deleteList, fetchList, removeFromList } from 'src/store/lists/actions'
-import { listErrorSelector, listLoadingSelector, listSelector } from 'src/store/lists/selectors'
+import { listSelector } from 'src/store/lists/selectors'
 
 import { ListDetailHook } from './types'
 
 const useContainer = (): ListDetailHook => {
   const dispatch = useAppDispatch()
   const list = useAppSelector(listSelector)
-  const loading = useAppSelector(listLoadingSelector)
-  const error = useAppSelector(listErrorSelector)
   const { listId = '' } = useParams()
   const navigate = useNavigate()
+  const { error, loading, request } = useRequest()
 
   const handleListDelete = () => {
     const onOk = async () => {
@@ -45,8 +45,8 @@ const useContainer = (): ListDetailHook => {
   }
 
   useEffect(() => {
-    dispatch(fetchList(listId))
-  }, [dispatch, listId])
+    request(fetchList(listId))
+  }, [listId, request])
 
   return { error, handleListDelete, handleMovieDelete, list, loading }
 }

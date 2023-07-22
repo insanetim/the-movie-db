@@ -7,25 +7,17 @@ import type { IMovieState } from './types'
 import { changeMovieInFavorite, changeMovieInWatchlist, fetchMovie } from './actions'
 
 const initialState: IMovieState = {
-  error: null,
-  loading: true,
   movieDetail: null
 }
 
 const movieReducer = createReducer(initialState, builder => {
   builder.addCase(fetchMovie.pending, state => {
     state.movieDetail = null
-    state.loading = true
-    state.error = null
   })
   builder.addCase(fetchMovie.fulfilled, (state, action) => {
     state.movieDetail = action.payload as IMovieDetailExtended
-    state.loading = false
   })
-  builder.addCase(fetchMovie.rejected, (state, action) => {
-    state.error = action.payload as string
-    state.loading = false
-  })
+
   builder.addCase(changeMovieInFavorite.fulfilled, (state, action) => {
     if (state.movieDetail) {
       state.movieDetail.accountStates.favorite = action.meta.arg.inFavorite

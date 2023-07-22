@@ -18,8 +18,6 @@ jest.mock('src/store/session/selectors', () => ({
 }))
 
 jest.mock('src/store/favorite/selectors', () => ({
-  favoriteErrorSelector: jest.fn(() => null),
-  favoriteLoadingSelector: jest.fn(() => true),
   favoriteMoviesSelector: jest.fn(() => null)
 }))
 

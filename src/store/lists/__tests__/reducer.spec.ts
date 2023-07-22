@@ -4,11 +4,7 @@ import { IListState, IListsState } from '../types'
 
 describe('listsReducer', () => {
   describe('createdListsReducer', () => {
-    const initialState: IListsState = {
-      error: null,
-      lists: null,
-      loading: true
-    }
+    const initialState: IListsState = { lists: null }
 
     it('returns initial state', () => {
       const action = { type: 'unknown' }
@@ -20,11 +16,7 @@ describe('listsReducer', () => {
       const action = {
         type: fetchLists.pending.toString()
       }
-      const expectedState = {
-        error: null,
-        lists: null,
-        loading: true
-      }
+      const expectedState = { lists: null }
 
       expect(createdListsReducer(initialState, action)).toEqual(expectedState)
     })
@@ -34,36 +26,14 @@ describe('listsReducer', () => {
         payload: 'test/data',
         type: fetchLists.fulfilled.toString()
       }
-      const expectedState = {
-        error: null,
-        lists: action.payload,
-        loading: false
-      }
-
-      expect(createdListsReducer(initialState, action)).toEqual(expectedState)
-    })
-
-    it('should handle FETCH_LISTS/rejected', () => {
-      const action = {
-        payload: 'test/error',
-        type: fetchLists.rejected.toString()
-      }
-      const expectedState = {
-        error: action.payload,
-        lists: null,
-        loading: false
-      }
+      const expectedState = { lists: action.payload }
 
       expect(createdListsReducer(initialState, action)).toEqual(expectedState)
     })
   })
 
   describe('listDetailReducer', () => {
-    const initialState: IListState = {
-      error: null,
-      list: null,
-      loading: true
-    }
+    const initialState: IListState = { list: null }
 
     it('returns initial state', () => {
       const action = { type: 'unknown' }
@@ -75,11 +45,7 @@ describe('listsReducer', () => {
       const action = {
         type: fetchList.pending.toString()
       }
-      const expectedState = {
-        error: null,
-        list: null,
-        loading: true
-      }
+      const expectedState = { list: null }
 
       expect(listDetailReducer(initialState, action)).toEqual(expectedState)
     })
@@ -89,25 +55,7 @@ describe('listsReducer', () => {
         payload: 'test/data',
         type: fetchList.fulfilled.toString()
       }
-      const expectedState = {
-        error: null,
-        list: action.payload,
-        loading: false
-      }
-
-      expect(listDetailReducer(initialState, action)).toEqual(expectedState)
-    })
-
-    it('should handle FETCH_LIST/rejected', () => {
-      const action = {
-        payload: 'test/error',
-        type: fetchList.rejected.toString()
-      }
-      const expectedState = {
-        error: action.payload,
-        list: null,
-        loading: false
-      }
+      const expectedState = { list: action.payload }
 
       expect(listDetailReducer(initialState, action)).toEqual(expectedState)
     })

@@ -11,23 +11,20 @@ import type { RootState } from '../index'
 
 import { FETCH_FAVORITE } from './constants'
 
-export const fetchFavorite = createAsyncThunk(
-  FETCH_FAVORITE,
-  async (page: string, { fulfillWithValue, getState, rejectWithValue }) => {
-    const sessionId = sessionIdSelector(getState() as RootState)
-    const { id: accountId } = accountSelector(getState() as RootState) as IAccount
+export const fetchFavorite = createAsyncThunk(FETCH_FAVORITE, async (page: string, { getState, rejectWithValue }) => {
+  const sessionId = sessionIdSelector(getState() as RootState)
+  const { id: accountId } = accountSelector(getState() as RootState) as IAccount
 
-    try {
-      const { data } = await httpClient.request<IMoviesList>({
-        params: { page, session_id: sessionId },
-        url: getFavorite(accountId)
-      })
+  try {
+    const { data } = await httpClient.request<IMoviesList>({
+      params: { page, session_id: sessionId },
+      url: getFavorite(accountId)
+    })
 
-      return fulfillWithValue(data)
-    } catch (error) {
-      const message = pathOr('Something went wrong!', ['response', 'data', 'status_message'], error)
+    return data
+  } catch (error) {
+    const message = pathOr('Something went wrong!', ['response', 'data', 'status_message'], error)
 
-      return rejectWithValue(message)
-    }
+    return rejectWithValue(message)
   }
-)
+})

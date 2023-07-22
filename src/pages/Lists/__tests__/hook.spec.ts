@@ -1,4 +1,5 @@
 import { act, renderHook } from '@testing-library/react'
+import { useSearchParams } from 'react-router-dom'
 import mockAccount from 'src/__mocks__/mockAccount'
 import { dispatch } from 'src/__mocks__/react-redux'
 import { showModal } from 'src/store/app/actions'
@@ -14,10 +15,16 @@ jest.mock('src/store/session/selectors', () => ({
 }))
 
 jest.mock('src/store/lists/selectors', () => ({
-  listsErrorSelector: jest.fn(() => null),
-  listsLoadingSelector: jest.fn(() => true),
   listsSelector: jest.fn(() => null)
 }))
+
+jest.mock('react-router-dom', () => ({
+  ...jest.requireActual('react-router-dom'),
+  useSearchParams: jest.fn()
+}))
+const searchParams = new URLSearchParams()
+const setSearchParams = jest.fn()
+jest.mocked(useSearchParams).mockReturnValue([searchParams, setSearchParams])
 
 describe('Favotites useContainer hook', () => {
   it('matches snapshot', () => {
@@ -33,7 +40,11 @@ describe('Favotites useContainer hook', () => {
       result.current.handlePagination(3)
     })
 
-    expect(dispatch).toHaveBeenCalledWith(fetchLists(3))
+    expect(setSearchParams).toHaveBeenCalledWith(
+      new URLSearchParams({
+        page: '3'
+      })
+    )
   })
 
   it('checks `handleCreateList` method', () => {
@@ -54,6 +65,6 @@ describe('Favotites useContainer hook', () => {
     jest.mocked(accountSelector).mockReturnValueOnce(mockAccount)
     renderHook(useContainer)
 
-    expect(dispatch).toHaveBeenCalledWith(fetchLists(1))
+    expect(dispatch).toHaveBeenCalledWith(fetchLists('1'))
   })
 })

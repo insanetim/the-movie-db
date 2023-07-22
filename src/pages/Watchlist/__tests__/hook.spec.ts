@@ -18,8 +18,6 @@ jest.mock('src/store/session/selectors', () => ({
 }))
 
 jest.mock('src/store/watchlist/selectors', () => ({
-  watchlistErrorSelector: jest.fn(() => null),
-  watchlistLoadingSelector: jest.fn(() => true),
   watchlistMoviesSelector: jest.fn(() => null)
 }))
 

@@ -9,34 +9,31 @@ import type { FetchSearchProps } from './types'
 
 import * as types from './constants'
 
-export const fetchTrending = createAsyncThunk(
-  types.FETCH_TRENDING,
-  async (page: string, { fulfillWithValue, rejectWithValue }) => {
-    try {
-      const { data } = await httpClient.request<IMoviesList>({
-        params: { page },
-        url: getTrending
-      })
+export const fetchTrending = createAsyncThunk(types.FETCH_TRENDING, async (page: string, { rejectWithValue }) => {
+  try {
+    const { data } = await httpClient.request<IMoviesList>({
+      params: { page },
+      url: getTrending
+    })
 
-      return fulfillWithValue(data)
-    } catch (error) {
-      const message = pathOr('Something went wrong!', ['response', 'data', 'status_message'], error)
+    return data
+  } catch (error) {
+    const message = pathOr('Something went wrong!', ['response', 'data', 'status_message'], error)
 
-      return rejectWithValue(message)
-    }
+    return rejectWithValue(message)
   }
-)
+})
 
 export const fetchSearch = createAsyncThunk(
   types.FETCH_SEARCH,
-  async ({ page, query }: FetchSearchProps, { fulfillWithValue, rejectWithValue }) => {
+  async ({ page, query }: FetchSearchProps, { rejectWithValue }) => {
     try {
       const { data } = await httpClient.request<IMoviesList>({
         params: { page, query },
         url: searchMovies
       })
 
-      return fulfillWithValue(data)
+      return data
     } catch (error) {
       const message = pathOr('Something went wrong!', ['response', 'data', 'status_message'], error)
 

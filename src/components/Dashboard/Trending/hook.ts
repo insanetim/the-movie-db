@@ -1,30 +1,25 @@
 import { useEffect } from 'react'
 import { useSearchParams } from 'react-router-dom'
-import { useAppDispatch, useAppSelector } from 'src/hooks/useRedux'
+import { useAppSelector } from 'src/hooks/useRedux'
+import useRequest from 'src/hooks/useRequest'
 import { fetchTrending } from 'src/store/dashboard/actions'
-import {
-  dashboardErrorSelector,
-  dashboardLoadingSelector,
-  dashboardMoviesSelector
-} from 'src/store/dashboard/selectors'
+import { dashboardMoviesSelector } from 'src/store/dashboard/selectors'
 
 import { TrendingHook } from './types'
 
 const useContainer = (): TrendingHook => {
-  const dispatch = useAppDispatch()
   const movies = useAppSelector(dashboardMoviesSelector)
-  const loading = useAppSelector(dashboardLoadingSelector)
-  const error = useAppSelector(dashboardErrorSelector)
   const [searchParams, setSearchParams] = useSearchParams()
   const page = searchParams.get('page') ?? '1'
+  const { error, loading, request } = useRequest()
 
   const handlePagination = (page: number) => {
     setSearchParams(new URLSearchParams({ page: page.toString() }))
   }
 
   useEffect(() => {
-    dispatch(fetchTrending(page))
-  }, [page, dispatch])
+    request(fetchTrending(page))
+  }, [page, request])
 
   return { error, handlePagination, loading, movies }
 }

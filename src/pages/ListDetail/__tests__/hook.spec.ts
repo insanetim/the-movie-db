@@ -7,8 +7,6 @@ import { deleteList, fetchList, removeFromList } from 'src/store/lists/actions'
 import useContainer from '../hook'
 
 jest.mock('src/store/lists/selectors', () => ({
-  listErrorSelector: jest.fn(() => null),
-  listLoadingSelector: jest.fn(() => true),
   listSelector: jest.fn(() => null)
 }))
 

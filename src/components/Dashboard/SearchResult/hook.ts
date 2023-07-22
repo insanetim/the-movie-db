@@ -1,30 +1,25 @@
 import { useEffect } from 'react'
 import { useSearchParams } from 'react-router-dom'
-import { useAppDispatch, useAppSelector } from 'src/hooks/useRedux'
+import { useAppSelector } from 'src/hooks/useRedux'
+import useRequest from 'src/hooks/useRequest'
 import { fetchSearch } from 'src/store/dashboard/actions'
-import {
-  dashboardErrorSelector,
-  dashboardLoadingSelector,
-  dashboardMoviesSelector
-} from 'src/store/dashboard/selectors'
+import { dashboardMoviesSelector } from 'src/store/dashboard/selectors'
 
 import { SearchResultHook, SearchResultHookProps } from './types'
 
 const useContainer = ({ query }: SearchResultHookProps): SearchResultHook => {
-  const dispatch = useAppDispatch()
   const movies = useAppSelector(dashboardMoviesSelector)
-  const loading = useAppSelector(dashboardLoadingSelector)
-  const error = useAppSelector(dashboardErrorSelector)
   const [searchParams, setSearchParams] = useSearchParams()
   const page = searchParams.get('page') ?? '1'
+  const { error, loading, request } = useRequest()
 
   const handlePagination = (page: number) => {
     setSearchParams(new URLSearchParams({ page: page.toString(), search: query }))
   }
 
   useEffect(() => {
-    dispatch(fetchSearch({ page, query }))
-  }, [page, query, dispatch])
+    request(fetchSearch({ page, query }))
+  }, [page, query, request])
 
   return { error, handlePagination, loading, movies }
 }

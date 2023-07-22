@@ -1,17 +1,9 @@
 import mockState from 'src/__mocks__/mockState'
 
-import * as selectors from '../selectors'
+import { dashboardMoviesSelector } from '../selectors'
 
 describe('dashboard selectors', () => {
-  it('trendingMoviesSelector', () => {
-    expect(selectors.dashboardMoviesSelector(mockState)).toBe(null)
-  })
-
-  it('trendingLoadingSelector', () => {
-    expect(selectors.dashboardLoadingSelector(mockState)).toBe(true)
-  })
-
-  it('trendingErrorSelector', () => {
-    expect(selectors.dashboardErrorSelector(mockState)).toBe(null)
+  it('dashboardMoviesSelector', () => {
+    expect(dashboardMoviesSelector(mockState)).toBe(null)
   })
 })

@@ -9,8 +9,6 @@ import useContainer from '../hook'
 jest.mock('src/store/movie/actions')
 
 jest.mock('src/store/movie/selectors', () => ({
-  movieErrorSelector: jest.fn(() => null),
-  movieLoadingSelector: jest.fn(() => true),
   movieSelector: jest.fn(() => mockMovieDetail)
 }))
 

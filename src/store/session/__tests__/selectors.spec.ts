@@ -1,17 +1,17 @@
 import mockState from 'src/__mocks__/mockState'
 
-import * as selectors from '../selectors'
+import { accountSelector, loadingSelector, sessionIdSelector } from '../selectors'
 
 describe('session selectors', () => {
   it('sessionIdSelector', () => {
-    expect(selectors.sessionIdSelector(mockState)).toBe('')
+    expect(sessionIdSelector(mockState)).toBe('')
   })
 
   it('accountSelector', () => {
-    expect(selectors.accountSelector(mockState)).toBe(null)
+    expect(accountSelector(mockState)).toBe(null)
   })
 
   it('loadingSelector', () => {
-    expect(selectors.loadingSelector(mockState)).toBe(false)
+    expect(loadingSelector(mockState)).toBe(false)
   })
 })

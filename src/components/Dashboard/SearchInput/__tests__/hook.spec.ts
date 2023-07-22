@@ -1,6 +1,5 @@
 import { act, renderHook } from '@testing-library/react'
 import { useNavigate, useSearchParams } from 'react-router-dom'
-import Wrapper from 'src/utils/testHelpers/wrapperMock'
 
 import useContainer from '../hook'
 
@@ -21,7 +20,7 @@ jest.mocked(useSearchParams).mockReturnValue([searchParams, setSearchParams])
 
 describe('SearchInput useContainer hook', () => {
   it('matches snapshot', () => {
-    const { result } = renderHook(() => useContainer(), { wrapper: Wrapper })
+    const { result } = renderHook(useContainer)
 
     expect(result.current).toMatchSnapshot()
   })
@@ -41,7 +40,7 @@ describe('SearchInput useContainer hook', () => {
   })
 
   it('checks `handleSearch` method without value', () => {
-    const { result } = renderHook(() => useContainer(), { wrapper: Wrapper })
+    const { result } = renderHook(useContainer)
 
     act(() => {
       result.current.handleSearch('')

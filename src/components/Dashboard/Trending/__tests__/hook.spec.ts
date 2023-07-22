@@ -2,15 +2,12 @@ import { act, renderHook } from '@testing-library/react'
 import { useSearchParams } from 'react-router-dom'
 import { dispatch } from 'src/__mocks__/react-redux'
 import { fetchTrending } from 'src/store/dashboard/actions'
-import Wrapper from 'src/utils/testHelpers/wrapperMock'
 
 import useContainer from '../hook'
 
 jest.mock('src/store/dashboard/actions')
 
 jest.mock('src/store/dashboard/selectors', () => ({
-  dashboardErrorSelector: jest.fn(() => null),
-  dashboardLoadingSelector: jest.fn(() => true),
   dashboardMoviesSelector: jest.fn(() => ({}))
 }))
 
@@ -24,7 +21,7 @@ jest.mocked(useSearchParams).mockReturnValue([searchParams, setSearchParams])
 
 describe('Trending useContainer hook', () => {
   it('matches snapshot', () => {
-    const { result } = renderHook(() => useContainer(), { wrapper: Wrapper })
+    const { result } = renderHook(useContainer)
 
     expect(result.current).toMatchSnapshot()
   })
