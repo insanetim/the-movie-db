@@ -163,7 +163,7 @@ export const deleteList = createAsyncThunk(types.DELETE_LIST, async (listId: Lis
       url: routes.deleteList(listId)
     })
   } catch (error) {
-    const errorMessage = `${listName} list has been removed`
+    const errorMessage = `${listName} has been removed`
 
     dispatch(showNotification({ messageText: errorMessage }))
   } finally {

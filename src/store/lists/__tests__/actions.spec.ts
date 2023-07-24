@@ -212,7 +212,7 @@ describe('lists actions', () => {
 
     it('failure', async () => {
       const notification = showNotification({
-        messageText: 'test/list list has been removed'
+        messageText: 'test/list has been removed'
       })
       requestSpy.mockRejectedValueOnce('Something went wrong!')
 

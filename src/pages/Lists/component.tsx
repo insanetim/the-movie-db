@@ -1,4 +1,5 @@
 import { PlusCircleOutlined } from '@ant-design/icons'
+import { Helmet } from 'react-helmet'
 import ListsList from 'src/components/Lists/ListsList'
 import Empty from 'src/components/UI/Empty/component'
 import Error from 'src/components/UI/Error'
@@ -6,6 +7,7 @@ import Loading from 'src/components/UI/Loading'
 import PageTitle from 'src/components/UI/PageTitle'
 import Pagination from 'src/components/UI/Pagination'
 import isNull from 'src/utils/helpers/isNull'
+import metaTitle from 'src/utils/helpers/metaTitle'
 
 import useContainer from './hook'
 
@@ -41,12 +43,15 @@ const Lists: React.FC = () => {
   }
 
   return (
-    <div className='container'>
-      <PageTitle>
-        My Lists <PlusCircleOutlined onClick={handleCreateList} />
-      </PageTitle>
-      {content}
-    </div>
+    <>
+      <Helmet title={metaTitle('My Lists')} />
+      <div className='container'>
+        <PageTitle>
+          My Lists <PlusCircleOutlined onClick={handleCreateList} />
+        </PageTitle>
+        {content}
+      </div>
+    </>
   )
 }
 

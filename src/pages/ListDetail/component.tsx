@@ -1,10 +1,12 @@
 import { MinusCircleOutlined } from '@ant-design/icons'
+import { Helmet } from 'react-helmet'
 import MoviesList from 'src/components/Movies/MoviesList'
 import Empty from 'src/components/UI/Empty'
 import Error from 'src/components/UI/Error'
 import Loading from 'src/components/UI/Loading'
 import PageTitle from 'src/components/UI/PageTitle'
 import isNull from 'src/utils/helpers/isNull'
+import metaTitle from 'src/utils/helpers/metaTitle'
 
 import useContainer from './hook'
 
@@ -39,12 +41,15 @@ const ListDetails: React.FC = () => {
   }
 
   return (
-    <div className='container'>
-      <PageTitle>
-        {list?.name} <MinusCircleOutlined onClick={handleListDelete} />
-      </PageTitle>
-      {content}
-    </div>
+    <>
+      <Helmet title={metaTitle(list?.name ?? 'My List')} />
+      <div className='container'>
+        <PageTitle>
+          {list?.name ?? 'My List'} <MinusCircleOutlined onClick={handleListDelete} />
+        </PageTitle>
+        {content}
+      </div>
+    </>
   )
 }
 

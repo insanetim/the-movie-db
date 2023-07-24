@@ -5,6 +5,7 @@ import Icon, { BookFilled, BookOutlined, HeartFilled, HeartOutlined, PlusCircleO
 import { Col, Popover, Row, Tag, Typography } from 'antd'
 import { format } from 'date-fns'
 import ISO6391 from 'iso-639-1'
+import { Helmet } from 'react-helmet'
 import CastList from 'src/components/MovieDetail/CastList'
 import CrewList from 'src/components/MovieDetail/CrewList'
 import ImageGallery from 'src/components/MovieDetail/ImageGallery'
@@ -15,6 +16,7 @@ import Loading from 'src/components/UI/Loading'
 import convertDuration from 'src/utils/convertDataHelpers/convertDuration'
 import convertMoney from 'src/utils/convertDataHelpers/convertMoney'
 import isNull from 'src/utils/helpers/isNull'
+import metaTitle from 'src/utils/helpers/metaTitle'
 
 import useContainer from './hook'
 
@@ -53,8 +55,11 @@ const Movie: React.FC = () => {
     movie.accountStates.watchlist ? BookFilled : BookOutlined
   ) as ForwardRefExoticComponent<CustomIconComponentProps>
 
+  const title = `${movie.title}${movie.release_date ? ` (${format(new Date(movie.release_date), 'yyyy')})` : ''}`
+
   return (
     <>
+      <Helmet title={metaTitle(title)} />
       {movie.images.length > 0 && (
         <ImageGallery
           images={movie.images}

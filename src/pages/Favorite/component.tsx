@@ -1,3 +1,4 @@
+import { Helmet } from 'react-helmet'
 import MoviesList from 'src/components/Movies/MoviesList'
 import Empty from 'src/components/UI/Empty'
 import Error from 'src/components/UI/Error'
@@ -5,6 +6,7 @@ import Loading from 'src/components/UI/Loading'
 import PageTitle from 'src/components/UI/PageTitle'
 import Pagination from 'src/components/UI/Pagination'
 import isNull from 'src/utils/helpers/isNull'
+import metaTitle from 'src/utils/helpers/metaTitle'
 
 import useContainer from './hook'
 
@@ -45,10 +47,13 @@ const Favorite: React.FC = () => {
   }
 
   return (
-    <div className='container'>
-      <PageTitle>Favorite</PageTitle>
-      {content}
-    </div>
+    <>
+      <Helmet title={metaTitle('Favorite')} />
+      <div className='container'>
+        <PageTitle>Favorite</PageTitle>
+        {content}
+      </div>
+    </>
   )
 }
 

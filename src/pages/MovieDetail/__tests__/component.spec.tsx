@@ -41,8 +41,19 @@ describe('MovieDetail component', () => {
           accountStates: {
             favorite: true,
             watchlist: true
-          }
-        },
+          },
+          release_date: undefined
+        }
+      }) as MovieDetailHook
+    )
+    const { asFragment } = render(<Movie />, { wrapper: Wrapper })
+
+    expect(asFragment()).toMatchSnapshot()
+  })
+
+  it('matches snapshot with open popover', () => {
+    jest.mocked(useContainer).mockReturnValueOnce(
+      mergeDeepRight(mockedHookData, {
         popoverOpen: true
       }) as MovieDetailHook
     )

@@ -137,7 +137,7 @@ exports[`ListDetail component matches snapshot with empty list 1`] = `
         <h1
           class="ant-typography css-dev-only-do-not-override-1m62vyb"
         >
-           
+          My List 
           <span
             aria-label="minus-circle"
             class="anticon anticon-minus-circle"

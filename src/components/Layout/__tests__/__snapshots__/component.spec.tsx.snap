@@ -17,7 +17,7 @@ exports[`Layout component matches snapshot 1`] = `
           <span
             class="ant-typography css-dev-only-do-not-override-1m62vyb"
           >
-            THE MOVIE DB
+            The Movie DB
           </span>
         </div>
         <div
