@@ -3,21 +3,21 @@
 exports[`ListsList component matches snapshot 1`] = `
 <DocumentFragment>
   <div
-    class="ant-row css-dev-only-do-not-override-1m62vyb"
+    class="ant-row css-dev-only-do-not-override-1jr9qlj"
     style="margin: -8px -12px -8px -12px;"
   >
     <div
-      class="ant-col ant-col-24 ant-col-sm-12 ant-col-md-8 ant-col-lg-8 ant-col-xl-6 css-dev-only-do-not-override-1m62vyb"
+      class="ant-col ant-col-24 ant-col-sm-12 ant-col-md-8 ant-col-lg-8 ant-col-xl-6 css-dev-only-do-not-override-1jr9qlj"
       style="padding: 8px 12px 8px 12px;"
     >
       <div
-        class="ant-card ant-card-bordered ant-card-hoverable css-dev-only-do-not-override-1m62vyb"
+        class="ant-card ant-card-bordered ant-card-hoverable css-dev-only-do-not-override-1jr9qlj"
       >
         <div
           class="ant-card-body"
         >
           <h4
-            class="ant-typography css-dev-only-do-not-override-1m62vyb"
+            class="ant-typography css-dev-only-do-not-override-1jr9qlj"
           >
             test/list
           </h4>
