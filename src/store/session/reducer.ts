@@ -9,7 +9,7 @@ import { fetchAccount, logIn, logOut } from './actions'
 const initialState: ISessionState = {
   account: null,
   loading: false,
-  sessionId: Cookies.get('session_id') ?? ''
+  sessionId: Cookies.get('tmdb.session_id') ?? ''
 }
 
 const sessionReducer = createReducer(initialState, builder => {

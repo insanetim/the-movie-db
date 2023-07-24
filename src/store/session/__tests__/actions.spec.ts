@@ -58,7 +58,7 @@ describe('session actions', () => {
       expect(requestSpy).toHaveBeenNthCalledWith(1, requestTokenRequest)
       expect(requestSpy).toHaveBeenNthCalledWith(2, validateWithLoginRequest)
       expect(requestSpy).toHaveBeenNthCalledWith(3, createSessionRequest)
-      expect(cookiesSetSpy).toHaveBeenCalledWith('session_id', sessionResponse.data.session_id)
+      expect(cookiesSetSpy).toHaveBeenCalledWith('tmdb.session_id', sessionResponse.data.session_id)
       expect(result.payload).toEqual(sessionResponse.data.session_id)
     })
 
@@ -88,7 +88,7 @@ describe('session actions', () => {
 
       expect(requestSpy).toHaveBeenCalledTimes(1)
       expect(requestSpy).toHaveBeenCalledWith(request)
-      expect(cookiesRemoveSpy).toHaveBeenCalledWith('session_id')
+      expect(cookiesRemoveSpy).toHaveBeenCalledWith('tmdb.session_id')
     })
 
     it('failure', async () => {

@@ -36,7 +36,7 @@ export const logIn = createAsyncThunk(LOG_IN, async (userData: IUserData, { disp
       url: routes.createSession
     })
 
-    Cookies.set('session_id', sessionId)
+    Cookies.set('tmdb.session_id', sessionId)
 
     return sessionId
   } catch (error) {
@@ -61,7 +61,7 @@ export const logOut = createAsyncThunk(LOG_OUT, async (_, { dispatch, getState }
       url: routes.deleteSession
     })
 
-    Cookies.remove('session_id')
+    Cookies.remove('tmdb.session_id')
   } catch (error) {
     const messageText = pathOr('Something went wrong!', ['response', 'data', 'status_message'], error)
 
