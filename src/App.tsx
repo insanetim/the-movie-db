@@ -12,6 +12,7 @@ export const Watchlist = lazy(() => import('src/pages/Watchlist'))
 export const Favorite = lazy(() => import('src/pages/Favorite'))
 export const ListDetail = lazy(() => import('src/pages/ListDetail'))
 export const MovieDetail = lazy(() => import('src/pages/MovieDetail'))
+export const NotFound = lazy(() => import('src/pages/NotFound'))
 
 const App: React.FC = () => (
   <Suspense fallback={null}>
@@ -38,10 +39,13 @@ const App: React.FC = () => (
             element={<Favorite />}
             path='/favorite'
           />
-
           <Route
             element={<MovieDetail />}
             path='/movie/:movieId'
+          />
+          <Route
+            element={<NotFound />}
+            path='*'
           />
         </Route>
       </Route>

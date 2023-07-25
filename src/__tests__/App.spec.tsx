@@ -15,7 +15,7 @@ import { render } from '@testing-library/react'
 import { ReactNode, Suspense } from 'react'
 import { mockList, mockListDetail } from 'src/__mocks__/mockList'
 import { mockMovie, mockMovieDetail } from 'src/__mocks__/mockMovie'
-import App, { Dashboard, Favorite, ListDetail, Lists, Login, MovieDetail, Watchlist } from 'src/App'
+import App, { Dashboard, Favorite, ListDetail, Lists, Login, MovieDetail, NotFound, Watchlist } from 'src/App'
 import Wrapper from 'src/utils/testHelpers/wrapperMock'
 
 const mockedProtectedRoutesHook: ProtectedRoutesHook = {
@@ -176,5 +176,11 @@ describe('App component', () => {
     const { findByText } = render(<MovieDetail />, { wrapper: WrapperWithSuspense })
 
     expect(await findByText('test/title', { exact: false }, { timeout: 3000 })).toBeInTheDocument()
+  })
+
+  it('renders NotFound', async () => {
+    const { findByText } = render(<NotFound />, { wrapper: WrapperWithSuspense })
+
+    expect(await findByText('Oops!', { exact: false })).toBeInTheDocument()
   })
 })
