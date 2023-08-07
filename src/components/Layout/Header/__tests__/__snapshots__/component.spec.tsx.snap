@@ -3,28 +3,28 @@
 exports[`Header component matches snapshot 1`] = `
 <DocumentFragment>
   <header
-    class="ant-layout-header css-dev-only-do-not-override-txh9fw"
+    class="ant-layout-header css-dev-only-do-not-override-fpg3f5"
   >
     <div
-      class="ant-row ant-row-space-between css-dev-only-do-not-override-txh9fw"
+      class="ant-row ant-row-space-between css-dev-only-do-not-override-fpg3f5"
     >
       <div
-        class="ant-col css-dev-only-do-not-override-txh9fw"
+        class="ant-col css-dev-only-do-not-override-fpg3f5"
       >
         <span
-          class="ant-typography css-dev-only-do-not-override-txh9fw"
+          class="ant-typography css-dev-only-do-not-override-fpg3f5"
         >
           The Movie DB
         </span>
       </div>
       <div
-        class="ant-col css-dev-only-do-not-override-txh9fw"
+        class="ant-col css-dev-only-do-not-override-fpg3f5"
       >
         <span
-          class="ant-typography ant-dropdown-trigger css-dev-only-do-not-override-txh9fw"
+          class="ant-typography ant-dropdown-trigger css-dev-only-do-not-override-fpg3f5"
         >
           <span
-            class="ant-avatar ant-avatar-circle ant-avatar-image css-dev-only-do-not-override-txh9fw"
+            class="ant-avatar ant-avatar-circle ant-avatar-image css-dev-only-do-not-override-fpg3f5"
           >
             <img
               alt="User avatar"
@@ -67,28 +67,28 @@ exports[`Header component matches snapshot 1`] = `
 exports[`Header component matches snapshot with avatar_path 1`] = `
 <DocumentFragment>
   <header
-    class="ant-layout-header css-dev-only-do-not-override-txh9fw"
+    class="ant-layout-header css-dev-only-do-not-override-fpg3f5"
   >
     <div
-      class="ant-row ant-row-space-between css-dev-only-do-not-override-txh9fw"
+      class="ant-row ant-row-space-between css-dev-only-do-not-override-fpg3f5"
     >
       <div
-        class="ant-col css-dev-only-do-not-override-txh9fw"
+        class="ant-col css-dev-only-do-not-override-fpg3f5"
       >
         <span
-          class="ant-typography css-dev-only-do-not-override-txh9fw"
+          class="ant-typography css-dev-only-do-not-override-fpg3f5"
         >
           The Movie DB
         </span>
       </div>
       <div
-        class="ant-col css-dev-only-do-not-override-txh9fw"
+        class="ant-col css-dev-only-do-not-override-fpg3f5"
       >
         <span
-          class="ant-typography ant-dropdown-trigger css-dev-only-do-not-override-txh9fw"
+          class="ant-typography ant-dropdown-trigger css-dev-only-do-not-override-fpg3f5"
         >
           <span
-            class="ant-avatar ant-avatar-circle ant-avatar-image css-dev-only-do-not-override-txh9fw"
+            class="ant-avatar ant-avatar-circle ant-avatar-image css-dev-only-do-not-override-fpg3f5"
           >
             <img
               alt="User avatar"
@@ -131,28 +131,28 @@ exports[`Header component matches snapshot with avatar_path 1`] = `
 exports[`Header component matches snapshot with empty account 1`] = `
 <DocumentFragment>
   <header
-    class="ant-layout-header css-dev-only-do-not-override-txh9fw"
+    class="ant-layout-header css-dev-only-do-not-override-fpg3f5"
   >
     <div
-      class="ant-row ant-row-space-between css-dev-only-do-not-override-txh9fw"
+      class="ant-row ant-row-space-between css-dev-only-do-not-override-fpg3f5"
     >
       <div
-        class="ant-col css-dev-only-do-not-override-txh9fw"
+        class="ant-col css-dev-only-do-not-override-fpg3f5"
       >
         <span
-          class="ant-typography css-dev-only-do-not-override-txh9fw"
+          class="ant-typography css-dev-only-do-not-override-fpg3f5"
         >
           The Movie DB
         </span>
       </div>
       <div
-        class="ant-col css-dev-only-do-not-override-txh9fw"
+        class="ant-col css-dev-only-do-not-override-fpg3f5"
       >
         <span
-          class="ant-typography ant-dropdown-trigger css-dev-only-do-not-override-txh9fw"
+          class="ant-typography ant-dropdown-trigger css-dev-only-do-not-override-fpg3f5"
         >
           <span
-            class="ant-avatar ant-avatar-circle ant-avatar-icon css-dev-only-do-not-override-txh9fw"
+            class="ant-avatar ant-avatar-circle ant-avatar-icon css-dev-only-do-not-override-fpg3f5"
           >
             <span
               aria-label="user"
