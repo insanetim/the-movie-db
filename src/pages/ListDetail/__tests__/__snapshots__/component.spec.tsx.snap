@@ -6,13 +6,13 @@ exports[`ListDetail component matches snapshot 1`] = `
     class="container"
   >
     <div
-      class="ant-row css-dev-only-do-not-override-byeoj0"
+      class="ant-row css-dev-only-do-not-override-17a39f8"
     >
       <div
-        class="ant-col ant-col-24 css-dev-only-do-not-override-byeoj0"
+        class="ant-col ant-col-24 css-dev-only-do-not-override-17a39f8"
       >
         <h1
-          class="ant-typography css-dev-only-do-not-override-byeoj0"
+          class="ant-typography css-dev-only-do-not-override-17a39f8"
         >
           test/list 
           <span
@@ -42,15 +42,15 @@ exports[`ListDetail component matches snapshot 1`] = `
       </div>
     </div>
     <div
-      class="ant-row css-dev-only-do-not-override-byeoj0"
+      class="ant-row css-dev-only-do-not-override-17a39f8"
       style="margin: -8px -12px -8px -12px;"
     >
       <div
-        class="ant-col ant-col-24 ant-col-sm-12 ant-col-md-8 ant-col-lg-8 ant-col-xl-6 css-dev-only-do-not-override-byeoj0"
+        class="ant-col ant-col-24 ant-col-sm-12 ant-col-md-8 ant-col-lg-8 ant-col-xl-6 css-dev-only-do-not-override-17a39f8"
         style="padding: 8px 12px 8px 12px;"
       >
         <div
-          class="ant-card ant-card-bordered ant-card-hoverable css-dev-only-do-not-override-byeoj0"
+          class="ant-card ant-card-bordered ant-card-hoverable css-dev-only-do-not-override-17a39f8"
         >
           <div
             class="ant-card-cover"
@@ -129,13 +129,13 @@ exports[`ListDetail component matches snapshot with empty list 1`] = `
     class="container"
   >
     <div
-      class="ant-row css-dev-only-do-not-override-byeoj0"
+      class="ant-row css-dev-only-do-not-override-17a39f8"
     >
       <div
-        class="ant-col ant-col-24 css-dev-only-do-not-override-byeoj0"
+        class="ant-col ant-col-24 css-dev-only-do-not-override-17a39f8"
       >
         <h1
-          class="ant-typography css-dev-only-do-not-override-byeoj0"
+          class="ant-typography css-dev-only-do-not-override-17a39f8"
         >
           My List 
           <span
@@ -165,7 +165,7 @@ exports[`ListDetail component matches snapshot with empty list 1`] = `
       </div>
     </div>
     <div
-      class="css-dev-only-do-not-override-byeoj0 ant-empty ant-empty-normal"
+      class="css-dev-only-do-not-override-17a39f8 ant-empty ant-empty-normal"
     >
       <div
         class="ant-empty-image"
@@ -219,7 +219,7 @@ exports[`ListDetail component matches snapshot with error 1`] = `
     class="container top-margin"
   >
     <div
-      class="ant-result ant-result-error css-dev-only-do-not-override-byeoj0"
+      class="ant-result ant-result-error css-dev-only-do-not-override-17a39f8"
     >
       <div
         class="ant-result-icon"
@@ -261,15 +261,15 @@ exports[`ListDetail component matches snapshot with loading 1`] = `
     class="container top-margin"
   >
     <div
-      class="ant-row ant-row-center css-dev-only-do-not-override-byeoj0"
+      class="ant-row ant-row-center css-dev-only-do-not-override-17a39f8"
     >
       <div
-        class="ant-col css-dev-only-do-not-override-byeoj0"
+        class="ant-col css-dev-only-do-not-override-17a39f8"
       >
         <div
           aria-busy="true"
           aria-live="polite"
-          class="ant-spin ant-spin-spinning css-dev-only-do-not-override-byeoj0"
+          class="ant-spin ant-spin-spinning css-dev-only-do-not-override-17a39f8"
         >
           <span
             class="ant-spin-dot ant-spin-dot-spin"
