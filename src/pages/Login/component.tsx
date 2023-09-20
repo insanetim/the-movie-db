@@ -37,11 +37,11 @@ const Login: React.FC = () => {
                       />
                     </Form.Item>
                     <Form.Item
+                      name='password'
                       rules={[
                         { message: 'Password is required', required: true },
                         { message: 'Password must be at least 4 characters', min: 4 }
                       ]}
-                      name='password'
                     >
                       <Input
                         placeholder='Password'
