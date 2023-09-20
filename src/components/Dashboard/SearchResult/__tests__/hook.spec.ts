@@ -35,12 +35,7 @@ describe('SearchResult useContainer hook', () => {
       result.current.handlePagination(3)
     })
 
-    expect(setSearchParams).toHaveBeenCalledWith(
-      new URLSearchParams({
-        page: '3',
-        search: props.query
-      })
-    )
+    expect(setSearchParams).toHaveBeenCalledWith('page=3')
   })
 
   it('check `useEffect` method', () => {

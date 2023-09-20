@@ -9,12 +9,16 @@ import { SearchResultHook, SearchResultHookProps } from './types'
 
 const useContainer = ({ query }: SearchResultHookProps): SearchResultHook => {
   const movies = useAppSelector(dashboardMoviesSelector)
-  const [searchParams, setSearchParams] = useSearchParams()
-  const page = searchParams.get('page') ?? '1'
   const { error, loading, request } = useRequest()
+  const [searchParams, setSearchParams] = useSearchParams({
+    page: '1',
+    search: query
+  })
+  const page = searchParams.get('page') as string
 
   const handlePagination = (page: number) => {
-    setSearchParams(new URLSearchParams({ page: page.toString(), search: query }))
+    searchParams.set('page', page.toString())
+    setSearchParams(searchParams.toString())
   }
 
   useEffect(() => {

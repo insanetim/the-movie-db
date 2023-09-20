@@ -5,7 +5,7 @@ import type { SearchInputHook, SearchInputHookProps } from './types'
 
 const useContainer = ({ query }: SearchInputHookProps): SearchInputHook => {
   const [inputValue, setInputValue] = useState('')
-  const setSearchParams = useSearchParams()[1]
+  const setSearchParams = useSearchParams({ search: query })[1]
   const navigate = useNavigate()
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {

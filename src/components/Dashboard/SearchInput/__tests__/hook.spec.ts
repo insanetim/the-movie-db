@@ -1,5 +1,5 @@
 import { act, renderHook } from '@testing-library/react'
-import React, { ChangeEvent } from 'react'
+import { ChangeEvent, useState } from 'react'
 import { useNavigate, useSearchParams } from 'react-router-dom'
 
 import useContainer from '../hook'
@@ -12,6 +12,9 @@ jest.mock('react', () => ({
   ...jest.requireActual('react'),
   useState: jest.fn()
 }))
+const setState = jest.fn()
+const useStateMock = (initState: unknown) => [initState, setState]
+jest.mocked(useState).mockImplementation(useStateMock as never)
 
 jest.mock('react-router-dom', () => ({
   ...jest.requireActual('react-router-dom'),
@@ -25,10 +28,6 @@ const setSearchParams = jest.fn()
 jest.mocked(useSearchParams).mockReturnValue([searchParams, setSearchParams])
 
 describe('SearchInput useContainer hook', () => {
-  const setState = jest.fn()
-  const useStateMock = (initState: unknown) => [initState, setState]
-
-  jest.spyOn(React, 'useState').mockImplementation(useStateMock as never)
   const props = { query: '' }
 
   it('matches snapshot', () => {
