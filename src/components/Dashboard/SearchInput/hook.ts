@@ -1,10 +1,16 @@
+import { ChangeEvent, useEffect, useState } from 'react'
 import { useNavigate, useSearchParams } from 'react-router-dom'
 
-import type { SearchInputHook } from './types'
+import type { SearchInputHook, SearchInputHookProps } from './types'
 
-const useContainer = (): SearchInputHook => {
+const useContainer = ({ query }: SearchInputHookProps): SearchInputHook => {
+  const [inputValue, setInputValue] = useState('')
   const setSearchParams = useSearchParams()[1]
   const navigate = useNavigate()
+
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setInputValue(e.target.value)
+  }
 
   const handleSearch = (value: string) => {
     if (value.trim()) {
@@ -14,7 +20,11 @@ const useContainer = (): SearchInputHook => {
     }
   }
 
-  return { handleSearch }
+  useEffect(() => {
+    setInputValue(query)
+  }, [query])
+
+  return { handleChange, handleSearch, inputValue }
 }
 
 export default useContainer

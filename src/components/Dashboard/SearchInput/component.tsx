@@ -5,7 +5,7 @@ import type { SearchInputProps } from './types'
 import useContainer from './hook'
 
 const SearchInput: React.FC<SearchInputProps> = ({ query }) => {
-  const { handleSearch } = useContainer()
+  const { handleChange, handleSearch, inputValue } = useContainer({ query })
 
   return (
     <Row
@@ -20,11 +20,12 @@ const SearchInput: React.FC<SearchInputProps> = ({ query }) => {
       >
         <Input.Search
           allowClear
-          defaultValue={query}
           enterButton='Search'
+          onChange={handleChange}
           onSearch={handleSearch}
           placeholder='Enter movie name'
           size='large'
+          value={inputValue}
         />
       </Col>
     </Row>

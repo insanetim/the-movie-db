@@ -1,10 +1,16 @@
 import { act, renderHook } from '@testing-library/react'
+import React, { ChangeEvent } from 'react'
 import { useNavigate, useSearchParams } from 'react-router-dom'
 
 import useContainer from '../hook'
 
 jest.mock('src/store/dashboard/selectors', () => ({
   searchQuerySelector: jest.fn(() => null)
+}))
+
+jest.mock('react', () => ({
+  ...jest.requireActual('react'),
+  useState: jest.fn()
 }))
 
 jest.mock('react-router-dom', () => ({
@@ -19,14 +25,30 @@ const setSearchParams = jest.fn()
 jest.mocked(useSearchParams).mockReturnValue([searchParams, setSearchParams])
 
 describe('SearchInput useContainer hook', () => {
+  const setState = jest.fn()
+  const useStateMock = (initState: unknown) => [initState, setState]
+
+  jest.spyOn(React, 'useState').mockImplementation(useStateMock as never)
+  const props = { query: '' }
+
   it('matches snapshot', () => {
-    const { result } = renderHook(useContainer)
+    const { result } = renderHook(() => useContainer(props))
 
     expect(result.current).toMatchSnapshot()
   })
 
+  it('checks `handleChange` method', () => {
+    const { result } = renderHook(() => useContainer(props))
+
+    act(() => {
+      result.current.handleChange({ target: { value: 'test/search' } } as ChangeEvent<HTMLInputElement>)
+    })
+
+    expect(setState).toHaveBeenCalledWith('test/search')
+  })
+
   it('checks `handleSearch` method with value', () => {
-    const { result } = renderHook(useContainer)
+    const { result } = renderHook(() => useContainer(props))
 
     act(() => {
       result.current.handleSearch('test/search')
@@ -40,12 +62,18 @@ describe('SearchInput useContainer hook', () => {
   })
 
   it('checks `handleSearch` method without value', () => {
-    const { result } = renderHook(useContainer)
+    const { result } = renderHook(() => useContainer(props))
 
     act(() => {
       result.current.handleSearch('')
     })
 
     expect(navigate).toHaveBeenCalledWith('/')
+  })
+
+  it('check `useEffect` method', () => {
+    renderHook(() => useContainer(props))
+
+    expect(setState).toHaveBeenCalledWith('')
   })
 })
