@@ -3,13 +3,13 @@
 exports[`ImageGallery component matches snapshot 1`] = `
 <DocumentFragment>
   <div
-    class="ant-row css-dev-only-do-not-override-i0102m"
+    class="ant-row css-dev-only-do-not-override-1vr7spz"
   >
     <div
-      class="ant-col ant-col-24 css-dev-only-do-not-override-i0102m"
+      class="ant-col ant-col-24 css-dev-only-do-not-override-1vr7spz"
     >
       <div
-        class="ant-carousel css-dev-only-do-not-override-i0102m"
+        class="ant-carousel css-dev-only-do-not-override-1vr7spz"
       >
         <div
           class="slick-slider slick-initialized"
