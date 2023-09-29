@@ -11,7 +11,8 @@ import metaTitle from 'src/utils/helpers/metaTitle'
 import useContainer from './hook'
 
 const Watchlist: React.FC = () => {
-  const { error, handleMovieDelete, handlePagination, loading, movies } = useContainer()
+  const { error, handleMovieDelete, handlePagination, loading, movies } =
+    useContainer()
 
   let content = <Empty />
 

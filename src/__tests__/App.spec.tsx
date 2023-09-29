@@ -15,27 +15,42 @@ import { render } from '@testing-library/react'
 import { ReactNode, Suspense } from 'react'
 import { mockList, mockListDetail } from 'src/__mocks__/mockList'
 import { mockMovie, mockMovieDetail } from 'src/__mocks__/mockMovie'
-import App, { Dashboard, Favorite, ListDetail, Lists, Login, MovieDetail, NotFound, Watchlist } from 'src/App'
+import App, {
+  Dashboard,
+  Favorite,
+  ListDetail,
+  Lists,
+  Login,
+  MovieDetail,
+  NotFound,
+  Watchlist
+} from 'src/App'
 import Wrapper from 'src/utils/testHelpers/wrapperMock'
 
 const mockedProtectedRoutesHook: ProtectedRoutesHook = {
   location: {} as Location,
   sessionId: ''
 }
-jest.mock('../components/ProtectedRoutes/hook', () => jest.fn(() => mockedProtectedRoutesHook))
+jest.mock('../components/ProtectedRoutes/hook', () =>
+  jest.fn(() => mockedProtectedRoutesHook)
+)
 
 const mockedModalRootHook: ModalRootHook = {
   modalProps: null,
   modalType: null,
   onCancel: jest.fn()
 }
-jest.mock('../components/ModalRoot/hook', () => jest.fn(() => mockedModalRootHook))
+jest.mock('../components/ModalRoot/hook', () =>
+  jest.fn(() => mockedModalRootHook)
+)
 
 const mockedNotificationsRootHook: NotificationsRootHook = {
   hideNotification: jest.fn(),
   notifications: []
 }
-jest.mock('../components/NotificationsRoot/hook', () => jest.fn(() => mockedNotificationsRootHook))
+jest.mock('../components/NotificationsRoot/hook', () =>
+  jest.fn(() => mockedNotificationsRootHook)
+)
 
 const mockedLoginHook: LoginHook = {
   handleLogIn: jest.fn(),
@@ -59,7 +74,9 @@ const mockedTrendingHook: TrendingHook = {
     total_results: 200
   }
 }
-jest.mock('../components/Dashboard/Trending/hook', () => jest.fn(() => mockedTrendingHook))
+jest.mock('../components/Dashboard/Trending/hook', () =>
+  jest.fn(() => mockedTrendingHook)
+)
 
 const mockedListsHook: ListsHook = {
   error: null,
@@ -121,7 +138,9 @@ const mockedMovieDetailHook: MovieDetailHook = {
   popoverOpen: false,
   setPopoverOpen: jest.fn()
 }
-jest.mock('../pages/MovieDetail/hook', () => jest.fn(() => mockedMovieDetailHook))
+jest.mock('../pages/MovieDetail/hook', () =>
+  jest.fn(() => mockedMovieDetailHook)
+)
 
 describe('App component', () => {
   const WrapperWithSuspense = ({ children }: { children: ReactNode }) => (
@@ -143,9 +162,17 @@ describe('App component', () => {
   })
 
   it('renders Dashboard', async () => {
-    const { findByPlaceholderText } = render(<Dashboard />, { wrapper: WrapperWithSuspense })
+    const { findByPlaceholderText } = render(<Dashboard />, {
+      wrapper: WrapperWithSuspense
+    })
 
-    expect(await findByPlaceholderText('Enter movie name', { exact: false }, { timeout: 2000 })).toBeInTheDocument()
+    expect(
+      await findByPlaceholderText(
+        'Enter movie name',
+        { exact: false },
+        { timeout: 2000 }
+      )
+    ).toBeInTheDocument()
   })
 
   it('renders Lists', async () => {
@@ -155,31 +182,43 @@ describe('App component', () => {
   })
 
   it('renders Watchlist', async () => {
-    const { findByText } = render(<Watchlist />, { wrapper: WrapperWithSuspense })
+    const { findByText } = render(<Watchlist />, {
+      wrapper: WrapperWithSuspense
+    })
 
     expect(await findByText('Watchlist')).toBeInTheDocument()
   })
 
   it('renders Favorite', async () => {
-    const { findByText } = render(<Favorite />, { wrapper: WrapperWithSuspense })
+    const { findByText } = render(<Favorite />, {
+      wrapper: WrapperWithSuspense
+    })
 
     expect(await findByText('Favorite')).toBeInTheDocument()
   })
 
   it('renders ListDetail', async () => {
-    const { findByText } = render(<ListDetail />, { wrapper: WrapperWithSuspense })
+    const { findByText } = render(<ListDetail />, {
+      wrapper: WrapperWithSuspense
+    })
 
     expect(await findByText('test/title')).toBeInTheDocument()
   })
 
   it('renders MovieDetail', async () => {
-    const { findByText } = render(<MovieDetail />, { wrapper: WrapperWithSuspense })
+    const { findByText } = render(<MovieDetail />, {
+      wrapper: WrapperWithSuspense
+    })
 
-    expect(await findByText('test/title', { exact: false }, { timeout: 3000 })).toBeInTheDocument()
+    expect(
+      await findByText('test/title', { exact: false }, { timeout: 3000 })
+    ).toBeInTheDocument()
   })
 
   it('renders NotFound', async () => {
-    const { findByText } = render(<NotFound />, { wrapper: WrapperWithSuspense })
+    const { findByText } = render(<NotFound />, {
+      wrapper: WrapperWithSuspense
+    })
 
     expect(await findByText('Oops!', { exact: false })).toBeInTheDocument()
   })

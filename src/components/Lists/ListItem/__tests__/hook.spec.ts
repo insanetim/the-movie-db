@@ -42,11 +42,16 @@ describe('ListItem useContainer hook', () => {
     const { result } = renderHook(() => useContainer(props))
 
     act(() => {
-      onOk = result.current.handleListDelete({ stopPropagation: jest.fn() } as never)
+      onOk = result.current.handleListDelete({
+        stopPropagation: jest.fn()
+      } as never)
     })
     onOk()
 
-    expect(modalSpy).toHaveBeenCalledWith({ onOk, title: 'Do you want to delete list?' })
+    expect(modalSpy).toHaveBeenCalledWith({
+      onOk,
+      title: 'Do you want to delete list?'
+    })
     expect(dispatch).toHaveBeenCalledWith(deleteList(123))
   })
 })

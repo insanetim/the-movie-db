@@ -23,7 +23,10 @@ const useContainer = (): FavoriteHook => {
     setSearchParams(new URLSearchParams({ page: page.toString() }))
   }
 
-  const handleMovieDelete = (movieId: number, event: MouseEvent<HTMLSpanElement>): (() => void) => {
+  const handleMovieDelete = (
+    movieId: number,
+    event: MouseEvent<HTMLSpanElement>
+  ): (() => void) => {
     event.stopPropagation()
 
     const onOk = () => {

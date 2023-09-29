@@ -29,23 +29,32 @@ const Login: React.FC = () => {
                     <Typography.Title>The Movie DB</Typography.Title>
                     <Form.Item
                       name='username'
-                      rules={[{ message: 'Username is required', required: true }]}
+                      rules={[
+                        { message: 'Username is required', required: true }
+                      ]}
                     >
                       <Input
                         placeholder='Username'
-                        prefix={<UserOutlined style={{ color: 'rgba(0,0,0,.25)' }} />}
+                        prefix={
+                          <UserOutlined style={{ color: 'rgba(0,0,0,.25)' }} />
+                        }
                       />
                     </Form.Item>
                     <Form.Item
                       name='password'
                       rules={[
                         { message: 'Password is required', required: true },
-                        { message: 'Password must be at least 4 characters', min: 4 }
+                        {
+                          message: 'Password must be at least 4 characters',
+                          min: 4
+                        }
                       ]}
                     >
                       <Input
                         placeholder='Password'
-                        prefix={<LockOutlined style={{ color: 'rgba(0,0,0,.25)' }} />}
+                        prefix={
+                          <LockOutlined style={{ color: 'rgba(0,0,0,.25)' }} />
+                        }
                         type='password'
                       />
                     </Form.Item>

@@ -27,7 +27,8 @@ const NotFound: React.FC = () => {
             xl={20}
           >
             <Typography.Paragraph>
-              Please check that the Web site address is spelled correctly or go to <Link to='/'>home page</Link>.
+              Please check that the Web site address is spelled correctly or go
+              to <Link to='/'>home page</Link>.
             </Typography.Paragraph>
           </Col>
         </Row>

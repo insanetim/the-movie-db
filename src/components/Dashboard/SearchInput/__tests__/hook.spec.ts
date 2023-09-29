@@ -40,7 +40,9 @@ describe('SearchInput useContainer hook', () => {
     const { result } = renderHook(() => useContainer(props))
 
     act(() => {
-      result.current.handleChange({ target: { value: 'test/search' } } as ChangeEvent<HTMLInputElement>)
+      result.current.handleChange({
+        target: { value: 'test/search' }
+      } as ChangeEvent<HTMLInputElement>)
     })
 
     expect(setState).toHaveBeenCalledWith('test/search')

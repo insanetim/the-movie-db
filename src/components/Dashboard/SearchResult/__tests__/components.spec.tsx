@@ -21,7 +21,9 @@ jest.mock('../hook', () => jest.fn(() => mockedHookData))
 
 describe('SearchResult component', () => {
   it('matches snapshot', () => {
-    const { asFragment } = render(<SearchResult query='test/search' />, { wrapper: Wrapper })
+    const { asFragment } = render(<SearchResult query='test/search' />, {
+      wrapper: Wrapper
+    })
 
     expect(asFragment()).toMatchSnapshot()
   })
@@ -33,7 +35,9 @@ describe('SearchResult component', () => {
       total_pages: 1,
       total_results: 1
     }
-    const { asFragment } = render(<SearchResult query='test/search' />, { wrapper: Wrapper })
+    const { asFragment } = render(<SearchResult query='test/search' />, {
+      wrapper: Wrapper
+    })
 
     expect(asFragment()).toMatchSnapshot()
   })
@@ -45,14 +49,18 @@ describe('SearchResult component', () => {
       total_pages: 1,
       total_results: 1
     }
-    const { asFragment } = render(<SearchResult query='test/search' />, { wrapper: Wrapper })
+    const { asFragment } = render(<SearchResult query='test/search' />, {
+      wrapper: Wrapper
+    })
 
     expect(asFragment()).toMatchSnapshot()
   })
 
   it('matches snapshot with loading', () => {
     mockedHookData.loading = true
-    const { asFragment } = render(<SearchResult query='test/search' />, { wrapper: Wrapper })
+    const { asFragment } = render(<SearchResult query='test/search' />, {
+      wrapper: Wrapper
+    })
 
     expect(asFragment()).toMatchSnapshot()
   })
@@ -60,7 +68,9 @@ describe('SearchResult component', () => {
   it('matches snapshot with error', () => {
     mockedHookData.loading = false
     mockedHookData.error = 'Something went wrong!'
-    const { asFragment } = render(<SearchResult query='test/search' />, { wrapper: Wrapper })
+    const { asFragment } = render(<SearchResult query='test/search' />, {
+      wrapper: Wrapper
+    })
 
     expect(asFragment()).toMatchSnapshot()
   })

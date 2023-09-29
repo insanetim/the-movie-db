@@ -12,7 +12,8 @@ import metaTitle from 'src/utils/helpers/metaTitle'
 import useContainer from './hook'
 
 const Lists: React.FC = () => {
-  const { error, handleCreateList, handlePagination, lists, loading } = useContainer()
+  const { error, handleCreateList, handlePagination, lists, loading } =
+    useContainer()
 
   let content = <Empty />
 

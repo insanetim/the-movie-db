@@ -2,7 +2,12 @@ import { NOTIFICATION_DURATION, NOTIFICATION_TYPE } from 'src/constants/app'
 
 import type { IModalState } from '../types'
 
-import { hideModal, hideNotification, showModal, showNotification } from '../actions'
+import {
+  hideModal,
+  hideNotification,
+  showModal,
+  showNotification
+} from '../actions'
 
 jest.mock<typeof import('@reduxjs/toolkit')>('@reduxjs/toolkit', () => ({
   ...jest.requireActual('@reduxjs/toolkit'),
@@ -46,7 +51,9 @@ describe('app actions', () => {
       type: showNotification.toString()
     }
 
-    expect(showNotification({ messageText: 'test/message' })).toEqual(expectedAction)
+    expect(showNotification({ messageText: 'test/message' })).toEqual(
+      expectedAction
+    )
   })
 
   it('hideNotification', () => {

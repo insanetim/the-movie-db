@@ -42,7 +42,9 @@ describe('movie actions', () => {
       params: { session_id: 'session_id' },
       url: routes.getMovieAccountStates('123')
     }
-    const accountStatesResponse = { data: { favorite: false, watchlist: false } }
+    const accountStatesResponse = {
+      data: { favorite: false, watchlist: false }
+    }
     const creditsRequest = { url: routes.getMovieCredits('123') }
     const creditsResponse = { data: { cast: [], crew: [] } }
     const extentedData = {
@@ -83,7 +85,11 @@ describe('movie actions', () => {
     const action = actions.changeMovieInFavorite(props)
 
     const request = {
-      data: { favorite: props.inFavorite, media_id: props.movieId, media_type: 'movie' },
+      data: {
+        favorite: props.inFavorite,
+        media_id: props.movieId,
+        media_type: 'movie'
+      },
       method: 'post',
       params: { session_id: 'session_id' },
       url: routes.addToFovorite(123)
@@ -96,7 +102,9 @@ describe('movie actions', () => {
       const notification = showNotification({
         messageText: 'test/movie added to Favorite'
       })
-      requestSpy.mockResolvedValueOnce(response).mockResolvedValueOnce(movieDetailResponse)
+      requestSpy
+        .mockResolvedValueOnce(response)
+        .mockResolvedValueOnce(movieDetailResponse)
 
       await action(dispatch, getState, undefined)
 
@@ -134,7 +142,11 @@ describe('movie actions', () => {
     const action = actions.changeMovieInWatchlist(props)
 
     const request = {
-      data: { media_id: props.movieId, media_type: 'movie', watchlist: props.inWatchlist },
+      data: {
+        media_id: props.movieId,
+        media_type: 'movie',
+        watchlist: props.inWatchlist
+      },
       method: 'post',
       params: { session_id: 'session_id' },
       url: routes.addToWatchlist(123)
@@ -147,7 +159,9 @@ describe('movie actions', () => {
       const notification = showNotification({
         messageText: 'test/movie added to Watchlist'
       })
-      requestSpy.mockResolvedValueOnce(response).mockResolvedValueOnce(movieDetailResponse)
+      requestSpy
+        .mockResolvedValueOnce(response)
+        .mockResolvedValueOnce(movieDetailResponse)
 
       await action(dispatch, getState, undefined)
 

@@ -11,7 +11,8 @@ import metaTitle from 'src/utils/helpers/metaTitle'
 import useContainer from './hook'
 
 const ListDetails: React.FC = () => {
-  const { error, handleListDelete, handleMovieDelete, list, loading } = useContainer()
+  const { error, handleListDelete, handleMovieDelete, list, loading } =
+    useContainer()
 
   if (loading) {
     return (
@@ -45,7 +46,8 @@ const ListDetails: React.FC = () => {
       <Helmet title={metaTitle(list?.name ?? 'My List')} />
       <div className='container'>
         <PageTitle>
-          {list?.name ?? 'My List'} <MinusCircleOutlined onClick={handleListDelete} />
+          {list?.name ?? 'My List'}{' '}
+          <MinusCircleOutlined onClick={handleListDelete} />
         </PageTitle>
         {content}
       </div>

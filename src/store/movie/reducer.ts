@@ -4,7 +4,11 @@ import { createReducer } from '@reduxjs/toolkit'
 
 import type { IMovieState } from './types'
 
-import { changeMovieInFavorite, changeMovieInWatchlist, fetchMovie } from './actions'
+import {
+  changeMovieInFavorite,
+  changeMovieInWatchlist,
+  fetchMovie
+} from './actions'
 
 const initialState: IMovieState = {
   movieDetail: null

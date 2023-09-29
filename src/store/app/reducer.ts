@@ -2,7 +2,12 @@ import { combineReducers, createReducer } from '@reduxjs/toolkit'
 
 import type { IModalState, INotification } from './types'
 
-import { hideModal, hideNotification, showModal, showNotification } from './actions'
+import {
+  hideModal,
+  hideNotification,
+  showModal,
+  showNotification
+} from './actions'
 
 const modalInitialState: IModalState = {
   modalProps: null,
@@ -21,14 +26,17 @@ export const modalReducer = createReducer(modalInitialState, builder => {
 
 const notificationsInitialState: INotification[] = []
 
-export const notificationsReducer = createReducer(notificationsInitialState, builder => {
-  builder.addCase(showNotification, (state, action) => {
-    state.push(action.payload)
-  })
-  builder.addCase(hideNotification, (state, action) => {
-    return state.filter(notification => notification.id !== action.payload)
-  })
-})
+export const notificationsReducer = createReducer(
+  notificationsInitialState,
+  builder => {
+    builder.addCase(showNotification, (state, action) => {
+      state.push(action.payload)
+    })
+    builder.addCase(hideNotification, (state, action) => {
+      return state.filter(notification => notification.id !== action.payload)
+    })
+  }
+)
 
 export default combineReducers({
   modal: modalReducer,

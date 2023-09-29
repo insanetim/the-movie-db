@@ -46,7 +46,9 @@ describe('apiRoutes', () => {
   })
 
   it('getMovieAccountStates should return correct result', () => {
-    expect(apiRoutes.getMovieAccountStates('123')).toEqual('/movie/123/account_states')
+    expect(apiRoutes.getMovieAccountStates('123')).toEqual(
+      '/movie/123/account_states'
+    )
   })
 
   it('addToFovorite should return correct result', () => {

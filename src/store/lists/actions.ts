@@ -11,42 +11,64 @@ import { movieSelector } from 'src/store/movie/selectors'
 import { accountSelector, sessionIdSelector } from 'src/store/session/selectors'
 
 import type { RootState } from '../index'
-import type { AddToListProps, CreateListProps, CreateListResponse, ListId, RemoveFromListProps } from './types'
+import type {
+  AddToListProps,
+  CreateListProps,
+  CreateListResponse,
+  ListId,
+  RemoveFromListProps
+} from './types'
 
 import * as types from './constants'
 import { listSelector, listsSelector } from './selectors'
 
-export const fetchLists = createAsyncThunk(types.FETCH_LISTS, async (page: string, { getState, rejectWithValue }) => {
-  const sessionId = sessionIdSelector(getState() as RootState)
-  const { id: accountId } = accountSelector(getState() as RootState) as IAccount
+export const fetchLists = createAsyncThunk(
+  types.FETCH_LISTS,
+  async (page: string, { getState, rejectWithValue }) => {
+    const sessionId = sessionIdSelector(getState() as RootState)
+    const { id: accountId } = accountSelector(
+      getState() as RootState
+    ) as IAccount
 
-  try {
-    const { data } = await httpClient.request<IListsList>({
-      params: { page, session_id: sessionId },
-      url: routes.getCreatedLists(accountId)
-    })
+    try {
+      const { data } = await httpClient.request<IListsList>({
+        params: { page, session_id: sessionId },
+        url: routes.getCreatedLists(accountId)
+      })
 
-    return data
-  } catch (error) {
-    const message = pathOr('Something went wrong!', ['response', 'data', 'status_message'], error)
+      return data
+    } catch (error) {
+      const message = pathOr(
+        'Something went wrong!',
+        ['response', 'data', 'status_message'],
+        error
+      )
 
-    return rejectWithValue(message)
+      return rejectWithValue(message)
+    }
   }
-})
+)
 
-export const fetchList = createAsyncThunk(types.FETCH_LIST, async (listId: ListId, { rejectWithValue }) => {
-  try {
-    const { data } = await httpClient.request<IListDetail>({
-      url: routes.getListDetails(listId)
-    })
+export const fetchList = createAsyncThunk(
+  types.FETCH_LIST,
+  async (listId: ListId, { rejectWithValue }) => {
+    try {
+      const { data } = await httpClient.request<IListDetail>({
+        url: routes.getListDetails(listId)
+      })
 
-    return data
-  } catch (error) {
-    const message = pathOr('Something went wrong!', ['response', 'data', 'status_message'], error)
+      return data
+    } catch (error) {
+      const message = pathOr(
+        'Something went wrong!',
+        ['response', 'data', 'status_message'],
+        error
+      )
 
-    return rejectWithValue(message)
+      return rejectWithValue(message)
+    }
   }
-})
+)
 
 export const createList = createAsyncThunk(
   types.CREATE_LIST,
@@ -72,7 +94,11 @@ export const createList = createAsyncThunk(
         )
       }
     } catch (error) {
-      const messageText = pathOr('Something went wrong!', ['response', 'data', 'status_message'], error)
+      const messageText = pathOr(
+        'Something went wrong!',
+        ['response', 'data', 'status_message'],
+        error
+      )
 
       dispatch(
         showNotification({
@@ -105,7 +131,11 @@ export const addToList = createAsyncThunk(
 
       dispatch(showNotification({ messageText }))
     } catch (error) {
-      const messageText = pathOr('Something went wrong!', ['response', 'data', 'status_message'], error)
+      const messageText = pathOr(
+        'Something went wrong!',
+        ['response', 'data', 'status_message'],
+        error
+      )
 
       dispatch(
         showNotification({
@@ -139,7 +169,11 @@ export const removeFromList = createAsyncThunk(
 
       return movieId
     } catch (error) {
-      const messageText = pathOr('Something went wrong!', ['response', 'data', 'status_message'], error)
+      const messageText = pathOr(
+        'Something went wrong!',
+        ['response', 'data', 'status_message'],
+        error
+      )
 
       dispatch(
         showNotification({
@@ -151,22 +185,25 @@ export const removeFromList = createAsyncThunk(
   }
 )
 
-export const deleteList = createAsyncThunk(types.DELETE_LIST, async (listId: ListId, { dispatch, getState }) => {
-  const sessionId = sessionIdSelector(getState() as RootState)
-  const lists = listsSelector(getState() as RootState)
-  const listName = lists?.results.find(list => list.id === +listId)?.name
+export const deleteList = createAsyncThunk(
+  types.DELETE_LIST,
+  async (listId: ListId, { dispatch, getState }) => {
+    const sessionId = sessionIdSelector(getState() as RootState)
+    const lists = listsSelector(getState() as RootState)
+    const listName = lists?.results.find(list => list.id === +listId)?.name
 
-  try {
-    await httpClient.request({
-      method: 'delete',
-      params: { session_id: sessionId },
-      url: routes.deleteList(listId)
-    })
-  } catch (error) {
-    const errorMessage = `${listName} has been removed`
+    try {
+      await httpClient.request({
+        method: 'delete',
+        params: { session_id: sessionId },
+        url: routes.deleteList(listId)
+      })
+    } catch (error) {
+      const errorMessage = `${listName} has been removed`
 
-    dispatch(showNotification({ messageText: errorMessage }))
-  } finally {
-    dispatch(fetchLists('1'))
+      dispatch(showNotification({ messageText: errorMessage }))
+    } finally {
+      dispatch(fetchLists('1'))
+    }
   }
-})
+)

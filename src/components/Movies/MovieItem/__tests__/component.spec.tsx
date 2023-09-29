@@ -19,7 +19,9 @@ describe('MovieItem component', () => {
   }
 
   it('matches snapshot', () => {
-    const { asFragment } = render(<MovieItem {...props} />, { wrapper: Wrapper })
+    const { asFragment } = render(<MovieItem {...props} />, {
+      wrapper: Wrapper
+    })
 
     expect(asFragment()).toMatchSnapshot()
   })
@@ -28,13 +30,17 @@ describe('MovieItem component', () => {
     const props = {
       movie: mergeDeepRight(mockMovie, { poster_path: null })
     }
-    const { asFragment } = render(<MovieItem {...props} />, { wrapper: Wrapper })
+    const { asFragment } = render(<MovieItem {...props} />, {
+      wrapper: Wrapper
+    })
 
     expect(asFragment()).toMatchSnapshot()
   })
 
   it('handles handleMovieDelete', () => {
-    const { getByTestId } = render(<MovieItem {...props} />, { wrapper: Wrapper })
+    const { getByTestId } = render(<MovieItem {...props} />, {
+      wrapper: Wrapper
+    })
 
     fireEvent.click(getByTestId('deleteMovieAction'))
 

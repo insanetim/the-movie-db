@@ -21,7 +21,10 @@ jest.mock('src/store/movie/selectors', () => ({
 }))
 
 jest.mock('src/store/lists/selectors', () => ({
-  listSelector: jest.fn(() => ({ items: [{ id: 123, title: 'tets/movie' }], name: 'test/list' })),
+  listSelector: jest.fn(() => ({
+    items: [{ id: 123, title: 'tets/movie' }],
+    name: 'test/list'
+  })),
   listsSelector: jest.fn(() => ({ results: [{ id: 123, name: 'test/list' }] }))
 }))
 

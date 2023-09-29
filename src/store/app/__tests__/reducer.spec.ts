@@ -2,7 +2,12 @@ import { NOTIFICATION_DURATION, NOTIFICATION_TYPE } from 'src/constants/app'
 
 import type { IModalState, INotification } from '../types'
 
-import { hideModal, hideNotification, showModal, showNotification } from '../actions'
+import {
+  hideModal,
+  hideNotification,
+  showModal,
+  showNotification
+} from '../actions'
 import { modalReducer, notificationsReducer } from '../reducer'
 
 describe('appReducer', () => {

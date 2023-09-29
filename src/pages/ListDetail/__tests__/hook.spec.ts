@@ -73,7 +73,9 @@ describe('ListDetail useContainer hook', () => {
       onOk,
       title: 'Do you want to delete movie from this list?'
     })
-    expect(dispatch).toHaveBeenCalledWith(removeFromList({ listId: 123, movieId: 123 }))
+    expect(dispatch).toHaveBeenCalledWith(
+      removeFromList({ listId: 123, movieId: 123 })
+    )
   })
 
   it('check `useEffect` method', () => {

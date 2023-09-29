@@ -1,7 +1,13 @@
 import type { CustomIconComponentProps } from '@ant-design/icons/lib/components/Icon'
 import type { ForwardRefExoticComponent } from 'react'
 
-import Icon, { BookFilled, BookOutlined, HeartFilled, HeartOutlined, PlusCircleOutlined } from '@ant-design/icons'
+import Icon, {
+  BookFilled,
+  BookOutlined,
+  HeartFilled,
+  HeartOutlined,
+  PlusCircleOutlined
+} from '@ant-design/icons'
 import { Col, Popover, Row, Tag, Typography } from 'antd'
 import { format } from 'date-fns'
 import ISO6391 from 'iso-639-1'
@@ -21,8 +27,15 @@ import metaTitle from 'src/utils/helpers/metaTitle'
 import useContainer from './hook'
 
 const Movie: React.FC = () => {
-  const { error, handleFavoriteClick, handleWatchlistClick, loading, movie, popoverOpen, setPopoverOpen } =
-    useContainer()
+  const {
+    error,
+    handleFavoriteClick,
+    handleWatchlistClick,
+    loading,
+    movie,
+    popoverOpen,
+    setPopoverOpen
+  } = useContainer()
 
   if (loading) {
     return (
@@ -55,7 +68,11 @@ const Movie: React.FC = () => {
     movie.accountStates.watchlist ? BookFilled : BookOutlined
   ) as ForwardRefExoticComponent<CustomIconComponentProps>
 
-  const title = `${movie.title}${movie.release_date ? ` (${format(new Date(movie.release_date), 'yyyy')})` : ''}`
+  const title = `${movie.title}${
+    movie.release_date
+      ? ` (${format(new Date(movie.release_date), 'yyyy')})`
+      : ''
+  }`
 
   return (
     <>
@@ -72,7 +89,8 @@ const Movie: React.FC = () => {
             <Typography.Title>
               <span>
                 {movie.title}
-                {movie.release_date && ` (${format(new Date(movie.release_date), 'yyyy')})`}
+                {movie.release_date &&
+                  ` (${format(new Date(movie.release_date), 'yyyy')})`}
               </span>{' '}
               <Popover
                 content={
@@ -148,8 +166,12 @@ const Movie: React.FC = () => {
               </Typography.Paragraph>
             </Col>
           )}
-          {movie.credits.cast.length > 0 && <CastList cast={movie.credits.cast.slice(0, 12)} />}
-          {movie.credits.crew.length > 0 && <CrewList crew={movie.credits.crew.slice(0, 12)} />}
+          {movie.credits.cast.length > 0 && (
+            <CastList cast={movie.credits.cast.slice(0, 12)} />
+          )}
+          {movie.credits.crew.length > 0 && (
+            <CrewList crew={movie.credits.crew.slice(0, 12)} />
+          )}
         </Row>
       </div>
     </>

@@ -4,7 +4,11 @@ import isNull from 'src/utils/helpers/isNull'
 
 import type { CreditsItemProps } from './types'
 
-const CreditsItem: React.FC<CreditsItemProps> = ({ description, profilePath, title }) => {
+const CreditsItem: React.FC<CreditsItemProps> = ({
+  description,
+  profilePath,
+  title
+}) => {
   let cover = (
     <div className='ant-card-cover--no-image'>
       <img

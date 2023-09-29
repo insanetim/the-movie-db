@@ -29,7 +29,10 @@ const useContainer = (): ListDetailHook => {
     return onOk
   }
 
-  const handleMovieDelete = (movieId: number, event: MouseEvent<HTMLSpanElement>) => {
+  const handleMovieDelete = (
+    movieId: number,
+    event: MouseEvent<HTMLSpanElement>
+  ) => {
     event.stopPropagation()
 
     const onOk = () => {

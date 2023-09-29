@@ -59,7 +59,9 @@ describe('Watchlist useContainer hook', () => {
     const { result } = renderHook(useContainer)
 
     act(() => {
-      onOk = result.current.handleMovieDelete(123, { stopPropagation: jest.fn() } as never)
+      onOk = result.current.handleMovieDelete(123, {
+        stopPropagation: jest.fn()
+      } as never)
     })
     onOk()
 

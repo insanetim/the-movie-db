@@ -3,7 +3,10 @@ import MovieItem from 'src/components/Movies/MovieItem'
 
 import { MoviesListProps } from './types'
 
-const MoviesList: React.FC<MoviesListProps> = ({ handleMovieDelete, movies }) => {
+const MoviesList: React.FC<MoviesListProps> = ({
+  handleMovieDelete,
+  movies
+}) => {
   return (
     <Row gutter={[24, 16]}>
       {movies.map(movie => (

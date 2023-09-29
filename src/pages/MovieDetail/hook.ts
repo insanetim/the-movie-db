@@ -2,7 +2,11 @@ import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { useAppDispatch, useAppSelector } from 'src/hooks/useRedux'
 import useRequest from 'src/hooks/useRequest'
-import { changeMovieInFavorite, changeMovieInWatchlist, fetchMovie } from 'src/store/movie/actions'
+import {
+  changeMovieInFavorite,
+  changeMovieInWatchlist,
+  fetchMovie
+} from 'src/store/movie/actions'
 import { movieSelector } from 'src/store/movie/selectors'
 
 import type { MovieDetailHook } from './types'

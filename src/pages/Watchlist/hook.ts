@@ -23,7 +23,10 @@ const useContainer = (): WatchlistHook => {
     setSearchParams(new URLSearchParams({ page: page.toString() }))
   }
 
-  const handleMovieDelete = (movieId: number, event: MouseEvent<HTMLSpanElement>) => {
+  const handleMovieDelete = (
+    movieId: number,
+    event: MouseEvent<HTMLSpanElement>
+  ) => {
     event.stopPropagation()
 
     const onOk = () => {

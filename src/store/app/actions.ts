@@ -1,9 +1,18 @@
 import { createAction, nanoid } from '@reduxjs/toolkit'
 import { NOTIFICATION_DURATION, NOTIFICATION_TYPE } from 'src/constants/app'
 
-import type { INotification, ShowModalProps, ShowNotificationProps } from './types'
+import type {
+  INotification,
+  ShowModalProps,
+  ShowNotificationProps
+} from './types'
 
-import { HIDE_MODAL, HIDE_NOTIFICATION, SHOW_MODAL, SHOW_NOTIFICATION } from './constants'
+import {
+  HIDE_MODAL,
+  HIDE_NOTIFICATION,
+  SHOW_MODAL,
+  SHOW_NOTIFICATION
+} from './constants'
 
 export const showModal = createAction<ShowModalProps>(SHOW_MODAL)
 

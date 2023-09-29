@@ -33,9 +33,14 @@ describe('session actions', () => {
     const action = logIn(userData)
 
     const requestTokenRequest = { url: routes.createRequestToken }
-    const requestTokenResponse = { data: { request_token: 'test/request_token' } }
+    const requestTokenResponse = {
+      data: { request_token: 'test/request_token' }
+    }
     const validateWithLoginRequest = {
-      data: { ...userData, request_token: requestTokenResponse.data.request_token },
+      data: {
+        ...userData,
+        request_token: requestTokenResponse.data.request_token
+      },
       method: 'post',
       url: routes.validateWithLogin
     }
@@ -58,7 +63,10 @@ describe('session actions', () => {
       expect(requestSpy).toHaveBeenNthCalledWith(1, requestTokenRequest)
       expect(requestSpy).toHaveBeenNthCalledWith(2, validateWithLoginRequest)
       expect(requestSpy).toHaveBeenNthCalledWith(3, createSessionRequest)
-      expect(cookiesSetSpy).toHaveBeenCalledWith('tmdb.session_id', sessionResponse.data.session_id)
+      expect(cookiesSetSpy).toHaveBeenCalledWith(
+        'tmdb.session_id',
+        sessionResponse.data.session_id
+      )
       expect(result.payload).toEqual(sessionResponse.data.session_id)
     })
 

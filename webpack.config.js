@@ -8,7 +8,8 @@ const ESLintPlugin = require('eslint-webpack-plugin')
 const isDev = process.env.NODE_ENV === 'development'
 const isProd = !isDev
 
-const getFileName = ext => (isDev ? `[name].${ext}` : `[name].[contenthash].${ext}`)
+const getFileName = ext =>
+  isDev ? `[name].${ext}` : `[name].[contenthash].${ext}`
 
 const getStyleLoaders = () => [
   isDev ? 'style-loader' : MiniCssExtractPlugin.loader,

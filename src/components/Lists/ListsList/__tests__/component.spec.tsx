@@ -8,7 +8,9 @@ describe('ListsList component', () => {
   const mockedLists = [mockList]
 
   it('matches snapshot', () => {
-    const { asFragment } = render(<ListList lists={mockedLists} />, { wrapper: Wrapper })
+    const { asFragment } = render(<ListList lists={mockedLists} />, {
+      wrapper: Wrapper
+    })
 
     expect(asFragment()).toMatchSnapshot()
   })

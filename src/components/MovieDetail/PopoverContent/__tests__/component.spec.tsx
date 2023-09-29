@@ -25,13 +25,17 @@ describe('PopoverContent component', () => {
   }
 
   it('matches snapshot', () => {
-    const { asFragment } = render(<PopoverContent {...props} />, { wrapper: Wrapper })
+    const { asFragment } = render(<PopoverContent {...props} />, {
+      wrapper: Wrapper
+    })
 
     expect(asFragment()).toMatchSnapshot()
   })
 
   it('handles handleAddToList', () => {
-    const { getByTestId } = render(<PopoverContent {...props} />, { wrapper: Wrapper })
+    const { getByTestId } = render(<PopoverContent {...props} />, {
+      wrapper: Wrapper
+    })
 
     fireEvent.click(getByTestId('addToListButton'))
 

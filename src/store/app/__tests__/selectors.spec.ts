@@ -1,6 +1,10 @@
 import mockState from 'src/__mocks__/mockState'
 
-import { modalPropsSelector, modalTypeSelector, notificationsSelector } from '../selectors'
+import {
+  modalPropsSelector,
+  modalTypeSelector,
+  notificationsSelector
+} from '../selectors'
 
 describe('app selectors', () => {
   it('modalTypeSelector', () => {

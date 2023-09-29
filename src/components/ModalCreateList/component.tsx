@@ -4,9 +4,15 @@ import type { ModalCreateListProps } from './types'
 
 import useContainer from './hook'
 
-const ModalCreateList: React.FC<ModalCreateListProps> = ({ movieId, ...rest }) => {
+const ModalCreateList: React.FC<ModalCreateListProps> = ({
+  movieId,
+  ...rest
+}) => {
   const [form] = Form.useForm()
-  const { handleAfterClose, handleOk, handleSubmit } = useContainer({ form, movieId })
+  const { handleAfterClose, handleOk, handleSubmit } = useContainer({
+    form,
+    movieId
+  })
 
   return (
     <Modal

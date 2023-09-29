@@ -1,4 +1,10 @@
-import type { IBackdrop, ICast, ICrew, IMovie, IMovieDetailExtended } from 'src/interfaces/movie.interface'
+import type {
+  IBackdrop,
+  ICast,
+  ICrew,
+  IMovie,
+  IMovieDetailExtended
+} from 'src/interfaces/movie.interface'
 
 export const mockMovie: IMovie = {
   adult: false,
@@ -78,7 +84,9 @@ export const mockMovieDetail: IMovieDetailExtended = {
   overview: 'test/overview',
   popularity: 123,
   poster_path: '/image',
-  production_companies: [{ id: 123, logo_path: null, name: 'test/company', origin_country: 'USA' }],
+  production_companies: [
+    { id: 123, logo_path: null, name: 'test/company', origin_country: 'USA' }
+  ],
   production_countries: [{ iso_3166_1: 'en', name: 'USA' }],
   release_date: '01-01-1999',
   revenue: 3000000,

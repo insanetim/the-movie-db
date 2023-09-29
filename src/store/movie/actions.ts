@@ -15,13 +15,21 @@ import * as routes from 'src/lib/apiRoutes'
 import { accountSelector, sessionIdSelector } from 'src/store/session/selectors'
 
 import type { RootState } from '../index'
-import type { ChangeMovieInFavoriteProps, ChangeMovieInWatchlistProps, MovieId } from './types'
+import type {
+  ChangeMovieInFavoriteProps,
+  ChangeMovieInWatchlistProps,
+  MovieId
+} from './types'
 
 import { showNotification } from '../app/actions'
 import { fetchFavorite } from '../favorite/actions'
 import { fetchLists } from '../lists/actions'
 import { fetchWatchlist } from '../watchlist/actions'
-import { CHANGE_MOVIE_IN_FAVORITE, CHANGE_MOVIE_IN_WATCHLIST, FETCH_MOVIE } from './constants'
+import {
+  CHANGE_MOVIE_IN_FAVORITE,
+  CHANGE_MOVIE_IN_WATCHLIST,
+  FETCH_MOVIE
+} from './constants'
 
 export const fetchMovie = createAsyncThunk(
   FETCH_MOVIE,
@@ -29,14 +37,17 @@ export const fetchMovie = createAsyncThunk(
     const sessionId = sessionIdSelector(getState() as RootState)
 
     try {
-      const { data } = await httpClient.request<IMovieDetail>({ url: routes.getMovieDetails(movieId.toString()) })
+      const { data } = await httpClient.request<IMovieDetail>({
+        url: routes.getMovieDetails(movieId.toString())
+      })
       const { data: images } = await httpClient.request<IMovieImages>({
         url: routes.getMovieImages(movieId.toString())
       })
-      const { data: accountStates } = await httpClient.request<IMovieAccountStates>({
-        params: { session_id: sessionId },
-        url: routes.getMovieAccountStates(movieId.toString())
-      })
+      const { data: accountStates } =
+        await httpClient.request<IMovieAccountStates>({
+          params: { session_id: sessionId },
+          url: routes.getMovieAccountStates(movieId.toString())
+        })
       const { data: credits } = await httpClient.request<IMovieCredits>({
         url: routes.getMovieCredits(movieId.toString())
       })
@@ -52,7 +63,11 @@ export const fetchMovie = createAsyncThunk(
 
       return extendedData
     } catch (error) {
-      const message = pathOr('Something went wrong!', ['response', 'data', 'status_message'], error)
+      const message = pathOr(
+        'Something went wrong!',
+        ['response', 'data', 'status_message'],
+        error
+      )
 
       return rejectWithValue(message)
     }
@@ -61,9 +76,14 @@ export const fetchMovie = createAsyncThunk(
 
 export const changeMovieInFavorite = createAsyncThunk(
   CHANGE_MOVIE_IN_FAVORITE,
-  async ({ inFavorite, movieId }: ChangeMovieInFavoriteProps, { dispatch, getState }) => {
+  async (
+    { inFavorite, movieId }: ChangeMovieInFavoriteProps,
+    { dispatch, getState }
+  ) => {
     const sessionId = sessionIdSelector(getState() as RootState)
-    const { id: accountId } = accountSelector(getState() as RootState) as IAccount
+    const { id: accountId } = accountSelector(
+      getState() as RootState
+    ) as IAccount
 
     try {
       await httpClient.request({
@@ -75,14 +95,22 @@ export const changeMovieInFavorite = createAsyncThunk(
 
       const {
         data: { title: movieTitle }
-      } = await httpClient.request<IMovieDetail>({ url: routes.getMovieDetails(movieId.toString()) })
+      } = await httpClient.request<IMovieDetail>({
+        url: routes.getMovieDetails(movieId.toString())
+      })
 
-      const messageText = `${movieTitle} ${inFavorite ? 'added to Favorite' : 'removed from Favorite'}`
+      const messageText = `${movieTitle} ${
+        inFavorite ? 'added to Favorite' : 'removed from Favorite'
+      }`
 
       dispatch(showNotification({ messageText }))
       dispatch(fetchFavorite('1'))
     } catch (error) {
-      const messageText = pathOr('Something went wrong!', ['response', 'data', 'status_message'], error)
+      const messageText = pathOr(
+        'Something went wrong!',
+        ['response', 'data', 'status_message'],
+        error
+      )
 
       dispatch(
         showNotification({
@@ -96,13 +124,22 @@ export const changeMovieInFavorite = createAsyncThunk(
 
 export const changeMovieInWatchlist = createAsyncThunk(
   CHANGE_MOVIE_IN_WATCHLIST,
-  async ({ inWatchlist, movieId }: ChangeMovieInWatchlistProps, { dispatch, getState }) => {
+  async (
+    { inWatchlist, movieId }: ChangeMovieInWatchlistProps,
+    { dispatch, getState }
+  ) => {
     const sessionId = sessionIdSelector(getState() as RootState)
-    const { id: accountId } = accountSelector(getState() as RootState) as IAccount
+    const { id: accountId } = accountSelector(
+      getState() as RootState
+    ) as IAccount
 
     try {
       await httpClient.request({
-        data: { media_id: movieId, media_type: 'movie', watchlist: inWatchlist },
+        data: {
+          media_id: movieId,
+          media_type: 'movie',
+          watchlist: inWatchlist
+        },
         method: 'post',
         params: { session_id: sessionId },
         url: routes.addToWatchlist(accountId)
@@ -110,14 +147,22 @@ export const changeMovieInWatchlist = createAsyncThunk(
 
       const {
         data: { title: movieTitle }
-      } = await httpClient.request<IMovieDetail>({ url: routes.getMovieDetails(movieId.toString()) })
+      } = await httpClient.request<IMovieDetail>({
+        url: routes.getMovieDetails(movieId.toString())
+      })
 
-      const messageText = `${movieTitle} ${inWatchlist ? 'added to Watchlist' : 'removed from Watchlist'}`
+      const messageText = `${movieTitle} ${
+        inWatchlist ? 'added to Watchlist' : 'removed from Watchlist'
+      }`
 
       dispatch(showNotification({ messageText }))
       dispatch(fetchWatchlist('1'))
     } catch (error) {
-      const messageText = pathOr('Something went wrong!', ['response', 'data', 'status_message'], error)
+      const messageText = pathOr(
+        'Something went wrong!',
+        ['response', 'data', 'status_message'],
+        error
+      )
 
       dispatch(
         showNotification({

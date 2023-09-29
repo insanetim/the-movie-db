@@ -2,7 +2,11 @@ import { act, renderHook } from '@testing-library/react'
 import { useParams } from 'react-router-dom'
 import { mockMovieDetail } from 'src/__mocks__/mockMovie'
 import { dispatch } from 'src/__mocks__/react-redux'
-import { changeMovieInFavorite, changeMovieInWatchlist, fetchMovie } from 'src/store/movie/actions'
+import {
+  changeMovieInFavorite,
+  changeMovieInWatchlist,
+  fetchMovie
+} from 'src/store/movie/actions'
 
 import useContainer from '../hook'
 
@@ -38,7 +42,9 @@ describe('MovieDetail useContainer hook', () => {
       result.current.handleFavoriteClick()
     })
 
-    expect(dispatch).toHaveBeenCalledWith(changeMovieInFavorite({ inFavorite: true, movieId: 123 }))
+    expect(dispatch).toHaveBeenCalledWith(
+      changeMovieInFavorite({ inFavorite: true, movieId: 123 })
+    )
   })
 
   it('checks `handleWatchlistClick` method', () => {
@@ -48,7 +54,9 @@ describe('MovieDetail useContainer hook', () => {
       result.current.handleWatchlistClick()
     })
 
-    expect(dispatch).toHaveBeenCalledWith(changeMovieInWatchlist({ inWatchlist: true, movieId: 123 }))
+    expect(dispatch).toHaveBeenCalledWith(
+      changeMovieInWatchlist({ inWatchlist: true, movieId: 123 })
+    )
   })
 
   it('checks `useEffect` method', () => {

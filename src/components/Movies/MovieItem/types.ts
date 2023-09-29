@@ -1,7 +1,10 @@
 import type { IMovie } from 'src/interfaces/movie.interface'
 
 export interface MovieItemProps {
-  handleMovieDelete?: (movieId: number, event: React.MouseEvent<HTMLSpanElement>) => () => void
+  handleMovieDelete?: (
+    movieId: number,
+    event: React.MouseEvent<HTMLSpanElement>
+  ) => () => void
   movie: IMovie
 }
 

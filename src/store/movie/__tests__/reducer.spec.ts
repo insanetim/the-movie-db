@@ -1,4 +1,8 @@
-import { changeMovieInFavorite, changeMovieInWatchlist, fetchMovie } from '../actions'
+import {
+  changeMovieInFavorite,
+  changeMovieInWatchlist,
+  fetchMovie
+} from '../actions'
 import reducer from '../reducer'
 import { IMovieState } from '../types'
 
@@ -35,7 +39,9 @@ describe('movieReducer', () => {
       meta: { arg: { inFavorite: true } },
       type: changeMovieInFavorite.fulfilled.toString()
     }
-    const initialState = { movieDetail: { accountStates: { favorite: false } } } as IMovieState
+    const initialState = {
+      movieDetail: { accountStates: { favorite: false } }
+    } as IMovieState
     const expectedState = { movieDetail: { accountStates: { favorite: true } } }
 
     expect(reducer(initialState, action)).toEqual(expectedState)
@@ -55,8 +61,12 @@ describe('movieReducer', () => {
       meta: { arg: { inWatchlist: true } },
       type: changeMovieInWatchlist.fulfilled.toString()
     }
-    const initialState = { movieDetail: { accountStates: { watchlist: false } } } as IMovieState
-    const expectedState = { movieDetail: { accountStates: { watchlist: true } } }
+    const initialState = {
+      movieDetail: { accountStates: { watchlist: false } }
+    } as IMovieState
+    const expectedState = {
+      movieDetail: { accountStates: { watchlist: true } }
+    }
 
     expect(reducer(initialState, action)).toEqual(expectedState)
   })

@@ -11,7 +11,9 @@ const mockedModalData = { modalType: null }
 jest.mock('../../ModalRoot/hook', () => jest.fn(() => mockedModalData))
 
 const mockedNotificationsData = { notifications: [] }
-jest.mock('../../NotificationsRoot/hook', () => jest.fn(() => mockedNotificationsData))
+jest.mock('../../NotificationsRoot/hook', () =>
+  jest.fn(() => mockedNotificationsData)
+)
 
 describe('Layout component', () => {
   it('matches snapshot', () => {

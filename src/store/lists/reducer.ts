@@ -31,7 +31,9 @@ export const listDetailReducer = createReducer(listInitialState, builder => {
     state.list = action.payload as IListDetail
   })
   builder.addCase(removeFromList.fulfilled, (state, action) => {
-    state.list!.items = state.list!.items.filter(item => item.id !== action.payload)
+    state.list!.items = state.list!.items.filter(
+      item => item.id !== action.payload
+    )
   })
 })
 

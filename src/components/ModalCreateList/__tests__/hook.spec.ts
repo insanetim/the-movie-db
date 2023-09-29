@@ -11,7 +11,10 @@ jest.mock('src/store/lists/actions')
 
 describe('ModalCreateList useContainer hook', () => {
   const props = {
-    form: { resetFields: jest.fn(), submit: jest.fn() } as unknown as FormInstance,
+    form: {
+      resetFields: jest.fn(),
+      submit: jest.fn()
+    } as unknown as FormInstance,
     movieId: 123
   }
 
@@ -41,7 +44,10 @@ describe('ModalCreateList useContainer hook', () => {
 
     expect(dispatch).toHaveBeenCalledTimes(2)
     expect(dispatch).toHaveBeenNthCalledWith(1, hideModal())
-    expect(dispatch).toHaveBeenNthCalledWith(2, createList({ listData, movieId: props.movieId }))
+    expect(dispatch).toHaveBeenNthCalledWith(
+      2,
+      createList({ listData, movieId: props.movieId })
+    )
   })
 
   it('checks `handleAfterClose` method', () => {

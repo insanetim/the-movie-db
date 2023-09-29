@@ -5,7 +5,10 @@ import { listsSelector } from 'src/store/lists/selectors'
 
 import type { PopoverContentHook, PopoverContentHookProps } from './types'
 
-const useContainer = ({ movieId, setPopoverOpen }: PopoverContentHookProps): PopoverContentHook => {
+const useContainer = ({
+  movieId,
+  setPopoverOpen
+}: PopoverContentHookProps): PopoverContentHook => {
   const dispatch = useAppDispatch()
   const lists = useAppSelector(listsSelector)
 
