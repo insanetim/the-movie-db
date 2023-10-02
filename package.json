@@ -27,7 +27,7 @@
     "@types/js-cookie": "^3.0.4",
     "@types/node": "^20.6.5",
     "@types/ramda": "^0.29.4",
-    "@types/react": "^18.2.22",
+    "@types/react": "^18.2.24",
     "@types/react-helmet": "^6.1.6",
     "@typescript-eslint/eslint-plugin": "^5.62.0",
     "@typescript-eslint/parser": "^5.62.0",
