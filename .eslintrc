@@ -10,7 +10,7 @@
     "plugin:@typescript-eslint/recommended",
     "plugin:react-hooks/recommended",
     "plugin:perfectionist/recommended-natural",
-    "plugin:prettier/recommended"
+    "prettier"
   ],
   "ignorePatterns": ["dist/**.*"],
   "parser": "@typescript-eslint/parser",
@@ -19,7 +19,7 @@
     "project": "./tsconfig.json",
     "sourceType": "module"
   },
-  "plugins": ["@typescript-eslint", "perfectionist", "prettier"],
+  "plugins": ["@typescript-eslint"],
   "root": true,
   "rules": {
     "@typescript-eslint/no-empty-function": "off",
