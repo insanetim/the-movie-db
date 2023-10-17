@@ -3,7 +3,7 @@ module.exports = {
     [
       '@babel/env',
       {
-        corejs: '3.32',
+        corejs: '3.33',
         useBuiltIns: 'usage'
       }
     ],
