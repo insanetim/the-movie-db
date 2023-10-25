@@ -3,13 +3,13 @@
 exports[`ListItem component matches snapshot 1`] = `
 <DocumentFragment>
   <div
-    class="ant-card ant-card-bordered ant-card-hoverable css-dev-only-do-not-override-3mqfnx"
+    class="ant-card ant-card-bordered ant-card-hoverable css-dev-only-do-not-override-xu9wm8"
   >
     <div
       class="ant-card-body"
     >
       <h4
-        class="ant-typography css-dev-only-do-not-override-3mqfnx"
+        class="ant-typography css-dev-only-do-not-override-xu9wm8"
       >
         test/list
       </h4>
