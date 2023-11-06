@@ -14,9 +14,9 @@ const useContainer = (): LoginHook => {
   const navigate = useNavigate()
 
   const handleLogIn = async (userData: IUserData) => {
-    const from = location.state?.from?.pathname || '/'
+    const to = location.state?.from?.pathname || '/'
     await dispatch(logIn(userData))
-    navigate(from, { replace: true })
+    navigate(to, { replace: true })
   }
 
   return { handleLogIn, loading }

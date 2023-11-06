@@ -18,6 +18,7 @@ import { mockMovie, mockMovieDetail } from 'src/__mocks__/mockMovie'
 import App, {
   Dashboard,
   Favorite,
+  Layout,
   ListDetail,
   Lists,
   Login,
@@ -25,6 +26,7 @@ import App, {
   NotFound,
   Watchlist
 } from 'src/App'
+import { HeaderHook } from 'src/components/Layout/Header/types'
 import Wrapper from 'src/utils/testHelpers/wrapperMock'
 
 const mockedProtectedRoutesHook: ProtectedRoutesHook = {
@@ -50,6 +52,14 @@ const mockedNotificationsRootHook: NotificationsRootHook = {
 }
 jest.mock('../components/NotificationsRoot/hook', () =>
   jest.fn(() => mockedNotificationsRootHook)
+)
+
+const mockedHeaderHook: HeaderHook = {
+  account: null,
+  handleLogOut: jest.fn()
+}
+jest.mock('../components/Layout/Header/hook', () =>
+  jest.fn(() => mockedHeaderHook)
 )
 
 const mockedLoginHook: LoginHook = {
@@ -153,6 +163,12 @@ describe('App component', () => {
     const { asFragment } = render(<App />, { wrapper: Wrapper })
 
     expect(asFragment()).toMatchSnapshot()
+  })
+
+  it('renders Layout', async () => {
+    const { findByText } = render(<Layout />, { wrapper: WrapperWithSuspense })
+
+    expect(await findByText('insanetim', { exact: false })).toBeInTheDocument()
   })
 
   it('renders Login', async () => {

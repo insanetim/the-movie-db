@@ -35,6 +35,9 @@ describe('Header useContainer hook', () => {
     })
 
     expect(dispatch).toHaveBeenCalledWith(logOut())
-    expect(navigate).toHaveBeenCalledWith('/login', { state: { from: {} } })
+    expect(navigate).toHaveBeenCalledWith('/login', {
+      replace: true,
+      state: { from: {} }
+    })
   })
 })

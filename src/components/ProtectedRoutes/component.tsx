@@ -7,7 +7,7 @@ const ProtectedRoutes: React.FC = () => {
 
   return (
     <>
-      {sessionId.length > 0 ? (
+      {sessionId !== '' ? (
         <Outlet />
       ) : (
         <Navigate

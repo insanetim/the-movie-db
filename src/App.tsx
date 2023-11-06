@@ -1,10 +1,10 @@
 import { Suspense, lazy } from 'react'
 import { Route, Routes } from 'react-router-dom'
-import Layout from 'src/components/Layout'
 import ModalRoot from 'src/components/ModalRoot/component'
 import NotificationsRoot from 'src/components/NotificationsRoot'
 import ProtectedRoutes from 'src/components/ProtectedRoutes'
 
+export const Layout = lazy(() => import('src/components/Layout'))
 export const Login = lazy(() => import('src/pages/Login'))
 export const Dashboard = lazy(() => import('src/pages/Dashboard'))
 export const Lists = lazy(() => import('src/pages/Lists'))
@@ -18,7 +18,10 @@ const App: React.FC = () => (
   <Suspense fallback={null}>
     <Routes>
       <Route element={<ProtectedRoutes />}>
-        <Route element={<Layout />}>
+        <Route
+          element={<Layout />}
+          path='/'
+        >
           <Route
             element={<Dashboard />}
             index

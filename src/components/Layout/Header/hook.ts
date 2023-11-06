@@ -13,7 +13,10 @@ const useContainer = (): HeaderHook => {
 
   const handleLogOut = async () => {
     await dispatch(logOut())
-    navigate('/login', { state: { from: location } })
+    navigate('/login', {
+      replace: true,
+      state: { from: location }
+    })
   }
 
   return { account, handleLogOut }

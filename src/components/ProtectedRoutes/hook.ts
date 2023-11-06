@@ -12,7 +12,7 @@ const useContainer = (): ProtectedRoutesHook => {
   const location = useLocation()
 
   useEffect(() => {
-    if (sessionId.length > 0) {
+    if (sessionId !== '') {
       dispatch(fetchAccount())
     }
   }, [dispatch, sessionId])
