@@ -73,7 +73,7 @@
   "dependencies": {
     "@ant-design/icons": "^5.2.6",
     "@reduxjs/toolkit": "^1.9.7",
-    "antd": "^5.10.2",
+    "antd": "^5.11.0",
     "axios": "^1.6.0",
     "core-js": "^3.33.1",
     "date-fns": "^2.30.0",
