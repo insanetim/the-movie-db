@@ -18,7 +18,7 @@ const useContainer = ({ query }: SearchResultHookProps): SearchResultHook => {
 
   const handlePagination = (page: number) => {
     searchParams.set('page', page.toString())
-    setSearchParams(searchParams.toString())
+    setSearchParams(Object.fromEntries(searchParams.entries()))
   }
 
   useEffect(() => {

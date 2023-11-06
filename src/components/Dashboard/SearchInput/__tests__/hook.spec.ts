@@ -55,11 +55,7 @@ describe('SearchInput useContainer hook', () => {
       result.current.handleSearch('test/search')
     })
 
-    expect(setSearchParams).toHaveBeenCalledWith(
-      new URLSearchParams({
-        search: 'test/search'
-      })
-    )
+    expect(setSearchParams).toHaveBeenCalledWith({ search: 'test/search' })
   })
 
   it('checks `handleSearch` method without value', () => {
@@ -69,7 +65,7 @@ describe('SearchInput useContainer hook', () => {
       result.current.handleSearch('')
     })
 
-    expect(navigate).toHaveBeenCalledWith('/')
+    expect(setSearchParams).toHaveBeenCalledWith({})
   })
 
   it('check `useEffect` method', () => {

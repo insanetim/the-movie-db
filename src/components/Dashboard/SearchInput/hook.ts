@@ -1,23 +1,22 @@
 import { ChangeEvent, useEffect, useState } from 'react'
-import { useNavigate, useSearchParams } from 'react-router-dom'
+import { useSearchParams } from 'react-router-dom'
 
 import type { SearchInputHook, SearchInputHookProps } from './types'
 
 const useContainer = ({ query }: SearchInputHookProps): SearchInputHook => {
   const [inputValue, setInputValue] = useState('')
   const setSearchParams = useSearchParams({ search: query })[1]
-  const navigate = useNavigate()
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     setInputValue(e.target.value)
   }
 
   const handleSearch = (value: string) => {
+    const params: Record<string, string> = {}
     if (value.trim()) {
-      setSearchParams(new URLSearchParams({ search: value.trim() }))
-    } else {
-      navigate('/')
+      params.search = value.trim()
     }
+    setSearchParams(params)
   }
 
   useEffect(() => {

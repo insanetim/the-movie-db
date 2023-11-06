@@ -33,11 +33,7 @@ describe('Trending useContainer hook', () => {
       result.current.handlePagination(3)
     })
 
-    expect(setSearchParams).toHaveBeenCalledWith(
-      new URLSearchParams({
-        page: '3'
-      })
-    )
+    expect(setSearchParams).toHaveBeenCalledWith({ page: '3' })
   })
 
   it('checks `useEffect` method', () => {

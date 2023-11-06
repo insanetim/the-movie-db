@@ -15,7 +15,7 @@ jest.mock('react-router-dom', () => ({
   ...jest.requireActual('react-router-dom'),
   useSearchParams: jest.fn()
 }))
-const searchParams = new URLSearchParams()
+const searchParams = new URLSearchParams({ query: 'test/search' })
 const setSearchParams = jest.fn()
 jest.mocked(useSearchParams).mockReturnValue([searchParams, setSearchParams])
 
@@ -35,7 +35,10 @@ describe('SearchResult useContainer hook', () => {
       result.current.handlePagination(3)
     })
 
-    expect(setSearchParams).toHaveBeenCalledWith('page=3')
+    expect(setSearchParams).toHaveBeenCalledWith({
+      page: '3',
+      query: props.query
+    })
   })
 
   it('check `useEffect` method', () => {

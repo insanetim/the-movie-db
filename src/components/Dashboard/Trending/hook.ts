@@ -14,7 +14,7 @@ const useContainer = (): TrendingHook => {
   const page = searchParams.get('page') as string
 
   const handlePagination = (page: number) => {
-    setSearchParams(new URLSearchParams({ page: page.toString() }))
+    setSearchParams({ page: page.toString() })
   }
 
   useEffect(() => {
