@@ -12,7 +12,6 @@
     "check-types": "tsc --noEmit --skipLibCheck",
     "lint": "eslint --format codeframe src/ --fix",
     "stylelint": "stylelint 'src/**/*.scss' --fix",
-    "deploy": "firebase deploy",
     "postinstall": "husky install"
   },
   "devDependencies": {

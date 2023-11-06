@@ -4,4 +4,4 @@ The idea of this project is application for browse movies. As user you can see t
 
 # Demo
 
-https://frontend-internship-b9eb5.web.app/
+https://the-movie-db-insanetim.vercel.app/
