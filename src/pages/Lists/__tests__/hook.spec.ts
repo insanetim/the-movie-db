@@ -26,7 +26,7 @@ const searchParams = new URLSearchParams()
 const setSearchParams = jest.fn()
 jest.mocked(useSearchParams).mockReturnValue([searchParams, setSearchParams])
 
-describe('Favotites useContainer hook', () => {
+describe('Lists useContainer hook', () => {
   it('matches snapshot', () => {
     const { result } = renderHook(useContainer)
 

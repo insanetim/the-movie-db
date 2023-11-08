@@ -1,5 +1,6 @@
 import type { IUserData } from 'src/store/session/types'
 
+import { unwrapResult } from '@reduxjs/toolkit'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { useAppDispatch, useAppSelector } from 'src/hooks/useRedux'
 import { logIn } from 'src/store/session/actions'
@@ -15,8 +16,11 @@ const useContainer = (): LoginHook => {
 
   const handleLogIn = async (userData: IUserData) => {
     const to = location.state?.from?.pathname || '/'
-    await dispatch(logIn(userData))
-    navigate(to, { replace: true })
+    const promise = await dispatch(logIn(userData))
+    const sessionId = unwrapResult(promise)
+    if (sessionId) {
+      navigate(to, { replace: true })
+    }
   }
 
   return { handleLogIn, loading }

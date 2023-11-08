@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Favotites useContainer hook matches snapshot 1`] = `
+exports[`Lists useContainer hook matches snapshot 1`] = `
 {
   "error": null,
   "handleCreateList": [Function],
