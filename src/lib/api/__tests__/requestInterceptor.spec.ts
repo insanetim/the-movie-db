@@ -10,8 +10,8 @@ describe('requestInterceptor', () => {
       requestInterceptor({ headers: {} } as InternalAxiosRequestConfig)
     ).toEqual({
       headers: {
-        Authorization: `Bearer ${ACCESS_TOKEN_AUTH}`,
-        accept: 'application/json'
+        Accept: 'application/json',
+        Authorization: `Bearer ${ACCESS_TOKEN_AUTH}`
       }
     })
   })
