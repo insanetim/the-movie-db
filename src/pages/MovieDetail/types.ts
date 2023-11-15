@@ -5,7 +5,7 @@ export interface MovieDetailHook {
   handleFavoriteClick: () => void
   handleWatchlistClick: () => void
   loading: boolean
-  movie: IMovieDetailExtended | null
+  movie: IMovieDetailExtended | undefined
   popoverOpen: boolean
   setPopoverOpen: React.Dispatch<React.SetStateAction<boolean>>
 }

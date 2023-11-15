@@ -1,5 +1,5 @@
 import { Button } from 'antd'
-import isNull from 'src/utils/helpers/isNull'
+import { isNotNil } from 'ramda'
 
 import type { PopoverContentProps } from './types'
 
@@ -18,7 +18,7 @@ const PopoverContent: React.FC<PopoverContentProps> = props => {
           Create new list ...
         </Button>
       </div>
-      {!isNull(lists) &&
+      {isNotNil(lists) &&
         lists.results.map(list => (
           <div key={list.id}>
             <Button

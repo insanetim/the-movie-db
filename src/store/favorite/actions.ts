@@ -2,16 +2,16 @@ import type { IAccount } from 'src/interfaces/account.interface'
 import type { IMoviesList } from 'src/interfaces/movie.interface'
 
 import { createAsyncThunk } from '@reduxjs/toolkit'
-import { pathOr } from 'ramda'
 import httpClient from 'src/lib/api/httpClient'
 import { getFavorite } from 'src/lib/apiRoutes'
 import { accountSelector, sessionIdSelector } from 'src/store/session/selectors'
+import errorMessage from 'src/utils/helpers/errorMessage'
 
 import type { RootState } from '../index'
 
 import { FETCH_FAVORITE } from './constants'
 
-export const fetchFavorite = createAsyncThunk(
+const fetchFavorite = createAsyncThunk(
   FETCH_FAVORITE,
   async (page: string, { getState, rejectWithValue }) => {
     const sessionId = sessionIdSelector(getState() as RootState)
@@ -27,13 +27,9 @@ export const fetchFavorite = createAsyncThunk(
 
       return data
     } catch (error) {
-      const message = pathOr(
-        'Something went wrong!',
-        ['response', 'data', 'status_message'],
-        error
-      )
-
-      return rejectWithValue(message)
+      return rejectWithValue(errorMessage(error))
     }
   }
 )
+
+export { fetchFavorite }

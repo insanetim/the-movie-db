@@ -1,14 +1,26 @@
+import type { MouseEvent } from 'react'
+
 import { Modal } from 'antd'
-import { MouseEvent } from 'react'
-import { useNavigate } from 'react-router-dom'
-import { useAppDispatch } from 'src/hooks/useRedux'
-import { deleteList } from 'src/store/lists/actions'
+import { useNavigate, useSearchParams } from 'react-router-dom'
+import { useAppDispatch, useAppSelector } from 'src/hooks/useRedux'
+import useUpdatePage from 'src/hooks/useUpdatePage'
+import { deleteList, fetchLists } from 'src/store/lists/actions'
+import { listsSelector } from 'src/store/lists/selectors'
 
 import type { ListItemHook, ListItemHookProps } from './types'
 
 const useContainer = ({ listId }: ListItemHookProps): ListItemHook => {
-  const dispatch = useAppDispatch()
   const navigate = useNavigate()
+  const dispatch = useAppDispatch()
+  const lists = useAppSelector(listsSelector)
+  const [searchParams, setSearchParams] = useSearchParams()
+  const page = searchParams.get('page') ?? '1'
+  const { updatePage } = useUpdatePage({
+    action: fetchLists(page),
+    items: lists?.results,
+    page,
+    setSearchParams
+  })
 
   const handleClick = () => {
     navigate(`/list/${listId}`)
@@ -17,8 +29,9 @@ const useContainer = ({ listId }: ListItemHookProps): ListItemHook => {
   const handleListDelete = (event: MouseEvent<HTMLSpanElement>) => {
     event.stopPropagation()
 
-    const onOk = () => {
-      dispatch(deleteList(listId))
+    const onOk = async () => {
+      await dispatch(deleteList(listId))
+      updatePage()
     }
 
     Modal.confirm({

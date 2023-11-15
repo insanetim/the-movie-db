@@ -1,20 +1,26 @@
-import type { IListDetail, IListsList } from 'src/interfaces/list.interface'
-
-import { ListData } from 'src/components/ModalCreateList/types'
+import type { ListData } from 'src/components/ModalCreateList/types'
+import type {
+  IList,
+  IListDetail,
+  IListsList
+} from 'src/interfaces/list.interface'
+import type { IMovie } from 'src/interfaces/movie.interface'
 
 export interface IListsState {
+  error: null | string
   lists: IListsList | null
+  loading: boolean
 }
 
 export interface IListState {
+  error: null | string
   list: IListDetail | null
+  loading: boolean
 }
-
-export type ListId = number | string
 
 export interface CreateListProps {
   listData: ListData
-  movieId?: number
+  movieId?: IMovie['id']
 }
 
 export interface CreateListResponse {
@@ -25,8 +31,13 @@ export interface CreateListResponse {
 }
 
 export interface AddToListProps {
-  listId: ListId
-  movieId: number
+  listId: IList['id']
+  movieId: IMovie['id']
 }
 
 export interface RemoveFromListProps extends AddToListProps {}
+
+export interface fetchListDetailProps {
+  listId: IList['id']
+  page: string
+}

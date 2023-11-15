@@ -3,16 +3,8 @@ import { NOTIFICATION_TYPE } from 'src/constants/app'
 import httpClient from 'src/lib/api/httpClient'
 import * as routes from 'src/lib/apiRoutes'
 import { showNotification } from 'src/store/app/actions'
-import { fetchFavorite } from 'src/store/favorite/actions'
-import { fetchWatchlist } from 'src/store/watchlist/actions'
 
 import * as actions from '../actions'
-
-jest.mock('src/store/app/actions')
-
-jest.mock('src/store/favorite/actions')
-
-jest.mock('src/store/watchlist/actions')
 
 jest.mock<typeof import('@reduxjs/toolkit')>('@reduxjs/toolkit', () => ({
   ...jest.requireActual('@reduxjs/toolkit'),
@@ -32,7 +24,7 @@ describe('movie actions', () => {
   })
 
   describe('fetchMovie', () => {
-    const action = actions.fetchMovie('123')
+    const action = actions.fetchMovieDetail('123')
 
     const movieDetailRequest = { url: routes.getMovieDetails('123') }
     const movieDetailResponse = { data: { id: 123, title: 'test/movie' } }
@@ -95,24 +87,14 @@ describe('movie actions', () => {
       url: routes.addToFovorite(123)
     }
     const response = { data: { success: true } }
-    const movieDetailRequest = { url: routes.getMovieDetails('123') }
-    const movieDetailResponse = { data: { id: 123, title: 'test/movie' } }
 
     it('success', async () => {
-      const notification = showNotification({
-        messageText: 'test/movie added to Favorite'
-      })
-      requestSpy
-        .mockResolvedValueOnce(response)
-        .mockResolvedValueOnce(movieDetailResponse)
+      requestSpy.mockResolvedValueOnce(response)
 
       await action(dispatch, getState, undefined)
 
-      expect(requestSpy).toHaveBeenCalledTimes(2)
-      expect(requestSpy).toHaveBeenNthCalledWith(1, request)
-      expect(requestSpy).toHaveBeenNthCalledWith(2, movieDetailRequest)
-      expect(dispatch).toHaveBeenCalledWith(notification)
-      expect(dispatch).toHaveBeenCalledWith(fetchFavorite('1'))
+      expect(requestSpy).toHaveBeenCalledTimes(1)
+      expect(requestSpy).toHaveBeenCalledWith(request)
     })
 
     it('failure', async () => {
@@ -121,19 +103,6 @@ describe('movie actions', () => {
       await action(dispatch, getState, undefined)
 
       expect(dispatch).toHaveBeenCalledWith(errorNotification)
-    })
-
-    it('works with other data', async () => {
-      const props = { inFavorite: false, movieId: 123 }
-      const action = actions.changeMovieInFavorite(props)
-      requestSpy.mockResolvedValueOnce(response)
-      const notification = showNotification({
-        messageText: 'test/movie removed from Favorite'
-      })
-
-      await action(dispatch, getState, undefined)
-
-      expect(dispatch).toHaveBeenCalledWith(notification)
     })
   })
 
@@ -152,24 +121,14 @@ describe('movie actions', () => {
       url: routes.addToWatchlist(123)
     }
     const response = { data: { success: true } }
-    const movieDetailRequest = { url: routes.getMovieDetails('123') }
-    const movieDetailResponse = { data: { id: 123, title: 'test/movie' } }
 
     it('success', async () => {
-      const notification = showNotification({
-        messageText: 'test/movie added to Watchlist'
-      })
-      requestSpy
-        .mockResolvedValueOnce(response)
-        .mockResolvedValueOnce(movieDetailResponse)
+      requestSpy.mockResolvedValueOnce(response)
 
       await action(dispatch, getState, undefined)
 
-      expect(requestSpy).toHaveBeenCalledTimes(2)
-      expect(requestSpy).toHaveBeenNthCalledWith(1, request)
-      expect(requestSpy).toHaveBeenNthCalledWith(2, movieDetailRequest)
-      expect(dispatch).toHaveBeenCalledWith(notification)
-      expect(dispatch).toHaveBeenCalledWith(fetchWatchlist('1'))
+      expect(requestSpy).toHaveBeenCalledTimes(1)
+      expect(requestSpy).toHaveBeenCalledWith(request)
     })
 
     it('failure', async () => {
@@ -178,19 +137,6 @@ describe('movie actions', () => {
       await action(dispatch, getState, undefined)
 
       expect(dispatch).toHaveBeenCalledWith(errorNotification)
-    })
-
-    it('works with other data', async () => {
-      const props = { inWatchlist: false, movieId: 123 }
-      const action = actions.changeMovieInWatchlist(props)
-      requestSpy.mockResolvedValueOnce(response)
-      const notification = showNotification({
-        messageText: 'test/movie removed from Watchlist'
-      })
-
-      await action(dispatch, getState, undefined)
-
-      expect(dispatch).toHaveBeenCalledWith(notification)
     })
   })
 })

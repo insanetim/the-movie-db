@@ -2,23 +2,33 @@ import { act, renderHook } from '@testing-library/react'
 import { useParams } from 'react-router-dom'
 import { mockMovieDetail } from 'src/__mocks__/mockMovie'
 import { dispatch } from 'src/__mocks__/react-redux'
+import { showNotification } from 'src/store/app/actions'
+import { fetchLists } from 'src/store/lists/actions'
 import {
   changeMovieInFavorite,
   changeMovieInWatchlist,
-  fetchMovie
+  fetchMovieDetail
 } from 'src/store/movie/actions'
+import { selectMovieById } from 'src/store/movie/selectors'
 
 import useContainer from '../hook'
 
 jest.mock('src/store/movie/actions')
 
+jest.mock('src/store/lists/actions')
+
 jest.mock('src/store/movie/selectors', () => ({
-  movieSelector: jest.fn(() => mockMovieDetail)
+  selectMovieById: jest.fn(() => mockMovieDetail)
 }))
 
 jest.mock('react-router-dom', () => ({
   ...jest.requireActual('react-router-dom'),
   useParams: jest.fn().mockImplementation(() => ({ movieId: '123' }))
+}))
+
+jest.mock<typeof import('@reduxjs/toolkit')>('@reduxjs/toolkit', () => ({
+  ...jest.requireActual('@reduxjs/toolkit'),
+  nanoid: jest.fn(() => 'nonoid')
 }))
 
 describe('MovieDetail useContainer hook', () => {
@@ -36,6 +46,9 @@ describe('MovieDetail useContainer hook', () => {
   })
 
   it('checks `handleFavoriteClick` method', () => {
+    const notification = showNotification({
+      messageText: 'test/title added to Favorite'
+    })
     const { result } = renderHook(useContainer)
 
     act(() => {
@@ -45,9 +58,13 @@ describe('MovieDetail useContainer hook', () => {
     expect(dispatch).toHaveBeenCalledWith(
       changeMovieInFavorite({ inFavorite: true, movieId: 123 })
     )
+    expect(dispatch).toHaveBeenCalledWith(notification)
   })
 
   it('checks `handleWatchlistClick` method', () => {
+    const notification = showNotification({
+      messageText: 'test/title added to Watchlist'
+    })
     const { result } = renderHook(useContainer)
 
     act(() => {
@@ -57,11 +74,14 @@ describe('MovieDetail useContainer hook', () => {
     expect(dispatch).toHaveBeenCalledWith(
       changeMovieInWatchlist({ inWatchlist: true, movieId: 123 })
     )
+    expect(dispatch).toHaveBeenCalledWith(notification)
   })
 
   it('checks `useEffect` method', () => {
+    jest.mocked(selectMovieById).mockReturnValueOnce(undefined)
     renderHook(useContainer)
 
-    expect(dispatch).toHaveBeenCalledWith(fetchMovie(123))
+    expect(dispatch).toHaveBeenCalledWith(fetchMovieDetail(123))
+    expect(dispatch).toHaveBeenCalledWith(fetchLists('1'))
   })
 })

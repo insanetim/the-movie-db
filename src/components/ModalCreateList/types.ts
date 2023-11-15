@@ -1,12 +1,15 @@
 import type { FormInstance, ModalProps } from 'antd'
+import type { IMovie } from 'src/interfaces/movie.interface'
 
 export interface ModalCreateListProps extends ModalProps {
-  movieId?: number
+  movieId?: IMovie['id']
+  onSuccess?: () => void
 }
 
 export interface ModalCreateListHookProps {
   form: FormInstance
-  movieId?: number
+  movieId?: IMovie['id']
+  onSuccess?: () => void
 }
 
 export type ListData = { description: string; name: string }

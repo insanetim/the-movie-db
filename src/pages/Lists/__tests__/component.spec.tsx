@@ -20,6 +20,10 @@ const mockedHookData: ListsHook = {
 }
 jest.mock('../hook', () => jest.fn(() => mockedHookData))
 
+jest.mock('src/store/lists/selectors', () => ({
+  listsSelector: jest.fn(() => null)
+}))
+
 describe('Lists component', () => {
   it('matches snapshot', () => {
     const { asFragment } = render(<Lists />, { wrapper: Wrapper })

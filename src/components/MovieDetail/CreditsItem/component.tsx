@@ -1,6 +1,6 @@
 import { Card } from 'antd'
+import { isNotNil } from 'ramda'
 import NoImage from 'src/assets/images/no-image.svg'
-import isNull from 'src/utils/helpers/isNull'
 
 import type { CreditsItemProps } from './types'
 
@@ -17,7 +17,7 @@ const CreditsItem: React.FC<CreditsItemProps> = ({
       />
     </div>
   )
-  if (!isNull(profilePath)) {
+  if (isNotNil(profilePath)) {
     cover = (
       <img
         alt={title}

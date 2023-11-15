@@ -1,9 +1,9 @@
-import type { IMoviesList } from 'src/interfaces/movie.interface'
+import type { IMovie, IMoviesList } from 'src/interfaces/movie.interface'
 
 export interface FavoriteHook {
   error: null | string
   handleMovieDelete: (
-    movieId: number,
+    movieId: IMovie['id'],
     event: React.MouseEvent<HTMLSpanElement>
   ) => () => void
   handlePagination: (page: number) => void

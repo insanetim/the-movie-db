@@ -1,5 +1,5 @@
-import type { RootState } from '../index'
+import { movieGlobalizedSelectors } from './reducer'
 
-export const movieSelector = (state: RootState) => {
-  return state.movie.movieDetail
-}
+const { selectById: selectMovieById } = movieGlobalizedSelectors
+
+export { selectMovieById }

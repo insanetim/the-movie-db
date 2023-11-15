@@ -1,7 +1,7 @@
 import { DeleteOutlined } from '@ant-design/icons'
 import { Card } from 'antd'
+import { isNotNil } from 'ramda'
 import NoImage from 'src/assets/images/no-image.svg'
-import isNull from 'src/utils/helpers/isNull'
 
 import type { MovieItemProps } from './types'
 
@@ -18,7 +18,7 @@ const MovieItem: React.FC<MovieItemProps> = ({ handleMovieDelete, movie }) => {
       />
     </div>
   )
-  if (!isNull(movie.poster_path)) {
+  if (isNotNil(movie.poster_path)) {
     cover = (
       <img
         alt={movie.title}

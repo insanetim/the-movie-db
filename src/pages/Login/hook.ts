@@ -16,8 +16,8 @@ const useContainer = (): LoginHook => {
 
   const handleLogIn = async (userData: IUserData) => {
     const to = location.state?.from?.pathname || '/'
-    const promise = await dispatch(logIn(userData))
-    const sessionId = unwrapResult(promise)
+    const sessionId = unwrapResult(await dispatch(logIn(userData)))
+
     if (sessionId) {
       navigate(to, { replace: true })
     }

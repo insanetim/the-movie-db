@@ -5,7 +5,7 @@ export interface ListItemProps {
 }
 
 export interface ListItemHookProps {
-  listId: number
+  listId: IList['id']
 }
 
 export interface ListItemHook {

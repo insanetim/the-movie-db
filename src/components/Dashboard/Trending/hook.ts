@@ -4,17 +4,18 @@ import { useAppSelector } from 'src/hooks/useRedux'
 import useRequest from 'src/hooks/useRequest'
 import { fetchTrending } from 'src/store/dashboard/actions'
 import { dashboardMoviesSelector } from 'src/store/dashboard/selectors'
+import getParams from 'src/utils/helpers/getParams'
 
-import { TrendingHook } from './types'
+import type { TrendingHook } from './types'
 
 const useContainer = (): TrendingHook => {
   const movies = useAppSelector(dashboardMoviesSelector)
   const { error, loading, request } = useRequest()
-  const [searchParams, setSearchParams] = useSearchParams({ page: '1' })
-  const page = searchParams.get('page') as string
+  const [searchParams, setSearchParams] = useSearchParams()
+  const page = searchParams.get('page') ?? '1'
 
   const handlePagination = (page: number) => {
-    setSearchParams({ page: page.toString() })
+    setSearchParams(getParams({ page }))
   }
 
   useEffect(() => {

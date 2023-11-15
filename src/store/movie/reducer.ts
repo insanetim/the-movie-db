@@ -1,37 +1,62 @@
 import type { IMovieDetailExtended } from 'src/interfaces/movie.interface'
+import type { RootState } from 'src/store'
 
-import { createReducer } from '@reduxjs/toolkit'
-
-import type { IMovieState } from './types'
+import { createEntityAdapter, createReducer } from '@reduxjs/toolkit'
 
 import {
   changeMovieInFavorite,
   changeMovieInWatchlist,
-  fetchMovie
+  fetchMovieDetail
 } from './actions'
 
-const initialState: IMovieState = {
-  movieDetail: null
-}
+const movieAdapter = createEntityAdapter<IMovieDetailExtended>({
+  selectId: movie => movie.id
+})
 
-const movieReducer = createReducer(initialState, builder => {
-  builder.addCase(fetchMovie.pending, state => {
-    state.movieDetail = null
-  })
-  builder.addCase(fetchMovie.fulfilled, (state, action) => {
-    state.movieDetail = action.payload as IMovieDetailExtended
-  })
+const movieInitialState = movieAdapter.getInitialState()
 
-  builder.addCase(changeMovieInFavorite.fulfilled, (state, action) => {
-    if (state.movieDetail) {
-      state.movieDetail.accountStates.favorite = action.meta.arg.inFavorite
+const movieGlobalizedSelectors = movieAdapter.getSelectors<RootState>(
+  state => state.movie
+)
+
+const movieReducer = createReducer(movieInitialState, builder => {
+  builder.addCase(fetchMovieDetail.fulfilled, (state, action) => {
+    movieAdapter.addOne(state, action.payload)
+  })
+  builder.addCase(changeMovieInFavorite.pending, (state, action) => {
+    const movie = movieAdapter
+      .getSelectors()
+      .selectById(state, action.meta.arg.movieId)
+    if (movie) {
+      movieAdapter.updateOne(state, {
+        changes: {
+          accountStates: {
+            ...movie.accountStates,
+            favorite: action.meta.arg.inFavorite
+          }
+        },
+        id: action.meta.arg.movieId
+      })
     }
   })
-  builder.addCase(changeMovieInWatchlist.fulfilled, (state, action) => {
-    if (state.movieDetail) {
-      state.movieDetail.accountStates.watchlist = action.meta.arg.inWatchlist
+  builder.addCase(changeMovieInWatchlist.pending, (state, action) => {
+    const movie = movieAdapter
+      .getSelectors()
+      .selectById(state, action.meta.arg.movieId)
+    if (movie) {
+      movieAdapter.updateOne(state, {
+        changes: {
+          accountStates: {
+            ...movie.accountStates,
+            watchlist: action.meta.arg.inWatchlist
+          }
+        },
+        id: action.meta.arg.movieId
+      })
     }
   })
 })
+
+export { movieGlobalizedSelectors, movieInitialState }
 
 export default movieReducer

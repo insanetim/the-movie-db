@@ -9,6 +9,12 @@ jest.mock('src/store/session/selectors', () => ({
   sessionIdSelector: jest.fn(() => 'session_id')
 }))
 
+jest.mock('src/store/watchlist/selectors', () => ({
+  watchlistMoviesSelector: jest.fn(() => ({
+    results: [{ id: 123 }, { id: 456 }, { id: 789 }]
+  }))
+}))
+
 describe('fetchWatchlist', () => {
   const requestSpy = jest.spyOn(httpClient, 'request')
   const action = fetchWatchlist('1')

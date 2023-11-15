@@ -1,13 +1,20 @@
+import type { IMovie } from 'src/interfaces/movie.interface'
+
 import { Modal } from 'antd'
+import { isNotNil } from 'ramda'
 import { MouseEvent, useEffect } from 'react'
 import { useSearchParams } from 'react-router-dom'
 import { useAppDispatch, useAppSelector } from 'src/hooks/useRedux'
-import useRequest from 'src/hooks/useRequest'
+import useUpdatePage from 'src/hooks/useUpdatePage'
 import { fetchFavorite } from 'src/store/favorite/actions'
-import { favoriteMoviesSelector } from 'src/store/favorite/selectors'
+import {
+  favoriteErrorSelector,
+  favoriteLoadingSelector,
+  favoriteMoviesSelector
+} from 'src/store/favorite/selectors'
 import { changeMovieInFavorite } from 'src/store/movie/actions'
 import { accountSelector } from 'src/store/session/selectors'
-import isNull from 'src/utils/helpers/isNull'
+import getParams from 'src/utils/helpers/getParams'
 
 import type { FavoriteHook } from './types'
 
@@ -15,22 +22,30 @@ const useContainer = (): FavoriteHook => {
   const dispatch = useAppDispatch()
   const account = useAppSelector(accountSelector)
   const movies = useAppSelector(favoriteMoviesSelector)
+  const loading = useAppSelector(favoriteLoadingSelector)
+  const error = useAppSelector(favoriteErrorSelector)
   const [searchParams, setSearchParams] = useSearchParams()
   const page = searchParams.get('page') ?? '1'
-  const { error, loading, request } = useRequest()
+  const { updatePage } = useUpdatePage({
+    action: fetchFavorite(page),
+    items: movies?.results,
+    page,
+    setSearchParams
+  })
 
   const handlePagination = (page: number) => {
-    setSearchParams(new URLSearchParams({ page: page.toString() }))
+    setSearchParams(getParams({ page }))
   }
 
   const handleMovieDelete = (
-    movieId: number,
+    movieId: IMovie['id'],
     event: MouseEvent<HTMLSpanElement>
   ): (() => void) => {
     event.stopPropagation()
 
-    const onOk = () => {
-      dispatch(changeMovieInFavorite({ inFavorite: false, movieId }))
+    const onOk = async () => {
+      await dispatch(changeMovieInFavorite({ inFavorite: false, movieId }))
+      updatePage()
     }
 
     Modal.confirm({
@@ -42,10 +57,10 @@ const useContainer = (): FavoriteHook => {
   }
 
   useEffect(() => {
-    if (!isNull(account)) {
-      request(fetchFavorite(page))
+    if (isNotNil(account)) {
+      dispatch(fetchFavorite(page))
     }
-  }, [account, page, request])
+  }, [account, page, dispatch])
 
   return { error, handleMovieDelete, handlePagination, loading, movies }
 }

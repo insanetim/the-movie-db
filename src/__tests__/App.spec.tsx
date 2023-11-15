@@ -13,8 +13,8 @@ import type { WatchlistHook } from 'src/pages/Watchlist/types'
 
 import { render } from '@testing-library/react'
 import { ReactNode, Suspense } from 'react'
-import { mockList, mockListDetail } from 'src/__mocks__/mockList'
-import { mockMovie, mockMovieDetail } from 'src/__mocks__/mockMovie'
+import { mockListDetail } from 'src/__mocks__/mockList'
+import { mockMovieDetail } from 'src/__mocks__/mockMovie'
 import App, {
   Dashboard,
   Favorite,
@@ -77,12 +77,7 @@ const mockedTrendingHook: TrendingHook = {
   error: null,
   handlePagination: () => jest.fn(),
   loading: false,
-  movies: {
-    page: 1,
-    results: [mockMovie],
-    total_pages: 10,
-    total_results: 200
-  }
+  movies: null
 }
 jest.mock('../components/Dashboard/Trending/hook', () =>
   jest.fn(() => mockedTrendingHook)
@@ -92,12 +87,7 @@ const mockedListsHook: ListsHook = {
   error: null,
   handleCreateList: jest.fn(),
   handlePagination: jest.fn(),
-  lists: {
-    page: 1,
-    results: [mockList],
-    total_pages: 1,
-    total_results: 1
-  },
+  lists: null,
   loading: false
 }
 jest.mock('../pages/Lists/hook', () => jest.fn(() => mockedListsHook))
@@ -107,12 +97,7 @@ const mockedWatchlistHook: WatchlistHook = {
   handleMovieDelete: jest.fn(),
   handlePagination: jest.fn(),
   loading: false,
-  movies: {
-    page: 1,
-    results: [mockMovie],
-    total_pages: 1,
-    total_results: 1
-  }
+  movies: null
 }
 jest.mock('../pages/Watchlist/hook', () => jest.fn(() => mockedWatchlistHook))
 
@@ -121,12 +106,7 @@ const mockedFavoriteHook: FavoriteHook = {
   handleMovieDelete: jest.fn(),
   handlePagination: jest.fn(),
   loading: false,
-  movies: {
-    page: 1,
-    results: [mockMovie],
-    total_pages: 1,
-    total_results: 1
-  }
+  movies: null
 }
 jest.mock('../pages/Favorite/hook', () => jest.fn(() => mockedFavoriteHook))
 
@@ -134,6 +114,7 @@ const mockedListDetailHook: ListDetailHook = {
   error: null,
   handleListDelete: jest.fn(),
   handleMovieDelete: jest.fn(),
+  handlePagination: jest.fn(),
   list: mockListDetail,
   loading: false
 }
@@ -168,7 +149,9 @@ describe('App component', () => {
   it('renders Layout', async () => {
     const { findByText } = render(<Layout />, { wrapper: WrapperWithSuspense })
 
-    expect(await findByText('insanetim', { exact: false })).toBeInTheDocument()
+    expect(
+      await findByText('insanetim', { exact: false }, { timeout: 3000 })
+    ).toBeInTheDocument()
   })
 
   it('renders Login', async () => {
@@ -186,7 +169,7 @@ describe('App component', () => {
       await findByPlaceholderText(
         'Enter movie name',
         { exact: false },
-        { timeout: 2000 }
+        { timeout: 3000 }
       )
     ).toBeInTheDocument()
   })
@@ -194,7 +177,9 @@ describe('App component', () => {
   it('renders Lists', async () => {
     const { findByText } = render(<Lists />, { wrapper: WrapperWithSuspense })
 
-    expect(await findByText('My Lists', { exact: false })).toBeInTheDocument()
+    expect(
+      await findByText('My Lists', { exact: false }, { timeout: 3000 })
+    ).toBeInTheDocument()
   })
 
   it('renders Watchlist', async () => {

@@ -3,6 +3,7 @@ import { Modal } from 'antd'
 import { useSearchParams } from 'react-router-dom'
 import mockAccount from 'src/__mocks__/mockAccount'
 import { dispatch } from 'src/__mocks__/react-redux'
+import useUpdatePage from 'src/hooks/useUpdatePage'
 import { fetchFavorite } from 'src/store/favorite/actions'
 import { changeMovieInFavorite } from 'src/store/movie/actions'
 import { accountSelector } from 'src/store/session/selectors'
@@ -18,6 +19,8 @@ jest.mock('src/store/session/selectors', () => ({
 }))
 
 jest.mock('src/store/favorite/selectors', () => ({
+  favoriteErrorSelector: jest.fn(() => null),
+  favoriteLoadingSelector: jest.fn(() => true),
   favoriteMoviesSelector: jest.fn(() => null)
 }))
 
@@ -28,6 +31,10 @@ jest.mock('react-router-dom', () => ({
 const searchParams = new URLSearchParams()
 const setSearchParams = jest.fn()
 jest.mocked(useSearchParams).mockReturnValue([searchParams, setSearchParams])
+
+jest.mock('src/hooks/useUpdatePage')
+const updatePage = jest.fn()
+jest.mocked(useUpdatePage).mockReturnValue({ updatePage })
 
 describe('Favotite useContainer hook', () => {
   const modalSpy = jest.spyOn(Modal, 'confirm')
@@ -45,14 +52,10 @@ describe('Favotite useContainer hook', () => {
       result.current.handlePagination(3)
     })
 
-    expect(setSearchParams).toHaveBeenCalledWith(
-      new URLSearchParams({
-        page: '3'
-      })
-    )
+    expect(setSearchParams).toHaveBeenCalledWith({ page: '3' })
   })
 
-  it('checks `handleMovieDelete` method', () => {
+  it('checks `handleMovieDelete` method', async () => {
     let onOk = () => {
       return
     }
@@ -63,18 +66,16 @@ describe('Favotite useContainer hook', () => {
         stopPropagation: jest.fn()
       } as never)
     })
-    onOk()
+    await onOk()
 
     expect(modalSpy).toHaveBeenCalledWith({
       onOk,
       title: 'Do you want to delete movie from favorite?'
     })
     expect(dispatch).toHaveBeenCalledWith(
-      changeMovieInFavorite({
-        inFavorite: false,
-        movieId: 123
-      })
+      changeMovieInFavorite({ inFavorite: false, movieId: 123 })
     )
+    expect(updatePage).toHaveBeenCalled()
   })
 
   it('checks `useEffect` method with account', () => {

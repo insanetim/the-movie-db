@@ -1,9 +1,9 @@
 import mockState from 'src/__mocks__/mockState'
 
-import { movieSelector } from '../selectors'
+import { selectMovieById } from '../selectors'
 
 describe('movie selectors', () => {
-  it('movieSelector', () => {
-    expect(movieSelector(mockState)).toBe(null)
+  it('selectMovieById', () => {
+    expect(selectMovieById(mockState, 123)).toBe(undefined)
   })
 })

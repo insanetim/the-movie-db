@@ -1,41 +1,54 @@
-import type { IListDetail } from 'src/interfaces/list.interface'
-
 import { combineReducers, createReducer } from '@reduxjs/toolkit'
 
 import type { IListState, IListsState } from './types'
 
-import { fetchList, fetchLists, removeFromList } from './actions'
+import { fetchListDetail, fetchLists } from './actions'
 
 const listsInitialState: IListsState = {
-  lists: null
+  error: null,
+  lists: null,
+  loading: true
 }
 
-export const createdListsReducer = createReducer(listsInitialState, builder => {
+const createdListsReducer = createReducer(listsInitialState, builder => {
   builder.addCase(fetchLists.pending, state => {
+    state.loading = true
     state.lists = null
+    state.error = null
   })
   builder.addCase(fetchLists.fulfilled, (state, action) => {
+    state.loading = false
     state.lists = action.payload
+  })
+  builder.addCase(fetchLists.rejected, (state, action) => {
+    state.loading = false
+    state.error = action.payload as string
   })
 })
 
 const listInitialState: IListState = {
-  list: null
+  error: null,
+  list: null,
+  loading: true
 }
 
-export const listDetailReducer = createReducer(listInitialState, builder => {
-  builder.addCase(fetchList.pending, state => {
+const listDetailReducer = createReducer(listInitialState, builder => {
+  builder.addCase(fetchListDetail.pending, state => {
+    state.loading = true
     state.list = null
+    state.error = null
   })
-  builder.addCase(fetchList.fulfilled, (state, action) => {
-    state.list = action.payload as IListDetail
+  builder.addCase(fetchListDetail.fulfilled, (state, action) => {
+    state.loading = false
+    state.list = action.payload
   })
-  builder.addCase(removeFromList.fulfilled, (state, action) => {
-    state.list!.items = state.list!.items.filter(
-      item => item.id !== action.payload
-    )
+  builder.addCase(fetchListDetail.rejected, (state, action) => {
+    state.loading = false
+    state.error = action.payload as string
   })
 })
+
+export { createdListsReducer, listDetailReducer }
 
 export default combineReducers({
   createdLists: createdListsReducer,

@@ -11,6 +11,7 @@ import Icon, {
 import { Col, Popover, Row, Tag, Typography } from 'antd'
 import { format } from 'date-fns'
 import ISO6391 from 'iso-639-1'
+import { isNil } from 'ramda'
 import { Helmet } from 'react-helmet'
 import CastList from 'src/components/MovieDetail/CastList'
 import CrewList from 'src/components/MovieDetail/CrewList'
@@ -21,7 +22,6 @@ import Error from 'src/components/UI/Error'
 import Loading from 'src/components/UI/Loading'
 import convertDuration from 'src/utils/convertDataHelpers/convertDuration'
 import convertMoney from 'src/utils/convertDataHelpers/convertMoney'
-import isNull from 'src/utils/helpers/isNull'
 import metaTitle from 'src/utils/helpers/metaTitle'
 
 import useContainer from './hook'
@@ -53,7 +53,7 @@ const Movie: React.FC = () => {
     )
   }
 
-  if (isNull(movie)) {
+  if (isNil(movie)) {
     return (
       <div>
         <Empty description='Movie not found' />

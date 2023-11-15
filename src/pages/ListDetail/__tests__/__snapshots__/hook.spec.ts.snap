@@ -5,6 +5,7 @@ exports[`ListDetail useContainer hook matches snapshot 1`] = `
   "error": null,
   "handleListDelete": [Function],
   "handleMovieDelete": [Function],
+  "handlePagination": [Function],
   "list": null,
   "loading": true,
 }
@@ -15,6 +16,7 @@ exports[`ListDetail useContainer hook matches snapshot without params 1`] = `
   "error": null,
   "handleListDelete": [Function],
   "handleMovieDelete": [Function],
+  "handlePagination": [Function],
   "list": null,
   "loading": true,
 }

@@ -1,4 +1,6 @@
-import { RootState } from '../store/index'
+import type { RootState } from 'src/store/index'
+
+import { movieInitialState } from 'src/store/movie/reducer'
 
 const mockState: RootState = {
   app: {
@@ -12,25 +14,31 @@ const mockState: RootState = {
     movies: null
   },
   favorite: {
+    error: null,
+    loading: true,
     movies: null
   },
   lists: {
     createdLists: {
-      lists: null
+      error: null,
+      lists: null,
+      loading: true
     },
     listDetail: {
-      list: null
+      error: null,
+      list: null,
+      loading: true
     }
   },
-  movie: {
-    movieDetail: null
-  },
+  movie: movieInitialState,
   session: {
     account: null,
     loading: false,
     sessionId: ''
   },
   watchlist: {
+    error: null,
+    loading: true,
     movies: null
   }
 }

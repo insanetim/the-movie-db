@@ -1,19 +1,43 @@
+import type { IMovie } from 'src/interfaces/movie.interface'
+
 import { Modal } from 'antd'
 import { MouseEvent, useEffect } from 'react'
-import { useNavigate, useParams } from 'react-router-dom'
+import { useNavigate, useParams, useSearchParams } from 'react-router-dom'
 import { useAppDispatch, useAppSelector } from 'src/hooks/useRedux'
-import useRequest from 'src/hooks/useRequest'
-import { deleteList, fetchList, removeFromList } from 'src/store/lists/actions'
-import { listSelector } from 'src/store/lists/selectors'
+import useUpdatePage from 'src/hooks/useUpdatePage'
+import {
+  deleteList,
+  fetchListDetail,
+  removeFromList
+} from 'src/store/lists/actions'
+import {
+  listDetailErrorSelector,
+  listDetailLoadingSelector,
+  listDetailSelector
+} from 'src/store/lists/selectors'
+import getParams from 'src/utils/helpers/getParams'
 
-import { ListDetailHook } from './types'
+import type { ListDetailHook } from './types'
 
 const useContainer = (): ListDetailHook => {
-  const dispatch = useAppDispatch()
-  const list = useAppSelector(listSelector)
   const { listId = '' } = useParams()
   const navigate = useNavigate()
-  const { error, loading, request } = useRequest()
+  const dispatch = useAppDispatch()
+  const list = useAppSelector(listDetailSelector)
+  const loading = useAppSelector(listDetailLoadingSelector)
+  const error = useAppSelector(listDetailErrorSelector)
+  const [searchParams, setSearchParams] = useSearchParams()
+  const page = searchParams.get('page') ?? '1'
+  const { updatePage } = useUpdatePage({
+    action: fetchListDetail({ listId, page }),
+    items: list?.items,
+    page,
+    setSearchParams
+  })
+
+  const handlePagination = (page: number) => {
+    setSearchParams(getParams({ page }))
+  }
 
   const handleListDelete = () => {
     const onOk = async () => {
@@ -30,13 +54,14 @@ const useContainer = (): ListDetailHook => {
   }
 
   const handleMovieDelete = (
-    movieId: number,
+    movieId: IMovie['id'],
     event: MouseEvent<HTMLSpanElement>
   ) => {
     event.stopPropagation()
 
-    const onOk = () => {
-      dispatch(removeFromList({ listId, movieId }))
+    const onOk = async () => {
+      await dispatch(removeFromList({ listId, movieId }))
+      updatePage()
     }
 
     Modal.confirm({
@@ -48,10 +73,17 @@ const useContainer = (): ListDetailHook => {
   }
 
   useEffect(() => {
-    request(fetchList(listId))
-  }, [listId, request])
+    dispatch(fetchListDetail({ listId, page }))
+  }, [page, listId, dispatch])
 
-  return { error, handleListDelete, handleMovieDelete, list, loading }
+  return {
+    error,
+    handleListDelete,
+    handleMovieDelete,
+    handlePagination,
+    list,
+    loading
+  }
 }
 
 export default useContainer

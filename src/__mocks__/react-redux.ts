@@ -1,5 +1,7 @@
-export const dispatch = jest.fn()
-export const getState = jest.fn()
+const dispatch = jest.fn()
+const getState = jest.fn()
 
-export const useDispatch = jest.fn(() => dispatch)
-export const useSelector = jest.fn(fn => fn())
+const useDispatch = jest.fn(() => dispatch)
+const useSelector = jest.fn(fn => fn())
+
+export { dispatch, getState, useDispatch, useSelector }

@@ -2,14 +2,20 @@ import createActionType from 'src/utils/state/createActionType'
 
 const namespace = 'movie'
 
-export const FETCH_MOVIE = createActionType(namespace, 'FETCH_MOVIE')
+const FETCH_MOVIE_DETAIL = createActionType(namespace, 'FETCH_MOVIE_DETAIL')
 
-export const CHANGE_MOVIE_IN_FAVORITE = createActionType(
+const CHANGE_MOVIE_IN_FAVORITE = createActionType(
   namespace,
   'CHANGE_MOVIE_IN_FAVORITE'
 )
 
-export const CHANGE_MOVIE_IN_WATCHLIST = createActionType(
+const CHANGE_MOVIE_IN_WATCHLIST = createActionType(
   namespace,
   'CHANGE_MOVIE_IN_WATCHLIST'
 )
+
+export {
+  CHANGE_MOVIE_IN_FAVORITE,
+  CHANGE_MOVIE_IN_WATCHLIST,
+  FETCH_MOVIE_DETAIL
+}

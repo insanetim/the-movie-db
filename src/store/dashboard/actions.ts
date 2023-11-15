@@ -1,15 +1,15 @@
 import type { IMoviesList } from 'src/interfaces/movie.interface'
 
 import { createAsyncThunk } from '@reduxjs/toolkit'
-import { pathOr } from 'ramda'
 import httpClient from 'src/lib/api/httpClient'
 import { getTrending, searchMovies } from 'src/lib/apiRoutes'
+import errorMessage from 'src/utils/helpers/errorMessage'
 
 import type { FetchSearchProps } from './types'
 
 import * as types from './constants'
 
-export const fetchTrending = createAsyncThunk(
+const fetchTrending = createAsyncThunk(
   types.FETCH_TRENDING,
   async (page: string, { rejectWithValue }) => {
     try {
@@ -20,18 +20,12 @@ export const fetchTrending = createAsyncThunk(
 
       return data
     } catch (error) {
-      const message = pathOr(
-        'Something went wrong!',
-        ['response', 'data', 'status_message'],
-        error
-      )
-
-      return rejectWithValue(message)
+      return rejectWithValue(errorMessage(error))
     }
   }
 )
 
-export const fetchSearch = createAsyncThunk(
+const fetchSearch = createAsyncThunk(
   types.FETCH_SEARCH,
   async ({ page, query }: FetchSearchProps, { rejectWithValue }) => {
     try {
@@ -42,13 +36,9 @@ export const fetchSearch = createAsyncThunk(
 
       return data
     } catch (error) {
-      const message = pathOr(
-        'Something went wrong!',
-        ['response', 'data', 'status_message'],
-        error
-      )
-
-      return rejectWithValue(message)
+      return rejectWithValue(errorMessage(error))
     }
   }
 )
+
+export { fetchSearch, fetchTrending }

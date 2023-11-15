@@ -63,7 +63,7 @@ describe('MovieDetail component', () => {
   })
 
   it('matches snapshot with empty movie', () => {
-    mockedHookData.movie = null
+    mockedHookData.movie = undefined
     const { asFragment } = render(<Movie />, { wrapper: Wrapper })
 
     expect(asFragment()).toMatchSnapshot()

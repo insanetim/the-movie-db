@@ -6,7 +6,7 @@ import type {
   IMovieDetailExtended
 } from 'src/interfaces/movie.interface'
 
-export const mockMovie: IMovie = {
+const mockMovie: IMovie = {
   adult: false,
   backdrop_path: '/image',
   genre_ids: [1, 2, 3],
@@ -23,7 +23,7 @@ export const mockMovie: IMovie = {
   vote_count: 123
 }
 
-export const mockMovieDetail: IMovieDetailExtended = {
+const mockMovieDetail: IMovieDetailExtended = {
   accountStates: { favorite: false, id: 123, rated: false, watchlist: false },
   adult: false,
   backdrop_path: '/image',
@@ -100,7 +100,7 @@ export const mockMovieDetail: IMovieDetailExtended = {
   vote_count: 123
 }
 
-export const mockCast: ICast = {
+const mockCast: ICast = {
   adult: true,
   cast_id: 123,
   character: 'test/character',
@@ -115,7 +115,7 @@ export const mockCast: ICast = {
   profile_path: '/image'
 }
 
-export const mockCrew: ICrew = {
+const mockCrew: ICrew = {
   adult: true,
   credit_id: '123',
   department: 'test/department',
@@ -129,7 +129,7 @@ export const mockCrew: ICrew = {
   profile_path: '/image'
 }
 
-export const mockImage: IBackdrop = {
+const mockImage: IBackdrop = {
   aspect_ratio: 0.5625,
   file_path: '/image',
   height: 900,
@@ -138,3 +138,5 @@ export const mockImage: IBackdrop = {
   vote_count: 123,
   width: 1600
 }
+
+export { mockCast, mockCrew, mockImage, mockMovie, mockMovieDetail }

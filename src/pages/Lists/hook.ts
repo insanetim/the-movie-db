@@ -1,12 +1,16 @@
+import { isNotNil } from 'ramda'
 import { useEffect } from 'react'
 import { useSearchParams } from 'react-router-dom'
 import { useAppDispatch, useAppSelector } from 'src/hooks/useRedux'
-import useRequest from 'src/hooks/useRequest'
 import { showModal } from 'src/store/app/actions'
 import { fetchLists } from 'src/store/lists/actions'
-import { listsSelector } from 'src/store/lists/selectors'
+import {
+  listsErrorSelector,
+  listsLoadingSelector,
+  listsSelector
+} from 'src/store/lists/selectors'
 import { accountSelector } from 'src/store/session/selectors'
-import isNull from 'src/utils/helpers/isNull'
+import getParams from 'src/utils/helpers/getParams'
 
 import type { ListsHook } from './types'
 
@@ -14,23 +18,36 @@ const useContainer = (): ListsHook => {
   const dispatch = useAppDispatch()
   const account = useAppSelector(accountSelector)
   const lists = useAppSelector(listsSelector)
+  const loading = useAppSelector(listsLoadingSelector)
+  const error = useAppSelector(listsErrorSelector)
   const [searchParams, setSearchParams] = useSearchParams()
   const page = searchParams.get('page') ?? '1'
-  const { error, loading, request } = useRequest()
 
   const handlePagination = (page: number) => {
-    setSearchParams(new URLSearchParams({ page: page.toString() }))
+    setSearchParams(getParams({ page }))
   }
 
   const handleCreateList = () => {
-    dispatch(showModal({ modalType: 'MODAL_CREATE_LIST' }))
+    const onSuccess = () => {
+      if (page === '1') {
+        dispatch(fetchLists(page))
+      } else {
+        setSearchParams({})
+      }
+    }
+
+    dispatch(
+      showModal({ modalProps: { onSuccess }, modalType: 'MODAL_CREATE_LIST' })
+    )
+
+    return onSuccess
   }
 
   useEffect(() => {
-    if (!isNull(account)) {
-      request(fetchLists(page))
+    if (isNotNil(account)) {
+      dispatch(fetchLists(page))
     }
-  }, [account, page, request])
+  }, [account, page, dispatch])
 
   return { error, handleCreateList, handlePagination, lists, loading }
 }

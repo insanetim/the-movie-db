@@ -4,21 +4,18 @@ import { useAppSelector } from 'src/hooks/useRedux'
 import useRequest from 'src/hooks/useRequest'
 import { fetchSearch } from 'src/store/dashboard/actions'
 import { dashboardMoviesSelector } from 'src/store/dashboard/selectors'
+import getParams from 'src/utils/helpers/getParams'
 
-import { SearchResultHook, SearchResultHookProps } from './types'
+import type { SearchResultHook, SearchResultHookProps } from './types'
 
 const useContainer = ({ query }: SearchResultHookProps): SearchResultHook => {
   const movies = useAppSelector(dashboardMoviesSelector)
   const { error, loading, request } = useRequest()
-  const [searchParams, setSearchParams] = useSearchParams({
-    page: '1',
-    search: query
-  })
-  const page = searchParams.get('page') as string
+  const [searchParams, setSearchParams] = useSearchParams()
+  const page = searchParams.get('page') ?? '1'
 
   const handlePagination = (page: number) => {
-    searchParams.set('page', page.toString())
-    setSearchParams(Object.fromEntries(searchParams.entries()))
+    setSearchParams(getParams({ page, search: query }))
   }
 
   useEffect(() => {

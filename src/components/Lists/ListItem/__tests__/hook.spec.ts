@@ -1,19 +1,32 @@
 import { act, renderHook } from '@testing-library/react'
 import { Modal } from 'antd'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useSearchParams } from 'react-router-dom'
 import { dispatch } from 'src/__mocks__/react-redux'
+import useUpdatePage from 'src/hooks/useUpdatePage'
 import { deleteList } from 'src/store/lists/actions'
 
 import useContainer from '../hook'
+
+jest.mock('src/store/lists/selectors', () => ({
+  listsSelector: jest.fn(() => null)
+}))
 
 jest.mock('src/store/lists/actions')
 
 jest.mock('react-router-dom', () => ({
   ...jest.requireActual('react-router-dom'),
-  useNavigate: jest.fn()
+  useNavigate: jest.fn(),
+  useSearchParams: jest.fn()
 }))
 const navigate = jest.fn()
 jest.mocked(useNavigate).mockReturnValue(navigate)
+const searchParams = new URLSearchParams()
+const setSearchParams = jest.fn()
+jest.mocked(useSearchParams).mockReturnValue([searchParams, setSearchParams])
+
+jest.mock('src/hooks/useUpdatePage')
+const updatePage = jest.fn()
+jest.mocked(useUpdatePage).mockReturnValue({ updatePage })
 
 describe('ListItem useContainer hook', () => {
   const modalSpy = jest.spyOn(Modal, 'confirm')
@@ -35,7 +48,7 @@ describe('ListItem useContainer hook', () => {
     expect(navigate).toHaveBeenCalledWith('/list/123')
   })
 
-  it('checks `handleListDelete` method', () => {
+  it('checks `handleListDelete` method', async () => {
     let onOk = () => {
       return
     }
@@ -46,12 +59,13 @@ describe('ListItem useContainer hook', () => {
         stopPropagation: jest.fn()
       } as never)
     })
-    onOk()
+    await onOk()
 
     expect(modalSpy).toHaveBeenCalledWith({
       onOk,
       title: 'Do you want to delete list?'
     })
     expect(dispatch).toHaveBeenCalledWith(deleteList(123))
+    expect(updatePage).toHaveBeenCalled()
   })
 })

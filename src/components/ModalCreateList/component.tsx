@@ -6,12 +6,14 @@ import useContainer from './hook'
 
 const ModalCreateList: React.FC<ModalCreateListProps> = ({
   movieId,
-  ...rest
+  onSuccess,
+  ...props
 }) => {
   const [form] = Form.useForm()
   const { handleAfterClose, handleOk, handleSubmit } = useContainer({
     form,
-    movieId
+    movieId,
+    onSuccess
   })
 
   return (
@@ -22,7 +24,7 @@ const ModalCreateList: React.FC<ModalCreateListProps> = ({
       onOk={handleOk}
       open
       title='Create list'
-      {...rest}
+      {...props}
     >
       <Form
         autoComplete='off'

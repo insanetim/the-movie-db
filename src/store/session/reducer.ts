@@ -1,6 +1,7 @@
+import type { IAccount } from 'src/interfaces/account.interface'
+
 import { createReducer } from '@reduxjs/toolkit'
 import Cookies from 'js-cookie'
-import { IAccount } from 'src/interfaces/account.interface'
 
 import type { ISessionState } from './types'
 

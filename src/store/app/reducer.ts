@@ -14,7 +14,7 @@ const modalInitialState: IModalState = {
   modalType: null
 }
 
-export const modalReducer = createReducer(modalInitialState, builder => {
+const modalReducer = createReducer(modalInitialState, builder => {
   builder.addCase(showModal, (state, action) => {
     state.modalType = action.payload.modalType
     state.modalProps = action.payload.modalProps as never
@@ -26,7 +26,7 @@ export const modalReducer = createReducer(modalInitialState, builder => {
 
 const notificationsInitialState: INotification[] = []
 
-export const notificationsReducer = createReducer(
+const notificationsReducer = createReducer(
   notificationsInitialState,
   builder => {
     builder.addCase(showNotification, (state, action) => {
@@ -37,6 +37,8 @@ export const notificationsReducer = createReducer(
     })
   }
 )
+
+export { modalReducer, notificationsReducer }
 
 export default combineReducers({
   modal: modalReducer,

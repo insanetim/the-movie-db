@@ -37,7 +37,7 @@ describe('SearchResult useContainer hook', () => {
 
     expect(setSearchParams).toHaveBeenCalledWith({
       page: '3',
-      query: props.query
+      search: props.query
     })
   })
 

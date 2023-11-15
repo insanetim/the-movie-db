@@ -14,20 +14,22 @@ import {
   SHOW_NOTIFICATION
 } from './constants'
 
-export const showModal = createAction<ShowModalProps>(SHOW_MODAL)
+const showModal = createAction<ShowModalProps>(SHOW_MODAL)
 
-export const hideModal = createAction(HIDE_MODAL)
+const hideModal = createAction(HIDE_MODAL)
 
-export const showNotification = createAction(
+const showNotification = createAction(
   SHOW_NOTIFICATION,
-  ({
+  function prepare({
     duration = NOTIFICATION_DURATION,
     messageText,
     messageType = NOTIFICATION_TYPE.SUCCESS
-  }: ShowNotificationProps): { payload: INotification } => {
+  }: ShowNotificationProps): { payload: INotification } {
     const id = nanoid()
     return { payload: { duration, id, messageText, messageType } }
   }
 )
 
-export const hideNotification = createAction<string>(HIDE_NOTIFICATION)
+const hideNotification = createAction<string>(HIDE_NOTIFICATION)
+
+export { hideModal, hideNotification, showModal, showNotification }

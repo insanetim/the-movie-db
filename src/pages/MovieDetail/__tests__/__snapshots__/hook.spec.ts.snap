@@ -5,7 +5,7 @@ exports[`MovieDetail useContainer hook matches snapshot 1`] = `
   "error": null,
   "handleFavoriteClick": [Function],
   "handleWatchlistClick": [Function],
-  "loading": true,
+  "loading": false,
   "movie": {
     "accountStates": {
       "favorite": false,
@@ -121,7 +121,7 @@ exports[`MovieDetail useContainer hook matches snapshot without params 1`] = `
   "error": null,
   "handleFavoriteClick": [Function],
   "handleWatchlistClick": [Function],
-  "loading": true,
+  "loading": false,
   "movie": {
     "accountStates": {
       "favorite": false,

@@ -1,5 +1,6 @@
-import { Dispatch, unwrapResult } from '@reduxjs/toolkit'
-import { AsyncThunkAction } from '@reduxjs/toolkit'
+import type { AsyncThunkAction } from '@reduxjs/toolkit'
+
+import { type Dispatch, unwrapResult } from '@reduxjs/toolkit'
 import { useCallback, useState } from 'react'
 
 import { useAppDispatch } from './useRedux'
@@ -15,9 +16,9 @@ declare type AsyncThunkConfig = {
   state?: unknown
 }
 
-const useRequest = () => {
+const useRequest = (initialLoading = true) => {
   const dispatch = useAppDispatch()
-  const [loading, setLoading] = useState(true)
+  const [loading, setLoading] = useState(initialLoading)
   const [error, setError] = useState<null | string>(null)
 
   const request = useCallback(

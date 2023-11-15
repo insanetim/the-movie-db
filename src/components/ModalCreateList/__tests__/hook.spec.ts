@@ -50,6 +50,25 @@ describe('ModalCreateList useContainer hook', () => {
     )
   })
 
+  it('checks `handleSubmit` method with onSuccess', async () => {
+    const onSuccess = jest.fn()
+    const extendedProps = { ...props, onSuccess }
+    const listData = { description: 'test/description', name: 'test/name' }
+    const { result } = renderHook(() => useContainer(extendedProps))
+
+    await act(() => {
+      result.current.handleSubmit(listData)
+    })
+
+    expect(dispatch).toHaveBeenCalledTimes(2)
+    expect(dispatch).toHaveBeenNthCalledWith(1, hideModal())
+    expect(dispatch).toHaveBeenNthCalledWith(
+      2,
+      createList({ listData, movieId: props.movieId })
+    )
+    expect(onSuccess).toHaveBeenCalled()
+  })
+
   it('checks `handleAfterClose` method', () => {
     const { result } = renderHook(() => useContainer(props))
 

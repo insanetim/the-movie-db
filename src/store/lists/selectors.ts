@@ -1,9 +1,34 @@
 import type { RootState } from '../index'
 
-export const listsSelector = (state: RootState) => {
+const listsSelector = (state: RootState) => {
   return state.lists.createdLists.lists
 }
 
-export const listSelector = (state: RootState) => {
+const listsLoadingSelector = (state: RootState) => {
+  return state.lists.createdLists.loading
+}
+
+const listsErrorSelector = (state: RootState) => {
+  return state.lists.createdLists.error
+}
+
+const listDetailSelector = (state: RootState) => {
   return state.lists.listDetail.list
+}
+
+const listDetailLoadingSelector = (state: RootState) => {
+  return state.lists.listDetail.loading
+}
+
+const listDetailErrorSelector = (state: RootState) => {
+  return state.lists.listDetail.error
+}
+
+export {
+  listDetailErrorSelector,
+  listDetailLoadingSelector,
+  listDetailSelector,
+  listsErrorSelector,
+  listsLoadingSelector,
+  listsSelector
 }

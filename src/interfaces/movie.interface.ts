@@ -2,7 +2,7 @@ export interface IMovie {
   adult: boolean
   backdrop_path: null | string
   genre_ids: number[]
-  id: number
+  id: number | string
   original_language: string
   original_title: string
   overview: string

@@ -1,13 +1,12 @@
 import {
   changeMovieInFavorite,
   changeMovieInWatchlist,
-  fetchMovie
+  fetchMovieDetail
 } from '../actions'
-import reducer from '../reducer'
-import { IMovieState } from '../types'
+import reducer, { movieInitialState } from '../reducer'
 
 describe('movieReducer', () => {
-  const initialState: IMovieState = { movieDetail: null }
+  const initialState = movieInitialState
 
   it('returns initial state', () => {
     const action = { type: 'unknown' }
@@ -15,66 +14,66 @@ describe('movieReducer', () => {
     expect(reducer(initialState, action)).toEqual(initialState)
   })
 
-  it('should handle FETCH_MOVIE/pending', () => {
-    const action = {
-      type: fetchMovie.pending.toString()
-    }
-    const expectedState = { movieDetail: null }
-
-    expect(reducer(initialState, action)).toEqual(expectedState)
-  })
-
   it('should handle FETCH_MOVIE/fulfilled', () => {
     const action = {
-      payload: 'test/data',
-      type: fetchMovie.fulfilled.toString()
+      payload: { data: 'test/data', id: '123' },
+      type: fetchMovieDetail.fulfilled.toString()
     }
-    const expectedState = { movieDetail: action.payload }
+    const expectedState = {
+      entities: { '123': { data: 'test/data', id: '123' } },
+      ids: ['123']
+    }
 
     expect(reducer(initialState, action)).toEqual(expectedState)
   })
 
-  it('should handle CHANGE_MOVIE_IN_FAVORITE/fulfilled with movieDetail', () => {
+  it('should handle CHANGE_MOVIE_IN_FAVORITE/pending with movieId', () => {
     const action = {
-      meta: { arg: { inFavorite: true } },
-      type: changeMovieInFavorite.fulfilled.toString()
+      meta: { arg: { inFavorite: true, movieId: '123' } },
+      type: changeMovieInFavorite.pending.toString()
     }
     const initialState = {
-      movieDetail: { accountStates: { favorite: false } }
-    } as IMovieState
-    const expectedState = { movieDetail: { accountStates: { favorite: true } } }
+      entities: { '123': { accountStates: { favorite: false }, id: '123' } },
+      ids: ['123']
+    } as never
+    const expectedState = {
+      entities: { '123': { accountStates: { favorite: true }, id: '123' } },
+      ids: ['123']
+    }
 
     expect(reducer(initialState, action)).toEqual(expectedState)
   })
 
-  it('should handle CHANGE_MOVIE_IN_FAVORITE/fulfilled without movieDetail', () => {
+  it('should handle CHANGE_MOVIE_IN_FAVORITE/pending without movieId', () => {
     const action = {
-      meta: { arg: { inFavorite: true } },
-      type: changeMovieInFavorite.fulfilled.toString()
+      meta: { arg: { inFavorite: true, movieId: '123' } },
+      type: changeMovieInFavorite.pending.toString()
     }
 
     expect(reducer(initialState, action)).toEqual(initialState)
   })
 
-  it('should handle CHANGE_MOVIE_IN_WATCHLIST/fulfilled with movieDetail', () => {
+  it('should handle CHANGE_MOVIE_IN_WATCHLIST/pending with movieId', () => {
     const action = {
-      meta: { arg: { inWatchlist: true } },
-      type: changeMovieInWatchlist.fulfilled.toString()
+      meta: { arg: { inWatchlist: true, movieId: '123' } },
+      type: changeMovieInWatchlist.pending.toString()
     }
     const initialState = {
-      movieDetail: { accountStates: { watchlist: false } }
-    } as IMovieState
+      entities: { '123': { accountStates: { watchlist: false }, id: '123' } },
+      ids: ['123']
+    } as never
     const expectedState = {
-      movieDetail: { accountStates: { watchlist: true } }
+      entities: { '123': { accountStates: { watchlist: true }, id: '123' } },
+      ids: ['123']
     }
 
     expect(reducer(initialState, action)).toEqual(expectedState)
   })
 
-  it('should handle CHANGE_MOVIE_IN_WATCHLIST/fulfilled without movieDetail', () => {
+  it('should handle CHANGE_MOVIE_IN_WATCHLIST/pending without movieId', () => {
     const action = {
-      meta: { arg: { inWatchlist: true } },
-      type: changeMovieInWatchlist.fulfilled.toString()
+      meta: { arg: { inWatchlist: true, movieId: '123' } },
+      type: changeMovieInWatchlist.pending.toString()
     }
 
     expect(reducer(initialState, action)).toEqual(initialState)

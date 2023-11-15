@@ -15,6 +15,8 @@ jest.mock('src/store/session/selectors', () => ({
 }))
 
 jest.mock('src/store/lists/selectors', () => ({
+  listsErrorSelector: jest.fn(() => null),
+  listsLoadingSelector: jest.fn(() => true),
   listsSelector: jest.fn(() => null)
 }))
 
@@ -40,25 +42,51 @@ describe('Lists useContainer hook', () => {
       result.current.handlePagination(3)
     })
 
-    expect(setSearchParams).toHaveBeenCalledWith(
-      new URLSearchParams({
-        page: '3'
-      })
-    )
+    expect(setSearchParams).toHaveBeenCalledWith({ page: '3' })
   })
 
   it('checks `handleCreateList` method', () => {
+    let onSuccess = () => {
+      return
+    }
     const { result } = renderHook(useContainer)
 
     act(() => {
-      result.current.handleCreateList()
+      onSuccess = result.current.handleCreateList()
     })
+    onSuccess()
 
     expect(dispatch).toHaveBeenCalledWith(
       showModal({
+        modalProps: { onSuccess },
         modalType: 'MODAL_CREATE_LIST'
       })
     )
+    expect(dispatch).toHaveBeenCalledWith(fetchLists('1'))
+  })
+
+  it('checks `handleCreateList` method with page !== 1', () => {
+    const searchParams = new URLSearchParams({ page: '3' })
+    jest
+      .mocked(useSearchParams)
+      .mockReturnValue([searchParams, setSearchParams])
+    let onSuccess = () => {
+      return
+    }
+    const { result } = renderHook(useContainer)
+
+    act(() => {
+      onSuccess = result.current.handleCreateList()
+    })
+    onSuccess()
+
+    expect(dispatch).toHaveBeenCalledWith(
+      showModal({
+        modalProps: { onSuccess },
+        modalType: 'MODAL_CREATE_LIST'
+      })
+    )
+    expect(setSearchParams).toHaveBeenCalledWith({})
   })
 
   it('checks `useEffect` method with account', () => {

@@ -1,3 +1,5 @@
+import type { IList } from 'src/interfaces/list.interface'
+
 import { useAppDispatch, useAppSelector } from 'src/hooks/useRedux'
 import { showModal } from 'src/store/app/actions'
 import { addToList } from 'src/store/lists/actions'
@@ -22,7 +24,7 @@ const useContainer = ({
     setPopoverOpen(false)
   }
 
-  const handleAddToList = (listId: number) => {
+  const handleAddToList = (listId: IList['id']) => {
     dispatch(addToList({ listId, movieId }))
     setPopoverOpen(false)
   }

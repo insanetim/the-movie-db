@@ -17,7 +17,7 @@ jest.mock('src/store/session/selectors', () => ({
 }))
 
 jest.mock('src/store/movie/selectors', () => ({
-  movieSelector: jest.fn(() => ({ title: 'test/movie' }))
+  selectMovieById: jest.fn(() => ({ title: 'test/movie' }))
 }))
 
 jest.mock('src/store/lists/selectors', () => ({
@@ -63,10 +63,79 @@ describe('lists actions', () => {
     })
   })
 
-  describe('fetchList', () => {
-    const action = actions.fetchList('123')
+  describe('createList', () => {
+    const listData = { description: 'test/description', name: 'test/name' }
+    const action = actions.createList({ listData, movieId: 123 })
 
-    const request = { url: routes.getListDetails('123') }
+    const request = {
+      data: { ...listData },
+      method: 'post',
+      params: { session_id: 'session_id' },
+      url: routes.createList
+    }
+    const response = { data: { list_id: 123 } }
+
+    it('success', async () => {
+      requestSpy.mockResolvedValueOnce(response)
+
+      await action(dispatch, getState, undefined)
+
+      expect(requestSpy).toHaveBeenCalledTimes(1)
+      expect(requestSpy).toHaveBeenCalledWith(request)
+      expect(dispatch.mock.calls.length).toBe(3)
+    })
+
+    it('failure', async () => {
+      requestSpy.mockRejectedValueOnce('Something went wrong!')
+
+      await action(dispatch, getState, undefined)
+
+      expect(dispatch).toHaveBeenCalledWith(errorNotification)
+    })
+
+    it('works without movieId', async () => {
+      requestSpy.mockResolvedValueOnce(response)
+      const action = actions.createList({ listData })
+
+      await action(dispatch, getState, undefined)
+
+      expect(dispatch.mock.calls.length).toBe(2)
+    })
+  })
+
+  describe('deleteList', () => {
+    const action = actions.deleteList('123')
+
+    const request = {
+      method: 'delete',
+      params: { session_id: 'session_id' },
+      url: routes.deleteList('123')
+    }
+    const response = { data: { success: true } }
+
+    it('success', async () => {
+      requestSpy.mockResolvedValueOnce(response)
+
+      await action(dispatch, getState, undefined)
+
+      expect(requestSpy).toHaveBeenCalledTimes(1)
+      expect(requestSpy).toHaveBeenCalledWith(request)
+      expect(dispatch.mock.calls.length).toBe(2)
+    })
+
+    it('failure', async () => {
+      requestSpy.mockRejectedValueOnce('Something went wrong!')
+
+      await action(dispatch, getState, undefined)
+
+      expect(dispatch).toHaveBeenCalledWith(errorNotification)
+    })
+  })
+
+  describe('fetchListDetail', () => {
+    const action = actions.fetchListDetail({ listId: '123', page: '1' })
+
+    const request = { params: { page: '1' }, url: routes.getListDetails('123') }
     const response = { data: 'test/data' }
 
     it('success', async () => {
@@ -88,46 +157,6 @@ describe('lists actions', () => {
     })
   })
 
-  describe('createList', () => {
-    const listData = { description: 'test/description', name: 'test/name' }
-    const action = actions.createList({ listData, movieId: 123 })
-
-    const request = {
-      data: { ...listData },
-      method: 'post',
-      params: { session_id: 'session_id' },
-      url: routes.createList
-    }
-    const response = { data: { list_id: 123 } }
-
-    it('success', async () => {
-      requestSpy.mockResolvedValueOnce(response)
-
-      await action(dispatch, getState, undefined)
-
-      expect(requestSpy).toHaveBeenCalledTimes(1)
-      expect(requestSpy).toHaveBeenCalledWith(request)
-      expect(dispatch.mock.calls.length).toBe(4)
-    })
-
-    it('failure', async () => {
-      requestSpy.mockRejectedValueOnce('Something went wrong!')
-
-      await action(dispatch, getState, undefined)
-
-      expect(dispatch).toHaveBeenCalledWith(errorNotification)
-    })
-
-    it('works without movieId', async () => {
-      requestSpy.mockResolvedValueOnce(response)
-      const action = actions.createList({ listData })
-
-      await action(dispatch, getState, undefined)
-
-      expect(dispatch.mock.calls.length).toBe(3)
-    })
-  })
-
   describe('addToList', () => {
     const action = actions.addToList({ listId: 123, movieId: 123 })
 
@@ -140,17 +169,17 @@ describe('lists actions', () => {
     const response = { data: { success: true } }
 
     it('success', async () => {
+      const notification = showNotification({
+        messageText: 'test/movie added to test/list'
+      })
       requestSpy.mockResolvedValueOnce(response)
 
       await action(dispatch, getState, undefined)
 
       expect(requestSpy).toHaveBeenCalledTimes(1)
       expect(requestSpy).toHaveBeenCalledWith(request)
-      expect(dispatch).toHaveBeenCalledWith(
-        showNotification({
-          messageText: 'test/movie added to test/list'
-        })
-      )
+      expect(dispatch.mock.calls.length).toBe(4)
+      expect(dispatch).toHaveBeenCalledWith(notification)
     })
 
     it('failure', async () => {
@@ -176,12 +205,11 @@ describe('lists actions', () => {
     it('success', async () => {
       requestSpy.mockResolvedValueOnce(response)
 
-      const result = await action(dispatch, getState, undefined)
+      await action(dispatch, getState, undefined)
 
       expect(requestSpy).toHaveBeenCalledTimes(1)
       expect(requestSpy).toHaveBeenCalledWith(request)
-      expect(dispatch.mock.calls.length).toBe(3)
-      expect(result.payload).toBe(123)
+      expect(dispatch.mock.calls.length).toBe(2)
     })
 
     it('failure', async () => {
@@ -190,38 +218,6 @@ describe('lists actions', () => {
       await action(dispatch, getState, undefined)
 
       expect(dispatch).toHaveBeenCalledWith(errorNotification)
-    })
-  })
-
-  describe('deleteList', () => {
-    const action = actions.deleteList('123')
-
-    const request = {
-      method: 'delete',
-      params: { session_id: 'session_id' },
-      url: routes.deleteList('123')
-    }
-    const response = { data: { success: true } }
-
-    it('success', async () => {
-      requestSpy.mockResolvedValueOnce(response)
-
-      await action(dispatch, getState, undefined)
-
-      expect(requestSpy).toHaveBeenCalledTimes(1)
-      expect(requestSpy).toHaveBeenCalledWith(request)
-      expect(dispatch.mock.calls.length).toBe(3)
-    })
-
-    it('failure', async () => {
-      const notification = showNotification({
-        messageText: 'test/list has been removed'
-      })
-      requestSpy.mockRejectedValueOnce('Something went wrong!')
-
-      await action(dispatch, getState, undefined)
-
-      expect(dispatch).toHaveBeenCalledWith(notification)
     })
   })
 })

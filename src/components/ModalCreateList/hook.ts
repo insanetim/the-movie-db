@@ -10,7 +10,8 @@ import type {
 
 const useContainer = ({
   form,
-  movieId
+  movieId,
+  onSuccess
 }: ModalCreateListHookProps): ModalCreateListHook => {
   const dispatch = useAppDispatch()
 
@@ -18,9 +19,13 @@ const useContainer = ({
     form.submit()
   }
 
-  const handleSubmit = (listData: ListData) => {
+  const handleSubmit = async (listData: ListData) => {
     dispatch(hideModal())
-    dispatch(createList({ listData, movieId }))
+    await dispatch(createList({ listData, movieId }))
+
+    if (typeof onSuccess !== 'undefined') {
+      onSuccess()
+    }
   }
 
   const handleAfterClose = () => {
