@@ -1,5 +1,5 @@
 import { MinusCircleOutlined } from '@ant-design/icons'
-import { isNotNil } from 'ramda'
+import { isEmpty, isNotNil } from 'ramda'
 import { Helmet } from 'react-helmet'
 import MoviesList from 'src/components/Movies/MoviesList'
 import Empty from 'src/components/UI/Empty'
@@ -39,7 +39,7 @@ const ListDetails: React.FC = () => {
 
   let content = <Empty />
 
-  if (isNotNil(list) && list.items.length > 0) {
+  if (isNotNil(list) && !isEmpty(list.items)) {
     content = (
       <>
         <MoviesList

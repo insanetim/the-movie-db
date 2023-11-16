@@ -1,3 +1,4 @@
+import { isEmpty, isNil } from 'ramda'
 import MoviesList from 'src/components/Movies/MoviesList'
 import Empty from 'src/components/UI/Empty'
 import Error from 'src/components/UI/Error'
@@ -19,7 +20,7 @@ const SearchResult: React.FC<SearchResultProps> = ({ query }) => {
     return <Error error={error} />
   }
 
-  if (!movies || movies.results.length === 0) {
+  if (isNil(movies) || isEmpty(movies.results)) {
     return <Empty description='No movies found' />
   }
 

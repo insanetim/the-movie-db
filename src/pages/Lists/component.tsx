@@ -1,5 +1,5 @@
 import { PlusCircleOutlined } from '@ant-design/icons'
-import { isNotNil } from 'ramda'
+import { isEmpty, isNotNil } from 'ramda'
 import { Helmet } from 'react-helmet'
 import ListsList from 'src/components/Lists/ListsList'
 import Empty from 'src/components/UI/Empty/component'
@@ -27,7 +27,7 @@ const Lists: React.FC = () => {
   if (error) {
     content = <Error error={error} />
   }
-  if (isNotNil(lists) && lists.results.length > 0) {
+  if (isNotNil(lists) && !isEmpty(lists.results)) {
     content = (
       <>
         <ListsList lists={lists.results} />

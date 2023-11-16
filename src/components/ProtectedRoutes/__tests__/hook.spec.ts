@@ -1,7 +1,4 @@
 import { renderHook } from '@testing-library/react'
-import { dispatch } from 'src/__mocks__/react-redux'
-import { fetchAccount } from 'src/store/session/actions'
-import { sessionIdSelector } from 'src/store/session/selectors'
 
 import useContainer from '../hook'
 
@@ -21,19 +18,5 @@ describe('ProtectedRoutes useContainer hook', () => {
     const { result } = renderHook(useContainer)
 
     expect(result.current).toMatchSnapshot()
-  })
-
-  it('checks `useEffect` method with sessionId', () => {
-    renderHook(useContainer)
-
-    expect(dispatch).toHaveBeenCalledTimes(1)
-    expect(dispatch).toHaveBeenCalledWith(fetchAccount())
-  })
-
-  it('checks `useEffect` method without sessionId', () => {
-    jest.mocked(sessionIdSelector).mockReturnValueOnce('')
-    renderHook(useContainer)
-
-    expect(dispatch).not.toHaveBeenCalled()
   })
 })

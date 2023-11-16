@@ -31,7 +31,7 @@ const MovieItem: React.FC<MovieItemProps> = ({ handleMovieDelete, movie }) => {
   }
 
   let actions
-  if (typeof handleMovieDelete !== 'undefined') {
+  if (isNotNil(handleMovieDelete)) {
     actions = [
       <DeleteOutlined
         data-testid='deleteMovieAction'

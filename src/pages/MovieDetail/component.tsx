@@ -11,7 +11,7 @@ import Icon, {
 import { Col, Popover, Row, Tag, Typography } from 'antd'
 import { format } from 'date-fns'
 import ISO6391 from 'iso-639-1'
-import { isNil } from 'ramda'
+import { isEmpty, isNil } from 'ramda'
 import { Helmet } from 'react-helmet'
 import CastList from 'src/components/MovieDetail/CastList'
 import CrewList from 'src/components/MovieDetail/CrewList'
@@ -77,7 +77,7 @@ const Movie: React.FC = () => {
   return (
     <>
       <Helmet title={metaTitle(title)} />
-      {movie.images.length > 0 && (
+      {!isEmpty(movie.images) && (
         <ImageGallery
           images={movie.images}
           title={movie.title}
@@ -117,7 +117,7 @@ const Movie: React.FC = () => {
                 onClick={handleWatchlistClick}
               />
             </Typography.Title>
-            {movie.overview.length > 0 && (
+            {!isEmpty(movie.overview) && (
               <>
                 <Typography.Title level={3}>Overview</Typography.Title>
                 <Typography.Paragraph>{movie.overview}</Typography.Paragraph>
@@ -156,7 +156,7 @@ const Movie: React.FC = () => {
               </Typography.Paragraph>
             </Col>
           )}
-          {movie.genres.length > 0 && (
+          {!isEmpty(movie.genres) && (
             <Col span={24}>
               <Typography.Paragraph>
                 <b>Genres: </b>
@@ -166,10 +166,10 @@ const Movie: React.FC = () => {
               </Typography.Paragraph>
             </Col>
           )}
-          {movie.credits.cast.length > 0 && (
+          {!isEmpty(movie.credits.cast) && (
             <CastList cast={movie.credits.cast.slice(0, 12)} />
           )}
-          {movie.credits.crew.length > 0 && (
+          {!isEmpty(movie.credits.crew) && (
             <CrewList crew={movie.credits.crew.slice(0, 12)} />
           )}
         </Row>

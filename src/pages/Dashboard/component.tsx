@@ -1,3 +1,4 @@
+import { isEmpty } from 'ramda'
 import { Helmet } from 'react-helmet'
 import SearchInput from 'src/components/Dashboard/SearchInput'
 import SearchResult from 'src/components/Dashboard/SearchResult/component'
@@ -15,7 +16,7 @@ const Dashboard: React.FC = () => {
       <div className='container'>
         <SearchInput query={query} />
         <div className='top-margin'>
-          {!query && <Trending />}
+          {isEmpty(query) && <Trending />}
           {query && <SearchResult query={query} />}
         </div>
       </div>

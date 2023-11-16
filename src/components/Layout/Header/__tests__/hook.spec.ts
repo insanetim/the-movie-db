@@ -1,7 +1,7 @@
 import { act, renderHook } from '@testing-library/react'
 import { useNavigate } from 'react-router-dom'
 import { dispatch } from 'src/__mocks__/react-redux'
-import { logOut } from 'src/store/session/actions'
+import { fetchAccount, logOut } from 'src/store/session/actions'
 
 import useContainer from '../hook'
 
@@ -39,5 +39,12 @@ describe('Header useContainer hook', () => {
       replace: true,
       state: { from: {} }
     })
+  })
+
+  it('checks `useEffect` method', () => {
+    renderHook(useContainer)
+
+    expect(dispatch).toHaveBeenCalledTimes(1)
+    expect(dispatch).toHaveBeenCalledWith(fetchAccount())
   })
 })

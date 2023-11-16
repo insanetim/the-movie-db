@@ -1,4 +1,4 @@
-import { isNotNil } from 'ramda'
+import { isEmpty, isNotNil } from 'ramda'
 import { Helmet } from 'react-helmet'
 import MoviesList from 'src/components/Movies/MoviesList'
 import Empty from 'src/components/UI/Empty'
@@ -26,7 +26,7 @@ const Watchlist: React.FC = () => {
   if (error) {
     content = <Error error={error} />
   }
-  if (isNotNil(movies) && movies.results.length > 0) {
+  if (isNotNil(movies) && !isEmpty(movies.results)) {
     content = (
       <>
         <MoviesList

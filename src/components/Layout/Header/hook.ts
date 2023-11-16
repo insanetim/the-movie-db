@@ -1,6 +1,7 @@
+import { useEffect } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { useAppDispatch, useAppSelector } from 'src/hooks/useRedux'
-import { logOut } from 'src/store/session/actions'
+import { fetchAccount, logOut } from 'src/store/session/actions'
 import { accountSelector } from 'src/store/session/selectors'
 
 import type { HeaderHook } from './types'
@@ -18,6 +19,10 @@ const useContainer = (): HeaderHook => {
       state: { from: location }
     })
   }
+
+  useEffect(() => {
+    dispatch(fetchAccount())
+  }, [dispatch])
 
   return { account, handleLogOut }
 }
