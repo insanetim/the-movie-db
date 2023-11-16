@@ -8,14 +8,14 @@ const mockedHeaderData = { account: mockAccount }
 jest.mock('../Header/hook', () => jest.fn(() => mockedHeaderData))
 
 const mockedModalData = { modalType: null }
-jest.mock('../../ModalRoot/hook', () => jest.fn(() => mockedModalData))
+jest.mock('src/components/ModalRoot/hook', () => jest.fn(() => mockedModalData))
 
 const mockedNotificationsData = { notifications: [] }
-jest.mock('../../NotificationsRoot/hook', () =>
+jest.mock('src/components/NotificationsRoot/hook', () =>
   jest.fn(() => mockedNotificationsData)
 )
 
-describe('Layout component', () => {
+describe('Default layout component', () => {
   it('matches snapshot', () => {
     const { asFragment } = render(<Layout />, { wrapper: Wrapper })
 

@@ -17,8 +17,8 @@ import { mockListDetail } from 'src/__mocks__/mockList'
 import { mockMovieDetail } from 'src/__mocks__/mockMovie'
 import App, {
   Dashboard,
+  DefaultLayout,
   Favorite,
-  Layout,
   ListDetail,
   Lists,
   Login,
@@ -26,7 +26,7 @@ import App, {
   NotFound,
   Watchlist
 } from 'src/App'
-import { HeaderHook } from 'src/components/Layout/Header/types'
+import { HeaderHook } from 'src/layouts/Default/Header/types'
 import Wrapper from 'src/utils/testHelpers/wrapperMock'
 
 const mockedProtectedRoutesHook: ProtectedRoutesHook = {
@@ -58,7 +58,7 @@ const mockedHeaderHook: HeaderHook = {
   account: null,
   handleLogOut: jest.fn()
 }
-jest.mock('../components/Layout/Header/hook', () =>
+jest.mock('../layouts/Default/Header/hook', () =>
   jest.fn(() => mockedHeaderHook)
 )
 
@@ -146,8 +146,10 @@ describe('App component', () => {
     expect(asFragment()).toMatchSnapshot()
   })
 
-  it('renders Layout', async () => {
-    const { findByText } = render(<Layout />, { wrapper: WrapperWithSuspense })
+  it('renders DefaultLayout', async () => {
+    const { findByText } = render(<DefaultLayout />, {
+      wrapper: WrapperWithSuspense
+    })
 
     expect(
       await findByText('insanetim', { exact: false }, { timeout: 3000 })

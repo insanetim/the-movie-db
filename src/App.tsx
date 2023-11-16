@@ -4,7 +4,7 @@ import ModalRoot from 'src/components/ModalRoot/component'
 import NotificationsRoot from 'src/components/NotificationsRoot'
 import ProtectedRoutes from 'src/components/ProtectedRoutes'
 
-export const Layout = lazy(() => import('src/components/Layout'))
+export const DefaultLayout = lazy(() => import('src/layouts/Default'))
 export const Login = lazy(() => import('src/pages/Login'))
 export const Dashboard = lazy(() => import('src/pages/Dashboard'))
 export const Lists = lazy(() => import('src/pages/Lists'))
@@ -19,7 +19,7 @@ const App: React.FC = () => (
     <Routes>
       <Route element={<ProtectedRoutes />}>
         <Route
-          element={<Layout />}
+          element={<DefaultLayout />}
           path='/'
         >
           <Route
