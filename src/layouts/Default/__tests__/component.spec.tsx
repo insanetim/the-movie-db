@@ -2,7 +2,7 @@ import { render } from '@testing-library/react'
 import mockAccount from 'src/__mocks__/mockAccount'
 import Wrapper from 'src/utils/testHelpers/wrapperMock'
 
-import Layout from '../component'
+import DefaultLayout from '../component'
 
 const mockedHeaderData = { account: mockAccount }
 jest.mock('../Header/hook', () => jest.fn(() => mockedHeaderData))
@@ -15,9 +15,9 @@ jest.mock('src/components/NotificationsRoot/hook', () =>
   jest.fn(() => mockedNotificationsData)
 )
 
-describe('Default layout component', () => {
+describe('DefaultLayout component', () => {
   it('matches snapshot', () => {
-    const { asFragment } = render(<Layout />, { wrapper: Wrapper })
+    const { asFragment } = render(<DefaultLayout />, { wrapper: Wrapper })
 
     expect(asFragment()).toMatchSnapshot()
   })

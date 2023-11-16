@@ -1,17 +1,17 @@
-import { Layout as AntdLayout } from 'antd'
+import { Layout } from 'antd'
 import { Outlet } from 'react-router-dom'
 
 import Footer from './Footer'
 import Header from './Header'
 
-const Layout: React.FC = () => (
-  <AntdLayout>
+const DefaultLayout: React.FC = () => (
+  <Layout>
     <Header />
-    <AntdLayout.Content>
+    <Layout.Content>
       <Outlet />
-    </AntdLayout.Content>
+    </Layout.Content>
     <Footer />
-  </AntdLayout>
+  </Layout>
 )
 
-export default Layout
+export default DefaultLayout

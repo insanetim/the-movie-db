@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`EmptyLayout component matches snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="center"
+  >
+    <div
+      class="ant-layout css-dev-only-do-not-override-2i2tap"
+    >
+      <main
+        class="ant-layout-content css-dev-only-do-not-override-2i2tap"
+      />
+    </div>
+  </div>
+</DocumentFragment>
+`;
