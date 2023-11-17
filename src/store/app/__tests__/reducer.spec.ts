@@ -1,6 +1,6 @@
 import { NOTIFICATION_DURATION, NOTIFICATION_TYPE } from 'src/constants/app'
 
-import type { IModalState, INotification } from '../types'
+import type { AppSliceState } from '../types'
 
 import {
   hideModal,
@@ -8,87 +8,103 @@ import {
   showModal,
   showNotification
 } from '../actions'
-import { modalReducer, notificationsReducer } from '../reducer'
+import appReducer from '../reducer'
+
+jest.mock<typeof import('@reduxjs/toolkit')>('@reduxjs/toolkit', () => ({
+  ...jest.requireActual('@reduxjs/toolkit'),
+  nanoid: jest.fn(() => 'test/id')
+}))
 
 describe('appReducer', () => {
-  describe('modalReducer', () => {
-    const initialState: IModalState = {
+  const initialState: AppSliceState = {
+    modal: {
       modalProps: null,
       modalType: null
+    },
+    notifications: []
+  }
+
+  it('returns initial state', () => {
+    const action = { type: 'unknown' }
+
+    expect(appReducer(initialState, action)).toEqual(initialState)
+  })
+
+  it('should handle hideModal', () => {
+    const action = {
+      type: hideModal.toString()
     }
-
-    it('returns initial state', () => {
-      const action = { type: 'unknown' }
-
-      expect(modalReducer(initialState, action)).toEqual(initialState)
-    })
-
-    it('should handle SHOW_MODAL', () => {
-      const action = {
-        payload: {
-          modalProps: 'test/modalProps',
-          modalType: 'test/modalType'
-        },
-        type: showModal.toString()
-      }
-      const expectedState = action.payload
-
-      expect(modalReducer(initialState, action)).toEqual(expectedState)
-    })
-
-    it('should handle HIDE_MODAL', () => {
-      const action = {
-        type: hideModal.toString()
-      }
-      const expectedState = {
+    const expectedState = {
+      ...initialState,
+      modal: {
         modalProps: { open: false },
         modalType: null
       }
+    }
 
-      expect(modalReducer(initialState, action)).toEqual(expectedState)
-    })
+    expect(appReducer(initialState, action)).toEqual(expectedState)
   })
 
-  describe('notificationsReducer', () => {
-    const initialState: INotification[] = []
-
-    it('returns initial state', () => {
-      const action = { type: 'unknown' }
-
-      expect(notificationsReducer(initialState, action)).toEqual(initialState)
-    })
-
-    it('should handle SHOW_NOTIFICATION', () => {
-      const action = {
-        payload: {
-          duration: NOTIFICATION_DURATION,
-          id: 'nanoid',
-          messageText: 'test/message',
-          messageType: NOTIFICATION_TYPE.SUCCESS
-        },
-        type: showNotification.toString()
-      }
-      const expectedState = [action.payload]
-
-      expect(notificationsReducer(initialState, action)).toEqual(expectedState)
-    })
-
-    it('should handle HIDE_NOTIFICATION', () => {
-      const action = {
-        payload: 'nanoid',
-        type: hideNotification.toString()
-      }
-      const initialState = [
+  it('should handle hideNotification', () => {
+    const action = {
+      payload: { id: 'test/id' },
+      type: hideNotification.toString()
+    }
+    const initialState = {
+      modal: {
+        modalProps: null,
+        modalType: null
+      },
+      notifications: [
         {
           duration: NOTIFICATION_DURATION,
-          id: 'nanoid',
+          id: 'test/id',
           messageText: 'test/message',
           messageType: NOTIFICATION_TYPE.SUCCESS
         }
       ]
-      const expectedState: INotification[] = []
+    }
+    const expectedState = {
+      ...initialState,
+      notifications: []
+    }
 
-      expect(notificationsReducer(initialState, action)).toEqual(expectedState)
-    })
+    expect(appReducer(initialState, action)).toEqual(expectedState)
+  })
+
+  it('should handle showModal', () => {
+    const action = {
+      payload: {
+        modalProps: 'test/modalProps',
+        modalType: 'test/modalType'
+      },
+      type: showModal.toString()
+    }
+    const expectedState = {
+      ...initialState,
+      modal: action.payload
+    }
+
+    expect(appReducer(initialState, action)).toEqual(expectedState)
+  })
+
+  it('should handle showNotification', () => {
+    const action = {
+      payload: { messageText: 'test/message' },
+      type: showNotification.toString()
+    }
+    const expectedState = {
+      ...initialState,
+      notifications: [
+        {
+          duration: NOTIFICATION_DURATION,
+          id: 'test/id',
+          messageText: 'test/message',
+          messageType: NOTIFICATION_TYPE.SUCCESS
+        }
+      ]
+    }
+
+    expect(appReducer(initialState, action)).toEqual(expectedState)
   })
 })

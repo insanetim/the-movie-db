@@ -1,6 +1,4 @@
-import { NOTIFICATION_DURATION, NOTIFICATION_TYPE } from 'src/constants/app'
-
-import type { IModalState } from '../types'
+import type { IModal } from '../types'
 
 import {
   hideModal,
@@ -9,14 +7,12 @@ import {
   showNotification
 } from '../actions'
 
-jest.mock<typeof import('@reduxjs/toolkit')>('@reduxjs/toolkit', () => ({
-  ...jest.requireActual('@reduxjs/toolkit'),
-  nanoid: jest.fn(() => 'nonoid')
-}))
-
 describe('app actions', () => {
   it('showModal', () => {
-    const expectedAction: { payload: IModalState; type: string } = {
+    const expectedAction: {
+      payload: IModal
+      type: string
+    } = {
       payload: {
         modalProps: { movieId: 123 },
         modalType: 'MODAL_CREATE_LIST'
@@ -42,12 +38,7 @@ describe('app actions', () => {
 
   it('showNotification', () => {
     const expectedAction = {
-      payload: {
-        duration: NOTIFICATION_DURATION,
-        id: 'nonoid',
-        messageText: 'test/message',
-        messageType: NOTIFICATION_TYPE.SUCCESS
-      },
+      payload: { messageText: 'test/message' },
       type: showNotification.toString()
     }
 
@@ -58,10 +49,10 @@ describe('app actions', () => {
 
   it('hideNotification', () => {
     const expectedAction = {
-      payload: 'nonoid',
+      payload: 'test/id',
       type: hideNotification.toString()
     }
 
-    expect(hideNotification('nonoid')).toEqual(expectedAction)
+    expect(hideNotification('test/id')).toEqual(expectedAction)
   })
 })

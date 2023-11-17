@@ -1,7 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit'
 
 import appReducer from './app'
-import { SHOW_MODAL } from './app/constants'
+import { showModal } from './app/actions'
 import dashboardReducer from './dashboard'
 import favoriteReducer from './favorite'
 import listsReducer from './lists'
@@ -14,7 +14,7 @@ const store = configureStore({
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware({
       serializableCheck: {
-        ignoredActions: [SHOW_MODAL]
+        ignoredActions: [showModal.toString()]
       }
     }),
   reducer: {

@@ -1,46 +1,41 @@
-import { combineReducers, createReducer } from '@reduxjs/toolkit'
+import { createSlice, nanoid } from '@reduxjs/toolkit'
+import { NOTIFICATION_DURATION, NOTIFICATION_TYPE } from 'src/constants/app'
 
-import type { IModalState, INotification } from './types'
+import type { AppSliceState } from './types'
 
-import {
-  hideModal,
-  hideNotification,
-  showModal,
-  showNotification
-} from './actions'
-
-const modalInitialState: IModalState = {
-  modalProps: null,
-  modalType: null
+const initialState: AppSliceState = {
+  modal: {
+    modalProps: null,
+    modalType: null
+  },
+  notifications: []
 }
 
-const modalReducer = createReducer(modalInitialState, builder => {
-  builder.addCase(showModal, (state, action) => {
-    state.modalType = action.payload.modalType
-    state.modalProps = action.payload.modalProps as never
-  })
-  builder.addCase(hideModal, state => {
-    state.modalProps = { open: false }
-  })
-})
-
-const notificationsInitialState: INotification[] = []
-
-const notificationsReducer = createReducer(
-  notificationsInitialState,
-  builder => {
-    builder.addCase(showNotification, (state, action) => {
-      state.push(action.payload)
-    })
-    builder.addCase(hideNotification, (state, action) => {
-      return state.filter(notification => notification.id !== action.payload)
-    })
+export const appSlice = createSlice({
+  initialState,
+  name: 'app',
+  reducers: {
+    hideModal(state) {
+      state.modal.modalProps = { open: false }
+    },
+    hideNotification(state, action) {
+      state.notifications = state.notifications.filter(
+        notification => notification.id !== action.payload.id
+      )
+    },
+    showModal(state, action) {
+      state.modal.modalType = action.payload.modalType
+      state.modal.modalProps = action.payload.modalProps
+    },
+    showNotification(state, action) {
+      state.notifications.push({
+        duration: action.payload.duration ?? NOTIFICATION_DURATION,
+        id: nanoid(),
+        messageText: action.payload.messageText,
+        messageType: action.payload.messageType ?? NOTIFICATION_TYPE.SUCCESS
+      })
+    }
   }
-)
-
-export { modalReducer, notificationsReducer }
-
-export default combineReducers({
-  modal: modalReducer,
-  notifications: notificationsReducer
 })
+
+export default appSlice.reducer
