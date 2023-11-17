@@ -1,5 +1,3 @@
 import { movieGlobalizedSelectors } from './reducer'
 
-const { selectById: selectMovieById } = movieGlobalizedSelectors
-
-export { selectMovieById }
+export const { selectById: selectMovieById } = movieGlobalizedSelectors

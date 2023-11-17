@@ -3,11 +3,11 @@ import type { IAccount } from 'src/interfaces/account.interface'
 import { createReducer } from '@reduxjs/toolkit'
 import Cookies from 'js-cookie'
 
-import type { ISessionState } from './types'
+import type { SessionState } from './types'
 
 import { fetchAccount, logIn, logOut } from './actions'
 
-const initialState: ISessionState = {
+const initialState: SessionState = {
   account: null,
   loading: false,
   sessionId: Cookies.get('tmdb.session_id') ?? ''

@@ -1,7 +1,7 @@
 import type { RootState } from '../index'
 
 const dashboardMoviesSelector = (state: RootState) => {
-  return state.dashboard.movies
+  return state.dashboard.data
 }
 
 export { dashboardMoviesSelector }

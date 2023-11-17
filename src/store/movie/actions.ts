@@ -22,14 +22,10 @@ import type {
 } from './types'
 
 import { showNotification } from '../app/actions'
-import {
-  CHANGE_MOVIE_IN_FAVORITE,
-  CHANGE_MOVIE_IN_WATCHLIST,
-  FETCH_MOVIE_DETAIL
-} from './constants'
+import * as types from './constants'
 
 const fetchMovieDetail = createAsyncThunk(
-  FETCH_MOVIE_DETAIL,
+  types.fetchMovieDetail,
   async (movieId: IMovie['id'], { getState, rejectWithValue }) => {
     const sessionId = sessionIdSelector(getState() as RootState)
 
@@ -64,7 +60,7 @@ const fetchMovieDetail = createAsyncThunk(
 )
 
 const changeMovieInFavorite = createAsyncThunk(
-  CHANGE_MOVIE_IN_FAVORITE,
+  types.changeMovieInFavorite,
   async (
     { inFavorite, movieId }: ChangeMovieInFavoriteProps,
     { dispatch, getState }
@@ -93,7 +89,7 @@ const changeMovieInFavorite = createAsyncThunk(
 )
 
 const changeMovieInWatchlist = createAsyncThunk(
-  CHANGE_MOVIE_IN_WATCHLIST,
+  types.changeMovieInWatchlist,
   async (
     { inWatchlist, movieId }: ChangeMovieInWatchlistProps,
     { dispatch, getState }

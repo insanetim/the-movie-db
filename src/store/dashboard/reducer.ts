@@ -1,25 +1,25 @@
 import { createReducer } from '@reduxjs/toolkit'
 
-import type { IDashboardState } from './types'
+import type { DashboardState } from './types'
 
 import { fetchSearch, fetchTrending } from './actions'
 
-const initalState: IDashboardState = {
-  movies: null
+const initialState: DashboardState = {
+  data: null
 }
 
-const dashboardReducer = createReducer(initalState, builder => {
+const dashboardReducer = createReducer(initialState, builder => {
   builder.addCase(fetchTrending.pending, state => {
-    state.movies = null
+    state.data = null
   })
   builder.addCase(fetchTrending.fulfilled, (state, action) => {
-    state.movies = action.payload
+    state.data = action.payload
   })
   builder.addCase(fetchSearch.pending, state => {
-    state.movies = null
+    state.data = null
   })
   builder.addCase(fetchSearch.fulfilled, (state, action) => {
-    state.movies = action.payload
+    state.data = action.payload
   })
 })
 

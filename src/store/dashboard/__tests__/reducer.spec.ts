@@ -1,51 +1,50 @@
+import type { DashboardState } from '../types'
+
 import { fetchSearch, fetchTrending } from '../actions'
-import reducer from '../reducer'
-import { IDashboardState } from '../types'
+import dashboardReducer from '../reducer'
 
 describe('dashboardReducer', () => {
-  const initialState: IDashboardState = { movies: null }
+  const initialState: DashboardState = { data: null }
 
   it('returns initial state', () => {
     const action = { type: 'unknown' }
 
-    expect(reducer(initialState, action)).toEqual(initialState)
+    expect(dashboardReducer(initialState, action)).toEqual(initialState)
   })
 
-  it('should handle FETCH_TRENDING/pending', () => {
+  it('should handle fetchTrending/pending', () => {
     const action = {
       type: fetchTrending.pending.toString()
     }
-    const expectedState = { movies: null }
 
-    expect(reducer(initialState, action)).toEqual(expectedState)
+    expect(dashboardReducer(initialState, action)).toEqual(initialState)
   })
 
-  it('should handle FETCH_TRENDING/fulfilled', () => {
+  it('should handle fetchTrending/fulfilled', () => {
     const action = {
       payload: 'test/data',
       type: fetchTrending.fulfilled.toString()
     }
-    const expectedState = { movies: action.payload }
+    const expectedState = { data: action.payload }
 
-    expect(reducer(initialState, action)).toEqual(expectedState)
+    expect(dashboardReducer(initialState, action)).toEqual(expectedState)
   })
 
-  it('should handle FETCH_SEARCH/pending', () => {
+  it('should handle fetchSearch/pending', () => {
     const action = {
       type: fetchSearch.pending.toString()
     }
-    const expectedState = { movies: null }
 
-    expect(reducer(initialState, action)).toEqual(expectedState)
+    expect(dashboardReducer(initialState, action)).toEqual(initialState)
   })
 
-  it('should handle FETCH_SEARCH/fulfilled', () => {
+  it('should handle fetchSearch/fulfilled', () => {
     const action = {
       payload: 'test/data',
       type: fetchSearch.fulfilled.toString()
     }
-    const expectedState = { movies: action.payload }
+    const expectedState = { data: action.payload }
 
-    expect(reducer(initialState, action)).toEqual(expectedState)
+    expect(dashboardReducer(initialState, action)).toEqual(expectedState)
   })
 })

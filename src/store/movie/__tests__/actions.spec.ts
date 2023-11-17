@@ -8,7 +8,7 @@ import * as actions from '../actions'
 
 jest.mock<typeof import('@reduxjs/toolkit')>('@reduxjs/toolkit', () => ({
   ...jest.requireActual('@reduxjs/toolkit'),
-  nanoid: jest.fn(() => 'nonoid')
+  nanoid: jest.fn(() => 'test/id')
 }))
 
 jest.mock('src/store/session/selectors', () => ({

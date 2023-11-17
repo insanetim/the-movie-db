@@ -9,10 +9,10 @@ import errorMessage from 'src/utils/helpers/errorMessage'
 
 import type { RootState } from '../index'
 
-import { FETCH_FAVORITE } from './constants'
+import * as types from './constants'
 
 const fetchFavorite = createAsyncThunk(
-  FETCH_FAVORITE,
+  types.fetchFavorite,
   async (page: string, { getState, rejectWithValue }) => {
     const sessionId = sessionIdSelector(getState() as RootState)
     const { id: accountId } = accountSelector(

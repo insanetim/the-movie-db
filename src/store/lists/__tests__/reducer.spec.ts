@@ -1,105 +1,102 @@
+import { mergeDeepRight } from 'ramda'
+
 import { fetchListDetail, fetchLists } from '../actions'
-import { createdListsReducer, listDetailReducer } from '../reducer'
-import { IListState, IListsState } from '../types'
+import listsReducer from '../reducer'
+import { ListsState } from '../types'
 
 describe('listsReducer', () => {
-  describe('createdListsReducer', () => {
-    const initialState: IListsState = {
+  const initialState: ListsState = {
+    createdLists: {
+      data: null,
       error: null,
-      lists: null,
+      loading: true
+    },
+    listDetail: {
+      data: null,
+      error: null,
       loading: true
     }
+  }
 
-    it('returns initial state', () => {
-      const action = { type: 'unknown' }
+  it('returns initial state', () => {
+    const action = { type: 'unknown' }
 
-      expect(createdListsReducer(initialState, action)).toEqual(initialState)
-    })
-
-    it('should handle FETCH_LISTS/pending', () => {
-      const action = {
-        type: fetchLists.pending.toString()
-      }
-
-      expect(createdListsReducer(initialState, action)).toEqual(initialState)
-    })
-
-    it('should handle FETCH_LISTS/fulfilled', () => {
-      const action = {
-        payload: 'test/data',
-        type: fetchLists.fulfilled.toString()
-      }
-      const expectedState = {
-        error: null,
-        lists: action.payload,
-        loading: false
-      }
-
-      expect(createdListsReducer(initialState, action)).toEqual(expectedState)
-    })
-
-    it('should handle FETCH_LISTS/rejected', () => {
-      const action = {
-        payload: 'test/data',
-        type: fetchLists.rejected.toString()
-      }
-      const expectedState = {
-        error: action.payload,
-        lists: null,
-        loading: false
-      }
-
-      expect(createdListsReducer(initialState, action)).toEqual(expectedState)
-    })
+    expect(listsReducer(initialState, action)).toEqual(initialState)
   })
 
-  describe('listDetailReducer', () => {
-    const initialState: IListState = {
-      error: null,
-      list: null,
-      loading: true
+  it('should handle fetchLists/pending', () => {
+    const action = {
+      type: fetchLists.pending.toString()
     }
 
-    it('returns initial state', () => {
-      const action = { type: 'unknown' }
+    expect(listsReducer(initialState, action)).toEqual(initialState)
+  })
 
-      expect(listDetailReducer(initialState, action)).toEqual(initialState)
-    })
-
-    it('should handle FETCH_LIST_DETAIL/pending', () => {
-      const action = {
-        type: fetchListDetail.pending.toString()
-      }
-
-      expect(listDetailReducer(initialState, action)).toEqual(initialState)
-    })
-
-    it('should handle FETCH_LIST_DETAIL/fulfilled', () => {
-      const action = {
-        payload: 'test/data',
-        type: fetchListDetail.fulfilled.toString()
-      }
-      const expectedState = {
-        error: null,
-        list: action.payload,
+  it('should handle fetchLists/fulfilled', () => {
+    const action = {
+      payload: 'test/data',
+      type: fetchLists.fulfilled.toString()
+    }
+    const expectedState = mergeDeepRight(initialState, {
+      createdLists: {
+        data: action.payload,
         loading: false
       }
-
-      expect(listDetailReducer(initialState, action)).toEqual(expectedState)
     })
 
-    it('should handle FETCH_LIST_DETAIL/rejected', () => {
-      const action = {
-        payload: 'test/data',
-        type: fetchListDetail.rejected.toString()
-      }
-      const expectedState = {
+    expect(listsReducer(initialState, action)).toEqual(expectedState)
+  })
+
+  it('should handle fetchLists/rejected', () => {
+    const action = {
+      payload: 'test/error',
+      type: fetchLists.rejected.toString()
+    }
+    const expectedState = mergeDeepRight(initialState, {
+      createdLists: {
         error: action.payload,
-        list: null,
         loading: false
       }
-
-      expect(listDetailReducer(initialState, action)).toEqual(expectedState)
     })
+
+    expect(listsReducer(initialState, action)).toEqual(expectedState)
+  })
+
+  it('should handle fetchListDetail/pending', () => {
+    const action = {
+      type: fetchListDetail.pending.toString()
+    }
+
+    expect(listsReducer(initialState, action)).toEqual(initialState)
+  })
+
+  it('should handle fetchListDetail/fulfilled', () => {
+    const action = {
+      payload: 'test/data',
+      type: fetchListDetail.fulfilled.toString()
+    }
+    const expectedState = mergeDeepRight(initialState, {
+      listDetail: {
+        data: action.payload,
+        loading: false
+      }
+    })
+
+    expect(listsReducer(initialState, action)).toEqual(expectedState)
+  })
+
+  it('should handle fetchListDetail/rejected', () => {
+    const action = {
+      payload: 'test/error',
+      type: fetchListDetail.rejected.toString()
+    }
+    const expectedState = mergeDeepRight(initialState, {
+      listDetail: {
+        error: action.payload,
+        loading: false
+      }
+    })
+
+    expect(listsReducer(initialState, action)).toEqual(expectedState)
   })
 })

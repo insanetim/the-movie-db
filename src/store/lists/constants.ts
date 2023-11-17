@@ -2,23 +2,18 @@ import createActionType from 'src/utils/state/createActionType'
 
 const namespace = 'lists'
 
-const FETCH_LISTS = createActionType(namespace, 'FETCH_LISTS')
-
-const CREATE_LIST = createActionType(namespace, 'CREATE_LIST')
-
-const DELETE_LIST = createActionType(namespace, 'DELETE_LIST')
-
-const FETCH_LIST_DETAIL = createActionType(namespace, 'FETCH_LIST_DETAIL')
-
-const ADD_TO_LIST = createActionType(namespace, 'ADD_TO_LIST')
-
-const REMOVE_FROM_LIST = createActionType(namespace, 'REMOVE_FROM_LIST')
+const fetchLists = createActionType(namespace, 'fetchLists')
+const createList = createActionType(namespace, 'createList')
+const deleteList = createActionType(namespace, 'deleteList')
+const fetchListDetail = createActionType(namespace, 'fetchListDetail')
+const addToList = createActionType(namespace, 'addToList')
+const removeFromList = createActionType(namespace, 'removeFromList')
 
 export {
-  ADD_TO_LIST,
-  CREATE_LIST,
-  DELETE_LIST,
-  FETCH_LIST_DETAIL,
-  FETCH_LISTS,
-  REMOVE_FROM_LIST
+  addToList,
+  createList,
+  deleteList,
+  fetchListDetail,
+  fetchLists,
+  removeFromList
 }

@@ -1,24 +1,24 @@
 import { createReducer } from '@reduxjs/toolkit'
 
-import type { IWatchlistState } from './types'
+import type { WatchlistState } from './types'
 
 import { fetchWatchlist } from './actions'
 
-const initialState: IWatchlistState = {
+const initialState: WatchlistState = {
+  data: null,
   error: null,
-  loading: true,
-  movies: null
+  loading: true
 }
 
 const watchlistReducer = createReducer(initialState, builder => {
   builder.addCase(fetchWatchlist.pending, state => {
     state.loading = true
-    state.movies = null
+    state.data = null
     state.error = null
   })
   builder.addCase(fetchWatchlist.fulfilled, (state, action) => {
     state.loading = false
-    state.movies = action.payload
+    state.data = action.payload
   })
   builder.addCase(fetchWatchlist.rejected, (state, action) => {
     state.loading = false

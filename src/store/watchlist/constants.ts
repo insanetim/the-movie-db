@@ -2,6 +2,6 @@ import createActionType from 'src/utils/state/createActionType'
 
 const namespace = 'watchlist'
 
-const FETCH_WATCHLIST = createActionType(namespace, 'FETCH_WATCHLIST')
+const fetchWatchlist = createActionType(namespace, 'fetchWatchlist')
 
-export { FETCH_WATCHLIST }
+export { fetchWatchlist }

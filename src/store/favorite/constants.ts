@@ -2,6 +2,6 @@ import createActionType from 'src/utils/state/createActionType'
 
 const namespace = 'favorite'
 
-const FETCH_FAVORITE = createActionType(namespace, 'FETCH_FAVORITE')
+const fetchFavorite = createActionType(namespace, 'fetchFavorite')
 
-export { FETCH_FAVORITE }
+export { fetchFavorite }

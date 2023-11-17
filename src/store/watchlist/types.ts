@@ -1,7 +1,4 @@
+import type { IState } from 'src/interfaces/global.interface'
 import type { IMoviesList } from 'src/interfaces/movie.interface'
 
-export interface IWatchlistState {
-  error: null | string
-  loading: boolean
-  movies: IMoviesList | null
-}
+export type WatchlistState = IState<IMoviesList>

@@ -1,58 +1,54 @@
+import { mergeRight } from 'ramda'
+
+import type { FavoriteState } from '../types'
+
 import { fetchFavorite } from '../actions'
-import reducer from '../reducer'
-import { IFavoriteState } from '../types'
+import favoriteReducer from '../reducer'
 
 describe('favoriteReducer', () => {
-  const initialState: IFavoriteState = {
+  const initialState: FavoriteState = {
+    data: null,
     error: null,
-    loading: true,
-    movies: null
+    loading: true
   }
 
   it('returns initial state', () => {
     const action = { type: 'unknown' }
 
-    expect(reducer(initialState, action)).toEqual(initialState)
+    expect(favoriteReducer(initialState, action)).toEqual(initialState)
   })
 
-  it('should handle FETCH_FAVORITE/pending', () => {
+  it('should handle fetchFavorite/pending', () => {
     const action = {
       type: fetchFavorite.pending.toString()
     }
-    const expectedState = {
-      error: null,
-      loading: true,
-      movies: null
-    }
 
-    expect(reducer(initialState, action)).toEqual(expectedState)
+    expect(favoriteReducer(initialState, action)).toEqual(initialState)
   })
 
-  it('should handle FETCH_FAVORITE/fulfilled', () => {
+  it('should handle fetchFavorite/fulfilled', () => {
     const action = {
       payload: 'test/data',
       type: fetchFavorite.fulfilled.toString()
     }
-    const expectedState = {
-      error: null,
-      loading: false,
-      movies: action.payload
-    }
+    const expectedState = mergeRight(initialState, {
+      data: action.payload,
+      loading: false
+    })
 
-    expect(reducer(initialState, action)).toEqual(expectedState)
+    expect(favoriteReducer(initialState, action)).toEqual(expectedState)
   })
 
-  it('should handle FETCH_FAVORITE/rejected', () => {
+  it('should handle fetchFavorite/rejected', () => {
     const action = {
-      payload: 'test/data',
+      payload: 'test/error',
       type: fetchFavorite.rejected.toString()
     }
-    const expectedState = {
+    const expectedState = mergeRight(initialState, {
       error: action.payload,
-      loading: false,
-      movies: null
-    }
+      loading: false
+    })
 
-    expect(reducer(initialState, action)).toEqual(expectedState)
+    expect(favoriteReducer(initialState, action)).toEqual(expectedState)
   })
 })

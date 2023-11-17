@@ -1,22 +1,11 @@
 import type { ListData } from 'src/components/ModalCreateList/types'
+import type { IState } from 'src/interfaces/global.interface'
 import type {
   IList,
   IListDetail,
   IListsList
 } from 'src/interfaces/list.interface'
 import type { IMovie } from 'src/interfaces/movie.interface'
-
-export interface IListsState {
-  error: null | string
-  lists: IListsList | null
-  loading: boolean
-}
-
-export interface IListState {
-  error: null | string
-  list: IListDetail | null
-  loading: boolean
-}
 
 export interface CreateListProps {
   listData: ListData
@@ -37,7 +26,12 @@ export interface AddToListProps {
 
 export interface RemoveFromListProps extends AddToListProps {}
 
-export interface fetchListDetailProps {
+export interface FetchListDetailProps {
   listId: IList['id']
   page: string
+}
+
+export interface ListsState {
+  createdLists: IState<IListsList>
+  listDetail: IState<IListDetail>
 }

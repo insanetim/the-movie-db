@@ -9,10 +9,10 @@ import errorMessage from 'src/utils/helpers/errorMessage'
 
 import type { RootState } from '../index'
 
-import { FETCH_WATCHLIST } from './constants'
+import * as types from './constants'
 
 const fetchWatchlist = createAsyncThunk(
-  FETCH_WATCHLIST,
+  types.fetchWatchlist,
   async (page: string, { getState, rejectWithValue }) => {
     const sessionId = sessionIdSelector(getState() as RootState)
     const { id: accountId } = accountSelector(

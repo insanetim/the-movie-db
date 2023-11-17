@@ -1,12 +1,14 @@
+import { mergeRight } from 'ramda'
+
 import { fetchWatchlist } from '../actions'
 import reducer from '../reducer'
-import { IWatchlistState } from '../types'
+import { WatchlistState } from '../types'
 
 describe('watchlistReducer', () => {
-  const initialState: IWatchlistState = {
+  const initialState: WatchlistState = {
+    data: null,
     error: null,
-    loading: true,
-    movies: null
+    loading: true
   }
 
   it('returns initial state', () => {
@@ -15,43 +17,36 @@ describe('watchlistReducer', () => {
     expect(reducer(initialState, action)).toEqual(initialState)
   })
 
-  it('should handle FETCH_WATCHLIST/pending', () => {
+  it('should handle fetchWatchlist/pending', () => {
     const action = {
       type: fetchWatchlist.pending.toString()
     }
-    const expectedState = {
-      error: null,
-      loading: true,
-      movies: null
-    }
 
-    expect(reducer(initialState, action)).toEqual(expectedState)
+    expect(reducer(initialState, action)).toEqual(initialState)
   })
 
-  it('should handle FETCH_WATCHLIST/fulfilled', () => {
+  it('should handle fetchWatchlist/fulfilled', () => {
     const action = {
       payload: 'test/data',
       type: fetchWatchlist.fulfilled.toString()
     }
-    const expectedState = {
-      error: null,
-      loading: false,
-      movies: action.payload
-    }
+    const expectedState = mergeRight(initialState, {
+      data: action.payload,
+      loading: false
+    })
 
     expect(reducer(initialState, action)).toEqual(expectedState)
   })
 
-  it('should handle FETCH_WATCHLIST/rejected', () => {
+  it('should handle fetchWatchlist/rejected', () => {
     const action = {
       payload: 'test/data',
       type: fetchWatchlist.rejected.toString()
     }
-    const expectedState = {
+    const expectedState = mergeRight(initialState, {
       error: action.payload,
-      loading: false,
-      movies: null
-    }
+      loading: false
+    })
 
     expect(reducer(initialState, action)).toEqual(expectedState)
   })

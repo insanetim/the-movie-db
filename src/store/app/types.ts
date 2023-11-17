@@ -13,7 +13,7 @@ export interface INotification {
   messageType: NOTIFICATION_TYPE
 }
 
-export interface AppSliceState {
+export interface AppState {
   modal: IModal
   notifications: INotification[]
 }

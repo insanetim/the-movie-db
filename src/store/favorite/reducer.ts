@@ -1,24 +1,24 @@
 import { createReducer } from '@reduxjs/toolkit'
 
-import type { IFavoriteState } from './types'
+import type { FavoriteState } from './types'
 
 import { fetchFavorite } from './actions'
 
-const initialState: IFavoriteState = {
+const initialState: FavoriteState = {
+  data: null,
   error: null,
-  loading: true,
-  movies: null
+  loading: true
 }
 
 const favoriteReducer = createReducer(initialState, builder => {
   builder.addCase(fetchFavorite.pending, state => {
     state.loading = true
-    state.movies = null
+    state.data = null
     state.error = null
   })
   builder.addCase(fetchFavorite.fulfilled, (state, action) => {
     state.loading = false
-    state.movies = action.payload
+    state.data = action.payload
   })
   builder.addCase(fetchFavorite.rejected, (state, action) => {
     state.loading = false

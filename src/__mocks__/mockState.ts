@@ -11,22 +11,22 @@ const mockState: RootState = {
     notifications: []
   },
   dashboard: {
-    movies: null
+    data: null
   },
   favorite: {
+    data: null,
     error: null,
-    loading: true,
-    movies: null
+    loading: true
   },
   lists: {
     createdLists: {
+      data: null,
       error: null,
-      lists: null,
       loading: true
     },
     listDetail: {
+      data: null,
       error: null,
-      list: null,
       loading: true
     }
   },
@@ -37,9 +37,9 @@ const mockState: RootState = {
     sessionId: ''
   },
   watchlist: {
+    data: null,
     error: null,
-    loading: true,
-    movies: null
+    loading: true
   }
 }
 

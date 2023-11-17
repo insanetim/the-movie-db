@@ -1,9 +1,11 @@
+import { assocPath } from 'ramda'
+
 import {
   changeMovieInFavorite,
   changeMovieInWatchlist,
   fetchMovieDetail
 } from '../actions'
-import reducer, { movieInitialState } from '../reducer'
+import movieReducer, { movieInitialState } from '../reducer'
 
 describe('movieReducer', () => {
   const initialState = movieInitialState
@@ -11,10 +13,10 @@ describe('movieReducer', () => {
   it('returns initial state', () => {
     const action = { type: 'unknown' }
 
-    expect(reducer(initialState, action)).toEqual(initialState)
+    expect(movieReducer(initialState, action)).toEqual(initialState)
   })
 
-  it('should handle FETCH_MOVIE/fulfilled', () => {
+  it('should handle fetchMovieDetail/fulfilled', () => {
     const action = {
       payload: { data: 'test/data', id: '123' },
       type: fetchMovieDetail.fulfilled.toString()
@@ -24,10 +26,10 @@ describe('movieReducer', () => {
       ids: ['123']
     }
 
-    expect(reducer(initialState, action)).toEqual(expectedState)
+    expect(movieReducer(initialState, action)).toEqual(expectedState)
   })
 
-  it('should handle CHANGE_MOVIE_IN_FAVORITE/pending with movieId', () => {
+  it('should handle changeMovieInFavorite/pending with movieId', () => {
     const action = {
       meta: { arg: { inFavorite: true, movieId: '123' } },
       type: changeMovieInFavorite.pending.toString()
@@ -36,24 +38,25 @@ describe('movieReducer', () => {
       entities: { '123': { accountStates: { favorite: false }, id: '123' } },
       ids: ['123']
     } as never
-    const expectedState = {
-      entities: { '123': { accountStates: { favorite: true }, id: '123' } },
-      ids: ['123']
-    }
+    const expectedState = assocPath(
+      ['entities', '123', 'accountStates', 'favorite'],
+      true,
+      initialState
+    )
 
-    expect(reducer(initialState, action)).toEqual(expectedState)
+    expect(movieReducer(initialState, action)).toEqual(expectedState)
   })
 
-  it('should handle CHANGE_MOVIE_IN_FAVORITE/pending without movieId', () => {
+  it('should handle changeMovieInFavorite/pending without movieId', () => {
     const action = {
       meta: { arg: { inFavorite: true, movieId: '123' } },
       type: changeMovieInFavorite.pending.toString()
     }
 
-    expect(reducer(initialState, action)).toEqual(initialState)
+    expect(movieReducer(initialState, action)).toEqual(initialState)
   })
 
-  it('should handle CHANGE_MOVIE_IN_WATCHLIST/pending with movieId', () => {
+  it('should handle changeMovieInWatchlist/pending with movieId', () => {
     const action = {
       meta: { arg: { inWatchlist: true, movieId: '123' } },
       type: changeMovieInWatchlist.pending.toString()
@@ -62,20 +65,21 @@ describe('movieReducer', () => {
       entities: { '123': { accountStates: { watchlist: false }, id: '123' } },
       ids: ['123']
     } as never
-    const expectedState = {
-      entities: { '123': { accountStates: { watchlist: true }, id: '123' } },
-      ids: ['123']
-    }
+    const expectedState = assocPath(
+      ['entities', '123', 'accountStates', 'watchlist'],
+      true,
+      initialState
+    )
 
-    expect(reducer(initialState, action)).toEqual(expectedState)
+    expect(movieReducer(initialState, action)).toEqual(expectedState)
   })
 
-  it('should handle CHANGE_MOVIE_IN_WATCHLIST/pending without movieId', () => {
+  it('should handle changeMovieInWatchlist/pending without movieId', () => {
     const action = {
       meta: { arg: { inWatchlist: true, movieId: '123' } },
       type: changeMovieInWatchlist.pending.toString()
     }
 
-    expect(reducer(initialState, action)).toEqual(initialState)
+    expect(movieReducer(initialState, action)).toEqual(initialState)
   })
 })

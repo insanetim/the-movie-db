@@ -1,9 +1,9 @@
 import { createSlice, nanoid } from '@reduxjs/toolkit'
 import { NOTIFICATION_DURATION, NOTIFICATION_TYPE } from 'src/constants/app'
 
-import type { AppSliceState } from './types'
+import type { AppState } from './types'
 
-const initialState: AppSliceState = {
+const initialState: AppState = {
   modal: {
     modalProps: null,
     modalType: null

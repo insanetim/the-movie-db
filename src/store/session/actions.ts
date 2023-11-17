@@ -11,11 +11,11 @@ import errorMessage from 'src/utils/helpers/errorMessage'
 import type { RootState } from '../index'
 import type { IRequestToken, ISession, IUserData } from './types'
 
-import { FETCH_ACCOUNT, LOG_IN, LOG_OUT } from './constants'
+import * as types from './constants'
 import { sessionIdSelector } from './selectors'
 
 const logIn = createAsyncThunk(
-  LOG_IN,
+  types.logIn,
   async (userData: IUserData, { dispatch }) => {
     try {
       const {
@@ -52,29 +52,32 @@ const logIn = createAsyncThunk(
   }
 )
 
-const logOut = createAsyncThunk(LOG_OUT, async (_, { dispatch, getState }) => {
-  const sessionId = sessionIdSelector(getState() as RootState)
+const logOut = createAsyncThunk(
+  types.logOut,
+  async (_, { dispatch, getState }) => {
+    const sessionId = sessionIdSelector(getState() as RootState)
 
-  try {
-    await httpClient.request({
-      data: { session_id: sessionId },
-      method: 'delete',
-      url: routes.deleteSession
-    })
-
-    Cookies.remove('tmdb.session_id')
-  } catch (error) {
-    dispatch(
-      showNotification({
-        messageText: errorMessage(error),
-        messageType: NOTIFICATION_TYPE.ERROR
+    try {
+      await httpClient.request({
+        data: { session_id: sessionId },
+        method: 'delete',
+        url: routes.deleteSession
       })
-    )
+
+      Cookies.remove('tmdb.session_id')
+    } catch (error) {
+      dispatch(
+        showNotification({
+          messageText: errorMessage(error),
+          messageType: NOTIFICATION_TYPE.ERROR
+        })
+      )
+    }
   }
-})
+)
 
 const fetchAccount = createAsyncThunk(
-  FETCH_ACCOUNT,
+  types.fetchAccount,
   async (_, { dispatch, getState }) => {
     const sessionId = sessionIdSelector(getState() as RootState)
 

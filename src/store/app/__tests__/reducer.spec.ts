@@ -1,6 +1,7 @@
+import { assoc, assocPath } from 'ramda'
 import { NOTIFICATION_DURATION, NOTIFICATION_TYPE } from 'src/constants/app'
 
-import type { AppSliceState } from '../types'
+import type { AppState } from '../types'
 
 import {
   hideModal,
@@ -16,7 +17,7 @@ jest.mock<typeof import('@reduxjs/toolkit')>('@reduxjs/toolkit', () => ({
 }))
 
 describe('appReducer', () => {
-  const initialState: AppSliceState = {
+  const initialState: AppState = {
     modal: {
       modalProps: null,
       modalType: null
@@ -34,13 +35,11 @@ describe('appReducer', () => {
     const action = {
       type: hideModal.toString()
     }
-    const expectedState = {
-      ...initialState,
-      modal: {
-        modalProps: { open: false },
-        modalType: null
-      }
-    }
+    const expectedState = assocPath(
+      ['modal', 'modalProps'],
+      { open: false },
+      initialState
+    )
 
     expect(appReducer(initialState, action)).toEqual(expectedState)
   })
@@ -64,10 +63,7 @@ describe('appReducer', () => {
         }
       ]
     }
-    const expectedState = {
-      ...initialState,
-      notifications: []
-    }
+    const expectedState = assoc('notifications', [], initialState)
 
     expect(appReducer(initialState, action)).toEqual(expectedState)
   })
@@ -80,10 +76,7 @@ describe('appReducer', () => {
       },
       type: showModal.toString()
     }
-    const expectedState = {
-      ...initialState,
-      modal: action.payload
-    }
+    const expectedState = assoc('modal', action.payload, initialState)
 
     expect(appReducer(initialState, action)).toEqual(expectedState)
   })
@@ -93,17 +86,18 @@ describe('appReducer', () => {
       payload: { messageText: 'test/message' },
       type: showNotification.toString()
     }
-    const expectedState = {
-      ...initialState,
-      notifications: [
+    const expectedState = assoc(
+      'notifications',
+      [
         {
           duration: NOTIFICATION_DURATION,
           id: 'test/id',
           messageText: 'test/message',
           messageType: NOTIFICATION_TYPE.SUCCESS
         }
-      ]
-    }
+      ],
+      initialState
+    )
 
     expect(appReducer(initialState, action)).toEqual(expectedState)
   })

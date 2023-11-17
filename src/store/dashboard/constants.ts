@@ -2,8 +2,7 @@ import createActionType from 'src/utils/state/createActionType'
 
 const namespace = 'dashboard'
 
-const FETCH_TRENDING = createActionType(namespace, 'FETCH_TRENDING')
+const fetchTrending = createActionType(namespace, 'fetchTrending')
+const fetchSearch = createActionType(namespace, 'fetchSearch')
 
-const FETCH_SEARCH = createActionType(namespace, 'FETCH_SEARCH')
-
-export { FETCH_SEARCH, FETCH_TRENDING }
+export { fetchSearch, fetchTrending }

@@ -10,7 +10,7 @@ import type { FetchSearchProps } from './types'
 import * as types from './constants'
 
 const fetchTrending = createAsyncThunk(
-  types.FETCH_TRENDING,
+  types.fetchTrending,
   async (page: string, { rejectWithValue }) => {
     try {
       const { data } = await httpClient.request<IMoviesList>({
@@ -26,7 +26,7 @@ const fetchTrending = createAsyncThunk(
 )
 
 const fetchSearch = createAsyncThunk(
-  types.FETCH_SEARCH,
+  types.fetchSearch,
   async ({ page, query }: FetchSearchProps, { rejectWithValue }) => {
     try {
       const { data } = await httpClient.request<IMoviesList>({

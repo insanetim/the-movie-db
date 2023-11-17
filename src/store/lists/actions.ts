@@ -19,8 +19,8 @@ import type {
   AddToListProps,
   CreateListProps,
   CreateListResponse,
-  RemoveFromListProps,
-  fetchListDetailProps
+  FetchListDetailProps,
+  RemoveFromListProps
 } from './types'
 
 import { selectMovieById } from '../movie/selectors'
@@ -28,7 +28,7 @@ import * as types from './constants'
 import { listsSelector } from './selectors'
 
 const fetchLists = createAsyncThunk(
-  types.FETCH_LISTS,
+  types.fetchLists,
   async (page: string, { getState, rejectWithValue }) => {
     const sessionId = sessionIdSelector(getState() as RootState)
     const { id: accountId } = accountSelector(
@@ -49,7 +49,7 @@ const fetchLists = createAsyncThunk(
 )
 
 const createList = createAsyncThunk(
-  types.CREATE_LIST,
+  types.createList,
   async ({ listData, movieId }: CreateListProps, { dispatch, getState }) => {
     const sessionId = sessionIdSelector(getState() as RootState)
 
@@ -81,7 +81,7 @@ const createList = createAsyncThunk(
 )
 
 const deleteList = createAsyncThunk(
-  types.DELETE_LIST,
+  types.deleteList,
   async (listId: IList['id'], { dispatch, getState }) => {
     const sessionId = sessionIdSelector(getState() as RootState)
 
@@ -103,8 +103,8 @@ const deleteList = createAsyncThunk(
 )
 
 const fetchListDetail = createAsyncThunk(
-  types.FETCH_LIST_DETAIL,
-  async ({ listId, page }: fetchListDetailProps, { rejectWithValue }) => {
+  types.fetchListDetail,
+  async ({ listId, page }: FetchListDetailProps, { rejectWithValue }) => {
     try {
       const { data } = await httpClient.request<IListDetail>({
         params: { page },
@@ -119,7 +119,7 @@ const fetchListDetail = createAsyncThunk(
 )
 
 const addToList = createAsyncThunk(
-  types.ADD_TO_LIST,
+  types.addToList,
   async ({ listId, movieId }: AddToListProps, { dispatch, getState }) => {
     const sessionId = sessionIdSelector(getState() as RootState)
 
@@ -153,7 +153,7 @@ const addToList = createAsyncThunk(
 )
 
 const removeFromList = createAsyncThunk(
-  types.REMOVE_FROM_LIST,
+  types.removeFromList,
   async ({ listId, movieId }: RemoveFromListProps, { dispatch, getState }) => {
     const sessionId = sessionIdSelector(getState() as RootState)
 
