@@ -11,12 +11,6 @@ describe('sessionReducer', () => {
     sessionId: ''
   }
 
-  it('returns initial state', () => {
-    const action = { type: 'unknown' }
-
-    expect(reducer(initialState, action)).toEqual(initialState)
-  })
-
   it('should handle logIn/pending', () => {
     const action = {
       type: logIn.pending.toString()

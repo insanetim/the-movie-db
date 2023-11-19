@@ -1,6 +1,6 @@
 import convertDuration from '../convertDuration'
 
-describe('convertDuration()', () => {
+describe('convertDuration', () => {
   it('should return correct result with value 30', () => {
     expect(convertDuration(30)).toEqual('30m')
   })

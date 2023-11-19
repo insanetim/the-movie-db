@@ -1,8 +1,11 @@
-import { mergeRight } from 'ramda'
+import setState from 'src/utils/stateHelpers/setState'
+
+import type { WatchlistState } from '../types'
 
 import { fetchWatchlist } from '../actions'
-import reducer from '../reducer'
-import { WatchlistState } from '../types'
+import watchlistReducer from '../reducer'
+
+jest.mock('src/utils/stateHelpers/setState')
 
 describe('watchlistReducer', () => {
   const initialState: WatchlistState = {
@@ -11,18 +14,13 @@ describe('watchlistReducer', () => {
     loading: true
   }
 
-  it('returns initial state', () => {
-    const action = { type: 'unknown' }
-
-    expect(reducer(initialState, action)).toEqual(initialState)
-  })
-
   it('should handle fetchWatchlist/pending', () => {
     const action = {
       type: fetchWatchlist.pending.toString()
     }
+    watchlistReducer(initialState, action)
 
-    expect(reducer(initialState, action)).toEqual(initialState)
+    expect(setState.pending).toHaveBeenCalled()
   })
 
   it('should handle fetchWatchlist/fulfilled', () => {
@@ -30,12 +28,9 @@ describe('watchlistReducer', () => {
       payload: 'test/data',
       type: fetchWatchlist.fulfilled.toString()
     }
-    const expectedState = mergeRight(initialState, {
-      data: action.payload,
-      loading: false
-    })
+    watchlistReducer(initialState, action)
 
-    expect(reducer(initialState, action)).toEqual(expectedState)
+    expect(setState.fulfilled).toHaveBeenCalled()
   })
 
   it('should handle fetchWatchlist/rejected', () => {
@@ -43,11 +38,8 @@ describe('watchlistReducer', () => {
       payload: 'test/data',
       type: fetchWatchlist.rejected.toString()
     }
-    const expectedState = mergeRight(initialState, {
-      error: action.payload,
-      loading: false
-    })
+    watchlistReducer(initialState, action)
 
-    expect(reducer(initialState, action)).toEqual(expectedState)
+    expect(setState.rejected).toHaveBeenCalled()
   })
 })

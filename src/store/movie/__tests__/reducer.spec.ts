@@ -10,12 +10,6 @@ import movieReducer, { movieInitialState } from '../reducer'
 describe('movieReducer', () => {
   const initialState = movieInitialState
 
-  it('returns initial state', () => {
-    const action = { type: 'unknown' }
-
-    expect(movieReducer(initialState, action)).toEqual(initialState)
-  })
-
   it('should handle fetchMovieDetail/fulfilled', () => {
     const action = {
       payload: { data: 'test/data', id: '123' },

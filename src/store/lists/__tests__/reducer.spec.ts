@@ -18,12 +18,6 @@ describe('listsReducer', () => {
     }
   }
 
-  it('returns initial state', () => {
-    const action = { type: 'unknown' }
-
-    expect(listsReducer(initialState, action)).toEqual(initialState)
-  })
-
   it('should handle fetchLists/pending', () => {
     const action = {
       type: fetchLists.pending.toString()

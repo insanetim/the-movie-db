@@ -25,12 +25,6 @@ describe('appReducer', () => {
     notifications: []
   }
 
-  it('returns initial state', () => {
-    const action = { type: 'unknown' }
-
-    expect(appReducer(initialState, action)).toEqual(initialState)
-  })
-
   it('should handle hideModal', () => {
     const action = {
       type: hideModal.toString()

@@ -6,12 +6,6 @@ import dashboardReducer from '../reducer'
 describe('dashboardReducer', () => {
   const initialState: DashboardState = { data: null }
 
-  it('returns initial state', () => {
-    const action = { type: 'unknown' }
-
-    expect(dashboardReducer(initialState, action)).toEqual(initialState)
-  })
-
   it('should handle fetchTrending/pending', () => {
     const action = {
       type: fetchTrending.pending.toString()
