@@ -1,8 +1,10 @@
-import { mergeDeepRight } from 'ramda'
+import setState from 'src/utils/stateHelpers/setState'
 
 import { fetchListDetail, fetchLists } from '../actions'
 import listsReducer from '../reducer'
 import { ListsState } from '../types'
+
+jest.mock('src/utils/stateHelpers/setState')
 
 describe('listsReducer', () => {
   const initialState: ListsState = {
@@ -22,8 +24,9 @@ describe('listsReducer', () => {
     const action = {
       type: fetchLists.pending.toString()
     }
+    listsReducer(initialState, action)
 
-    expect(listsReducer(initialState, action)).toEqual(initialState)
+    expect(setState.pending).toHaveBeenCalled()
   })
 
   it('should handle fetchLists/fulfilled', () => {
@@ -31,14 +34,9 @@ describe('listsReducer', () => {
       payload: 'test/data',
       type: fetchLists.fulfilled.toString()
     }
-    const expectedState = mergeDeepRight(initialState, {
-      createdLists: {
-        data: action.payload,
-        loading: false
-      }
-    })
+    listsReducer(initialState, action)
 
-    expect(listsReducer(initialState, action)).toEqual(expectedState)
+    expect(setState.fulfilled).toHaveBeenCalled()
   })
 
   it('should handle fetchLists/rejected', () => {
@@ -46,22 +44,18 @@ describe('listsReducer', () => {
       payload: 'test/error',
       type: fetchLists.rejected.toString()
     }
-    const expectedState = mergeDeepRight(initialState, {
-      createdLists: {
-        error: action.payload,
-        loading: false
-      }
-    })
+    listsReducer(initialState, action)
 
-    expect(listsReducer(initialState, action)).toEqual(expectedState)
+    expect(setState.rejected).toHaveBeenCalled()
   })
 
   it('should handle fetchListDetail/pending', () => {
     const action = {
       type: fetchListDetail.pending.toString()
     }
+    listsReducer(initialState, action)
 
-    expect(listsReducer(initialState, action)).toEqual(initialState)
+    expect(setState.pending).toHaveBeenCalled()
   })
 
   it('should handle fetchListDetail/fulfilled', () => {
@@ -69,14 +63,9 @@ describe('listsReducer', () => {
       payload: 'test/data',
       type: fetchListDetail.fulfilled.toString()
     }
-    const expectedState = mergeDeepRight(initialState, {
-      listDetail: {
-        data: action.payload,
-        loading: false
-      }
-    })
+    listsReducer(initialState, action)
 
-    expect(listsReducer(initialState, action)).toEqual(expectedState)
+    expect(setState.fulfilled).toHaveBeenCalled()
   })
 
   it('should handle fetchListDetail/rejected', () => {
@@ -84,13 +73,8 @@ describe('listsReducer', () => {
       payload: 'test/error',
       type: fetchListDetail.rejected.toString()
     }
-    const expectedState = mergeDeepRight(initialState, {
-      listDetail: {
-        error: action.payload,
-        loading: false
-      }
-    })
+    listsReducer(initialState, action)
 
-    expect(listsReducer(initialState, action)).toEqual(expectedState)
+    expect(setState.rejected).toHaveBeenCalled()
   })
 })
