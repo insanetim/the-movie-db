@@ -1,4 +1,4 @@
-import createActionType from 'src/utils/state/createActionType'
+import createActionType from 'src/utils/stateHelpers/createActionType'
 
 const namespace = 'lists'
 
