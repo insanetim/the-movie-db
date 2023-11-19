@@ -26,7 +26,7 @@ import * as types from './constants'
 
 const fetchMovieDetail = createAsyncThunk(
   types.fetchMovieDetail,
-  async (movieId: IMovie['id'], { getState, rejectWithValue }) => {
+  async function (movieId: IMovie['id'], { getState, rejectWithValue }) {
     const sessionId = sessionIdSelector(getState() as RootState)
 
     try {
@@ -61,10 +61,10 @@ const fetchMovieDetail = createAsyncThunk(
 
 const changeMovieInFavorite = createAsyncThunk(
   types.changeMovieInFavorite,
-  async (
+  async function (
     { inFavorite, movieId }: ChangeMovieInFavoriteProps,
     { dispatch, getState }
-  ) => {
+  ) {
     const sessionId = sessionIdSelector(getState() as RootState)
     const { id: accountId } = accountSelector(
       getState() as RootState
@@ -90,10 +90,10 @@ const changeMovieInFavorite = createAsyncThunk(
 
 const changeMovieInWatchlist = createAsyncThunk(
   types.changeMovieInWatchlist,
-  async (
+  async function (
     { inWatchlist, movieId }: ChangeMovieInWatchlistProps,
     { dispatch, getState }
-  ) => {
+  ) {
     const sessionId = sessionIdSelector(getState() as RootState)
     const { id: accountId } = accountSelector(
       getState() as RootState

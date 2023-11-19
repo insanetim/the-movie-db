@@ -29,7 +29,7 @@ import { listsSelector } from './selectors'
 
 const fetchLists = createAsyncThunk(
   types.fetchLists,
-  async (page: string, { getState, rejectWithValue }) => {
+  async function (page: string, { getState, rejectWithValue }) {
     const sessionId = sessionIdSelector(getState() as RootState)
     const { id: accountId } = accountSelector(
       getState() as RootState
@@ -50,7 +50,10 @@ const fetchLists = createAsyncThunk(
 
 const createList = createAsyncThunk(
   types.createList,
-  async ({ listData, movieId }: CreateListProps, { dispatch, getState }) => {
+  async function (
+    { listData, movieId }: CreateListProps,
+    { dispatch, getState }
+  ) {
     const sessionId = sessionIdSelector(getState() as RootState)
 
     try {
@@ -82,7 +85,7 @@ const createList = createAsyncThunk(
 
 const deleteList = createAsyncThunk(
   types.deleteList,
-  async (listId: IList['id'], { dispatch, getState }) => {
+  async function (listId: IList['id'], { dispatch, getState }) {
     const sessionId = sessionIdSelector(getState() as RootState)
 
     try {
@@ -104,7 +107,7 @@ const deleteList = createAsyncThunk(
 
 const fetchListDetail = createAsyncThunk(
   types.fetchListDetail,
-  async ({ listId, page }: FetchListDetailProps, { rejectWithValue }) => {
+  async function ({ listId, page }: FetchListDetailProps, { rejectWithValue }) {
     try {
       const { data } = await httpClient.request<IListDetail>({
         params: { page },
@@ -120,7 +123,7 @@ const fetchListDetail = createAsyncThunk(
 
 const addToList = createAsyncThunk(
   types.addToList,
-  async ({ listId, movieId }: AddToListProps, { dispatch, getState }) => {
+  async function ({ listId, movieId }: AddToListProps, { dispatch, getState }) {
     const sessionId = sessionIdSelector(getState() as RootState)
 
     try {
@@ -154,7 +157,10 @@ const addToList = createAsyncThunk(
 
 const removeFromList = createAsyncThunk(
   types.removeFromList,
-  async ({ listId, movieId }: RemoveFromListProps, { dispatch, getState }) => {
+  async function (
+    { listId, movieId }: RemoveFromListProps,
+    { dispatch, getState }
+  ) {
     const sessionId = sessionIdSelector(getState() as RootState)
 
     try {

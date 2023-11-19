@@ -13,7 +13,7 @@ import * as types from './constants'
 
 const fetchFavorite = createAsyncThunk(
   types.fetchFavorite,
-  async (page: string, { getState, rejectWithValue }) => {
+  async function (page: string, { getState, rejectWithValue }) {
     const sessionId = sessionIdSelector(getState() as RootState)
     const { id: accountId } = accountSelector(
       getState() as RootState

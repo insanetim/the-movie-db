@@ -13,7 +13,7 @@ import * as types from './constants'
 
 const fetchWatchlist = createAsyncThunk(
   types.fetchWatchlist,
-  async (page: string, { getState, rejectWithValue }) => {
+  async function (page: string, { getState, rejectWithValue }) {
     const sessionId = sessionIdSelector(getState() as RootState)
     const { id: accountId } = accountSelector(
       getState() as RootState

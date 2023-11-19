@@ -16,7 +16,7 @@ import { sessionIdSelector } from './selectors'
 
 const logIn = createAsyncThunk(
   types.logIn,
-  async (userData: IUserData, { dispatch }) => {
+  async function (userData: IUserData, { dispatch }) {
     try {
       const {
         data: { request_token: requestToken }
@@ -54,7 +54,7 @@ const logIn = createAsyncThunk(
 
 const logOut = createAsyncThunk(
   types.logOut,
-  async (_, { dispatch, getState }) => {
+  async function (_, { dispatch, getState }) {
     const sessionId = sessionIdSelector(getState() as RootState)
 
     try {
@@ -78,7 +78,7 @@ const logOut = createAsyncThunk(
 
 const fetchAccount = createAsyncThunk(
   types.fetchAccount,
-  async (_, { dispatch, getState }) => {
+  async function (_, { dispatch, getState }) {
     const sessionId = sessionIdSelector(getState() as RootState)
 
     try {
