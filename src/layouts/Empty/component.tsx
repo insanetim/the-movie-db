@@ -1,8 +1,8 @@
 import { Layout } from 'antd'
 
-const EmptyLayout: React.FC<{ children?: React.ReactNode }> = ({
-  children
-}) => {
+import type { EmptyLayoutProps } from './types'
+
+const EmptyLayout: React.FC<EmptyLayoutProps> = ({ children }) => {
   return (
     <div className='center'>
       <Layout>
