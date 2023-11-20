@@ -6,13 +6,13 @@ exports[`ListDetail component matches snapshot 1`] = `
     class="container"
   >
     <div
-      class="ant-row css-dev-only-do-not-override-2i2tap"
+      class="ant-row css-dev-only-do-not-override-nllxry"
     >
       <div
-        class="ant-col ant-col-24 css-dev-only-do-not-override-2i2tap"
+        class="ant-col ant-col-24 css-dev-only-do-not-override-nllxry"
       >
         <h1
-          class="ant-typography css-dev-only-do-not-override-2i2tap"
+          class="ant-typography css-dev-only-do-not-override-nllxry"
         >
           test/list 
           <span
@@ -42,15 +42,15 @@ exports[`ListDetail component matches snapshot 1`] = `
       </div>
     </div>
     <div
-      class="ant-row css-dev-only-do-not-override-2i2tap"
+      class="ant-row css-dev-only-do-not-override-nllxry"
       style="margin-left: -12px; margin-right: -12px; row-gap: 16px;"
     >
       <div
-        class="ant-col ant-col-24 ant-col-sm-12 ant-col-md-8 ant-col-lg-8 ant-col-xl-6 css-dev-only-do-not-override-2i2tap"
+        class="ant-col ant-col-24 ant-col-sm-12 ant-col-md-8 ant-col-lg-8 ant-col-xl-6 css-dev-only-do-not-override-nllxry"
         style="padding-left: 12px; padding-right: 12px;"
       >
         <div
-          class="ant-card ant-card-bordered ant-card-hoverable css-dev-only-do-not-override-2i2tap"
+          class="ant-card ant-card-bordered ant-card-hoverable css-dev-only-do-not-override-nllxry"
         >
           <div
             class="ant-card-cover"
@@ -120,13 +120,13 @@ exports[`ListDetail component matches snapshot 1`] = `
       </div>
     </div>
     <div
-      class="ant-row ant-row-center css-dev-only-do-not-override-2i2tap"
+      class="ant-row ant-row-center css-dev-only-do-not-override-nllxry"
     >
       <div
-        class="ant-col css-dev-only-do-not-override-2i2tap"
+        class="ant-col css-dev-only-do-not-override-nllxry"
       >
         <ul
-          class="ant-pagination pagination css-dev-only-do-not-override-2i2tap"
+          class="ant-pagination pagination css-dev-only-do-not-override-nllxry"
         >
           <li
             aria-disabled="true"
@@ -309,13 +309,13 @@ exports[`ListDetail component matches snapshot with 1 page 1`] = `
     class="container"
   >
     <div
-      class="ant-row css-dev-only-do-not-override-2i2tap"
+      class="ant-row css-dev-only-do-not-override-nllxry"
     >
       <div
-        class="ant-col ant-col-24 css-dev-only-do-not-override-2i2tap"
+        class="ant-col ant-col-24 css-dev-only-do-not-override-nllxry"
       >
         <h1
-          class="ant-typography css-dev-only-do-not-override-2i2tap"
+          class="ant-typography css-dev-only-do-not-override-nllxry"
         >
           test/list 
           <span
@@ -345,15 +345,15 @@ exports[`ListDetail component matches snapshot with 1 page 1`] = `
       </div>
     </div>
     <div
-      class="ant-row css-dev-only-do-not-override-2i2tap"
+      class="ant-row css-dev-only-do-not-override-nllxry"
       style="margin-left: -12px; margin-right: -12px; row-gap: 16px;"
     >
       <div
-        class="ant-col ant-col-24 ant-col-sm-12 ant-col-md-8 ant-col-lg-8 ant-col-xl-6 css-dev-only-do-not-override-2i2tap"
+        class="ant-col ant-col-24 ant-col-sm-12 ant-col-md-8 ant-col-lg-8 ant-col-xl-6 css-dev-only-do-not-override-nllxry"
         style="padding-left: 12px; padding-right: 12px;"
       >
         <div
-          class="ant-card ant-card-bordered ant-card-hoverable css-dev-only-do-not-override-2i2tap"
+          class="ant-card ant-card-bordered ant-card-hoverable css-dev-only-do-not-override-nllxry"
         >
           <div
             class="ant-card-cover"
@@ -432,13 +432,13 @@ exports[`ListDetail component matches snapshot with empty list 1`] = `
     class="container"
   >
     <div
-      class="ant-row css-dev-only-do-not-override-2i2tap"
+      class="ant-row css-dev-only-do-not-override-nllxry"
     >
       <div
-        class="ant-col ant-col-24 css-dev-only-do-not-override-2i2tap"
+        class="ant-col ant-col-24 css-dev-only-do-not-override-nllxry"
       >
         <h1
-          class="ant-typography css-dev-only-do-not-override-2i2tap"
+          class="ant-typography css-dev-only-do-not-override-nllxry"
         >
           My List 
           <span
@@ -468,7 +468,7 @@ exports[`ListDetail component matches snapshot with empty list 1`] = `
       </div>
     </div>
     <div
-      class="css-dev-only-do-not-override-2i2tap ant-empty ant-empty-normal"
+      class="css-dev-only-do-not-override-nllxry ant-empty ant-empty-normal"
     >
       <div
         class="ant-empty-image"
@@ -522,7 +522,7 @@ exports[`ListDetail component matches snapshot with error 1`] = `
     class="container top-margin"
   >
     <div
-      class="ant-result ant-result-error css-dev-only-do-not-override-2i2tap"
+      class="ant-result ant-result-error css-dev-only-do-not-override-nllxry"
     >
       <div
         class="ant-result-icon"
@@ -564,15 +564,15 @@ exports[`ListDetail component matches snapshot with loading 1`] = `
     class="container top-margin"
   >
     <div
-      class="ant-row ant-row-center css-dev-only-do-not-override-2i2tap"
+      class="ant-row ant-row-center css-dev-only-do-not-override-nllxry"
     >
       <div
-        class="ant-col css-dev-only-do-not-override-2i2tap"
+        class="ant-col css-dev-only-do-not-override-nllxry"
       >
         <div
           aria-busy="true"
           aria-live="polite"
-          class="ant-spin ant-spin-spinning css-dev-only-do-not-override-2i2tap"
+          class="ant-spin ant-spin-spinning css-dev-only-do-not-override-nllxry"
         >
           <span
             class="ant-spin-dot ant-spin-dot-spin"

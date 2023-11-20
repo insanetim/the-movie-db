@@ -6,37 +6,37 @@ exports[`Login component matches snapshot 1`] = `
     class="center"
   >
     <div
-      class="ant-layout css-dev-only-do-not-override-2i2tap"
+      class="ant-layout css-dev-only-do-not-override-nllxry"
     >
       <main
-        class="ant-layout-content css-dev-only-do-not-override-2i2tap"
+        class="ant-layout-content css-dev-only-do-not-override-nllxry"
       >
         <div
           class="container"
         >
           <div
-            class="ant-row ant-row-center css-dev-only-do-not-override-2i2tap"
+            class="ant-row ant-row-center css-dev-only-do-not-override-nllxry"
           >
             <div
-              class="ant-col ant-col-20 ant-col-md-12 ant-col-lg-8 ant-col-xl-6 css-dev-only-do-not-override-2i2tap"
+              class="ant-col ant-col-20 ant-col-md-12 ant-col-lg-8 ant-col-xl-6 css-dev-only-do-not-override-nllxry"
             >
               <form
                 autocomplete="off"
-                class="ant-form ant-form-horizontal css-dev-only-do-not-override-2i2tap"
+                class="ant-form ant-form-horizontal css-dev-only-do-not-override-nllxry"
               >
                 <h1
-                  class="ant-typography css-dev-only-do-not-override-2i2tap"
+                  class="ant-typography css-dev-only-do-not-override-nllxry"
                 >
                   The Movie DB
                 </h1>
                 <div
-                  class="ant-form-item css-dev-only-do-not-override-2i2tap"
+                  class="ant-form-item css-dev-only-do-not-override-nllxry"
                 >
                   <div
-                    class="ant-row ant-form-item-row css-dev-only-do-not-override-2i2tap"
+                    class="ant-row ant-form-item-row css-dev-only-do-not-override-nllxry"
                   >
                     <div
-                      class="ant-col ant-form-item-control css-dev-only-do-not-override-2i2tap"
+                      class="ant-col ant-form-item-control css-dev-only-do-not-override-nllxry"
                     >
                       <div
                         class="ant-form-item-control-input"
@@ -45,7 +45,7 @@ exports[`Login component matches snapshot 1`] = `
                           class="ant-form-item-control-input-content"
                         >
                           <span
-                            class="ant-input-affix-wrapper css-dev-only-do-not-override-2i2tap"
+                            class="ant-input-affix-wrapper css-dev-only-do-not-override-nllxry"
                           >
                             <span
                               class="ant-input-prefix"
@@ -73,7 +73,7 @@ exports[`Login component matches snapshot 1`] = `
                             </span>
                             <input
                               aria-required="true"
-                              class="ant-input css-dev-only-do-not-override-2i2tap"
+                              class="ant-input css-dev-only-do-not-override-nllxry"
                               id="username"
                               placeholder="Username"
                               type="text"
@@ -86,13 +86,13 @@ exports[`Login component matches snapshot 1`] = `
                   </div>
                 </div>
                 <div
-                  class="ant-form-item css-dev-only-do-not-override-2i2tap"
+                  class="ant-form-item css-dev-only-do-not-override-nllxry"
                 >
                   <div
-                    class="ant-row ant-form-item-row css-dev-only-do-not-override-2i2tap"
+                    class="ant-row ant-form-item-row css-dev-only-do-not-override-nllxry"
                   >
                     <div
-                      class="ant-col ant-form-item-control css-dev-only-do-not-override-2i2tap"
+                      class="ant-col ant-form-item-control css-dev-only-do-not-override-nllxry"
                     >
                       <div
                         class="ant-form-item-control-input"
@@ -101,7 +101,7 @@ exports[`Login component matches snapshot 1`] = `
                           class="ant-form-item-control-input-content"
                         >
                           <span
-                            class="ant-input-affix-wrapper css-dev-only-do-not-override-2i2tap"
+                            class="ant-input-affix-wrapper css-dev-only-do-not-override-nllxry"
                           >
                             <span
                               class="ant-input-prefix"
@@ -129,7 +129,7 @@ exports[`Login component matches snapshot 1`] = `
                             </span>
                             <input
                               aria-required="true"
-                              class="ant-input css-dev-only-do-not-override-2i2tap"
+                              class="ant-input css-dev-only-do-not-override-nllxry"
                               id="password"
                               placeholder="Password"
                               type="password"
@@ -142,13 +142,13 @@ exports[`Login component matches snapshot 1`] = `
                   </div>
                 </div>
                 <div
-                  class="ant-form-item css-dev-only-do-not-override-2i2tap"
+                  class="ant-form-item css-dev-only-do-not-override-nllxry"
                 >
                   <div
-                    class="ant-row ant-form-item-row css-dev-only-do-not-override-2i2tap"
+                    class="ant-row ant-form-item-row css-dev-only-do-not-override-nllxry"
                   >
                     <div
-                      class="ant-col ant-form-item-control css-dev-only-do-not-override-2i2tap"
+                      class="ant-col ant-form-item-control css-dev-only-do-not-override-nllxry"
                     >
                       <div
                         class="ant-form-item-control-input"
@@ -157,7 +157,7 @@ exports[`Login component matches snapshot 1`] = `
                           class="ant-form-item-control-input-content"
                         >
                           <button
-                            class="ant-btn css-dev-only-do-not-override-2i2tap ant-btn-primary"
+                            class="ant-btn css-dev-only-do-not-override-nllxry ant-btn-primary"
                             type="submit"
                           >
                             <span>
@@ -172,14 +172,14 @@ exports[`Login component matches snapshot 1`] = `
               </form>
             </div>
             <div
-              class="ant-col ant-col-24 css-dev-only-do-not-override-2i2tap"
+              class="ant-col ant-col-24 css-dev-only-do-not-override-nllxry"
             >
               <p
                 class="text-center"
               >
                 Don't have The Movie Database account? 
                 <a
-                  class="ant-typography css-dev-only-do-not-override-2i2tap"
+                  class="ant-typography css-dev-only-do-not-override-nllxry"
                   href="https://www.themoviedb.org/signup"
                   rel="noreferrer"
                   target="_blank"
@@ -202,37 +202,37 @@ exports[`Login component matches snapshot with loading 1`] = `
     class="center"
   >
     <div
-      class="ant-layout css-dev-only-do-not-override-2i2tap"
+      class="ant-layout css-dev-only-do-not-override-nllxry"
     >
       <main
-        class="ant-layout-content css-dev-only-do-not-override-2i2tap"
+        class="ant-layout-content css-dev-only-do-not-override-nllxry"
       >
         <div
           class="container"
         >
           <div
-            class="ant-row ant-row-center css-dev-only-do-not-override-2i2tap"
+            class="ant-row ant-row-center css-dev-only-do-not-override-nllxry"
           >
             <div
-              class="ant-col ant-col-20 ant-col-md-12 ant-col-lg-8 ant-col-xl-6 css-dev-only-do-not-override-2i2tap"
+              class="ant-col ant-col-20 ant-col-md-12 ant-col-lg-8 ant-col-xl-6 css-dev-only-do-not-override-nllxry"
             >
               <form
                 autocomplete="off"
-                class="ant-form ant-form-horizontal css-dev-only-do-not-override-2i2tap"
+                class="ant-form ant-form-horizontal css-dev-only-do-not-override-nllxry"
               >
                 <h1
-                  class="ant-typography css-dev-only-do-not-override-2i2tap"
+                  class="ant-typography css-dev-only-do-not-override-nllxry"
                 >
                   The Movie DB
                 </h1>
                 <div
-                  class="ant-form-item css-dev-only-do-not-override-2i2tap"
+                  class="ant-form-item css-dev-only-do-not-override-nllxry"
                 >
                   <div
-                    class="ant-row ant-form-item-row css-dev-only-do-not-override-2i2tap"
+                    class="ant-row ant-form-item-row css-dev-only-do-not-override-nllxry"
                   >
                     <div
-                      class="ant-col ant-form-item-control css-dev-only-do-not-override-2i2tap"
+                      class="ant-col ant-form-item-control css-dev-only-do-not-override-nllxry"
                     >
                       <div
                         class="ant-form-item-control-input"
@@ -241,7 +241,7 @@ exports[`Login component matches snapshot with loading 1`] = `
                           class="ant-form-item-control-input-content"
                         >
                           <span
-                            class="ant-input-affix-wrapper css-dev-only-do-not-override-2i2tap"
+                            class="ant-input-affix-wrapper css-dev-only-do-not-override-nllxry"
                           >
                             <span
                               class="ant-input-prefix"
@@ -269,7 +269,7 @@ exports[`Login component matches snapshot with loading 1`] = `
                             </span>
                             <input
                               aria-required="true"
-                              class="ant-input css-dev-only-do-not-override-2i2tap"
+                              class="ant-input css-dev-only-do-not-override-nllxry"
                               id="username"
                               placeholder="Username"
                               type="text"
@@ -282,13 +282,13 @@ exports[`Login component matches snapshot with loading 1`] = `
                   </div>
                 </div>
                 <div
-                  class="ant-form-item css-dev-only-do-not-override-2i2tap"
+                  class="ant-form-item css-dev-only-do-not-override-nllxry"
                 >
                   <div
-                    class="ant-row ant-form-item-row css-dev-only-do-not-override-2i2tap"
+                    class="ant-row ant-form-item-row css-dev-only-do-not-override-nllxry"
                   >
                     <div
-                      class="ant-col ant-form-item-control css-dev-only-do-not-override-2i2tap"
+                      class="ant-col ant-form-item-control css-dev-only-do-not-override-nllxry"
                     >
                       <div
                         class="ant-form-item-control-input"
@@ -297,7 +297,7 @@ exports[`Login component matches snapshot with loading 1`] = `
                           class="ant-form-item-control-input-content"
                         >
                           <span
-                            class="ant-input-affix-wrapper css-dev-only-do-not-override-2i2tap"
+                            class="ant-input-affix-wrapper css-dev-only-do-not-override-nllxry"
                           >
                             <span
                               class="ant-input-prefix"
@@ -325,7 +325,7 @@ exports[`Login component matches snapshot with loading 1`] = `
                             </span>
                             <input
                               aria-required="true"
-                              class="ant-input css-dev-only-do-not-override-2i2tap"
+                              class="ant-input css-dev-only-do-not-override-nllxry"
                               id="password"
                               placeholder="Password"
                               type="password"
@@ -338,13 +338,13 @@ exports[`Login component matches snapshot with loading 1`] = `
                   </div>
                 </div>
                 <div
-                  class="ant-form-item css-dev-only-do-not-override-2i2tap"
+                  class="ant-form-item css-dev-only-do-not-override-nllxry"
                 >
                   <div
-                    class="ant-row ant-form-item-row css-dev-only-do-not-override-2i2tap"
+                    class="ant-row ant-form-item-row css-dev-only-do-not-override-nllxry"
                   >
                     <div
-                      class="ant-col ant-form-item-control css-dev-only-do-not-override-2i2tap"
+                      class="ant-col ant-form-item-control css-dev-only-do-not-override-nllxry"
                     >
                       <div
                         class="ant-form-item-control-input"
@@ -353,7 +353,7 @@ exports[`Login component matches snapshot with loading 1`] = `
                           class="ant-form-item-control-input-content"
                         >
                           <button
-                            class="ant-btn css-dev-only-do-not-override-2i2tap ant-btn-primary ant-btn-loading"
+                            class="ant-btn css-dev-only-do-not-override-nllxry ant-btn-primary ant-btn-loading"
                             type="submit"
                           >
                             <span
@@ -391,14 +391,14 @@ exports[`Login component matches snapshot with loading 1`] = `
               </form>
             </div>
             <div
-              class="ant-col ant-col-24 css-dev-only-do-not-override-2i2tap"
+              class="ant-col ant-col-24 css-dev-only-do-not-override-nllxry"
             >
               <p
                 class="text-center"
               >
                 Don't have The Movie Database account? 
                 <a
-                  class="ant-typography css-dev-only-do-not-override-2i2tap"
+                  class="ant-typography css-dev-only-do-not-override-nllxry"
                   href="https://www.themoviedb.org/signup"
                   rel="noreferrer"
                   target="_blank"
