@@ -14,23 +14,24 @@ const initialState: SessionState = {
 }
 
 const sessionReducer = createReducer(initialState, builder => {
-  builder.addCase(logIn.pending, state => {
-    state.loading = true
-  })
-  builder.addCase(logIn.fulfilled, (state, action) => {
-    state.sessionId = action.payload as string
-    state.loading = false
-  })
-  builder.addCase(logIn.rejected, state => {
-    state.loading = false
-  })
-  builder.addCase(logOut.fulfilled, state => {
-    state.sessionId = ''
-    state.account = null
-  })
-  builder.addCase(fetchAccount.fulfilled, (state, action) => {
-    state.account = action.payload as IAccount
-  })
+  builder
+    .addCase(logIn.pending, state => {
+      state.loading = true
+    })
+    .addCase(logIn.fulfilled, (state, action) => {
+      state.sessionId = action.payload as string
+      state.loading = false
+    })
+    .addCase(logIn.rejected, state => {
+      state.loading = false
+    })
+    .addCase(logOut.fulfilled, state => {
+      state.sessionId = ''
+      state.account = null
+    })
+    .addCase(fetchAccount.fulfilled, (state, action) => {
+      state.account = action.payload as IAccount
+    })
 })
 
 export default sessionReducer

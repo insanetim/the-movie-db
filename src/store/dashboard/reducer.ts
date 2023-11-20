@@ -9,18 +9,19 @@ const initialState: DashboardState = {
 }
 
 const dashboardReducer = createReducer(initialState, builder => {
-  builder.addCase(fetchTrending.pending, state => {
-    state.data = null
-  })
-  builder.addCase(fetchTrending.fulfilled, (state, action) => {
-    state.data = action.payload
-  })
-  builder.addCase(fetchSearch.pending, state => {
-    state.data = null
-  })
-  builder.addCase(fetchSearch.fulfilled, (state, action) => {
-    state.data = action.payload
-  })
+  builder
+    .addCase(fetchTrending.pending, state => {
+      state.data = null
+    })
+    .addCase(fetchTrending.fulfilled, (state, action) => {
+      state.data = action.payload
+    })
+    .addCase(fetchSearch.pending, state => {
+      state.data = null
+    })
+    .addCase(fetchSearch.fulfilled, (state, action) => {
+      state.data = action.payload
+    })
 })
 
 export default dashboardReducer

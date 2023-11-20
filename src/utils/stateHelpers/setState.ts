@@ -3,7 +3,7 @@ import type { PayloadAction } from '@reduxjs/toolkit'
 import type { IState } from 'src/interfaces/global.interface'
 
 const setState = {
-  fulfilled: <T>(state: IState<T>, action: PayloadAction<any>) => {
+  fulfilled: <T>(state: IState<T>, action: PayloadAction<T>) => {
     state.loading = false
     state.data = action.payload
   },

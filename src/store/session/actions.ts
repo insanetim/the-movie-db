@@ -14,9 +14,9 @@ import type { IRequestToken, ISession, IUserData } from './types'
 import * as types from './constants'
 import { sessionIdSelector } from './selectors'
 
-const logIn = createAsyncThunk(
+const logIn = createAsyncThunk<string | undefined, IUserData>(
   types.logIn,
-  async function (userData: IUserData, { dispatch }) {
+  async function (userData, { dispatch }) {
     try {
       const {
         data: { request_token: requestToken }
@@ -52,10 +52,10 @@ const logIn = createAsyncThunk(
   }
 )
 
-const logOut = createAsyncThunk(
+const logOut = createAsyncThunk<void, undefined, { state: RootState }>(
   types.logOut,
   async function (_, { dispatch, getState }) {
-    const sessionId = sessionIdSelector(getState() as RootState)
+    const sessionId = sessionIdSelector(getState())
 
     try {
       await httpClient.request({
@@ -76,27 +76,28 @@ const logOut = createAsyncThunk(
   }
 )
 
-const fetchAccount = createAsyncThunk(
-  types.fetchAccount,
-  async function (_, { dispatch, getState }) {
-    const sessionId = sessionIdSelector(getState() as RootState)
+const fetchAccount = createAsyncThunk<
+  IAccount | undefined,
+  undefined,
+  { state: RootState }
+>(types.fetchAccount, async function (_, { dispatch, getState }) {
+  const sessionId = sessionIdSelector(getState())
 
-    try {
-      const { data } = await httpClient.request<IAccount>({
-        params: { session_id: sessionId },
-        url: routes.getAccountDetails
+  try {
+    const { data } = await httpClient.request<IAccount>({
+      params: { session_id: sessionId },
+      url: routes.getAccountDetails
+    })
+
+    return data
+  } catch (error) {
+    dispatch(
+      showNotification({
+        messageText: errorMessage(error),
+        messageType: NOTIFICATION_TYPE.ERROR
       })
-
-      return data
-    } catch (error) {
-      dispatch(
-        showNotification({
-          messageText: errorMessage(error),
-          messageType: NOTIFICATION_TYPE.ERROR
-        })
-      )
-    }
+    )
   }
-)
+})
 
 export { fetchAccount, logIn, logOut }

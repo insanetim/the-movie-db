@@ -1,3 +1,4 @@
+import type { IResponse } from './global.interface'
 import type { IMovie } from './movie.interface'
 
 export interface IList {
@@ -19,9 +20,4 @@ export interface IListDetail extends IList {
   total_results: number
 }
 
-export interface IListsList {
-  page: number
-  results: IList[]
-  total_pages: number
-  total_results: number
-}
+export type IListsList = IResponse<IList>

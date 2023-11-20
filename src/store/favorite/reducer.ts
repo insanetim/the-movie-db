@@ -12,9 +12,10 @@ const initialState: FavoriteState = {
 }
 
 const favoriteReducer = createReducer(initialState, builder => {
-  builder.addCase(fetchFavorite.pending, setState.pending)
-  builder.addCase(fetchFavorite.fulfilled, setState.fulfilled)
-  builder.addCase(fetchFavorite.rejected, setState.rejected)
+  builder
+    .addCase(fetchFavorite.pending, setState.pending)
+    .addCase(fetchFavorite.fulfilled, setState.fulfilled)
+    .addCase(fetchFavorite.rejected, setState.rejected)
 })
 
 export default favoriteReducer

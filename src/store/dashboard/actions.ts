@@ -9,36 +9,38 @@ import type { FetchSearchProps } from './types'
 
 import * as types from './constants'
 
-const fetchTrending = createAsyncThunk(
-  types.fetchTrending,
-  async function (page: string, { rejectWithValue }) {
-    try {
-      const { data } = await httpClient.request<IMoviesList>({
-        params: { page },
-        url: getTrending
-      })
+const fetchTrending = createAsyncThunk<
+  IMoviesList,
+  string,
+  { rejectValue: string }
+>(types.fetchTrending, async function (page, { rejectWithValue }) {
+  try {
+    const { data } = await httpClient.request<IMoviesList>({
+      params: { page },
+      url: getTrending
+    })
 
-      return data
-    } catch (error) {
-      return rejectWithValue(errorMessage(error))
-    }
+    return data
+  } catch (error) {
+    return rejectWithValue(errorMessage(error))
   }
-)
+})
 
-const fetchSearch = createAsyncThunk(
-  types.fetchSearch,
-  async function ({ page, query }: FetchSearchProps, { rejectWithValue }) {
-    try {
-      const { data } = await httpClient.request<IMoviesList>({
-        params: { page, query },
-        url: searchMovies
-      })
+const fetchSearch = createAsyncThunk<
+  IMoviesList,
+  FetchSearchProps,
+  { rejectValue: string }
+>(types.fetchSearch, async function ({ page, query }, { rejectWithValue }) {
+  try {
+    const { data } = await httpClient.request<IMoviesList>({
+      params: { page, query },
+      url: searchMovies
+    })
 
-      return data
-    } catch (error) {
-      return rejectWithValue(errorMessage(error))
-    }
+    return data
+  } catch (error) {
+    return rejectWithValue(errorMessage(error))
   }
-)
+})
 
 export { fetchSearch, fetchTrending }

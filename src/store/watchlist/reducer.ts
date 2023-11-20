@@ -12,9 +12,10 @@ const initialState: WatchlistState = {
 }
 
 const watchlistReducer = createReducer(initialState, builder => {
-  builder.addCase(fetchWatchlist.pending, setState.pending)
-  builder.addCase(fetchWatchlist.fulfilled, setState.fulfilled)
-  builder.addCase(fetchWatchlist.rejected, setState.rejected)
+  builder
+    .addCase(fetchWatchlist.pending, setState.pending)
+    .addCase(fetchWatchlist.fulfilled, setState.fulfilled)
+    .addCase(fetchWatchlist.rejected, setState.rejected)
 })
 
 export default watchlistReducer

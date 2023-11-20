@@ -1,4 +1,3 @@
-import type { IAccount } from 'src/interfaces/account.interface'
 import type {
   IList,
   IListDetail,
@@ -27,34 +26,34 @@ import { selectMovieById } from '../movie/selectors'
 import * as types from './constants'
 import { listsSelector } from './selectors'
 
-const fetchLists = createAsyncThunk(
-  types.fetchLists,
-  async function (page: string, { getState, rejectWithValue }) {
-    const sessionId = sessionIdSelector(getState() as RootState)
-    const { id: accountId } = accountSelector(
-      getState() as RootState
-    ) as IAccount
+const fetchLists = createAsyncThunk<
+  IListsList,
+  string,
+  { rejectValue: string; state: RootState }
+>(types.fetchLists, async function (page, { getState, rejectWithValue }) {
+  const sessionId = sessionIdSelector(getState())
+  const accountId = accountSelector(getState())!.id
 
-    try {
-      const { data } = await httpClient.request<IListsList>({
-        params: { page, session_id: sessionId },
-        url: routes.getCreatedLists(accountId)
-      })
+  try {
+    const { data } = await httpClient.request<IListsList>({
+      params: { page, session_id: sessionId },
+      url: routes.getCreatedLists(accountId)
+    })
 
-      return data
-    } catch (error) {
-      return rejectWithValue(errorMessage(error))
-    }
+    return data
+  } catch (error) {
+    return rejectWithValue(errorMessage(error))
   }
-)
+})
 
-const createList = createAsyncThunk(
+const createList = createAsyncThunk<
+  void,
+  CreateListProps,
+  { state: RootState }
+>(
   types.createList,
-  async function (
-    { listData, movieId }: CreateListProps,
-    { dispatch, getState }
-  ) {
-    const sessionId = sessionIdSelector(getState() as RootState)
+  async function ({ listData, movieId }, { dispatch, getState }) {
+    const sessionId = sessionIdSelector(getState())
 
     try {
       const { data } = await httpClient.request<CreateListResponse>({
@@ -83,10 +82,10 @@ const createList = createAsyncThunk(
   }
 )
 
-const deleteList = createAsyncThunk(
+const deleteList = createAsyncThunk<void, IList['id'], { state: RootState }>(
   types.deleteList,
-  async function (listId: IList['id'], { dispatch, getState }) {
-    const sessionId = sessionIdSelector(getState() as RootState)
+  async function (listId, { dispatch, getState }) {
+    const sessionId = sessionIdSelector(getState())
 
     try {
       await httpClient.request({
@@ -105,9 +104,13 @@ const deleteList = createAsyncThunk(
   }
 )
 
-const fetchListDetail = createAsyncThunk(
+const fetchListDetail = createAsyncThunk<
+  IListDetail,
+  FetchListDetailProps,
+  { rejectValue: string }
+>(
   types.fetchListDetail,
-  async function ({ listId, page }: FetchListDetailProps, { rejectWithValue }) {
+  async function ({ listId, page }, { rejectWithValue }) {
     try {
       const { data } = await httpClient.request<IListDetail>({
         params: { page },
@@ -121,10 +124,10 @@ const fetchListDetail = createAsyncThunk(
   }
 )
 
-const addToList = createAsyncThunk(
+const addToList = createAsyncThunk<void, AddToListProps, { state: RootState }>(
   types.addToList,
-  async function ({ listId, movieId }: AddToListProps, { dispatch, getState }) {
-    const sessionId = sessionIdSelector(getState() as RootState)
+  async function ({ listId, movieId }, { dispatch, getState }) {
+    const sessionId = sessionIdSelector(getState())
 
     try {
       await httpClient.request({
@@ -136,10 +139,10 @@ const addToList = createAsyncThunk(
 
       await dispatch(fetchLists('1'))
 
-      const movie = selectMovieById(getState() as RootState, movieId)
-      const movieTitle = movie!.title
-      const lists = listsSelector(getState() as RootState)
-      const listName = lists!.results.find(list => list.id === listId)!.name
+      const movieTitle = selectMovieById(getState(), movieId)!.title
+      const listName = listsSelector(getState())!.results.find(
+        list => list.id === listId
+      )!.name
 
       dispatch(
         showNotification({ messageText: listMessage(movieTitle, listName) })
@@ -155,13 +158,14 @@ const addToList = createAsyncThunk(
   }
 )
 
-const removeFromList = createAsyncThunk(
+const removeFromList = createAsyncThunk<
+  void,
+  RemoveFromListProps,
+  { state: RootState }
+>(
   types.removeFromList,
-  async function (
-    { listId, movieId }: RemoveFromListProps,
-    { dispatch, getState }
-  ) {
-    const sessionId = sessionIdSelector(getState() as RootState)
+  async function ({ listId, movieId }, { dispatch, getState }) {
+    const sessionId = sessionIdSelector(getState())
 
     try {
       await httpClient.request({

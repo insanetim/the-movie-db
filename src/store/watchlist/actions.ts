@@ -1,4 +1,3 @@
-import type { IAccount } from 'src/interfaces/account.interface'
 import type { IMoviesList } from 'src/interfaces/movie.interface'
 
 import { createAsyncThunk } from '@reduxjs/toolkit'
@@ -11,25 +10,24 @@ import type { RootState } from '../index'
 
 import * as types from './constants'
 
-const fetchWatchlist = createAsyncThunk(
-  types.fetchWatchlist,
-  async function (page: string, { getState, rejectWithValue }) {
-    const sessionId = sessionIdSelector(getState() as RootState)
-    const { id: accountId } = accountSelector(
-      getState() as RootState
-    ) as IAccount
+const fetchWatchlist = createAsyncThunk<
+  IMoviesList,
+  string,
+  { rejectValue: string; state: RootState }
+>(types.fetchWatchlist, async function (page, { getState, rejectWithValue }) {
+  const sessionId = sessionIdSelector(getState())
+  const accountId = accountSelector(getState())!.id
 
-    try {
-      const { data } = await httpClient.request<IMoviesList>({
-        params: { page, session_id: sessionId },
-        url: getWatchlist(accountId)
-      })
+  try {
+    const { data } = await httpClient.request<IMoviesList>({
+      params: { page, session_id: sessionId },
+      url: getWatchlist(accountId)
+    })
 
-      return data
-    } catch (error) {
-      return rejectWithValue(errorMessage(error))
-    }
+    return data
+  } catch (error) {
+    return rejectWithValue(errorMessage(error))
   }
-)
+})
 
 export { fetchWatchlist }

@@ -20,41 +20,42 @@ const movieGlobalizedSelectors = movieAdapter.getSelectors<RootState>(
 )
 
 const movieReducer = createReducer(movieInitialState, builder => {
-  builder.addCase(fetchMovieDetail.fulfilled, (state, action) => {
-    movieAdapter.addOne(state, action.payload)
-  })
-  builder.addCase(changeMovieInFavorite.pending, (state, action) => {
-    const movie = movieAdapter
-      .getSelectors()
-      .selectById(state, action.meta.arg.movieId)
-    if (movie) {
-      movieAdapter.updateOne(state, {
-        changes: {
-          accountStates: {
-            ...movie.accountStates,
-            favorite: action.meta.arg.inFavorite
-          }
-        },
-        id: action.meta.arg.movieId
-      })
-    }
-  })
-  builder.addCase(changeMovieInWatchlist.pending, (state, action) => {
-    const movie = movieAdapter
-      .getSelectors()
-      .selectById(state, action.meta.arg.movieId)
-    if (movie) {
-      movieAdapter.updateOne(state, {
-        changes: {
-          accountStates: {
-            ...movie.accountStates,
-            watchlist: action.meta.arg.inWatchlist
-          }
-        },
-        id: action.meta.arg.movieId
-      })
-    }
-  })
+  builder
+    .addCase(fetchMovieDetail.fulfilled, (state, action) => {
+      movieAdapter.addOne(state, action.payload)
+    })
+    .addCase(changeMovieInFavorite.pending, (state, action) => {
+      const movie = movieAdapter
+        .getSelectors()
+        .selectById(state, action.meta.arg.movieId)
+      if (movie) {
+        movieAdapter.updateOne(state, {
+          changes: {
+            accountStates: {
+              ...movie.accountStates,
+              favorite: action.meta.arg.inFavorite
+            }
+          },
+          id: action.meta.arg.movieId
+        })
+      }
+    })
+    .addCase(changeMovieInWatchlist.pending, (state, action) => {
+      const movie = movieAdapter
+        .getSelectors()
+        .selectById(state, action.meta.arg.movieId)
+      if (movie) {
+        movieAdapter.updateOne(state, {
+          changes: {
+            accountStates: {
+              ...movie.accountStates,
+              watchlist: action.meta.arg.inWatchlist
+            }
+          },
+          id: action.meta.arg.movieId
+        })
+      }
+    })
 })
 
 export { movieGlobalizedSelectors, movieInitialState }

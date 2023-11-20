@@ -1,3 +1,5 @@
+import type { IResponse } from './global.interface'
+
 export interface IMovie {
   adult: boolean
   backdrop_path: null | string
@@ -118,9 +120,4 @@ export interface IMovieDetailExtended extends IMovieDetail {
   images: IBackdrop[]
 }
 
-export interface IMoviesList {
-  page: number
-  results: IMovie[]
-  total_pages: number
-  total_results: number
-}
+export type IMoviesList = IResponse<IMovie>

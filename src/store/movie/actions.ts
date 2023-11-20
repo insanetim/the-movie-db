@@ -1,4 +1,3 @@
-import type { IAccount } from 'src/interfaces/account.interface'
 import type {
   IMovie,
   IMovieAccountStates,
@@ -24,10 +23,14 @@ import type {
 import { showNotification } from '../app/actions'
 import * as types from './constants'
 
-const fetchMovieDetail = createAsyncThunk(
+const fetchMovieDetail = createAsyncThunk<
+  IMovieDetailExtended,
+  IMovie['id'],
+  { rejectValue: string; state: RootState }
+>(
   types.fetchMovieDetail,
-  async function (movieId: IMovie['id'], { getState, rejectWithValue }) {
-    const sessionId = sessionIdSelector(getState() as RootState)
+  async function (movieId, { getState, rejectWithValue }) {
+    const sessionId = sessionIdSelector(getState())
 
     try {
       const { data } = await httpClient.request<IMovieDetail>({
@@ -59,16 +62,15 @@ const fetchMovieDetail = createAsyncThunk(
   }
 )
 
-const changeMovieInFavorite = createAsyncThunk(
+const changeMovieInFavorite = createAsyncThunk<
+  void,
+  ChangeMovieInFavoriteProps,
+  { state: RootState }
+>(
   types.changeMovieInFavorite,
-  async function (
-    { inFavorite, movieId }: ChangeMovieInFavoriteProps,
-    { dispatch, getState }
-  ) {
-    const sessionId = sessionIdSelector(getState() as RootState)
-    const { id: accountId } = accountSelector(
-      getState() as RootState
-    ) as IAccount
+  async function ({ inFavorite, movieId }, { dispatch, getState }) {
+    const sessionId = sessionIdSelector(getState())
+    const accountId = accountSelector(getState())!.id
 
     try {
       await httpClient.request({
@@ -88,16 +90,15 @@ const changeMovieInFavorite = createAsyncThunk(
   }
 )
 
-const changeMovieInWatchlist = createAsyncThunk(
+const changeMovieInWatchlist = createAsyncThunk<
+  void,
+  ChangeMovieInWatchlistProps,
+  { state: RootState }
+>(
   types.changeMovieInWatchlist,
-  async function (
-    { inWatchlist, movieId }: ChangeMovieInWatchlistProps,
-    { dispatch, getState }
-  ) {
-    const sessionId = sessionIdSelector(getState() as RootState)
-    const { id: accountId } = accountSelector(
-      getState() as RootState
-    ) as IAccount
+  async function ({ inWatchlist, movieId }, { dispatch, getState }) {
+    const sessionId = sessionIdSelector(getState())
+    const accountId = accountSelector(getState())!.id
 
     try {
       await httpClient.request({
