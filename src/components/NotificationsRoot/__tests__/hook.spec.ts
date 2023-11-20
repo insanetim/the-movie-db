@@ -23,8 +23,6 @@ describe('NotificationsRoot useContainer hook', () => {
       result.current.hideNotification('test/id')
     })
 
-    expect(dispatch).toHaveBeenCalledWith(
-      hideNotificationAction({ id: 'test/id' })
-    )
+    expect(dispatch).toHaveBeenCalledWith(hideNotificationAction('test/id'))
   })
 })

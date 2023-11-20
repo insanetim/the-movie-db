@@ -9,7 +9,7 @@ const useContainer = (): NotificationsRootHook => {
   const notifications = useAppSelector(notificationsSelector)
 
   const hideNotification = (id: string) => {
-    dispatch(hideNotificationAction({ id }))
+    dispatch(hideNotificationAction(id))
   }
 
   return { hideNotification, notifications }

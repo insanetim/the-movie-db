@@ -1,4 +1,4 @@
-import { assoc, assocPath } from 'ramda'
+import { assoc, assocPath, mergeDeepRight } from 'ramda'
 import { NOTIFICATION_DURATION, NOTIFICATION_TYPE } from 'src/constants/app'
 
 import type { AppState } from '../types'
@@ -40,7 +40,7 @@ describe('appReducer', () => {
 
   it('should handle hideNotification', () => {
     const action = {
-      payload: { id: 'test/id' },
+      payload: 'test/id',
       type: hideNotification.toString()
     }
     const initialState = {
@@ -71,6 +71,23 @@ describe('appReducer', () => {
       type: showModal.toString()
     }
     const expectedState = assoc('modal', action.payload, initialState)
+
+    expect(appReducer(initialState, action)).toEqual(expectedState)
+  })
+
+  it('should handle showModal without modalProps', () => {
+    const action = {
+      payload: {
+        modalType: 'test/modalType'
+      },
+      type: showModal.toString()
+    }
+    const expectedState = mergeDeepRight(initialState, {
+      modal: {
+        modalProps: null,
+        modalType: 'test/modalType'
+      }
+    })
 
     expect(appReducer(initialState, action)).toEqual(expectedState)
   })

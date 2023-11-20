@@ -1,4 +1,8 @@
-import { appSlice } from './reducer'
+import {
+  hideModal,
+  hideNotification,
+  showModal,
+  showNotification
+} from './reducer'
 
-export const { hideModal, hideNotification, showModal, showNotification } =
-  appSlice.actions
+export { hideModal, hideNotification, showModal, showNotification }

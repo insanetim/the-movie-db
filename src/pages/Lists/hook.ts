@@ -37,7 +37,10 @@ const useContainer = (): ListsHook => {
     }
 
     dispatch(
-      showModal({ modalProps: { onSuccess }, modalType: 'MODAL_CREATE_LIST' })
+      showModal({
+        modalProps: { onSuccess },
+        modalType: 'MODAL_CREATE_LIST'
+      })
     )
 
     return onSuccess
