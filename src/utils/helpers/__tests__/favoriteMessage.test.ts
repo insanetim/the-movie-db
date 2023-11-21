@@ -1,11 +1,15 @@
 import favoriteMessage from '../favoriteMessage'
 
 describe('favoriteMessage', () => {
-  it('returns correct value', () => {
-    expect(favoriteMessage('Movie', true)).toBe('Movie added to Favorite')
+  it('should return correct value', () => {
+    const result = favoriteMessage('Movie', true)
+
+    expect(result).toBe('Movie added to Favorite')
   })
 
-  it('returns correct value', () => {
-    expect(favoriteMessage('Movie', false)).toBe('Movie removed from Favorite')
+  it('should return correct value', () => {
+    const result = favoriteMessage('Movie', false)
+
+    expect(result).toBe('Movie removed from Favorite')
   })
 })

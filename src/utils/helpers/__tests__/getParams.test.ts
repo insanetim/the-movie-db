@@ -1,28 +1,33 @@
 import getParams from '../getParams'
 
 describe('getParams', () => {
-  it('returns correct value', () => {
-    expect(getParams({})).toEqual({})
+  it('should return correct value', () => {
+    const result = getParams({})
+
+    expect(result).toEqual({})
   })
 
-  it('returns correct value', () => {
-    expect(getParams({ page: '1', search: '' })).toEqual({})
+  it('should return correct value', () => {
+    const result = getParams({ page: '1', search: '' })
+
+    expect(result).toEqual({})
   })
 
-  it('returns correct value', () => {
-    expect(getParams({ search: 'test/search' })).toEqual({
-      search: 'test/search'
-    })
+  it('should return correct value', () => {
+    const result = getParams({ search: 'test/search' })
+
+    expect(result).toEqual({ search: 'test/search' })
   })
 
-  it('returns correct value', () => {
-    expect(getParams({ page: '3' })).toEqual({ page: '3' })
+  it('should return correct value', () => {
+    const result = getParams({ page: '3' })
+
+    expect(result).toEqual({ page: '3' })
   })
 
-  it('returns correct value', () => {
-    expect(getParams({ page: '3', search: 'test/search' })).toEqual({
-      page: '3',
-      search: 'test/search'
-    })
+  it('should return correct value', () => {
+    const result = getParams({ page: '3', search: 'test/search' })
+
+    expect(result).toEqual({ page: '3', search: 'test/search' })
   })
 })

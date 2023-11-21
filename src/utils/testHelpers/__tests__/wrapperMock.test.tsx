@@ -3,7 +3,7 @@ import { render } from '@testing-library/react'
 import Wrapper from '../wrapperMock'
 
 describe('mockWrapper component', () => {
-  it('matches snapshot', () => {
+  it('should match snapshot', () => {
     const { asFragment } = render(
       <Wrapper>
         <div>test/children</div>

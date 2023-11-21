@@ -1,7 +1,9 @@
 import listMessage from '../listMessage'
 
 describe('listMessage', () => {
-  it('returns correct value', () => {
-    expect(listMessage('Movie', 'list')).toBe('Movie added to list')
+  it('should return correct value', () => {
+    const result = listMessage('Movie', 'list')
+
+    expect(result).toBe('Movie added to list')
   })
 })

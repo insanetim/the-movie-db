@@ -1,13 +1,15 @@
 import watchlistMessage from '../watchlistMessage'
 
 describe('watchlistMessage', () => {
-  it('returns correct value', () => {
-    expect(watchlistMessage('Movie', true)).toBe('Movie added to Watchlist')
+  it('should return correct value', () => {
+    const result = watchlistMessage('Movie', true)
+
+    expect(result).toBe('Movie added to Watchlist')
   })
 
-  it('returns correct value', () => {
-    expect(watchlistMessage('Movie', false)).toBe(
-      'Movie removed from Watchlist'
-    )
+  it('should return correct value', () => {
+    const result = watchlistMessage('Movie', false)
+
+    expect(result).toBe('Movie removed from Watchlist')
   })
 })

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`mockWrapper component matches snapshot 1`] = `
+exports[`mockWrapper component should match snapshot 1`] = `
 <DocumentFragment>
   <div>
     test/children

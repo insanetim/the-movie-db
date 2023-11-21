@@ -65,6 +65,8 @@ typings/
 # WebShtorm ide
 .idea/
 
+# vscode
+.vscode/
 
 # End of https://www.gitignore.io/api/node
 

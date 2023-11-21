@@ -1,15 +1,17 @@
 import errorMessage from '../errorMessage'
 
 describe('errorMessage', () => {
-  it('returns correct value', () => {
-    const error = { response: { data: { status_message: 'test/message' } } }
+  it('should return default value', () => {
+    const error = {}
+    const result = errorMessage(error)
 
-    expect(errorMessage(error)).toBe('test/message')
+    expect(result).toBe('Something went wrong!')
   })
 
-  it('returns default value', () => {
-    const error = {}
+  it('should return correct value', () => {
+    const error = { response: { data: { status_message: 'test/message' } } }
+    const result = errorMessage(error)
 
-    expect(errorMessage(error)).toBe('Something went wrong!')
+    expect(result).toBe('test/message')
   })
 })
