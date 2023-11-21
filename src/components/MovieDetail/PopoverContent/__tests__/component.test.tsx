@@ -2,9 +2,8 @@ import { fireEvent, render } from '@testing-library/react'
 import { mockList } from 'src/__mocks__/mockList'
 import Wrapper from 'src/utils/testHelpers/wrapperMock'
 
-import type { PopoverContentHook, PopoverContentProps } from '../types'
-
 import PopoverContent from '../component'
+import { PopoverContentHook, PopoverContentProps } from '../types'
 
 const mockedHookData: PopoverContentHook = {
   handleAddToList: jest.fn(),

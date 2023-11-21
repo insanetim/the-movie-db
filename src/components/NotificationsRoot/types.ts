@@ -1,4 +1,4 @@
-import type { INotification } from 'src/store/app/types'
+import { INotification } from 'src/store/app/types'
 
 export interface NotificationsRootHook {
   hideNotification: (id: string) => void

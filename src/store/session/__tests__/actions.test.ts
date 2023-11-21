@@ -4,6 +4,7 @@ import { NOTIFICATION_TYPE } from 'src/constants/app'
 import httpClient from 'src/lib/api/httpClient'
 import * as routes from 'src/lib/apiRoutes'
 import { showNotification } from 'src/store/app/actions'
+import * as sessionSelectors from 'src/store/session/selectors'
 
 import { fetchAccount, logIn, logOut } from '../actions'
 
@@ -12,14 +13,13 @@ jest.mock<typeof import('@reduxjs/toolkit')>('@reduxjs/toolkit', () => ({
   nanoid: jest.fn(() => 'test/id')
 }))
 
-jest.mock('src/store/session/selectors', () => ({
-  sessionIdSelector: jest.fn(() => 'session_id')
-}))
-
 describe('session actions', () => {
   const requestSpy = jest.spyOn(httpClient, 'request')
   const cookiesSetSpy = jest.spyOn(Cookies, 'set')
   const cookiesRemoveSpy = jest.spyOn(Cookies, 'remove')
+  jest
+    .spyOn(sessionSelectors, 'sessionIdSelector')
+    .mockReturnValue('session_id')
   const errorNotification = showNotification({
     messageText: 'Something went wrong!',
     messageType: NOTIFICATION_TYPE.ERROR
@@ -30,7 +30,7 @@ describe('session actions', () => {
       password: 'test/password',
       username: 'test/username'
     }
-    const action = logIn(userData)
+    const thunk = logIn(userData)
 
     const requestTokenRequest = { url: routes.createRequestToken }
     const requestTokenResponse = {
@@ -57,7 +57,8 @@ describe('session actions', () => {
         .mockResolvedValueOnce(requestTokenResponse)
         .mockResolvedValueOnce(sessionResponse)
 
-      const result = await action(dispatch, getState, undefined)
+      const result = await thunk(dispatch, getState, undefined)
+      const { calls } = dispatch.mock
 
       expect(requestSpy).toHaveBeenCalledTimes(3)
       expect(requestSpy).toHaveBeenNthCalledWith(1, requestTokenRequest)
@@ -67,20 +68,28 @@ describe('session actions', () => {
         'tmdb.session_id',
         sessionResponse.data.session_id
       )
+      expect(calls).toHaveLength(2)
+      expect(calls[0][0].type).toBe(logIn.pending.type)
+      expect(calls[1][0].type).toBe(logIn.fulfilled.type)
       expect(result.payload).toEqual(sessionResponse.data.session_id)
     })
 
     it('should handle failure', async () => {
       requestSpy.mockRejectedValueOnce('Something went wrong!')
 
-      await action(dispatch, getState, undefined)
+      await thunk(dispatch, getState, undefined)
+      const { calls } = dispatch.mock
 
+      expect(calls).toHaveLength(3)
+      expect(calls[0][0].type).toBe(logIn.pending.type)
+      expect(calls[1][0].type).toBe(showNotification.type)
+      expect(calls[2][0].type).toBe(logIn.fulfilled.type)
       expect(dispatch).toHaveBeenCalledWith(errorNotification)
     })
   })
 
   describe('logOut', () => {
-    const action = logOut()
+    const thunk = logOut()
 
     const request = {
       data: { session_id: 'session_id' },
@@ -92,24 +101,33 @@ describe('session actions', () => {
     it('should handle success', async () => {
       requestSpy.mockResolvedValueOnce(response)
 
-      await action(dispatch, getState, undefined)
+      await thunk(dispatch, getState, undefined)
+      const { calls } = dispatch.mock
 
       expect(requestSpy).toHaveBeenCalledTimes(1)
       expect(requestSpy).toHaveBeenCalledWith(request)
       expect(cookiesRemoveSpy).toHaveBeenCalledWith('tmdb.session_id')
+      expect(calls).toHaveLength(2)
+      expect(calls[0][0].type).toBe(logOut.pending.type)
+      expect(calls[1][0].type).toBe(logOut.fulfilled.type)
     })
 
     it('should handle failure', async () => {
       requestSpy.mockRejectedValueOnce('Something went wrong!')
 
-      await action(dispatch, getState, undefined)
+      await thunk(dispatch, getState, undefined)
+      const { calls } = dispatch.mock
 
+      expect(calls).toHaveLength(3)
+      expect(calls[0][0].type).toBe(logOut.pending.type)
+      expect(calls[1][0].type).toBe(showNotification.type)
+      expect(calls[2][0].type).toBe(logOut.fulfilled.type)
       expect(dispatch).toHaveBeenCalledWith(errorNotification)
     })
   })
 
   describe('fetchAccount', () => {
-    const action = fetchAccount()
+    const thunk = fetchAccount()
 
     const request = {
       params: { session_id: 'session_id' },
@@ -120,18 +138,27 @@ describe('session actions', () => {
     it('should handle success', async () => {
       requestSpy.mockResolvedValueOnce(response)
 
-      const result = await action(dispatch, getState, undefined)
+      const result = await thunk(dispatch, getState, undefined)
+      const { calls } = dispatch.mock
 
       expect(requestSpy).toHaveBeenCalledTimes(1)
       expect(requestSpy).toHaveBeenCalledWith(request)
+      expect(calls).toHaveLength(2)
+      expect(calls[0][0].type).toBe(fetchAccount.pending.type)
+      expect(calls[1][0].type).toBe(fetchAccount.fulfilled.type)
       expect(result.payload).toEqual(response.data)
     })
 
     it('should handle failure', async () => {
       requestSpy.mockRejectedValueOnce('Something went wrong!')
 
-      await action(dispatch, getState, undefined)
+      await thunk(dispatch, getState, undefined)
+      const { calls } = dispatch.mock
 
+      expect(calls).toHaveLength(3)
+      expect(calls[0][0].type).toBe(fetchAccount.pending.type)
+      expect(calls[1][0].type).toBe(showNotification.type)
+      expect(calls[2][0].type).toBe(fetchAccount.fulfilled.type)
       expect(dispatch).toHaveBeenCalledWith(errorNotification)
     })
   })

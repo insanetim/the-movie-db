@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom'
 
-import type { MovieItemHook, MovieItemHookProps } from './types'
+import { MovieItemHook, MovieItemHookProps } from './types'
 
 const useContainer = ({ movieId }: MovieItemHookProps): MovieItemHook => {
   const navigate = useNavigate()

@@ -1,8 +1,7 @@
 import { act, renderHook } from '@testing-library/react'
 import { dispatch } from 'src/__mocks__/react-redux'
 
-import type { useUpdatePageProps } from '../useUpdatePage'
-
+import { useUpdatePageProps } from '../useUpdatePage'
 import useUpdatePage from '../useUpdatePage'
 
 describe('useUpdatePage', () => {

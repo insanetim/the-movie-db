@@ -1,5 +1,5 @@
-import type { FormInstance, ModalProps } from 'antd'
-import type { IMovie } from 'src/interfaces/movie.interface'
+import { FormInstance, ModalProps } from 'antd'
+import { IMovie } from 'src/interfaces/movie.interface'
 
 export interface ModalCreateListProps extends ModalProps {
   movieId?: IMovie['id']

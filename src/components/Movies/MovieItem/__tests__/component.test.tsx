@@ -3,9 +3,8 @@ import { mergeDeepRight } from 'ramda'
 import { mockMovie } from 'src/__mocks__/mockMovie'
 import Wrapper from 'src/utils/testHelpers/wrapperMock'
 
-import type { MovieItemHook } from '../types'
-
 import MovieItem from '../component'
+import { MovieItemHook } from '../types'
 
 const mockedHookData: MovieItemHook = {
   handleClick: jest.fn()

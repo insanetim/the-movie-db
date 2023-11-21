@@ -1,8 +1,7 @@
 import { createReducer } from '@reduxjs/toolkit'
 
-import type { DashboardState } from './types'
-
 import { fetchSearch, fetchTrending } from './actions'
+import { DashboardState } from './types'
 
 const initialState: DashboardState = {
   data: null

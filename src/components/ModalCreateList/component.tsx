@@ -1,8 +1,7 @@
 import { Form, Input, Modal } from 'antd'
 
-import type { ModalCreateListProps } from './types'
-
 import useContainer from './hook'
+import { ModalCreateListProps } from './types'
 
 const ModalCreateList: React.FC<ModalCreateListProps> = ({
   movieId,

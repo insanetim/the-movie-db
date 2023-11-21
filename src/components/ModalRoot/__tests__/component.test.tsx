@@ -1,9 +1,8 @@
 import { render } from '@testing-library/react'
 import Wrapper from 'src/utils/testHelpers/wrapperMock'
 
-import type { ModalRootHook } from '../types'
-
 import ModalRoot from '../component'
+import { ModalRootHook } from '../types'
 
 const mockedHookData: ModalRootHook = {
   modalProps: null,

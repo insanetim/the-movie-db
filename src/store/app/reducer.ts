@@ -1,7 +1,7 @@
-import { type PayloadAction, createSlice, nanoid } from '@reduxjs/toolkit'
+import { PayloadAction, createSlice, nanoid } from '@reduxjs/toolkit'
 import { NOTIFICATION_DURATION, NOTIFICATION_TYPE } from 'src/constants/app'
 
-import type { AppState } from './types'
+import { AppState } from './types'
 
 const initialState: AppState = {
   modal: {

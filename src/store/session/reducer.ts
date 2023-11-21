@@ -1,11 +1,9 @@
-import type { IAccount } from 'src/interfaces/account.interface'
-
 import { createReducer } from '@reduxjs/toolkit'
 import Cookies from 'js-cookie'
-
-import type { SessionState } from './types'
+import { IAccount } from 'src/interfaces/account.interface'
 
 import { fetchAccount, logIn, logOut } from './actions'
+import { SessionState } from './types'
 
 const initialState: SessionState = {
   account: null,

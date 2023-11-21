@@ -1,9 +1,8 @@
 import { Button } from 'antd'
 import { isNotNil } from 'ramda'
 
-import type { PopoverContentProps } from './types'
-
 import useContainer from './hook'
+import { PopoverContentProps } from './types'
 
 const PopoverContent: React.FC<PopoverContentProps> = props => {
   const { handleAddToList, handleAddToNewList, lists } = useContainer(props)

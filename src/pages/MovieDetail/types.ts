@@ -1,4 +1,4 @@
-import type { IMovieDetailExtended } from 'src/interfaces/movie.interface'
+import { IMovieDetailExtended } from 'src/interfaces/movie.interface'
 
 export interface MovieDetailHook {
   error: null | string

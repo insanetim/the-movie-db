@@ -1,5 +1,5 @@
-import type { IListDetail } from 'src/interfaces/list.interface'
-import type { IMovie } from 'src/interfaces/movie.interface'
+import { IListDetail } from 'src/interfaces/list.interface'
+import { IMovie } from 'src/interfaces/movie.interface'
 
 export interface ListDetailHook {
   error: null | string

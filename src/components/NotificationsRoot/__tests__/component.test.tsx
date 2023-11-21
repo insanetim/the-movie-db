@@ -1,9 +1,8 @@
 import { render } from '@testing-library/react'
 import mockNotification from 'src/__mocks__/mockNotification'
 
-import type { NotificationsRootHook } from '../types'
-
 import NotificationsRoot from '../component'
+import { NotificationsRootHook } from '../types'
 
 const mockedHookData: NotificationsRootHook = {
   hideNotification: jest.fn(),

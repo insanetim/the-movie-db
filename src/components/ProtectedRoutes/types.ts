@@ -1,4 +1,4 @@
-import type { Location } from 'react-router-dom'
+import { Location } from 'react-router-dom'
 
 export interface ProtectedRoutesHook {
   location: Location

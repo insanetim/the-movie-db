@@ -6,7 +6,7 @@ import { fetchSearch } from 'src/store/dashboard/actions'
 import { dashboardMoviesSelector } from 'src/store/dashboard/selectors'
 import getParams from 'src/utils/helpers/getParams'
 
-import type { SearchResultHook, SearchResultHookProps } from './types'
+import { SearchResultHook, SearchResultHookProps } from './types'
 
 const useContainer = ({ query }: SearchResultHookProps): SearchResultHook => {
   const movies = useAppSelector(dashboardMoviesSelector)

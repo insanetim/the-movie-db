@@ -1,6 +1,6 @@
 import { Empty as AntdEmpty } from 'antd'
 
-import type { EmptyProps } from './types'
+import { EmptyProps } from './types'
 
 const Empty: React.FC<EmptyProps> = ({ description = 'No results' }) => (
   <AntdEmpty

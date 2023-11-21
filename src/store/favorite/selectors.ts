@@ -1,4 +1,4 @@
-import type { RootState } from '../index'
+import { RootState } from '../index'
 
 const favoriteMoviesSelector = (state: RootState) => {
   return state.favorite.data

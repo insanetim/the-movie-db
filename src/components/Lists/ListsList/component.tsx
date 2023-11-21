@@ -1,8 +1,7 @@
 import { Col, Row } from 'antd'
 
-import type { ListsListProps } from './types'
-
 import ListItem from '../ListItem'
+import { ListsListProps } from './types'
 
 const ListsList: React.FC<ListsListProps> = ({ lists }) => {
   return (

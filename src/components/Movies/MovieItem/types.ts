@@ -1,4 +1,4 @@
-import type { IMovie } from 'src/interfaces/movie.interface'
+import { IMovie } from 'src/interfaces/movie.interface'
 
 export interface MovieItemProps {
   handleMovieDelete?: (

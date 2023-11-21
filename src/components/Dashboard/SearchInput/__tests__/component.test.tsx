@@ -1,8 +1,7 @@
 import { render } from '@testing-library/react'
 
-import type { SearchInputHook } from '../types'
-
 import SearchInput from '../component'
+import { SearchInputHook } from '../types'
 
 const mockedHookData: SearchInputHook = {
   handleChange: jest.fn(),

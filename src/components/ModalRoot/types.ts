@@ -1,4 +1,4 @@
-import type MODAL_COMPONENTS from './modalComponents'
+import MODAL_COMPONENTS from './modalComponents'
 
 type ModalsMap = typeof MODAL_COMPONENTS
 export type ModalTypes = Extract<keyof ModalsMap, string>

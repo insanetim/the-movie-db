@@ -1,4 +1,4 @@
-import type { IMoviesList } from 'src/interfaces/movie.interface'
+import { IMoviesList } from 'src/interfaces/movie.interface'
 
 export interface SearchResultProps {
   query: string

@@ -1,4 +1,4 @@
-import type { IAccount } from 'src/interfaces/account.interface'
+import { IAccount } from 'src/interfaces/account.interface'
 
 export interface IUserData {
   password: string

@@ -4,7 +4,7 @@ import { useAppDispatch, useAppSelector } from 'src/hooks/useRedux'
 import { fetchAccount, logOut } from 'src/store/session/actions'
 import { accountSelector } from 'src/store/session/selectors'
 
-import type { HeaderHook } from './types'
+import { HeaderHook } from './types'
 
 const useContainer = (): HeaderHook => {
   const dispatch = useAppDispatch()

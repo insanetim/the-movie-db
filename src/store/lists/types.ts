@@ -1,11 +1,7 @@
-import type { ListData } from 'src/components/ModalCreateList/types'
-import type { IState } from 'src/interfaces/global.interface'
-import type {
-  IList,
-  IListDetail,
-  IListsList
-} from 'src/interfaces/list.interface'
-import type { IMovie } from 'src/interfaces/movie.interface'
+import { ListData } from 'src/components/ModalCreateList/types'
+import { IState } from 'src/interfaces/global.interface'
+import { IList, IListDetail, IListsList } from 'src/interfaces/list.interface'
+import { IMovie } from 'src/interfaces/movie.interface'
 
 export interface CreateListProps {
   listData: ListData

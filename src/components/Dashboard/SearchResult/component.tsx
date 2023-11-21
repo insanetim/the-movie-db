@@ -5,9 +5,8 @@ import Error from 'src/components/UI/Error'
 import Loading from 'src/components/UI/Loading'
 import Pagination from 'src/components/UI/Pagination'
 
-import type { SearchResultProps } from './types'
-
 import useContainer from './hook'
+import { SearchResultProps } from './types'
 
 const SearchResult: React.FC<SearchResultProps> = ({ query }) => {
   const { error, handlePagination, loading, movies } = useContainer({ query })

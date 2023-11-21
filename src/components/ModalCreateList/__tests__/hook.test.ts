@@ -1,6 +1,5 @@
-import type { FormInstance } from 'antd'
-
 import { act, renderHook } from '@testing-library/react'
+import { FormInstance } from 'antd'
 import { dispatch } from 'src/__mocks__/react-redux'
 import { hideModal } from 'src/store/app/actions'
 import { createList } from 'src/store/lists/actions'

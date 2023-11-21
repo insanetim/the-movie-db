@@ -1,10 +1,9 @@
-import type { IMovie } from 'src/interfaces/movie.interface'
-
 import { Modal } from 'antd'
 import { MouseEvent, useEffect } from 'react'
 import { useNavigate, useParams, useSearchParams } from 'react-router-dom'
 import { useAppDispatch, useAppSelector } from 'src/hooks/useRedux'
 import useUpdatePage from 'src/hooks/useUpdatePage'
+import { IMovie } from 'src/interfaces/movie.interface'
 import {
   deleteList,
   fetchListDetail,
@@ -17,7 +16,7 @@ import {
 } from 'src/store/lists/selectors'
 import getParams from 'src/utils/helpers/getParams'
 
-import type { ListDetailHook } from './types'
+import { ListDetailHook } from './types'
 
 const useContainer = (): ListDetailHook => {
   const { listId = '' } = useParams()

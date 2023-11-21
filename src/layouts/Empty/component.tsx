@@ -1,6 +1,6 @@
 import { Layout } from 'antd'
 
-import type { EmptyLayoutProps } from './types'
+import { EmptyLayoutProps } from './types'
 
 const EmptyLayout: React.FC<EmptyLayoutProps> = ({ children }) => {
   return (

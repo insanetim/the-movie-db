@@ -1,7 +1,6 @@
-import type { SetURLSearchParams } from 'react-router-dom'
-
 import { AsyncThunkAction, Dispatch } from '@reduxjs/toolkit'
 import { isNotNil, max } from 'ramda'
+import { SetURLSearchParams } from 'react-router-dom'
 import getParams from 'src/utils/helpers/getParams'
 
 import { useAppDispatch } from './useRedux'

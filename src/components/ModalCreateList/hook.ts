@@ -3,7 +3,7 @@ import { useAppDispatch } from 'src/hooks/useRedux'
 import { hideModal } from 'src/store/app/actions'
 import { createList } from 'src/store/lists/actions'
 
-import type {
+import {
   ListData,
   ModalCreateListHook,
   ModalCreateListHookProps

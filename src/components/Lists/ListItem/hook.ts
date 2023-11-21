@@ -1,13 +1,12 @@
-import type { MouseEvent } from 'react'
-
 import { Modal } from 'antd'
+import { MouseEvent } from 'react'
 import { useNavigate, useSearchParams } from 'react-router-dom'
 import { useAppDispatch, useAppSelector } from 'src/hooks/useRedux'
 import useUpdatePage from 'src/hooks/useUpdatePage'
 import { deleteList, fetchLists } from 'src/store/lists/actions'
 import { listsSelector } from 'src/store/lists/selectors'
 
-import type { ListItemHook, ListItemHookProps } from './types'
+import { ListItemHook, ListItemHookProps } from './types'
 
 const useContainer = ({ listId }: ListItemHookProps): ListItemHook => {
   const navigate = useNavigate()

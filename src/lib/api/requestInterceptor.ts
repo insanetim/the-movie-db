@@ -1,5 +1,4 @@
-import type { InternalAxiosRequestConfig } from 'axios'
-
+import { InternalAxiosRequestConfig } from 'axios'
 import { ACCESS_TOKEN_AUTH } from 'src/constants/app'
 
 const requestInterceptor = (

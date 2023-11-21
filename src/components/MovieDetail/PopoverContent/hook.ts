@@ -1,11 +1,10 @@
-import type { IList } from 'src/interfaces/list.interface'
-
 import { useAppDispatch, useAppSelector } from 'src/hooks/useRedux'
+import { IList } from 'src/interfaces/list.interface'
 import { showModal } from 'src/store/app/actions'
 import { addToList } from 'src/store/lists/actions'
 import { listsSelector } from 'src/store/lists/selectors'
 
-import type { PopoverContentHook, PopoverContentHookProps } from './types'
+import { PopoverContentHook, PopoverContentHookProps } from './types'
 
 const useContainer = ({
   movieId,

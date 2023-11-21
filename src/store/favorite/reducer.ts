@@ -1,9 +1,8 @@
 import { createReducer } from '@reduxjs/toolkit'
 import setState from 'src/utils/stateHelpers/setState'
 
-import type { FavoriteState } from './types'
-
 import { fetchFavorite } from './actions'
+import { FavoriteState } from './types'
 
 const initialState: FavoriteState = {
   data: null,

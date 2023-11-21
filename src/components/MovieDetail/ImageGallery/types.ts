@@ -1,4 +1,4 @@
-import type { IBackdrop } from 'src/interfaces/movie.interface'
+import { IBackdrop } from 'src/interfaces/movie.interface'
 
 export interface ImageGalleryProps {
   images: IBackdrop[]

@@ -1,5 +1,5 @@
-import type { ModalProps, ModalTypes } from 'src/components/ModalRoot/types'
-import type { NOTIFICATION_TYPE } from 'src/constants/app'
+import { ModalProps, ModalTypes } from 'src/components/ModalRoot/types'
+import { NOTIFICATION_TYPE } from 'src/constants/app'
 
 export type IModal = {
   modalProps: ModalProps | null

@@ -1,4 +1,4 @@
-import type { IList, IListDetail } from 'src/interfaces/list.interface'
+import { IList, IListDetail } from 'src/interfaces/list.interface'
 
 import { mockMovie } from './mockMovie'
 

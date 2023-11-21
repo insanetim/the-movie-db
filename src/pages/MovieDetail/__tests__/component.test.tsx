@@ -3,10 +3,9 @@ import { mergeDeepRight } from 'ramda'
 import { mockMovieDetail } from 'src/__mocks__/mockMovie'
 import Wrapper from 'src/utils/testHelpers/wrapperMock'
 
-import type { MovieDetailHook } from '../types'
-
 import Movie from '../component'
 import useContainer from '../hook'
+import { MovieDetailHook } from '../types'
 
 const mockedHookData: MovieDetailHook = {
   error: null,

@@ -1,9 +1,8 @@
 import setState from 'src/utils/stateHelpers/setState'
 
-import type { FavoriteState } from '../types'
-
 import { fetchFavorite } from '../actions'
 import favoriteReducer from '../reducer'
+import { FavoriteState } from '../types'
 
 jest.mock('src/utils/stateHelpers/setState')
 
@@ -21,7 +20,7 @@ describe('favoriteReducer', () => {
   })
 
   it('should handle fetchFavorite/pending action', () => {
-    const action = { type: fetchFavorite.pending }
+    const action = { type: fetchFavorite.pending.type }
     favoriteReducer(state, action)
 
     expect(setState.pending).toHaveBeenCalled()
@@ -30,7 +29,7 @@ describe('favoriteReducer', () => {
   it('should handle fetchFavorite/fulfilled action', () => {
     const action = {
       payload: 'test/data',
-      type: fetchFavorite.fulfilled
+      type: fetchFavorite.fulfilled.type
     }
     favoriteReducer(state, action)
 
@@ -40,7 +39,7 @@ describe('favoriteReducer', () => {
   it('should handle fetchFavorite/rejected action', () => {
     const action = {
       payload: 'test/error',
-      type: fetchFavorite.rejected
+      type: fetchFavorite.rejected.type
     }
     favoriteReducer(state, action)
 

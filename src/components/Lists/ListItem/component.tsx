@@ -1,9 +1,8 @@
 import { DeleteOutlined } from '@ant-design/icons'
 import { Card, Typography } from 'antd'
 
-import type { ListItemProps } from './types'
-
 import useContainer from './hook'
+import { ListItemProps } from './types'
 
 const ListItem: React.FC<ListItemProps> = ({ list }) => {
   const { handleClick, handleListDelete } = useContainer({ listId: list.id })

@@ -2,7 +2,7 @@ import { ChangeEvent, useEffect, useState } from 'react'
 import { useSearchParams } from 'react-router-dom'
 import getParams from 'src/utils/helpers/getParams'
 
-import type { SearchInputHook, SearchInputHookProps } from './types'
+import { SearchInputHook, SearchInputHookProps } from './types'
 
 const useContainer = ({ query }: SearchInputHookProps): SearchInputHook => {
   const [inputValue, setInputValue] = useState('')

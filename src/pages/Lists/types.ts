@@ -1,4 +1,4 @@
-import type { IListsList } from 'src/interfaces/list.interface'
+import { IListsList } from 'src/interfaces/list.interface'
 
 export interface ListsHook {
   error: null | string

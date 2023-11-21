@@ -2,9 +2,8 @@ import { render } from '@testing-library/react'
 import { mockMovie } from 'src/__mocks__/mockMovie'
 import Wrapper from 'src/utils/testHelpers/wrapperMock'
 
-import type { WatchlistHook } from '../types'
-
 import Watchlist from '../component'
+import { WatchlistHook } from '../types'
 
 const mockedHookData: WatchlistHook = {
   error: null,

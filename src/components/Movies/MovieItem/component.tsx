@@ -3,9 +3,8 @@ import { Card } from 'antd'
 import { isNotNil } from 'ramda'
 import NoImage from 'src/assets/images/no-image.svg'
 
-import type { MovieItemProps } from './types'
-
 import useContainer from './hook'
+import { MovieItemProps } from './types'
 
 const MovieItem: React.FC<MovieItemProps> = ({ handleMovieDelete, movie }) => {
   const { handleClick } = useContainer({ movieId: movie.id })

@@ -1,11 +1,10 @@
-import type { IMovie } from 'src/interfaces/movie.interface'
-
 import { Modal } from 'antd'
 import { isNotNil } from 'ramda'
 import { MouseEvent, useEffect } from 'react'
 import { useSearchParams } from 'react-router-dom'
 import { useAppDispatch, useAppSelector } from 'src/hooks/useRedux'
 import useUpdatePage from 'src/hooks/useUpdatePage'
+import { IMovie } from 'src/interfaces/movie.interface'
 import { fetchFavorite } from 'src/store/favorite/actions'
 import {
   favoriteErrorSelector,
@@ -16,7 +15,7 @@ import { changeMovieInFavorite } from 'src/store/movie/actions'
 import { accountSelector } from 'src/store/session/selectors'
 import getParams from 'src/utils/helpers/getParams'
 
-import type { FavoriteHook } from './types'
+import { FavoriteHook } from './types'
 
 const useContainer = (): FavoriteHook => {
   const dispatch = useAppDispatch()

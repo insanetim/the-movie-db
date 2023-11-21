@@ -6,7 +6,7 @@ import { fetchTrending } from 'src/store/dashboard/actions'
 import { dashboardMoviesSelector } from 'src/store/dashboard/selectors'
 import getParams from 'src/utils/helpers/getParams'
 
-import type { TrendingHook } from './types'
+import { TrendingHook } from './types'
 
 const useContainer = (): TrendingHook => {
   const movies = useAppSelector(dashboardMoviesSelector)

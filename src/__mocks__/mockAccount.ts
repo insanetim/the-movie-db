@@ -1,4 +1,4 @@
-import type { IAccount } from 'src/interfaces/account.interface'
+import { IAccount } from 'src/interfaces/account.interface'
 
 const mockAccount: IAccount = {
   avatar: {

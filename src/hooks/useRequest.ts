@@ -1,6 +1,5 @@
-import type { AsyncThunkAction } from '@reduxjs/toolkit'
-
-import { type Dispatch, unwrapResult } from '@reduxjs/toolkit'
+import { AsyncThunkAction } from '@reduxjs/toolkit'
+import { Dispatch, unwrapResult } from '@reduxjs/toolkit'
 import { useCallback, useState } from 'react'
 
 import { useAppDispatch } from './useRedux'

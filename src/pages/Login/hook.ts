@@ -1,12 +1,11 @@
-import type { IUserData } from 'src/store/session/types'
-
 import { unwrapResult } from '@reduxjs/toolkit'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { useAppDispatch, useAppSelector } from 'src/hooks/useRedux'
 import { logIn } from 'src/store/session/actions'
 import { loadingSelector } from 'src/store/session/selectors'
+import { IUserData } from 'src/store/session/types'
 
-import type { LoginHook } from './types'
+import { LoginHook } from './types'
 
 const useContainer = (): LoginHook => {
   const dispatch = useAppDispatch()

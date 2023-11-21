@@ -1,7 +1,6 @@
-import type { IMovieDetailExtended } from 'src/interfaces/movie.interface'
-import type { RootState } from 'src/store'
-
 import { createEntityAdapter, createReducer } from '@reduxjs/toolkit'
+import { IMovieDetailExtended } from 'src/interfaces/movie.interface'
+import { RootState } from 'src/store'
 
 import {
   changeMovieInFavorite,

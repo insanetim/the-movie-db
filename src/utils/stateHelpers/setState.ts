@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import type { PayloadAction } from '@reduxjs/toolkit'
-import type { IState } from 'src/interfaces/global.interface'
+import { PayloadAction } from '@reduxjs/toolkit'
+import { IState } from 'src/interfaces/global.interface'
 
 const setState = {
   fulfilled: <T>(state: IState<T>, action: PayloadAction<T>) => {

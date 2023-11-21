@@ -1,9 +1,8 @@
 import { render } from '@testing-library/react'
 import { NOTIFICATION_DURATION, NOTIFICATION_TYPE } from 'src/constants/app'
 
-import type { NotificationHook } from '../types'
-
 import Notification from '../component'
+import { NotificationHook } from '../types'
 
 const mockedHookData: NotificationHook = {
   closeNotification: jest.fn()

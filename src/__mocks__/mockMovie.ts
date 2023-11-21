@@ -1,4 +1,4 @@
-import type {
+import {
   IBackdrop,
   ICast,
   ICrew,

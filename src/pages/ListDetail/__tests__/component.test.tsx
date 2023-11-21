@@ -2,9 +2,8 @@ import { render } from '@testing-library/react'
 import { mockMovie } from 'src/__mocks__/mockMovie'
 import Wrapper from 'src/utils/testHelpers/wrapperMock'
 
-import type { ListDetailHook } from '../types'
-
 import ListDetails from '../component'
+import { ListDetailHook } from '../types'
 
 const mockedHookData: ListDetailHook = {
   error: null,

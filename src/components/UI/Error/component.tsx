@@ -1,6 +1,6 @@
 import { Result } from 'antd'
 
-import type { ErrorProps } from './types'
+import { ErrorProps } from './types'
 
 const Error: React.FC<ErrorProps> = ({ error }) => {
   return (

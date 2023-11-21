@@ -1,4 +1,4 @@
-import type { IResponse } from './global.interface'
+import { IResponse } from './global.interface'
 
 export interface IMovie {
   adult: boolean

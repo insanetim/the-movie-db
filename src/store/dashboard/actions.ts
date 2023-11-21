@@ -1,13 +1,11 @@
-import type { IMoviesList } from 'src/interfaces/movie.interface'
-
 import { createAsyncThunk } from '@reduxjs/toolkit'
+import { IMoviesList } from 'src/interfaces/movie.interface'
 import httpClient from 'src/lib/api/httpClient'
 import { getTrending, searchMovies } from 'src/lib/apiRoutes'
 import errorMessage from 'src/utils/helpers/errorMessage'
 
-import type { FetchSearchProps } from './types'
-
 import * as types from './constants'
+import { FetchSearchProps } from './types'
 
 const fetchTrending = createAsyncThunk<
   IMoviesList,

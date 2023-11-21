@@ -1,8 +1,7 @@
 import { Col, Input, Row } from 'antd'
 
-import type { SearchInputProps } from './types'
-
 import useContainer from './hook'
+import { SearchInputProps } from './types'
 
 const SearchInput: React.FC<SearchInputProps> = ({ query }) => {
   const { handleChange, handleSearch, inputValue } = useContainer({ query })

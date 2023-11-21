@@ -1,11 +1,10 @@
-import type { IMovie } from 'src/interfaces/movie.interface'
-
 import { Modal } from 'antd'
 import { isNotNil } from 'ramda'
 import { MouseEvent, useEffect } from 'react'
 import { useSearchParams } from 'react-router-dom'
 import { useAppDispatch, useAppSelector } from 'src/hooks/useRedux'
 import useUpdatePage from 'src/hooks/useUpdatePage'
+import { IMovie } from 'src/interfaces/movie.interface'
 import { changeMovieInWatchlist } from 'src/store/movie/actions'
 import { accountSelector } from 'src/store/session/selectors'
 import { fetchWatchlist } from 'src/store/watchlist/actions'
@@ -16,7 +15,7 @@ import {
 } from 'src/store/watchlist/selectors'
 import getParams from 'src/utils/helpers/getParams'
 
-import type { WatchlistHook } from './types'
+import { WatchlistHook } from './types'
 
 const useContainer = (): WatchlistHook => {
   const dispatch = useAppDispatch()

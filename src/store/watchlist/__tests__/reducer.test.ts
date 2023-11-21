@@ -1,9 +1,8 @@
 import setState from 'src/utils/stateHelpers/setState'
 
-import type { WatchlistState } from '../types'
-
 import { fetchWatchlist } from '../actions'
 import watchlistReducer from '../reducer'
+import { WatchlistState } from '../types'
 
 jest.mock('src/utils/stateHelpers/setState')
 
@@ -21,7 +20,7 @@ describe('watchlistReducer', () => {
   })
 
   it('should handle fetchWatchlist/pending action', () => {
-    const action = { type: fetchWatchlist.pending }
+    const action = { type: fetchWatchlist.pending.type }
     watchlistReducer(state, action)
 
     expect(setState.pending).toHaveBeenCalled()
@@ -30,7 +29,7 @@ describe('watchlistReducer', () => {
   it('should handle fetchWatchlist/fulfilled action', () => {
     const action = {
       payload: 'test/data',
-      type: fetchWatchlist.fulfilled
+      type: fetchWatchlist.fulfilled.type
     }
     watchlistReducer(state, action)
 
@@ -40,7 +39,7 @@ describe('watchlistReducer', () => {
   it('should handle fetchWatchlist/rejected action', () => {
     const action = {
       payload: 'test/data',
-      type: fetchWatchlist.rejected
+      type: fetchWatchlist.rejected.type
     }
     watchlistReducer(state, action)
 

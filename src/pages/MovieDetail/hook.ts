@@ -14,7 +14,7 @@ import { selectMovieById } from 'src/store/movie/selectors'
 import favoriteMessage from 'src/utils/helpers/favoriteMessage'
 import watchlistMessage from 'src/utils/helpers/watchlistMessage'
 
-import type { MovieDetailHook } from './types'
+import { MovieDetailHook } from './types'
 
 const useContainer = (): MovieDetailHook => {
   const { movieId = '' } = useParams()

@@ -1,8 +1,7 @@
 import { render } from '@testing-library/react'
 
-import type { CreditsItemProps } from '../types'
-
 import CreditsItem from '../component'
+import { CreditsItemProps } from '../types'
 
 describe('CreditsItem component', () => {
   const props: CreditsItemProps = {

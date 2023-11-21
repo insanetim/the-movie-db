@@ -2,9 +2,8 @@ import { render } from '@testing-library/react'
 import { mockMovie } from 'src/__mocks__/mockMovie'
 import Wrapper from 'src/utils/testHelpers/wrapperMock'
 
-import type { FavoriteHook } from '../types'
-
 import Favorite from '../component'
+import { FavoriteHook } from '../types'
 
 const mockedHookData: FavoriteHook = {
   error: null,

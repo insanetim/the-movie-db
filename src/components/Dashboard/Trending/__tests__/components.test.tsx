@@ -2,9 +2,8 @@ import { render } from '@testing-library/react'
 import { mockMovie } from 'src/__mocks__/mockMovie'
 import Wrapper from 'src/utils/testHelpers/wrapperMock'
 
-import type { TrendingHook } from '../types'
-
 import Trending from '../component'
+import { TrendingHook } from '../types'
 
 const mockedHookData: TrendingHook = {
   error: null,

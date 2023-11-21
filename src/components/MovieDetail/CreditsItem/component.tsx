@@ -2,7 +2,7 @@ import { Card } from 'antd'
 import { isNotNil } from 'ramda'
 import NoImage from 'src/assets/images/no-image.svg'
 
-import type { CreditsItemProps } from './types'
+import { CreditsItemProps } from './types'
 
 const CreditsItem: React.FC<CreditsItemProps> = ({
   description,

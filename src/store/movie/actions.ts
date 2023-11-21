@@ -1,4 +1,6 @@
-import type {
+import { createAsyncThunk } from '@reduxjs/toolkit'
+import { NOTIFICATION_TYPE } from 'src/constants/app'
+import {
   IMovie,
   IMovieAccountStates,
   IMovieCredits,
@@ -6,22 +8,18 @@ import type {
   IMovieDetailExtended,
   IMovieImages
 } from 'src/interfaces/movie.interface'
-
-import { createAsyncThunk } from '@reduxjs/toolkit'
-import { NOTIFICATION_TYPE } from 'src/constants/app'
 import httpClient from 'src/lib/api/httpClient'
 import * as routes from 'src/lib/apiRoutes'
 import { accountSelector, sessionIdSelector } from 'src/store/session/selectors'
 import errorMessage from 'src/utils/helpers/errorMessage'
 
-import type { RootState } from '../index'
-import type {
+import { showNotification } from '../app/actions'
+import { RootState } from '../index'
+import * as types from './constants'
+import {
   ChangeMovieInFavoriteProps,
   ChangeMovieInWatchlistProps
 } from './types'
-
-import { showNotification } from '../app/actions'
-import * as types from './constants'
 
 const fetchMovieDetail = createAsyncThunk<
   IMovieDetailExtended,

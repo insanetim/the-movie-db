@@ -1,4 +1,4 @@
-import type { IMovie, IMoviesList } from 'src/interfaces/movie.interface'
+import { IMovie, IMoviesList } from 'src/interfaces/movie.interface'
 
 export interface WatchlistHook {
   error: null | string

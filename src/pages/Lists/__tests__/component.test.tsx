@@ -2,9 +2,8 @@ import { render } from '@testing-library/react'
 import { mockList } from 'src/__mocks__/mockList'
 import Wrapper from 'src/utils/testHelpers/wrapperMock'
 
-import type { ListsHook } from '../types'
-
 import Lists from '../component'
+import { ListsHook } from '../types'
 
 const mockedHookData: ListsHook = {
   error: null,

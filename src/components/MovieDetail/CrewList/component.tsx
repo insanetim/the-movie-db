@@ -1,8 +1,7 @@
 import { Col, Row, Typography } from 'antd'
 
-import type { CrewListProps } from './types'
-
 import CreditsItem from '../CreditsItem'
+import { CrewListProps } from './types'
 
 const CrewList: React.FC<CrewListProps> = ({ crew }) => (
   <>

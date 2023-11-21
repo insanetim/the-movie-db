@@ -19,7 +19,7 @@ describe('movieReducer', () => {
   it('should handle fetchMovieDetail/fulfilled action', () => {
     const action = {
       payload: { data: 'test/data', id: '123' },
-      type: fetchMovieDetail.fulfilled
+      type: fetchMovieDetail.fulfilled.type
     }
     const newState = {
       entities: { '123': { data: 'test/data', id: '123' } },
@@ -33,7 +33,7 @@ describe('movieReducer', () => {
   it('should handle changeMovieInFavorite/pending action with movieId', () => {
     const action = {
       meta: { arg: { inFavorite: true, movieId: '123' } },
-      type: changeMovieInFavorite.pending
+      type: changeMovieInFavorite.pending.type
     }
     const state = {
       entities: { '123': { accountStates: { favorite: false }, id: '123' } },
@@ -52,7 +52,7 @@ describe('movieReducer', () => {
   it('should handle changeMovieInFavorite/pending action without movieId', () => {
     const action = {
       meta: { arg: { inFavorite: true, movieId: '123' } },
-      type: changeMovieInFavorite.pending
+      type: changeMovieInFavorite.pending.type
     }
     const result = movieReducer(state, action)
 
@@ -62,7 +62,7 @@ describe('movieReducer', () => {
   it('should handle changeMovieInWatchlist/pending action with movieId', () => {
     const action = {
       meta: { arg: { inWatchlist: true, movieId: '123' } },
-      type: changeMovieInWatchlist.pending
+      type: changeMovieInWatchlist.pending.type
     }
     const state = {
       entities: { '123': { accountStates: { watchlist: false }, id: '123' } },
@@ -81,7 +81,7 @@ describe('movieReducer', () => {
   it('should handle changeMovieInWatchlist/pending action without movieId', () => {
     const action = {
       meta: { arg: { inWatchlist: true, movieId: '123' } },
-      type: changeMovieInWatchlist.pending
+      type: changeMovieInWatchlist.pending.type
     }
     const result = movieReducer(state, action)
 

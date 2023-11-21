@@ -1,5 +1,5 @@
-import type { IList, IListsList } from 'src/interfaces/list.interface'
-import type { IMovie } from 'src/interfaces/movie.interface'
+import { IList, IListsList } from 'src/interfaces/list.interface'
+import { IMovie } from 'src/interfaces/movie.interface'
 
 export interface PopoverContentProps {
   movieId: IMovie['id']

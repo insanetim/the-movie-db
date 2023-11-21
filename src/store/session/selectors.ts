@@ -1,4 +1,4 @@
-import type { RootState } from '../index'
+import { RootState } from '../index'
 
 const sessionIdSelector = (state: RootState) => {
   return state.session.sessionId

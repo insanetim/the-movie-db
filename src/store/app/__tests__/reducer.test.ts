@@ -1,8 +1,6 @@
 import { assoc, assocPath, mergeDeepRight } from 'ramda'
 import { NOTIFICATION_DURATION, NOTIFICATION_TYPE } from 'src/constants/app'
 
-import type { AppState } from '../types'
-
 import {
   hideModal,
   hideNotification,
@@ -10,6 +8,7 @@ import {
   showNotification
 } from '../actions'
 import appReducer from '../reducer'
+import { AppState } from '../types'
 
 jest.mock<typeof import('@reduxjs/toolkit')>('@reduxjs/toolkit', () => ({
   ...jest.requireActual('@reduxjs/toolkit'),
@@ -32,7 +31,7 @@ describe('appReducer', () => {
   })
 
   it('should handle hideModal action', () => {
-    const action = { type: hideModal }
+    const action = hideModal()
     const newState = assocPath(['modal', 'modalProps'], { open: false }, state)
     const result = appReducer(state, action)
 
@@ -40,10 +39,7 @@ describe('appReducer', () => {
   })
 
   it('should handle hideNotification action', () => {
-    const action = {
-      payload: 'test/id',
-      type: hideNotification
-    }
+    const action = hideNotification('test/id')
     const state = {
       modal: {
         modalProps: null,
@@ -52,7 +48,7 @@ describe('appReducer', () => {
       notifications: [
         {
           duration: NOTIFICATION_DURATION,
-          id: 'test/id',
+          id: action.payload,
           messageText: 'test/message',
           messageType: NOTIFICATION_TYPE.SUCCESS
         }
@@ -65,13 +61,10 @@ describe('appReducer', () => {
   })
 
   it('should handle showModal action', () => {
-    const action = {
-      payload: {
-        modalProps: 'test/modalProps',
-        modalType: 'test/modalType'
-      },
-      type: showModal
-    }
+    const action = showModal({
+      modalProps: 'test/modalProps',
+      modalType: 'test/modalType'
+    })
     const newState = assoc('modal', action.payload, state)
     const result = appReducer(state, action)
 
@@ -79,12 +72,7 @@ describe('appReducer', () => {
   })
 
   it('should handle showModal action without modalProps', () => {
-    const action = {
-      payload: {
-        modalType: 'test/modalType'
-      },
-      type: showModal
-    }
+    const action = showModal({ modalType: 'test/modalType' })
     const newState = mergeDeepRight(state, {
       modal: {
         modalProps: null,
@@ -97,10 +85,7 @@ describe('appReducer', () => {
   })
 
   it('should handle showNotification action', () => {
-    const action = {
-      payload: { messageText: 'test/message' },
-      type: showNotification
-    }
+    const action = showNotification({ messageText: 'test/message' })
     const newState = assoc(
       'notifications',
       [

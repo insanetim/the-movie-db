@@ -1,18 +1,6 @@
-import type { Location } from 'react-router-dom'
-import type { TrendingHook } from 'src/components/Dashboard/Trending/types'
-import type { ModalRootHook } from 'src/components/ModalRoot/types'
-import type { NotificationsRootHook } from 'src/components/NotificationsRoot/types'
-import type { ProtectedRoutesHook } from 'src/components/ProtectedRoutes/types'
-import type { DashboardHook } from 'src/pages/Dashboard/types'
-import type { FavoriteHook } from 'src/pages/Favorite/types'
-import type { ListDetailHook } from 'src/pages/ListDetail/types'
-import type { ListsHook } from 'src/pages/Lists/types'
-import type { LoginHook } from 'src/pages/Login/types'
-import type { MovieDetailHook } from 'src/pages/MovieDetail/types'
-import type { WatchlistHook } from 'src/pages/Watchlist/types'
-
 import { render } from '@testing-library/react'
 import { ReactNode, Suspense } from 'react'
+import { Location } from 'react-router-dom'
 import { mockListDetail } from 'src/__mocks__/mockList'
 import { mockMovieDetail } from 'src/__mocks__/mockMovie'
 import App, {
@@ -26,7 +14,18 @@ import App, {
   NotFound,
   Watchlist
 } from 'src/App'
+import { TrendingHook } from 'src/components/Dashboard/Trending/types'
+import { ModalRootHook } from 'src/components/ModalRoot/types'
+import { NotificationsRootHook } from 'src/components/NotificationsRoot/types'
+import { ProtectedRoutesHook } from 'src/components/ProtectedRoutes/types'
 import { HeaderHook } from 'src/layouts/Default/Header/types'
+import { DashboardHook } from 'src/pages/Dashboard/types'
+import { FavoriteHook } from 'src/pages/Favorite/types'
+import { ListDetailHook } from 'src/pages/ListDetail/types'
+import { ListsHook } from 'src/pages/Lists/types'
+import { LoginHook } from 'src/pages/Login/types'
+import { MovieDetailHook } from 'src/pages/MovieDetail/types'
+import { WatchlistHook } from 'src/pages/Watchlist/types'
 import Wrapper from 'src/utils/testHelpers/wrapperMock'
 
 const mockedProtectedRoutesHook: ProtectedRoutesHook = {

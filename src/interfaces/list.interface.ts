@@ -1,5 +1,5 @@
-import type { IResponse } from './global.interface'
-import type { IMovie } from './movie.interface'
+import { IResponse } from './global.interface'
+import { IMovie } from './movie.interface'
 
 export interface IList {
   description: string

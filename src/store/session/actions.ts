@@ -1,18 +1,16 @@
-import type { IAccount } from 'src/interfaces/account.interface'
-
 import { createAsyncThunk } from '@reduxjs/toolkit'
 import Cookies from 'js-cookie'
 import { NOTIFICATION_TYPE } from 'src/constants/app'
+import { IAccount } from 'src/interfaces/account.interface'
 import httpClient from 'src/lib/api/httpClient'
 import * as routes from 'src/lib/apiRoutes'
 import { showNotification } from 'src/store/app/actions'
 import errorMessage from 'src/utils/helpers/errorMessage'
 
-import type { RootState } from '../index'
-import type { IRequestToken, ISession, IUserData } from './types'
-
+import { RootState } from '../index'
 import * as types from './constants'
 import { sessionIdSelector } from './selectors'
+import { IRequestToken, ISession, IUserData } from './types'
 
 const logIn = createAsyncThunk<string | undefined, IUserData>(
   types.logIn,

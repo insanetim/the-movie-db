@@ -1,6 +1,6 @@
 import { Carousel, Col, Row } from 'antd'
 
-import type { ImageGalleryProps } from './types'
+import { ImageGalleryProps } from './types'
 
 const ImageGallery: React.FC<ImageGalleryProps> = ({ images, title }) => (
   <Row>

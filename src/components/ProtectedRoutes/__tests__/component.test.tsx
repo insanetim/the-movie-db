@@ -1,11 +1,9 @@
-import type { Location } from 'react-router-dom'
-
 import { render } from '@testing-library/react'
+import { Location } from 'react-router-dom'
 import Wrapper from 'src/utils/testHelpers/wrapperMock'
 
-import type { ProtectedRoutesHook } from '../types'
-
 import ProtectedRoutes from '../component'
+import { ProtectedRoutesHook } from '../types'
 
 const mockedHookData: ProtectedRoutesHook = {
   location: {} as Location,

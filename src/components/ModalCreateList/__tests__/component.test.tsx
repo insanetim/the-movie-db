@@ -1,8 +1,7 @@
 import { render } from '@testing-library/react'
 
-import type { ModalCreateListHook } from '../types'
-
 import ModalCreateList from '../component'
+import { ModalCreateListHook } from '../types'
 
 const mockedHookData: ModalCreateListHook = {
   handleAfterClose: jest.fn(),

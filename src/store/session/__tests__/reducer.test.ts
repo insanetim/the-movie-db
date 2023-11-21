@@ -18,7 +18,7 @@ describe('sessionReducer', () => {
   })
 
   it('should handle logIn/pending action', () => {
-    const action = { type: logIn.pending }
+    const action = { type: logIn.pending.type }
     const newState = assoc('loading', true, state)
     const result = sessionReducer(state, action)
 
@@ -28,7 +28,7 @@ describe('sessionReducer', () => {
   it('should handle logIn/fulfilled action', () => {
     const action = {
       payload: 'test/data',
-      type: logIn.fulfilled
+      type: logIn.fulfilled.type
     }
     const newState = assoc('sessionId', action.payload, state)
     const result = sessionReducer(state, action)
@@ -37,14 +37,14 @@ describe('sessionReducer', () => {
   })
 
   it('should handle logIn/rejected action', () => {
-    const action = { type: logIn.rejected }
+    const action = { type: logIn.rejected.type }
     const result = sessionReducer(state, action)
 
     expect(result).toEqual(state)
   })
 
   it('should handle logOut/fulfilled action', () => {
-    const action = { type: logOut.fulfilled }
+    const action = { type: logOut.fulfilled.type }
     const result = sessionReducer(state, action)
 
     expect(result).toEqual(state)
@@ -53,7 +53,7 @@ describe('sessionReducer', () => {
   it('should handle fetchAccount/fulfilled action', () => {
     const action = {
       payload: 'test/data',
-      type: fetchAccount.fulfilled
+      type: fetchAccount.fulfilled.type
     }
     const newState = assoc('account', action.payload, state)
     const result = sessionReducer(state, action)

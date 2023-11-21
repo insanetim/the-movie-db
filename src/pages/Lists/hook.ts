@@ -12,7 +12,7 @@ import {
 import { accountSelector } from 'src/store/session/selectors'
 import getParams from 'src/utils/helpers/getParams'
 
-import type { ListsHook } from './types'
+import { ListsHook } from './types'
 
 const useContainer = (): ListsHook => {
   const dispatch = useAppDispatch()

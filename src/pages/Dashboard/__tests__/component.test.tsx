@@ -1,9 +1,8 @@
 import { render } from '@testing-library/react'
 import Wrapper from 'src/utils/testHelpers/wrapperMock'
 
-import type { DashboardHook } from '../types'
-
 import Dashboard from '../component'
+import { DashboardHook } from '../types'
 
 const mockedHookData: DashboardHook = {
   query: ''

@@ -1,5 +1,4 @@
-import type { RootState } from 'src/store/index'
-
+import { RootState } from 'src/store/index'
 import { movieInitialState } from 'src/store/movie/reducer'
 
 const mockState: RootState = {

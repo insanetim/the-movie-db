@@ -1,6 +1,3 @@
-import type { CustomIconComponentProps } from '@ant-design/icons/lib/components/Icon'
-import type { ForwardRefExoticComponent } from 'react'
-
 import Icon, {
   BookFilled,
   BookOutlined,
@@ -8,10 +5,12 @@ import Icon, {
   HeartOutlined,
   PlusCircleOutlined
 } from '@ant-design/icons'
+import { CustomIconComponentProps } from '@ant-design/icons/lib/components/Icon'
 import { Col, Popover, Row, Tag, Typography } from 'antd'
 import { format } from 'date-fns'
 import ISO6391 from 'iso-639-1'
 import { isEmpty, isNil } from 'ramda'
+import { ForwardRefExoticComponent } from 'react'
 import { Helmet } from 'react-helmet'
 import CastList from 'src/components/MovieDetail/CastList'
 import CrewList from 'src/components/MovieDetail/CrewList'

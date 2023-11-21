@@ -3,9 +3,8 @@ import { mergeDeepRight } from 'ramda'
 import mockAccount from 'src/__mocks__/mockAccount'
 import Wrapper from 'src/utils/testHelpers/wrapperMock'
 
-import type { HeaderHook } from '../types'
-
 import Header from '../component'
+import { HeaderHook } from '../types'
 
 const mockedHookData: HeaderHook = {
   account: mockAccount,

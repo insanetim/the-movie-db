@@ -1,9 +1,8 @@
 import { render } from '@testing-library/react'
 import { mockImage } from 'src/__mocks__/mockMovie'
 
-import type { ImageGalleryProps } from '../types'
-
 import ImageGallery from '../component'
+import { ImageGalleryProps } from '../types'
 
 describe('ImageGallery component', () => {
   it('matches snapshot', () => {

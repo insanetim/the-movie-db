@@ -1,11 +1,6 @@
-import type {
-  IList,
-  IListDetail,
-  IListsList
-} from 'src/interfaces/list.interface'
-
 import { createAsyncThunk } from '@reduxjs/toolkit'
 import { NOTIFICATION_TYPE } from 'src/constants/app'
+import { IList, IListDetail, IListsList } from 'src/interfaces/list.interface'
 import httpClient from 'src/lib/api/httpClient'
 import * as routes from 'src/lib/apiRoutes'
 import { showNotification } from 'src/store/app/actions'
@@ -13,18 +8,17 @@ import { accountSelector, sessionIdSelector } from 'src/store/session/selectors'
 import errorMessage from 'src/utils/helpers/errorMessage'
 import listMessage from 'src/utils/helpers/listMessage'
 
-import type { RootState } from '../index'
-import type {
+import { RootState } from '../index'
+import { selectMovieById } from '../movie/selectors'
+import * as types from './constants'
+import { listsSelector } from './selectors'
+import {
   AddToListProps,
   CreateListProps,
   CreateListResponse,
   FetchListDetailProps,
   RemoveFromListProps
 } from './types'
-
-import { selectMovieById } from '../movie/selectors'
-import * as types from './constants'
-import { listsSelector } from './selectors'
 
 const fetchLists = createAsyncThunk<
   IListsList,

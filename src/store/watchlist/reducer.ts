@@ -1,9 +1,8 @@
 import { createReducer } from '@reduxjs/toolkit'
 import setState from 'src/utils/stateHelpers/setState'
 
-import type { WatchlistState } from './types'
-
 import { fetchWatchlist } from './actions'
+import { WatchlistState } from './types'
 
 const initialState: WatchlistState = {
   data: null,

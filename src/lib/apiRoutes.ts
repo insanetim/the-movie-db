@@ -1,6 +1,6 @@
-import type { IAccount } from 'src/interfaces/account.interface'
-import type { IList } from 'src/interfaces/list.interface'
-import type { IMovie } from 'src/interfaces/movie.interface'
+import { IAccount } from 'src/interfaces/account.interface'
+import { IList } from 'src/interfaces/list.interface'
+import { IMovie } from 'src/interfaces/movie.interface'
 
 // Auth
 export const createRequestToken = '/authentication/token/new'

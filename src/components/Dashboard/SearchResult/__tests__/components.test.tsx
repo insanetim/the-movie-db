@@ -2,9 +2,8 @@ import { render } from '@testing-library/react'
 import { mockMovie } from 'src/__mocks__/mockMovie'
 import Wrapper from 'src/utils/testHelpers/wrapperMock'
 
-import type { SearchResultHook } from '../types'
-
 import SearchResult from '../component'
+import { SearchResultHook } from '../types'
 
 const mockedHookData: SearchResultHook = {
   error: null,

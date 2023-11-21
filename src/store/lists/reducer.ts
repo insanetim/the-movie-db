@@ -1,9 +1,8 @@
 import { combineReducers, createReducer } from '@reduxjs/toolkit'
 import setState from 'src/utils/stateHelpers/setState'
 
-import type { ListsState } from './types'
-
 import { fetchListDetail, fetchLists } from './actions'
+import { ListsState } from './types'
 
 const initialState: ListsState = {
   createdLists: {
