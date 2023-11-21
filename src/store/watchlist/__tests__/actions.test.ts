@@ -1,24 +1,16 @@
 import { dispatch, getState } from 'src/__mocks__/react-redux'
-import { IAccount } from 'src/interfaces/account.interface'
 import httpClient from 'src/lib/api/httpClient'
 import { getWatchlist } from 'src/lib/apiRoutes'
-import * as sessionSelectors from 'src/store/session/selectors'
 
 import { fetchWatchlist } from '../actions'
 
 jest.mock('src/store/session/selectors', () => ({
-  accountSelector: jest.fn(() => ({ id: 123 })),
-  sessionIdSelector: jest.fn(() => 'session_id')
+  accountSelector: () => ({ id: 123 }),
+  sessionIdSelector: () => 'session_id'
 }))
 
 describe('fetchWatchlist', () => {
   const requestSpy = jest.spyOn(httpClient, 'request')
-  jest
-    .spyOn(sessionSelectors, 'sessionIdSelector')
-    .mockReturnValue('session_id')
-  jest
-    .spyOn(sessionSelectors, 'accountSelector')
-    .mockReturnValue({ id: 123 } as IAccount)
 
   const thunk = fetchWatchlist('1')
 

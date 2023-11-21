@@ -4,22 +4,22 @@ import { NOTIFICATION_TYPE } from 'src/constants/app'
 import httpClient from 'src/lib/api/httpClient'
 import * as routes from 'src/lib/apiRoutes'
 import { showNotification } from 'src/store/app/actions'
-import * as sessionSelectors from 'src/store/session/selectors'
 
 import { fetchAccount, logIn, logOut } from '../actions'
 
 jest.mock<typeof import('@reduxjs/toolkit')>('@reduxjs/toolkit', () => ({
   ...jest.requireActual('@reduxjs/toolkit'),
-  nanoid: jest.fn(() => 'test/id')
+  nanoid: () => 'test/id'
+}))
+
+jest.mock('src/store/session/selectors', () => ({
+  sessionIdSelector: () => 'session_id'
 }))
 
 describe('session actions', () => {
   const requestSpy = jest.spyOn(httpClient, 'request')
   const cookiesSetSpy = jest.spyOn(Cookies, 'set')
   const cookiesRemoveSpy = jest.spyOn(Cookies, 'remove')
-  jest
-    .spyOn(sessionSelectors, 'sessionIdSelector')
-    .mockReturnValue('session_id')
   const errorNotification = showNotification({
     messageText: 'Something went wrong!',
     messageType: NOTIFICATION_TYPE.ERROR

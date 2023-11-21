@@ -1,14 +1,8 @@
 import { dispatch, getState } from 'src/__mocks__/react-redux'
 import { NOTIFICATION_TYPE } from 'src/constants/app'
-import { IAccount } from 'src/interfaces/account.interface'
-import { IListsList } from 'src/interfaces/list.interface'
-import { IMovieDetailExtended } from 'src/interfaces/movie.interface'
 import httpClient from 'src/lib/api/httpClient'
 import * as routes from 'src/lib/apiRoutes'
 import { showNotification } from 'src/store/app/actions'
-import * as listsSelectors from 'src/store/lists/selectors'
-import * as movieSelectors from 'src/store/movie/selectors'
-import * as sessionSelectors from 'src/store/session/selectors'
 
 import {
   addToList,
@@ -21,23 +15,24 @@ import {
 
 jest.mock<typeof import('@reduxjs/toolkit')>('@reduxjs/toolkit', () => ({
   ...jest.requireActual('@reduxjs/toolkit'),
-  nanoid: jest.fn(() => 'test/id')
+  nanoid: () => 'test/id'
+}))
+
+jest.mock('src/store/session/selectors', () => ({
+  accountSelector: () => ({ id: 123 }),
+  sessionIdSelector: () => 'session_id'
+}))
+
+jest.mock('src/store/movie/selectors', () => ({
+  selectMovieById: () => ({ title: 'test/movie' })
+}))
+
+jest.mock('src/store//lists/selectors', () => ({
+  listsSelector: () => ({ results: [{ id: 123, name: 'test/list' }] })
 }))
 
 describe('lists actions', () => {
   const requestSpy = jest.spyOn(httpClient, 'request')
-  jest
-    .spyOn(sessionSelectors, 'sessionIdSelector')
-    .mockReturnValue('session_id')
-  jest
-    .spyOn(sessionSelectors, 'accountSelector')
-    .mockReturnValue({ id: 123 } as IAccount)
-  jest
-    .spyOn(movieSelectors, 'selectMovieById')
-    .mockReturnValue({ title: 'test/movie' } as IMovieDetailExtended)
-  jest.spyOn(listsSelectors, 'listsSelector').mockReturnValue({
-    results: [{ id: 123, name: 'test/list' }]
-  } as IListsList)
   const errorNotification = showNotification({
     messageText: 'Something went wrong!',
     messageType: NOTIFICATION_TYPE.ERROR

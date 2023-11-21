@@ -1,19 +1,16 @@
 import { dispatch, getState } from 'src/__mocks__/react-redux'
-import { IAccount } from 'src/interfaces/account.interface'
 import httpClient from 'src/lib/api/httpClient'
 import { getFavorite } from 'src/lib/apiRoutes'
-import * as sessionSelectors from 'src/store/session/selectors'
 
 import { fetchFavorite } from '../actions'
 
+jest.mock('src/store/session/selectors', () => ({
+  accountSelector: () => ({ id: 123 }),
+  sessionIdSelector: () => 'session_id'
+}))
+
 describe('fetchFavorite', () => {
   const requestSpy = jest.spyOn(httpClient, 'request')
-  jest
-    .spyOn(sessionSelectors, 'sessionIdSelector')
-    .mockReturnValue('session_id')
-  jest
-    .spyOn(sessionSelectors, 'accountSelector')
-    .mockReturnValue({ id: 123 } as IAccount)
 
   const thunk = fetchFavorite('1')
 

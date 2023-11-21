@@ -1,10 +1,8 @@
 import { dispatch, getState } from 'src/__mocks__/react-redux'
 import { NOTIFICATION_TYPE } from 'src/constants/app'
-import { IAccount } from 'src/interfaces/account.interface'
 import httpClient from 'src/lib/api/httpClient'
 import * as routes from 'src/lib/apiRoutes'
 import { showNotification } from 'src/store/app/actions'
-import * as sessionSelectors from 'src/store/session/selectors'
 
 import {
   changeMovieInFavorite,
@@ -14,17 +12,16 @@ import {
 
 jest.mock<typeof import('@reduxjs/toolkit')>('@reduxjs/toolkit', () => ({
   ...jest.requireActual('@reduxjs/toolkit'),
-  nanoid: jest.fn(() => 'test/id')
+  nanoid: () => 'test/id'
+}))
+
+jest.mock('src/store/session/selectors', () => ({
+  accountSelector: () => ({ id: 123 }),
+  sessionIdSelector: () => 'session_id'
 }))
 
 describe('movie actions', () => {
   const requestSpy = jest.spyOn(httpClient, 'request')
-  jest
-    .spyOn(sessionSelectors, 'sessionIdSelector')
-    .mockReturnValue('session_id')
-  jest
-    .spyOn(sessionSelectors, 'accountSelector')
-    .mockReturnValue({ id: 123 } as IAccount)
   const errorNotification = showNotification({
     messageText: 'Something went wrong!',
     messageType: NOTIFICATION_TYPE.ERROR
