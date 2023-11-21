@@ -7,7 +7,7 @@ import { ListsState } from '../types'
 jest.mock('src/utils/stateHelpers/setState')
 
 describe('listsReducer', () => {
-  const initialState: ListsState = {
+  const state: ListsState = {
     createdLists: {
       data: null,
       error: null,
@@ -20,60 +20,62 @@ describe('listsReducer', () => {
     }
   }
 
-  it('should handle fetchLists/pending', () => {
-    const action = {
-      type: fetchLists.pending.toString()
-    }
-    listsReducer(initialState, action)
+  it('should return initial state with empty action', () => {
+    const result = listsReducer(undefined, { type: '' })
+
+    expect(result).toEqual(state)
+  })
+
+  it('should handle fetchLists/pending action', () => {
+    const action = { type: fetchLists.pending }
+    listsReducer(state, action)
 
     expect(setState.pending).toHaveBeenCalled()
   })
 
-  it('should handle fetchLists/fulfilled', () => {
+  it('should handle fetchLists/fulfilled action', () => {
     const action = {
       payload: 'test/data',
-      type: fetchLists.fulfilled.toString()
+      type: fetchLists.fulfilled
     }
-    listsReducer(initialState, action)
+    listsReducer(state, action)
 
     expect(setState.fulfilled).toHaveBeenCalled()
   })
 
-  it('should handle fetchLists/rejected', () => {
+  it('should handle fetchLists/rejected action', () => {
     const action = {
       payload: 'test/error',
-      type: fetchLists.rejected.toString()
+      type: fetchLists.rejected
     }
-    listsReducer(initialState, action)
+    listsReducer(state, action)
 
     expect(setState.rejected).toHaveBeenCalled()
   })
 
-  it('should handle fetchListDetail/pending', () => {
-    const action = {
-      type: fetchListDetail.pending.toString()
-    }
-    listsReducer(initialState, action)
+  it('should handle fetchListDetail/pending action', () => {
+    const action = { type: fetchListDetail.pending }
+    listsReducer(state, action)
 
     expect(setState.pending).toHaveBeenCalled()
   })
 
-  it('should handle fetchListDetail/fulfilled', () => {
+  it('should handle fetchListDetail/fulfilled action', () => {
     const action = {
       payload: 'test/data',
-      type: fetchListDetail.fulfilled.toString()
+      type: fetchListDetail.fulfilled
     }
-    listsReducer(initialState, action)
+    listsReducer(state, action)
 
     expect(setState.fulfilled).toHaveBeenCalled()
   })
 
-  it('should handle fetchListDetail/rejected', () => {
+  it('should handle fetchListDetail/rejected action', () => {
     const action = {
       payload: 'test/error',
-      type: fetchListDetail.rejected.toString()
+      type: fetchListDetail.rejected
     }
-    listsReducer(initialState, action)
+    listsReducer(state, action)
 
     expect(setState.rejected).toHaveBeenCalled()
   })

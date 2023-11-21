@@ -8,14 +8,20 @@ import {
 
 describe('session selectors', () => {
   it('sessionIdSelector', () => {
-    expect(sessionIdSelector(mockState)).toBe('')
+    const result = sessionIdSelector(mockState)
+
+    expect(result).toBe('')
   })
 
   it('accountSelector', () => {
-    expect(accountSelector(mockState)).toBe(null)
+    const result = accountSelector(mockState)
+
+    expect(result).toBe(null)
   })
 
   it('loadingSelector', () => {
-    expect(loadingSelector(mockState)).toBe(false)
+    const result = loadingSelector(mockState)
+
+    expect(result).toBe(false)
   })
 })

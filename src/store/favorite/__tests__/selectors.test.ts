@@ -8,14 +8,20 @@ import {
 
 describe('favorite selectors', () => {
   it('favoriteMoviesSelector', () => {
-    expect(favoriteMoviesSelector(mockState)).toBe(null)
+    const result = favoriteMoviesSelector(mockState)
+
+    expect(result).toBe(null)
   })
 
   it('favoriteLoadingSelector', () => {
-    expect(favoriteLoadingSelector(mockState)).toBe(true)
+    const result = favoriteLoadingSelector(mockState)
+
+    expect(result).toBe(true)
   })
 
   it('favoriteErrorSelector', () => {
-    expect(favoriteErrorSelector(mockState)).toBe(null)
+    const result = favoriteErrorSelector(mockState)
+
+    expect(result).toBe(null)
   })
 })

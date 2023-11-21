@@ -10,8 +10,8 @@ jest.mock('src/store/session/selectors', () => ({
 }))
 
 describe('fetchFavorite', () => {
-  const requestSpy = jest.spyOn(httpClient, 'request')
   const action = fetchFavorite('1')
+  const requestSpy = jest.spyOn(httpClient, 'request')
 
   const request = {
     params: { page: '1', session_id: 'session_id' },
@@ -19,7 +19,7 @@ describe('fetchFavorite', () => {
   }
   const response = { data: 'test/data' }
 
-  it('success', async () => {
+  it('should handle success', async () => {
     requestSpy.mockResolvedValueOnce(response)
 
     const result = await action(dispatch, getState, undefined)
@@ -29,7 +29,7 @@ describe('fetchFavorite', () => {
     expect(result.payload).toEqual(response.data)
   })
 
-  it('failure', async () => {
+  it('should handle failure', async () => {
     requestSpy.mockRejectedValueOnce('Something went wrong!')
 
     const result = await action(dispatch, getState, undefined)

@@ -44,7 +44,7 @@ describe('lists actions', () => {
     }
     const response = { data: 'test/data' }
 
-    it('success', async () => {
+    it('should handle success', async () => {
       requestSpy.mockResolvedValueOnce(response)
 
       const result = await action(dispatch, getState, undefined)
@@ -54,7 +54,7 @@ describe('lists actions', () => {
       expect(result.payload).toEqual(response.data)
     })
 
-    it('failure', async () => {
+    it('should handle failure', async () => {
       requestSpy.mockRejectedValueOnce('Something went wrong!')
 
       const result = await action(dispatch, getState, undefined)
@@ -75,7 +75,7 @@ describe('lists actions', () => {
     }
     const response = { data: { list_id: 123 } }
 
-    it('success', async () => {
+    it('should handle success', async () => {
       requestSpy.mockResolvedValueOnce(response)
 
       await action(dispatch, getState, undefined)
@@ -85,7 +85,7 @@ describe('lists actions', () => {
       expect(dispatch.mock.calls.length).toBe(3)
     })
 
-    it('failure', async () => {
+    it('should handle failure', async () => {
       requestSpy.mockRejectedValueOnce('Something went wrong!')
 
       await action(dispatch, getState, undefined)
@@ -113,7 +113,7 @@ describe('lists actions', () => {
     }
     const response = { data: { success: true } }
 
-    it('success', async () => {
+    it('should handle success', async () => {
       requestSpy.mockResolvedValueOnce(response)
 
       await action(dispatch, getState, undefined)
@@ -123,7 +123,7 @@ describe('lists actions', () => {
       expect(dispatch.mock.calls.length).toBe(2)
     })
 
-    it('failure', async () => {
+    it('should handle failure', async () => {
       requestSpy.mockRejectedValueOnce('Something went wrong!')
 
       await action(dispatch, getState, undefined)
@@ -138,7 +138,7 @@ describe('lists actions', () => {
     const request = { params: { page: '1' }, url: routes.getListDetails('123') }
     const response = { data: 'test/data' }
 
-    it('success', async () => {
+    it('should handle success', async () => {
       requestSpy.mockResolvedValueOnce(response)
 
       const result = await action(dispatch, getState, undefined)
@@ -148,7 +148,7 @@ describe('lists actions', () => {
       expect(result.payload).toEqual(response.data)
     })
 
-    it('failure', async () => {
+    it('should handle failure', async () => {
       requestSpy.mockRejectedValueOnce('Something went wrong!')
 
       const result = await action(dispatch, getState, undefined)
@@ -168,7 +168,7 @@ describe('lists actions', () => {
     }
     const response = { data: { success: true } }
 
-    it('success', async () => {
+    it('should handle success', async () => {
       const notification = showNotification({
         messageText: 'test/movie added to test/list'
       })
@@ -182,7 +182,7 @@ describe('lists actions', () => {
       expect(dispatch).toHaveBeenCalledWith(notification)
     })
 
-    it('failure', async () => {
+    it('should handle failure', async () => {
       requestSpy.mockRejectedValueOnce('Something went wrong!')
 
       await action(dispatch, getState, undefined)
@@ -202,7 +202,7 @@ describe('lists actions', () => {
     }
     const response = { data: { success: true } }
 
-    it('success', async () => {
+    it('should handle success', async () => {
       requestSpy.mockResolvedValueOnce(response)
 
       await action(dispatch, getState, undefined)
@@ -212,7 +212,7 @@ describe('lists actions', () => {
       expect(dispatch.mock.calls.length).toBe(2)
     })
 
-    it('failure', async () => {
+    it('should handle failure', async () => {
       requestSpy.mockRejectedValueOnce('Something went wrong!')
 
       await action(dispatch, getState, undefined)

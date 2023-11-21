@@ -13,7 +13,7 @@ describe('dashboard actions', () => {
     const request = { params: { page: '1' }, url: getTrending }
     const response = { data: 'test/data' }
 
-    it('success', async () => {
+    it('should handle success', async () => {
       requestSpy.mockResolvedValueOnce(response)
 
       const result = await action(dispatch, getState, undefined)
@@ -23,7 +23,7 @@ describe('dashboard actions', () => {
       expect(result.payload).toEqual(response.data)
     })
 
-    it('failure', async () => {
+    it('should handle failure', async () => {
       requestSpy.mockRejectedValueOnce('Something went wrong!')
 
       const result = await action(dispatch, getState, undefined)
@@ -41,7 +41,7 @@ describe('dashboard actions', () => {
     }
     const response = { data: 'test/data' }
 
-    it('success', async () => {
+    it('should handle success', async () => {
       requestSpy.mockResolvedValueOnce(response)
 
       const result = await action(dispatch, getState, undefined)
@@ -51,7 +51,7 @@ describe('dashboard actions', () => {
       expect(result.payload).toEqual(response.data)
     })
 
-    it('failure', async () => {
+    it('should handle failure', async () => {
       requestSpy.mockRejectedValueOnce('Something went wrong!')
 
       const result = await action(dispatch, getState, undefined)

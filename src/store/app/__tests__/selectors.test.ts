@@ -8,14 +8,20 @@ import {
 
 describe('app selectors', () => {
   it('modalTypeSelector', () => {
-    expect(modalTypeSelector(mockState)).toBe(null)
+    const result = modalTypeSelector(mockState)
+
+    expect(result).toBe(null)
   })
 
   it('modalPropsSelector', () => {
-    expect(modalPropsSelector(mockState)).toBe(null)
+    const result = modalPropsSelector(mockState)
+
+    expect(result).toBe(null)
   })
 
   it('notificationsSelector', () => {
-    expect(notificationsSelector(mockState)).toEqual([])
+    const result = notificationsSelector(mockState)
+
+    expect(result).toEqual([])
   })
 })

@@ -4,41 +4,47 @@ import { fetchSearch, fetchTrending } from '../actions'
 import dashboardReducer from '../reducer'
 
 describe('dashboardReducer', () => {
-  const initialState: DashboardState = { data: null }
+  const state: DashboardState = { data: null }
 
-  it('should handle fetchTrending/pending', () => {
-    const action = {
-      type: fetchTrending.pending.toString()
-    }
+  it('should return initial state with empty action', () => {
+    const result = dashboardReducer(undefined, { type: '' })
 
-    expect(dashboardReducer(initialState, action)).toEqual(initialState)
+    expect(result).toEqual(state)
   })
 
-  it('should handle fetchTrending/fulfilled', () => {
+  it('should handle fetchTrending/pending action', () => {
+    const action = { type: fetchTrending.pending }
+    const result = dashboardReducer(state, action)
+
+    expect(result).toEqual(state)
+  })
+
+  it('should handle fetchTrending/fulfilled action', () => {
     const action = {
       payload: 'test/data',
-      type: fetchTrending.fulfilled.toString()
+      type: fetchTrending.fulfilled
     }
-    const expectedState = { data: action.payload }
+    const newState = { data: action.payload }
+    const result = dashboardReducer(state, action)
 
-    expect(dashboardReducer(initialState, action)).toEqual(expectedState)
+    expect(result).toEqual(newState)
   })
 
-  it('should handle fetchSearch/pending', () => {
-    const action = {
-      type: fetchSearch.pending.toString()
-    }
+  it('should handle fetchSearch/pending action', () => {
+    const action = { type: fetchSearch.pending }
+    const result = dashboardReducer(state, action)
 
-    expect(dashboardReducer(initialState, action)).toEqual(initialState)
+    expect(result).toEqual(state)
   })
 
-  it('should handle fetchSearch/fulfilled', () => {
+  it('should handle fetchSearch/fulfilled action', () => {
     const action = {
       payload: 'test/data',
-      type: fetchSearch.fulfilled.toString()
+      type: fetchSearch.fulfilled
     }
-    const expectedState = { data: action.payload }
+    const newState = { data: action.payload }
+    const result = dashboardReducer(state, action)
 
-    expect(dashboardReducer(initialState, action)).toEqual(expectedState)
+    expect(result).toEqual(newState)
   })
 })

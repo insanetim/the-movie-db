@@ -46,7 +46,7 @@ describe('movie actions', () => {
       images: imagesResponse.data.backdrops.slice(0, 7)
     }
 
-    it('success', async () => {
+    it('should handle success', async () => {
       requestSpy
         .mockResolvedValueOnce(movieDetailResponse)
         .mockResolvedValueOnce(imagesResponse)
@@ -63,7 +63,7 @@ describe('movie actions', () => {
       expect(result.payload).toEqual(extentedData)
     })
 
-    it('failure', async () => {
+    it('should handle failure', async () => {
       requestSpy.mockRejectedValueOnce('Something went wrong!')
 
       const result = await action(dispatch, getState, undefined)
@@ -88,7 +88,7 @@ describe('movie actions', () => {
     }
     const response = { data: { success: true } }
 
-    it('success', async () => {
+    it('should handle success', async () => {
       requestSpy.mockResolvedValueOnce(response)
 
       await action(dispatch, getState, undefined)
@@ -97,7 +97,7 @@ describe('movie actions', () => {
       expect(requestSpy).toHaveBeenCalledWith(request)
     })
 
-    it('failure', async () => {
+    it('should handle failure', async () => {
       requestSpy.mockRejectedValueOnce('Something went wrong!')
 
       await action(dispatch, getState, undefined)
@@ -122,7 +122,7 @@ describe('movie actions', () => {
     }
     const response = { data: { success: true } }
 
-    it('success', async () => {
+    it('should handle success', async () => {
       requestSpy.mockResolvedValueOnce(response)
 
       await action(dispatch, getState, undefined)
@@ -131,7 +131,7 @@ describe('movie actions', () => {
       expect(requestSpy).toHaveBeenCalledWith(request)
     })
 
-    it('failure', async () => {
+    it('should handle failure', async () => {
       requestSpy.mockRejectedValueOnce('Something went wrong!')
 
       await action(dispatch, getState, undefined)

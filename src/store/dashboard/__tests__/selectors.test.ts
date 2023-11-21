@@ -4,6 +4,8 @@ import { dashboardMoviesSelector } from '../selectors'
 
 describe('dashboard selectors', () => {
   it('dashboardMoviesSelector', () => {
-    expect(dashboardMoviesSelector(mockState)).toBe(null)
+    const result = dashboardMoviesSelector(mockState)
+
+    expect(result).toBe(null)
   })
 })

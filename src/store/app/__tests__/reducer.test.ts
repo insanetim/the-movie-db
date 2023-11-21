@@ -17,7 +17,7 @@ jest.mock<typeof import('@reduxjs/toolkit')>('@reduxjs/toolkit', () => ({
 }))
 
 describe('appReducer', () => {
-  const initialState: AppState = {
+  const state: AppState = {
     modal: {
       modalProps: null,
       modalType: null
@@ -25,25 +25,26 @@ describe('appReducer', () => {
     notifications: []
   }
 
-  it('should handle hideModal', () => {
-    const action = {
-      type: hideModal.toString()
-    }
-    const expectedState = assocPath(
-      ['modal', 'modalProps'],
-      { open: false },
-      initialState
-    )
+  it('should return initial state with empty action', () => {
+    const result = appReducer(undefined, { type: '' })
 
-    expect(appReducer(initialState, action)).toEqual(expectedState)
+    expect(result).toEqual(state)
   })
 
-  it('should handle hideNotification', () => {
+  it('should handle hideModal action', () => {
+    const action = { type: hideModal }
+    const newState = assocPath(['modal', 'modalProps'], { open: false }, state)
+    const result = appReducer(state, action)
+
+    expect(result).toEqual(newState)
+  })
+
+  it('should handle hideNotification action', () => {
     const action = {
       payload: 'test/id',
-      type: hideNotification.toString()
+      type: hideNotification
     }
-    const initialState = {
+    const state = {
       modal: {
         modalProps: null,
         modalType: null
@@ -57,47 +58,50 @@ describe('appReducer', () => {
         }
       ]
     }
-    const expectedState = assoc('notifications', [], initialState)
+    const newState = assoc('notifications', [], state)
+    const result = appReducer(state, action)
 
-    expect(appReducer(initialState, action)).toEqual(expectedState)
+    expect(result).toEqual(newState)
   })
 
-  it('should handle showModal', () => {
+  it('should handle showModal action', () => {
     const action = {
       payload: {
         modalProps: 'test/modalProps',
         modalType: 'test/modalType'
       },
-      type: showModal.toString()
+      type: showModal
     }
-    const expectedState = assoc('modal', action.payload, initialState)
+    const newState = assoc('modal', action.payload, state)
+    const result = appReducer(state, action)
 
-    expect(appReducer(initialState, action)).toEqual(expectedState)
+    expect(result).toEqual(newState)
   })
 
-  it('should handle showModal without modalProps', () => {
+  it('should handle showModal action without modalProps', () => {
     const action = {
       payload: {
         modalType: 'test/modalType'
       },
-      type: showModal.toString()
+      type: showModal
     }
-    const expectedState = mergeDeepRight(initialState, {
+    const newState = mergeDeepRight(state, {
       modal: {
         modalProps: null,
         modalType: 'test/modalType'
       }
     })
+    const result = appReducer(state, action)
 
-    expect(appReducer(initialState, action)).toEqual(expectedState)
+    expect(result).toEqual(newState)
   })
 
-  it('should handle showNotification', () => {
+  it('should handle showNotification action', () => {
     const action = {
       payload: { messageText: 'test/message' },
-      type: showNotification.toString()
+      type: showNotification
     }
-    const expectedState = assoc(
+    const newState = assoc(
       'notifications',
       [
         {
@@ -107,9 +111,10 @@ describe('appReducer', () => {
           messageType: NOTIFICATION_TYPE.SUCCESS
         }
       ],
-      initialState
+      state
     )
+    const result = appReducer(state, action)
 
-    expect(appReducer(initialState, action)).toEqual(expectedState)
+    expect(result).toEqual(newState)
   })
 })

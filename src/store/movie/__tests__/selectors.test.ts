@@ -4,6 +4,8 @@ import { selectMovieById } from '../selectors'
 
 describe('movie selectors', () => {
   it('selectMovieById', () => {
-    expect(selectMovieById(mockState, 123)).toBe(undefined)
+    const result = selectMovieById(mockState, 123)
+
+    expect(result).toBe(undefined)
   })
 })

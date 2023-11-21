@@ -8,14 +8,20 @@ import {
 
 describe('watchlist selectors', () => {
   it('watchlistMoviesSelector', () => {
-    expect(watchlistMoviesSelector(mockState)).toBe(null)
+    const result = watchlistMoviesSelector(mockState)
+
+    expect(result).toBe(null)
   })
 
   it('watchlistLoadingSelector', () => {
-    expect(watchlistLoadingSelector(mockState)).toBe(true)
+    const result = watchlistLoadingSelector(mockState)
+
+    expect(result).toBe(true)
   })
 
   it('watchlistErrorSelector', () => {
-    expect(watchlistErrorSelector(mockState)).toBe(null)
+    const result = watchlistErrorSelector(mockState)
+
+    expect(result).toBe(null)
   })
 })

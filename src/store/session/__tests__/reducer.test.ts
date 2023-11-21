@@ -1,58 +1,63 @@
 import { assoc } from 'ramda'
 
 import { fetchAccount, logIn, logOut } from '../actions'
-import reducer from '../reducer'
+import sessionReducer from '../reducer'
 import { SessionState } from '../types'
 
 describe('sessionReducer', () => {
-  const initialState: SessionState = {
+  const state: SessionState = {
     account: null,
     loading: false,
     sessionId: ''
   }
 
-  it('should handle logIn/pending', () => {
-    const action = {
-      type: logIn.pending.toString()
-    }
-    const expectedState = assoc('loading', true, initialState)
+  it('should return initial state with empty action', () => {
+    const result = sessionReducer(undefined, { type: '' })
 
-    expect(reducer(initialState, action)).toEqual(expectedState)
+    expect(result).toEqual(state)
   })
 
-  it('should handle logIn/fulfilled', () => {
+  it('should handle logIn/pending action', () => {
+    const action = { type: logIn.pending }
+    const newState = assoc('loading', true, state)
+    const result = sessionReducer(state, action)
+
+    expect(result).toEqual(newState)
+  })
+
+  it('should handle logIn/fulfilled action', () => {
     const action = {
       payload: 'test/data',
-      type: logIn.fulfilled.toString()
+      type: logIn.fulfilled
     }
-    const expectedState = assoc('sessionId', action.payload, initialState)
+    const newState = assoc('sessionId', action.payload, state)
+    const result = sessionReducer(state, action)
 
-    expect(reducer(initialState, action)).toEqual(expectedState)
+    expect(result).toEqual(newState)
   })
 
-  it('should handle logIn/rejected', () => {
-    const action = {
-      type: logIn.rejected.toString()
-    }
+  it('should handle logIn/rejected action', () => {
+    const action = { type: logIn.rejected }
+    const result = sessionReducer(state, action)
 
-    expect(reducer(initialState, action)).toEqual(initialState)
+    expect(result).toEqual(state)
   })
 
-  it('should handle logOut/fulfilled', () => {
-    const action = {
-      type: logOut.fulfilled.toString()
-    }
+  it('should handle logOut/fulfilled action', () => {
+    const action = { type: logOut.fulfilled }
+    const result = sessionReducer(state, action)
 
-    expect(reducer(initialState, action)).toEqual(initialState)
+    expect(result).toEqual(state)
   })
 
-  it('should handle fetchAccount/fulfilled', () => {
+  it('should handle fetchAccount/fulfilled action', () => {
     const action = {
       payload: 'test/data',
-      type: fetchAccount.fulfilled.toString()
+      type: fetchAccount.fulfilled
     }
-    const expectedState = assoc('account', action.payload, initialState)
+    const newState = assoc('account', action.payload, state)
+    const result = sessionReducer(state, action)
 
-    expect(reducer(initialState, action)).toEqual(expectedState)
+    expect(result).toEqual(newState)
   })
 })

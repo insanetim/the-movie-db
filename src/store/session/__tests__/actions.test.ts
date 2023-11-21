@@ -51,7 +51,7 @@ describe('session actions', () => {
     }
     const sessionResponse = { data: { session_id: 'test/session_id' } }
 
-    it('success', async () => {
+    it('should handle success', async () => {
       requestSpy
         .mockResolvedValueOnce(requestTokenResponse)
         .mockResolvedValueOnce(requestTokenResponse)
@@ -70,7 +70,7 @@ describe('session actions', () => {
       expect(result.payload).toEqual(sessionResponse.data.session_id)
     })
 
-    it('failure', async () => {
+    it('should handle failure', async () => {
       requestSpy.mockRejectedValueOnce('Something went wrong!')
 
       await action(dispatch, getState, undefined)
@@ -89,7 +89,7 @@ describe('session actions', () => {
     }
     const response = { data: { success: true } }
 
-    it('success', async () => {
+    it('should handle success', async () => {
       requestSpy.mockResolvedValueOnce(response)
 
       await action(dispatch, getState, undefined)
@@ -99,7 +99,7 @@ describe('session actions', () => {
       expect(cookiesRemoveSpy).toHaveBeenCalledWith('tmdb.session_id')
     })
 
-    it('failure', async () => {
+    it('should handle failure', async () => {
       requestSpy.mockRejectedValueOnce('Something went wrong!')
 
       await action(dispatch, getState, undefined)
@@ -117,7 +117,7 @@ describe('session actions', () => {
     }
     const response = { data: 'test/data' }
 
-    it('success', async () => {
+    it('should handle success', async () => {
       requestSpy.mockResolvedValueOnce(response)
 
       const result = await action(dispatch, getState, undefined)
@@ -127,7 +127,7 @@ describe('session actions', () => {
       expect(result.payload).toEqual(response.data)
     })
 
-    it('failure', async () => {
+    it('should handle failure', async () => {
       requestSpy.mockRejectedValueOnce('Something went wrong!')
 
       await action(dispatch, getState, undefined)

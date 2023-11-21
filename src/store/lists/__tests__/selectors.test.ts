@@ -11,26 +11,38 @@ import {
 
 describe('lists selectors', () => {
   it('listsSelector', () => {
-    expect(listsSelector(mockState)).toBe(null)
+    const result = listsSelector(mockState)
+
+    expect(result).toBe(null)
   })
 
   it('listsLoadingSelector', () => {
-    expect(listsLoadingSelector(mockState)).toBe(true)
+    const result = listsLoadingSelector(mockState)
+
+    expect(result).toBe(true)
   })
 
   it('listsErrorSelector', () => {
-    expect(listsErrorSelector(mockState)).toBe(null)
+    const result = listsErrorSelector(mockState)
+
+    expect(result).toBe(null)
   })
 
   it('listDetailSelector', () => {
-    expect(listDetailSelector(mockState)).toBe(null)
+    const result = listDetailSelector(mockState)
+
+    expect(result).toBe(null)
   })
 
   it('listDetailLoadingSelector', () => {
-    expect(listDetailLoadingSelector(mockState)).toBe(true)
+    const result = listDetailLoadingSelector(mockState)
+
+    expect(result).toBe(true)
   })
 
   it('listDetailErrorSelector', () => {
-    expect(listDetailErrorSelector(mockState)).toBe(null)
+    const result = listDetailErrorSelector(mockState)
+
+    expect(result).toBe(null)
   })
 })

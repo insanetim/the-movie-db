@@ -8,37 +8,41 @@ import favoriteReducer from '../reducer'
 jest.mock('src/utils/stateHelpers/setState')
 
 describe('favoriteReducer', () => {
-  const initialState: FavoriteState = {
+  const state: FavoriteState = {
     data: null,
     error: null,
     loading: true
   }
 
-  it('should handle fetchFavorite/pending', () => {
-    const action = {
-      type: fetchFavorite.pending.toString()
-    }
-    favoriteReducer(initialState, action)
+  it('should return initial state with empty action', () => {
+    const result = favoriteReducer(undefined, { type: '' })
+
+    expect(result).toEqual(state)
+  })
+
+  it('should handle fetchFavorite/pending action', () => {
+    const action = { type: fetchFavorite.pending }
+    favoriteReducer(state, action)
 
     expect(setState.pending).toHaveBeenCalled()
   })
 
-  it('should handle fetchFavorite/fulfilled', () => {
+  it('should handle fetchFavorite/fulfilled action', () => {
     const action = {
       payload: 'test/data',
-      type: fetchFavorite.fulfilled.toString()
+      type: fetchFavorite.fulfilled
     }
-    favoriteReducer(initialState, action)
+    favoriteReducer(state, action)
 
     expect(setState.fulfilled).toHaveBeenCalled()
   })
 
-  it('should handle fetchFavorite/rejected', () => {
+  it('should handle fetchFavorite/rejected action', () => {
     const action = {
       payload: 'test/error',
-      type: fetchFavorite.rejected.toString()
+      type: fetchFavorite.rejected
     }
-    favoriteReducer(initialState, action)
+    favoriteReducer(state, action)
 
     expect(setState.rejected).toHaveBeenCalled()
   })
