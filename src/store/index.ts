@@ -14,7 +14,7 @@ const store = configureStore({
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware({
       serializableCheck: {
-        ignoredActions: [showModal.toString()]
+        ignoredActions: [showModal.type]
       }
     }),
   reducer: {

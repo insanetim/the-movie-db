@@ -9,7 +9,13 @@ const ModalCreateList: React.FC<ModalCreateListProps> = ({
   ...props
 }) => {
   const [form] = Form.useForm()
-  const { handleAfterClose, handleOk, handleSubmit } = useContainer({
+  const {
+    handleAfterClose,
+    handleAfterOpenChange,
+    handleOk,
+    handleSubmit,
+    inputRef
+  } = useContainer({
     form,
     movieId,
     onSuccess
@@ -18,6 +24,7 @@ const ModalCreateList: React.FC<ModalCreateListProps> = ({
   return (
     <Modal
       afterClose={handleAfterClose}
+      afterOpenChange={handleAfterOpenChange}
       destroyOnClose
       okText='Create'
       onOk={handleOk}
@@ -34,7 +41,10 @@ const ModalCreateList: React.FC<ModalCreateListProps> = ({
           name='name'
           rules={[{ message: 'Name is required', required: true }]}
         >
-          <Input placeholder='Name' />
+          <Input
+            placeholder='Name'
+            ref={inputRef}
+          />
         </Form.Item>
         <Form.Item
           name='description'

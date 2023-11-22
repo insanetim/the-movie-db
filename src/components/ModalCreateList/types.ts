@@ -1,4 +1,4 @@
-import { FormInstance, ModalProps } from 'antd'
+import { FormInstance, InputRef, ModalProps } from 'antd'
 import { IMovie } from 'src/interfaces/movie.interface'
 
 export interface ModalCreateListProps extends ModalProps {
@@ -16,6 +16,8 @@ export type ListData = { description: string; name: string }
 
 export interface ModalCreateListHook {
   handleAfterClose: () => void
+  handleAfterOpenChange: (open: boolean) => void
   handleOk: () => void
   handleSubmit: (listData: ListData) => void
+  inputRef: React.RefObject<InputRef>
 }

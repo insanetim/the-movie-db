@@ -1,4 +1,6 @@
+import { InputRef } from 'antd'
 import { isNotNil } from 'ramda'
+import { useRef } from 'react'
 import { useAppDispatch } from 'src/hooks/useRedux'
 import { hideModal } from 'src/store/app/actions'
 import { createList } from 'src/store/lists/actions'
@@ -14,6 +16,7 @@ const useContainer = ({
   movieId,
   onSuccess
 }: ModalCreateListHookProps): ModalCreateListHook => {
+  const inputRef = useRef<InputRef>(null)
   const dispatch = useAppDispatch()
 
   const handleOk = () => {
@@ -33,7 +36,19 @@ const useContainer = ({
     form.resetFields()
   }
 
-  return { handleAfterClose, handleOk, handleSubmit }
+  const handleAfterOpenChange = (open: boolean) => {
+    if (open) {
+      inputRef.current?.focus()
+    }
+  }
+
+  return {
+    handleAfterClose,
+    handleAfterOpenChange,
+    handleOk,
+    handleSubmit,
+    inputRef
+  }
 }
 
 export default useContainer

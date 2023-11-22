@@ -1,5 +1,6 @@
 import { act, renderHook } from '@testing-library/react'
 import { FormInstance } from 'antd'
+import React from 'react'
 import { dispatch } from 'src/__mocks__/react-redux'
 import { hideModal } from 'src/store/app/actions'
 import { createList } from 'src/store/lists/actions'
@@ -76,5 +77,29 @@ describe('ModalCreateList useContainer hook', () => {
     })
 
     expect(props.form.resetFields).toHaveBeenCalled()
+  })
+
+  it('should check `handleAfterOpenChange` method with true', () => {
+    const focus = jest.fn()
+    jest.spyOn(React, 'useRef').mockReturnValue({ current: { focus } })
+    const { result } = renderHook(() => useContainer(props))
+
+    act(() => {
+      result.current.handleAfterOpenChange(true)
+    })
+
+    expect(focus).toHaveBeenCalled()
+  })
+
+  it('should check `handleAfterOpenChange` method with false', () => {
+    const focus = jest.fn()
+    jest.spyOn(React, 'useRef').mockReturnValue({ current: { focus } })
+    const { result } = renderHook(() => useContainer(props))
+
+    act(() => {
+      result.current.handleAfterOpenChange(false)
+    })
+
+    expect(focus).not.toHaveBeenCalled()
   })
 })
