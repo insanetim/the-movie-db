@@ -3,7 +3,7 @@ import { render } from '@testing-library/react'
 import Error from '../component'
 
 describe('Error component', () => {
-  it('matches snapshot', () => {
+  it('should match snapshot', () => {
     const error = 'Something went wrong!'
     const { asFragment } = render(<Error error={error} />)
 

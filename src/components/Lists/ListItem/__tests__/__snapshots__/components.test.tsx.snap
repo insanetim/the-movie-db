@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ListItem component matches snapshot 1`] = `
+exports[`ListItem component should match snapshot 1`] = `
 <DocumentFragment>
   <div
     class="ant-card ant-card-bordered ant-card-hoverable css-dev-only-do-not-override-nllxry"

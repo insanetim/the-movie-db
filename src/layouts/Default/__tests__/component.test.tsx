@@ -16,7 +16,7 @@ jest.mock('src/components/NotificationsRoot/hook', () =>
 )
 
 describe('DefaultLayout component', () => {
-  it('matches snapshot', () => {
+  it('should match snapshot', () => {
     const { asFragment } = render(<DefaultLayout />, { wrapper: Wrapper })
 
     expect(asFragment()).toMatchSnapshot()

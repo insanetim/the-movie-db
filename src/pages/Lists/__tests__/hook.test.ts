@@ -29,13 +29,13 @@ const setSearchParams = jest.fn()
 jest.mocked(useSearchParams).mockReturnValue([searchParams, setSearchParams])
 
 describe('Lists useContainer hook', () => {
-  it('matches snapshot', () => {
+  it('should match snapshot', () => {
     const { result } = renderHook(useContainer)
 
     expect(result.current).toMatchSnapshot()
   })
 
-  it('checks `handlePagination` method', () => {
+  it('should check `handlePagination` method', () => {
     const { result } = renderHook(useContainer)
 
     act(() => {
@@ -45,7 +45,7 @@ describe('Lists useContainer hook', () => {
     expect(setSearchParams).toHaveBeenCalledWith({ page: '3' })
   })
 
-  it('checks `handleCreateList` method', () => {
+  it('should check `handleCreateList` method', () => {
     let onSuccess = () => {
       return
     }
@@ -65,7 +65,7 @@ describe('Lists useContainer hook', () => {
     expect(dispatch).toHaveBeenCalledWith(fetchLists('1'))
   })
 
-  it('checks `handleCreateList` method with page !== 1', () => {
+  it('should check `handleCreateList` method with page !== 1', () => {
     const searchParams = new URLSearchParams({ page: '3' })
     jest
       .mocked(useSearchParams)
@@ -89,7 +89,7 @@ describe('Lists useContainer hook', () => {
     expect(setSearchParams).toHaveBeenCalledWith({})
   })
 
-  it('checks `useEffect` method with account', () => {
+  it('should check `useEffect` method with account', () => {
     jest.mocked(accountSelector).mockReturnValueOnce(mockAccount)
     renderHook(useContainer)
 

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Watchlist useContainer hook matches snapshot 1`] = `
+exports[`Watchlist useContainer hook should match snapshot 1`] = `
 {
   "error": null,
   "handleMovieDelete": [Function],

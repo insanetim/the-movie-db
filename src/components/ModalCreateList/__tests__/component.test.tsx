@@ -11,7 +11,7 @@ const mockedHookData: ModalCreateListHook = {
 jest.mock('../hook', () => jest.fn(() => mockedHookData))
 
 describe('ModalCreateList component', () => {
-  it('matches snapshot', () => {
+  it('should match snapshot', () => {
     const { baseElement } = render(<ModalCreateList onCancel={jest.fn()} />)
 
     expect(baseElement).toMatchSnapshot()

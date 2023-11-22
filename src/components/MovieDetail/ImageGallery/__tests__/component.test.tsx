@@ -5,7 +5,7 @@ import ImageGallery from '../component'
 import { ImageGalleryProps } from '../types'
 
 describe('ImageGallery component', () => {
-  it('matches snapshot', () => {
+  it('should match snapshot', () => {
     const props: ImageGalleryProps = {
       images: [mockImage],
       title: 'test/title'

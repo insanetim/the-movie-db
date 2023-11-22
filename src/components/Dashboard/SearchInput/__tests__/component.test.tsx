@@ -11,7 +11,7 @@ const mockedHookData: SearchInputHook = {
 jest.mock('../hook', () => jest.fn(() => mockedHookData))
 
 describe('SearchInput component', () => {
-  it('matches snapshot', () => {
+  it('should match snapshot', () => {
     const { asFragment } = render(<SearchInput query={''} />)
 
     expect(asFragment()).toMatchSnapshot()

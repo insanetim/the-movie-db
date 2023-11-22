@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`PopoverContent component matches snapshot 1`] = `
+exports[`PopoverContent component should match snapshot 1`] = `
 <DocumentFragment>
   <div>
     <button

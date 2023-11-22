@@ -17,13 +17,13 @@ describe('PopoverContent useContainer hook', () => {
   const setPopoverOpen = jest.fn()
   const props = { movieId: 123, setPopoverOpen }
 
-  it('matches snapshot', () => {
+  it('should match snapshot', () => {
     const { result } = renderHook(() => useContainer(props))
 
     expect(result.current).toMatchSnapshot()
   })
 
-  it('checks `handleAddToNewList` method', () => {
+  it('should check `handleAddToNewList` method', () => {
     const { result } = renderHook(() => useContainer(props))
 
     act(() => {
@@ -39,7 +39,7 @@ describe('PopoverContent useContainer hook', () => {
     expect(setPopoverOpen).toHaveBeenCalledWith(false)
   })
 
-  it('checks `handleAddToList` method', () => {
+  it('should check `handleAddToList` method', () => {
     const { result } = renderHook(() => useContainer(props))
 
     act(() => {

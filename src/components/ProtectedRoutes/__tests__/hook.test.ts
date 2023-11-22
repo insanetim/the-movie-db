@@ -14,7 +14,7 @@ jest.mock('react-router-dom', () => ({
 }))
 
 describe('ProtectedRoutes useContainer hook', () => {
-  it('matches snapshot', () => {
+  it('should match snapshot', () => {
     const { result } = renderHook(useContainer)
 
     expect(result.current).toMatchSnapshot()

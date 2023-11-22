@@ -22,13 +22,13 @@ jest.mocked(useSearchParams).mockReturnValue([searchParams, setSearchParams])
 describe('SearchResult useContainer hook', () => {
   const props = { query: 'test/search' }
 
-  it('matches snapshot', () => {
+  it('should match snapshot', () => {
     const { result } = renderHook(() => useContainer(props))
 
     expect(result.current).toMatchSnapshot()
   })
 
-  it('checks `handlePagination` method', () => {
+  it('should check `handlePagination` method', () => {
     const { result } = renderHook(() => useContainer(props))
 
     act(() => {
@@ -41,7 +41,7 @@ describe('SearchResult useContainer hook', () => {
     })
   })
 
-  it('check `useEffect` method', () => {
+  it('should check `useEffect` method', () => {
     renderHook(() => useContainer(props))
 
     expect(dispatch).toHaveBeenCalledWith(

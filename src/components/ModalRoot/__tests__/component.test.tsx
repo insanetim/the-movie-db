@@ -12,7 +12,7 @@ const mockedHookData: ModalRootHook = {
 jest.mock('../hook', () => jest.fn(() => mockedHookData))
 
 describe('ModalRoot component', () => {
-  it('matches snapshot', () => {
+  it('should match snapshot', () => {
     const { asFragment } = render(<ModalRoot />, { wrapper: Wrapper })
 
     expect(asFragment()).toMatchSnapshot()

@@ -20,13 +20,13 @@ const setSearchParams = jest.fn()
 jest.mocked(useSearchParams).mockReturnValue([searchParams, setSearchParams])
 
 describe('Trending useContainer hook', () => {
-  it('matches snapshot', () => {
+  it('should match snapshot', () => {
     const { result } = renderHook(useContainer)
 
     expect(result.current).toMatchSnapshot()
   })
 
-  it('checks `handlePagination` method', () => {
+  it('should check `handlePagination` method', () => {
     const { result } = renderHook(useContainer)
 
     act(() => {
@@ -36,7 +36,7 @@ describe('Trending useContainer hook', () => {
     expect(setSearchParams).toHaveBeenCalledWith({ page: '3' })
   })
 
-  it('checks `useEffect` method', () => {
+  it('should check `useEffect` method', () => {
     renderHook(useContainer)
 
     expect(dispatch).toHaveBeenCalledWith(fetchTrending('1'))

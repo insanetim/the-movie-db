@@ -10,13 +10,13 @@ jest.mock('src/store/app/selectors', () => ({
 }))
 
 describe('ModalRoot useContainer hook', () => {
-  it('matches snapshot', () => {
+  it('should match snapshot', () => {
     const { result } = renderHook(useContainer)
 
     expect(result.current).toMatchSnapshot()
   })
 
-  it('checks `onCancel` method', () => {
+  it('should check `onCancel` method', () => {
     const { result } = renderHook(useContainer)
 
     act(() => {

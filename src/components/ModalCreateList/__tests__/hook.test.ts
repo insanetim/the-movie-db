@@ -17,13 +17,13 @@ describe('ModalCreateList useContainer hook', () => {
     movieId: 123
   }
 
-  it('matches snapshot', () => {
+  it('should match snapshot', () => {
     const { result } = renderHook(() => useContainer(props))
 
     expect(result.current).toMatchSnapshot()
   })
 
-  it('checks `handleOk` method', () => {
+  it('should check `handleOk` method', () => {
     const { result } = renderHook(() => useContainer(props))
 
     act(() => {
@@ -33,7 +33,7 @@ describe('ModalCreateList useContainer hook', () => {
     expect(props.form.submit).toHaveBeenCalled()
   })
 
-  it('checks `handleSubmit` method', () => {
+  it('should check `handleSubmit` method', () => {
     const listData = { description: 'test/description', name: 'test/name' }
     const { result } = renderHook(() => useContainer(props))
 
@@ -49,7 +49,7 @@ describe('ModalCreateList useContainer hook', () => {
     )
   })
 
-  it('checks `handleSubmit` method with onSuccess', async () => {
+  it('should check `handleSubmit` method with onSuccess', async () => {
     const onSuccess = jest.fn()
     const extendedProps = { ...props, onSuccess }
     const listData = { description: 'test/description', name: 'test/name' }
@@ -68,7 +68,7 @@ describe('ModalCreateList useContainer hook', () => {
     expect(onSuccess).toHaveBeenCalled()
   })
 
-  it('checks `handleAfterClose` method', () => {
+  it('should check `handleAfterClose` method', () => {
     const { result } = renderHook(() => useContainer(props))
 
     act(() => {

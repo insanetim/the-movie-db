@@ -13,13 +13,13 @@ const mockedHookData: HeaderHook = {
 jest.mock('../hook', () => jest.fn(() => mockedHookData))
 
 describe('Header component', () => {
-  it('matches snapshot', () => {
+  it('should match snapshot', () => {
     const { asFragment } = render(<Header />, { wrapper: Wrapper })
 
     expect(asFragment()).toMatchSnapshot()
   })
 
-  it('matches snapshot with avatar_path', () => {
+  it('should match snapshot with avatar_path', () => {
     mockedHookData.account = mergeDeepRight(mockAccount, {
       avatar: { tmdb: { avatar_path: '/image' } }
     })
@@ -28,7 +28,7 @@ describe('Header component', () => {
     expect(asFragment()).toMatchSnapshot()
   })
 
-  it('matches snapshot with empty account', () => {
+  it('should match snapshot with empty account', () => {
     mockedHookData.account = null
     const { asFragment } = render(<Header />, { wrapper: Wrapper })
 

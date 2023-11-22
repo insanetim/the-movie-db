@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Header component matches snapshot 1`] = `
+exports[`Header component should match snapshot 1`] = `
 <DocumentFragment>
   <header
     class="ant-layout-header css-dev-only-do-not-override-nllxry"
@@ -64,7 +64,7 @@ exports[`Header component matches snapshot 1`] = `
 </DocumentFragment>
 `;
 
-exports[`Header component matches snapshot with avatar_path 1`] = `
+exports[`Header component should match snapshot with avatar_path 1`] = `
 <DocumentFragment>
   <header
     class="ant-layout-header css-dev-only-do-not-override-nllxry"
@@ -128,7 +128,7 @@ exports[`Header component matches snapshot with avatar_path 1`] = `
 </DocumentFragment>
 `;
 
-exports[`Header component matches snapshot with empty account 1`] = `
+exports[`Header component should match snapshot with empty account 1`] = `
 <DocumentFragment>
   <header
     class="ant-layout-header css-dev-only-do-not-override-nllxry"

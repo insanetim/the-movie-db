@@ -38,20 +38,20 @@ jest.mocked(useUpdatePage).mockReturnValue({ updatePage })
 describe('ListDetail useContainer hook', () => {
   const modalSpy = jest.spyOn(Modal, 'confirm')
 
-  it('matches snapshot', () => {
+  it('should match snapshot', () => {
     const { result } = renderHook(useContainer)
 
     expect(result.current).toMatchSnapshot()
   })
 
-  it('matches snapshot without params', () => {
+  it('should match snapshot without params', () => {
     jest.mocked(useParams).mockReturnValueOnce({})
     const { result } = renderHook(useContainer)
 
     expect(result.current).toMatchSnapshot()
   })
 
-  it('checks `handlePagination` method', () => {
+  it('should check `handlePagination` method', () => {
     const { result } = renderHook(useContainer)
 
     act(() => {
@@ -61,7 +61,7 @@ describe('ListDetail useContainer hook', () => {
     expect(setSearchParams).toHaveBeenCalledWith({ page: '3' })
   })
 
-  it('checks `handleListDelete` method', async () => {
+  it('should check `handleListDelete` method', async () => {
     dispatch.mockImplementationOnce(() => Promise.resolve())
     let onOk = () => {
       return
@@ -81,7 +81,7 @@ describe('ListDetail useContainer hook', () => {
     expect(navigate).toHaveBeenCalledWith('/lists')
   })
 
-  it('checks `handleMovieDelete` method', async () => {
+  it('should check `handleMovieDelete` method', async () => {
     let onOk = () => {
       return
     }
@@ -104,7 +104,7 @@ describe('ListDetail useContainer hook', () => {
     expect(updatePage).toHaveBeenCalled()
   })
 
-  it('check `useEffect` method', () => {
+  it('should check `useEffect` method', () => {
     renderHook(useContainer)
 
     expect(dispatch).toHaveBeenCalledWith(

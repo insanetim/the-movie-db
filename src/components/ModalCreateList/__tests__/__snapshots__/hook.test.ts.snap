@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ModalCreateList useContainer hook matches snapshot 1`] = `
+exports[`ModalCreateList useContainer hook should match snapshot 1`] = `
 {
   "handleAfterClose": [Function],
   "handleOk": [Function],

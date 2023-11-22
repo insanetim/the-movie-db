@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Notification useContainer hook matches snapshot 1`] = `
+exports[`Notification useContainer hook should match snapshot 1`] = `
 {
   "closeNotification": [Function],
 }

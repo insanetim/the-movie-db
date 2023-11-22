@@ -30,13 +30,13 @@ jest.mocked(useSearchParams).mockReturnValue([searchParams, setSearchParams])
 describe('SearchInput useContainer hook', () => {
   const props = { query: '' }
 
-  it('matches snapshot', () => {
+  it('should match snapshot', () => {
     const { result } = renderHook(() => useContainer(props))
 
     expect(result.current).toMatchSnapshot()
   })
 
-  it('checks `handleChange` method', () => {
+  it('sholud check `handleChange` method', () => {
     const { result } = renderHook(() => useContainer(props))
 
     act(() => {
@@ -48,7 +48,7 @@ describe('SearchInput useContainer hook', () => {
     expect(setState).toHaveBeenCalledWith('test/search')
   })
 
-  it('checks `handleSearch` method with value', () => {
+  it('sholud check `handleSearch` method with value', () => {
     const { result } = renderHook(() => useContainer(props))
 
     act(() => {
@@ -58,7 +58,7 @@ describe('SearchInput useContainer hook', () => {
     expect(setSearchParams).toHaveBeenCalledWith({ search: 'test/search' })
   })
 
-  it('checks `handleSearch` method without value', () => {
+  it('sholud check `handleSearch` method without value', () => {
     const { result } = renderHook(() => useContainer(props))
 
     act(() => {
@@ -68,7 +68,7 @@ describe('SearchInput useContainer hook', () => {
     expect(setSearchParams).toHaveBeenCalledWith({})
   })
 
-  it('check `useEffect` method', () => {
+  it('sholud check `useEffect` method', () => {
     renderHook(() => useContainer(props))
 
     expect(setState).toHaveBeenCalledWith('')

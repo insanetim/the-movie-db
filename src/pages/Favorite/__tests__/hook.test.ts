@@ -39,13 +39,13 @@ jest.mocked(useUpdatePage).mockReturnValue({ updatePage })
 describe('Favotite useContainer hook', () => {
   const modalSpy = jest.spyOn(Modal, 'confirm')
 
-  it('matches snapshot', () => {
+  it('should match snapshot', () => {
     const { result } = renderHook(useContainer)
 
     expect(result.current).toMatchSnapshot()
   })
 
-  it('checks `handlePagination` method', () => {
+  it('should check `handlePagination` method', () => {
     const { result } = renderHook(useContainer)
 
     act(() => {
@@ -55,7 +55,7 @@ describe('Favotite useContainer hook', () => {
     expect(setSearchParams).toHaveBeenCalledWith({ page: '3' })
   })
 
-  it('checks `handleMovieDelete` method', async () => {
+  it('should check `handleMovieDelete` method', async () => {
     let onOk = () => {
       return
     }
@@ -78,7 +78,7 @@ describe('Favotite useContainer hook', () => {
     expect(updatePage).toHaveBeenCalled()
   })
 
-  it('checks `useEffect` method with account', () => {
+  it('should check `useEffect` method with account', () => {
     jest.mocked(accountSelector).mockReturnValueOnce(mockAccount)
     renderHook(useContainer)
 

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ModalCreateList component matches snapshot 1`] = `
+exports[`ModalCreateList component should match snapshot 1`] = `
 <body>
   <div />
   <div>

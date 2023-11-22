@@ -32,20 +32,20 @@ jest.mock<typeof import('@reduxjs/toolkit')>('@reduxjs/toolkit', () => ({
 }))
 
 describe('MovieDetail useContainer hook', () => {
-  it('matches snapshot', () => {
+  it('should match snapshot', () => {
     const { result } = renderHook(useContainer)
 
     expect(result.current).toMatchSnapshot()
   })
 
-  it('matches snapshot without params', () => {
+  it('should match snapshot without params', () => {
     jest.mocked(useParams).mockReturnValueOnce({})
     const { result } = renderHook(useContainer)
 
     expect(result.current).toMatchSnapshot()
   })
 
-  it('checks `handleFavoriteClick` method', () => {
+  it('should check `handleFavoriteClick` method', () => {
     const notification = showNotification({
       messageText: 'test/title added to Favorite'
     })
@@ -61,7 +61,7 @@ describe('MovieDetail useContainer hook', () => {
     expect(dispatch).toHaveBeenCalledWith(notification)
   })
 
-  it('checks `handleWatchlistClick` method', () => {
+  it('should check `handleWatchlistClick` method', () => {
     const notification = showNotification({
       messageText: 'test/title added to Watchlist'
     })
@@ -77,7 +77,7 @@ describe('MovieDetail useContainer hook', () => {
     expect(dispatch).toHaveBeenCalledWith(notification)
   })
 
-  it('checks `useEffect` method', () => {
+  it('should check `useEffect` method', () => {
     jest.mocked(selectMovieById).mockReturnValueOnce(undefined)
     renderHook(useContainer)
 

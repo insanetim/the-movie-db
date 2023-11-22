@@ -15,13 +15,13 @@ describe('Notification useContainer hook', () => {
     messageType: NOTIFICATION_TYPE.SUCCESS
   }
 
-  it('matches snapshot', () => {
+  it('should match snapshot', () => {
     const { result } = renderHook(() => useContainer(props))
 
     expect(result.current).toMatchSnapshot()
   })
 
-  it('checks `closeNotification` method', () => {
+  it('should check `closeNotification` method', () => {
     const { result } = renderHook(() => useContainer(props))
 
     act(() => {
@@ -32,7 +32,7 @@ describe('Notification useContainer hook', () => {
     expect(destroySpy).toHaveBeenCalledWith(props.id)
   })
 
-  it('checks `useEffect` method', () => {
+  it('should check `useEffect` method', () => {
     const { result } = renderHook(() => useContainer(props))
 
     expect(successSpy).toHaveBeenCalledWith({

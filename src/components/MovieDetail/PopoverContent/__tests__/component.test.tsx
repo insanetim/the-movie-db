@@ -23,7 +23,7 @@ describe('PopoverContent component', () => {
     setPopoverOpen: jest.fn()
   }
 
-  it('matches snapshot', () => {
+  it('should match snapshot', () => {
     const { asFragment } = render(<PopoverContent {...props} />, {
       wrapper: Wrapper
     })

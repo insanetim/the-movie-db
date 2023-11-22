@@ -1,5 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ProtectedRoutes component matches snapshot 1`] = `<DocumentFragment />`;
+exports[`ProtectedRoutes component should match snapshot 1`] = `<DocumentFragment />`;
 
-exports[`ProtectedRoutes component matches snapshot without sessionId 1`] = `<DocumentFragment />`;
+exports[`ProtectedRoutes component should match snapshot without sessionId 1`] = `<DocumentFragment />`;

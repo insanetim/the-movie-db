@@ -24,13 +24,13 @@ jest.mock('src/store/lists/selectors', () => ({
 }))
 
 describe('Lists component', () => {
-  it('matches snapshot', () => {
+  it('should match snapshot', () => {
     const { asFragment } = render(<Lists />, { wrapper: Wrapper })
 
     expect(asFragment()).toMatchSnapshot()
   })
 
-  it('matches snapshot with 1 page', () => {
+  it('should match snapshot with 1 page', () => {
     mockedHookData.lists = {
       page: 1,
       results: [mockList],
@@ -43,21 +43,21 @@ describe('Lists component', () => {
     expect(asFragment()).toMatchSnapshot()
   })
 
-  it('matches snapshot with empty lists', () => {
+  it('should match snapshot with empty lists', () => {
     mockedHookData.lists = null
     const { asFragment } = render(<Lists />, { wrapper: Wrapper })
 
     expect(asFragment()).toMatchSnapshot()
   })
 
-  it('matches snapshot with loading', () => {
+  it('should match snapshot with loading', () => {
     mockedHookData.loading = true
     const { asFragment } = render(<Lists />, { wrapper: Wrapper })
 
     expect(asFragment()).toMatchSnapshot()
   })
 
-  it('matches snapshot with error', () => {
+  it('should match snapshot with error', () => {
     mockedHookData.loading = false
     mockedHookData.error = 'Something went wrong!'
     const { asFragment } = render(<Lists />, { wrapper: Wrapper })

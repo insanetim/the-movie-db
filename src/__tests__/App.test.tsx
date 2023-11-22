@@ -139,13 +139,13 @@ describe('App component', () => {
     </Suspense>
   )
 
-  it('matches snapshot', () => {
+  it('should match snapshot', () => {
     const { asFragment } = render(<App />, { wrapper: Wrapper })
 
     expect(asFragment()).toMatchSnapshot()
   })
 
-  it('renders DefaultLayout', async () => {
+  it('should render DefaultLayout', async () => {
     const { findByText } = render(<DefaultLayout />, {
       wrapper: WrapperWithSuspense
     })
@@ -155,13 +155,13 @@ describe('App component', () => {
     ).toBeInTheDocument()
   })
 
-  it('renders Login', async () => {
+  it('should render Login', async () => {
     const { findByText } = render(<Login />, { wrapper: WrapperWithSuspense })
 
     expect(await findByText('Log in')).toBeInTheDocument()
   })
 
-  it('renders Dashboard', async () => {
+  it('should render Dashboard', async () => {
     const { findByPlaceholderText } = render(<Dashboard />, {
       wrapper: WrapperWithSuspense
     })
@@ -175,7 +175,7 @@ describe('App component', () => {
     ).toBeInTheDocument()
   })
 
-  it('renders Lists', async () => {
+  it('should render Lists', async () => {
     const { findByText } = render(<Lists />, { wrapper: WrapperWithSuspense })
 
     expect(
@@ -183,7 +183,7 @@ describe('App component', () => {
     ).toBeInTheDocument()
   })
 
-  it('renders Watchlist', async () => {
+  it('should render Watchlist', async () => {
     const { findByText } = render(<Watchlist />, {
       wrapper: WrapperWithSuspense
     })
@@ -191,7 +191,7 @@ describe('App component', () => {
     expect(await findByText('Watchlist')).toBeInTheDocument()
   })
 
-  it('renders Favorite', async () => {
+  it('should render Favorite', async () => {
     const { findByText } = render(<Favorite />, {
       wrapper: WrapperWithSuspense
     })
@@ -199,7 +199,7 @@ describe('App component', () => {
     expect(await findByText('Favorite')).toBeInTheDocument()
   })
 
-  it('renders ListDetail', async () => {
+  it('should render ListDetail', async () => {
     const { findByText } = render(<ListDetail />, {
       wrapper: WrapperWithSuspense
     })
@@ -207,7 +207,7 @@ describe('App component', () => {
     expect(await findByText('test/title')).toBeInTheDocument()
   })
 
-  it('renders MovieDetail', async () => {
+  it('should render MovieDetail', async () => {
     const { findByText } = render(<MovieDetail />, {
       wrapper: WrapperWithSuspense
     })
@@ -217,7 +217,7 @@ describe('App component', () => {
     ).toBeInTheDocument()
   })
 
-  it('renders NotFound', async () => {
+  it('should render NotFound', async () => {
     const { findByText } = render(<NotFound />, {
       wrapper: WrapperWithSuspense
     })

@@ -11,13 +11,13 @@ const mockedHookData: LoginHook = {
 jest.mock('../hook', () => jest.fn(() => mockedHookData))
 
 describe('Login component', () => {
-  it('matches snapshot', () => {
+  it('should match snapshot', () => {
     const { asFragment } = render(<Login />, { wrapper: Wrapper })
 
     expect(asFragment()).toMatchSnapshot()
   })
 
-  it('matches snapshot with loading', () => {
+  it('should match snapshot with loading', () => {
     mockedHookData.loading = true
     const { asFragment } = render(<Login />, { wrapper: Wrapper })
 

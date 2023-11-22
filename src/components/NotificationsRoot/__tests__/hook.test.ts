@@ -10,13 +10,13 @@ jest.mock('src/store/app/selectors', () => ({
 }))
 
 describe('NotificationsRoot useContainer hook', () => {
-  it('matches snapshot', () => {
+  it('should match snapshot', () => {
     const { result } = renderHook(useContainer)
 
     expect(result.current).toMatchSnapshot()
   })
 
-  it('checks `hideNotification` method', () => {
+  it('should check `hideNotification` method', () => {
     const { result } = renderHook(useContainer)
 
     act(() => {

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`MovieItem component matches snapshot 1`] = `
+exports[`MovieItem component should match snapshot 1`] = `
 <DocumentFragment>
   <div
     class="ant-card ant-card-bordered ant-card-hoverable css-dev-only-do-not-override-nllxry"
@@ -73,7 +73,7 @@ exports[`MovieItem component matches snapshot 1`] = `
 </DocumentFragment>
 `;
 
-exports[`MovieItem component matches snapshot without poster_path 1`] = `
+exports[`MovieItem component should match snapshot without poster_path 1`] = `
 <DocumentFragment>
   <div
     class="ant-card ant-card-bordered ant-card-hoverable css-dev-only-do-not-override-nllxry"

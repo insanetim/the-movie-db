@@ -17,7 +17,7 @@ describe('MovieItem component', () => {
     movie: mockMovie
   }
 
-  it('matches snapshot', () => {
+  it('should match snapshot', () => {
     const { asFragment } = render(<MovieItem {...props} />, {
       wrapper: Wrapper
     })
@@ -25,7 +25,7 @@ describe('MovieItem component', () => {
     expect(asFragment()).toMatchSnapshot()
   })
 
-  it('matches snapshot without poster_path', () => {
+  it('should match snapshot without poster_path', () => {
     const props = {
       movie: mergeDeepRight(mockMovie, { poster_path: null })
     }

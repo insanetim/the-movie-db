@@ -17,13 +17,13 @@ jest.mock('react-router-dom', () => ({
 }))
 
 describe('ProtectedRoutes component', () => {
-  it('matches snapshot', () => {
+  it('should match snapshot', () => {
     const { asFragment } = render(<ProtectedRoutes />, { wrapper: Wrapper })
 
     expect(asFragment()).toMatchSnapshot()
   })
 
-  it('matches snapshot without sessionId', () => {
+  it('should match snapshot without sessionId', () => {
     mockedHookData.sessionId = ''
     const { asFragment } = render(<ProtectedRoutes />, { wrapper: Wrapper })
 

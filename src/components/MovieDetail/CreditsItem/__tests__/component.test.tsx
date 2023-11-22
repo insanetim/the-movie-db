@@ -9,13 +9,13 @@ describe('CreditsItem component', () => {
     profilePath: 'test/image',
     title: 'test/title'
   }
-  it('matches snapshot', () => {
+  it('should match snapshot', () => {
     const { asFragment } = render(<CreditsItem {...props} />)
 
     expect(asFragment()).toMatchSnapshot()
   })
 
-  it('matches snapshot without profilePath', () => {
+  it('should match snapshot without profilePath', () => {
     props.profilePath = null
     const { asFragment } = render(<CreditsItem {...props} />)
 

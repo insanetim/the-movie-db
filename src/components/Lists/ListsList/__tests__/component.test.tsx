@@ -11,7 +11,7 @@ jest.mock('src/store/lists/selectors', () => ({
 describe('ListsList component', () => {
   const mockedLists = [mockList]
 
-  it('matches snapshot', () => {
+  it('should match snapshot', () => {
     const { asFragment } = render(<ListList lists={mockedLists} />, {
       wrapper: Wrapper
     })

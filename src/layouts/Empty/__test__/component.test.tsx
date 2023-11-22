@@ -4,7 +4,7 @@ import Wrapper from 'src/utils/testHelpers/wrapperMock'
 import EmptyLayout from '../component'
 
 describe('EmptyLayout component', () => {
-  it('matches snapshot', () => {
+  it('should match snapshot', () => {
     const { asFragment } = render(<EmptyLayout />, { wrapper: Wrapper })
 
     expect(asFragment()).toMatchSnapshot()

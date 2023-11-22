@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`CastList component matches snapshot 1`] = `
+exports[`CastList component should match snapshot 1`] = `
 <DocumentFragment>
   <div
     class="ant-col ant-col-24 css-dev-only-do-not-override-nllxry"

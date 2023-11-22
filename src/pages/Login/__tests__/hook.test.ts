@@ -26,13 +26,13 @@ jest.mock('@reduxjs/toolkit', () => ({
 }))
 
 describe('Login useContainer hook', () => {
-  it('matches snapshot', () => {
+  it('should match snapshot', () => {
     const { result } = renderHook(useContainer)
 
     expect(result.current).toMatchSnapshot()
   })
 
-  it('checks `handleLogIn` method success', async () => {
+  it('should check `handleLogIn` method success', async () => {
     dispatch.mockImplementationOnce(() => Promise.resolve())
     jest.mocked(unwrapResult).mockReturnValueOnce('test/sessionId')
     const userData = { password: 'password', username: 'user' }
@@ -46,7 +46,7 @@ describe('Login useContainer hook', () => {
     expect(navigate).toHaveBeenCalledWith('/', { replace: true })
   })
 
-  it('checks `handleLogIn` method failure', async () => {
+  it('should check `handleLogIn` method failure', async () => {
     dispatch.mockImplementationOnce(() => Promise.resolve())
     jest.mocked(unwrapResult).mockReturnValueOnce(undefined)
     const userData = { password: 'password', username: 'user' }

@@ -13,13 +13,13 @@ jest.mocked(useNavigate).mockReturnValue(navigate)
 describe('MovieItem useContainer hook', () => {
   const props = { movieId: 123 }
 
-  it('matches snapshot', () => {
+  it('should match snapshot', () => {
     const { result } = renderHook(() => useContainer(props))
 
     expect(result.current).toMatchSnapshot()
   })
 
-  it('checks `handleClick` method', () => {
+  it('should check `handleClick` method', () => {
     const { result } = renderHook(() => useContainer(props))
 
     act(() => {

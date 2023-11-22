@@ -10,7 +10,7 @@ const mockedHookData: NotificationHook = {
 jest.mock('../hook', () => jest.fn(() => mockedHookData))
 
 describe('Notification component', () => {
-  it('matches snapshot', () => {
+  it('should match snapshot', () => {
     const props = {
       duration: NOTIFICATION_DURATION,
       hideNotification: jest.fn(),

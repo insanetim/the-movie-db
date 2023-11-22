@@ -5,7 +5,7 @@ import Wrapper from 'src/utils/testHelpers/wrapperMock'
 import MoviesList from '../component'
 
 describe('MoviesList component', () => {
-  it('matches snapshot', () => {
+  it('should match snapshot', () => {
     const { asFragment } = render(
       <MoviesList
         handleMovieDelete={jest.fn()}

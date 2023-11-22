@@ -1,7 +1,7 @@
 import * as apiRoutes from '../apiRoutes'
 
 describe('apiRoutes', () => {
-  it('matches snapshot', () => {
+  it('should match snapshot', () => {
     expect(apiRoutes).toMatchSnapshot()
   })
 

@@ -20,13 +20,13 @@ const mockedHookData: WatchlistHook = {
 jest.mock('../hook', () => jest.fn(() => mockedHookData))
 
 describe('Watchlist component', () => {
-  it('matches snapshot', () => {
+  it('should match snapshot', () => {
     const { asFragment } = render(<Watchlist />, { wrapper: Wrapper })
 
     expect(asFragment()).toMatchSnapshot()
   })
 
-  it('matches snapshot with 1 page', () => {
+  it('should match snapshot with 1 page', () => {
     mockedHookData.movies = {
       page: 1,
       results: [mockMovie],
@@ -38,21 +38,21 @@ describe('Watchlist component', () => {
     expect(asFragment()).toMatchSnapshot()
   })
 
-  it('matches snapshot with empty movies', () => {
+  it('should match snapshot with empty movies', () => {
     mockedHookData.movies = null
     const { asFragment } = render(<Watchlist />, { wrapper: Wrapper })
 
     expect(asFragment()).toMatchSnapshot()
   })
 
-  it('matches snapshot with loading', () => {
+  it('should match snapshot with loading', () => {
     mockedHookData.loading = true
     const { asFragment } = render(<Watchlist />, { wrapper: Wrapper })
 
     expect(asFragment()).toMatchSnapshot()
   })
 
-  it('matches snapshot with error', () => {
+  it('should match snapshot with error', () => {
     mockedHookData.loading = false
     mockedHookData.error = 'Something went wrong!'
     const { asFragment } = render(<Watchlist />, { wrapper: Wrapper })

@@ -1,5 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ModalRoot component matches snapshot 1`] = `<DocumentFragment />`;
+exports[`ModalRoot component should match snapshot 1`] = `<DocumentFragment />`;
 
 exports[`ModalRoot component return null unless modalType present 1`] = `<DocumentFragment />`;

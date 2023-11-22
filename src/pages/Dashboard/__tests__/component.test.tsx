@@ -16,13 +16,13 @@ jest.mock('src/store/dashboard/selectors', () => ({
 }))
 
 describe('Dashboard component', () => {
-  it('matches snapshot', () => {
+  it('should match snapshot', () => {
     const { asFragment } = render(<Dashboard />, { wrapper: Wrapper })
 
     expect(asFragment()).toMatchSnapshot()
   })
 
-  it('matches snapshot with query', () => {
+  it('should match snapshot with query', () => {
     mockedHookData.query = 'test/search'
     const { asFragment } = render(<Dashboard />, { wrapper: Wrapper })
 

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Favorite component matches snapshot 1`] = `
+exports[`Favorite component should match snapshot 1`] = `
 <DocumentFragment>
   <div
     class="container"
@@ -280,7 +280,7 @@ exports[`Favorite component matches snapshot 1`] = `
 </DocumentFragment>
 `;
 
-exports[`Favorite component matches snapshot with 1 page 1`] = `
+exports[`Favorite component should match snapshot with 1 page 1`] = `
 <DocumentFragment>
   <div
     class="container"
@@ -380,7 +380,7 @@ exports[`Favorite component matches snapshot with 1 page 1`] = `
 </DocumentFragment>
 `;
 
-exports[`Favorite component matches snapshot with empty movies 1`] = `
+exports[`Favorite component should match snapshot with empty movies 1`] = `
 <DocumentFragment>
   <div
     class="container"
@@ -447,7 +447,7 @@ exports[`Favorite component matches snapshot with empty movies 1`] = `
 </DocumentFragment>
 `;
 
-exports[`Favorite component matches snapshot with error 1`] = `
+exports[`Favorite component should match snapshot with error 1`] = `
 <DocumentFragment>
   <div
     class="container"
@@ -502,7 +502,7 @@ exports[`Favorite component matches snapshot with error 1`] = `
 </DocumentFragment>
 `;
 
-exports[`Favorite component matches snapshot with loading 1`] = `
+exports[`Favorite component should match snapshot with loading 1`] = `
 <DocumentFragment>
   <div
     class="container"

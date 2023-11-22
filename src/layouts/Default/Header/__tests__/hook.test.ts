@@ -20,13 +20,13 @@ const navigate = jest.fn()
 jest.mocked(useNavigate).mockReturnValue(navigate)
 
 describe('Header useContainer hook', () => {
-  it('matches snapshot', () => {
+  it('should match snapshot', () => {
     const { result } = renderHook(useContainer)
 
     expect(result.current).toMatchSnapshot()
   })
 
-  it('checks `handleLogOut` method', async () => {
+  it('should check `handleLogOut` method', async () => {
     dispatch.mockImplementationOnce(() => Promise.resolve())
     const { result } = renderHook(useContainer)
 
@@ -41,7 +41,7 @@ describe('Header useContainer hook', () => {
     })
   })
 
-  it('checks `useEffect` method', () => {
+  it('should check `useEffect` method', () => {
     renderHook(useContainer)
 
     expect(dispatch).toHaveBeenCalledTimes(1)

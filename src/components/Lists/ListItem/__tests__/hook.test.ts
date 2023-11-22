@@ -32,13 +32,13 @@ describe('ListItem useContainer hook', () => {
   const modalSpy = jest.spyOn(Modal, 'confirm')
   const props = { listId: 123 }
 
-  it('matches snapshot', () => {
+  it('should match snapshot', () => {
     const { result } = renderHook(() => useContainer(props))
 
     expect(result.current).toMatchSnapshot()
   })
 
-  it('checks `handleClick` method', () => {
+  it('should check `handleClick` method', () => {
     const { result } = renderHook(() => useContainer(props))
 
     act(() => {
@@ -48,7 +48,7 @@ describe('ListItem useContainer hook', () => {
     expect(navigate).toHaveBeenCalledWith('/list/123')
   })
 
-  it('checks `handleListDelete` method', async () => {
+  it('should check `handleListDelete` method', async () => {
     let onOk = () => {
       return
     }

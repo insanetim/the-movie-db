@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`apiRoutes matches snapshot 1`] = `
+exports[`apiRoutes should match snapshot 1`] = `
 {
   "addToFovorite": [Function],
   "addToList": [Function],

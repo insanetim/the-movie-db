@@ -11,7 +11,7 @@ const mockedHookData: NotificationsRootHook = {
 jest.mock('../hook', () => jest.fn(() => mockedHookData))
 
 describe('NotificationsRoot component', () => {
-  it('matches snapshot', () => {
+  it('should match snapshot', () => {
     const { asFragment } = render(<NotificationsRoot />)
 
     expect(asFragment()).toMatchSnapshot()

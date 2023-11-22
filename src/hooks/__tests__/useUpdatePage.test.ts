@@ -14,13 +14,13 @@ describe('useUpdatePage', () => {
     setSearchParams
   }
 
-  it('matches snapshot', () => {
+  it('should match snapshot', () => {
     const { result } = renderHook(() => useUpdatePage(props))
 
     expect(result.current).toMatchSnapshot()
   })
 
-  it('checks updatePage', () => {
+  it('should check updatePage', () => {
     const { result } = renderHook(() => useUpdatePage(props))
 
     act(() => {
@@ -30,7 +30,7 @@ describe('useUpdatePage', () => {
     expect(setSearchParams).toHaveBeenCalledWith({ page: '2' })
   })
 
-  it('checks updatePage withot items', () => {
+  it('should check updatePage withot items', () => {
     const extendedProps = { ...props, items: undefined }
     const { result } = renderHook(() => useUpdatePage(extendedProps))
 

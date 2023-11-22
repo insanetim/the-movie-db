@@ -19,7 +19,7 @@ const mockedHookData: MovieDetailHook = {
 jest.mock('../hook', () => jest.fn(() => mockedHookData))
 
 describe('MovieDetail component', () => {
-  it('matches snapshot', () => {
+  it('should match snapshot', () => {
     const { asFragment } = render(<Movie />, { wrapper: Wrapper })
 
     expect(asFragment()).toMatchSnapshot()
@@ -33,7 +33,7 @@ describe('MovieDetail component', () => {
     expect(mockedHookData.setPopoverOpen).toHaveBeenCalled()
   })
 
-  it('matches snapshot with other data', () => {
+  it('should match snapshot with other data', () => {
     jest.mocked(useContainer).mockReturnValueOnce(
       mergeDeepRight(mockedHookData, {
         movie: {
@@ -50,7 +50,7 @@ describe('MovieDetail component', () => {
     expect(asFragment()).toMatchSnapshot()
   })
 
-  it('matches snapshot with open popover', () => {
+  it('should match snapshot with open popover', () => {
     jest.mocked(useContainer).mockReturnValueOnce(
       mergeDeepRight(mockedHookData, {
         popoverOpen: true
@@ -61,21 +61,21 @@ describe('MovieDetail component', () => {
     expect(asFragment()).toMatchSnapshot()
   })
 
-  it('matches snapshot with empty movie', () => {
+  it('should match snapshot with empty movie', () => {
     mockedHookData.movie = undefined
     const { asFragment } = render(<Movie />, { wrapper: Wrapper })
 
     expect(asFragment()).toMatchSnapshot()
   })
 
-  it('matches snapshot with loading', () => {
+  it('should match snapshot with loading', () => {
     mockedHookData.loading = true
     const { asFragment } = render(<Movie />, { wrapper: Wrapper })
 
     expect(asFragment()).toMatchSnapshot()
   })
 
-  it('matches snapshot with error', () => {
+  it('should match snapshot with error', () => {
     mockedHookData.loading = false
     mockedHookData.error = 'Something went wrong!'
     const { asFragment } = render(<Movie />, { wrapper: Wrapper })

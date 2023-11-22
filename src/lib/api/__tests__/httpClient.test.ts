@@ -1,7 +1,7 @@
 import httpClient from '../httpClient'
 
 describe('httpClient', () => {
-  it('matches snapshot', () => {
+  it('should match snapshot', () => {
     expect(httpClient).toMatchSnapshot()
   })
 })

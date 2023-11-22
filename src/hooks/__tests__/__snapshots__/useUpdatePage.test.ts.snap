@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`useUpdatePage matches snapshot 1`] = `
+exports[`useUpdatePage should match snapshot 1`] = `
 {
   "updatePage": [Function],
 }

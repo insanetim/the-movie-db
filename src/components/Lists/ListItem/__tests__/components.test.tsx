@@ -12,7 +12,7 @@ const mockedHookData: ListItemHook = {
 jest.mock('../hook', () => jest.fn(() => mockedHookData))
 
 describe('ListItem component', () => {
-  it('matches snapshot', () => {
+  it('should match snapshot', () => {
     const { asFragment } = render(<ListItem list={mockList} />, {
       wrapper: Wrapper
     })

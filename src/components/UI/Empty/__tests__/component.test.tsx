@@ -3,7 +3,7 @@ import { render } from '@testing-library/react'
 import Empty from '../component'
 
 describe('Empty component', () => {
-  it('matches snapshot', () => {
+  it('should match snapshot', () => {
     const { asFragment } = render(<Empty />)
 
     expect(asFragment()).toMatchSnapshot()
