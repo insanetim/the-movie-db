@@ -1,4 +1,4 @@
-import ModalCreateList from '../ModalCreateList'
+import ModalCreateList from './Modals/ModalCreateList'
 
 const MODAL_COMPONENTS = {
   MODAL_CREATE_LIST: ModalCreateList

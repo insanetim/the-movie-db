@@ -8,8 +8,8 @@ import {
   IMovieDetailExtended,
   IMovieImages
 } from 'src/interfaces/movie.interface'
-import httpClient from 'src/lib/api/httpClient'
-import * as routes from 'src/lib/apiRoutes'
+import httpClient from 'src/libs/api/httpClient'
+import * as routes from 'src/libs/apiRoutes'
 import { accountSelector, sessionIdSelector } from 'src/store/session/selectors'
 import errorMessage from 'src/utils/helpers/errorMessage'
 

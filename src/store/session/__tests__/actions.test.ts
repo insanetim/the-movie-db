@@ -1,8 +1,8 @@
 import Cookies from 'js-cookie'
 import { dispatch, getState } from 'src/__mocks__/react-redux'
 import { NOTIFICATION_TYPE } from 'src/constants/app'
-import httpClient from 'src/lib/api/httpClient'
-import * as routes from 'src/lib/apiRoutes'
+import httpClient from 'src/libs/api/httpClient'
+import * as routes from 'src/libs/apiRoutes'
 import { showNotification } from 'src/store/app/actions'
 
 import { fetchAccount, logIn, logOut } from '../actions'

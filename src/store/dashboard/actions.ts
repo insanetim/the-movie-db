@@ -1,7 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
 import { IMoviesList } from 'src/interfaces/movie.interface'
-import httpClient from 'src/lib/api/httpClient'
-import { getTrending, searchMovies } from 'src/lib/apiRoutes'
+import httpClient from 'src/libs/api/httpClient'
+import { getTrending, searchMovies } from 'src/libs/apiRoutes'
 import errorMessage from 'src/utils/helpers/errorMessage'
 
 import * as types from './constants'

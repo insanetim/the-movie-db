@@ -1,6 +1,6 @@
 import { dispatch, getState } from 'src/__mocks__/react-redux'
-import httpClient from 'src/lib/api/httpClient'
-import { getTrending, searchMovies } from 'src/lib/apiRoutes'
+import httpClient from 'src/libs/api/httpClient'
+import { getTrending, searchMovies } from 'src/libs/apiRoutes'
 
 import { fetchSearch, fetchTrending } from '../actions'
 

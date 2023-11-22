@@ -1,6 +1,6 @@
 import { dispatch, getState } from 'src/__mocks__/react-redux'
-import httpClient from 'src/lib/api/httpClient'
-import { getFavorite } from 'src/lib/apiRoutes'
+import httpClient from 'src/libs/api/httpClient'
+import { getFavorite } from 'src/libs/apiRoutes'
 
 import { fetchFavorite } from '../actions'
 
