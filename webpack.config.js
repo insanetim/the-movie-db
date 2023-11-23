@@ -89,13 +89,8 @@ module.exports = {
     rules: [
       {
         exclude: /node_modules/,
-        test: /\.ts(x?)$/,
-        use: ['babel-loader', 'ts-loader']
-      },
-      {
-        exclude: /node_modules/,
-        test: /\.js(x?)$/,
-        use: ['babel-loader']
+        test: /\.tsx?$/,
+        use: 'ts-loader'
       },
       {
         test: /\.s[ac]ss$/,
