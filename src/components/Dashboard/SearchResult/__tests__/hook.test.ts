@@ -1,14 +1,12 @@
 import { act, renderHook } from '@testing-library/react'
 import { useSearchParams } from 'react-router-dom'
 import { dispatch } from 'src/__mocks__/react-redux'
-import { fetchSearch } from 'src/store/dashboard/actions'
+import * as dashboardActions from 'src/store/dashboard/actions'
 
 import useContainer from '../hook'
 
-jest.mock('src/store/dashboard/actions')
-
 jest.mock('src/store/dashboard/selectors', () => ({
-  dashboardMoviesSelector: jest.fn(() => null)
+  dashboardMoviesSelector: () => null
 }))
 
 jest.mock('react-router-dom', () => ({
@@ -28,7 +26,7 @@ describe('SearchResult useContainer hook', () => {
     expect(result.current).toMatchSnapshot()
   })
 
-  it('should check `handlePagination` method', () => {
+  it('should check "handlePagination" method', () => {
     const { result } = renderHook(() => useContainer(props))
 
     act(() => {
@@ -41,14 +39,14 @@ describe('SearchResult useContainer hook', () => {
     })
   })
 
-  it('should check `useEffect` method', () => {
+  it('should check "useEffect" method', () => {
+    const fetchSearch = jest.spyOn(dashboardActions, 'fetchSearch')
     renderHook(() => useContainer(props))
 
-    expect(dispatch).toHaveBeenCalledWith(
-      fetchSearch({
-        page: '1',
-        query: props.query
-      })
-    )
+    expect(dispatch).toHaveBeenCalled()
+    expect(fetchSearch).toHaveBeenCalledWith({
+      page: '1',
+      query: props.query
+    })
   })
 })

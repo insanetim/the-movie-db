@@ -1,13 +1,13 @@
-import { render } from '@testing-library/react'
+import { fireEvent, render, screen } from '@testing-library/react'
 import { mockMovie } from 'src/__mocks__/mockMovie'
 import Wrapper from 'src/utils/testHelpers/wrapperMock'
 
 import Trending from '../component'
 import { TrendingHook } from '../types'
 
-const mockedHookData: TrendingHook = {
+const mockedHook: TrendingHook = {
   error: null,
-  handlePagination: () => jest.fn(),
+  handlePagination: jest.fn(),
   loading: false,
   movies: {
     page: 1,
@@ -16,7 +16,7 @@ const mockedHookData: TrendingHook = {
     total_results: 200
   }
 }
-jest.mock('../hook', () => jest.fn(() => mockedHookData))
+jest.mock('../hook', () => jest.fn(() => mockedHook))
 
 describe('Trending component', () => {
   it('should match snapshot', () => {
@@ -25,8 +25,16 @@ describe('Trending component', () => {
     expect(asFragment()).toMatchSnapshot()
   })
 
+  it('should call "handlePagination" when pagination clicked', () => {
+    render(<Trending />, { wrapper: Wrapper })
+    const link = screen.getByText('2')
+    fireEvent.click(link)
+
+    expect(mockedHook.handlePagination).toHaveBeenCalledTimes(1)
+  })
+
   it('should match snapshot with 1 page', () => {
-    mockedHookData.movies = {
+    mockedHook.movies = {
       page: 1,
       results: [mockMovie],
       total_pages: 1,
@@ -38,7 +46,7 @@ describe('Trending component', () => {
   })
 
   it('should match snapshot without movies', () => {
-    mockedHookData.movies = {
+    mockedHook.movies = {
       page: 1,
       results: [],
       total_pages: 1,
@@ -50,15 +58,15 @@ describe('Trending component', () => {
   })
 
   it('should match snapshot with loading', () => {
-    mockedHookData.loading = true
+    mockedHook.loading = true
     const { asFragment } = render(<Trending />, { wrapper: Wrapper })
 
     expect(asFragment()).toMatchSnapshot()
   })
 
   it('should match snapshot with error', () => {
-    mockedHookData.loading = false
-    mockedHookData.error = 'Something went wrong!'
+    mockedHook.loading = false
+    mockedHook.error = 'Something went wrong!'
     const { asFragment } = render(<Trending />, { wrapper: Wrapper })
 
     expect(asFragment()).toMatchSnapshot()

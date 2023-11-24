@@ -5,6 +5,6 @@ exports[`Trending useContainer hook should match snapshot 1`] = `
   "error": null,
   "handlePagination": [Function],
   "loading": true,
-  "movies": {},
+  "movies": null,
 }
 `;

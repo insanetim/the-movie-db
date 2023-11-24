@@ -5,8 +5,8 @@ import { hideModal } from 'src/store/app/actions'
 import useContainer from '../hook'
 
 jest.mock('src/store/app/selectors', () => ({
-  modalPropsSelector: jest.fn(() => null),
-  modalTypeSelector: jest.fn(() => 'MODAL_CREATE_LIST')
+  modalPropsSelector: () => null,
+  modalTypeSelector: () => 'MODAL_CREATE_LIST'
 }))
 
 describe('ModalRoot useContainer hook', () => {
@@ -16,7 +16,7 @@ describe('ModalRoot useContainer hook', () => {
     expect(result.current).toMatchSnapshot()
   })
 
-  it('should check `onCancel` method', () => {
+  it('should check "onCancel" method', () => {
     const { result } = renderHook(useContainer)
 
     act(() => {

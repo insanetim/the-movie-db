@@ -1,14 +1,12 @@
 import { act, renderHook } from '@testing-library/react'
 import { useSearchParams } from 'react-router-dom'
 import { dispatch } from 'src/__mocks__/react-redux'
-import { fetchTrending } from 'src/store/dashboard/actions'
+import * as dashboardActions from 'src/store/dashboard/actions'
 
 import useContainer from '../hook'
 
-jest.mock('src/store/dashboard/actions')
-
 jest.mock('src/store/dashboard/selectors', () => ({
-  dashboardMoviesSelector: jest.fn(() => ({}))
+  dashboardMoviesSelector: () => null
 }))
 
 jest.mock('react-router-dom', () => ({
@@ -37,8 +35,10 @@ describe('Trending useContainer hook', () => {
   })
 
   it('should check `useEffect` method', () => {
+    const fetchTrending = jest.spyOn(dashboardActions, 'fetchTrending')
     renderHook(useContainer)
 
-    expect(dispatch).toHaveBeenCalledWith(fetchTrending('1'))
+    expect(dispatch).toHaveBeenCalled()
+    expect(fetchTrending).toHaveBeenCalledWith('1')
   })
 })

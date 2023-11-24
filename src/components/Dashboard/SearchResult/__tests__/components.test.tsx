@@ -1,13 +1,13 @@
-import { render } from '@testing-library/react'
+import { fireEvent, render, screen } from '@testing-library/react'
 import { mockMovie } from 'src/__mocks__/mockMovie'
 import Wrapper from 'src/utils/testHelpers/wrapperMock'
 
 import SearchResult from '../component'
 import { SearchResultHook } from '../types'
 
-const mockedHookData: SearchResultHook = {
+const mockedHook: SearchResultHook = {
   error: null,
-  handlePagination: () => jest.fn(),
+  handlePagination: jest.fn(),
   loading: false,
   movies: {
     page: 1,
@@ -16,7 +16,7 @@ const mockedHookData: SearchResultHook = {
     total_results: 200
   }
 }
-jest.mock('../hook', () => jest.fn(() => mockedHookData))
+jest.mock('../hook', () => jest.fn(() => mockedHook))
 
 describe('SearchResult component', () => {
   it('should match snapshot', () => {
@@ -27,8 +27,16 @@ describe('SearchResult component', () => {
     expect(asFragment()).toMatchSnapshot()
   })
 
+  it('should call "handlePagination" when pagination clicked', () => {
+    render(<SearchResult query='test/search' />, { wrapper: Wrapper })
+    const link = screen.getByText('2')
+    fireEvent.click(link)
+
+    expect(mockedHook.handlePagination).toHaveBeenCalledTimes(1)
+  })
+
   it('should match snapshot with 1 page', () => {
-    mockedHookData.movies = {
+    mockedHook.movies = {
       page: 1,
       results: [mockMovie],
       total_pages: 1,
@@ -42,7 +50,7 @@ describe('SearchResult component', () => {
   })
 
   it('should match snapshot without movies', () => {
-    mockedHookData.movies = {
+    mockedHook.movies = {
       page: 1,
       results: [],
       total_pages: 1,
@@ -56,7 +64,7 @@ describe('SearchResult component', () => {
   })
 
   it('should match snapshot with loading', () => {
-    mockedHookData.loading = true
+    mockedHook.loading = true
     const { asFragment } = render(<SearchResult query='test/search' />, {
       wrapper: Wrapper
     })
@@ -65,8 +73,8 @@ describe('SearchResult component', () => {
   })
 
   it('should match snapshot with error', () => {
-    mockedHookData.loading = false
-    mockedHookData.error = 'Something went wrong!'
+    mockedHook.loading = false
+    mockedHook.error = 'Something went wrong!'
     const { asFragment } = render(<SearchResult query='test/search' />, {
       wrapper: Wrapper
     })

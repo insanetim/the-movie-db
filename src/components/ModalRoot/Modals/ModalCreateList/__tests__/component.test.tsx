@@ -4,7 +4,7 @@ import { createRef } from 'react'
 import ModalCreateList from '../component'
 import { ModalCreateListHook } from '../types'
 
-const mockedHookData: ModalCreateListHook = {
+const mockedHook: ModalCreateListHook = {
   handleAfterClose: jest.fn(),
   handleAfterOpenChange: jest.fn(),
   handleOk: jest.fn(),
@@ -12,7 +12,7 @@ const mockedHookData: ModalCreateListHook = {
   inputRef: createRef()
 }
 
-jest.mock('../hook', () => jest.fn(() => mockedHookData))
+jest.mock('../hook', () => jest.fn(() => mockedHook))
 
 describe('ModalCreateList component', () => {
   it('should match snapshot', () => {

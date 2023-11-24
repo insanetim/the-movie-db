@@ -5,7 +5,7 @@ import Wrapper from 'src/utils/testHelpers/wrapperMock'
 import ListList from '../component'
 
 jest.mock('src/store/lists/selectors', () => ({
-  listsSelector: jest.fn(() => null)
+  listsSelector: () => null
 }))
 
 describe('ListsList component', () => {

@@ -1,33 +1,22 @@
 import { act, renderHook } from '@testing-library/react'
-import { ChangeEvent, useState } from 'react'
-import { useNavigate, useSearchParams } from 'react-router-dom'
+import React from 'react'
+import { useSearchParams } from 'react-router-dom'
 
 import useContainer from '../hook'
 
-jest.mock('src/store/dashboard/selectors', () => ({
-  searchQuerySelector: jest.fn(() => null)
-}))
-
-jest.mock('react', () => ({
-  ...jest.requireActual('react'),
-  useState: jest.fn()
-}))
-const setState = jest.fn()
-const useStateMock = (initState: unknown) => [initState, setState]
-jest.mocked(useState).mockImplementation(useStateMock as never)
-
 jest.mock('react-router-dom', () => ({
   ...jest.requireActual('react-router-dom'),
-  useNavigate: jest.fn(),
   useSearchParams: jest.fn()
 }))
-const navigate = jest.fn()
-jest.mocked(useNavigate).mockReturnValue(navigate)
 const searchParams = new URLSearchParams()
 const setSearchParams = jest.fn()
 jest.mocked(useSearchParams).mockReturnValue([searchParams, setSearchParams])
 
 describe('SearchInput useContainer hook', () => {
+  const setState = jest.fn()
+  const useStateMock = (initState: unknown) => [initState, setState]
+  jest.spyOn(React, 'useState').mockImplementation(useStateMock as never)
+
   const props = { query: '' }
 
   it('should match snapshot', () => {
@@ -36,19 +25,19 @@ describe('SearchInput useContainer hook', () => {
     expect(result.current).toMatchSnapshot()
   })
 
-  it('sholud check `handleChange` method', () => {
+  it('should check "handleChange" method', () => {
     const { result } = renderHook(() => useContainer(props))
 
     act(() => {
       result.current.handleChange({
         target: { value: 'test/search' }
-      } as ChangeEvent<HTMLInputElement>)
+      } as React.ChangeEvent<HTMLInputElement>)
     })
 
     expect(setState).toHaveBeenCalledWith('test/search')
   })
 
-  it('sholud check `handleSearch` method with value', () => {
+  it('should check "handleSearch" method with value', () => {
     const { result } = renderHook(() => useContainer(props))
 
     act(() => {
@@ -58,7 +47,7 @@ describe('SearchInput useContainer hook', () => {
     expect(setSearchParams).toHaveBeenCalledWith({ search: 'test/search' })
   })
 
-  it('sholud check `handleSearch` method without value', () => {
+  it('should check "handleSearch" method without value', () => {
     const { result } = renderHook(() => useContainer(props))
 
     act(() => {
@@ -68,7 +57,7 @@ describe('SearchInput useContainer hook', () => {
     expect(setSearchParams).toHaveBeenCalledWith({})
   })
 
-  it('sholud check `useEffect` method', () => {
+  it('should check `useEffect` method', () => {
     renderHook(() => useContainer(props))
 
     expect(setState).toHaveBeenCalledWith('')

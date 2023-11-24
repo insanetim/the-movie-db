@@ -15,6 +15,7 @@ const ListItem: React.FC<ListItemProps> = ({ list }) => {
           onClick={handleListDelete}
         />
       ]}
+      data-testid='listItemCard'
       hoverable
       onClick={handleClick}
     >

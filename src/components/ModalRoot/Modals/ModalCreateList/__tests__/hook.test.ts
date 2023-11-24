@@ -3,13 +3,12 @@ import { FormInstance } from 'antd'
 import React from 'react'
 import { dispatch } from 'src/__mocks__/react-redux'
 import { hideModal } from 'src/store/app/actions'
-import { createList } from 'src/store/lists/actions'
+import * as listsActions from 'src/store/lists/actions'
 
 import useContainer from '../hook'
 
-jest.mock('src/store/lists/actions')
-
 describe('ModalCreateList useContainer hook', () => {
+  const createList = jest.spyOn(listsActions, 'createList')
   const props = {
     form: {
       resetFields: jest.fn(),
@@ -24,7 +23,7 @@ describe('ModalCreateList useContainer hook', () => {
     expect(result.current).toMatchSnapshot()
   })
 
-  it('should check `handleOk` method', () => {
+  it('should check "handleOk" method', () => {
     const { result } = renderHook(() => useContainer(props))
 
     act(() => {
@@ -34,7 +33,7 @@ describe('ModalCreateList useContainer hook', () => {
     expect(props.form.submit).toHaveBeenCalled()
   })
 
-  it('should check `handleSubmit` method', () => {
+  it('should check "handleSubmit" method', () => {
     const listData = { description: 'test/description', name: 'test/name' }
     const { result } = renderHook(() => useContainer(props))
 
@@ -44,13 +43,13 @@ describe('ModalCreateList useContainer hook', () => {
 
     expect(dispatch).toHaveBeenCalledTimes(2)
     expect(dispatch).toHaveBeenNthCalledWith(1, hideModal())
-    expect(dispatch).toHaveBeenNthCalledWith(
-      2,
-      createList({ listData, movieId: props.movieId })
-    )
+    expect(createList).toHaveBeenCalledWith({
+      listData,
+      movieId: props.movieId
+    })
   })
 
-  it('should check `handleSubmit` method with onSuccess', async () => {
+  it('should check "handleSubmit" method with onSuccess', async () => {
     const onSuccess = jest.fn()
     const extendedProps = { ...props, onSuccess }
     const listData = { description: 'test/description', name: 'test/name' }
@@ -62,14 +61,14 @@ describe('ModalCreateList useContainer hook', () => {
 
     expect(dispatch).toHaveBeenCalledTimes(2)
     expect(dispatch).toHaveBeenNthCalledWith(1, hideModal())
-    expect(dispatch).toHaveBeenNthCalledWith(
-      2,
-      createList({ listData, movieId: props.movieId })
-    )
+    expect(createList).toHaveBeenCalledWith({
+      listData,
+      movieId: props.movieId
+    })
     expect(onSuccess).toHaveBeenCalled()
   })
 
-  it('should check `handleAfterClose` method', () => {
+  it('should check "handleAfterClose" method', () => {
     const { result } = renderHook(() => useContainer(props))
 
     act(() => {
@@ -79,7 +78,7 @@ describe('ModalCreateList useContainer hook', () => {
     expect(props.form.resetFields).toHaveBeenCalled()
   })
 
-  it('should check `handleAfterOpenChange` method with true', () => {
+  it('should check "handleAfterOpenChange" method with true', () => {
     const focus = jest.fn()
     jest.spyOn(React, 'useRef').mockReturnValue({ current: { focus } })
     const { result } = renderHook(() => useContainer(props))
@@ -91,7 +90,7 @@ describe('ModalCreateList useContainer hook', () => {
     expect(focus).toHaveBeenCalled()
   })
 
-  it('should check `handleAfterOpenChange` method with false', () => {
+  it('should check "handleAfterOpenChange" method with false', () => {
     const focus = jest.fn()
     jest.spyOn(React, 'useRef').mockReturnValue({ current: { focus } })
     const { result } = renderHook(() => useContainer(props))

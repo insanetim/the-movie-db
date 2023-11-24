@@ -51,6 +51,7 @@ exports[`Lists component should match snapshot 1`] = `
       >
         <div
           class="ant-card ant-card-bordered ant-card-hoverable css-dev-only-do-not-override-nllxry"
+          data-testid="listItemCard"
         >
           <div
             class="ant-card-body"
@@ -330,6 +331,7 @@ exports[`Lists component should match snapshot with 1 page 1`] = `
       >
         <div
           class="ant-card ant-card-bordered ant-card-hoverable css-dev-only-do-not-override-nllxry"
+          data-testid="listItemCard"
         >
           <div
             class="ant-card-body"
