@@ -64,7 +64,10 @@ const ListDetails: React.FC = () => {
       <div className='container'>
         <PageTitle>
           {list?.name ?? 'My List'}{' '}
-          <MinusCircleOutlined onClick={handleListDelete} />
+          <MinusCircleOutlined
+            data-testid='deleteListBtn'
+            onClick={handleListDelete}
+          />
         </PageTitle>
         {content}
       </div>

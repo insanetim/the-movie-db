@@ -1,11 +1,11 @@
-import { render } from '@testing-library/react'
+import { fireEvent, render, screen } from '@testing-library/react'
 import { mockMovie } from 'src/__mocks__/mockMovie'
 import Wrapper from 'src/utils/testHelpers/wrapperMock'
 
 import Favorite from '../component'
 import { FavoriteHook } from '../types'
 
-const mockedHookData: FavoriteHook = {
+const mockedHook: FavoriteHook = {
   error: null,
   handleMovieDelete: jest.fn(),
   handlePagination: jest.fn(),
@@ -17,7 +17,7 @@ const mockedHookData: FavoriteHook = {
     total_results: 200
   }
 }
-jest.mock('../hook', () => jest.fn(() => mockedHookData))
+jest.mock('../hook', () => jest.fn(() => mockedHook))
 
 describe('Favorite component', () => {
   it('should match snapshot', () => {
@@ -26,8 +26,24 @@ describe('Favorite component', () => {
     expect(asFragment()).toMatchSnapshot()
   })
 
+  it('should call "handlePagination" when pagination clicked', () => {
+    render(<Favorite />, { wrapper: Wrapper })
+    const link = screen.getByText('2')
+    fireEvent.click(link)
+
+    expect(mockedHook.handlePagination).toHaveBeenCalled()
+  })
+
+  it('should call "handleMovieDelete" when delete button clicked', () => {
+    render(<Favorite />, { wrapper: Wrapper })
+    const deleteBtn = screen.getByTestId('deleteMovieBtn')
+    fireEvent.click(deleteBtn)
+
+    expect(mockedHook.handleMovieDelete).toHaveBeenCalled()
+  })
+
   it('should match snapshot with 1 page', () => {
-    mockedHookData.movies = {
+    mockedHook.movies = {
       page: 1,
       results: [mockMovie],
       total_pages: 1,
@@ -39,22 +55,22 @@ describe('Favorite component', () => {
   })
 
   it('should match snapshot with empty movies', () => {
-    mockedHookData.movies = null
+    mockedHook.movies = null
     const { asFragment } = render(<Favorite />, { wrapper: Wrapper })
 
     expect(asFragment()).toMatchSnapshot()
   })
 
   it('should match snapshot with loading', () => {
-    mockedHookData.loading = true
+    mockedHook.loading = true
     const { asFragment } = render(<Favorite />, { wrapper: Wrapper })
 
     expect(asFragment()).toMatchSnapshot()
   })
 
   it('should match snapshot with error', () => {
-    mockedHookData.loading = false
-    mockedHookData.error = 'Something went wrong!'
+    mockedHook.loading = false
+    mockedHook.error = 'Something went wrong!'
     const { asFragment } = render(<Favorite />, { wrapper: Wrapper })
 
     expect(asFragment()).toMatchSnapshot()

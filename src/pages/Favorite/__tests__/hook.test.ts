@@ -4,24 +4,16 @@ import { useSearchParams } from 'react-router-dom'
 import mockAccount from 'src/__mocks__/mockAccount'
 import { dispatch } from 'src/__mocks__/react-redux'
 import useUpdatePage from 'src/hooks/useUpdatePage'
-import { fetchFavorite } from 'src/store/favorite/actions'
-import { changeMovieInFavorite } from 'src/store/movie/actions'
-import { accountSelector } from 'src/store/session/selectors'
+import * as favoriteActions from 'src/store/favorite/actions'
+import * as movieActions from 'src/store/movie/actions'
+import * as sessionSelectors from 'src/store/session/selectors'
 
 import useContainer from '../hook'
 
-jest.mock('src/store/favorite/actions')
-
-jest.mock('src/store/movie/actions')
-
-jest.mock('src/store/session/selectors', () => ({
-  accountSelector: jest.fn(() => null)
-}))
-
 jest.mock('src/store/favorite/selectors', () => ({
-  favoriteErrorSelector: jest.fn(() => null),
-  favoriteLoadingSelector: jest.fn(() => true),
-  favoriteMoviesSelector: jest.fn(() => null)
+  favoriteErrorSelector: () => null,
+  favoriteLoadingSelector: () => true,
+  favoriteMoviesSelector: () => null
 }))
 
 jest.mock('react-router-dom', () => ({
@@ -38,6 +30,9 @@ jest.mocked(useUpdatePage).mockReturnValue({ updatePage })
 
 describe('Favotite useContainer hook', () => {
   const modalSpy = jest.spyOn(Modal, 'confirm')
+  const accountSelector = jest
+    .spyOn(sessionSelectors, 'accountSelector')
+    .mockReturnValue(null)
 
   it('should match snapshot', () => {
     const { result } = renderHook(useContainer)
@@ -45,7 +40,7 @@ describe('Favotite useContainer hook', () => {
     expect(result.current).toMatchSnapshot()
   })
 
-  it('should check `handlePagination` method', () => {
+  it('should check "handlePagination" method', () => {
     const { result } = renderHook(useContainer)
 
     act(() => {
@@ -55,33 +50,39 @@ describe('Favotite useContainer hook', () => {
     expect(setSearchParams).toHaveBeenCalledWith({ page: '3' })
   })
 
-  it('should check `handleMovieDelete` method', async () => {
-    let onOk = () => {
-      return
-    }
+  it('should check "handleMovieDelete" method', async () => {
+    const changeMovieInFavorite = jest.spyOn(
+      movieActions,
+      'changeMovieInFavorite'
+    )
+    let onOk = () => {}
     const { result } = renderHook(useContainer)
 
-    act(() => {
+    await act(() => {
       onOk = result.current.handleMovieDelete(123, {
         stopPropagation: jest.fn()
       } as never)
+      onOk()
     })
-    await onOk()
 
     expect(modalSpy).toHaveBeenCalledWith({
       onOk,
       title: 'Do you want to delete movie from favorite?'
     })
-    expect(dispatch).toHaveBeenCalledWith(
-      changeMovieInFavorite({ inFavorite: false, movieId: 123 })
-    )
+    expect(dispatch).toHaveBeenCalled()
+    expect(changeMovieInFavorite).toHaveBeenCalledWith({
+      inFavorite: false,
+      movieId: 123
+    })
     expect(updatePage).toHaveBeenCalled()
   })
 
-  it('should check `useEffect` method with account', () => {
-    jest.mocked(accountSelector).mockReturnValueOnce(mockAccount)
+  it('should check "useEffect" method with account', () => {
+    const fetchFavorite = jest.spyOn(favoriteActions, 'fetchFavorite')
+    accountSelector.mockReturnValueOnce(mockAccount)
     renderHook(useContainer)
 
-    expect(dispatch).toHaveBeenCalledWith(fetchFavorite('1'))
+    expect(dispatch).toHaveBeenCalled()
+    expect(fetchFavorite).toHaveBeenCalledWith('1')
   })
 })

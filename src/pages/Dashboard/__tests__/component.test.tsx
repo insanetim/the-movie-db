@@ -4,15 +4,13 @@ import Wrapper from 'src/utils/testHelpers/wrapperMock'
 import Dashboard from '../component'
 import { DashboardHook } from '../types'
 
-const mockedHookData: DashboardHook = {
-  query: ''
-}
-jest.mock('../hook', () => jest.fn(() => mockedHookData))
+const mockedHook: DashboardHook = { query: '' }
+jest.mock('../hook', () => jest.fn(() => mockedHook))
 
 jest.mock('src/store/dashboard/selectors', () => ({
-  dashboardErrorSelector: jest.fn(() => null),
-  dashboardLoadingSelector: jest.fn(() => true),
-  dashboardMoviesSelector: jest.fn(() => null)
+  dashboardErrorSelector: () => null,
+  dashboardLoadingSelector: () => true,
+  dashboardMoviesSelector: () => null
 }))
 
 describe('Dashboard component', () => {
@@ -23,7 +21,7 @@ describe('Dashboard component', () => {
   })
 
   it('should match snapshot with query', () => {
-    mockedHookData.query = 'test/search'
+    mockedHook.query = 'test/search'
     const { asFragment } = render(<Dashboard />, { wrapper: Wrapper })
 
     expect(asFragment()).toMatchSnapshot()

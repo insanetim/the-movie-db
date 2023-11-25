@@ -11,6 +11,7 @@ const ListItem: React.FC<ListItemProps> = ({ list }) => {
     <Card
       actions={[
         <DeleteOutlined
+          data-testid='deleteListBtn'
           key='delete'
           onClick={handleListDelete}
         />

@@ -1,9 +1,7 @@
 import { InternalAxiosRequestConfig } from 'axios'
 import { ACCESS_TOKEN_AUTH } from 'src/constants/app'
 
-const requestInterceptor = (
-  config: InternalAxiosRequestConfig
-): InternalAxiosRequestConfig => {
+const requestInterceptor = (config: InternalAxiosRequestConfig) => {
   config.headers.Accept = 'application/json'
   config.headers.Authorization = `Bearer ${ACCESS_TOKEN_AUTH}`
 

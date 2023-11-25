@@ -16,7 +16,7 @@ describe('movieReducer', () => {
     expect(result).toEqual(state)
   })
 
-  it('should handle fetchMovieDetail/fulfilled action', () => {
+  it('should handle "fetchMovieDetail/fulfilled" action', () => {
     const action = {
       payload: { data: 'test/data', id: '123' },
       type: fetchMovieDetail.fulfilled.type
@@ -30,7 +30,7 @@ describe('movieReducer', () => {
     expect(result).toEqual(newState)
   })
 
-  it('should handle changeMovieInFavorite/pending action with movieId', () => {
+  it('should handle "changeMovieInFavorite/pending" action with movieId', () => {
     const action = {
       meta: { arg: { inFavorite: true, movieId: '123' } },
       type: changeMovieInFavorite.pending.type
@@ -49,7 +49,7 @@ describe('movieReducer', () => {
     expect(result).toEqual(newState)
   })
 
-  it('should handle changeMovieInFavorite/pending action without movieId', () => {
+  it('should handle "changeMovieInFavorite/pending" action without movieId', () => {
     const action = {
       meta: { arg: { inFavorite: true, movieId: '123' } },
       type: changeMovieInFavorite.pending.type
@@ -59,7 +59,7 @@ describe('movieReducer', () => {
     expect(result).toEqual(state)
   })
 
-  it('should handle changeMovieInWatchlist/pending action with movieId', () => {
+  it('should handle "changeMovieInWatchlist/pending" action with movieId', () => {
     const action = {
       meta: { arg: { inWatchlist: true, movieId: '123' } },
       type: changeMovieInWatchlist.pending.type
@@ -78,7 +78,7 @@ describe('movieReducer', () => {
     expect(result).toEqual(newState)
   })
 
-  it('should handle changeMovieInWatchlist/pending action without movieId', () => {
+  it('should handle "changeMovieInWatchlist/pending" action without movieId', () => {
     const action = {
       meta: { arg: { inWatchlist: true, movieId: '123' } },
       type: changeMovieInWatchlist.pending.type

@@ -19,14 +19,14 @@ describe('watchlistReducer', () => {
     expect(result).toEqual(state)
   })
 
-  it('should handle fetchWatchlist/pending action', () => {
+  it('should handle "fetchWatchlist/pending" action', () => {
     const action = { type: fetchWatchlist.pending.type }
     watchlistReducer(state, action)
 
     expect(setState.pending).toHaveBeenCalled()
   })
 
-  it('should handle fetchWatchlist/fulfilled action', () => {
+  it('should handle "fetchWatchlist/fulfilled" action', () => {
     const action = {
       payload: 'test/data',
       type: fetchWatchlist.fulfilled.type
@@ -36,7 +36,7 @@ describe('watchlistReducer', () => {
     expect(setState.fulfilled).toHaveBeenCalled()
   })
 
-  it('should handle fetchWatchlist/rejected action', () => {
+  it('should handle "fetchWatchlist/rejected" action', () => {
     const action = {
       payload: 'test/data',
       type: fetchWatchlist.rejected.type

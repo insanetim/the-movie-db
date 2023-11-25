@@ -26,6 +26,7 @@ exports[`ListItem component should match snapshot 1`] = `
           <span
             aria-label="delete"
             class="anticon anticon-delete"
+            data-testid="deleteListBtn"
             role="img"
             tabindex="-1"
           >

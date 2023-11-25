@@ -15,7 +15,6 @@ exports[`PopoverContent component should match snapshot 1`] = `
   <div>
     <button
       class="ant-btn css-dev-only-do-not-override-nllxry ant-btn-link"
-      data-testid="addToListButton"
       type="button"
     >
       <span>

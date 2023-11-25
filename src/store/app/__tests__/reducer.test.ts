@@ -30,7 +30,7 @@ describe('appReducer', () => {
     expect(result).toEqual(state)
   })
 
-  it('should handle hideModal action', () => {
+  it('should handle "hideModal" action', () => {
     const action = hideModal()
     const newState = assocPath(['modal', 'modalProps'], { open: false }, state)
     const result = appReducer(state, action)
@@ -38,7 +38,7 @@ describe('appReducer', () => {
     expect(result).toEqual(newState)
   })
 
-  it('should handle hideNotification action', () => {
+  it('should handle "hideNotification" action', () => {
     const action = hideNotification('test/id')
     const state = {
       modal: {
@@ -60,7 +60,7 @@ describe('appReducer', () => {
     expect(result).toEqual(newState)
   })
 
-  it('should handle showModal action', () => {
+  it('should handle "showModal" action', () => {
     const action = showModal({
       modalProps: 'test/modalProps',
       modalType: 'test/modalType'
@@ -71,7 +71,7 @@ describe('appReducer', () => {
     expect(result).toEqual(newState)
   })
 
-  it('should handle showModal action without modalProps', () => {
+  it('should handle "showModal" action without modalProps', () => {
     const action = showModal({ modalType: 'test/modalType' })
     const newState = mergeDeepRight(state, {
       modal: {
@@ -84,7 +84,7 @@ describe('appReducer', () => {
     expect(result).toEqual(newState)
   })
 
-  it('should handle showNotification action', () => {
+  it('should handle "showNotification" action', () => {
     const action = showNotification({ messageText: 'test/message' })
     const newState = assoc(
       'notifications',

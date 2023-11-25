@@ -5,13 +5,10 @@ import requestInterceptor from '../requestInterceptor'
 
 describe('requestInterceptor', () => {
   it('should return correct result', () => {
-    expect(
-      requestInterceptor({ headers: {} } as InternalAxiosRequestConfig)
-    ).toEqual({
-      headers: {
-        Accept: 'application/json',
-        Authorization: `Bearer ${ACCESS_TOKEN_AUTH}`
-      }
-    })
+    const config = { headers: {} } as InternalAxiosRequestConfig
+    const result = requestInterceptor(config)
+
+    expect(result.headers.Accept).toBe('application/json')
+    expect(result.headers.Authorization).toBe(`Bearer ${ACCESS_TOKEN_AUTH}`)
   })
 })

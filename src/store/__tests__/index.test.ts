@@ -1,7 +1,7 @@
 import store from '../index'
 
 describe('store', () => {
-  it('passes tests', () => {
+  it('should pass tests', () => {
     expect(store).toEqual(
       expect.objectContaining({
         '@@observable': expect.any(Function),

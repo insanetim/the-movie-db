@@ -4,24 +4,16 @@ import { useSearchParams } from 'react-router-dom'
 import mockAccount from 'src/__mocks__/mockAccount'
 import { dispatch } from 'src/__mocks__/react-redux'
 import useUpdatePage from 'src/hooks/useUpdatePage'
-import { changeMovieInWatchlist } from 'src/store/movie/actions'
-import { accountSelector } from 'src/store/session/selectors'
-import { fetchWatchlist } from 'src/store/watchlist/actions'
+import * as movieActions from 'src/store/movie/actions'
+import * as sessionSelectors from 'src/store/session/selectors'
+import * as watchlistActions from 'src/store/watchlist/actions'
 
 import useContainer from '../hook'
 
-jest.mock('src/store/watchlist/actions')
-
-jest.mock('src/store/movie/actions')
-
-jest.mock('src/store/session/selectors', () => ({
-  accountSelector: jest.fn(() => null)
-}))
-
 jest.mock('src/store/watchlist/selectors', () => ({
-  watchlistErrorSelector: jest.fn(() => null),
-  watchlistLoadingSelector: jest.fn(() => true),
-  watchlistMoviesSelector: jest.fn(() => null)
+  watchlistErrorSelector: () => null,
+  watchlistLoadingSelector: () => true,
+  watchlistMoviesSelector: () => null
 }))
 
 jest.mock('react-router-dom', () => ({
@@ -38,6 +30,9 @@ jest.mocked(useUpdatePage).mockReturnValue({ updatePage })
 
 describe('Watchlist useContainer hook', () => {
   const confirmSpy = jest.spyOn(Modal, 'confirm')
+  const accountSelector = jest
+    .spyOn(sessionSelectors, 'accountSelector')
+    .mockReturnValue(null)
 
   it('should match snapshot', () => {
     const { result } = renderHook(useContainer)
@@ -45,7 +40,7 @@ describe('Watchlist useContainer hook', () => {
     expect(result.current).toMatchSnapshot()
   })
 
-  it('should check `handlePagination` method', () => {
+  it('should check "handlePagination" method', () => {
     const { result } = renderHook(useContainer)
 
     act(() => {
@@ -55,33 +50,39 @@ describe('Watchlist useContainer hook', () => {
     expect(setSearchParams).toHaveBeenCalledWith({ page: '3' })
   })
 
-  it('should check `handleMovieDelete` method', async () => {
-    let onOk = () => {
-      return
-    }
+  it('should check "handleMovieDelete" method', async () => {
+    const changeMovieInWatchlist = jest.spyOn(
+      movieActions,
+      'changeMovieInWatchlist'
+    )
+    let onOk = () => {}
     const { result } = renderHook(useContainer)
 
-    act(() => {
+    await act(() => {
       onOk = result.current.handleMovieDelete(123, {
         stopPropagation: jest.fn()
       } as never)
+      onOk()
     })
-    await onOk()
 
     expect(confirmSpy).toHaveBeenCalledWith({
       onOk,
       title: 'Do you want to delete movie from watchlist?'
     })
-    expect(dispatch).toHaveBeenCalledWith(
-      changeMovieInWatchlist({ inWatchlist: false, movieId: 123 })
-    )
+    expect(dispatch).toHaveBeenCalled()
+    expect(changeMovieInWatchlist).toHaveBeenCalledWith({
+      inWatchlist: false,
+      movieId: 123
+    })
     expect(updatePage).toHaveBeenCalled()
   })
 
-  it('should check `useEffect` method with account', () => {
-    jest.mocked(accountSelector).mockReturnValueOnce(mockAccount)
+  it('should check "useEffect" method with account', () => {
+    const fetchWatchlist = jest.spyOn(watchlistActions, 'fetchWatchlist')
+    accountSelector.mockReturnValueOnce(mockAccount)
     renderHook(useContainer)
 
-    expect(dispatch).toHaveBeenCalledWith(fetchWatchlist('1'))
+    expect(dispatch).toHaveBeenCalled()
+    expect(fetchWatchlist).toHaveBeenCalledWith('1')
   })
 })

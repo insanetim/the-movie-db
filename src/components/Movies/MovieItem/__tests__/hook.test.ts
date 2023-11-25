@@ -19,7 +19,7 @@ describe('MovieItem useContainer hook', () => {
     expect(result.current).toMatchSnapshot()
   })
 
-  it('should check `handleClick` method', () => {
+  it('should check "handleClick" method', () => {
     const { result } = renderHook(() => useContainer(props))
 
     act(() => {

@@ -1,11 +1,11 @@
-import { render } from '@testing-library/react'
+import { fireEvent, render, screen } from '@testing-library/react'
 import { mockList } from 'src/__mocks__/mockList'
 import Wrapper from 'src/utils/testHelpers/wrapperMock'
 
 import Lists from '../component'
 import { ListsHook } from '../types'
 
-const mockedHookData: ListsHook = {
+const mockedHook: ListsHook = {
   error: null,
   handleCreateList: jest.fn(),
   handlePagination: jest.fn(),
@@ -17,10 +17,10 @@ const mockedHookData: ListsHook = {
   },
   loading: false
 }
-jest.mock('../hook', () => jest.fn(() => mockedHookData))
+jest.mock('../hook', () => jest.fn(() => mockedHook))
 
 jest.mock('src/store/lists/selectors', () => ({
-  listsSelector: jest.fn(() => null)
+  listsSelector: () => null
 }))
 
 describe('Lists component', () => {
@@ -30,8 +30,24 @@ describe('Lists component', () => {
     expect(asFragment()).toMatchSnapshot()
   })
 
+  it('should call "handleCreateList" when button clicked', () => {
+    render(<Lists />, { wrapper: Wrapper })
+    const createListBtn = screen.getByTestId('createListBtn')
+    fireEvent.click(createListBtn)
+
+    expect(mockedHook.handleCreateList).toHaveBeenCalled()
+  })
+
+  it('should call "handlePagination" when pagination clicked', () => {
+    render(<Lists />, { wrapper: Wrapper })
+    const link = screen.getByText('2')
+    fireEvent.click(link)
+
+    expect(mockedHook.handlePagination).toHaveBeenCalled()
+  })
+
   it('should match snapshot with 1 page', () => {
-    mockedHookData.lists = {
+    mockedHook.lists = {
       page: 1,
       results: [mockList],
       total_pages: 1,
@@ -44,22 +60,22 @@ describe('Lists component', () => {
   })
 
   it('should match snapshot with empty lists', () => {
-    mockedHookData.lists = null
+    mockedHook.lists = null
     const { asFragment } = render(<Lists />, { wrapper: Wrapper })
 
     expect(asFragment()).toMatchSnapshot()
   })
 
   it('should match snapshot with loading', () => {
-    mockedHookData.loading = true
+    mockedHook.loading = true
     const { asFragment } = render(<Lists />, { wrapper: Wrapper })
 
     expect(asFragment()).toMatchSnapshot()
   })
 
   it('should match snapshot with error', () => {
-    mockedHookData.loading = false
-    mockedHookData.error = 'Something went wrong!'
+    mockedHook.loading = false
+    mockedHook.error = 'Something went wrong!'
     const { asFragment } = render(<Lists />, { wrapper: Wrapper })
 
     expect(asFragment()).toMatchSnapshot()

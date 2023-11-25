@@ -18,6 +18,7 @@ exports[`Lists component should match snapshot 1`] = `
           <span
             aria-label="plus-circle"
             class="anticon anticon-plus-circle"
+            data-testid="createListBtn"
             role="img"
             tabindex="-1"
           >
@@ -73,6 +74,7 @@ exports[`Lists component should match snapshot 1`] = `
                 <span
                   aria-label="delete"
                   class="anticon anticon-delete"
+                  data-testid="deleteListBtn"
                   role="img"
                   tabindex="-1"
                 >
@@ -298,6 +300,7 @@ exports[`Lists component should match snapshot with 1 page 1`] = `
           <span
             aria-label="plus-circle"
             class="anticon anticon-plus-circle"
+            data-testid="createListBtn"
             role="img"
             tabindex="-1"
           >
@@ -353,6 +356,7 @@ exports[`Lists component should match snapshot with 1 page 1`] = `
                 <span
                   aria-label="delete"
                   class="anticon anticon-delete"
+                  data-testid="deleteListBtn"
                   role="img"
                   tabindex="-1"
                 >
@@ -398,6 +402,7 @@ exports[`Lists component should match snapshot with empty lists 1`] = `
           <span
             aria-label="plus-circle"
             class="anticon anticon-plus-circle"
+            data-testid="createListBtn"
             role="img"
             tabindex="-1"
           >
@@ -488,6 +493,7 @@ exports[`Lists component should match snapshot with error 1`] = `
           <span
             aria-label="plus-circle"
             class="anticon anticon-plus-circle"
+            data-testid="createListBtn"
             role="img"
             tabindex="-1"
           >
@@ -566,6 +572,7 @@ exports[`Lists component should match snapshot with loading 1`] = `
           <span
             aria-label="plus-circle"
             class="anticon anticon-plus-circle"
+            data-testid="createListBtn"
             role="img"
             tabindex="-1"
           >

@@ -4,11 +4,11 @@ import Wrapper from 'src/utils/testHelpers/wrapperMock'
 import Login from '../component'
 import { LoginHook } from '../types'
 
-const mockedHookData: LoginHook = {
+const mockedHook: LoginHook = {
   handleLogIn: jest.fn(),
   loading: false
 }
-jest.mock('../hook', () => jest.fn(() => mockedHookData))
+jest.mock('../hook', () => jest.fn(() => mockedHook))
 
 describe('Login component', () => {
   it('should match snapshot', () => {
@@ -18,7 +18,7 @@ describe('Login component', () => {
   })
 
   it('should match snapshot with loading', () => {
-    mockedHookData.loading = true
+    mockedHook.loading = true
     const { asFragment } = render(<Login />, { wrapper: Wrapper })
 
     expect(asFragment()).toMatchSnapshot()

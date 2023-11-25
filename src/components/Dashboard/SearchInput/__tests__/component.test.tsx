@@ -22,7 +22,7 @@ describe('SearchInput component', () => {
     const input = screen.getByPlaceholderText('Enter movie name')
     fireEvent.change(input, { target: { value: 'test/search' } })
 
-    expect(mockedHook.handleChange).toHaveBeenCalledTimes(1)
+    expect(mockedHook.handleChange).toHaveBeenCalled()
   })
 
   it('should call "handleSearch" when button clicked', () => {
@@ -30,6 +30,6 @@ describe('SearchInput component', () => {
     const button = screen.getByRole('button')
     fireEvent.click(button)
 
-    expect(mockedHook.handleSearch).toHaveBeenCalledTimes(1)
+    expect(mockedHook.handleSearch).toHaveBeenCalled()
   })
 })

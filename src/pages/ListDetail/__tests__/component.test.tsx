@@ -1,11 +1,11 @@
-import { render } from '@testing-library/react'
+import { fireEvent, render, screen } from '@testing-library/react'
 import { mockMovie } from 'src/__mocks__/mockMovie'
 import Wrapper from 'src/utils/testHelpers/wrapperMock'
 
 import ListDetails from '../component'
 import { ListDetailHook } from '../types'
 
-const mockedHookData: ListDetailHook = {
+const mockedHook: ListDetailHook = {
   error: null,
   handleListDelete: jest.fn(),
   handleMovieDelete: jest.fn(),
@@ -27,7 +27,7 @@ const mockedHookData: ListDetailHook = {
   },
   loading: false
 }
-jest.mock('../hook', () => jest.fn(() => mockedHookData))
+jest.mock('../hook', () => jest.fn(() => mockedHook))
 
 describe('ListDetail component', () => {
   it('should match snapshot', () => {
@@ -36,8 +36,32 @@ describe('ListDetail component', () => {
     expect(asFragment()).toMatchSnapshot()
   })
 
+  it('should call "handleListDelete" when delete button clicked', () => {
+    render(<ListDetails />, { wrapper: Wrapper })
+    const deleteBtn = screen.getByTestId('deleteListBtn')
+    fireEvent.click(deleteBtn)
+
+    expect(mockedHook.handleListDelete).toHaveBeenCalled()
+  })
+
+  it('should call "handleMovieDelete" when delete button clicked', () => {
+    render(<ListDetails />, { wrapper: Wrapper })
+    const deleteBtn = screen.getByTestId('deleteMovieBtn')
+    fireEvent.click(deleteBtn)
+
+    expect(mockedHook.handleMovieDelete).toHaveBeenCalled()
+  })
+
+  it('should call "handlePagination" when pagination clicked', () => {
+    render(<ListDetails />, { wrapper: Wrapper })
+    const link = screen.getByText('2')
+    fireEvent.click(link)
+
+    expect(mockedHook.handlePagination).toHaveBeenCalled()
+  })
+
   it('should match snapshot with 1 page', () => {
-    mockedHookData.list = {
+    mockedHook.list = {
       created_by: 'test/author',
       description: 'test/description',
       favorite_count: 0,
@@ -58,22 +82,22 @@ describe('ListDetail component', () => {
   })
 
   it('should match snapshot with empty list', () => {
-    mockedHookData.list = null
+    mockedHook.list = null
     const { asFragment } = render(<ListDetails />, { wrapper: Wrapper })
 
     expect(asFragment()).toMatchSnapshot()
   })
 
   it('should match snapshot with loading', () => {
-    mockedHookData.loading = true
+    mockedHook.loading = true
     const { asFragment } = render(<ListDetails />, { wrapper: Wrapper })
 
     expect(asFragment()).toMatchSnapshot()
   })
 
   it('should match snapshot with error', () => {
-    mockedHookData.loading = false
-    mockedHookData.error = 'Something went wrong!'
+    mockedHook.loading = false
+    mockedHook.error = 'Something went wrong!'
     const { asFragment } = render(<ListDetails />, { wrapper: Wrapper })
 
     expect(asFragment()).toMatchSnapshot()

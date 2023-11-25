@@ -12,6 +12,7 @@ exports[`SearchResult component should match snapshot 1`] = `
     >
       <div
         class="ant-card ant-card-bordered ant-card-hoverable css-dev-only-do-not-override-nllxry"
+        data-testid="movieItemCard"
       >
         <div
           class="ant-card-cover"
@@ -244,6 +245,7 @@ exports[`SearchResult component should match snapshot with 1 page 1`] = `
     >
       <div
         class="ant-card ant-card-bordered ant-card-hoverable css-dev-only-do-not-override-nllxry"
+        data-testid="movieItemCard"
       >
         <div
           class="ant-card-cover"

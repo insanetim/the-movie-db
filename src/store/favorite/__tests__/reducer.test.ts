@@ -19,14 +19,14 @@ describe('favoriteReducer', () => {
     expect(result).toEqual(state)
   })
 
-  it('should handle fetchFavorite/pending action', () => {
+  it('should handle "fetchFavorite/pending" action', () => {
     const action = { type: fetchFavorite.pending.type }
     favoriteReducer(state, action)
 
     expect(setState.pending).toHaveBeenCalled()
   })
 
-  it('should handle fetchFavorite/fulfilled action', () => {
+  it('should handle "fetchFavorite/fulfilled" action', () => {
     const action = {
       payload: 'test/data',
       type: fetchFavorite.fulfilled.type
@@ -36,7 +36,7 @@ describe('favoriteReducer', () => {
     expect(setState.fulfilled).toHaveBeenCalled()
   })
 
-  it('should handle fetchFavorite/rejected action', () => {
+  it('should handle "fetchFavorite/rejected" action', () => {
     const action = {
       payload: 'test/error',
       type: fetchFavorite.rejected.type

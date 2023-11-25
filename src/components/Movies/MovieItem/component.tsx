@@ -33,7 +33,7 @@ const MovieItem: React.FC<MovieItemProps> = ({ handleMovieDelete, movie }) => {
   if (isNotNil(handleMovieDelete)) {
     actions = [
       <DeleteOutlined
-        data-testid='deleteMovieAction'
+        data-testid='deleteMovieBtn'
         key='delete'
         onClick={e => handleMovieDelete(movie.id, e)}
       />
@@ -44,6 +44,7 @@ const MovieItem: React.FC<MovieItemProps> = ({ handleMovieDelete, movie }) => {
     <Card
       actions={actions}
       cover={cover}
+      data-testid='movieItemCard'
       hoverable
       onClick={handleClick}
     >

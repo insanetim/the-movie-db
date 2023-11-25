@@ -18,7 +18,7 @@ describe('ModalRoot component', () => {
     expect(baseElement).toMatchSnapshot()
   })
 
-  it('should return null unless modalType present', () => {
+  it('should match snapshot without modalType', () => {
     mockedHook.modalType = null
     const { baseElement } = render(<ModalRoot />, { wrapper: Wrapper })
 

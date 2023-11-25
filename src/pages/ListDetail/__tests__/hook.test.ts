@@ -3,26 +3,20 @@ import { Modal } from 'antd'
 import { useNavigate, useParams, useSearchParams } from 'react-router-dom'
 import { dispatch } from 'src/__mocks__/react-redux'
 import useUpdatePage from 'src/hooks/useUpdatePage'
-import {
-  deleteList,
-  fetchListDetail,
-  removeFromList
-} from 'src/store/lists/actions'
+import * as listsActions from 'src/store/lists/actions'
 
 import useContainer from '../hook'
 
 jest.mock('src/store/lists/selectors', () => ({
-  listDetailErrorSelector: jest.fn(() => null),
-  listDetailLoadingSelector: jest.fn(() => true),
-  listDetailSelector: jest.fn(() => null)
+  listDetailErrorSelector: () => null,
+  listDetailLoadingSelector: () => true,
+  listDetailSelector: () => null
 }))
-
-jest.mock('src/store/lists/actions')
 
 jest.mock('react-router-dom', () => ({
   ...jest.requireActual('react-router-dom'),
   useNavigate: jest.fn(),
-  useParams: jest.fn().mockImplementation(() => ({ listId: '123' })),
+  useParams: jest.fn(() => ({ listId: '123' })),
   useSearchParams: jest.fn()
 }))
 const navigate = jest.fn()
@@ -51,7 +45,7 @@ describe('ListDetail useContainer hook', () => {
     expect(result.current).toMatchSnapshot()
   })
 
-  it('should check `handlePagination` method', () => {
+  it('should check "handlePagination" method', () => {
     const { result } = renderHook(useContainer)
 
     act(() => {
@@ -61,54 +55,51 @@ describe('ListDetail useContainer hook', () => {
     expect(setSearchParams).toHaveBeenCalledWith({ page: '3' })
   })
 
-  it('should check `handleListDelete` method', async () => {
-    dispatch.mockImplementationOnce(() => Promise.resolve())
-    let onOk = () => {
-      return
-    }
+  it('should check "handleListDelete" method', async () => {
+    const deleteList = jest.spyOn(listsActions, 'deleteList')
+    let onOk = () => {}
     const { result } = renderHook(useContainer)
 
-    act(() => {
+    await act(() => {
       onOk = result.current.handleListDelete()
+      onOk()
     })
-    await onOk()
 
     expect(modalSpy).toHaveBeenCalledWith({
       onOk,
       title: 'Do you want to delete list?'
     })
-    expect(dispatch).toHaveBeenCalledWith(deleteList(123))
+    expect(dispatch).toHaveBeenCalled()
+    expect(deleteList).toHaveBeenCalledWith('123')
     expect(navigate).toHaveBeenCalledWith('/lists')
   })
 
-  it('should check `handleMovieDelete` method', async () => {
-    let onOk = () => {
-      return
-    }
+  it('should check "handleMovieDelete" method', async () => {
+    const removeFromList = jest.spyOn(listsActions, 'removeFromList')
+    let onOk = () => {}
     const { result } = renderHook(useContainer)
 
-    act(() => {
+    await act(() => {
       onOk = result.current.handleMovieDelete(123, {
         stopPropagation: jest.fn()
       } as never)
+      onOk()
     })
-    await onOk()
 
     expect(modalSpy).toHaveBeenCalledWith({
       onOk,
       title: 'Do you want to delete movie from this list?'
     })
-    expect(dispatch).toHaveBeenCalledWith(
-      removeFromList({ listId: 123, movieId: 123 })
-    )
+    expect(dispatch).toHaveBeenCalled()
+    expect(removeFromList).toHaveBeenCalledWith({ listId: '123', movieId: 123 })
     expect(updatePage).toHaveBeenCalled()
   })
 
-  it('should check `useEffect` method', () => {
+  it('should check "useEffect" method', () => {
+    const fetchListDetail = jest.spyOn(listsActions, 'fetchListDetail')
     renderHook(useContainer)
 
-    expect(dispatch).toHaveBeenCalledWith(
-      fetchListDetail({ listId: 123, page: '1' })
-    )
+    expect(dispatch).toHaveBeenCalled()
+    expect(fetchListDetail).toHaveBeenCalledWith({ listId: '123', page: '1' })
   })
 })

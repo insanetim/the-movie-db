@@ -10,7 +10,7 @@ describe('Notification useContainer hook', () => {
   const props = {
     duration: NOTIFICATION_DURATION,
     hideNotification: jest.fn(),
-    id: 'nanoid',
+    id: 'test/id',
     messageText: 'test/message',
     messageType: NOTIFICATION_TYPE.SUCCESS
   }
@@ -21,7 +21,7 @@ describe('Notification useContainer hook', () => {
     expect(result.current).toMatchSnapshot()
   })
 
-  it('should check `closeNotification` method', () => {
+  it('should check "closeNotification" method', () => {
     const { result } = renderHook(() => useContainer(props))
 
     act(() => {
@@ -32,7 +32,7 @@ describe('Notification useContainer hook', () => {
     expect(destroySpy).toHaveBeenCalledWith(props.id)
   })
 
-  it('should check `useEffect` method', () => {
+  it('should check "useEffect" method', () => {
     const { result } = renderHook(() => useContainer(props))
 
     expect(successSpy).toHaveBeenCalledWith({

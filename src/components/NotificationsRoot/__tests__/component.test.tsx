@@ -4,11 +4,11 @@ import mockNotification from 'src/__mocks__/mockNotification'
 import NotificationsRoot from '../component'
 import { NotificationsRootHook } from '../types'
 
-const mockedHookData: NotificationsRootHook = {
+const mockedHook: NotificationsRootHook = {
   hideNotification: jest.fn(),
   notifications: [mockNotification]
 }
-jest.mock('../hook', () => jest.fn(() => mockedHookData))
+jest.mock('../hook', () => jest.fn(() => mockedHook))
 
 describe('NotificationsRoot component', () => {
   it('should match snapshot', () => {

@@ -1,16 +1,12 @@
 import { act, renderHook } from '@testing-library/react'
 import { dispatch } from 'src/__mocks__/react-redux'
 import { showModal } from 'src/store/app/actions'
-import { addToList } from 'src/store/lists/actions'
+import * as listsActions from 'src/store/lists/actions'
 
 import useContainer from '../hook'
 
-jest.mock('src/store/app/actions')
-
-jest.mock('src/store/lists/actions')
-
 jest.mock('src/store/lists/selectors', () => ({
-  listsSelector: jest.fn(() => null)
+  listsSelector: () => null
 }))
 
 describe('PopoverContent useContainer hook', () => {
@@ -23,7 +19,7 @@ describe('PopoverContent useContainer hook', () => {
     expect(result.current).toMatchSnapshot()
   })
 
-  it('should check `handleAddToNewList` method', () => {
+  it('should check "handleAddToNewList" method', () => {
     const { result } = renderHook(() => useContainer(props))
 
     act(() => {
@@ -39,19 +35,16 @@ describe('PopoverContent useContainer hook', () => {
     expect(setPopoverOpen).toHaveBeenCalledWith(false)
   })
 
-  it('should check `handleAddToList` method', () => {
+  it('should check "handleAddToList" method', () => {
+    const addToList = jest.spyOn(listsActions, 'addToList')
     const { result } = renderHook(() => useContainer(props))
 
     act(() => {
       result.current.handleAddToList(123)
     })
 
-    expect(dispatch).toHaveBeenCalledWith(
-      addToList({
-        listId: 123,
-        movieId: 123
-      })
-    )
+    expect(dispatch).toHaveBeenCalledTimes(1)
+    expect(addToList).toHaveBeenCalledWith({ listId: 123, movieId: 123 })
     expect(setPopoverOpen).toHaveBeenCalledWith(false)
   })
 })

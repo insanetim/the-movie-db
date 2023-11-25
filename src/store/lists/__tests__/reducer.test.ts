@@ -26,14 +26,14 @@ describe('listsReducer', () => {
     expect(result).toEqual(state)
   })
 
-  it('should handle fetchLists/pending action', () => {
+  it('should handle "fetchLists/pending" action', () => {
     const action = { type: fetchLists.pending.type }
     listsReducer(state, action)
 
     expect(setState.pending).toHaveBeenCalled()
   })
 
-  it('should handle fetchLists/fulfilled action', () => {
+  it('should handle "fetchLists/fulfilled" action', () => {
     const action = {
       payload: 'test/data',
       type: fetchLists.fulfilled.type
@@ -43,7 +43,7 @@ describe('listsReducer', () => {
     expect(setState.fulfilled).toHaveBeenCalled()
   })
 
-  it('should handle fetchLists/rejected action', () => {
+  it('should handle "fetchLists/rejected" action', () => {
     const action = {
       payload: 'test/error',
       type: fetchLists.rejected.type
@@ -53,14 +53,14 @@ describe('listsReducer', () => {
     expect(setState.rejected).toHaveBeenCalled()
   })
 
-  it('should handle fetchListDetail/pending action', () => {
+  it('should handle "fetchListDetail/pending" action', () => {
     const action = { type: fetchListDetail.pending.type }
     listsReducer(state, action)
 
     expect(setState.pending).toHaveBeenCalled()
   })
 
-  it('should handle fetchListDetail/fulfilled action', () => {
+  it('should handle "fetchListDetail/fulfilled" action', () => {
     const action = {
       payload: 'test/data',
       type: fetchListDetail.fulfilled.type
@@ -70,7 +70,7 @@ describe('listsReducer', () => {
     expect(setState.fulfilled).toHaveBeenCalled()
   })
 
-  it('should handle fetchListDetail/rejected action', () => {
+  it('should handle "fetchListDetail/rejected" action', () => {
     const action = {
       payload: 'test/error',
       type: fetchListDetail.rejected.type

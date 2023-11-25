@@ -48,7 +48,11 @@ const Lists: React.FC = () => {
       <Helmet title={metaTitle('My Lists')} />
       <div className='container'>
         <PageTitle>
-          My Lists <PlusCircleOutlined onClick={handleCreateList} />
+          My Lists{' '}
+          <PlusCircleOutlined
+            data-testid='createListBtn'
+            onClick={handleCreateList}
+          />
         </PageTitle>
         {content}
       </div>

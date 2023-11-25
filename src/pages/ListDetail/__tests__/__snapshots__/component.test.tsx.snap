@@ -18,6 +18,7 @@ exports[`ListDetail component should match snapshot 1`] = `
           <span
             aria-label="minus-circle"
             class="anticon anticon-minus-circle"
+            data-testid="deleteListBtn"
             role="img"
             tabindex="-1"
           >
@@ -51,6 +52,7 @@ exports[`ListDetail component should match snapshot 1`] = `
       >
         <div
           class="ant-card ant-card-bordered ant-card-hoverable css-dev-only-do-not-override-nllxry"
+          data-testid="movieItemCard"
         >
           <div
             class="ant-card-cover"
@@ -95,7 +97,7 @@ exports[`ListDetail component should match snapshot 1`] = `
                 <span
                   aria-label="delete"
                   class="anticon anticon-delete"
-                  data-testid="deleteMovieAction"
+                  data-testid="deleteMovieBtn"
                   role="img"
                   tabindex="-1"
                 >
@@ -321,6 +323,7 @@ exports[`ListDetail component should match snapshot with 1 page 1`] = `
           <span
             aria-label="minus-circle"
             class="anticon anticon-minus-circle"
+            data-testid="deleteListBtn"
             role="img"
             tabindex="-1"
           >
@@ -354,6 +357,7 @@ exports[`ListDetail component should match snapshot with 1 page 1`] = `
       >
         <div
           class="ant-card ant-card-bordered ant-card-hoverable css-dev-only-do-not-override-nllxry"
+          data-testid="movieItemCard"
         >
           <div
             class="ant-card-cover"
@@ -398,7 +402,7 @@ exports[`ListDetail component should match snapshot with 1 page 1`] = `
                 <span
                   aria-label="delete"
                   class="anticon anticon-delete"
-                  data-testid="deleteMovieAction"
+                  data-testid="deleteMovieBtn"
                   role="img"
                   tabindex="-1"
                 >
@@ -444,6 +448,7 @@ exports[`ListDetail component should match snapshot with empty list 1`] = `
           <span
             aria-label="minus-circle"
             class="anticon anticon-minus-circle"
+            data-testid="deleteListBtn"
             role="img"
             tabindex="-1"
           >

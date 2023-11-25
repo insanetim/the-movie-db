@@ -4,17 +4,17 @@ import { NOTIFICATION_DURATION, NOTIFICATION_TYPE } from 'src/constants/app'
 import Notification from '../component'
 import { NotificationHook } from '../types'
 
-const mockedHookData: NotificationHook = {
+const mockedHook: NotificationHook = {
   closeNotification: jest.fn()
 }
-jest.mock('../hook', () => jest.fn(() => mockedHookData))
+jest.mock('../hook', () => jest.fn(() => mockedHook))
 
 describe('Notification component', () => {
   it('should match snapshot', () => {
     const props = {
       duration: NOTIFICATION_DURATION,
       hideNotification: jest.fn(),
-      id: 'nanoid',
+      id: 'test/id',
       messageText: 'test/message',
       messageType: NOTIFICATION_TYPE.SUCCESS
     }

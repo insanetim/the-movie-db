@@ -21,7 +21,6 @@ const PopoverContent: React.FC<PopoverContentProps> = props => {
         lists.results.map(list => (
           <div key={list.id}>
             <Button
-              data-testid='addToListButton'
               onClick={() => handleAddToList(list.id)}
               type='link'
             >

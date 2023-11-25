@@ -1,4 +1,4 @@
-import { fireEvent, render } from '@testing-library/react'
+import { fireEvent, render, screen } from '@testing-library/react'
 import { mergeDeepRight } from 'ramda'
 import { mockMovieDetail } from 'src/__mocks__/mockMovie'
 import Wrapper from 'src/utils/testHelpers/wrapperMock'
@@ -7,7 +7,7 @@ import Movie from '../component'
 import useContainer from '../hook'
 import { MovieDetailHook } from '../types'
 
-const mockedHookData: MovieDetailHook = {
+const mockedHook: MovieDetailHook = {
   error: null,
   handleFavoriteClick: jest.fn(),
   handleWatchlistClick: jest.fn(),
@@ -16,7 +16,7 @@ const mockedHookData: MovieDetailHook = {
   popoverOpen: false,
   setPopoverOpen: jest.fn()
 }
-jest.mock('../hook', () => jest.fn(() => mockedHookData))
+jest.mock('../hook', () => jest.fn(() => mockedHook))
 
 describe('MovieDetail component', () => {
   it('should match snapshot', () => {
@@ -25,17 +25,33 @@ describe('MovieDetail component', () => {
     expect(asFragment()).toMatchSnapshot()
   })
 
-  it('handles setPopoverOpen', () => {
-    const { getByTestId } = render(<Movie />, { wrapper: Wrapper })
+  it('should call "handleFavoriteClick" when button clicked', () => {
+    render(<Movie />, { wrapper: Wrapper })
+    const button = screen.getByTestId('addToFavoriteBtn')
+    fireEvent.click(button)
 
-    fireEvent.click(getByTestId('addMovieToListPopover'))
+    expect(mockedHook.handleFavoriteClick).toHaveBeenCalled()
+  })
 
-    expect(mockedHookData.setPopoverOpen).toHaveBeenCalled()
+  it('should call "handleWatchlistClick" when button clicked', () => {
+    render(<Movie />, { wrapper: Wrapper })
+    const button = screen.getByTestId('addToWatchlistBtn')
+    fireEvent.click(button)
+
+    expect(mockedHook.handleWatchlistClick).toHaveBeenCalled()
+  })
+
+  it('should call "setPopoverOpen" when popover clicked', () => {
+    render(<Movie />, { wrapper: Wrapper })
+    const popover = screen.getByTestId('addMovieToListPopover')
+    fireEvent.click(popover)
+
+    expect(mockedHook.setPopoverOpen).toHaveBeenCalled()
   })
 
   it('should match snapshot with other data', () => {
     jest.mocked(useContainer).mockReturnValueOnce(
-      mergeDeepRight(mockedHookData, {
+      mergeDeepRight(mockedHook, {
         movie: {
           accountStates: {
             favorite: true,
@@ -52,7 +68,7 @@ describe('MovieDetail component', () => {
 
   it('should match snapshot with open popover', () => {
     jest.mocked(useContainer).mockReturnValueOnce(
-      mergeDeepRight(mockedHookData, {
+      mergeDeepRight(mockedHook, {
         popoverOpen: true
       }) as MovieDetailHook
     )
@@ -62,22 +78,22 @@ describe('MovieDetail component', () => {
   })
 
   it('should match snapshot with empty movie', () => {
-    mockedHookData.movie = undefined
+    mockedHook.movie = undefined
     const { asFragment } = render(<Movie />, { wrapper: Wrapper })
 
     expect(asFragment()).toMatchSnapshot()
   })
 
   it('should match snapshot with loading', () => {
-    mockedHookData.loading = true
+    mockedHook.loading = true
     const { asFragment } = render(<Movie />, { wrapper: Wrapper })
 
     expect(asFragment()).toMatchSnapshot()
   })
 
   it('should match snapshot with error', () => {
-    mockedHookData.loading = false
-    mockedHookData.error = 'Something went wrong!'
+    mockedHook.loading = false
+    mockedHook.error = 'Something went wrong!'
     const { asFragment } = render(<Movie />, { wrapper: Wrapper })
 
     expect(asFragment()).toMatchSnapshot()

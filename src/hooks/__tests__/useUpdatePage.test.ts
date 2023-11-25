@@ -20,7 +20,7 @@ describe('useUpdatePage', () => {
     expect(result.current).toMatchSnapshot()
   })
 
-  it('should check updatePage', () => {
+  it('should check "updatePage" method', () => {
     const { result } = renderHook(() => useUpdatePage(props))
 
     act(() => {
@@ -30,7 +30,7 @@ describe('useUpdatePage', () => {
     expect(setSearchParams).toHaveBeenCalledWith({ page: '2' })
   })
 
-  it('should check updatePage withot items', () => {
+  it('should check "updatePage" method without items', () => {
     const extendedProps = { ...props, items: undefined }
     const { result } = renderHook(() => useUpdatePage(extendedProps))
 

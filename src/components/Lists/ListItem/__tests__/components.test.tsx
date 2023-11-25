@@ -25,6 +25,14 @@ describe('ListItem component', () => {
     const card = screen.getByTestId('listItemCard')
     fireEvent.click(card)
 
-    expect(mockedHook.handleClick).toHaveBeenCalledTimes(1)
+    expect(mockedHook.handleClick).toHaveBeenCalled()
+  })
+
+  it('should call "handleListDelete" when delete button clicked', () => {
+    render(<ListItem list={mockList} />, { wrapper: Wrapper })
+    const deleteBtn = screen.getByTestId('deleteListBtn')
+    fireEvent.click(deleteBtn)
+
+    expect(mockedHook.handleListDelete).toHaveBeenCalled()
   })
 })

@@ -109,10 +109,12 @@ const Movie: React.FC = () => {
               </Popover>{' '}
               <Icon
                 component={favoriteIcon}
+                data-testid='addToFavoriteBtn'
                 onClick={handleFavoriteClick}
               />{' '}
               <Icon
                 component={watchlistIcon}
+                data-testid='addToWatchlistBtn'
                 onClick={handleWatchlistClick}
               />
             </Typography.Title>

@@ -5,11 +5,11 @@ import Wrapper from 'src/utils/testHelpers/wrapperMock'
 import ProtectedRoutes from '../component'
 import { ProtectedRoutesHook } from '../types'
 
-const mockedHookData: ProtectedRoutesHook = {
+const mockedHook: ProtectedRoutesHook = {
   location: {} as Location,
   sessionId: 'test/sessionId'
 }
-jest.mock('../hook', () => jest.fn(() => mockedHookData))
+jest.mock('../hook', () => jest.fn(() => mockedHook))
 
 jest.mock('react-router-dom', () => ({
   ...jest.requireActual('react-router-dom'),
@@ -24,7 +24,7 @@ describe('ProtectedRoutes component', () => {
   })
 
   it('should match snapshot without sessionId', () => {
-    mockedHookData.sessionId = ''
+    mockedHook.sessionId = ''
     const { asFragment } = render(<ProtectedRoutes />, { wrapper: Wrapper })
 
     expect(asFragment()).toMatchSnapshot()

@@ -48,9 +48,7 @@ describe('ListItem useContainer hook', () => {
   it('should check "handleListDelete" method', async () => {
     const modalSpy = jest.spyOn(Modal, 'confirm')
     const deleteList = jest.spyOn(listsActions, 'deleteList')
-    let onOk = () => {
-      return
-    }
+    let onOk = () => {}
     const { result } = renderHook(() => useContainer(props))
 
     act(() => {

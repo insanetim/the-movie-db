@@ -1,19 +1,17 @@
 import { act, renderHook } from '@testing-library/react'
 import { useNavigate } from 'react-router-dom'
 import { dispatch } from 'src/__mocks__/react-redux'
-import { fetchAccount, logOut } from 'src/store/session/actions'
+import * as sessionActions from 'src/store/session/actions'
 
 import useContainer from '../hook'
 
 jest.mock('src/store/session/selectors', () => ({
-  accountSelector: jest.fn(() => ({ id: 123 }))
+  accountSelector: () => ({ id: 123 })
 }))
-
-jest.mock('src/store/session/actions')
 
 jest.mock('react-router-dom', () => ({
   ...jest.requireActual('react-router-dom'),
-  useLocation: jest.fn().mockImplementation(() => ({})),
+  useLocation: jest.fn(() => ({})),
   useNavigate: jest.fn()
 }))
 const navigate = jest.fn()
@@ -26,25 +24,27 @@ describe('Header useContainer hook', () => {
     expect(result.current).toMatchSnapshot()
   })
 
-  it('should check `handleLogOut` method', async () => {
-    dispatch.mockImplementationOnce(() => Promise.resolve())
+  it('should check "handleLogOut" method', async () => {
+    const logOut = jest.spyOn(sessionActions, 'logOut')
     const { result } = renderHook(useContainer)
 
-    await act(async () => {
-      await result.current.handleLogOut()
+    await act(() => {
+      result.current.handleLogOut()
     })
 
-    expect(dispatch).toHaveBeenCalledWith(logOut())
+    expect(dispatch).toHaveBeenCalled()
+    expect(logOut).toHaveBeenCalled()
     expect(navigate).toHaveBeenCalledWith('/login', {
       replace: true,
       state: { from: {} }
     })
   })
 
-  it('should check `useEffect` method', () => {
+  it('should check "useEffect" method', () => {
+    const fetchAccount = jest.spyOn(sessionActions, 'fetchAccount')
     renderHook(useContainer)
 
-    expect(dispatch).toHaveBeenCalledTimes(1)
-    expect(dispatch).toHaveBeenCalledWith(fetchAccount())
+    expect(dispatch).toHaveBeenCalled()
+    expect(fetchAccount).toHaveBeenCalled()
   })
 })

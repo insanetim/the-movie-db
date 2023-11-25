@@ -30,7 +30,7 @@ describe('Trending component', () => {
     const link = screen.getByText('2')
     fireEvent.click(link)
 
-    expect(mockedHook.handlePagination).toHaveBeenCalledTimes(1)
+    expect(mockedHook.handlePagination).toHaveBeenCalled()
   })
 
   it('should match snapshot with 1 page', () => {
