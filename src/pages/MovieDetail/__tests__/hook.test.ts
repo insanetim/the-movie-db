@@ -11,7 +11,7 @@ import useContainer from '../hook'
 
 jest.mock('react-router-dom', () => ({
   ...jest.requireActual('react-router-dom'),
-  useParams: jest.fn(() => ({ movieId: '123' }))
+  useParams: jest.fn(() => ({ movieId: 1234 }))
 }))
 
 jest.mock<typeof import('@reduxjs/toolkit')>('@reduxjs/toolkit', () => ({
@@ -53,7 +53,7 @@ describe('MovieDetail useContainer hook', () => {
 
     expect(changeMovieInFavorite).toHaveBeenCalledWith({
       inFavorite: true,
-      movieId: '123'
+      movieId: 1234
     })
     expect(dispatch).toHaveBeenCalledWith(notification)
   })
@@ -74,7 +74,7 @@ describe('MovieDetail useContainer hook', () => {
 
     expect(changeMovieInWatchlist).toHaveBeenCalledWith({
       inWatchlist: true,
-      movieId: '123'
+      movieId: 1234
     })
     expect(dispatch).toHaveBeenCalledWith(notification)
   })
@@ -86,7 +86,7 @@ describe('MovieDetail useContainer hook', () => {
     renderHook(useContainer)
 
     expect(dispatch).toHaveBeenCalled()
-    expect(fetchMovieDetail).toHaveBeenCalledWith('123')
+    expect(fetchMovieDetail).toHaveBeenCalledWith(1234)
     expect(fetchLists).toHaveBeenCalledWith('1')
   })
 })

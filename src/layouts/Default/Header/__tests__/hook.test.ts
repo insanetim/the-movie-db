@@ -6,7 +6,7 @@ import * as sessionActions from 'src/store/session/actions'
 import useContainer from '../hook'
 
 jest.mock('src/store/session/selectors', () => ({
-  accountSelector: () => ({ id: 123 })
+  accountSelector: () => ({ id: 1234 })
 }))
 
 jest.mock('react-router-dom', () => ({

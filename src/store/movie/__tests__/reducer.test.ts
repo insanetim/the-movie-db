@@ -18,12 +18,12 @@ describe('movieReducer', () => {
 
   it('should handle "fetchMovieDetail/fulfilled" action', () => {
     const action = {
-      payload: { data: 'test/data', id: '123' },
+      payload: { data: 'test/data', id: '1234' },
       type: fetchMovieDetail.fulfilled.type
     }
     const newState = {
-      entities: { '123': { data: 'test/data', id: '123' } },
-      ids: ['123']
+      entities: { '1234': { data: 'test/data', id: '1234' } },
+      ids: ['1234']
     }
     const result = movieReducer(state, action)
 
@@ -32,15 +32,15 @@ describe('movieReducer', () => {
 
   it('should handle "changeMovieInFavorite/pending" action with movieId', () => {
     const action = {
-      meta: { arg: { inFavorite: true, movieId: '123' } },
+      meta: { arg: { inFavorite: true, movieId: '1234' } },
       type: changeMovieInFavorite.pending.type
     }
     const state = {
-      entities: { '123': { accountStates: { favorite: false }, id: '123' } },
-      ids: ['123']
+      entities: { '1234': { accountStates: { favorite: false }, id: '1234' } },
+      ids: ['1234']
     } as never
     const newState = assocPath(
-      ['entities', '123', 'accountStates', 'favorite'],
+      ['entities', '1234', 'accountStates', 'favorite'],
       true,
       state
     )
@@ -51,7 +51,7 @@ describe('movieReducer', () => {
 
   it('should handle "changeMovieInFavorite/pending" action without movieId', () => {
     const action = {
-      meta: { arg: { inFavorite: true, movieId: '123' } },
+      meta: { arg: { inFavorite: true, movieId: '1234' } },
       type: changeMovieInFavorite.pending.type
     }
     const result = movieReducer(state, action)
@@ -61,15 +61,15 @@ describe('movieReducer', () => {
 
   it('should handle "changeMovieInWatchlist/pending" action with movieId', () => {
     const action = {
-      meta: { arg: { inWatchlist: true, movieId: '123' } },
+      meta: { arg: { inWatchlist: true, movieId: '1234' } },
       type: changeMovieInWatchlist.pending.type
     }
     const state = {
-      entities: { '123': { accountStates: { watchlist: false }, id: '123' } },
-      ids: ['123']
+      entities: { '1234': { accountStates: { watchlist: false }, id: '1234' } },
+      ids: ['1234']
     } as never
     const newState = assocPath(
-      ['entities', '123', 'accountStates', 'watchlist'],
+      ['entities', '1234', 'accountStates', 'watchlist'],
       true,
       state
     )
@@ -80,7 +80,7 @@ describe('movieReducer', () => {
 
   it('should handle "changeMovieInWatchlist/pending" action without movieId', () => {
     const action = {
-      meta: { arg: { inWatchlist: true, movieId: '123' } },
+      meta: { arg: { inWatchlist: true, movieId: '1234' } },
       type: changeMovieInWatchlist.pending.type
     }
     const result = movieReducer(state, action)

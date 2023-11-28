@@ -33,7 +33,7 @@ describe('Login useContainer hook', () => {
   })
 
   it('should check "handleLogIn" method with success', async () => {
-    jest.mocked(unwrapResult).mockReturnValueOnce('test/sessionId')
+    jest.mocked(unwrapResult).mockReturnValueOnce('test/session_id')
     const userData = { password: 'password', username: 'user' }
     const { result } = renderHook(useContainer)
 

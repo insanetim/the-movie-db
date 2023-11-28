@@ -27,7 +27,7 @@ const updatePage = jest.fn()
 jest.mocked(useUpdatePage).mockReturnValue({ updatePage })
 
 describe('ListItem useContainer hook', () => {
-  const props = { listId: 123 }
+  const props = { listId: 1234 }
 
   it('should match snapshot', () => {
     const { result } = renderHook(() => useContainer(props))
@@ -42,7 +42,7 @@ describe('ListItem useContainer hook', () => {
       result.current.handleClick()
     })
 
-    expect(navigate).toHaveBeenCalledWith('/list/123')
+    expect(navigate).toHaveBeenCalledWith('/list/1234')
   })
 
   it('should check "handleListDelete" method', async () => {

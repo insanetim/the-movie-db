@@ -14,7 +14,7 @@ describe('ModalCreateList useContainer hook', () => {
       resetFields: jest.fn(),
       submit: jest.fn()
     } as unknown as FormInstance,
-    movieId: 123
+    movieId: 1234
   }
 
   it('should match snapshot', () => {
@@ -52,7 +52,7 @@ describe('ModalCreateList useContainer hook', () => {
   it('should check "handleSubmit" method with onSuccess', async () => {
     const onSuccess = jest.fn()
     const extendedProps = { ...props, onSuccess }
-    const listData = { description: 'test/description', name: 'test/name' }
+    const listData = { description: 'test/description', name: 'test/list' }
     const { result } = renderHook(() => useContainer(extendedProps))
 
     await act(() => {

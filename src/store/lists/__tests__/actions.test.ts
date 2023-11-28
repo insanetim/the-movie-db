@@ -15,8 +15,7 @@ import {
 
 jest.mock<typeof import('@reduxjs/toolkit')>('@reduxjs/toolkit', () => ({
   ...jest.requireActual('@reduxjs/toolkit'),
-  nanoid: () => 'test/id',
-  unwrapResult: jest.fn()
+  nanoid: () => 'test/id'
 }))
 
 const accountId = 1234
