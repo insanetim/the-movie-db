@@ -2,39 +2,28 @@ import { createAsyncThunk } from '@reduxjs/toolkit'
 import Cookies from 'js-cookie'
 import { NOTIFICATION_TYPE } from 'src/constants/app'
 import { IAccount } from 'src/interfaces/account.interface'
-import httpClient from 'src/libs/api/httpClient'
-import * as routes from 'src/libs/apiRoutes'
+import {
+  createRequestToken,
+  createSession,
+  deleteSession,
+  getAccountDetails,
+  validateWithLogin
+} from 'src/libs/apiRoutes'
 import { showNotification } from 'src/store/app/actions'
 import errorMessage from 'src/utils/helpers/errorMessage'
 
 import { RootState } from '../index'
 import * as types from './constants'
 import { sessionIdSelector } from './selectors'
-import { IRequestToken, ISession, IUserData } from './types'
+import { IUserData } from './types'
 
 const logIn = createAsyncThunk<string | undefined, IUserData>(
   types.logIn,
   async function (userData, { dispatch }) {
     try {
-      const {
-        data: { request_token: requestToken }
-      } = await httpClient.request<IRequestToken>({
-        url: routes.createRequestToken
-      })
-
-      await httpClient.request({
-        data: { ...userData, request_token: requestToken },
-        method: 'post',
-        url: routes.validateWithLogin
-      })
-
-      const {
-        data: { session_id: sessionId }
-      } = await httpClient.request<ISession>({
-        data: { request_token: requestToken },
-        method: 'post',
-        url: routes.createSession
-      })
+      const requestToken = await createRequestToken()
+      await validateWithLogin({ requestToken, userData })
+      const sessionId = await createSession({ requestToken })
 
       Cookies.set('tmdb.session_id', sessionId)
 
@@ -56,11 +45,7 @@ const logOut = createAsyncThunk<void, undefined, { state: RootState }>(
     const sessionId = sessionIdSelector(getState())
 
     try {
-      await httpClient.request({
-        data: { session_id: sessionId },
-        method: 'delete',
-        url: routes.deleteSession
-      })
+      await deleteSession({ sessionId })
 
       Cookies.remove('tmdb.session_id')
     } catch (error) {
@@ -82,12 +67,9 @@ const fetchAccount = createAsyncThunk<
   const sessionId = sessionIdSelector(getState())
 
   try {
-    const { data } = await httpClient.request<IAccount>({
-      params: { session_id: sessionId },
-      url: routes.getAccountDetails
-    })
+    const account = await getAccountDetails({ sessionId })
 
-    return data
+    return account
   } catch (error) {
     dispatch(
       showNotification({

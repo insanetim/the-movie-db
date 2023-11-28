@@ -1,6 +1,6 @@
 import { act, renderHook } from '@testing-library/react'
 import { useParams } from 'react-router-dom'
-import { mockMovieDetail } from 'src/__mocks__/mockMovie'
+import { mockMovieDetailExtended } from 'src/__mocks__/mockMovie'
 import { dispatch } from 'src/__mocks__/react-redux'
 import { showNotification } from 'src/store/app/actions'
 import * as listsActions from 'src/store/lists/actions'
@@ -22,7 +22,7 @@ jest.mock<typeof import('@reduxjs/toolkit')>('@reduxjs/toolkit', () => ({
 describe('MovieDetail useContainer hook', () => {
   const selectMovieById = jest
     .spyOn(movieSelectors, 'selectMovieById')
-    .mockReturnValue(mockMovieDetail)
+    .mockReturnValue(mockMovieDetailExtended)
 
   it('should match snapshot', () => {
     const { result } = renderHook(useContainer)

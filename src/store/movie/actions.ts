@@ -1,15 +1,14 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
 import { NOTIFICATION_TYPE } from 'src/constants/app'
+import { IMovie, IMovieDetailExtended } from 'src/interfaces/movie.interface'
 import {
-  IMovie,
-  IMovieAccountStates,
-  IMovieCredits,
-  IMovieDetail,
-  IMovieDetailExtended,
-  IMovieImages
-} from 'src/interfaces/movie.interface'
-import httpClient from 'src/libs/api/httpClient'
-import * as routes from 'src/libs/apiRoutes'
+  addToFovorite,
+  addToWatchlist,
+  getMovieAccountStates,
+  getMovieCredits,
+  getMovieDetails,
+  getMovieImages
+} from 'src/libs/apiRoutes'
 import { accountSelector, sessionIdSelector } from 'src/store/session/selectors'
 import errorMessage from 'src/utils/helpers/errorMessage'
 
@@ -31,29 +30,21 @@ const fetchMovieDetail = createAsyncThunk<
     const sessionId = sessionIdSelector(getState())
 
     try {
-      const { data } = await httpClient.request<IMovieDetail>({
-        url: routes.getMovieDetails(movieId.toString())
-      })
-      const { data: images } = await httpClient.request<IMovieImages>({
-        url: routes.getMovieImages(movieId.toString())
-      })
-      const { data: accountStates } =
-        await httpClient.request<IMovieAccountStates>({
-          params: { session_id: sessionId },
-          url: routes.getMovieAccountStates(movieId.toString())
-        })
-      const { data: credits } = await httpClient.request<IMovieCredits>({
-        url: routes.getMovieCredits(movieId.toString())
-      })
+      const [movieDetail, images, accountStates, credits] = await Promise.all([
+        getMovieDetails({ movieId }),
+        getMovieImages({ movieId }),
+        getMovieAccountStates({ movieId, sessionId }),
+        getMovieCredits({ movieId })
+      ])
 
-      const extendedData: IMovieDetailExtended = {
-        ...data,
+      const movieDetailExtended: IMovieDetailExtended = {
+        ...movieDetail,
         accountStates,
         credits,
-        images: images.backdrops.slice(0, 7)
+        images
       }
 
-      return extendedData
+      return movieDetailExtended
     } catch (error) {
       return rejectWithValue(errorMessage(error))
     }
@@ -71,12 +62,7 @@ const changeMovieInFavorite = createAsyncThunk<
     const accountId = accountSelector(getState())!.id
 
     try {
-      await httpClient.request({
-        data: { favorite: inFavorite, media_id: movieId, media_type: 'movie' },
-        method: 'post',
-        params: { session_id: sessionId },
-        url: routes.addToFovorite(accountId)
-      })
+      await addToFovorite({ accountId, inFavorite, movieId, sessionId })
     } catch (error) {
       dispatch(
         showNotification({
@@ -99,16 +85,7 @@ const changeMovieInWatchlist = createAsyncThunk<
     const accountId = accountSelector(getState())!.id
 
     try {
-      await httpClient.request({
-        data: {
-          media_id: movieId,
-          media_type: 'movie',
-          watchlist: inWatchlist
-        },
-        method: 'post',
-        params: { session_id: sessionId },
-        url: routes.addToWatchlist(accountId)
-      })
+      await addToWatchlist({ accountId, inWatchlist, movieId, sessionId })
     } catch (error) {
       dispatch(
         showNotification({

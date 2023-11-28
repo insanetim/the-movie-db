@@ -1,6 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
 import { IMoviesList } from 'src/interfaces/movie.interface'
-import httpClient from 'src/libs/api/httpClient'
 import { getWatchlist } from 'src/libs/apiRoutes'
 import { accountSelector, sessionIdSelector } from 'src/store/session/selectors'
 import errorMessage from 'src/utils/helpers/errorMessage'
@@ -17,12 +16,9 @@ const fetchWatchlist = createAsyncThunk<
   const accountId = accountSelector(getState())!.id
 
   try {
-    const { data } = await httpClient.request<IMoviesList>({
-      params: { page, session_id: sessionId },
-      url: getWatchlist(accountId)
-    })
+    const watchlist = await getWatchlist({ accountId, page, sessionId })
 
-    return data
+    return watchlist
   } catch (error) {
     return rejectWithValue(errorMessage(error))
   }

@@ -2,7 +2,7 @@ import { render } from '@testing-library/react'
 import { ReactNode, Suspense } from 'react'
 import { Location } from 'react-router-dom'
 import { mockListDetail } from 'src/__mocks__/mockList'
-import { mockMovieDetail } from 'src/__mocks__/mockMovie'
+import { mockMovieDetailExtended } from 'src/__mocks__/mockMovie'
 import App, {
   Dashboard,
   DefaultLayout,
@@ -124,7 +124,7 @@ const mockedMovieDetailHook: MovieDetailHook = {
   handleFavoriteClick: jest.fn(),
   handleWatchlistClick: jest.fn(),
   loading: false,
-  movie: mockMovieDetail,
+  movie: mockMovieDetailExtended,
   popoverOpen: false,
   setPopoverOpen: jest.fn()
 }

@@ -1,8 +1,14 @@
-import { createAsyncThunk } from '@reduxjs/toolkit'
+import { createAsyncThunk, unwrapResult } from '@reduxjs/toolkit'
 import { NOTIFICATION_TYPE } from 'src/constants/app'
 import { IList, IListDetail, IListsList } from 'src/interfaces/list.interface'
-import httpClient from 'src/libs/api/httpClient'
-import * as routes from 'src/libs/apiRoutes'
+import {
+  addMovieToList,
+  createNewList,
+  deleteMyList,
+  getCreatedLists,
+  getListDetails,
+  removeMovieFromList
+} from 'src/libs/apiRoutes'
 import { showNotification } from 'src/store/app/actions'
 import { accountSelector, sessionIdSelector } from 'src/store/session/selectors'
 import errorMessage from 'src/utils/helpers/errorMessage'
@@ -15,7 +21,6 @@ import { listsSelector } from './selectors'
 import {
   AddToListProps,
   CreateListProps,
-  CreateListResponse,
   FetchListDetailProps,
   RemoveFromListProps
 } from './types'
@@ -29,12 +34,9 @@ const fetchLists = createAsyncThunk<
   const accountId = accountSelector(getState())!.id
 
   try {
-    const { data } = await httpClient.request<IListsList>({
-      params: { page, session_id: sessionId },
-      url: routes.getCreatedLists(accountId)
-    })
+    const lists = await getCreatedLists({ accountId, page, sessionId })
 
-    return data
+    return lists
   } catch (error) {
     return rejectWithValue(errorMessage(error))
   }
@@ -50,17 +52,12 @@ const createList = createAsyncThunk<
     const sessionId = sessionIdSelector(getState())
 
     try {
-      const { data } = await httpClient.request<CreateListResponse>({
-        data: { ...listData },
-        method: 'post',
-        params: { session_id: sessionId },
-        url: routes.createList
-      })
+      const listId = await createNewList({ listData, sessionId })
 
       if (typeof movieId !== 'undefined') {
         dispatch(
           addToList({
-            listId: data.list_id,
+            listId,
             movieId
           })
         )
@@ -82,11 +79,7 @@ const deleteList = createAsyncThunk<void, IList['id'], { state: RootState }>(
     const sessionId = sessionIdSelector(getState())
 
     try {
-      await httpClient.request({
-        method: 'delete',
-        params: { session_id: sessionId },
-        url: routes.deleteList(listId)
-      })
+      await deleteMyList({ listId, sessionId })
     } catch (error) {
       dispatch(
         showNotification({
@@ -106,12 +99,9 @@ const fetchListDetail = createAsyncThunk<
   types.fetchListDetail,
   async function ({ listId, page }, { rejectWithValue }) {
     try {
-      const { data } = await httpClient.request<IListDetail>({
-        params: { page },
-        url: routes.getListDetails(listId)
-      })
+      const listDetail = await getListDetails({ listId, page })
 
-      return data
+      return listDetail
     } catch (error) {
       return rejectWithValue(errorMessage(error))
     }
@@ -124,14 +114,8 @@ const addToList = createAsyncThunk<void, AddToListProps, { state: RootState }>(
     const sessionId = sessionIdSelector(getState())
 
     try {
-      await httpClient.request({
-        data: { media_id: movieId },
-        method: 'post',
-        params: { session_id: sessionId },
-        url: routes.addToList(listId)
-      })
-
-      await dispatch(fetchLists('1'))
+      await addMovieToList({ listId, movieId, sessionId })
+      unwrapResult(await dispatch(fetchLists('1')))
 
       const movieTitle = selectMovieById(getState(), movieId)!.title
       const listName = listsSelector(getState())!.results.find(
@@ -162,12 +146,7 @@ const removeFromList = createAsyncThunk<
     const sessionId = sessionIdSelector(getState())
 
     try {
-      await httpClient.request({
-        data: { media_id: movieId },
-        method: 'post',
-        params: { session_id: sessionId },
-        url: routes.removeFromList(listId)
-      })
+      await removeMovieFromList({ listId, movieId, sessionId })
     } catch (error) {
       dispatch(
         showNotification({

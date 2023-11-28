@@ -1,6 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
 import { IMoviesList } from 'src/interfaces/movie.interface'
-import httpClient from 'src/libs/api/httpClient'
 import { getTrending, searchMovies } from 'src/libs/apiRoutes'
 import errorMessage from 'src/utils/helpers/errorMessage'
 
@@ -13,12 +12,9 @@ const fetchTrending = createAsyncThunk<
   { rejectValue: string }
 >(types.fetchTrending, async function (page, { rejectWithValue }) {
   try {
-    const { data } = await httpClient.request<IMoviesList>({
-      params: { page },
-      url: getTrending
-    })
+    const movies = await getTrending({ page })
 
-    return data
+    return movies
   } catch (error) {
     return rejectWithValue(errorMessage(error))
   }
@@ -30,12 +26,9 @@ const fetchSearch = createAsyncThunk<
   { rejectValue: string }
 >(types.fetchSearch, async function ({ page, query }, { rejectWithValue }) {
   try {
-    const { data } = await httpClient.request<IMoviesList>({
-      params: { page, query },
-      url: searchMovies
-    })
+    const movies = await searchMovies({ page, query })
 
-    return data
+    return movies
   } catch (error) {
     return rejectWithValue(errorMessage(error))
   }

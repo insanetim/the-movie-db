@@ -1,7 +1,7 @@
+import { mockListDetail, mockListsResponse } from 'src/__mocks__/mockList'
 import { dispatch, getState } from 'src/__mocks__/react-redux'
 import { NOTIFICATION_TYPE } from 'src/constants/app'
-import httpClient from 'src/libs/api/httpClient'
-import * as routes from 'src/libs/apiRoutes'
+import * as apiRoutes from 'src/libs/apiRoutes'
 import { showNotification } from 'src/store/app/actions'
 
 import {
@@ -15,54 +15,64 @@ import {
 
 jest.mock<typeof import('@reduxjs/toolkit')>('@reduxjs/toolkit', () => ({
   ...jest.requireActual('@reduxjs/toolkit'),
-  nanoid: () => 'test/id'
+  nanoid: () => 'test/id',
+  unwrapResult: jest.fn()
 }))
 
+const accountId = 1234
+const sessionId = 'test/session_id'
 jest.mock('src/store/session/selectors', () => ({
-  accountSelector: () => ({ id: 123 }),
-  sessionIdSelector: () => 'session_id'
+  accountSelector: () => ({ id: accountId }),
+  sessionIdSelector: () => sessionId
 }))
 
 jest.mock('src/store/movie/selectors', () => ({
   selectMovieById: () => ({ title: 'test/movie' })
 }))
 
+const listId = 1234
 jest.mock('src/store//lists/selectors', () => ({
-  listsSelector: () => ({ results: [{ id: 123, name: 'test/list' }] })
+  listsSelector: () => ({ results: [{ id: listId, name: 'test/list' }] })
 }))
 
 describe('lists actions', () => {
-  const requestSpy = jest.spyOn(httpClient, 'request')
+  const addMovieToList = jest.spyOn(apiRoutes, 'addMovieToList')
+  const createNewList = jest.spyOn(apiRoutes, 'createNewList')
+  const deleteMyList = jest.spyOn(apiRoutes, 'deleteMyList')
+  const getCreatedLists = jest.spyOn(apiRoutes, 'getCreatedLists')
+  const getListDetails = jest.spyOn(apiRoutes, 'getListDetails')
+  const removeMovieFromList = jest.spyOn(apiRoutes, 'removeMovieFromList')
+  const errorMessage = 'Something went wrong!'
   const errorNotification = showNotification({
-    messageText: 'Something went wrong!',
+    messageText: errorMessage,
     messageType: NOTIFICATION_TYPE.ERROR
   })
+  const listData = { description: 'test/description', name: 'test/name' }
+  const movieId = 1234
+  const page = '1'
 
   describe('fetchLists', () => {
-    const thunk = fetchLists('1')
-
-    const request = {
-      params: { page: '1', session_id: 'session_id' },
-      url: routes.getCreatedLists(123)
-    }
-    const response = { data: 'test/data' }
+    const thunk = fetchLists(page)
 
     it('should handle success', async () => {
-      requestSpy.mockResolvedValueOnce(response)
+      getCreatedLists.mockResolvedValueOnce(mockListsResponse)
 
       const result = await thunk(dispatch, getState, undefined)
       const { calls } = dispatch.mock
 
-      expect(requestSpy).toHaveBeenCalledTimes(1)
-      expect(requestSpy).toHaveBeenCalledWith(request)
+      expect(getCreatedLists).toHaveBeenCalledWith({
+        accountId,
+        page,
+        sessionId
+      })
       expect(calls).toHaveLength(2)
       expect(calls[0][0].type).toBe(fetchLists.pending.type)
       expect(calls[1][0].type).toBe(fetchLists.fulfilled.type)
-      expect(result.payload).toEqual(response.data)
+      expect(result.payload).toEqual(mockListsResponse)
     })
 
     it('should handle failure', async () => {
-      requestSpy.mockRejectedValueOnce('Something went wrong!')
+      getCreatedLists.mockRejectedValueOnce(errorMessage)
 
       const result = await thunk(dispatch, getState, undefined)
       const { calls } = dispatch.mock
@@ -70,38 +80,28 @@ describe('lists actions', () => {
       expect(calls).toHaveLength(2)
       expect(calls[0][0].type).toBe(fetchLists.pending.type)
       expect(calls[1][0].type).toBe(fetchLists.rejected.type)
-      expect(result.payload).toBe('Something went wrong!')
+      expect(result.payload).toBe(errorMessage)
     })
   })
 
   describe('createList', () => {
-    const listData = { description: 'test/description', name: 'test/name' }
-    const thunk = createList({ listData, movieId: 123 })
-
-    const request = {
-      data: { ...listData },
-      method: 'post',
-      params: { session_id: 'session_id' },
-      url: routes.createList
-    }
-    const response = { data: { list_id: 123 } }
+    const thunk = createList({ listData, movieId })
 
     it('should handle success', async () => {
-      requestSpy.mockResolvedValueOnce(response)
+      createNewList.mockResolvedValueOnce(listId)
 
       await thunk(dispatch, getState, undefined)
       const { calls } = dispatch.mock
 
-      expect(requestSpy).toHaveBeenCalledTimes(1)
-      expect(requestSpy).toHaveBeenCalledWith(request)
+      expect(createNewList).toHaveBeenCalledWith({ listData, sessionId })
       expect(calls).toHaveLength(3)
       expect(calls[0][0].type).toBe(createList.pending.type)
       expect(calls[2][0].type).toBe(createList.fulfilled.type)
     })
 
     it('should handle success without movieId', async () => {
-      requestSpy.mockResolvedValueOnce(response)
       const thunk = createList({ listData })
+      createNewList.mockResolvedValueOnce(listId)
 
       await thunk(dispatch, getState, undefined)
       const { calls } = dispatch.mock
@@ -112,7 +112,7 @@ describe('lists actions', () => {
     })
 
     it('should handle failure', async () => {
-      requestSpy.mockRejectedValueOnce('Something went wrong!')
+      createNewList.mockRejectedValueOnce(errorMessage)
 
       await thunk(dispatch, getState, undefined)
       const { calls } = dispatch.mock
@@ -126,30 +126,22 @@ describe('lists actions', () => {
   })
 
   describe('deleteList', () => {
-    const thunk = deleteList('123')
-
-    const request = {
-      method: 'delete',
-      params: { session_id: 'session_id' },
-      url: routes.deleteList('123')
-    }
-    const response = { data: { success: true } }
+    const thunk = deleteList(listId)
 
     it('should handle success', async () => {
-      requestSpy.mockResolvedValueOnce(response)
+      deleteMyList.mockResolvedValueOnce()
 
       await thunk(dispatch, getState, undefined)
       const { calls } = dispatch.mock
 
-      expect(requestSpy).toHaveBeenCalledTimes(1)
-      expect(requestSpy).toHaveBeenCalledWith(request)
+      expect(deleteMyList).toHaveBeenCalledWith({ listId, sessionId })
       expect(calls).toHaveLength(2)
       expect(calls[0][0].type).toBe(deleteList.pending.type)
       expect(calls[1][0].type).toBe(deleteList.fulfilled.type)
     })
 
     it('should handle failure', async () => {
-      requestSpy.mockRejectedValueOnce('Something went wrong!')
+      deleteMyList.mockRejectedValueOnce(errorMessage)
 
       await thunk(dispatch, getState, undefined)
       const { calls } = dispatch.mock
@@ -163,27 +155,23 @@ describe('lists actions', () => {
   })
 
   describe('fetchListDetail', () => {
-    const thunk = fetchListDetail({ listId: '123', page: '1' })
-
-    const request = { params: { page: '1' }, url: routes.getListDetails('123') }
-    const response = { data: 'test/data' }
+    const thunk = fetchListDetail({ listId, page })
 
     it('should handle success', async () => {
-      requestSpy.mockResolvedValueOnce(response)
+      getListDetails.mockResolvedValueOnce(mockListDetail)
 
       const result = await thunk(dispatch, getState, undefined)
       const { calls } = dispatch.mock
 
-      expect(requestSpy).toHaveBeenCalledTimes(1)
-      expect(requestSpy).toHaveBeenCalledWith(request)
+      expect(getListDetails).toHaveBeenCalledWith({ listId, page })
       expect(calls).toHaveLength(2)
       expect(calls[0][0].type).toBe(fetchListDetail.pending.type)
       expect(calls[1][0].type).toBe(fetchListDetail.fulfilled.type)
-      expect(result.payload).toEqual(response.data)
+      expect(result.payload).toEqual(mockListDetail)
     })
 
     it('should handle failure', async () => {
-      requestSpy.mockRejectedValueOnce('Something went wrong!')
+      getListDetails.mockRejectedValueOnce(errorMessage)
 
       const result = await thunk(dispatch, getState, undefined)
       const { calls } = dispatch.mock
@@ -191,23 +179,15 @@ describe('lists actions', () => {
       expect(calls).toHaveLength(2)
       expect(calls[0][0].type).toBe(fetchListDetail.pending.type)
       expect(calls[1][0].type).toBe(fetchListDetail.rejected.type)
-      expect(result.payload).toBe('Something went wrong!')
+      expect(result.payload).toBe(errorMessage)
     })
   })
 
   describe('addToList', () => {
-    const thunk = addToList({ listId: 123, movieId: 123 })
-
-    const request = {
-      data: { media_id: 123 },
-      method: 'post',
-      params: { session_id: 'session_id' },
-      url: routes.addToList(123)
-    }
-    const response = { data: { success: true } }
+    const thunk = addToList({ listId, movieId })
 
     it('should handle success', async () => {
-      requestSpy.mockResolvedValueOnce(response)
+      addMovieToList.mockResolvedValueOnce()
       const notification = showNotification({
         messageText: 'test/movie added to test/list'
       })
@@ -215,8 +195,11 @@ describe('lists actions', () => {
       await thunk(dispatch, getState, undefined)
       const { calls } = dispatch.mock
 
-      expect(requestSpy).toHaveBeenCalledTimes(1)
-      expect(requestSpy).toHaveBeenCalledWith(request)
+      expect(addMovieToList).toHaveBeenCalledWith({
+        listId,
+        movieId,
+        sessionId
+      })
       expect(calls).toHaveLength(4)
       expect(calls[0][0].type).toBe(addToList.pending.type)
       expect(calls[2][0].type).toBe(showNotification.type)
@@ -225,7 +208,7 @@ describe('lists actions', () => {
     })
 
     it('should handle failure', async () => {
-      requestSpy.mockRejectedValueOnce('Something went wrong!')
+      addMovieToList.mockRejectedValueOnce(errorMessage)
 
       await thunk(dispatch, getState, undefined)
       const { calls } = dispatch.mock
@@ -239,31 +222,26 @@ describe('lists actions', () => {
   })
 
   describe('removeFromList', () => {
-    const thunk = removeFromList({ listId: 123, movieId: 123 })
-
-    const request = {
-      data: { media_id: 123 },
-      method: 'post',
-      params: { session_id: 'session_id' },
-      url: routes.removeFromList(123)
-    }
-    const response = { data: { success: true } }
+    const thunk = removeFromList({ listId, movieId })
 
     it('should handle success', async () => {
-      requestSpy.mockResolvedValueOnce(response)
+      removeMovieFromList.mockResolvedValueOnce()
 
       await thunk(dispatch, getState, undefined)
       const { calls } = dispatch.mock
 
-      expect(requestSpy).toHaveBeenCalledTimes(1)
-      expect(requestSpy).toHaveBeenCalledWith(request)
+      expect(removeMovieFromList).toHaveBeenCalledWith({
+        listId,
+        movieId,
+        sessionId
+      })
       expect(calls).toHaveLength(2)
       expect(calls[0][0].type).toBe(removeFromList.pending.type)
       expect(calls[1][0].type).toBe(removeFromList.fulfilled.type)
     })
 
     it('should handle failure', async () => {
-      requestSpy.mockRejectedValueOnce('Something went wrong!')
+      removeMovieFromList.mockRejectedValueOnce(errorMessage)
 
       await thunk(dispatch, getState, undefined)
       const { calls } = dispatch.mock

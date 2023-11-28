@@ -1,7 +1,10 @@
+import {
+  mockMovieDetail,
+  mockMovieDetailExtended
+} from 'src/__mocks__/mockMovie'
 import { dispatch, getState } from 'src/__mocks__/react-redux'
 import { NOTIFICATION_TYPE } from 'src/constants/app'
-import httpClient from 'src/libs/api/httpClient'
-import * as routes from 'src/libs/apiRoutes'
+import * as apiRoutes from 'src/libs/apiRoutes'
 import { showNotification } from 'src/store/app/actions'
 
 import {
@@ -15,64 +18,55 @@ jest.mock<typeof import('@reduxjs/toolkit')>('@reduxjs/toolkit', () => ({
   nanoid: () => 'test/id'
 }))
 
+const accountId = 1234
+const sessionId = 'test/session_id'
 jest.mock('src/store/session/selectors', () => ({
-  accountSelector: () => ({ id: 123 }),
-  sessionIdSelector: () => 'session_id'
+  accountSelector: () => ({ id: accountId }),
+  sessionIdSelector: () => sessionId
 }))
 
 describe('movie actions', () => {
-  const requestSpy = jest.spyOn(httpClient, 'request')
+  const addToFovorite = jest.spyOn(apiRoutes, 'addToFovorite')
+  const addToWatchlist = jest.spyOn(apiRoutes, 'addToWatchlist')
+  const getMovieAccountStates = jest.spyOn(apiRoutes, 'getMovieAccountStates')
+  const getMovieCredits = jest.spyOn(apiRoutes, 'getMovieCredits')
+  const getMovieDetails = jest.spyOn(apiRoutes, 'getMovieDetails')
+  const getMovieImages = jest.spyOn(apiRoutes, 'getMovieImages')
+  const errorMessage = 'Something went wrong!'
   const errorNotification = showNotification({
-    messageText: 'Something went wrong!',
+    messageText: errorMessage,
     messageType: NOTIFICATION_TYPE.ERROR
   })
+  const movieId = 1234
+  const inFavorite = true
+  const inWatchlist = true
 
   describe('fetchMovie', () => {
-    const thunk = fetchMovieDetail('123')
-
-    const movieDetailRequest = { url: routes.getMovieDetails('123') }
-    const movieDetailResponse = { data: { id: 123, title: 'test/movie' } }
-    const imagesRequest = { url: routes.getMovieImages('123') }
-    const imagesResponse = { data: { backdrops: ['1', '2', '3'] } }
-    const accountStatesRequest = {
-      params: { session_id: 'session_id' },
-      url: routes.getMovieAccountStates('123')
-    }
-    const accountStatesResponse = {
-      data: { favorite: false, watchlist: false }
-    }
-    const creditsRequest = { url: routes.getMovieCredits('123') }
-    const creditsResponse = { data: { cast: [], crew: [] } }
-    const extentedData = {
-      ...movieDetailResponse.data,
-      accountStates: accountStatesResponse.data,
-      credits: creditsResponse.data,
-      images: imagesResponse.data.backdrops.slice(0, 7)
-    }
+    const thunk = fetchMovieDetail(movieId)
 
     it('should handle success', async () => {
-      requestSpy
-        .mockResolvedValueOnce(movieDetailResponse)
-        .mockResolvedValueOnce(imagesResponse)
-        .mockResolvedValueOnce(accountStatesResponse)
-        .mockResolvedValueOnce(creditsResponse)
+      getMovieDetails.mockResolvedValueOnce(mockMovieDetail)
+      getMovieImages.mockResolvedValueOnce(mockMovieDetailExtended.images)
+      getMovieAccountStates.mockResolvedValueOnce(
+        mockMovieDetailExtended.accountStates
+      )
+      getMovieCredits.mockResolvedValueOnce(mockMovieDetailExtended.credits)
 
       const result = await thunk(dispatch, getState, undefined)
       const { calls } = dispatch.mock
 
-      expect(requestSpy).toHaveBeenCalledTimes(4)
-      expect(requestSpy).toHaveBeenNthCalledWith(1, movieDetailRequest)
-      expect(requestSpy).toHaveBeenNthCalledWith(2, imagesRequest)
-      expect(requestSpy).toHaveBeenNthCalledWith(3, accountStatesRequest)
-      expect(requestSpy).toHaveBeenNthCalledWith(4, creditsRequest)
+      expect(getMovieDetails).toHaveBeenCalledWith({ movieId })
+      expect(getMovieImages).toHaveBeenCalledWith({ movieId })
+      expect(getMovieAccountStates).toHaveBeenCalledWith({ movieId, sessionId })
+      expect(getMovieCredits).toHaveBeenCalledWith({ movieId })
       expect(calls).toHaveLength(2)
       expect(calls[0][0].type).toBe(fetchMovieDetail.pending.type)
       expect(calls[1][0].type).toBe(fetchMovieDetail.fulfilled.type)
-      expect(result.payload).toEqual(extentedData)
+      expect(result.payload).toEqual(mockMovieDetailExtended)
     })
 
     it('should handle failure', async () => {
-      requestSpy.mockRejectedValueOnce('Something went wrong!')
+      getMovieDetails.mockRejectedValueOnce(errorMessage)
 
       const result = await thunk(dispatch, getState, undefined)
       const { calls } = dispatch.mock
@@ -80,41 +74,32 @@ describe('movie actions', () => {
       expect(calls).toHaveLength(2)
       expect(calls[0][0].type).toBe(fetchMovieDetail.pending.type)
       expect(calls[1][0].type).toBe(fetchMovieDetail.rejected.type)
-      expect(result.payload).toBe('Something went wrong!')
+      expect(result.payload).toBe(errorMessage)
     })
   })
 
   describe('changeMovieInFavorite', () => {
-    const props = { inFavorite: true, movieId: 123 }
-    const thunk = changeMovieInFavorite(props)
-
-    const request = {
-      data: {
-        favorite: props.inFavorite,
-        media_id: props.movieId,
-        media_type: 'movie'
-      },
-      method: 'post',
-      params: { session_id: 'session_id' },
-      url: routes.addToFovorite(123)
-    }
-    const response = { data: { success: true } }
+    const thunk = changeMovieInFavorite({ inFavorite, movieId })
 
     it('should handle success', async () => {
-      requestSpy.mockResolvedValueOnce(response)
+      addToFovorite.mockResolvedValueOnce()
 
       await thunk(dispatch, getState, undefined)
       const { calls } = dispatch.mock
 
-      expect(requestSpy).toHaveBeenCalledTimes(1)
-      expect(requestSpy).toHaveBeenCalledWith(request)
+      expect(addToFovorite).toHaveBeenCalledWith({
+        accountId,
+        inFavorite,
+        movieId,
+        sessionId
+      })
       expect(calls).toHaveLength(2)
       expect(calls[0][0].type).toBe(changeMovieInFavorite.pending.type)
       expect(calls[1][0].type).toBe(changeMovieInFavorite.fulfilled.type)
     })
 
     it('should handle failure', async () => {
-      requestSpy.mockRejectedValueOnce('Something went wrong!')
+      addToFovorite.mockRejectedValueOnce(errorMessage)
 
       await thunk(dispatch, getState, undefined)
       const { calls } = dispatch.mock
@@ -128,36 +113,27 @@ describe('movie actions', () => {
   })
 
   describe('changeMovieInWatchlist', () => {
-    const props = { inWatchlist: true, movieId: 123 }
-    const thunk = changeMovieInWatchlist(props)
-
-    const request = {
-      data: {
-        media_id: props.movieId,
-        media_type: 'movie',
-        watchlist: props.inWatchlist
-      },
-      method: 'post',
-      params: { session_id: 'session_id' },
-      url: routes.addToWatchlist(123)
-    }
-    const response = { data: { success: true } }
+    const thunk = changeMovieInWatchlist({ inWatchlist, movieId })
 
     it('should handle success', async () => {
-      requestSpy.mockResolvedValueOnce(response)
+      addToWatchlist.mockResolvedValueOnce()
 
       await thunk(dispatch, getState, undefined)
       const { calls } = dispatch.mock
 
-      expect(requestSpy).toHaveBeenCalledTimes(1)
-      expect(requestSpy).toHaveBeenCalledWith(request)
+      expect(addToWatchlist).toHaveBeenCalledWith({
+        accountId,
+        inWatchlist,
+        movieId,
+        sessionId
+      })
       expect(calls).toHaveLength(2)
       expect(calls[0][0].type).toBe(changeMovieInWatchlist.pending.type)
       expect(calls[1][0].type).toBe(changeMovieInWatchlist.fulfilled.type)
     })
 
     it('should handle failure', async () => {
-      requestSpy.mockRejectedValueOnce('Something went wrong!')
+      addToWatchlist.mockRejectedValueOnce(errorMessage)
 
       await thunk(dispatch, getState, undefined)
       const { calls } = dispatch.mock

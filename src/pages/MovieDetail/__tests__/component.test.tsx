@@ -1,6 +1,6 @@
 import { fireEvent, render, screen } from '@testing-library/react'
 import { mergeDeepRight } from 'ramda'
-import { mockMovieDetail } from 'src/__mocks__/mockMovie'
+import { mockMovieDetailExtended } from 'src/__mocks__/mockMovie'
 import Wrapper from 'src/utils/testHelpers/wrapperMock'
 
 import Movie from '../component'
@@ -12,7 +12,7 @@ const mockedHook: MovieDetailHook = {
   handleFavoriteClick: jest.fn(),
   handleWatchlistClick: jest.fn(),
   loading: false,
-  movie: mockMovieDetail,
+  movie: mockMovieDetailExtended,
   popoverOpen: false,
   setPopoverOpen: jest.fn()
 }

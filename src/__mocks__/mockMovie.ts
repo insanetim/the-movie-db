@@ -1,8 +1,10 @@
+import { IResponse } from 'src/interfaces/global.interface'
 import {
   IBackdrop,
   ICast,
   ICrew,
   IMovie,
+  IMovieDetail,
   IMovieDetailExtended
 } from 'src/interfaces/movie.interface'
 
@@ -23,12 +25,27 @@ const mockMovie: IMovie = {
   vote_count: 123
 }
 
-const mockMovieDetail: IMovieDetailExtended = {
-  accountStates: { favorite: false, id: 123, rated: false, watchlist: false },
-  adult: false,
-  backdrop_path: '/image',
+const mockMovieDetail: IMovieDetail = {
+  ...mockMovie,
   belongs_to_collection: null,
   budget: 1000000,
+  genres: [{ id: 1, name: 'test/genre' }],
+  homepage: null,
+  imdb_id: null,
+  production_companies: [
+    { id: 123, logo_path: null, name: 'test/company', origin_country: 'USA' }
+  ],
+  production_countries: [{ iso_3166_1: 'en', name: 'USA' }],
+  revenue: 3000000,
+  runtime: 150,
+  spoken_languages: [{ iso_639_1: 'en', name: 'EN' }],
+  status: 'test/status',
+  tagline: null
+}
+
+const mockMovieDetailExtended: IMovieDetailExtended = {
+  ...mockMovieDetail,
+  accountStates: { favorite: false, id: 123, rated: false, watchlist: false },
   credits: {
     cast: [
       {
@@ -63,10 +80,6 @@ const mockMovieDetail: IMovieDetailExtended = {
     ],
     id: 123
   },
-  genre_ids: [1, 2, 3],
-  genres: [{ id: 1, name: 'test/genre' }],
-  homepage: null,
-  id: 123,
   images: [
     {
       aspect_ratio: 0.5625,
@@ -77,27 +90,7 @@ const mockMovieDetail: IMovieDetailExtended = {
       vote_count: 123,
       width: 1600
     }
-  ],
-  imdb_id: null,
-  original_language: 'en',
-  original_title: 'test/title',
-  overview: 'test/overview',
-  popularity: 123,
-  poster_path: '/image',
-  production_companies: [
-    { id: 123, logo_path: null, name: 'test/company', origin_country: 'USA' }
-  ],
-  production_countries: [{ iso_3166_1: 'en', name: 'USA' }],
-  release_date: '01-01-1999',
-  revenue: 3000000,
-  runtime: 150,
-  spoken_languages: [{ iso_639_1: 'en', name: 'EN' }],
-  status: 'test/status',
-  tagline: null,
-  title: 'test/title',
-  video: false,
-  vote_average: 123,
-  vote_count: 123
+  ]
 }
 
 const mockCast: ICast = {
@@ -139,4 +132,19 @@ const mockImage: IBackdrop = {
   width: 1600
 }
 
-export { mockCast, mockCrew, mockImage, mockMovie, mockMovieDetail }
+const mockMoviesResponse: IResponse<IMovie> = {
+  page: 1,
+  results: [mockMovie],
+  total_pages: 1,
+  total_results: 1
+}
+
+export {
+  mockCast,
+  mockCrew,
+  mockImage,
+  mockMovie,
+  mockMovieDetail,
+  mockMovieDetailExtended,
+  mockMoviesResponse
+}

@@ -1,3 +1,4 @@
+import { IResponse } from 'src/interfaces/global.interface'
 import { IList, IListDetail } from 'src/interfaces/list.interface'
 
 import { mockMovie } from './mockMovie'
@@ -29,4 +30,11 @@ const mockListDetail: IListDetail = {
   total_results: 1
 }
 
-export { mockList, mockListDetail }
+const mockListsResponse: IResponse<IList> = {
+  page: 1,
+  results: [mockList],
+  total_pages: 1,
+  total_results: 1
+}
+
+export { mockList, mockListDetail, mockListsResponse }
