@@ -1,10 +1,13 @@
 import { useAppDispatch, useAppSelector } from 'src/hooks/useRedux'
-import { IList } from 'src/interfaces/list.interface'
 import { showModal } from 'src/store/app/actions'
 import { addToList } from 'src/store/lists/actions'
 import { listsSelector } from 'src/store/lists/selectors'
 
-import { PopoverContentHook, PopoverContentHookProps } from './types'
+import {
+  HandleAddToListProps,
+  PopoverContentHook,
+  PopoverContentHookProps
+} from './types'
 
 const useContainer = ({
   movieId,
@@ -23,8 +26,8 @@ const useContainer = ({
     setPopoverOpen(false)
   }
 
-  const handleAddToList = (listId: IList['id']) => {
-    dispatch(addToList({ listId, movieId }))
+  const handleAddToList = ({ listId, listName }: HandleAddToListProps) => {
+    dispatch(addToList({ listId, listName, movieId }))
     setPopoverOpen(false)
   }
 

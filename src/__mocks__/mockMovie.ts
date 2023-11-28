@@ -12,17 +12,17 @@ const mockMovie: IMovie = {
   adult: false,
   backdrop_path: '/image',
   genre_ids: [1, 2, 3],
-  id: 123,
+  id: 1234,
   original_language: 'en',
   original_title: 'test/title',
   overview: 'test/overview',
-  popularity: 123,
+  popularity: 1234,
   poster_path: '/image',
   release_date: '01-01-1999',
   title: 'test/title',
   video: false,
-  vote_average: 123,
-  vote_count: 123
+  vote_average: 1234,
+  vote_count: 1234
 }
 
 const mockMovieDetail: IMovieDetail = {
@@ -33,7 +33,7 @@ const mockMovieDetail: IMovieDetail = {
   homepage: null,
   imdb_id: null,
   production_companies: [
-    { id: 123, logo_path: null, name: 'test/company', origin_country: 'USA' }
+    { id: 1234, logo_path: null, name: 'test/company', origin_country: 'USA' }
   ],
   production_countries: [{ iso_3166_1: 'en', name: 'USA' }],
   revenue: 3000000,
@@ -45,21 +45,21 @@ const mockMovieDetail: IMovieDetail = {
 
 const mockMovieDetailExtended: IMovieDetailExtended = {
   ...mockMovieDetail,
-  accountStates: { favorite: false, id: 123, rated: false, watchlist: false },
+  accountStates: { favorite: false, id: 1234, rated: false, watchlist: false },
   credits: {
     cast: [
       {
         adult: true,
-        cast_id: 123,
+        cast_id: 1234,
         character: 'test/character',
         credit_id: '123',
         gender: null,
-        id: 123,
+        id: 1234,
         known_for_department: '',
         name: 'test/name',
-        order: 123,
+        order: 1234,
         original_name: 'test/name',
-        popularity: 123,
+        popularity: 1234,
         profile_path: '/image'
       }
     ],
@@ -69,16 +69,16 @@ const mockMovieDetailExtended: IMovieDetailExtended = {
         credit_id: '123',
         department: 'test/department',
         gender: null,
-        id: 123,
+        id: 1234,
         job: 'test/job',
         known_for_department: '',
         name: 'test/name',
         original_name: 'test/name',
-        popularity: 123,
+        popularity: 1234,
         profile_path: '/image'
       }
     ],
-    id: 123
+    id: 1234
   },
   images: [
     {
@@ -86,8 +86,8 @@ const mockMovieDetailExtended: IMovieDetailExtended = {
       file_path: '/image',
       height: 900,
       iso_639_1: null,
-      vote_average: 123,
-      vote_count: 123,
+      vote_average: 1234,
+      vote_count: 1234,
       width: 1600
     }
   ]
@@ -95,16 +95,16 @@ const mockMovieDetailExtended: IMovieDetailExtended = {
 
 const mockCast: ICast = {
   adult: true,
-  cast_id: 123,
+  cast_id: 1234,
   character: 'test/character',
   credit_id: '123',
   gender: null,
-  id: 123,
+  id: 1234,
   known_for_department: '',
   name: 'test/name',
-  order: 123,
+  order: 1234,
   original_name: 'test/name',
-  popularity: 123,
+  popularity: 1234,
   profile_path: '/image'
 }
 
@@ -113,12 +113,12 @@ const mockCrew: ICrew = {
   credit_id: '123',
   department: 'test/department',
   gender: null,
-  id: 123,
+  id: 1234,
   job: 'test/job',
   known_for_department: '',
   name: 'test/name',
   original_name: 'test/name',
-  popularity: 123,
+  popularity: 1234,
   profile_path: '/image'
 }
 
@@ -127,8 +127,8 @@ const mockImage: IBackdrop = {
   file_path: '/image',
   height: 900,
   iso_639_1: null,
-  vote_average: 123,
-  vote_count: 123,
+  vote_average: 1234,
+  vote_count: 1234,
   width: 1600
 }
 

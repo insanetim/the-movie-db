@@ -6,7 +6,7 @@ import { mockMovie } from './mockMovie'
 const mockList: IList = {
   description: 'test/description',
   favorite_count: 0,
-  id: 123,
+  id: 1234,
   iso_639_1: 'en',
   item_count: 1,
   list_type: '',
@@ -18,7 +18,7 @@ const mockListDetail: IListDetail = {
   created_by: 'test/author',
   description: 'test/description',
   favorite_count: 0,
-  id: 123,
+  id: 1234,
   iso_639_1: 'en',
   item_count: 1,
   items: [mockMovie],

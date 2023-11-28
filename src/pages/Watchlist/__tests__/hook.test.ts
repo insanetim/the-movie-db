@@ -59,7 +59,7 @@ describe('Watchlist useContainer hook', () => {
     const { result } = renderHook(useContainer)
 
     await act(() => {
-      onOk = result.current.handleMovieDelete(123, {
+      onOk = result.current.handleMovieDelete(1234, {
         stopPropagation: jest.fn()
       } as never)
       onOk()
@@ -72,7 +72,7 @@ describe('Watchlist useContainer hook', () => {
     expect(dispatch).toHaveBeenCalled()
     expect(changeMovieInWatchlist).toHaveBeenCalledWith({
       inWatchlist: false,
-      movieId: 123
+      movieId: 1234
     })
     expect(updatePage).toHaveBeenCalled()
   })

@@ -1,4 +1,4 @@
-import { createAsyncThunk, unwrapResult } from '@reduxjs/toolkit'
+import { createAsyncThunk } from '@reduxjs/toolkit'
 import { NOTIFICATION_TYPE } from 'src/constants/app'
 import { IList, IListDetail, IListsList } from 'src/interfaces/list.interface'
 import {
@@ -17,7 +17,6 @@ import listMessage from 'src/utils/helpers/listMessage'
 import { RootState } from '../index'
 import { selectMovieById } from '../movie/selectors'
 import * as types from './constants'
-import { listsSelector } from './selectors'
 import {
   AddToListProps,
   CreateListProps,
@@ -50,17 +49,13 @@ const createList = createAsyncThunk<
   types.createList,
   async function ({ listData, movieId }, { dispatch, getState }) {
     const sessionId = sessionIdSelector(getState())
+    const listName = listData.name
 
     try {
       const listId = await createNewList({ listData, sessionId })
 
       if (typeof movieId !== 'undefined') {
-        dispatch(
-          addToList({
-            listId,
-            movieId
-          })
-        )
+        dispatch(addToList({ listId, listName, movieId }))
       }
     } catch (error) {
       dispatch(
@@ -110,21 +105,16 @@ const fetchListDetail = createAsyncThunk<
 
 const addToList = createAsyncThunk<void, AddToListProps, { state: RootState }>(
   types.addToList,
-  async function ({ listId, movieId }, { dispatch, getState }) {
+  async function ({ listId, listName, movieId }, { dispatch, getState }) {
     const sessionId = sessionIdSelector(getState())
+    const movieTitle = selectMovieById(getState(), movieId)!.title
 
     try {
       await addMovieToList({ listId, movieId, sessionId })
-      unwrapResult(await dispatch(fetchLists('1')))
-
-      const movieTitle = selectMovieById(getState(), movieId)!.title
-      const listName = listsSelector(getState())!.results.find(
-        list => list.id === listId
-      )!.name
-
       dispatch(
         showNotification({ messageText: listMessage(movieTitle, listName) })
       )
+      await dispatch(fetchLists('1'))
     } catch (error) {
       dispatch(
         showNotification({

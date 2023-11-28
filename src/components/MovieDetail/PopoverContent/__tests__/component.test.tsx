@@ -19,7 +19,7 @@ jest.mock('../hook', () => jest.fn(() => mockedHook))
 
 describe('PopoverContent component', () => {
   const props: PopoverContentProps = {
-    movieId: 123,
+    movieId: 1234,
     setPopoverOpen: jest.fn()
   }
 
@@ -36,7 +36,10 @@ describe('PopoverContent component', () => {
     const addToListBtn = screen.getByText('test/list')
     fireEvent.click(addToListBtn)
 
-    expect(mockedHook.handleAddToList).toHaveBeenCalledWith(123)
+    expect(mockedHook.handleAddToList).toHaveBeenCalledWith({
+      listId: 1234,
+      listName: 'test/list'
+    })
   })
 
   it('should call "handleAddToNewList" when createList button clicked', () => {

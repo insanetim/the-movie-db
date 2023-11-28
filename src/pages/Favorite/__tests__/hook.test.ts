@@ -59,7 +59,7 @@ describe('Favotite useContainer hook', () => {
     const { result } = renderHook(useContainer)
 
     await act(() => {
-      onOk = result.current.handleMovieDelete(123, {
+      onOk = result.current.handleMovieDelete(1234, {
         stopPropagation: jest.fn()
       } as never)
       onOk()
@@ -72,7 +72,7 @@ describe('Favotite useContainer hook', () => {
     expect(dispatch).toHaveBeenCalled()
     expect(changeMovieInFavorite).toHaveBeenCalledWith({
       inFavorite: false,
-      movieId: 123
+      movieId: 1234
     })
     expect(updatePage).toHaveBeenCalled()
   })

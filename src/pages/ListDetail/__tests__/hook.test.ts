@@ -16,7 +16,7 @@ jest.mock('src/store/lists/selectors', () => ({
 jest.mock('react-router-dom', () => ({
   ...jest.requireActual('react-router-dom'),
   useNavigate: jest.fn(),
-  useParams: jest.fn(() => ({ listId: '123' })),
+  useParams: jest.fn(() => ({ listId: 1234 })),
   useSearchParams: jest.fn()
 }))
 const navigate = jest.fn()
@@ -70,7 +70,7 @@ describe('ListDetail useContainer hook', () => {
       title: 'Do you want to delete list?'
     })
     expect(dispatch).toHaveBeenCalled()
-    expect(deleteList).toHaveBeenCalledWith('123')
+    expect(deleteList).toHaveBeenCalledWith(1234)
     expect(navigate).toHaveBeenCalledWith('/lists')
   })
 
@@ -80,7 +80,7 @@ describe('ListDetail useContainer hook', () => {
     const { result } = renderHook(useContainer)
 
     await act(() => {
-      onOk = result.current.handleMovieDelete(123, {
+      onOk = result.current.handleMovieDelete(1234, {
         stopPropagation: jest.fn()
       } as never)
       onOk()
@@ -91,7 +91,7 @@ describe('ListDetail useContainer hook', () => {
       title: 'Do you want to delete movie from this list?'
     })
     expect(dispatch).toHaveBeenCalled()
-    expect(removeFromList).toHaveBeenCalledWith({ listId: '123', movieId: 123 })
+    expect(removeFromList).toHaveBeenCalledWith({ listId: 1234, movieId: 1234 })
     expect(updatePage).toHaveBeenCalled()
   })
 
@@ -100,6 +100,6 @@ describe('ListDetail useContainer hook', () => {
     renderHook(useContainer)
 
     expect(dispatch).toHaveBeenCalled()
-    expect(fetchListDetail).toHaveBeenCalledWith({ listId: '123', page: '1' })
+    expect(fetchListDetail).toHaveBeenCalledWith({ listId: 1234, page: '1' })
   })
 })

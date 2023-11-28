@@ -17,10 +17,14 @@ export interface CreateListResponse {
 
 export interface AddToListProps {
   listId: IList['id']
+  listName: string
   movieId: IMovie['id']
 }
 
-export interface RemoveFromListProps extends AddToListProps {}
+export interface RemoveFromListProps {
+  listId: IList['id']
+  movieId: IMovie['id']
+}
 
 export interface FetchListDetailProps {
   listId: IList['id']

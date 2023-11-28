@@ -11,7 +11,7 @@ jest.mock('src/store/lists/selectors', () => ({
 
 describe('PopoverContent useContainer hook', () => {
   const setPopoverOpen = jest.fn()
-  const props = { movieId: 123, setPopoverOpen }
+  const props = { movieId: 1234, setPopoverOpen }
 
   it('should match snapshot', () => {
     const { result } = renderHook(() => useContainer(props))
@@ -28,7 +28,7 @@ describe('PopoverContent useContainer hook', () => {
 
     expect(dispatch).toHaveBeenCalledWith(
       showModal({
-        modalProps: { movieId: 123 },
+        modalProps: { movieId: 1234 },
         modalType: 'MODAL_CREATE_LIST'
       })
     )
@@ -40,11 +40,15 @@ describe('PopoverContent useContainer hook', () => {
     const { result } = renderHook(() => useContainer(props))
 
     act(() => {
-      result.current.handleAddToList(123)
+      result.current.handleAddToList({ listId: 1234, listName: 'test/list' })
     })
 
     expect(dispatch).toHaveBeenCalledTimes(1)
-    expect(addToList).toHaveBeenCalledWith({ listId: 123, movieId: 123 })
+    expect(addToList).toHaveBeenCalledWith({
+      listId: 1234,
+      listName: 'test/list',
+      movieId: 1234
+    })
     expect(setPopoverOpen).toHaveBeenCalledWith(false)
   })
 })

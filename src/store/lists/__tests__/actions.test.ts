@@ -47,7 +47,8 @@ describe('lists actions', () => {
     messageText: errorMessage,
     messageType: NOTIFICATION_TYPE.ERROR
   })
-  const listData = { description: 'test/description', name: 'test/name' }
+  const listData = { description: 'test/description', name: 'test/list' }
+  const listName = listData.name
   const movieId = 1234
   const page = '1'
 
@@ -184,7 +185,7 @@ describe('lists actions', () => {
   })
 
   describe('addToList', () => {
-    const thunk = addToList({ listId, movieId })
+    const thunk = addToList({ listId, listName, movieId })
 
     it('should handle success', async () => {
       addMovieToList.mockResolvedValueOnce()
@@ -202,7 +203,7 @@ describe('lists actions', () => {
       })
       expect(calls).toHaveLength(4)
       expect(calls[0][0].type).toBe(addToList.pending.type)
-      expect(calls[2][0].type).toBe(showNotification.type)
+      expect(calls[1][0].type).toBe(showNotification.type)
       expect(calls[3][0].type).toBe(addToList.fulfilled.type)
       expect(dispatch).toHaveBeenCalledWith(notification)
     })
