@@ -1,10 +1,13 @@
-import { ModalProps, ModalTypes } from 'src/components/ModalRoot/types'
+import { ComponentProps } from 'react'
+import { ModalTypes, ModalsMap } from 'src/components/ModalRoot/types'
 import { NOTIFICATION_TYPE } from 'src/constants/app'
 
 export type IModal = {
-  modalProps: ModalProps | null
-  modalType: ModalTypes | null
-}
+  [T in ModalTypes]: {
+    modalProps: ComponentProps<ModalsMap[T]> | null
+    modalType: T | null
+  }
+}[ModalTypes]
 
 export type INotification = {
   duration: number
