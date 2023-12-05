@@ -8,9 +8,7 @@ import {
   fetchMovieDetail
 } from './actions'
 
-const movieAdapter = createEntityAdapter<IMovieDetailExtended>({
-  selectId: movie => movie.id
-})
+const movieAdapter = createEntityAdapter<IMovieDetailExtended>()
 
 const movieInitialState = movieAdapter.getInitialState()
 

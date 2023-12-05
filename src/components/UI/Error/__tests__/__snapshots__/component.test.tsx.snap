@@ -3,7 +3,7 @@
 exports[`Error component should match snapshot 1`] = `
 <DocumentFragment>
   <div
-    class="ant-result ant-result-error css-dev-only-do-not-override-zcfrx9"
+    class="ant-result ant-result-error css-dev-only-do-not-override-2q8sxy"
   >
     <div
       class="ant-result-icon"

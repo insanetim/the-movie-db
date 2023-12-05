@@ -82,7 +82,7 @@ describe('MovieDetail useContainer hook', () => {
   it('should check "useEffect" method', () => {
     const fetchMovieDetail = jest.spyOn(movieActions, 'fetchMovieDetail')
     const fetchLists = jest.spyOn(listsActions, 'fetchLists')
-    selectMovieById.mockReturnValueOnce(undefined)
+    selectMovieById.mockReturnValueOnce(undefined as never)
     renderHook(useContainer)
 
     expect(dispatch).toHaveBeenCalled()
