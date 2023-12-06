@@ -3,31 +3,31 @@
 exports[`DefaultLayout component should match snapshot 1`] = `
 <DocumentFragment>
   <div
-    class="ant-layout css-dev-only-do-not-override-2q8sxy"
+    class="ant-layout css-dev-only-do-not-override-6j9yrn"
   >
     <header
-      class="ant-layout-header css-dev-only-do-not-override-2q8sxy"
+      class="ant-layout-header css-dev-only-do-not-override-6j9yrn"
     >
       <div
-        class="ant-row ant-row-space-between css-dev-only-do-not-override-2q8sxy"
+        class="ant-row ant-row-space-between css-dev-only-do-not-override-6j9yrn"
       >
         <div
-          class="ant-col css-dev-only-do-not-override-2q8sxy"
+          class="ant-col css-dev-only-do-not-override-6j9yrn"
         >
           <span
-            class="ant-typography css-dev-only-do-not-override-2q8sxy"
+            class="ant-typography css-dev-only-do-not-override-6j9yrn"
           >
             The Movie DB
           </span>
         </div>
         <div
-          class="ant-col css-dev-only-do-not-override-2q8sxy"
+          class="ant-col css-dev-only-do-not-override-6j9yrn"
         >
           <span
-            class="ant-typography ant-dropdown-trigger css-dev-only-do-not-override-2q8sxy"
+            class="ant-typography ant-dropdown-trigger css-dev-only-do-not-override-6j9yrn"
           >
             <span
-              class="ant-avatar ant-avatar-circle ant-avatar-image css-dev-only-do-not-override-2q8sxy"
+              class="ant-avatar ant-avatar-circle ant-avatar-image css-dev-only-do-not-override-6j9yrn"
             >
               <img
                 alt="User avatar"
@@ -65,17 +65,17 @@ exports[`DefaultLayout component should match snapshot 1`] = `
       </div>
     </header>
     <main
-      class="ant-layout-content css-dev-only-do-not-override-2q8sxy"
+      class="ant-layout-content css-dev-only-do-not-override-6j9yrn"
     />
     <footer
-      class="ant-layout-footer css-dev-only-do-not-override-2q8sxy"
+      class="ant-layout-footer css-dev-only-do-not-override-6j9yrn"
     >
       <span
         style="opacity: 0.8;"
       >
         Made with ❤ by 
         <a
-          class="ant-typography css-dev-only-do-not-override-2q8sxy"
+          class="ant-typography css-dev-only-do-not-override-6j9yrn"
           href="https://github.com/insanetim/frontend-internship"
           rel="noreferrer"
           target="_blank"
