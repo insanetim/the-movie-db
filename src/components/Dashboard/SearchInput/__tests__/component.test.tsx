@@ -1,4 +1,5 @@
-import { fireEvent, render, screen } from '@testing-library/react'
+import { render, screen } from '@testing-library/react'
+import userEvent from '@testing-library/user-event'
 
 import SearchInput from '../component'
 import { SearchInputHook } from '../types'
@@ -17,18 +18,32 @@ describe('SearchInput component', () => {
     expect(asFragment()).toMatchSnapshot()
   })
 
-  it('should call "handleChange" when input changed', () => {
+  it('should call "handleChange" when input changed', async () => {
     render(<SearchInput query={''} />)
-    const input = screen.getByPlaceholderText('Enter movie name')
-    fireEvent.change(input, { target: { value: 'test/search' } })
+
+    const user = userEvent.setup()
+    const input = screen.getByRole('textbox')
+    await user.type(input, 'test/search')
 
     expect(mockedHook.handleChange).toHaveBeenCalled()
   })
 
-  it('should call "handleSearch" when button clicked', () => {
+  it('should call "handleSearch" when button clicked', async () => {
     render(<SearchInput query={''} />)
+
+    const user = userEvent.setup()
     const button = screen.getByRole('button')
-    fireEvent.click(button)
+    await user.click(button)
+
+    expect(mockedHook.handleSearch).toHaveBeenCalled()
+  })
+
+  it('should call "handleSearch" when enter pressed', async () => {
+    render(<SearchInput query={''} />)
+
+    const user = userEvent.setup()
+    const input = screen.getByRole('textbox')
+    await user.type(input, '{enter}')
 
     expect(mockedHook.handleSearch).toHaveBeenCalled()
   })

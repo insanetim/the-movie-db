@@ -1,4 +1,5 @@
-import { fireEvent, render, screen } from '@testing-library/react'
+import { render, screen } from '@testing-library/react'
+import userEvent from '@testing-library/user-event'
 import { mergeDeepRight } from 'ramda'
 import { mockMovieDetailExtended } from 'src/__mocks__/mockMovie'
 import Wrapper from 'src/utils/testHelpers/wrapperMock'
@@ -25,26 +26,32 @@ describe('MovieDetail component', () => {
     expect(asFragment()).toMatchSnapshot()
   })
 
-  it('should call "handleFavoriteClick" when button clicked', () => {
+  it('should call "handleFavoriteClick" when button clicked', async () => {
     render(<Movie />, { wrapper: Wrapper })
+
+    const user = userEvent.setup()
     const button = screen.getByTestId('addToFavoriteBtn')
-    fireEvent.click(button)
+    await user.click(button)
 
     expect(mockedHook.handleFavoriteClick).toHaveBeenCalled()
   })
 
-  it('should call "handleWatchlistClick" when button clicked', () => {
+  it('should call "handleWatchlistClick" when button clicked', async () => {
     render(<Movie />, { wrapper: Wrapper })
+
+    const user = userEvent.setup()
     const button = screen.getByTestId('addToWatchlistBtn')
-    fireEvent.click(button)
+    await user.click(button)
 
     expect(mockedHook.handleWatchlistClick).toHaveBeenCalled()
   })
 
-  it('should call "setPopoverOpen" when popover clicked', () => {
+  it('should call "setPopoverOpen" when popover clicked', async () => {
     render(<Movie />, { wrapper: Wrapper })
+
+    const user = userEvent.setup()
     const popover = screen.getByTestId('addMovieToListPopover')
-    fireEvent.click(popover)
+    await user.click(popover)
 
     expect(mockedHook.setPopoverOpen).toHaveBeenCalled()
   })

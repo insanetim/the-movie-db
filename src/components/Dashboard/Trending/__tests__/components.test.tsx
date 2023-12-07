@@ -1,4 +1,5 @@
-import { fireEvent, render, screen } from '@testing-library/react'
+import { render, screen } from '@testing-library/react'
+import userEvent from '@testing-library/user-event'
 import { mockMovie } from 'src/__mocks__/mockMovie'
 import Wrapper from 'src/utils/testHelpers/wrapperMock'
 
@@ -25,10 +26,12 @@ describe('Trending component', () => {
     expect(asFragment()).toMatchSnapshot()
   })
 
-  it('should call "handlePagination" when pagination clicked', () => {
+  it('should call "handlePagination" when pagination clicked', async () => {
     render(<Trending />, { wrapper: Wrapper })
+
+    const user = userEvent.setup()
     const link = screen.getByText('2')
-    fireEvent.click(link)
+    await user.click(link)
 
     expect(mockedHook.handlePagination).toHaveBeenCalled()
   })

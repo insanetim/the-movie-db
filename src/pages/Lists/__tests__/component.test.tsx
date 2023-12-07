@@ -1,4 +1,5 @@
-import { fireEvent, render, screen } from '@testing-library/react'
+import { render, screen } from '@testing-library/react'
+import userEvent from '@testing-library/user-event'
 import { mockList } from 'src/__mocks__/mockList'
 import Wrapper from 'src/utils/testHelpers/wrapperMock'
 
@@ -30,18 +31,22 @@ describe('Lists component', () => {
     expect(asFragment()).toMatchSnapshot()
   })
 
-  it('should call "handleCreateList" when button clicked', () => {
+  it('should call "handleCreateList" when button clicked', async () => {
     render(<Lists />, { wrapper: Wrapper })
+
+    const user = userEvent.setup()
     const createListBtn = screen.getByTestId('createListBtn')
-    fireEvent.click(createListBtn)
+    await user.click(createListBtn)
 
     expect(mockedHook.handleCreateList).toHaveBeenCalled()
   })
 
-  it('should call "handlePagination" when pagination clicked', () => {
+  it('should call "handlePagination" when pagination clicked', async () => {
     render(<Lists />, { wrapper: Wrapper })
+
+    const user = userEvent.setup()
     const link = screen.getByText('2')
-    fireEvent.click(link)
+    await user.click(link)
 
     expect(mockedHook.handlePagination).toHaveBeenCalled()
   })

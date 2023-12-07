@@ -1,4 +1,5 @@
-import { fireEvent, render, screen } from '@testing-library/react'
+import { render, screen } from '@testing-library/react'
+import userEvent from '@testing-library/user-event'
 import { mockList } from 'src/__mocks__/mockList'
 import Wrapper from 'src/utils/testHelpers/wrapperMock'
 
@@ -31,10 +32,12 @@ describe('PopoverContent component', () => {
     expect(asFragment()).toMatchSnapshot()
   })
 
-  it('should call "handleAddToList" when addToList button clicked', () => {
+  it('should call "handleAddToList" when addToList button clicked', async () => {
     render(<PopoverContent {...props} />, { wrapper: Wrapper })
+
+    const user = userEvent.setup()
     const addToListBtn = screen.getByText('test/list')
-    fireEvent.click(addToListBtn)
+    await user.click(addToListBtn)
 
     expect(mockedHook.handleAddToList).toHaveBeenCalledWith({
       listId: 1234,
@@ -42,10 +45,12 @@ describe('PopoverContent component', () => {
     })
   })
 
-  it('should call "handleAddToNewList" when createList button clicked', () => {
+  it('should call "handleAddToNewList" when createList button clicked', async () => {
     render(<PopoverContent {...props} />, { wrapper: Wrapper })
-    const createListBtn = screen.getByText('Create new list ...')
-    fireEvent.click(createListBtn)
+
+    const user = userEvent.setup()
+    const createListBtn = screen.getByText(/create/i)
+    await user.click(createListBtn)
 
     expect(mockedHook.handleAddToNewList).toHaveBeenCalled()
   })

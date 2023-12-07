@@ -1,4 +1,5 @@
-import { fireEvent, render, screen } from '@testing-library/react'
+import { render, screen } from '@testing-library/react'
+import userEvent from '@testing-library/user-event'
 import { mockMovie } from 'src/__mocks__/mockMovie'
 import Wrapper from 'src/utils/testHelpers/wrapperMock'
 
@@ -36,26 +37,32 @@ describe('ListDetail component', () => {
     expect(asFragment()).toMatchSnapshot()
   })
 
-  it('should call "handleListDelete" when delete button clicked', () => {
+  it('should call "handleListDelete" when delete button clicked', async () => {
     render(<ListDetails />, { wrapper: Wrapper })
+
+    const user = userEvent.setup()
     const deleteBtn = screen.getByTestId('deleteListBtn')
-    fireEvent.click(deleteBtn)
+    await user.click(deleteBtn)
 
     expect(mockedHook.handleListDelete).toHaveBeenCalled()
   })
 
-  it('should call "handleMovieDelete" when delete button clicked', () => {
+  it('should call "handleMovieDelete" when delete button clicked', async () => {
     render(<ListDetails />, { wrapper: Wrapper })
+
+    const user = userEvent.setup()
     const deleteBtn = screen.getByTestId('deleteMovieBtn')
-    fireEvent.click(deleteBtn)
+    await user.click(deleteBtn)
 
     expect(mockedHook.handleMovieDelete).toHaveBeenCalled()
   })
 
-  it('should call "handlePagination" when pagination clicked', () => {
+  it('should call "handlePagination" when pagination clicked', async () => {
     render(<ListDetails />, { wrapper: Wrapper })
+
+    const user = userEvent.setup()
     const link = screen.getByText('2')
-    fireEvent.click(link)
+    await user.click(link)
 
     expect(mockedHook.handlePagination).toHaveBeenCalled()
   })

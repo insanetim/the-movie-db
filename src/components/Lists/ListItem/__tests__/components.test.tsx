@@ -1,4 +1,5 @@
-import { fireEvent, render, screen } from '@testing-library/react'
+import { render, screen } from '@testing-library/react'
+import userEvent from '@testing-library/user-event'
 import { mockList } from 'src/__mocks__/mockList'
 import Wrapper from 'src/utils/testHelpers/wrapperMock'
 
@@ -20,18 +21,22 @@ describe('ListItem component', () => {
     expect(asFragment()).toMatchSnapshot()
   })
 
-  it('should call "handleClick" when card clicked', () => {
+  it('should call "handleClick" when card clicked', async () => {
     render(<ListItem list={mockList} />, { wrapper: Wrapper })
+
+    const user = userEvent.setup()
     const card = screen.getByTestId('listItemCard')
-    fireEvent.click(card)
+    await user.click(card)
 
     expect(mockedHook.handleClick).toHaveBeenCalled()
   })
 
-  it('should call "handleListDelete" when delete button clicked', () => {
+  it('should call "handleListDelete" when delete button clicked', async () => {
     render(<ListItem list={mockList} />, { wrapper: Wrapper })
+
+    const user = userEvent.setup()
     const deleteBtn = screen.getByTestId('deleteListBtn')
-    fireEvent.click(deleteBtn)
+    await user.click(deleteBtn)
 
     expect(mockedHook.handleListDelete).toHaveBeenCalled()
   })

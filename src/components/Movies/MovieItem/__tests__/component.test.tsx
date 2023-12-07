@@ -1,4 +1,5 @@
-import { fireEvent, render, screen } from '@testing-library/react'
+import { render, screen } from '@testing-library/react'
+import userEvent from '@testing-library/user-event'
 import { mergeDeepRight } from 'ramda'
 import { mockMovie } from 'src/__mocks__/mockMovie'
 import Wrapper from 'src/utils/testHelpers/wrapperMock'
@@ -36,18 +37,22 @@ describe('MovieItem component', () => {
     expect(asFragment()).toMatchSnapshot()
   })
 
-  it('should call "handleClick" when card clicked', () => {
+  it('should call "handleClick" when card clicked', async () => {
     render(<MovieItem {...props} />, { wrapper: Wrapper })
+
+    const user = userEvent.setup()
     const card = screen.getByTestId('movieItemCard')
-    fireEvent.click(card)
+    await user.click(card)
 
     expect(mockedHook.handleClick).toHaveBeenCalled()
   })
 
-  it('should call "handleMovieDelete" when delete button clicked', () => {
+  it('should call "handleMovieDelete" when delete button clicked', async () => {
     render(<MovieItem {...props} />, { wrapper: Wrapper })
+
+    const user = userEvent.setup()
     const deleteBtn = screen.getByTestId('deleteMovieBtn')
-    fireEvent.click(deleteBtn)
+    await user.click(deleteBtn)
 
     expect(props.handleMovieDelete).toHaveBeenCalled()
   })
