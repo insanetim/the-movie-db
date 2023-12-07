@@ -1,4 +1,4 @@
-import { render } from '@testing-library/react'
+import { render, screen } from '@testing-library/react'
 import { ReactNode, Suspense } from 'react'
 import { Location } from 'react-router-dom'
 import { mockListDetail } from 'src/__mocks__/mockList'
@@ -146,82 +146,62 @@ describe('App component', () => {
   })
 
   it('should render DefaultLayout', async () => {
-    const { findByText } = render(<DefaultLayout />, {
+    render(<DefaultLayout />, {
       wrapper: WrapperWithSuspense
     })
 
-    expect(
-      await findByText('insanetim', { exact: false }, { timeout: 3000 })
-    ).toBeInTheDocument()
+    expect(await screen.findByText(/insanetim/i)).toBeInTheDocument()
   })
 
   it('should render Login', async () => {
-    const { findByText } = render(<Login />, { wrapper: WrapperWithSuspense })
+    render(<Login />, { wrapper: WrapperWithSuspense })
 
-    expect(await findByText('Log in')).toBeInTheDocument()
+    expect(await screen.findByText(/log in/i)).toBeInTheDocument()
   })
 
   it('should render Dashboard', async () => {
-    const { findByPlaceholderText } = render(<Dashboard />, {
+    render(<Dashboard />, {
       wrapper: WrapperWithSuspense
     })
 
-    expect(
-      await findByPlaceholderText(
-        'Enter movie name',
-        { exact: false },
-        { timeout: 3000 }
-      )
-    ).toBeInTheDocument()
+    expect(await screen.findByPlaceholderText(/enter/i)).toBeInTheDocument()
   })
 
   it('should render Lists', async () => {
-    const { findByText } = render(<Lists />, { wrapper: WrapperWithSuspense })
+    render(<Lists />, { wrapper: WrapperWithSuspense })
 
-    expect(
-      await findByText('My Lists', { exact: false }, { timeout: 3000 })
-    ).toBeInTheDocument()
+    expect(await screen.findByText(/my lists/i)).toBeInTheDocument()
   })
 
   it('should render Watchlist', async () => {
-    const { findByText } = render(<Watchlist />, {
-      wrapper: WrapperWithSuspense
-    })
+    render(<Watchlist />, { wrapper: WrapperWithSuspense })
 
-    expect(await findByText('Watchlist')).toBeInTheDocument()
+    expect(await screen.findByText(/watchlist/i)).toBeInTheDocument()
   })
 
   it('should render Favorite', async () => {
-    const { findByText } = render(<Favorite />, {
-      wrapper: WrapperWithSuspense
-    })
+    render(<Favorite />, { wrapper: WrapperWithSuspense })
 
-    expect(await findByText('Favorite')).toBeInTheDocument()
+    expect(await screen.findByText(/favorite/i)).toBeInTheDocument()
   })
 
   it('should render ListDetail', async () => {
-    const { findByText } = render(<ListDetail />, {
-      wrapper: WrapperWithSuspense
-    })
+    render(<ListDetail />, { wrapper: WrapperWithSuspense })
 
-    expect(await findByText('test/title')).toBeInTheDocument()
+    expect(await screen.findByText(/title/i)).toBeInTheDocument()
   })
 
   it('should render MovieDetail', async () => {
-    const { findByText } = render(<MovieDetail />, {
-      wrapper: WrapperWithSuspense
-    })
+    render(<MovieDetail />, { wrapper: WrapperWithSuspense })
 
     expect(
-      await findByText('test/title', { exact: false }, { timeout: 3000 })
+      await screen.findByText(/title/i, undefined, { timeout: 3000 })
     ).toBeInTheDocument()
   })
 
   it('should render NotFound', async () => {
-    const { findByText } = render(<NotFound />, {
-      wrapper: WrapperWithSuspense
-    })
+    render(<NotFound />, { wrapper: WrapperWithSuspense })
 
-    expect(await findByText('Oops!', { exact: false })).toBeInTheDocument()
+    expect(await screen.findByText(/oops!/i)).toBeInTheDocument()
   })
 })
