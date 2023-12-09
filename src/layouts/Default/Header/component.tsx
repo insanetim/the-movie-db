@@ -40,7 +40,7 @@ const Header: React.FC = () => {
     <Layout.Header>
       <Row justify='space-between'>
         <Col>
-          <Typography.Text>{APP_NAME}</Typography.Text>
+          <Typography.Text className='logo'>{APP_NAME}</Typography.Text>
         </Col>
         <Col>
           <Dropdown menu={{ items }}>

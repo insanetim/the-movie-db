@@ -50,13 +50,22 @@ body {
   z-index: 999;
   top: 0;
 
-  padding-right: 24px;
-  padding-left: 24px;
+  padding: 0 12px;
+
+  background-color: #032541;
 
   box-shadow:
     0 1px 2px -2px rgb(0 0 0 / 16%),
     0 3px 6px 0 rgb(0 0 0 / 12%),
     0 5px 12px 4px rgb(0 0 0 / 9%);
+
+  @media (width >= 768px) {
+    padding: 0 24px;
+  }
+
+  @media (width >= 1200px) {
+    padding: 0 48px;
+  }
 }
 
 .ant-layout-header .ant-typography {
@@ -64,12 +73,12 @@ body {
 }
 
 .top-margin {
-  margin-top: 20pt;
+  margin-top: 24px;
 }
 
 .pagination {
-  margin-top: 12pt;
-  margin-bottom: 12pt;
+  margin-top: 16px;
+  margin-bottom: 16px;
 }
 
 .ant-carousel .slick-slide {
@@ -133,4 +142,9 @@ body {
 
 .anticon {
   display: inline-flex;
+}
+
+.logo {
+  font-size: 1.2rem;
+  font-weight: 600;
 }

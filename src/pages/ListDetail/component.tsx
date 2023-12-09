@@ -61,7 +61,7 @@ const ListDetails: React.FC = () => {
   return (
     <>
       <Helmet title={metaTitle(list?.name ?? 'My List')} />
-      <div className='container'>
+      <div className='container top-margin'>
         <PageTitle>
           {list?.name ?? 'My List'}{' '}
           <MinusCircleOutlined

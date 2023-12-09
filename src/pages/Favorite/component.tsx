@@ -50,7 +50,7 @@ const Favorite: React.FC = () => {
   return (
     <>
       <Helmet title={metaTitle('Favorite')} />
-      <div className='container'>
+      <div className='container top-margin'>
         <PageTitle>Favorite</PageTitle>
         {content}
       </div>

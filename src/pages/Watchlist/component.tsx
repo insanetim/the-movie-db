@@ -48,7 +48,7 @@ const Watchlist: React.FC = () => {
   return (
     <>
       <Helmet title={metaTitle('Watchlist')} />
-      <div className='container'>
+      <div className='container top-margin'>
         <PageTitle>Watchlist</PageTitle>
         {content}
       </div>

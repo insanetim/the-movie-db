@@ -12,7 +12,7 @@ exports[`Header component should match snapshot 1`] = `
         class="ant-col css-dev-only-do-not-override-6j9yrn"
       >
         <span
-          class="ant-typography css-dev-only-do-not-override-6j9yrn"
+          class="ant-typography logo css-dev-only-do-not-override-6j9yrn"
         >
           The Movie DB
         </span>
@@ -76,7 +76,7 @@ exports[`Header component should match snapshot with avatar_path 1`] = `
         class="ant-col css-dev-only-do-not-override-6j9yrn"
       >
         <span
-          class="ant-typography css-dev-only-do-not-override-6j9yrn"
+          class="ant-typography logo css-dev-only-do-not-override-6j9yrn"
         >
           The Movie DB
         </span>
@@ -140,7 +140,7 @@ exports[`Header component should match snapshot with empty account 1`] = `
         class="ant-col css-dev-only-do-not-override-6j9yrn"
       >
         <span
-          class="ant-typography css-dev-only-do-not-override-6j9yrn"
+          class="ant-typography logo css-dev-only-do-not-override-6j9yrn"
         >
           The Movie DB
         </span>

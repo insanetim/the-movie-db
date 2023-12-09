@@ -3,7 +3,7 @@
 exports[`Lists component should match snapshot 1`] = `
 <DocumentFragment>
   <div
-    class="container"
+    class="container top-margin"
   >
     <div
       class="ant-row css-dev-only-do-not-override-6j9yrn"
@@ -285,7 +285,7 @@ exports[`Lists component should match snapshot 1`] = `
 exports[`Lists component should match snapshot with 1 page 1`] = `
 <DocumentFragment>
   <div
-    class="container"
+    class="container top-margin"
   >
     <div
       class="ant-row css-dev-only-do-not-override-6j9yrn"
@@ -387,7 +387,7 @@ exports[`Lists component should match snapshot with 1 page 1`] = `
 exports[`Lists component should match snapshot with empty lists 1`] = `
 <DocumentFragment>
   <div
-    class="container"
+    class="container top-margin"
   >
     <div
       class="ant-row css-dev-only-do-not-override-6j9yrn"
@@ -478,7 +478,7 @@ exports[`Lists component should match snapshot with empty lists 1`] = `
 exports[`Lists component should match snapshot with error 1`] = `
 <DocumentFragment>
   <div
-    class="container"
+    class="container top-margin"
   >
     <div
       class="ant-row css-dev-only-do-not-override-6j9yrn"
@@ -557,7 +557,7 @@ exports[`Lists component should match snapshot with error 1`] = `
 exports[`Lists component should match snapshot with loading 1`] = `
 <DocumentFragment>
   <div
-    class="container"
+    class="container top-margin"
   >
     <div
       class="ant-row css-dev-only-do-not-override-6j9yrn"

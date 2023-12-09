@@ -15,7 +15,7 @@ exports[`DefaultLayout component should match snapshot 1`] = `
           class="ant-col css-dev-only-do-not-override-6j9yrn"
         >
           <span
-            class="ant-typography css-dev-only-do-not-override-6j9yrn"
+            class="ant-typography logo css-dev-only-do-not-override-6j9yrn"
           >
             The Movie DB
           </span>

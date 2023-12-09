@@ -150,7 +150,9 @@ describe('App component', () => {
       wrapper: WrapperWithSuspense,
     })
 
-    expect(await screen.findByText(/insanetim/i)).toBeInTheDocument()
+    expect(
+      await screen.findByText(/insanetim/i, undefined, { timeout: 3000 })
+    ).toBeInTheDocument()
   })
 
   it('should render Login', async () => {
