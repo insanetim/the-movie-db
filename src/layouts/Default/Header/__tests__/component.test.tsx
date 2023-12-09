@@ -8,7 +8,7 @@ import { HeaderHook } from '../types'
 
 const mockedHook: HeaderHook = {
   account: mockAccount,
-  handleLogOut: jest.fn()
+  handleLogOut: jest.fn(),
 }
 jest.mock('../hook', () => jest.fn(() => mockedHook))
 
@@ -21,7 +21,7 @@ describe('Header component', () => {
 
   it('should match snapshot with avatar_path', () => {
     mockedHook.account = mergeDeepRight(mockAccount, {
-      avatar: { tmdb: { avatar_path: '/image' } }
+      avatar: { tmdb: { avatar_path: '/image' } },
     })
     const { asFragment } = render(<Header />, { wrapper: Wrapper })
 

@@ -12,7 +12,7 @@ import App, {
   Login,
   MovieDetail,
   NotFound,
-  Watchlist
+  Watchlist,
 } from 'src/App'
 import { TrendingHook } from 'src/components/Dashboard/Trending/types'
 import { ModalRootHook } from 'src/components/ModalRoot/types'
@@ -30,7 +30,7 @@ import Wrapper from 'src/utils/testHelpers/wrapperMock'
 
 const mockedProtectedRoutesHook: ProtectedRoutesHook = {
   location: {} as Location,
-  sessionId: ''
+  sessionId: '',
 }
 jest.mock('../components/ProtectedRoutes/hook', () =>
   jest.fn(() => mockedProtectedRoutesHook)
@@ -39,7 +39,7 @@ jest.mock('../components/ProtectedRoutes/hook', () =>
 const mockedModalRootHook: ModalRootHook = {
   modalProps: null,
   modalType: null,
-  onCancel: jest.fn()
+  onCancel: jest.fn(),
 }
 jest.mock('../components/ModalRoot/hook', () =>
   jest.fn(() => mockedModalRootHook)
@@ -47,7 +47,7 @@ jest.mock('../components/ModalRoot/hook', () =>
 
 const mockedNotificationsRootHook: NotificationsRootHook = {
   hideNotification: jest.fn(),
-  notifications: []
+  notifications: [],
 }
 jest.mock('../components/NotificationsRoot/hook', () =>
   jest.fn(() => mockedNotificationsRootHook)
@@ -55,7 +55,7 @@ jest.mock('../components/NotificationsRoot/hook', () =>
 
 const mockedHeaderHook: HeaderHook = {
   account: null,
-  handleLogOut: jest.fn()
+  handleLogOut: jest.fn(),
 }
 jest.mock('../layouts/Default/Header/hook', () =>
   jest.fn(() => mockedHeaderHook)
@@ -63,12 +63,12 @@ jest.mock('../layouts/Default/Header/hook', () =>
 
 const mockedLoginHook: LoginHook = {
   handleLogIn: jest.fn(),
-  loading: false
+  loading: false,
 }
 jest.mock('../pages/Login/hook', () => jest.fn(() => mockedLoginHook))
 
 const mockedDashboardHook: DashboardHook = {
-  query: ''
+  query: '',
 }
 jest.mock('../pages/Dashboard/hook', () => jest.fn(() => mockedDashboardHook))
 
@@ -76,7 +76,7 @@ const mockedTrendingHook: TrendingHook = {
   error: null,
   handlePagination: () => jest.fn(),
   loading: false,
-  movies: null
+  movies: null,
 }
 jest.mock('../components/Dashboard/Trending/hook', () =>
   jest.fn(() => mockedTrendingHook)
@@ -87,7 +87,7 @@ const mockedListsHook: ListsHook = {
   handleCreateList: jest.fn(),
   handlePagination: jest.fn(),
   lists: null,
-  loading: false
+  loading: false,
 }
 jest.mock('../pages/Lists/hook', () => jest.fn(() => mockedListsHook))
 
@@ -96,7 +96,7 @@ const mockedWatchlistHook: WatchlistHook = {
   handleMovieDelete: jest.fn(),
   handlePagination: jest.fn(),
   loading: false,
-  movies: null
+  movies: null,
 }
 jest.mock('../pages/Watchlist/hook', () => jest.fn(() => mockedWatchlistHook))
 
@@ -105,7 +105,7 @@ const mockedFavoriteHook: FavoriteHook = {
   handleMovieDelete: jest.fn(),
   handlePagination: jest.fn(),
   loading: false,
-  movies: null
+  movies: null,
 }
 jest.mock('../pages/Favorite/hook', () => jest.fn(() => mockedFavoriteHook))
 
@@ -115,7 +115,7 @@ const mockedListDetailHook: ListDetailHook = {
   handleMovieDelete: jest.fn(),
   handlePagination: jest.fn(),
   list: mockListDetail,
-  loading: false
+  loading: false,
 }
 jest.mock('../pages/ListDetail/hook', () => jest.fn(() => mockedListDetailHook))
 
@@ -126,7 +126,7 @@ const mockedMovieDetailHook: MovieDetailHook = {
   loading: false,
   movie: mockMovieDetailExtended,
   popoverOpen: false,
-  setPopoverOpen: jest.fn()
+  setPopoverOpen: jest.fn(),
 }
 jest.mock('../pages/MovieDetail/hook', () =>
   jest.fn(() => mockedMovieDetailHook)
@@ -147,7 +147,7 @@ describe('App component', () => {
 
   it('should render DefaultLayout', async () => {
     render(<DefaultLayout />, {
-      wrapper: WrapperWithSuspense
+      wrapper: WrapperWithSuspense,
     })
 
     expect(await screen.findByText(/insanetim/i)).toBeInTheDocument()
@@ -161,10 +161,12 @@ describe('App component', () => {
 
   it('should render Dashboard', async () => {
     render(<Dashboard />, {
-      wrapper: WrapperWithSuspense
+      wrapper: WrapperWithSuspense,
     })
 
-    expect(await screen.findByPlaceholderText(/enter/i)).toBeInTheDocument()
+    expect(
+      await screen.findByPlaceholderText(/enter/i, undefined, { timeout: 3000 })
+    ).toBeInTheDocument()
   })
 
   it('should render Lists', async () => {

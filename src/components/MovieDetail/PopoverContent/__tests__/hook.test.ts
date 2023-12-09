@@ -6,7 +6,7 @@ import * as listsActions from 'src/store/lists/actions'
 import useContainer from '../hook'
 
 jest.mock('src/store/lists/selectors', () => ({
-  listsSelector: () => null
+  listsSelector: () => null,
 }))
 
 describe('PopoverContent useContainer hook', () => {
@@ -29,7 +29,7 @@ describe('PopoverContent useContainer hook', () => {
     expect(dispatch).toHaveBeenCalledWith(
       showModal({
         modalProps: { movieId: 1234 },
-        modalType: 'MODAL_CREATE_LIST'
+        modalType: 'MODAL_CREATE_LIST',
       })
     )
     expect(setPopoverOpen).toHaveBeenCalledWith(false)
@@ -47,7 +47,7 @@ describe('PopoverContent useContainer hook', () => {
     expect(addToList).toHaveBeenCalledWith({
       listId: 1234,
       listName: 'test/list',
-      movieId: 1234
+      movieId: 1234,
     })
     expect(setPopoverOpen).toHaveBeenCalledWith(false)
   })

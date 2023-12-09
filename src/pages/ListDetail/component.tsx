@@ -18,7 +18,7 @@ const ListDetails: React.FC = () => {
     handleMovieDelete,
     handlePagination,
     list,
-    loading
+    loading,
   } = useContainer()
 
   if (loading) {

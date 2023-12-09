@@ -6,12 +6,12 @@ import { listsSelector } from 'src/store/lists/selectors'
 import {
   HandleAddToListProps,
   PopoverContentHook,
-  PopoverContentHookProps
+  PopoverContentHookProps,
 } from './types'
 
 const useContainer = ({
   movieId,
-  setPopoverOpen
+  setPopoverOpen,
 }: PopoverContentHookProps): PopoverContentHook => {
   const dispatch = useAppDispatch()
   const lists = useAppSelector(listsSelector)
@@ -20,7 +20,7 @@ const useContainer = ({
     dispatch(
       showModal({
         modalProps: { movieId },
-        modalType: 'MODAL_CREATE_LIST'
+        modalType: 'MODAL_CREATE_LIST',
       })
     )
     setPopoverOpen(false)

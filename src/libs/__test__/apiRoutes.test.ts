@@ -4,7 +4,7 @@ import {
   mockImage,
   mockMovieDetail,
   mockMovieDetailExtended,
-  mockMoviesResponse
+  mockMoviesResponse,
 } from 'src/__mocks__/mockMovie'
 import httpClient from 'src/libs/api/httpClient'
 
@@ -26,7 +26,7 @@ describe('apiRoutes', () => {
   it('should handle "createRequestToken" request', async () => {
     const request = { url: '/authentication/token/new' }
     const response = {
-      data: { request_token: requestToken }
+      data: { request_token: requestToken },
     }
     requestSpy.mockResolvedValueOnce(response)
 
@@ -40,7 +40,7 @@ describe('apiRoutes', () => {
     const request = {
       data: { ...userData, request_token: requestToken },
       method: 'post',
-      url: '/authentication/token/validate_with_login'
+      url: '/authentication/token/validate_with_login',
     }
     const response = { data: { success: true } }
     requestSpy.mockResolvedValueOnce(response)
@@ -54,7 +54,7 @@ describe('apiRoutes', () => {
     const request = {
       data: { request_token: requestToken },
       method: 'post',
-      url: '/authentication/session/new'
+      url: '/authentication/session/new',
     }
     const response = { data: { session_id: sessionId } }
     requestSpy.mockResolvedValueOnce(response)
@@ -69,7 +69,7 @@ describe('apiRoutes', () => {
     const request = {
       data: { session_id: sessionId },
       method: 'delete',
-      url: '/authentication/session'
+      url: '/authentication/session',
     }
     const response = { data: { success: true } }
     requestSpy.mockResolvedValueOnce(response)
@@ -82,7 +82,7 @@ describe('apiRoutes', () => {
   it('should handle "getAccountDetails" request', async () => {
     const request = {
       params: { session_id: sessionId },
-      url: '/account'
+      url: '/account',
     }
     const response = { data: mockAccount }
     requestSpy.mockResolvedValueOnce(response)
@@ -107,7 +107,7 @@ describe('apiRoutes', () => {
   it('should handle "searchMovies" request', async () => {
     const request = {
       params: { page, query },
-      url: '/search/movie'
+      url: '/search/movie',
     }
     const response = { data: mockMoviesResponse }
     requestSpy.mockResolvedValueOnce(response)
@@ -121,7 +121,7 @@ describe('apiRoutes', () => {
   it('should handle "getCreatedLists" request', async () => {
     const request = {
       params: { page, session_id: sessionId },
-      url: `/account/${accountId}/lists`
+      url: `/account/${accountId}/lists`,
     }
     const response = { data: mockListsResponse }
     requestSpy.mockResolvedValueOnce(response)
@@ -129,7 +129,7 @@ describe('apiRoutes', () => {
     const result = await apiRoutes.getCreatedLists({
       accountId,
       page,
-      sessionId
+      sessionId,
     })
 
     expect(requestSpy).toHaveBeenCalledWith(request)
@@ -139,7 +139,7 @@ describe('apiRoutes', () => {
   it('should handle "getListDetails" request', async () => {
     const request = {
       params: { page: '1' },
-      url: `/list/${listId}`
+      url: `/list/${listId}`,
     }
     const response = { data: mockListDetail }
     requestSpy.mockResolvedValueOnce(response)
@@ -155,7 +155,7 @@ describe('apiRoutes', () => {
       data: listData,
       method: 'post',
       params: { session_id: 'test/session_id' },
-      url: '/list'
+      url: '/list',
     }
     const response = { data: { list_id: 1234 } }
     requestSpy.mockResolvedValueOnce(response)
@@ -171,7 +171,7 @@ describe('apiRoutes', () => {
       data: { media_id: 1234 },
       method: 'post',
       params: { session_id: 'test/session_id' },
-      url: `/list/${1234}/add_item`
+      url: `/list/${1234}/add_item`,
     }
     const response = { data: { success: true } }
     requestSpy.mockResolvedValueOnce(response)
@@ -179,7 +179,7 @@ describe('apiRoutes', () => {
     await apiRoutes.addMovieToList({
       listId: 1234,
       movieId: 1234,
-      sessionId: 'test/session_id'
+      sessionId: 'test/session_id',
     })
 
     expect(requestSpy).toHaveBeenCalledWith(request)
@@ -190,7 +190,7 @@ describe('apiRoutes', () => {
       data: { media_id: movieId },
       method: 'post',
       params: { session_id: sessionId },
-      url: `/list/${listId}/remove_item`
+      url: `/list/${listId}/remove_item`,
     }
     const response = { data: { success: true } }
     requestSpy.mockResolvedValueOnce(response)
@@ -204,7 +204,7 @@ describe('apiRoutes', () => {
     const request = {
       method: 'delete',
       params: { session_id: sessionId },
-      url: `/list/${1234}`
+      url: `/list/${1234}`,
     }
     const response = { data: { success: true } }
     requestSpy.mockResolvedValueOnce(response)
@@ -217,7 +217,7 @@ describe('apiRoutes', () => {
   it('should handle "getWatchlist" request', async () => {
     const request = {
       params: { page, session_id: sessionId },
-      url: `/account/${accountId}/watchlist/movies`
+      url: `/account/${accountId}/watchlist/movies`,
     }
     const response = { data: mockMoviesResponse }
     requestSpy.mockResolvedValueOnce(response)
@@ -233,7 +233,7 @@ describe('apiRoutes', () => {
       data: { media_id: movieId, media_type: 'movie', watchlist: true },
       method: 'post',
       params: { session_id: sessionId },
-      url: `/account/${accountId}/watchlist`
+      url: `/account/${accountId}/watchlist`,
     }
     const response = { data: { success: true } }
     requestSpy.mockResolvedValueOnce(response)
@@ -242,7 +242,7 @@ describe('apiRoutes', () => {
       accountId,
       inWatchlist: true,
       movieId,
-      sessionId
+      sessionId,
     })
 
     expect(requestSpy).toHaveBeenCalledWith(request)
@@ -251,7 +251,7 @@ describe('apiRoutes', () => {
   it('should handle "getFavorite" request', async () => {
     const request = {
       params: { page, session_id: sessionId },
-      url: `/account/${accountId}/favorite/movies`
+      url: `/account/${accountId}/favorite/movies`,
     }
     const response = { data: mockMoviesResponse }
     requestSpy.mockResolvedValueOnce(response)
@@ -267,7 +267,7 @@ describe('apiRoutes', () => {
       data: { favorite: true, media_id: movieId, media_type: 'movie' },
       method: 'post',
       params: { session_id: sessionId },
-      url: `/account/${accountId}/favorite`
+      url: `/account/${accountId}/favorite`,
     }
     const response = { data: { success: true } }
     requestSpy.mockResolvedValueOnce(response)
@@ -276,7 +276,7 @@ describe('apiRoutes', () => {
       accountId,
       inFavorite: true,
       movieId,
-      sessionId
+      sessionId,
     })
 
     expect(requestSpy).toHaveBeenCalledWith(request)
@@ -307,7 +307,7 @@ describe('apiRoutes', () => {
   it('should handle "getMovieAccountStates" request', async () => {
     const request = {
       params: { session_id: sessionId },
-      url: `/movie/${movieId}/account_states`
+      url: `/movie/${movieId}/account_states`,
     }
     const response = { data: mockMovieDetailExtended.accountStates }
     requestSpy.mockResolvedValueOnce(response)

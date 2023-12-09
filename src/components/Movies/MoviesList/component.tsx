@@ -5,7 +5,7 @@ import { MoviesListProps } from './types'
 
 const MoviesList: React.FC<MoviesListProps> = ({
   handleMovieDelete,
-  movies
+  movies,
 }) => {
   return (
     <Row gutter={[24, 16]}>

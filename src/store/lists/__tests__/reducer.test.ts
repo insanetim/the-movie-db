@@ -11,13 +11,13 @@ describe('listsReducer', () => {
     createdLists: {
       data: null,
       error: null,
-      loading: true
+      loading: true,
     },
     listDetail: {
       data: null,
       error: null,
-      loading: true
-    }
+      loading: true,
+    },
   }
 
   it('should return initial state with empty action', () => {
@@ -36,7 +36,7 @@ describe('listsReducer', () => {
   it('should handle "fetchLists/fulfilled" action', () => {
     const action = {
       payload: 'test/data',
-      type: fetchLists.fulfilled.type
+      type: fetchLists.fulfilled.type,
     }
     listsReducer(state, action)
 
@@ -46,7 +46,7 @@ describe('listsReducer', () => {
   it('should handle "fetchLists/rejected" action', () => {
     const action = {
       payload: 'test/error',
-      type: fetchLists.rejected.type
+      type: fetchLists.rejected.type,
     }
     listsReducer(state, action)
 
@@ -63,7 +63,7 @@ describe('listsReducer', () => {
   it('should handle "fetchListDetail/fulfilled" action', () => {
     const action = {
       payload: 'test/data',
-      type: fetchListDetail.fulfilled.type
+      type: fetchListDetail.fulfilled.type,
     }
     listsReducer(state, action)
 
@@ -73,7 +73,7 @@ describe('listsReducer', () => {
   it('should handle "fetchListDetail/rejected" action', () => {
     const action = {
       payload: 'test/error',
-      type: fetchListDetail.rejected.type
+      type: fetchListDetail.rejected.type,
     }
     listsReducer(state, action)
 

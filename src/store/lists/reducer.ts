@@ -8,13 +8,13 @@ const initialState: ListsState = {
   createdLists: {
     data: null,
     error: null,
-    loading: true
+    loading: true,
   },
   listDetail: {
     data: null,
     error: null,
-    loading: true
-  }
+    loading: true,
+  },
 }
 
 const createdListsReducer = createReducer(
@@ -36,5 +36,5 @@ const listDetailReducer = createReducer(initialState.listDetail, builder => {
 
 export default combineReducers({
   createdLists: createdListsReducer,
-  listDetail: listDetailReducer
+  listDetail: listDetailReducer,
 })

@@ -27,7 +27,7 @@ const useUpdatePage = ({
   action,
   items,
   page,
-  setSearchParams
+  setSearchParams,
 }: useUpdatePageProps) => {
   const dispatch = useAppDispatch()
 

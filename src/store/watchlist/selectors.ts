@@ -13,5 +13,5 @@ const watchlistErrorSelector = (state: RootState) => {
 export {
   watchlistErrorSelector,
   watchlistLoadingSelector,
-  watchlistMoviesSelector
+  watchlistMoviesSelector,
 }

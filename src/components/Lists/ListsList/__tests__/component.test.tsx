@@ -5,7 +5,7 @@ import Wrapper from 'src/utils/testHelpers/wrapperMock'
 import ListList from '../component'
 
 jest.mock('src/store/lists/selectors', () => ({
-  listsSelector: () => null
+  listsSelector: () => null,
 }))
 
 describe('ListsList component', () => {
@@ -13,7 +13,7 @@ describe('ListsList component', () => {
 
   it('should match snapshot', () => {
     const { asFragment } = render(<ListList lists={mockedLists} />, {
-      wrapper: Wrapper
+      wrapper: Wrapper,
     })
 
     expect(asFragment()).toMatchSnapshot()

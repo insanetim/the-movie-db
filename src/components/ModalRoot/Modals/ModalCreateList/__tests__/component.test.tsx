@@ -9,7 +9,7 @@ const mockedHook: ModalCreateListHook = {
   handleAfterOpenChange: jest.fn(),
   handleOk: jest.fn(),
   handleSubmit: jest.fn(),
-  inputRef: createRef()
+  inputRef: createRef(),
 }
 
 jest.mock('../hook', () => jest.fn(() => mockedHook))

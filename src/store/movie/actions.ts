@@ -7,7 +7,7 @@ import {
   getMovieAccountStates,
   getMovieCredits,
   getMovieDetails,
-  getMovieImages
+  getMovieImages,
 } from 'src/libs/apiRoutes'
 import { accountSelector, sessionIdSelector } from 'src/store/session/selectors'
 import errorMessage from 'src/utils/helpers/errorMessage'
@@ -17,7 +17,7 @@ import { RootState } from '../index'
 import * as types from './constants'
 import {
   ChangeMovieInFavoriteProps,
-  ChangeMovieInWatchlistProps
+  ChangeMovieInWatchlistProps,
 } from './types'
 
 const fetchMovieDetail = createAsyncThunk<
@@ -34,14 +34,14 @@ const fetchMovieDetail = createAsyncThunk<
         getMovieDetails({ movieId }),
         getMovieImages({ movieId }),
         getMovieAccountStates({ movieId, sessionId }),
-        getMovieCredits({ movieId })
+        getMovieCredits({ movieId }),
       ])
 
       const movieDetailExtended: IMovieDetailExtended = {
         ...movieDetail,
         accountStates,
         credits,
-        images
+        images,
       }
 
       return movieDetailExtended
@@ -67,7 +67,7 @@ const changeMovieInFavorite = createAsyncThunk<
       dispatch(
         showNotification({
           messageText: errorMessage(error),
-          messageType: NOTIFICATION_TYPE.ERROR
+          messageType: NOTIFICATION_TYPE.ERROR,
         })
       )
     }
@@ -90,7 +90,7 @@ const changeMovieInWatchlist = createAsyncThunk<
       dispatch(
         showNotification({
           messageText: errorMessage(error),
-          messageType: NOTIFICATION_TYPE.ERROR
+          messageType: NOTIFICATION_TYPE.ERROR,
         })
       )
     }

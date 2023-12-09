@@ -16,7 +16,7 @@ const useContainer = (props: NotificationProps): NotificationHook => {
       duration,
       key: id,
       message: messageText,
-      onClose: closeNotification
+      onClose: closeNotification,
     })
   }, [closeNotification, duration, id, messageText, messageType])
 

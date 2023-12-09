@@ -8,19 +8,19 @@ import MovieItem from '../component'
 import { MovieItemHook } from '../types'
 
 const mockedHook: MovieItemHook = {
-  handleClick: jest.fn()
+  handleClick: jest.fn(),
 }
 jest.mock('../hook', () => jest.fn(() => mockedHook))
 
 describe('MovieItem component', () => {
   const props = {
     handleMovieDelete: jest.fn(),
-    movie: mockMovie
+    movie: mockMovie,
   }
 
   it('should match snapshot', () => {
     const { asFragment } = render(<MovieItem {...props} />, {
-      wrapper: Wrapper
+      wrapper: Wrapper,
     })
 
     expect(asFragment()).toMatchSnapshot()
@@ -28,10 +28,10 @@ describe('MovieItem component', () => {
 
   it('should match snapshot without poster_path', () => {
     const props = {
-      movie: mergeDeepRight(mockMovie, { poster_path: null })
+      movie: mergeDeepRight(mockMovie, { poster_path: null }),
     }
     const { asFragment } = render(<MovieItem {...props} />, {
-      wrapper: Wrapper
+      wrapper: Wrapper,
     })
 
     expect(asFragment()).toMatchSnapshot()

@@ -11,12 +11,12 @@ import useContainer from '../hook'
 jest.mock('src/store/lists/selectors', () => ({
   listsErrorSelector: () => null,
   listsLoadingSelector: () => true,
-  listsSelector: () => null
+  listsSelector: () => null,
 }))
 
 jest.mock('react-router-dom', () => ({
   ...jest.requireActual('react-router-dom'),
-  useSearchParams: jest.fn()
+  useSearchParams: jest.fn(),
 }))
 const searchParams = new URLSearchParams()
 const setSearchParams = jest.fn()
@@ -58,7 +58,7 @@ describe('Lists useContainer hook', () => {
       1,
       showModal({
         modalProps: { onSuccess },
-        modalType: 'MODAL_CREATE_LIST'
+        modalType: 'MODAL_CREATE_LIST',
       })
     )
     expect(fetchLists).toHaveBeenCalledWith('1')
@@ -81,7 +81,7 @@ describe('Lists useContainer hook', () => {
     expect(dispatch).toHaveBeenCalledWith(
       showModal({
         modalProps: { onSuccess },
-        modalType: 'MODAL_CREATE_LIST'
+        modalType: 'MODAL_CREATE_LIST',
       })
     )
     expect(setSearchParams).toHaveBeenCalledWith({})

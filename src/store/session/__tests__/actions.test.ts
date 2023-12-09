@@ -9,12 +9,12 @@ import { fetchAccount, logIn, logOut } from '../actions'
 
 jest.mock<typeof import('@reduxjs/toolkit')>('@reduxjs/toolkit', () => ({
   ...jest.requireActual('@reduxjs/toolkit'),
-  nanoid: () => 'test/id'
+  nanoid: () => 'test/id',
 }))
 
 const sessionId = 'test/session_id'
 jest.mock('src/store/session/selectors', () => ({
-  sessionIdSelector: () => sessionId
+  sessionIdSelector: () => sessionId,
 }))
 
 describe('session actions', () => {
@@ -28,11 +28,11 @@ describe('session actions', () => {
   const errorMessage = 'Something went wrong!'
   const errorNotification = showNotification({
     messageText: errorMessage,
-    messageType: NOTIFICATION_TYPE.ERROR
+    messageType: NOTIFICATION_TYPE.ERROR,
   })
   const userData = {
     password: 'test/password',
-    username: 'test/username'
+    username: 'test/username',
   }
   const requestToken = 'test/request_token'
 

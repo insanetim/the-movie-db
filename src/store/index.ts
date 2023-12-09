@@ -14,8 +14,8 @@ const store = configureStore({
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware({
       serializableCheck: {
-        ignoredActions: [showModal.type]
-      }
+        ignoredActions: [showModal.type],
+      },
     }),
   reducer: {
     app: appReducer,
@@ -24,8 +24,8 @@ const store = configureStore({
     lists: listsReducer,
     movie: movieReducer,
     session: sessionReducer,
-    watchlist: watchlistReducer
-  }
+    watchlist: watchlistReducer,
+  },
 })
 
 export type RootState = ReturnType<typeof store.getState>

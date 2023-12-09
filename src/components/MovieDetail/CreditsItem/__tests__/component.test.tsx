@@ -7,7 +7,7 @@ describe('CreditsItem component', () => {
   const props: CreditsItemProps = {
     description: 'test/description',
     profilePath: 'test/image',
-    title: 'test/title'
+    title: 'test/title',
   }
   it('should match snapshot', () => {
     const { asFragment } = render(<CreditsItem {...props} />)

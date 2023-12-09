@@ -5,23 +5,23 @@ import {
   hideModal,
   hideNotification,
   showModal,
-  showNotification
+  showNotification,
 } from '../actions'
 import appReducer from '../reducer'
 import { AppState } from '../types'
 
 jest.mock<typeof import('@reduxjs/toolkit')>('@reduxjs/toolkit', () => ({
   ...jest.requireActual('@reduxjs/toolkit'),
-  nanoid: jest.fn(() => 'test/id')
+  nanoid: jest.fn(() => 'test/id'),
 }))
 
 describe('appReducer', () => {
   const state: AppState = {
     modal: {
       modalProps: null,
-      modalType: null
+      modalType: null,
     },
-    notifications: []
+    notifications: [],
   }
 
   it('should return initial state with empty action', () => {
@@ -43,16 +43,16 @@ describe('appReducer', () => {
     const state = {
       modal: {
         modalProps: null,
-        modalType: null
+        modalType: null,
       },
       notifications: [
         {
           duration: NOTIFICATION_DURATION,
           id: action.payload,
           messageText: 'test/message',
-          messageType: NOTIFICATION_TYPE.SUCCESS
-        }
-      ]
+          messageType: NOTIFICATION_TYPE.SUCCESS,
+        },
+      ],
     }
     const newState = assoc('notifications', [], state)
     const result = appReducer(state, action)
@@ -63,7 +63,7 @@ describe('appReducer', () => {
   it('should handle "showModal" action', () => {
     const action = showModal({
       modalProps: 'test/modalProps',
-      modalType: 'test/modalType'
+      modalType: 'test/modalType',
     })
     const newState = assoc('modal', action.payload, state)
     const result = appReducer(state, action)
@@ -76,8 +76,8 @@ describe('appReducer', () => {
     const newState = mergeDeepRight(state, {
       modal: {
         modalProps: null,
-        modalType: 'test/modalType'
-      }
+        modalType: 'test/modalType',
+      },
     })
     const result = appReducer(state, action)
 
@@ -93,8 +93,8 @@ describe('appReducer', () => {
           duration: NOTIFICATION_DURATION,
           id: 'test/id',
           messageText: 'test/message',
-          messageType: NOTIFICATION_TYPE.SUCCESS
-        }
+          messageType: NOTIFICATION_TYPE.SUCCESS,
+        },
       ],
       state
     )

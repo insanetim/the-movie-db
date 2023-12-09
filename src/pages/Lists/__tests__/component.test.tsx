@@ -14,14 +14,14 @@ const mockedHook: ListsHook = {
     page: 1,
     results: [mockList],
     total_pages: 10,
-    total_results: 200
+    total_results: 200,
   },
-  loading: false
+  loading: false,
 }
 jest.mock('../hook', () => jest.fn(() => mockedHook))
 
 jest.mock('src/store/lists/selectors', () => ({
-  listsSelector: () => null
+  listsSelector: () => null,
 }))
 
 describe('Lists component', () => {
@@ -56,7 +56,7 @@ describe('Lists component', () => {
       page: 1,
       results: [mockList],
       total_pages: 1,
-      total_results: 1
+      total_results: 1,
     }
 
     const { asFragment } = render(<Lists />, { wrapper: Wrapper })

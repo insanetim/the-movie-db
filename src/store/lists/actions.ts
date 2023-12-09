@@ -7,7 +7,7 @@ import {
   deleteMyList,
   getCreatedLists,
   getListDetails,
-  removeMovieFromList
+  removeMovieFromList,
 } from 'src/libs/apiRoutes'
 import { showNotification } from 'src/store/app/actions'
 import { accountSelector, sessionIdSelector } from 'src/store/session/selectors'
@@ -21,7 +21,7 @@ import {
   AddToListProps,
   CreateListProps,
   FetchListDetailProps,
-  RemoveFromListProps
+  RemoveFromListProps,
 } from './types'
 
 const fetchLists = createAsyncThunk<
@@ -61,7 +61,7 @@ const createList = createAsyncThunk<
       dispatch(
         showNotification({
           messageText: errorMessage(error),
-          messageType: NOTIFICATION_TYPE.ERROR
+          messageType: NOTIFICATION_TYPE.ERROR,
         })
       )
     }
@@ -79,7 +79,7 @@ const deleteList = createAsyncThunk<void, IList['id'], { state: RootState }>(
       dispatch(
         showNotification({
           messageText: errorMessage(error),
-          messageType: NOTIFICATION_TYPE.ERROR
+          messageType: NOTIFICATION_TYPE.ERROR,
         })
       )
     }
@@ -119,7 +119,7 @@ const addToList = createAsyncThunk<void, AddToListProps, { state: RootState }>(
       dispatch(
         showNotification({
           messageText: errorMessage(error),
-          messageType: NOTIFICATION_TYPE.ERROR
+          messageType: NOTIFICATION_TYPE.ERROR,
         })
       )
     }
@@ -141,7 +141,7 @@ const removeFromList = createAsyncThunk<
       dispatch(
         showNotification({
           messageText: errorMessage(error),
-          messageType: NOTIFICATION_TYPE.ERROR
+          messageType: NOTIFICATION_TYPE.ERROR,
         })
       )
     }
@@ -154,5 +154,5 @@ export {
   deleteList,
   fetchListDetail,
   fetchLists,
-  removeFromList
+  removeFromList,
 }

@@ -6,7 +6,7 @@ import { NotificationsRootHook } from '../types'
 
 const mockedHook: NotificationsRootHook = {
   hideNotification: jest.fn(),
-  notifications: [mockNotification]
+  notifications: [mockNotification],
 }
 jest.mock('../hook', () => jest.fn(() => mockedHook))
 

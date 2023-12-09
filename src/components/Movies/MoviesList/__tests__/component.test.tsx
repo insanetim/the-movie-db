@@ -9,12 +9,12 @@ describe('MoviesList component', () => {
   const handleMovieDelete = jest.fn()
   const props = {
     handleMovieDelete,
-    movies: [mockMovie]
+    movies: [mockMovie],
   }
 
   it('should match snapshot', () => {
     const { asFragment } = render(<MoviesList {...props} />, {
-      wrapper: Wrapper
+      wrapper: Wrapper,
     })
 
     expect(asFragment()).toMatchSnapshot()

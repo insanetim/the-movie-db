@@ -16,7 +16,7 @@ const Header: React.FC = () => {
     { key: 'item-4', label: <Link to='/watchlist'>Watchlist</Link> },
     { key: 'item-5', label: <Link to='/favorite'>Favorite</Link> },
     { key: 'item-6', type: 'divider' },
-    { key: 'item-7', label: 'Logout', onClick: handleLogOut }
+    { key: 'item-7', label: 'Logout', onClick: handleLogOut },
   ]
 
   let avatar = <Avatar icon={<UserOutlined />} />

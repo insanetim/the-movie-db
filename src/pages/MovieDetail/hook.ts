@@ -8,7 +8,7 @@ import { fetchLists } from 'src/store/lists/actions'
 import {
   changeMovieInFavorite,
   changeMovieInWatchlist,
-  fetchMovieDetail
+  fetchMovieDetail,
 } from 'src/store/movie/actions'
 import { selectMovieById } from 'src/store/movie/selectors'
 import favoriteMessage from 'src/utils/helpers/favoriteMessage'
@@ -29,7 +29,7 @@ const useContainer = (): MovieDetailHook => {
     dispatch(changeMovieInFavorite({ inFavorite, movieId }))
     dispatch(
       showNotification({
-        messageText: favoriteMessage(movie!.title, inFavorite)
+        messageText: favoriteMessage(movie!.title, inFavorite),
       })
     )
   }
@@ -40,7 +40,7 @@ const useContainer = (): MovieDetailHook => {
     dispatch(changeMovieInWatchlist({ inWatchlist, movieId }))
     dispatch(
       showNotification({
-        messageText: watchlistMessage(movie!.title, inWatchlist)
+        messageText: watchlistMessage(movie!.title, inWatchlist),
       })
     )
   }
@@ -59,7 +59,7 @@ const useContainer = (): MovieDetailHook => {
     loading,
     movie,
     popoverOpen,
-    setPopoverOpen
+    setPopoverOpen,
   }
 }
 

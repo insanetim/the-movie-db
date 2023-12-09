@@ -6,7 +6,7 @@ import { hideNotification } from 'src/store/app/actions'
 import useContainer from '../hook'
 
 jest.mock('src/store/app/selectors', () => ({
-  notificationsSelector: () => [mockNotification]
+  notificationsSelector: () => [mockNotification],
 }))
 
 describe('NotificationsRoot useContainer hook', () => {

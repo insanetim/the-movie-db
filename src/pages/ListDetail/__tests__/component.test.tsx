@@ -24,9 +24,9 @@ const mockedHook: ListDetailHook = {
     page: 1,
     poster_path: null,
     total_pages: 10,
-    total_results: 200
+    total_results: 200,
   },
-  loading: false
+  loading: false,
 }
 jest.mock('../hook', () => jest.fn(() => mockedHook))
 
@@ -81,7 +81,7 @@ describe('ListDetail component', () => {
       page: 1,
       poster_path: null,
       total_pages: 1,
-      total_results: 1
+      total_results: 1,
     }
     const { asFragment } = render(<ListDetails />, { wrapper: Wrapper })
 

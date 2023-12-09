@@ -8,7 +8,7 @@ describe('ImageGallery component', () => {
   it('should match snapshot', () => {
     const props: ImageGalleryProps = {
       images: [mockImage],
-      title: 'test/title'
+      title: 'test/title',
     }
     const { asFragment } = render(<ImageGallery {...props} />)
 

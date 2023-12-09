@@ -8,13 +8,13 @@ import { createList } from 'src/store/lists/actions'
 import {
   ListData,
   ModalCreateListHook,
-  ModalCreateListHookProps
+  ModalCreateListHookProps,
 } from './types'
 
 const useContainer = ({
   form,
   movieId,
-  onSuccess
+  onSuccess,
 }: ModalCreateListHookProps): ModalCreateListHook => {
   const inputRef = useRef<InputRef>(null)
   const dispatch = useAppDispatch()
@@ -47,7 +47,7 @@ const useContainer = ({
     handleAfterOpenChange,
     handleOk,
     handleSubmit,
-    inputRef
+    inputRef,
   }
 }
 

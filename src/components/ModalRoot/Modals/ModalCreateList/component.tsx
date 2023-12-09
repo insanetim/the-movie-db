@@ -14,11 +14,11 @@ const ModalCreateList: React.FC<ModalCreateListProps> = ({
     handleAfterOpenChange,
     handleOk,
     handleSubmit,
-    inputRef
+    inputRef,
   } = useContainer({
     form,
     movieId,
-    onSuccess
+    onSuccess,
   })
 
   return (

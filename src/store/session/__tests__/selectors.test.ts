@@ -3,7 +3,7 @@ import mockState from 'src/__mocks__/mockState'
 import {
   accountSelector,
   loadingSelector,
-  sessionIdSelector
+  sessionIdSelector,
 } from '../selectors'
 
 describe('session selectors', () => {

@@ -6,7 +6,7 @@ import { LoginHook } from '../types'
 
 const mockedHook: LoginHook = {
   handleLogIn: jest.fn(),
-  loading: false
+  loading: false,
 }
 jest.mock('../hook', () => jest.fn(() => mockedHook))
 

@@ -7,7 +7,7 @@ import {
   createSession,
   deleteSession,
   getAccountDetails,
-  validateWithLogin
+  validateWithLogin,
 } from 'src/libs/apiRoutes'
 import { showNotification } from 'src/store/app/actions'
 import errorMessage from 'src/utils/helpers/errorMessage'
@@ -32,7 +32,7 @@ const logIn = createAsyncThunk<string | undefined, IUserData>(
       dispatch(
         showNotification({
           messageText: errorMessage(error),
-          messageType: NOTIFICATION_TYPE.ERROR
+          messageType: NOTIFICATION_TYPE.ERROR,
         })
       )
     }
@@ -52,7 +52,7 @@ const logOut = createAsyncThunk<void, undefined, { state: RootState }>(
       dispatch(
         showNotification({
           messageText: errorMessage(error),
-          messageType: NOTIFICATION_TYPE.ERROR
+          messageType: NOTIFICATION_TYPE.ERROR,
         })
       )
     }
@@ -74,7 +74,7 @@ const fetchAccount = createAsyncThunk<
     dispatch(
       showNotification({
         messageText: errorMessage(error),
-        messageType: NOTIFICATION_TYPE.ERROR
+        messageType: NOTIFICATION_TYPE.ERROR,
       })
     )
   }

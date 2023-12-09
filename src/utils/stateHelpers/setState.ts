@@ -15,7 +15,7 @@ const setState = {
   rejected: <T>(state: IState<T>, action: PayloadAction<any>) => {
     state.loading = false
     state.error = action.payload
-  }
+  },
 }
 
 export default setState

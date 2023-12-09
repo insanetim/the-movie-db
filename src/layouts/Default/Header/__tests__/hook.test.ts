@@ -6,13 +6,13 @@ import * as sessionActions from 'src/store/session/actions'
 import useContainer from '../hook'
 
 jest.mock('src/store/session/selectors', () => ({
-  accountSelector: () => ({ id: 1234 })
+  accountSelector: () => ({ id: 1234 }),
 }))
 
 jest.mock('react-router-dom', () => ({
   ...jest.requireActual('react-router-dom'),
   useLocation: jest.fn(() => ({})),
-  useNavigate: jest.fn()
+  useNavigate: jest.fn(),
 }))
 const navigate = jest.fn()
 jest.mocked(useNavigate).mockReturnValue(navigate)
@@ -36,7 +36,7 @@ describe('Header useContainer hook', () => {
     expect(logOut).toHaveBeenCalled()
     expect(navigate).toHaveBeenCalledWith('/login', {
       replace: true,
-      state: { from: {} }
+      state: { from: {} },
     })
   })
 

@@ -8,7 +8,7 @@ describe('sessionReducer', () => {
   const state: SessionState = {
     account: null,
     loading: false,
-    sessionId: ''
+    sessionId: '',
   }
 
   it('should return initial state with empty action', () => {
@@ -28,7 +28,7 @@ describe('sessionReducer', () => {
   it('should handle "logIn/fulfilled" action', () => {
     const action = {
       payload: 'test/data',
-      type: logIn.fulfilled.type
+      type: logIn.fulfilled.type,
     }
     const newState = assoc('sessionId', action.payload, state)
     const result = sessionReducer(state, action)
@@ -53,7 +53,7 @@ describe('sessionReducer', () => {
   it('should handle "fetchAccount/fulfilled" action', () => {
     const action = {
       payload: 'test/data',
-      type: fetchAccount.fulfilled.type
+      type: fetchAccount.fulfilled.type,
     }
     const newState = assoc('account', action.payload, state)
     const result = sessionReducer(state, action)

@@ -6,12 +6,12 @@ import * as dashboardActions from 'src/store/dashboard/actions'
 import useContainer from '../hook'
 
 jest.mock('src/store/dashboard/selectors', () => ({
-  dashboardMoviesSelector: () => null
+  dashboardMoviesSelector: () => null,
 }))
 
 jest.mock('react-router-dom', () => ({
   ...jest.requireActual('react-router-dom'),
-  useSearchParams: jest.fn()
+  useSearchParams: jest.fn(),
 }))
 const searchParams = new URLSearchParams({ query: 'test/search' })
 const setSearchParams = jest.fn()
@@ -35,7 +35,7 @@ describe('SearchResult useContainer hook', () => {
 
     expect(setSearchParams).toHaveBeenCalledWith({
       page: '3',
-      search: props.query
+      search: props.query,
     })
   })
 
@@ -46,7 +46,7 @@ describe('SearchResult useContainer hook', () => {
     expect(dispatch).toHaveBeenCalled()
     expect(fetchSearch).toHaveBeenCalledWith({
       page: '1',
-      query: props.query
+      query: props.query,
     })
   })
 })

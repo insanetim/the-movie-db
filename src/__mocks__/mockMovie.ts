@@ -5,7 +5,7 @@ import {
   ICrew,
   IMovie,
   IMovieDetail,
-  IMovieDetailExtended
+  IMovieDetailExtended,
 } from 'src/interfaces/movie.interface'
 
 const mockMovie: IMovie = {
@@ -22,7 +22,7 @@ const mockMovie: IMovie = {
   title: 'test/title',
   video: false,
   vote_average: 1234,
-  vote_count: 1234
+  vote_count: 1234,
 }
 
 const mockMovieDetail: IMovieDetail = {
@@ -33,14 +33,14 @@ const mockMovieDetail: IMovieDetail = {
   homepage: null,
   imdb_id: null,
   production_companies: [
-    { id: 1234, logo_path: null, name: 'test/company', origin_country: 'USA' }
+    { id: 1234, logo_path: null, name: 'test/company', origin_country: 'USA' },
   ],
   production_countries: [{ iso_3166_1: 'en', name: 'USA' }],
   revenue: 3000000,
   runtime: 150,
   spoken_languages: [{ iso_639_1: 'en', name: 'EN' }],
   status: 'test/status',
-  tagline: null
+  tagline: null,
 }
 
 const mockMovieDetailExtended: IMovieDetailExtended = {
@@ -60,8 +60,8 @@ const mockMovieDetailExtended: IMovieDetailExtended = {
         order: 1234,
         original_name: 'test/name',
         popularity: 1234,
-        profile_path: '/image'
-      }
+        profile_path: '/image',
+      },
     ],
     crew: [
       {
@@ -75,10 +75,10 @@ const mockMovieDetailExtended: IMovieDetailExtended = {
         name: 'test/name',
         original_name: 'test/name',
         popularity: 1234,
-        profile_path: '/image'
-      }
+        profile_path: '/image',
+      },
     ],
-    id: 1234
+    id: 1234,
   },
   images: [
     {
@@ -88,9 +88,9 @@ const mockMovieDetailExtended: IMovieDetailExtended = {
       iso_639_1: null,
       vote_average: 1234,
       vote_count: 1234,
-      width: 1600
-    }
-  ]
+      width: 1600,
+    },
+  ],
 }
 
 const mockCast: ICast = {
@@ -105,7 +105,7 @@ const mockCast: ICast = {
   order: 1234,
   original_name: 'test/name',
   popularity: 1234,
-  profile_path: '/image'
+  profile_path: '/image',
 }
 
 const mockCrew: ICrew = {
@@ -119,7 +119,7 @@ const mockCrew: ICrew = {
   name: 'test/name',
   original_name: 'test/name',
   popularity: 1234,
-  profile_path: '/image'
+  profile_path: '/image',
 }
 
 const mockImage: IBackdrop = {
@@ -129,14 +129,14 @@ const mockImage: IBackdrop = {
   iso_639_1: null,
   vote_average: 1234,
   vote_count: 1234,
-  width: 1600
+  width: 1600,
 }
 
 const mockMoviesResponse: IResponse<IMovie> = {
   page: 1,
   results: [mockMovie],
   total_pages: 1,
-  total_results: 1
+  total_results: 1,
 }
 
 export {
@@ -146,5 +146,5 @@ export {
   mockMovie,
   mockMovieDetail,
   mockMovieDetailExtended,
-  mockMoviesResponse
+  mockMoviesResponse,
 }

@@ -7,7 +7,7 @@ Object.defineProperty(window, 'matchMedia', {
     media: query,
     onchange: null,
     removeEventListener: jest.fn(),
-    removeListener: jest.fn() // deprecated
+    removeListener: jest.fn(), // deprecated
   })),
-  writable: true
+  writable: true,
 })

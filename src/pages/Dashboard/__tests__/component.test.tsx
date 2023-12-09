@@ -10,7 +10,7 @@ jest.mock('../hook', () => jest.fn(() => mockedHook))
 jest.mock('src/store/dashboard/selectors', () => ({
   dashboardErrorSelector: () => null,
   dashboardLoadingSelector: () => true,
-  dashboardMoviesSelector: () => null
+  dashboardMoviesSelector: () => null,
 }))
 
 describe('Dashboard component', () => {

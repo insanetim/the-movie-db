@@ -10,7 +10,7 @@ describe('favoriteReducer', () => {
   const state: FavoriteState = {
     data: null,
     error: null,
-    loading: true
+    loading: true,
   }
 
   it('should return initial state with empty action', () => {
@@ -29,7 +29,7 @@ describe('favoriteReducer', () => {
   it('should handle "fetchFavorite/fulfilled" action', () => {
     const action = {
       payload: 'test/data',
-      type: fetchFavorite.fulfilled.type
+      type: fetchFavorite.fulfilled.type,
     }
     favoriteReducer(state, action)
 
@@ -39,7 +39,7 @@ describe('favoriteReducer', () => {
   it('should handle "fetchFavorite/rejected" action', () => {
     const action = {
       payload: 'test/error',
-      type: fetchFavorite.rejected.type
+      type: fetchFavorite.rejected.type,
     }
     favoriteReducer(state, action)
 

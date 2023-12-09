@@ -15,7 +15,7 @@ const mockedHook: MovieDetailHook = {
   loading: false,
   movie: mockMovieDetailExtended,
   popoverOpen: false,
-  setPopoverOpen: jest.fn()
+  setPopoverOpen: jest.fn(),
 }
 jest.mock('../hook', () => jest.fn(() => mockedHook))
 
@@ -62,10 +62,10 @@ describe('MovieDetail component', () => {
         movie: {
           accountStates: {
             favorite: true,
-            watchlist: true
+            watchlist: true,
           },
-          release_date: undefined
-        }
+          release_date: undefined,
+        },
       }) as MovieDetailHook
     )
     const { asFragment } = render(<Movie />, { wrapper: Wrapper })
@@ -76,7 +76,7 @@ describe('MovieDetail component', () => {
   it('should match snapshot with open popover', () => {
     jest.mocked(useContainer).mockReturnValueOnce(
       mergeDeepRight(mockedHook, {
-        popoverOpen: true
+        popoverOpen: true,
       }) as MovieDetailHook
     )
     const { asFragment } = render(<Movie />, { wrapper: Wrapper })

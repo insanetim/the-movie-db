@@ -8,7 +8,7 @@ const accountId = 1234
 const sessionId = 'test/session_id'
 jest.mock('src/store/session/selectors', () => ({
   accountSelector: () => ({ id: accountId }),
-  sessionIdSelector: () => sessionId
+  sessionIdSelector: () => sessionId,
 }))
 
 describe('fetchWatchlist', () => {

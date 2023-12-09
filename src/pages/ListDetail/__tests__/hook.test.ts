@@ -10,14 +10,14 @@ import useContainer from '../hook'
 jest.mock('src/store/lists/selectors', () => ({
   listDetailErrorSelector: () => null,
   listDetailLoadingSelector: () => true,
-  listDetailSelector: () => null
+  listDetailSelector: () => null,
 }))
 
 jest.mock('react-router-dom', () => ({
   ...jest.requireActual('react-router-dom'),
   useNavigate: jest.fn(),
   useParams: jest.fn(() => ({ listId: 1234 })),
-  useSearchParams: jest.fn()
+  useSearchParams: jest.fn(),
 }))
 const navigate = jest.fn()
 jest.mocked(useNavigate).mockReturnValue(navigate)
@@ -67,7 +67,7 @@ describe('ListDetail useContainer hook', () => {
 
     expect(modalSpy).toHaveBeenCalledWith({
       onOk,
-      title: 'Do you want to delete list?'
+      title: 'Do you want to delete list?',
     })
     expect(dispatch).toHaveBeenCalled()
     expect(deleteList).toHaveBeenCalledWith(1234)
@@ -81,14 +81,14 @@ describe('ListDetail useContainer hook', () => {
 
     await act(() => {
       onOk = result.current.handleMovieDelete(1234, {
-        stopPropagation: jest.fn()
+        stopPropagation: jest.fn(),
       } as never)
       onOk()
     })
 
     expect(modalSpy).toHaveBeenCalledWith({
       onOk,
-      title: 'Do you want to delete movie from this list?'
+      title: 'Do you want to delete movie from this list?',
     })
     expect(dispatch).toHaveBeenCalled()
     expect(removeFromList).toHaveBeenCalledWith({ listId: 1234, movieId: 1234 })

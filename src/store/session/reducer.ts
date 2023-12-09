@@ -8,7 +8,7 @@ import { SessionState } from './types'
 const initialState: SessionState = {
   account: null,
   loading: false,
-  sessionId: Cookies.get('tmdb.session_id') ?? ''
+  sessionId: Cookies.get('tmdb.session_id') ?? '',
 }
 
 const sessionReducer = createReducer(initialState, builder => {

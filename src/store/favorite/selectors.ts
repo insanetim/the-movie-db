@@ -13,5 +13,5 @@ const favoriteErrorSelector = (state: RootState) => {
 export {
   favoriteErrorSelector,
   favoriteLoadingSelector,
-  favoriteMoviesSelector
+  favoriteMoviesSelector,
 }

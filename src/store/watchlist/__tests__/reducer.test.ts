@@ -10,7 +10,7 @@ describe('watchlistReducer', () => {
   const state: WatchlistState = {
     data: null,
     error: null,
-    loading: true
+    loading: true,
   }
 
   it('should return initial state with empty action', () => {
@@ -29,7 +29,7 @@ describe('watchlistReducer', () => {
   it('should handle "fetchWatchlist/fulfilled" action', () => {
     const action = {
       payload: 'test/data',
-      type: fetchWatchlist.fulfilled.type
+      type: fetchWatchlist.fulfilled.type,
     }
     watchlistReducer(state, action)
 
@@ -39,7 +39,7 @@ describe('watchlistReducer', () => {
   it('should handle "fetchWatchlist/rejected" action', () => {
     const action = {
       payload: 'test/data',
-      type: fetchWatchlist.rejected.type
+      type: fetchWatchlist.rejected.type,
     }
     watchlistReducer(state, action)
 

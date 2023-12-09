@@ -12,9 +12,9 @@ describe('ModalCreateList useContainer hook', () => {
   const props = {
     form: {
       resetFields: jest.fn(),
-      submit: jest.fn()
+      submit: jest.fn(),
     } as unknown as FormInstance,
-    movieId: 1234
+    movieId: 1234,
   }
 
   it('should match snapshot', () => {
@@ -45,7 +45,7 @@ describe('ModalCreateList useContainer hook', () => {
     expect(dispatch).toHaveBeenNthCalledWith(1, hideModal())
     expect(createList).toHaveBeenCalledWith({
       listData,
-      movieId: props.movieId
+      movieId: props.movieId,
     })
   })
 
@@ -63,7 +63,7 @@ describe('ModalCreateList useContainer hook', () => {
     expect(dispatch).toHaveBeenNthCalledWith(1, hideModal())
     expect(createList).toHaveBeenCalledWith({
       listData,
-      movieId: props.movieId
+      movieId: props.movieId,
     })
     expect(onSuccess).toHaveBeenCalled()
   })

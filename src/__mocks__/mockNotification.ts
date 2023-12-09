@@ -4,7 +4,7 @@ const mockNotification = {
   duration: NOTIFICATION_DURATION,
   id: 'nanoid',
   messageText: 'test/message',
-  messageType: NOTIFICATION_TYPE.SUCCESS
+  messageType: NOTIFICATION_TYPE.SUCCESS,
 }
 
 export default mockNotification

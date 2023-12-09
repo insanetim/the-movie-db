@@ -7,7 +7,7 @@ import { ModalRootHook } from '../types'
 const mockedHook: ModalRootHook = {
   modalProps: null,
   modalType: 'MODAL_CREATE_LIST',
-  onCancel: jest.fn()
+  onCancel: jest.fn(),
 }
 jest.mock('../hook', () => jest.fn(() => mockedHook))
 

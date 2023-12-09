@@ -8,13 +8,13 @@ import * as listsActions from 'src/store/lists/actions'
 import useContainer from '../hook'
 
 jest.mock('src/store/lists/selectors', () => ({
-  listsSelector: () => null
+  listsSelector: () => null,
 }))
 
 jest.mock('react-router-dom', () => ({
   ...jest.requireActual('react-router-dom'),
   useNavigate: jest.fn(),
-  useSearchParams: jest.fn()
+  useSearchParams: jest.fn(),
 }))
 const navigate = jest.fn()
 jest.mocked(useNavigate).mockReturnValue(navigate)
@@ -53,14 +53,14 @@ describe('ListItem useContainer hook', () => {
 
     act(() => {
       onOk = result.current.handleListDelete({
-        stopPropagation: jest.fn()
+        stopPropagation: jest.fn(),
       } as never)
     })
     await onOk()
 
     expect(modalSpy).toHaveBeenCalledWith({
       onOk,
-      title: 'Do you want to delete list?'
+      title: 'Do you want to delete list?',
     })
     expect(dispatch).toHaveBeenCalled()
     expect(deleteList).toHaveBeenCalledWith(props.listId)

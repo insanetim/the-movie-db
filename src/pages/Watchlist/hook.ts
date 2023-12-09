@@ -11,7 +11,7 @@ import { fetchWatchlist } from 'src/store/watchlist/actions'
 import {
   watchlistErrorSelector,
   watchlistLoadingSelector,
-  watchlistMoviesSelector
+  watchlistMoviesSelector,
 } from 'src/store/watchlist/selectors'
 import getParams from 'src/utils/helpers/getParams'
 
@@ -29,7 +29,7 @@ const useContainer = (): WatchlistHook => {
     action: fetchWatchlist(page),
     items: movies?.results,
     page,
-    setSearchParams
+    setSearchParams,
   })
 
   const handlePagination = (page: number) => {
@@ -49,7 +49,7 @@ const useContainer = (): WatchlistHook => {
 
     Modal.confirm({
       onOk,
-      title: 'Do you want to delete movie from watchlist?'
+      title: 'Do you want to delete movie from watchlist?',
     })
 
     return onOk

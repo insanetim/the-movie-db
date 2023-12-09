@@ -7,7 +7,7 @@ import { WatchlistState } from './types'
 const initialState: WatchlistState = {
   data: null,
   error: null,
-  loading: true
+  loading: true,
 }
 
 const watchlistReducer = createReducer(initialState, builder => {

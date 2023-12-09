@@ -5,7 +5,7 @@ import { RootState } from 'src/store'
 import {
   changeMovieInFavorite,
   changeMovieInWatchlist,
-  fetchMovieDetail
+  fetchMovieDetail,
 } from './actions'
 
 const movieAdapter = createEntityAdapter<IMovieDetailExtended>()
@@ -30,10 +30,10 @@ const movieReducer = createReducer(movieInitialState, builder => {
           changes: {
             accountStates: {
               ...movie.accountStates,
-              favorite: action.meta.arg.inFavorite
-            }
+              favorite: action.meta.arg.inFavorite,
+            },
           },
-          id: action.meta.arg.movieId
+          id: action.meta.arg.movieId,
         })
       }
     })
@@ -46,10 +46,10 @@ const movieReducer = createReducer(movieInitialState, builder => {
           changes: {
             accountStates: {
               ...movie.accountStates,
-              watchlist: action.meta.arg.inWatchlist
-            }
+              watchlist: action.meta.arg.inWatchlist,
+            },
           },
-          id: action.meta.arg.movieId
+          id: action.meta.arg.movieId,
         })
       }
     })

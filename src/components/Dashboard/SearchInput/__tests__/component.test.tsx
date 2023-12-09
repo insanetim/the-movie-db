@@ -7,7 +7,7 @@ import { SearchInputHook } from '../types'
 const mockedHook: SearchInputHook = {
   handleChange: jest.fn(),
   handleSearch: jest.fn(),
-  inputValue: ''
+  inputValue: '',
 }
 jest.mock('../hook', () => jest.fn(() => mockedHook))
 

@@ -3,7 +3,7 @@ import Icon, {
   BookOutlined,
   HeartFilled,
   HeartOutlined,
-  PlusCircleOutlined
+  PlusCircleOutlined,
 } from '@ant-design/icons'
 import { CustomIconComponentProps } from '@ant-design/icons/lib/components/Icon'
 import { Col, Popover, Row, Tag, Typography } from 'antd'
@@ -33,7 +33,7 @@ const Movie: React.FC = () => {
     loading,
     movie,
     popoverOpen,
-    setPopoverOpen
+    setPopoverOpen,
   } = useContainer()
 
   if (loading) {

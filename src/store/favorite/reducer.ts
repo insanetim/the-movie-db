@@ -7,7 +7,7 @@ import { FavoriteState } from './types'
 const initialState: FavoriteState = {
   data: null,
   error: null,
-  loading: true
+  loading: true,
 }
 
 const favoriteReducer = createReducer(initialState, builder => {

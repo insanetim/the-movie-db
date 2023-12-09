@@ -6,9 +6,9 @@ import { AppState } from './types'
 const initialState: AppState = {
   modal: {
     modalProps: null,
-    modalType: null
+    modalType: null,
   },
-  notifications: []
+  notifications: [],
 }
 
 const appSlice = createSlice({
@@ -39,10 +39,10 @@ const appSlice = createSlice({
         duration: action.payload.duration ?? NOTIFICATION_DURATION,
         id: nanoid(),
         messageText: action.payload.messageText,
-        messageType: action.payload.messageType ?? NOTIFICATION_TYPE.SUCCESS
+        messageType: action.payload.messageType ?? NOTIFICATION_TYPE.SUCCESS,
       })
-    }
-  }
+    },
+  },
 })
 
 export const { hideModal, hideNotification, showModal, showNotification } =

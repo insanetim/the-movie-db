@@ -7,13 +7,13 @@ import { ProtectedRoutesHook } from '../types'
 
 const mockedHook: ProtectedRoutesHook = {
   location: {} as Location,
-  sessionId: 'test/sessionId'
+  sessionId: 'test/sessionId',
 }
 jest.mock('../hook', () => jest.fn(() => mockedHook))
 
 jest.mock('react-router-dom', () => ({
   ...jest.requireActual('react-router-dom'),
-  Navigate: () => <></>
+  Navigate: () => <></>,
 }))
 
 describe('ProtectedRoutes component', () => {

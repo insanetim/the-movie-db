@@ -3,7 +3,7 @@ import mockState from 'src/__mocks__/mockState'
 import {
   favoriteErrorSelector,
   favoriteLoadingSelector,
-  favoriteMoviesSelector
+  favoriteMoviesSelector,
 } from '../selectors'
 
 describe('favorite selectors', () => {

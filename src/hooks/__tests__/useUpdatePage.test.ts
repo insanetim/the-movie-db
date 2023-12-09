@@ -11,7 +11,7 @@ describe('useUpdatePage', () => {
     action,
     items: [1],
     page: '3',
-    setSearchParams
+    setSearchParams,
   }
 
   it('should match snapshot', () => {

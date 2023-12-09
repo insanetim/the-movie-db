@@ -6,7 +6,7 @@ import {
   listDetailSelector,
   listsErrorSelector,
   listsLoadingSelector,
-  listsSelector
+  listsSelector,
 } from '../selectors'
 
 describe('lists selectors', () => {

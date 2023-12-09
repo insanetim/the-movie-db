@@ -10,28 +10,28 @@ import {
   deleteList,
   fetchListDetail,
   fetchLists,
-  removeFromList
+  removeFromList,
 } from '../actions'
 
 jest.mock<typeof import('@reduxjs/toolkit')>('@reduxjs/toolkit', () => ({
   ...jest.requireActual('@reduxjs/toolkit'),
-  nanoid: () => 'test/id'
+  nanoid: () => 'test/id',
 }))
 
 const accountId = 1234
 const sessionId = 'test/session_id'
 jest.mock('src/store/session/selectors', () => ({
   accountSelector: () => ({ id: accountId }),
-  sessionIdSelector: () => sessionId
+  sessionIdSelector: () => sessionId,
 }))
 
 jest.mock('src/store/movie/selectors', () => ({
-  selectMovieById: () => ({ title: 'test/movie' })
+  selectMovieById: () => ({ title: 'test/movie' }),
 }))
 
 const listId = 1234
 jest.mock('src/store//lists/selectors', () => ({
-  listsSelector: () => ({ results: [{ id: listId, name: 'test/list' }] })
+  listsSelector: () => ({ results: [{ id: listId, name: 'test/list' }] }),
 }))
 
 describe('lists actions', () => {
@@ -44,7 +44,7 @@ describe('lists actions', () => {
   const errorMessage = 'Something went wrong!'
   const errorNotification = showNotification({
     messageText: errorMessage,
-    messageType: NOTIFICATION_TYPE.ERROR
+    messageType: NOTIFICATION_TYPE.ERROR,
   })
   const listData = { description: 'test/description', name: 'test/list' }
   const listName = listData.name
@@ -63,7 +63,7 @@ describe('lists actions', () => {
       expect(getCreatedLists).toHaveBeenCalledWith({
         accountId,
         page,
-        sessionId
+        sessionId,
       })
       expect(calls).toHaveLength(2)
       expect(calls[0][0].type).toBe(fetchLists.pending.type)
@@ -189,7 +189,7 @@ describe('lists actions', () => {
     it('should handle success', async () => {
       addMovieToList.mockResolvedValueOnce()
       const notification = showNotification({
-        messageText: 'test/movie added to test/list'
+        messageText: 'test/movie added to test/list',
       })
 
       await thunk(dispatch, getState, undefined)
@@ -198,7 +198,7 @@ describe('lists actions', () => {
       expect(addMovieToList).toHaveBeenCalledWith({
         listId,
         movieId,
-        sessionId
+        sessionId,
       })
       expect(calls).toHaveLength(4)
       expect(calls[0][0].type).toBe(addToList.pending.type)
@@ -233,7 +233,7 @@ describe('lists actions', () => {
       expect(removeMovieFromList).toHaveBeenCalledWith({
         listId,
         movieId,
-        sessionId
+        sessionId,
       })
       expect(calls).toHaveLength(2)
       expect(calls[0][0].type).toBe(removeFromList.pending.type)

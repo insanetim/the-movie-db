@@ -8,14 +8,14 @@ import { ListItemHook } from '../types'
 
 const mockedHook: ListItemHook = {
   handleClick: jest.fn(),
-  handleListDelete: jest.fn()
+  handleListDelete: jest.fn(),
 }
 jest.mock('../hook', () => jest.fn(() => mockedHook))
 
 describe('ListItem component', () => {
   it('should match snapshot', () => {
     const { asFragment } = render(<ListItem list={mockList} />, {
-      wrapper: Wrapper
+      wrapper: Wrapper,
     })
 
     expect(asFragment()).toMatchSnapshot()

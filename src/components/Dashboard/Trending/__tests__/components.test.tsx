@@ -14,8 +14,8 @@ const mockedHook: TrendingHook = {
     page: 1,
     results: [mockMovie],
     total_pages: 10,
-    total_results: 200
-  }
+    total_results: 200,
+  },
 }
 jest.mock('../hook', () => jest.fn(() => mockedHook))
 
@@ -41,7 +41,7 @@ describe('Trending component', () => {
       page: 1,
       results: [mockMovie],
       total_pages: 1,
-      total_results: 1
+      total_results: 1,
     }
     const { asFragment } = render(<Trending />, { wrapper: Wrapper })
 
@@ -53,7 +53,7 @@ describe('Trending component', () => {
       page: 1,
       results: [],
       total_pages: 1,
-      total_results: 1
+      total_results: 1,
     }
     const { asFragment } = render(<Trending />, { wrapper: Wrapper })
 

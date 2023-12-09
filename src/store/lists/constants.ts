@@ -15,5 +15,5 @@ export {
   deleteList,
   fetchListDetail,
   fetchLists,
-  removeFromList
+  removeFromList,
 }

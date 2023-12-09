@@ -6,7 +6,7 @@ import useContainer from '../hook'
 
 jest.mock('src/store/app/selectors', () => ({
   modalPropsSelector: () => null,
-  modalTypeSelector: () => 'MODAL_CREATE_LIST'
+  modalTypeSelector: () => 'MODAL_CREATE_LIST',
 }))
 
 describe('ModalRoot useContainer hook', () => {

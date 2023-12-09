@@ -2,7 +2,7 @@ import {
   hideModal,
   hideNotification,
   showModal,
-  showNotification
+  showNotification,
 } from './reducer'
 
 export { hideModal, hideNotification, showModal, showNotification }

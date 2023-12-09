@@ -3,7 +3,7 @@ import mockState from 'src/__mocks__/mockState'
 import {
   modalPropsSelector,
   modalTypeSelector,
-  notificationsSelector
+  notificationsSelector,
 } from '../selectors'
 
 describe('app selectors', () => {

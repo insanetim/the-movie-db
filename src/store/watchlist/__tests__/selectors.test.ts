@@ -3,7 +3,7 @@ import mockState from 'src/__mocks__/mockState'
 import {
   watchlistErrorSelector,
   watchlistLoadingSelector,
-  watchlistMoviesSelector
+  watchlistMoviesSelector,
 } from '../selectors'
 
 describe('watchlist selectors', () => {

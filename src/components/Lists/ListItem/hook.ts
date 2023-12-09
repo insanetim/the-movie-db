@@ -18,7 +18,7 @@ const useContainer = ({ listId }: ListItemHookProps): ListItemHook => {
     action: fetchLists(page),
     items: lists?.results,
     page,
-    setSearchParams
+    setSearchParams,
   })
 
   const handleClick = () => {
@@ -35,7 +35,7 @@ const useContainer = ({ listId }: ListItemHookProps): ListItemHook => {
 
     Modal.confirm({
       onOk,
-      title: 'Do you want to delete list?'
+      title: 'Do you want to delete list?',
     })
 
     return onOk

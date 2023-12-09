@@ -36,7 +36,7 @@ const MovieItem: React.FC<MovieItemProps> = ({ handleMovieDelete, movie }) => {
         data-testid='deleteMovieBtn'
         key='delete'
         onClick={e => handleMovieDelete(movie.id, e)}
-      />
+      />,
     ]
   }
 

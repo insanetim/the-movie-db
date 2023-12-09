@@ -7,20 +7,20 @@ import * as sessionActions from 'src/store/session/actions'
 import useContainer from '../hook'
 
 jest.mock('src/store/session/selectors', () => ({
-  loadingSelector: () => false
+  loadingSelector: () => false,
 }))
 
 jest.mock('react-router-dom', () => ({
   ...jest.requireActual('react-router-dom'),
   useLocation: jest.fn().mockImplementation(() => ({})),
-  useNavigate: jest.fn()
+  useNavigate: jest.fn(),
 }))
 const navigate = jest.fn()
 jest.mocked(useNavigate).mockReturnValue(navigate)
 
 jest.mock('@reduxjs/toolkit', () => ({
   ...jest.requireActual('@reduxjs/toolkit'),
-  unwrapResult: jest.fn()
+  unwrapResult: jest.fn(),
 }))
 
 describe('Login useContainer hook', () => {

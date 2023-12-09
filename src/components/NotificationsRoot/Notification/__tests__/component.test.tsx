@@ -5,7 +5,7 @@ import Notification from '../component'
 import { NotificationHook } from '../types'
 
 const mockedHook: NotificationHook = {
-  closeNotification: jest.fn()
+  closeNotification: jest.fn(),
 }
 jest.mock('../hook', () => jest.fn(() => mockedHook))
 
@@ -16,7 +16,7 @@ describe('Notification component', () => {
       hideNotification: jest.fn(),
       id: 'test/id',
       messageText: 'test/message',
-      messageType: NOTIFICATION_TYPE.SUCCESS
+      messageType: NOTIFICATION_TYPE.SUCCESS,
     }
     const { asFragment } = render(<Notification {...props} />)
 

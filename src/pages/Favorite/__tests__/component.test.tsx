@@ -15,8 +15,8 @@ const mockedHook: FavoriteHook = {
     page: 1,
     results: [mockMovie],
     total_pages: 10,
-    total_results: 200
-  }
+    total_results: 200,
+  },
 }
 jest.mock('../hook', () => jest.fn(() => mockedHook))
 
@@ -52,7 +52,7 @@ describe('Favorite component', () => {
       page: 1,
       results: [mockMovie],
       total_pages: 1,
-      total_results: 1
+      total_results: 1,
     }
     const { asFragment } = render(<Favorite />, { wrapper: Wrapper })
 

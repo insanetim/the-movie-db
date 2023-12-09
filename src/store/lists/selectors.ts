@@ -25,5 +25,5 @@ export {
   listDetailSelector,
   listsErrorSelector,
   listsLoadingSelector,
-  listsSelector
+  listsSelector,
 }

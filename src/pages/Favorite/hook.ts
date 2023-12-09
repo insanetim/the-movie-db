@@ -9,7 +9,7 @@ import { fetchFavorite } from 'src/store/favorite/actions'
 import {
   favoriteErrorSelector,
   favoriteLoadingSelector,
-  favoriteMoviesSelector
+  favoriteMoviesSelector,
 } from 'src/store/favorite/selectors'
 import { changeMovieInFavorite } from 'src/store/movie/actions'
 import { accountSelector } from 'src/store/session/selectors'
@@ -29,7 +29,7 @@ const useContainer = (): FavoriteHook => {
     action: fetchFavorite(page),
     items: movies?.results,
     page,
-    setSearchParams
+    setSearchParams,
   })
 
   const handlePagination = (page: number) => {
@@ -49,7 +49,7 @@ const useContainer = (): FavoriteHook => {
 
     Modal.confirm({
       onOk,
-      title: 'Do you want to delete movie from favorite?'
+      title: 'Do you want to delete movie from favorite?',
     })
 
     return onOk

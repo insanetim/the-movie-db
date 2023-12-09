@@ -11,7 +11,7 @@ const mockList: IList = {
   item_count: 1,
   list_type: '',
   name: 'test/list',
-  poster_path: null
+  poster_path: null,
 }
 
 const mockListDetail: IListDetail = {
@@ -27,14 +27,14 @@ const mockListDetail: IListDetail = {
   page: 1,
   poster_path: null,
   total_pages: 1,
-  total_results: 1
+  total_results: 1,
 }
 
 const mockListsResponse: IResponse<IList> = {
   page: 1,
   results: [mockList],
   total_pages: 1,
-  total_results: 1
+  total_results: 1,
 }
 
 export { mockList, mockListDetail, mockListsResponse }

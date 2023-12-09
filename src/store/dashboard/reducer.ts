@@ -4,7 +4,7 @@ import { fetchSearch, fetchTrending } from './actions'
 import { DashboardState } from './types'
 
 const initialState: DashboardState = {
-  data: null
+  data: null,
 }
 
 const dashboardReducer = createReducer(initialState, builder => {

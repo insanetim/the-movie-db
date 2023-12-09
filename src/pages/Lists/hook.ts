@@ -7,7 +7,7 @@ import { fetchLists } from 'src/store/lists/actions'
 import {
   listsErrorSelector,
   listsLoadingSelector,
-  listsSelector
+  listsSelector,
 } from 'src/store/lists/selectors'
 import { accountSelector } from 'src/store/session/selectors'
 import getParams from 'src/utils/helpers/getParams'
@@ -39,7 +39,7 @@ const useContainer = (): ListsHook => {
     dispatch(
       showModal({
         modalProps: { onSuccess },
-        modalType: 'MODAL_CREATE_LIST'
+        modalType: 'MODAL_CREATE_LIST',
       })
     )
 

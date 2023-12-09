@@ -13,20 +13,20 @@ const mockedHook: PopoverContentHook = {
     page: 1,
     results: [mockList],
     total_pages: 1,
-    total_results: 1
-  }
+    total_results: 1,
+  },
 }
 jest.mock('../hook', () => jest.fn(() => mockedHook))
 
 describe('PopoverContent component', () => {
   const props: PopoverContentProps = {
     movieId: 1234,
-    setPopoverOpen: jest.fn()
+    setPopoverOpen: jest.fn(),
   }
 
   it('should match snapshot', () => {
     const { asFragment } = render(<PopoverContent {...props} />, {
-      wrapper: Wrapper
+      wrapper: Wrapper,
     })
 
     expect(asFragment()).toMatchSnapshot()
@@ -41,7 +41,7 @@ describe('PopoverContent component', () => {
 
     expect(mockedHook.handleAddToList).toHaveBeenCalledWith({
       listId: 1234,
-      listName: 'test/list'
+      listName: 'test/list',
     })
   })
 

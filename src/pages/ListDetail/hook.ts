@@ -7,12 +7,12 @@ import { IMovie } from 'src/interfaces/movie.interface'
 import {
   deleteList,
   fetchListDetail,
-  removeFromList
+  removeFromList,
 } from 'src/store/lists/actions'
 import {
   listDetailErrorSelector,
   listDetailLoadingSelector,
-  listDetailSelector
+  listDetailSelector,
 } from 'src/store/lists/selectors'
 import getParams from 'src/utils/helpers/getParams'
 
@@ -31,7 +31,7 @@ const useContainer = (): ListDetailHook => {
     action: fetchListDetail({ listId, page }),
     items: list?.items,
     page,
-    setSearchParams
+    setSearchParams,
   })
 
   const handlePagination = (page: number) => {
@@ -46,7 +46,7 @@ const useContainer = (): ListDetailHook => {
 
     Modal.confirm({
       onOk,
-      title: 'Do you want to delete list?'
+      title: 'Do you want to delete list?',
     })
 
     return onOk
@@ -65,7 +65,7 @@ const useContainer = (): ListDetailHook => {
 
     Modal.confirm({
       onOk,
-      title: 'Do you want to delete movie from this list?'
+      title: 'Do you want to delete movie from this list?',
     })
 
     return onOk
@@ -81,7 +81,7 @@ const useContainer = (): ListDetailHook => {
     handleMovieDelete,
     handlePagination,
     list,
-    loading
+    loading,
   }
 }
 

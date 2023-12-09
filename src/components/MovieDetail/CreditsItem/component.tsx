@@ -7,7 +7,7 @@ import { CreditsItemProps } from './types'
 const CreditsItem: React.FC<CreditsItemProps> = ({
   description,
   profilePath,
-  title
+  title,
 }) => {
   let cover = (
     <div className='ant-card-cover--no-image'>

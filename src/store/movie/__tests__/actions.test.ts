@@ -1,6 +1,6 @@
 import {
   mockMovieDetail,
-  mockMovieDetailExtended
+  mockMovieDetailExtended,
 } from 'src/__mocks__/mockMovie'
 import { dispatch, getState } from 'src/__mocks__/react-redux'
 import { NOTIFICATION_TYPE } from 'src/constants/app'
@@ -10,19 +10,19 @@ import { showNotification } from 'src/store/app/actions'
 import {
   changeMovieInFavorite,
   changeMovieInWatchlist,
-  fetchMovieDetail
+  fetchMovieDetail,
 } from '../actions'
 
 jest.mock<typeof import('@reduxjs/toolkit')>('@reduxjs/toolkit', () => ({
   ...jest.requireActual('@reduxjs/toolkit'),
-  nanoid: () => 'test/id'
+  nanoid: () => 'test/id',
 }))
 
 const accountId = 1234
 const sessionId = 'test/session_id'
 jest.mock('src/store/session/selectors', () => ({
   accountSelector: () => ({ id: accountId }),
-  sessionIdSelector: () => sessionId
+  sessionIdSelector: () => sessionId,
 }))
 
 describe('movie actions', () => {
@@ -35,7 +35,7 @@ describe('movie actions', () => {
   const errorMessage = 'Something went wrong!'
   const errorNotification = showNotification({
     messageText: errorMessage,
-    messageType: NOTIFICATION_TYPE.ERROR
+    messageType: NOTIFICATION_TYPE.ERROR,
   })
   const movieId = 1234
   const inFavorite = true
@@ -91,7 +91,7 @@ describe('movie actions', () => {
         accountId,
         inFavorite,
         movieId,
-        sessionId
+        sessionId,
       })
       expect(calls).toHaveLength(2)
       expect(calls[0][0].type).toBe(changeMovieInFavorite.pending.type)
@@ -125,7 +125,7 @@ describe('movie actions', () => {
         accountId,
         inWatchlist,
         movieId,
-        sessionId
+        sessionId,
       })
       expect(calls).toHaveLength(2)
       expect(calls[0][0].type).toBe(changeMovieInWatchlist.pending.type)

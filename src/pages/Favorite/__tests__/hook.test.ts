@@ -13,12 +13,12 @@ import useContainer from '../hook'
 jest.mock('src/store/favorite/selectors', () => ({
   favoriteErrorSelector: () => null,
   favoriteLoadingSelector: () => true,
-  favoriteMoviesSelector: () => null
+  favoriteMoviesSelector: () => null,
 }))
 
 jest.mock('react-router-dom', () => ({
   ...jest.requireActual('react-router-dom'),
-  useSearchParams: jest.fn()
+  useSearchParams: jest.fn(),
 }))
 const searchParams = new URLSearchParams()
 const setSearchParams = jest.fn()
@@ -60,19 +60,19 @@ describe('Favotite useContainer hook', () => {
 
     await act(() => {
       onOk = result.current.handleMovieDelete(1234, {
-        stopPropagation: jest.fn()
+        stopPropagation: jest.fn(),
       } as never)
       onOk()
     })
 
     expect(modalSpy).toHaveBeenCalledWith({
       onOk,
-      title: 'Do you want to delete movie from favorite?'
+      title: 'Do you want to delete movie from favorite?',
     })
     expect(dispatch).toHaveBeenCalled()
     expect(changeMovieInFavorite).toHaveBeenCalledWith({
       inFavorite: false,
-      movieId: 1234
+      movieId: 1234,
     })
     expect(updatePage).toHaveBeenCalled()
   })

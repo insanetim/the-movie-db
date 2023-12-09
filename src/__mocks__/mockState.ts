@@ -5,41 +5,41 @@ const mockState: RootState = {
   app: {
     modal: {
       modalProps: null,
-      modalType: null
+      modalType: null,
     },
-    notifications: []
+    notifications: [],
   },
   dashboard: {
-    data: null
+    data: null,
   },
   favorite: {
     data: null,
     error: null,
-    loading: true
+    loading: true,
   },
   lists: {
     createdLists: {
       data: null,
       error: null,
-      loading: true
+      loading: true,
     },
     listDetail: {
       data: null,
       error: null,
-      loading: true
-    }
+      loading: true,
+    },
   },
   movie: movieInitialState,
   session: {
     account: null,
     loading: false,
-    sessionId: ''
+    sessionId: '',
   },
   watchlist: {
     data: null,
     error: null,
-    loading: true
-  }
+    loading: true,
+  },
 }
 
 export default mockState

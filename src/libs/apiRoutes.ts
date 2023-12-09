@@ -7,7 +7,7 @@ import {
   IMovieCredits,
   IMovieDetail,
   IMovieImages,
-  IMoviesList
+  IMoviesList,
 } from 'src/interfaces/movie.interface'
 import httpClient from 'src/libs/api/httpClient'
 import { CreateListResponse } from 'src/store/lists/types'
@@ -16,9 +16,9 @@ import { IRequestToken, ISession, IUserData } from 'src/store/session/types'
 // Auth
 export const createRequestToken = async () => {
   const {
-    data: { request_token }
+    data: { request_token },
   } = await httpClient.request<IRequestToken>({
-    url: '/authentication/token/new'
+    url: '/authentication/token/new',
   })
 
   return request_token
@@ -26,7 +26,7 @@ export const createRequestToken = async () => {
 
 export const validateWithLogin = async ({
   requestToken,
-  userData
+  userData,
 }: {
   requestToken: string
   userData: IUserData
@@ -34,21 +34,21 @@ export const validateWithLogin = async ({
   await httpClient.request({
     data: { ...userData, request_token: requestToken },
     method: 'post',
-    url: '/authentication/token/validate_with_login'
+    url: '/authentication/token/validate_with_login',
   })
 }
 
 export const createSession = async ({
-  requestToken
+  requestToken,
 }: {
   requestToken: string
 }) => {
   const {
-    data: { session_id }
+    data: { session_id },
   } = await httpClient.request<ISession>({
     data: { request_token: requestToken },
     method: 'post',
-    url: '/authentication/session/new'
+    url: '/authentication/session/new',
   })
 
   return session_id
@@ -58,19 +58,19 @@ export const deleteSession = async ({ sessionId }: { sessionId: string }) => {
   await httpClient.request({
     data: { session_id: sessionId },
     method: 'delete',
-    url: '/authentication/session'
+    url: '/authentication/session',
   })
 }
 
 // Account
 export const getAccountDetails = async ({
-  sessionId
+  sessionId,
 }: {
   sessionId: string
 }) => {
   const { data } = await httpClient.request<IAccount>({
     params: { session_id: sessionId },
-    url: '/account'
+    url: '/account',
   })
 
   return data
@@ -80,7 +80,7 @@ export const getAccountDetails = async ({
 export const getTrending = async ({ page }: { page: string }) => {
   const { data } = await httpClient.request<IMoviesList>({
     params: { page },
-    url: '/trending/movie/day'
+    url: '/trending/movie/day',
   })
 
   return data
@@ -88,14 +88,14 @@ export const getTrending = async ({ page }: { page: string }) => {
 
 export const searchMovies = async ({
   page,
-  query
+  query,
 }: {
   page: string
   query: string
 }) => {
   const { data } = await httpClient.request<IMoviesList>({
     params: { page, query },
-    url: '/search/movie'
+    url: '/search/movie',
   })
 
   return data
@@ -105,7 +105,7 @@ export const searchMovies = async ({
 export const getCreatedLists = async ({
   accountId,
   page,
-  sessionId
+  sessionId,
 }: {
   accountId: IAccount['id']
   page: string
@@ -113,7 +113,7 @@ export const getCreatedLists = async ({
 }) => {
   const { data } = await httpClient.request<IListsList>({
     params: { page, session_id: sessionId },
-    url: `/account/${accountId}/lists`
+    url: `/account/${accountId}/lists`,
   })
 
   return data
@@ -121,14 +121,14 @@ export const getCreatedLists = async ({
 
 export const getListDetails = async ({
   listId,
-  page
+  page,
 }: {
   listId: IList['id']
   page: string
 }) => {
   const { data } = await httpClient.request<IListDetail>({
     params: { page },
-    url: `/list/${listId}`
+    url: `/list/${listId}`,
   })
 
   return data
@@ -136,18 +136,18 @@ export const getListDetails = async ({
 
 export const createNewList = async ({
   listData,
-  sessionId
+  sessionId,
 }: {
   listData: ListData
   sessionId: string
 }) => {
   const {
-    data: { list_id }
+    data: { list_id },
   } = await httpClient.request<CreateListResponse>({
     data: { ...listData },
     method: 'post',
     params: { session_id: sessionId },
-    url: '/list'
+    url: '/list',
   })
 
   return list_id
@@ -156,7 +156,7 @@ export const createNewList = async ({
 export const addMovieToList = async ({
   listId,
   movieId,
-  sessionId
+  sessionId,
 }: {
   listId: IList['id']
   movieId: IMovie['id']
@@ -166,14 +166,14 @@ export const addMovieToList = async ({
     data: { media_id: movieId },
     method: 'post',
     params: { session_id: sessionId },
-    url: `/list/${listId}/add_item`
+    url: `/list/${listId}/add_item`,
   })
 }
 
 export const removeMovieFromList = async ({
   listId,
   movieId,
-  sessionId
+  sessionId,
 }: {
   listId: IList['id']
   movieId: IMovie['id']
@@ -183,13 +183,13 @@ export const removeMovieFromList = async ({
     data: { media_id: movieId },
     method: 'post',
     params: { session_id: sessionId },
-    url: `/list/${listId}/remove_item`
+    url: `/list/${listId}/remove_item`,
   })
 }
 
 export const deleteMyList = async ({
   listId,
-  sessionId
+  sessionId,
 }: {
   listId: IList['id']
   sessionId: string
@@ -197,7 +197,7 @@ export const deleteMyList = async ({
   await httpClient.request({
     method: 'delete',
     params: { session_id: sessionId },
-    url: `/list/${listId}`
+    url: `/list/${listId}`,
   })
 }
 
@@ -205,7 +205,7 @@ export const deleteMyList = async ({
 export const getWatchlist = async ({
   accountId,
   page,
-  sessionId
+  sessionId,
 }: {
   accountId: IAccount['id']
   page: string
@@ -213,7 +213,7 @@ export const getWatchlist = async ({
 }) => {
   const { data } = await httpClient.request<IMoviesList>({
     params: { page, session_id: sessionId },
-    url: `/account/${accountId}/watchlist/movies`
+    url: `/account/${accountId}/watchlist/movies`,
   })
 
   return data
@@ -223,7 +223,7 @@ export const addToWatchlist = async ({
   accountId,
   inWatchlist,
   movieId,
-  sessionId
+  sessionId,
 }: {
   accountId: IAccount['id']
   inWatchlist: boolean
@@ -234,7 +234,7 @@ export const addToWatchlist = async ({
     data: { media_id: movieId, media_type: 'movie', watchlist: inWatchlist },
     method: 'post',
     params: { session_id: sessionId },
-    url: `/account/${accountId}/watchlist`
+    url: `/account/${accountId}/watchlist`,
   })
 }
 
@@ -242,7 +242,7 @@ export const addToWatchlist = async ({
 export const getFavorite = async ({
   accountId,
   page,
-  sessionId
+  sessionId,
 }: {
   accountId: IAccount['id']
   page: string
@@ -250,7 +250,7 @@ export const getFavorite = async ({
 }) => {
   const { data } = await httpClient.request<IMoviesList>({
     params: { page, session_id: sessionId },
-    url: `/account/${accountId}/favorite/movies`
+    url: `/account/${accountId}/favorite/movies`,
   })
 
   return data
@@ -260,7 +260,7 @@ export const addToFovorite = async ({
   accountId,
   inFavorite,
   movieId,
-  sessionId
+  sessionId,
 }: {
   accountId: IAccount['id']
   inFavorite: boolean
@@ -271,32 +271,32 @@ export const addToFovorite = async ({
     data: { favorite: inFavorite, media_id: movieId, media_type: 'movie' },
     method: 'post',
     params: { session_id: sessionId },
-    url: `/account/${accountId}/favorite`
+    url: `/account/${accountId}/favorite`,
   })
 }
 
 // Movie
 export const getMovieDetails = async ({
-  movieId
+  movieId,
 }: {
   movieId: IMovie['id']
 }) => {
   const { data } = await httpClient.request<IMovieDetail>({
-    url: `/movie/${movieId}`
+    url: `/movie/${movieId}`,
   })
 
   return data
 }
 
 export const getMovieImages = async ({
-  movieId
+  movieId,
 }: {
   movieId: IMovie['id']
 }) => {
   const {
-    data: { backdrops }
+    data: { backdrops },
   } = await httpClient.request<IMovieImages>({
-    url: `/movie/${movieId}/images`
+    url: `/movie/${movieId}/images`,
   })
 
   return backdrops.slice(0, 7)
@@ -304,26 +304,26 @@ export const getMovieImages = async ({
 
 export const getMovieAccountStates = async ({
   movieId,
-  sessionId
+  sessionId,
 }: {
   movieId: IMovie['id']
   sessionId: string
 }) => {
   const { data } = await httpClient.request<IMovieAccountStates>({
     params: { session_id: sessionId },
-    url: `/movie/${movieId}/account_states`
+    url: `/movie/${movieId}/account_states`,
   })
 
   return data
 }
 
 export const getMovieCredits = async ({
-  movieId
+  movieId,
 }: {
   movieId: IMovie['id']
 }) => {
   const { data } = await httpClient.request<IMovieCredits>({
-    url: `/movie/${movieId}/credits`
+    url: `/movie/${movieId}/credits`,
   })
 
   return data

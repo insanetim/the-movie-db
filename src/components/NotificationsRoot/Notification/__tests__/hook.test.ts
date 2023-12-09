@@ -12,7 +12,7 @@ describe('Notification useContainer hook', () => {
     hideNotification: jest.fn(),
     id: 'test/id',
     messageText: 'test/message',
-    messageType: NOTIFICATION_TYPE.SUCCESS
+    messageType: NOTIFICATION_TYPE.SUCCESS,
   }
 
   it('should match snapshot', () => {
@@ -39,7 +39,7 @@ describe('Notification useContainer hook', () => {
       duration: props.duration,
       key: props.id,
       message: props.messageText,
-      onClose: result.current.closeNotification
+      onClose: result.current.closeNotification,
     })
   })
 })

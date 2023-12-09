@@ -6,7 +6,7 @@ import useContainer from '../hook'
 
 jest.mock('react-router-dom', () => ({
   ...jest.requireActual('react-router-dom'),
-  useSearchParams: jest.fn()
+  useSearchParams: jest.fn(),
 }))
 const searchParams = new URLSearchParams()
 const setSearchParams = jest.fn()
@@ -30,7 +30,7 @@ describe('SearchInput useContainer hook', () => {
 
     act(() => {
       result.current.handleChange({
-        target: { value: 'test/search' }
+        target: { value: 'test/search' },
       } as React.ChangeEvent<HTMLInputElement>)
     })
 

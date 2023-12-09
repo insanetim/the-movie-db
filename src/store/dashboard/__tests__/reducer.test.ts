@@ -21,7 +21,7 @@ describe('dashboardReducer', () => {
   it('should handle "fetchTrending/fulfilled" action', () => {
     const action = {
       payload: 'test/data',
-      type: fetchTrending.fulfilled.type
+      type: fetchTrending.fulfilled.type,
     }
     const newState = { data: action.payload }
     const result = dashboardReducer(state, action)
@@ -39,7 +39,7 @@ describe('dashboardReducer', () => {
   it('should handle "fetchSearch/fulfilled" action', () => {
     const action = {
       payload: 'test/data',
-      type: fetchSearch.fulfilled.type
+      type: fetchSearch.fulfilled.type,
     }
     const newState = { data: action.payload }
     const result = dashboardReducer(state, action)

@@ -25,8 +25,8 @@ const LoginForm: React.FC<LoginFormProps> = ({ isSubmitting, onSubmit }) => {
           { message: 'Password is required', required: true },
           {
             message: 'Password must be at least 4 characters',
-            min: 4
-          }
+            min: 4,
+          },
         ]}
       >
         <Input
