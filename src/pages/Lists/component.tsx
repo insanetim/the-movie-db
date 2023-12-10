@@ -1,7 +1,9 @@
 import { PlusCircleOutlined } from '@ant-design/icons'
+import { Typography } from 'antd'
 import { isEmpty, isNotNil } from 'ramda'
 import { Helmet } from 'react-helmet'
 import ListsList from 'src/components/Lists/ListsList'
+import IconButton from 'src/components/UI/Buttons/IconButton'
 import Empty from 'src/components/UI/Empty/component'
 import Error from 'src/components/UI/Error'
 import Loading from 'src/components/UI/Loading'
@@ -48,10 +50,13 @@ const Lists: React.FC = () => {
       <Helmet title={metaTitle('My Lists')} />
       <div className='container top-margin'>
         <PageTitle>
-          My Lists{' '}
-          <PlusCircleOutlined
+          <Typography.Title style={{ marginBottom: 0 }}>
+            My Lists
+          </Typography.Title>
+          <IconButton
             data-testid='createListBtn'
-            onClick={handleCreateList}
+            handleClick={handleCreateList}
+            icon={<PlusCircleOutlined />}
           />
         </PageTitle>
         {content}

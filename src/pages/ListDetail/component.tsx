@@ -1,7 +1,9 @@
 import { MinusCircleOutlined } from '@ant-design/icons'
+import { Typography } from 'antd'
 import { isEmpty, isNotNil } from 'ramda'
 import { Helmet } from 'react-helmet'
 import MoviesList from 'src/components/Movies/MoviesList'
+import IconButton from 'src/components/UI/Buttons/IconButton'
 import Empty from 'src/components/UI/Empty'
 import Error from 'src/components/UI/Error'
 import Loading from 'src/components/UI/Loading'
@@ -63,10 +65,13 @@ const ListDetails: React.FC = () => {
       <Helmet title={metaTitle(list?.name ?? 'My List')} />
       <div className='container top-margin'>
         <PageTitle>
-          {list?.name ?? 'My List'}{' '}
-          <MinusCircleOutlined
+          <Typography.Title style={{ marginBottom: 0 }}>
+            {list?.name ?? 'My List'}
+          </Typography.Title>
+          <IconButton
             data-testid='deleteListBtn'
-            onClick={handleListDelete}
+            handleClick={handleListDelete}
+            icon={<MinusCircleOutlined />}
           />
         </PageTitle>
         {content}

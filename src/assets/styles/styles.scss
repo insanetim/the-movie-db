@@ -136,12 +136,25 @@ body {
   }
 }
 
-.icon-btn {
-  cursor: pointer;
-}
-
-.anticon {
+.ant-btn.ant-btn-circle.ant-btn-text.ant-btn-icon-only {
   display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 38px;
+  height: 38px;
+  padding: 0;
+
+  cursor: pointer;
+
+  .anticon {
+    font-size: 38px;
+  }
+
+  &:hover,
+  &:active {
+    background: transparent !important;
+  }
 }
 
 .logo {

@@ -1,24 +1,20 @@
-import Icon, {
-  BookFilled,
-  BookOutlined,
-  HeartFilled,
-  HeartOutlined,
-  PlusCircleOutlined,
-} from '@ant-design/icons'
-import { CustomIconComponentProps } from '@ant-design/icons/lib/components/Icon'
+import { PlusCircleOutlined } from '@ant-design/icons'
 import { Col, Popover, Row, Tag, Typography } from 'antd'
 import { format } from 'date-fns'
 import ISO6391 from 'iso-639-1'
 import { isEmpty, isNil } from 'ramda'
-import { ForwardRefExoticComponent } from 'react'
 import { Helmet } from 'react-helmet'
 import CastList from 'src/components/MovieDetail/CastList'
 import CrewList from 'src/components/MovieDetail/CrewList'
 import ImageGallery from 'src/components/MovieDetail/ImageGallery'
 import PopoverContent from 'src/components/MovieDetail/PopoverContent'
+import AddToFavoriteButton from 'src/components/UI/Buttons/AddToFavoriteButton'
+import AddToWatchlistButton from 'src/components/UI/Buttons/AddToWatchlistButton'
+import IconButton from 'src/components/UI/Buttons/IconButton'
 import Empty from 'src/components/UI/Empty/component'
 import Error from 'src/components/UI/Error'
 import Loading from 'src/components/UI/Loading'
+import PageTitle from 'src/components/UI/PageTitle'
 import convertDuration from 'src/utils/convertDataHelpers/convertDuration'
 import convertMoney from 'src/utils/convertDataHelpers/convertMoney'
 import metaTitle from 'src/utils/helpers/metaTitle'
@@ -60,13 +56,6 @@ const Movie: React.FC = () => {
     )
   }
 
-  const favoriteIcon = (
-    movie.accountStates.favorite ? HeartFilled : HeartOutlined
-  ) as ForwardRefExoticComponent<CustomIconComponentProps>
-  const watchlistIcon = (
-    movie.accountStates.watchlist ? BookFilled : BookOutlined
-  ) as ForwardRefExoticComponent<CustomIconComponentProps>
-
   const title = `${movie.title}${
     movie.release_date
       ? ` (${format(new Date(movie.release_date), 'yyyy')})`
@@ -83,48 +72,47 @@ const Movie: React.FC = () => {
         />
       )}
       <div className='container top-margin'>
-        <Row>
-          <Col span={24}>
-            <Typography.Title>
-              <span>
-                {movie.title}
-                {movie.release_date &&
-                  ` (${format(new Date(movie.release_date), 'yyyy')})`}
-              </span>{' '}
-              <Popover
-                content={
-                  <PopoverContent
-                    movieId={movie.id}
-                    setPopoverOpen={setPopoverOpen}
-                  />
-                }
-                destroyTooltipOnHide
-                onOpenChange={open => setPopoverOpen(open)}
-                open={popoverOpen}
-                placement='top'
-                title='Add movie to list'
-                trigger='click'
-              >
-                <PlusCircleOutlined data-testid='addMovieToListPopover' />
-              </Popover>{' '}
-              <Icon
-                component={favoriteIcon}
-                data-testid='addToFavoriteBtn'
-                onClick={handleFavoriteClick}
-              />{' '}
-              <Icon
-                component={watchlistIcon}
-                data-testid='addToWatchlistBtn'
-                onClick={handleWatchlistClick}
+        <PageTitle>
+          <Typography.Title style={{ marginBottom: 0 }}>
+            {title}
+          </Typography.Title>
+          <Popover
+            content={
+              <PopoverContent
+                movieId={movie.id}
+                setPopoverOpen={setPopoverOpen}
               />
-            </Typography.Title>
-            {!isEmpty(movie.overview) && (
-              <>
-                <Typography.Title level={3}>Overview</Typography.Title>
-                <Typography.Paragraph>{movie.overview}</Typography.Paragraph>
-              </>
-            )}
-          </Col>
+            }
+            destroyTooltipOnHide
+            onOpenChange={open => setPopoverOpen(open)}
+            open={popoverOpen}
+            placement='top'
+            title='Add movie to list'
+            trigger='click'
+          >
+            <IconButton
+              data-testid='addMovieToListPopover'
+              icon={<PlusCircleOutlined />}
+            />
+          </Popover>
+          <AddToFavoriteButton
+            data-testid='addToFavoriteBtn'
+            handleClick={handleFavoriteClick}
+            inFavorite={movie.accountStates.favorite}
+          />
+          <AddToWatchlistButton
+            data-testid='addToWatchlistBtn'
+            handleClick={handleWatchlistClick}
+            inWatchlist={movie.accountStates.watchlist}
+          />
+        </PageTitle>
+        <Row>
+          {!isEmpty(movie.overview) && (
+            <Col span={24}>
+              <Typography.Title level={3}>Overview</Typography.Title>
+              <Typography.Paragraph>{movie.overview}</Typography.Paragraph>
+            </Col>
+          )}
           {movie.original_language && (
             <Col span={24}>
               <Typography.Paragraph>

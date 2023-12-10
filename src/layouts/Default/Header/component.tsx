@@ -13,8 +13,8 @@ const Header: React.FC = () => {
     { key: 'item-1', label: <Link to='/'>Dashboard</Link> },
     { key: 'item-2', type: 'divider' },
     { key: 'item-3', label: <Link to='/lists'>My Lists</Link> },
-    { key: 'item-4', label: <Link to='/watchlist'>Watchlist</Link> },
     { key: 'item-5', label: <Link to='/favorite'>Favorite</Link> },
+    { key: 'item-4', label: <Link to='/watchlist'>Watchlist</Link> },
     { key: 'item-6', type: 'divider' },
     { key: 'item-7', label: 'Logout', onClick: handleLogOut },
   ]

@@ -1,3 +1,4 @@
+import { Typography } from 'antd'
 import { isEmpty, isNotNil } from 'ramda'
 import { Helmet } from 'react-helmet'
 import MoviesList from 'src/components/Movies/MoviesList'
@@ -51,7 +52,11 @@ const Favorite: React.FC = () => {
     <>
       <Helmet title={metaTitle('Favorite')} />
       <div className='container top-margin'>
-        <PageTitle>Favorite</PageTitle>
+        <PageTitle>
+          <Typography.Title style={{ marginBottom: 0 }}>
+            Favorite
+          </Typography.Title>
+        </PageTitle>
         {content}
       </div>
     </>

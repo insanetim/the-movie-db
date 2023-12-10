@@ -11,35 +11,49 @@ exports[`ListDetail component should match snapshot 1`] = `
       <div
         class="ant-col ant-col-24 css-dev-only-do-not-override-6j9yrn"
       >
-        <h1
-          class="ant-typography css-dev-only-do-not-override-6j9yrn"
+        <div
+          class="ant-flex css-dev-only-do-not-override-6j9yrn ant-flex-align-center ant-flex-gap-middle"
+          style="margin-bottom: 24px;"
         >
-          test/list 
-          <span
-            aria-label="minus-circle"
-            class="anticon anticon-minus-circle"
-            data-testid="deleteListBtn"
-            role="img"
-            tabindex="-1"
+          <h1
+            class="ant-typography css-dev-only-do-not-override-6j9yrn"
+            style="margin-bottom: 0px;"
           >
-            <svg
-              aria-hidden="true"
-              data-icon="minus-circle"
-              fill="currentColor"
-              focusable="false"
-              height="1em"
-              viewBox="64 64 896 896"
-              width="1em"
+            test/list
+          </h1>
+          <button
+            class="ant-btn css-dev-only-do-not-override-6j9yrn ant-btn-circle ant-btn-text ant-btn-icon-only"
+            data-testid="deleteListBtn"
+            type="button"
+          >
+            <span
+              class="ant-btn-icon"
             >
-              <path
-                d="M696 480H328c-4.4 0-8 3.6-8 8v48c0 4.4 3.6 8 8 8h368c4.4 0 8-3.6 8-8v-48c0-4.4-3.6-8-8-8z"
-              />
-              <path
-                d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"
-              />
-            </svg>
-          </span>
-        </h1>
+              <span
+                aria-label="minus-circle"
+                class="anticon anticon-minus-circle"
+                role="img"
+              >
+                <svg
+                  aria-hidden="true"
+                  data-icon="minus-circle"
+                  fill="currentColor"
+                  focusable="false"
+                  height="1em"
+                  viewBox="64 64 896 896"
+                  width="1em"
+                >
+                  <path
+                    d="M696 480H328c-4.4 0-8 3.6-8 8v48c0 4.4 3.6 8 8 8h368c4.4 0 8-3.6 8-8v-48c0-4.4-3.6-8-8-8z"
+                  />
+                  <path
+                    d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"
+                  />
+                </svg>
+              </span>
+            </span>
+          </button>
+        </div>
       </div>
     </div>
     <div
@@ -316,35 +330,49 @@ exports[`ListDetail component should match snapshot with 1 page 1`] = `
       <div
         class="ant-col ant-col-24 css-dev-only-do-not-override-6j9yrn"
       >
-        <h1
-          class="ant-typography css-dev-only-do-not-override-6j9yrn"
+        <div
+          class="ant-flex css-dev-only-do-not-override-6j9yrn ant-flex-align-center ant-flex-gap-middle"
+          style="margin-bottom: 24px;"
         >
-          test/list 
-          <span
-            aria-label="minus-circle"
-            class="anticon anticon-minus-circle"
-            data-testid="deleteListBtn"
-            role="img"
-            tabindex="-1"
+          <h1
+            class="ant-typography css-dev-only-do-not-override-6j9yrn"
+            style="margin-bottom: 0px;"
           >
-            <svg
-              aria-hidden="true"
-              data-icon="minus-circle"
-              fill="currentColor"
-              focusable="false"
-              height="1em"
-              viewBox="64 64 896 896"
-              width="1em"
+            test/list
+          </h1>
+          <button
+            class="ant-btn css-dev-only-do-not-override-6j9yrn ant-btn-circle ant-btn-text ant-btn-icon-only"
+            data-testid="deleteListBtn"
+            type="button"
+          >
+            <span
+              class="ant-btn-icon"
             >
-              <path
-                d="M696 480H328c-4.4 0-8 3.6-8 8v48c0 4.4 3.6 8 8 8h368c4.4 0 8-3.6 8-8v-48c0-4.4-3.6-8-8-8z"
-              />
-              <path
-                d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"
-              />
-            </svg>
-          </span>
-        </h1>
+              <span
+                aria-label="minus-circle"
+                class="anticon anticon-minus-circle"
+                role="img"
+              >
+                <svg
+                  aria-hidden="true"
+                  data-icon="minus-circle"
+                  fill="currentColor"
+                  focusable="false"
+                  height="1em"
+                  viewBox="64 64 896 896"
+                  width="1em"
+                >
+                  <path
+                    d="M696 480H328c-4.4 0-8 3.6-8 8v48c0 4.4 3.6 8 8 8h368c4.4 0 8-3.6 8-8v-48c0-4.4-3.6-8-8-8z"
+                  />
+                  <path
+                    d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"
+                  />
+                </svg>
+              </span>
+            </span>
+          </button>
+        </div>
       </div>
     </div>
     <div
@@ -441,35 +469,49 @@ exports[`ListDetail component should match snapshot with empty list 1`] = `
       <div
         class="ant-col ant-col-24 css-dev-only-do-not-override-6j9yrn"
       >
-        <h1
-          class="ant-typography css-dev-only-do-not-override-6j9yrn"
+        <div
+          class="ant-flex css-dev-only-do-not-override-6j9yrn ant-flex-align-center ant-flex-gap-middle"
+          style="margin-bottom: 24px;"
         >
-          My List 
-          <span
-            aria-label="minus-circle"
-            class="anticon anticon-minus-circle"
-            data-testid="deleteListBtn"
-            role="img"
-            tabindex="-1"
+          <h1
+            class="ant-typography css-dev-only-do-not-override-6j9yrn"
+            style="margin-bottom: 0px;"
           >
-            <svg
-              aria-hidden="true"
-              data-icon="minus-circle"
-              fill="currentColor"
-              focusable="false"
-              height="1em"
-              viewBox="64 64 896 896"
-              width="1em"
+            My List
+          </h1>
+          <button
+            class="ant-btn css-dev-only-do-not-override-6j9yrn ant-btn-circle ant-btn-text ant-btn-icon-only"
+            data-testid="deleteListBtn"
+            type="button"
+          >
+            <span
+              class="ant-btn-icon"
             >
-              <path
-                d="M696 480H328c-4.4 0-8 3.6-8 8v48c0 4.4 3.6 8 8 8h368c4.4 0 8-3.6 8-8v-48c0-4.4-3.6-8-8-8z"
-              />
-              <path
-                d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"
-              />
-            </svg>
-          </span>
-        </h1>
+              <span
+                aria-label="minus-circle"
+                class="anticon anticon-minus-circle"
+                role="img"
+              >
+                <svg
+                  aria-hidden="true"
+                  data-icon="minus-circle"
+                  fill="currentColor"
+                  focusable="false"
+                  height="1em"
+                  viewBox="64 64 896 896"
+                  width="1em"
+                >
+                  <path
+                    d="M696 480H328c-4.4 0-8 3.6-8 8v48c0 4.4 3.6 8 8 8h368c4.4 0 8-3.6 8-8v-48c0-4.4-3.6-8-8-8z"
+                  />
+                  <path
+                    d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"
+                  />
+                </svg>
+              </span>
+            </span>
+          </button>
+        </div>
       </div>
     </div>
     <div

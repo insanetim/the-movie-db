@@ -8,11 +8,12 @@ exports[`PageTitle component should match snapshot 1`] = `
     <div
       class="ant-col ant-col-24 css-dev-only-do-not-override-6j9yrn"
     >
-      <h1
-        class="ant-typography css-dev-only-do-not-override-6j9yrn"
+      <div
+        class="ant-flex css-dev-only-do-not-override-6j9yrn ant-flex-align-center ant-flex-gap-middle"
+        style="margin-bottom: 24px;"
       >
         test/title
-      </h1>
+      </div>
     </div>
   </div>
 </DocumentFragment>

@@ -11,11 +11,17 @@ exports[`Favorite component should match snapshot 1`] = `
       <div
         class="ant-col ant-col-24 css-dev-only-do-not-override-6j9yrn"
       >
-        <h1
-          class="ant-typography css-dev-only-do-not-override-6j9yrn"
+        <div
+          class="ant-flex css-dev-only-do-not-override-6j9yrn ant-flex-align-center ant-flex-gap-middle"
+          style="margin-bottom: 24px;"
         >
-          Favorite
-        </h1>
+          <h1
+            class="ant-typography css-dev-only-do-not-override-6j9yrn"
+            style="margin-bottom: 0px;"
+          >
+            Favorite
+          </h1>
+        </div>
       </div>
     </div>
     <div
@@ -292,11 +298,17 @@ exports[`Favorite component should match snapshot with 1 page 1`] = `
       <div
         class="ant-col ant-col-24 css-dev-only-do-not-override-6j9yrn"
       >
-        <h1
-          class="ant-typography css-dev-only-do-not-override-6j9yrn"
+        <div
+          class="ant-flex css-dev-only-do-not-override-6j9yrn ant-flex-align-center ant-flex-gap-middle"
+          style="margin-bottom: 24px;"
         >
-          Favorite
-        </h1>
+          <h1
+            class="ant-typography css-dev-only-do-not-override-6j9yrn"
+            style="margin-bottom: 0px;"
+          >
+            Favorite
+          </h1>
+        </div>
       </div>
     </div>
     <div
@@ -393,11 +405,17 @@ exports[`Favorite component should match snapshot with empty movies 1`] = `
       <div
         class="ant-col ant-col-24 css-dev-only-do-not-override-6j9yrn"
       >
-        <h1
-          class="ant-typography css-dev-only-do-not-override-6j9yrn"
+        <div
+          class="ant-flex css-dev-only-do-not-override-6j9yrn ant-flex-align-center ant-flex-gap-middle"
+          style="margin-bottom: 24px;"
         >
-          Favorite
-        </h1>
+          <h1
+            class="ant-typography css-dev-only-do-not-override-6j9yrn"
+            style="margin-bottom: 0px;"
+          >
+            Favorite
+          </h1>
+        </div>
       </div>
     </div>
     <div
@@ -460,11 +478,17 @@ exports[`Favorite component should match snapshot with error 1`] = `
       <div
         class="ant-col ant-col-24 css-dev-only-do-not-override-6j9yrn"
       >
-        <h1
-          class="ant-typography css-dev-only-do-not-override-6j9yrn"
+        <div
+          class="ant-flex css-dev-only-do-not-override-6j9yrn ant-flex-align-center ant-flex-gap-middle"
+          style="margin-bottom: 24px;"
         >
-          Favorite
-        </h1>
+          <h1
+            class="ant-typography css-dev-only-do-not-override-6j9yrn"
+            style="margin-bottom: 0px;"
+          >
+            Favorite
+          </h1>
+        </div>
       </div>
     </div>
     <div
@@ -515,11 +539,17 @@ exports[`Favorite component should match snapshot with loading 1`] = `
       <div
         class="ant-col ant-col-24 css-dev-only-do-not-override-6j9yrn"
       >
-        <h1
-          class="ant-typography css-dev-only-do-not-override-6j9yrn"
+        <div
+          class="ant-flex css-dev-only-do-not-override-6j9yrn ant-flex-align-center ant-flex-gap-middle"
+          style="margin-bottom: 24px;"
         >
-          Favorite
-        </h1>
+          <h1
+            class="ant-typography css-dev-only-do-not-override-6j9yrn"
+            style="margin-bottom: 0px;"
+          >
+            Favorite
+          </h1>
+        </div>
       </div>
     </div>
     <div
