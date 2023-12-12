@@ -6,7 +6,7 @@ import {
   mockMovieDetailExtended,
   mockMoviesResponse,
 } from 'src/__mocks__/mockMovie'
-import httpClient from 'src/libs/api/httpClient'
+import httpClient from 'src/services/api/httpClient'
 
 import * as apiRoutes from '../apiRoutes'
 

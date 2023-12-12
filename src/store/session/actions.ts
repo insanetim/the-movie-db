@@ -8,7 +8,7 @@ import {
   deleteSession,
   getAccountDetails,
   validateWithLogin,
-} from 'src/libs/apiRoutes'
+} from 'src/services/apiRoutes'
 import { showNotification } from 'src/store/app/actions'
 import errorMessage from 'src/utils/helpers/errorMessage'
 

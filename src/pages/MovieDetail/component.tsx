@@ -49,11 +49,7 @@ const Movie: React.FC = () => {
   }
 
   if (isNil(movie)) {
-    return (
-      <div>
-        <Empty description='Movie not found' />
-      </div>
-    )
+    return <Empty description='Movie not found' />
   }
 
   const title = `${movie.title}${

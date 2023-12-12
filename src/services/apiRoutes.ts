@@ -9,7 +9,7 @@ import {
   IMovieImages,
   IMoviesList,
 } from 'src/interfaces/movie.interface'
-import httpClient from 'src/libs/api/httpClient'
+import httpClient from 'src/services/api/httpClient'
 import { CreateListResponse } from 'src/store/lists/types'
 import { IRequestToken, ISession, IUserData } from 'src/store/session/types'
 

@@ -8,7 +8,7 @@ import {
   getMovieCredits,
   getMovieDetails,
   getMovieImages,
-} from 'src/libs/apiRoutes'
+} from 'src/services/apiRoutes'
 import { accountSelector, sessionIdSelector } from 'src/store/session/selectors'
 import errorMessage from 'src/utils/helpers/errorMessage'
 
