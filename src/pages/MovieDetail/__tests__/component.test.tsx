@@ -19,6 +19,10 @@ const mockedHook: MovieDetailHook = {
 }
 jest.mock('../hook', () => jest.fn(() => mockedHook))
 
+jest.mock('src/store/lists/selectors', () => ({
+  listsSelector: () => null,
+}))
+
 describe('MovieDetail component', () => {
   it('should match snapshot', () => {
     const { asFragment } = render(<Movie />, { wrapper: Wrapper })

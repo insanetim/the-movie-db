@@ -565,7 +565,7 @@ exports[`MovieDetail component should match snapshot with open popover 1`] = `
             test/title (1999)
           </h1>
           <button
-            class="ant-btn css-dev-only-do-not-override-6j9yrn ant-btn-circle ant-btn-text ant-btn-icon-only"
+            class="ant-btn css-dev-only-do-not-override-6j9yrn ant-btn-circle ant-btn-text ant-btn-icon-only ant-popover-open"
             data-testid="addMovieToListPopover"
             type="button"
           >

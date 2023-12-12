@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Overview component should match snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="ant-col ant-col-24 css-dev-only-do-not-override-6j9yrn"
+  >
+    <h3
+      class="ant-typography css-dev-only-do-not-override-6j9yrn"
+    >
+      Overview
+    </h3>
+    <div
+      class="ant-typography css-dev-only-do-not-override-6j9yrn"
+    >
+      test/overview
+    </div>
+  </div>
+</DocumentFragment>
+`;

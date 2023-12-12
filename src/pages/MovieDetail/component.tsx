@@ -1,13 +1,18 @@
 import { PlusCircleOutlined } from '@ant-design/icons'
-import { Col, Popover, Row, Tag, Typography } from 'antd'
+import { Popover, Row, Typography } from 'antd'
 import { format } from 'date-fns'
-import ISO6391 from 'iso-639-1'
 import { isEmpty, isNil } from 'ramda'
 import { Helmet } from 'react-helmet'
+import Budget from 'src/components/MovieDetail/Budget'
 import CastList from 'src/components/MovieDetail/CastList'
 import CrewList from 'src/components/MovieDetail/CrewList'
+import Genres from 'src/components/MovieDetail/Genres'
 import ImageGallery from 'src/components/MovieDetail/ImageGallery'
+import OriginalLanguage from 'src/components/MovieDetail/OriginalLanguage'
+import Overview from 'src/components/MovieDetail/Overview'
 import PopoverContent from 'src/components/MovieDetail/PopoverContent'
+import Revenue from 'src/components/MovieDetail/Revenue'
+import Runtime from 'src/components/MovieDetail/Runtime'
 import AddToFavoriteButton from 'src/components/UI/Buttons/AddToFavoriteButton'
 import AddToWatchlistButton from 'src/components/UI/Buttons/AddToWatchlistButton'
 import IconButton from 'src/components/UI/Buttons/IconButton'
@@ -15,8 +20,6 @@ import Empty from 'src/components/UI/Empty/component'
 import Error from 'src/components/UI/Error'
 import Loading from 'src/components/UI/Loading'
 import PageTitle from 'src/components/UI/PageTitle'
-import convertDuration from 'src/utils/convertDataHelpers/convertDuration'
-import convertMoney from 'src/utils/convertDataHelpers/convertMoney'
 import metaTitle from 'src/utils/helpers/metaTitle'
 
 import useContainer from './hook'
@@ -103,54 +106,14 @@ const Movie: React.FC = () => {
           />
         </PageTitle>
         <Row>
-          {!isEmpty(movie.overview) && (
-            <Col span={24}>
-              <Typography.Title level={3}>Overview</Typography.Title>
-              <Typography.Paragraph>{movie.overview}</Typography.Paragraph>
-            </Col>
-          )}
+          {!isEmpty(movie.overview) && <Overview overview={movie.overview} />}
           {movie.original_language && (
-            <Col span={24}>
-              <Typography.Paragraph>
-                <b>Original Language: </b>
-                <span>{ISO6391.getName(movie.original_language)}</span>
-              </Typography.Paragraph>
-            </Col>
+            <OriginalLanguage originalLanguage={movie.original_language} />
           )}
-          {movie.runtime !== 0 && (
-            <Col span={24}>
-              <Typography.Paragraph>
-                <b>Runtime: </b>
-                <span>{convertDuration(movie.runtime)}</span>
-              </Typography.Paragraph>
-            </Col>
-          )}
-          {movie.budget !== 0 && (
-            <Col span={24}>
-              <Typography.Paragraph>
-                <b>Budget: </b>
-                <span>{convertMoney(movie.budget)}</span>
-              </Typography.Paragraph>
-            </Col>
-          )}
-          {movie.revenue !== 0 && (
-            <Col span={24}>
-              <Typography.Paragraph>
-                <b>Revenue: </b>
-                <span>{convertMoney(movie.revenue)}</span>
-              </Typography.Paragraph>
-            </Col>
-          )}
-          {!isEmpty(movie.genres) && (
-            <Col span={24}>
-              <Typography.Paragraph>
-                <b>Genres: </b>
-                {movie.genres.map(({ id, name }) => (
-                  <Tag key={id}>{name.toUpperCase()}</Tag>
-                ))}
-              </Typography.Paragraph>
-            </Col>
-          )}
+          {movie.runtime !== 0 && <Runtime runtime={movie.runtime} />}
+          {movie.budget !== 0 && <Budget budget={movie.budget} />}
+          {movie.revenue !== 0 && <Revenue revenue={movie.revenue} />}
+          {!isEmpty(movie.genres) && <Genres genres={movie.genres} />}
           {!isEmpty(movie.credits.cast) && (
             <CastList cast={movie.credits.cast.slice(0, 12)} />
           )}
