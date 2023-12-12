@@ -4,8 +4,8 @@ import { Card, Typography } from 'antd'
 import useContainer from './hook'
 import { ListItemProps } from './types'
 
-const ListItem: React.FC<ListItemProps> = ({ list }) => {
-  const { handleClick, handleListDelete } = useContainer({ listId: list.id })
+const ListItem: React.FC<ListItemProps> = ({ description, id, name }) => {
+  const { handleClick, handleListDelete } = useContainer({ id })
 
   return (
     <Card
@@ -20,8 +20,8 @@ const ListItem: React.FC<ListItemProps> = ({ list }) => {
       hoverable
       onClick={handleClick}
     >
-      <Typography.Title level={4}>{list.name}</Typography.Title>
-      {list.description}
+      <Typography.Title level={4}>{name}</Typography.Title>
+      {description}
     </Card>
   )
 }

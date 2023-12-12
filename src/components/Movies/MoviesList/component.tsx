@@ -20,7 +20,10 @@ const MoviesList: React.FC<MoviesListProps> = ({
         >
           <MovieItem
             handleMovieDelete={handleMovieDelete}
-            movie={movie}
+            id={movie.id}
+            overview={movie.overview}
+            posterPath={movie.poster_path}
+            title={movie.title}
           />
         </Col>
       ))}

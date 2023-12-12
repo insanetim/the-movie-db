@@ -6,24 +6,30 @@ import NoImage from 'src/assets/images/no-image.svg'
 import useContainer from './hook'
 import { MovieItemProps } from './types'
 
-const MovieItem: React.FC<MovieItemProps> = ({ handleMovieDelete, movie }) => {
-  const { handleClick } = useContainer({ movieId: movie.id })
+const MovieItem: React.FC<MovieItemProps> = ({
+  handleMovieDelete,
+  id,
+  overview,
+  posterPath,
+  title,
+}) => {
+  const { handleClick } = useContainer({ id })
 
   let cover = (
     <div className='ant-card-cover--no-image'>
       <img
-        alt={movie.title}
+        alt={title}
         src={NoImage}
       />
     </div>
   )
-  if (isNotNil(movie.poster_path)) {
+  if (isNotNil(posterPath)) {
     cover = (
       <img
-        alt={movie.title}
+        alt={title}
         height={750}
         loading='lazy'
-        src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+        src={`https://image.tmdb.org/t/p/w500${posterPath}`}
         width={500}
       />
     )
@@ -35,7 +41,7 @@ const MovieItem: React.FC<MovieItemProps> = ({ handleMovieDelete, movie }) => {
       <DeleteOutlined
         data-testid='deleteMovieBtn'
         key='delete'
-        onClick={e => handleMovieDelete(movie.id, e)}
+        onClick={e => handleMovieDelete(id, e)}
       />,
     ]
   }
@@ -49,8 +55,8 @@ const MovieItem: React.FC<MovieItemProps> = ({ handleMovieDelete, movie }) => {
       onClick={handleClick}
     >
       <Card.Meta
-        description={movie.overview}
-        title={movie.title}
+        description={overview}
+        title={title}
       />
     </Card>
   )

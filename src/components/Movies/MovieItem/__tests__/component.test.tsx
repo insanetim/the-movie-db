@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
-import { mergeDeepRight } from 'ramda'
+import { assoc } from 'ramda'
 import { mockMovie } from 'src/__mocks__/mockMovie'
 import Wrapper from 'src/utils/testHelpers/wrapperMock'
 
@@ -15,7 +15,10 @@ jest.mock('../hook', () => jest.fn(() => mockedHook))
 describe('MovieItem component', () => {
   const props = {
     handleMovieDelete: jest.fn(),
-    movie: mockMovie,
+    id: mockMovie.id,
+    overview: mockMovie.overview,
+    posterPath: mockMovie.poster_path,
+    title: mockMovie.title,
   }
 
   it('should match snapshot', () => {
@@ -27,10 +30,8 @@ describe('MovieItem component', () => {
   })
 
   it('should match snapshot without poster_path', () => {
-    const props = {
-      movie: mergeDeepRight(mockMovie, { poster_path: null }),
-    }
-    const { asFragment } = render(<MovieItem {...props} />, {
+    const newProps = assoc('posterPath', null, props)
+    const { asFragment } = render(<MovieItem {...newProps} />, {
       wrapper: Wrapper,
     })
 

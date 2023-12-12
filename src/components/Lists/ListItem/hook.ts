@@ -8,7 +8,7 @@ import { listsSelector } from 'src/store/lists/selectors'
 
 import { ListItemHook, ListItemHookProps } from './types'
 
-const useContainer = ({ listId }: ListItemHookProps): ListItemHook => {
+const useContainer = ({ id }: ListItemHookProps): ListItemHook => {
   const navigate = useNavigate()
   const dispatch = useAppDispatch()
   const lists = useAppSelector(listsSelector)
@@ -22,14 +22,14 @@ const useContainer = ({ listId }: ListItemHookProps): ListItemHook => {
   })
 
   const handleClick = () => {
-    navigate(`/list/${listId}`)
+    navigate(`/list/${id}`)
   }
 
   const handleListDelete = (event: MouseEvent<HTMLSpanElement>) => {
     event.stopPropagation()
 
     const onOk = async () => {
-      await dispatch(deleteList(listId))
+      await dispatch(deleteList(id))
       updatePage()
     }
 

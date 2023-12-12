@@ -1,11 +1,13 @@
 import { IList } from 'src/interfaces/list.interface'
 
 export interface ListItemProps {
-  list: IList
+  description: IList['description']
+  id: IList['id']
+  name: IList['name']
 }
 
 export interface ListItemHookProps {
-  listId: IList['id']
+  id: IList['id']
 }
 
 export interface ListItemHook {

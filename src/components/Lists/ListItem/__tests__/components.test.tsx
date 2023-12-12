@@ -14,15 +14,29 @@ jest.mock('../hook', () => jest.fn(() => mockedHook))
 
 describe('ListItem component', () => {
   it('should match snapshot', () => {
-    const { asFragment } = render(<ListItem list={mockList} />, {
-      wrapper: Wrapper,
-    })
+    const { asFragment } = render(
+      <ListItem
+        description={mockList.description}
+        id={mockList.id}
+        name={mockList.name}
+      />,
+      {
+        wrapper: Wrapper,
+      }
+    )
 
     expect(asFragment()).toMatchSnapshot()
   })
 
   it('should call "handleClick" when card clicked', async () => {
-    render(<ListItem list={mockList} />, { wrapper: Wrapper })
+    render(
+      <ListItem
+        description={mockList.description}
+        id={mockList.id}
+        name={mockList.name}
+      />,
+      { wrapper: Wrapper }
+    )
 
     const user = userEvent.setup()
     const card = screen.getByTestId('listItemCard')
@@ -32,7 +46,14 @@ describe('ListItem component', () => {
   })
 
   it('should call "handleListDelete" when delete button clicked', async () => {
-    render(<ListItem list={mockList} />, { wrapper: Wrapper })
+    render(
+      <ListItem
+        description={mockList.description}
+        id={mockList.id}
+        name={mockList.name}
+      />,
+      { wrapper: Wrapper }
+    )
 
     const user = userEvent.setup()
     const deleteBtn = screen.getByTestId('deleteListBtn')

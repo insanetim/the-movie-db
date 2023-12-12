@@ -11,7 +11,7 @@ const navigate = jest.fn()
 jest.mocked(useNavigate).mockReturnValue(navigate)
 
 describe('MovieItem useContainer hook', () => {
-  const props = { movieId: 1234 }
+  const props = { id: 1234 }
 
   it('should match snapshot', () => {
     const { result } = renderHook(() => useContainer(props))

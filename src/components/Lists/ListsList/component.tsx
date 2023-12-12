@@ -15,7 +15,11 @@ const ListsList: React.FC<ListsListProps> = ({ lists }) => {
           span={24}
           xl={6}
         >
-          <ListItem list={list} />
+          <ListItem
+            description={list.description}
+            id={list.id}
+            name={list.name}
+          />
         </Col>
       ))}
     </Row>
