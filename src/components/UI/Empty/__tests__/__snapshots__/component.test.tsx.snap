@@ -3,7 +3,7 @@
 exports[`Empty component should match snapshot 1`] = `
 <DocumentFragment>
   <div
-    class="css-dev-only-do-not-override-6j9yrn ant-empty ant-empty-normal"
+    class="css-dev-only-do-not-override-p7e5j5 ant-empty ant-empty-normal"
   >
     <div
       class="ant-empty-image"

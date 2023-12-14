@@ -3,10 +3,10 @@
 exports[`Budget component should match snapshot 1`] = `
 <DocumentFragment>
   <div
-    class="ant-col ant-col-24 css-dev-only-do-not-override-6j9yrn"
+    class="ant-col ant-col-24 css-dev-only-do-not-override-p7e5j5"
   >
     <div
-      class="ant-typography css-dev-only-do-not-override-6j9yrn"
+      class="ant-typography css-dev-only-do-not-override-p7e5j5"
     >
       <b>
         Budget: 

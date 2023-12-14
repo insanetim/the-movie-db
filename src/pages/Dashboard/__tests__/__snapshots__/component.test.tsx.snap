@@ -6,22 +6,22 @@ exports[`Dashboard component should match snapshot 1`] = `
     class="container"
   >
     <div
-      class="ant-row ant-row-center top-margin css-dev-only-do-not-override-6j9yrn"
+      class="ant-row ant-row-center top-margin css-dev-only-do-not-override-p7e5j5"
     >
       <div
-        class="ant-col ant-col-24 ant-col-md-14 ant-col-lg-12 ant-col-xl-10 css-dev-only-do-not-override-6j9yrn"
+        class="ant-col ant-col-24 ant-col-md-14 ant-col-lg-12 ant-col-xl-10 css-dev-only-do-not-override-p7e5j5"
       >
         <span
-          class="ant-input-group-wrapper ant-input-search ant-input-search-large ant-input-search-with-button css-dev-only-do-not-override-6j9yrn ant-input-group-wrapper-lg css-dev-only-do-not-override-6j9yrn"
+          class="ant-input-group-wrapper ant-input-search ant-input-search-large ant-input-search-with-button css-dev-only-do-not-override-p7e5j5 ant-input-group-wrapper-lg css-dev-only-do-not-override-p7e5j5"
         >
           <span
-            class="ant-input-wrapper ant-input-group css-dev-only-do-not-override-6j9yrn"
+            class="ant-input-wrapper ant-input-group css-dev-only-do-not-override-p7e5j5"
           >
             <span
-              class="ant-input-affix-wrapper ant-input-affix-wrapper-lg css-dev-only-do-not-override-6j9yrn"
+              class="ant-input-affix-wrapper ant-input-affix-wrapper-lg css-dev-only-do-not-override-p7e5j5"
             >
               <input
-                class="ant-input ant-input-lg css-dev-only-do-not-override-6j9yrn"
+                class="ant-input ant-input-lg css-dev-only-do-not-override-p7e5j5"
                 placeholder="Enter movie name"
                 type="text"
                 value=""
@@ -61,7 +61,7 @@ exports[`Dashboard component should match snapshot 1`] = `
               class="ant-input-group-addon"
             >
               <button
-                class="ant-btn css-dev-only-do-not-override-6j9yrn ant-btn-primary ant-btn-lg ant-input-search-button"
+                class="ant-btn css-dev-only-do-not-override-p7e5j5 ant-btn-primary ant-btn-lg ant-input-search-button"
                 type="button"
               >
                 <span>
@@ -77,15 +77,15 @@ exports[`Dashboard component should match snapshot 1`] = `
       class="top-margin"
     >
       <div
-        class="ant-row ant-row-center css-dev-only-do-not-override-6j9yrn"
+        class="ant-row ant-row-center css-dev-only-do-not-override-p7e5j5"
       >
         <div
-          class="ant-col css-dev-only-do-not-override-6j9yrn"
+          class="ant-col css-dev-only-do-not-override-p7e5j5"
         >
           <div
             aria-busy="true"
             aria-live="polite"
-            class="ant-spin ant-spin-spinning css-dev-only-do-not-override-6j9yrn"
+            class="ant-spin ant-spin-spinning css-dev-only-do-not-override-p7e5j5"
           >
             <span
               class="ant-spin-dot ant-spin-dot-spin"
@@ -117,22 +117,22 @@ exports[`Dashboard component should match snapshot with query 1`] = `
     class="container"
   >
     <div
-      class="ant-row ant-row-center top-margin css-dev-only-do-not-override-6j9yrn"
+      class="ant-row ant-row-center top-margin css-dev-only-do-not-override-p7e5j5"
     >
       <div
-        class="ant-col ant-col-24 ant-col-md-14 ant-col-lg-12 ant-col-xl-10 css-dev-only-do-not-override-6j9yrn"
+        class="ant-col ant-col-24 ant-col-md-14 ant-col-lg-12 ant-col-xl-10 css-dev-only-do-not-override-p7e5j5"
       >
         <span
-          class="ant-input-group-wrapper ant-input-search ant-input-search-large ant-input-search-with-button css-dev-only-do-not-override-6j9yrn ant-input-group-wrapper-lg css-dev-only-do-not-override-6j9yrn"
+          class="ant-input-group-wrapper ant-input-search ant-input-search-large ant-input-search-with-button css-dev-only-do-not-override-p7e5j5 ant-input-group-wrapper-lg css-dev-only-do-not-override-p7e5j5"
         >
           <span
-            class="ant-input-wrapper ant-input-group css-dev-only-do-not-override-6j9yrn"
+            class="ant-input-wrapper ant-input-group css-dev-only-do-not-override-p7e5j5"
           >
             <span
-              class="ant-input-affix-wrapper ant-input-affix-wrapper-lg css-dev-only-do-not-override-6j9yrn"
+              class="ant-input-affix-wrapper ant-input-affix-wrapper-lg css-dev-only-do-not-override-p7e5j5"
             >
               <input
-                class="ant-input ant-input-lg css-dev-only-do-not-override-6j9yrn"
+                class="ant-input ant-input-lg css-dev-only-do-not-override-p7e5j5"
                 placeholder="Enter movie name"
                 type="text"
                 value="test/search"
@@ -172,7 +172,7 @@ exports[`Dashboard component should match snapshot with query 1`] = `
               class="ant-input-group-addon"
             >
               <button
-                class="ant-btn css-dev-only-do-not-override-6j9yrn ant-btn-primary ant-btn-lg ant-input-search-button"
+                class="ant-btn css-dev-only-do-not-override-p7e5j5 ant-btn-primary ant-btn-lg ant-input-search-button"
                 type="button"
               >
                 <span>
@@ -188,15 +188,15 @@ exports[`Dashboard component should match snapshot with query 1`] = `
       class="top-margin"
     >
       <div
-        class="ant-row ant-row-center css-dev-only-do-not-override-6j9yrn"
+        class="ant-row ant-row-center css-dev-only-do-not-override-p7e5j5"
       >
         <div
-          class="ant-col css-dev-only-do-not-override-6j9yrn"
+          class="ant-col css-dev-only-do-not-override-p7e5j5"
         >
           <div
             aria-busy="true"
             aria-live="polite"
-            class="ant-spin ant-spin-spinning css-dev-only-do-not-override-6j9yrn"
+            class="ant-spin ant-spin-spinning css-dev-only-do-not-override-p7e5j5"
           >
             <span
               class="ant-spin-dot ant-spin-dot-spin"
