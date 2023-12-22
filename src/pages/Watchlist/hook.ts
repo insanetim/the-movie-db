@@ -5,8 +5,8 @@ import { useSearchParams } from 'react-router-dom'
 import { useAppDispatch, useAppSelector } from 'src/hooks/useRedux'
 import useUpdatePage from 'src/hooks/useUpdatePage'
 import { IMovie } from 'src/interfaces/movie.interface'
+import { accountSelector } from 'src/store/auth/selectors'
 import { changeMovieInWatchlist } from 'src/store/movie/actions'
-import { accountSelector } from 'src/store/session/selectors'
 import { fetchWatchlist } from 'src/store/watchlist/actions'
 import {
   watchlistErrorSelector,

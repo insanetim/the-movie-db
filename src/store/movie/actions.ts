@@ -9,7 +9,7 @@ import {
   getMovieDetails,
   getMovieImages,
 } from 'src/services/api/apiRoutes'
-import { accountSelector, sessionIdSelector } from 'src/store/session/selectors'
+import { accountSelector, sessionIdSelector } from 'src/store/auth/selectors'
 import errorMessage from 'src/utils/helpers/errorMessage'
 
 import { showNotification } from '../app/actions'

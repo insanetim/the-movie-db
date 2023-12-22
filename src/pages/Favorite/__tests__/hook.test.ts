@@ -4,9 +4,9 @@ import { useSearchParams } from 'react-router-dom'
 import mockAccount from 'src/__mocks__/mockAccount'
 import { dispatch } from 'src/__mocks__/react-redux'
 import useUpdatePage from 'src/hooks/useUpdatePage'
+import * as sessionSelectors from 'src/store/auth/selectors'
 import * as favoriteActions from 'src/store/favorite/actions'
 import * as movieActions from 'src/store/movie/actions'
-import * as sessionSelectors from 'src/store/session/selectors'
 
 import useContainer from '../hook'
 

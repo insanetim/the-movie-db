@@ -1,28 +1,19 @@
 import { assoc } from 'ramda'
 
 import { fetchAccount, logIn, logOut } from '../actions'
-import sessionReducer from '../reducer'
+import authReducer from '../reducer'
 import { SessionState } from '../types'
 
-describe('sessionReducer', () => {
+describe('authReducer', () => {
   const state: SessionState = {
     account: null,
-    loading: false,
     sessionId: '',
   }
 
   it('should return initial state with empty action', () => {
-    const result = sessionReducer(undefined, { type: '' })
+    const result = authReducer(undefined, { type: '' })
 
     expect(result).toEqual(state)
-  })
-
-  it('should handle "logIn/pending" action', () => {
-    const action = { type: logIn.pending.type }
-    const newState = assoc('loading', true, state)
-    const result = sessionReducer(state, action)
-
-    expect(result).toEqual(newState)
   })
 
   it('should handle "logIn/fulfilled" action', () => {
@@ -31,21 +22,14 @@ describe('sessionReducer', () => {
       type: logIn.fulfilled.type,
     }
     const newState = assoc('sessionId', action.payload, state)
-    const result = sessionReducer(state, action)
+    const result = authReducer(state, action)
 
     expect(result).toEqual(newState)
   })
 
-  it('should handle "logIn/rejected" action', () => {
-    const action = { type: logIn.rejected.type }
-    const result = sessionReducer(state, action)
-
-    expect(result).toEqual(state)
-  })
-
   it('should handle "logOut/fulfilled" action', () => {
     const action = { type: logOut.fulfilled.type }
-    const result = sessionReducer(state, action)
+    const result = authReducer(state, action)
 
     expect(result).toEqual(state)
   })
@@ -56,7 +40,7 @@ describe('sessionReducer', () => {
       type: fetchAccount.fulfilled.type,
     }
     const newState = assoc('account', action.payload, state)
-    const result = sessionReducer(state, action)
+    const result = authReducer(state, action)
 
     expect(result).toEqual(newState)
   })

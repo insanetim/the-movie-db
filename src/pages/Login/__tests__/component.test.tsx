@@ -6,7 +6,7 @@ import { LoginHook } from '../types'
 
 const mockedHook: LoginHook = {
   handleLogIn: jest.fn(),
-  loading: false,
+  isSubmitting: false,
 }
 jest.mock('../hook', () => jest.fn(() => mockedHook))
 
@@ -17,8 +17,8 @@ describe('Login component', () => {
     expect(asFragment()).toMatchSnapshot()
   })
 
-  it('should match snapshot with loading', () => {
-    mockedHook.loading = true
+  it('should match snapshot with isSubmitting', () => {
+    mockedHook.isSubmitting = true
     const { asFragment } = render(<Login />, { wrapper: Wrapper })
 
     expect(asFragment()).toMatchSnapshot()

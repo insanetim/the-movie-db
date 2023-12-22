@@ -1,6 +1,6 @@
 import { useLocation } from 'react-router-dom'
 import { useAppSelector } from 'src/hooks/useRedux'
-import { sessionIdSelector } from 'src/store/session/selectors'
+import { sessionIdSelector } from 'src/store/auth/selectors'
 
 import { ProtectedRoutesHook } from './types'
 

@@ -2,7 +2,7 @@ import { renderHook } from '@testing-library/react'
 
 import useContainer from '../hook'
 
-jest.mock('src/store/session/selectors', () => ({
+jest.mock('src/store/auth/selectors', () => ({
   sessionIdSelector: () => 'test/sessionId',
 }))
 

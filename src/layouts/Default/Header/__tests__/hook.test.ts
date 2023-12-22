@@ -1,11 +1,11 @@
 import { act, renderHook } from '@testing-library/react'
 import { useNavigate } from 'react-router-dom'
 import { dispatch } from 'src/__mocks__/react-redux'
-import * as sessionActions from 'src/store/session/actions'
+import * as sessionActions from 'src/store/auth/actions'
 
 import useContainer from '../hook'
 
-jest.mock('src/store/session/selectors', () => ({
+jest.mock('src/store/auth/selectors', () => ({
   accountSelector: () => ({ id: 1234 }),
 }))
 

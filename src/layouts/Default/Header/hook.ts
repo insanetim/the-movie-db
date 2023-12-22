@@ -1,8 +1,8 @@
 import { useEffect } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { useAppDispatch, useAppSelector } from 'src/hooks/useRedux'
-import { fetchAccount, logOut } from 'src/store/session/actions'
-import { accountSelector } from 'src/store/session/selectors'
+import { fetchAccount, logOut } from 'src/store/auth/actions'
+import { accountSelector } from 'src/store/auth/selectors'
 
 import { HeaderHook } from './types'
 

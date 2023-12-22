@@ -18,6 +18,5 @@ export interface ISession {
 
 export interface SessionState {
   account: IAccount | null
-  loading: boolean
   sessionId: string
 }

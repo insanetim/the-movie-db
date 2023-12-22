@@ -196,7 +196,7 @@ exports[`Login component should match snapshot 1`] = `
 </DocumentFragment>
 `;
 
-exports[`Login component should match snapshot with loading 1`] = `
+exports[`Login component should match snapshot with isSubmitting 1`] = `
 <DocumentFragment>
   <div
     class="center"

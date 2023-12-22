@@ -9,6 +9,14 @@ const mockState: RootState = {
     },
     notifications: [],
   },
+  auth: {
+    _persist: {
+      rehydrated: true,
+      version: -1,
+    },
+    account: null,
+    sessionId: '',
+  },
   dashboard: {
     data: null,
   },
@@ -30,15 +38,6 @@ const mockState: RootState = {
     },
   },
   movie: movieInitialState,
-  session: {
-    _persist: {
-      rehydrated: true,
-      version: -1,
-    },
-    account: null,
-    loading: false,
-    sessionId: '',
-  },
   watchlist: {
     data: null,
     error: null,

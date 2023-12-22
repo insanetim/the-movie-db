@@ -1,29 +1,38 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit'
-import { persistReducer, persistStore } from 'redux-persist'
+import {
+  FLUSH,
+  PAUSE,
+  PERSIST,
+  PURGE,
+  REGISTER,
+  REHYDRATE,
+  persistReducer,
+  persistStore,
+} from 'redux-persist'
 import storage from 'redux-persist/lib/storage'
 
 import appReducer from './app'
 import { showModal } from './app/actions'
+import authReducer from './auth'
 import dashboardReducer from './dashboard'
 import favoriteReducer from './favorite'
 import listsReducer from './lists'
 import movieReducer from './movie'
-import sessionReducer from './session'
 import watchlistReducer from './watchlist'
 
-const sessionPersistConfig = {
-  key: 'session',
+const authPersistConfig = {
+  key: 'auth',
   storage,
   whitelist: ['account'],
 }
 
 const rootReducer = combineReducers({
   app: appReducer,
+  auth: persistReducer(authPersistConfig, authReducer),
   dashboard: dashboardReducer,
   favorite: favoriteReducer,
   lists: listsReducer,
   movie: movieReducer,
-  session: persistReducer(sessionPersistConfig, sessionReducer),
   watchlist: watchlistReducer,
 })
 
@@ -32,7 +41,15 @@ export const store = configureStore({
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware({
       serializableCheck: {
-        ignoredActions: [showModal.type],
+        ignoredActions: [
+          FLUSH,
+          PAUSE,
+          PERSIST,
+          PURGE,
+          REGISTER,
+          REHYDRATE,
+          showModal.type,
+        ],
       },
     }),
   reducer: rootReducer,

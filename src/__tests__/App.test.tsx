@@ -63,7 +63,7 @@ jest.mock('../layouts/Default/Header/hook', () =>
 
 const mockedLoginHook: LoginHook = {
   handleLogIn: jest.fn(),
-  loading: false,
+  isSubmitting: false,
 }
 jest.mock('../pages/Login/hook', () => jest.fn(() => mockedLoginHook))
 

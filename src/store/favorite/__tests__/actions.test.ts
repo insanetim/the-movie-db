@@ -6,7 +6,7 @@ import { fetchFavorite } from '../actions'
 
 const accountId = 1234
 const sessionId = 'test/session_id'
-jest.mock('src/store/session/selectors', () => ({
+jest.mock('src/store/auth/selectors', () => ({
   accountSelector: () => ({ id: accountId }),
   sessionIdSelector: () => sessionId,
 }))

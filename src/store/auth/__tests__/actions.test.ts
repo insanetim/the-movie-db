@@ -13,11 +13,11 @@ jest.mock<typeof import('@reduxjs/toolkit')>('@reduxjs/toolkit', () => ({
 }))
 
 const sessionId = 'test/session_id'
-jest.mock('src/store/session/selectors', () => ({
+jest.mock('src/store/auth/selectors', () => ({
   sessionIdSelector: () => sessionId,
 }))
 
-describe('session actions', () => {
+describe('auth actions', () => {
   const cookiesSetSpy = jest.spyOn(Cookies, 'set')
   const cookiesRemoveSpy = jest.spyOn(Cookies, 'remove')
   const createRequestToken = jest.spyOn(apiRoutes, 'createRequestToken')

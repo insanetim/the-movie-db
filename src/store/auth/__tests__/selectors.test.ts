@@ -1,12 +1,8 @@
 import mockState from 'src/__mocks__/mockState'
 
-import {
-  accountSelector,
-  loadingSelector,
-  sessionIdSelector,
-} from '../selectors'
+import { accountSelector, sessionIdSelector } from '../selectors'
 
-describe('session selectors', () => {
+describe('auth selectors', () => {
   it('sessionIdSelector', () => {
     const result = sessionIdSelector(mockState)
 
@@ -17,11 +13,5 @@ describe('session selectors', () => {
     const result = accountSelector(mockState)
 
     expect(result).toBe(null)
-  })
-
-  it('loadingSelector', () => {
-    const result = loadingSelector(mockState)
-
-    expect(result).toBe(false)
   })
 })

@@ -5,6 +5,7 @@ import { useSearchParams } from 'react-router-dom'
 import { useAppDispatch, useAppSelector } from 'src/hooks/useRedux'
 import useUpdatePage from 'src/hooks/useUpdatePage'
 import { IMovie } from 'src/interfaces/movie.interface'
+import { accountSelector } from 'src/store/auth/selectors'
 import { fetchFavorite } from 'src/store/favorite/actions'
 import {
   favoriteErrorSelector,
@@ -12,7 +13,6 @@ import {
   favoriteMoviesSelector,
 } from 'src/store/favorite/selectors'
 import { changeMovieInFavorite } from 'src/store/movie/actions'
-import { accountSelector } from 'src/store/session/selectors'
 import getParams from 'src/utils/helpers/getParams'
 
 import { FavoriteHook } from './types'

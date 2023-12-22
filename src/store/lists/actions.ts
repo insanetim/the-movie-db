@@ -10,7 +10,7 @@ import {
   removeMovieFromList,
 } from 'src/services/api/apiRoutes'
 import { showNotification } from 'src/store/app/actions'
-import { accountSelector, sessionIdSelector } from 'src/store/session/selectors'
+import { accountSelector, sessionIdSelector } from 'src/store/auth/selectors'
 import errorMessage from 'src/utils/helpers/errorMessage'
 import listMessage from 'src/utils/helpers/listMessage'
 

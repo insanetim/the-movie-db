@@ -3,13 +3,13 @@ import { useEffect } from 'react'
 import { useSearchParams } from 'react-router-dom'
 import { useAppDispatch, useAppSelector } from 'src/hooks/useRedux'
 import { showModal } from 'src/store/app/actions'
+import { accountSelector } from 'src/store/auth/selectors'
 import { fetchLists } from 'src/store/lists/actions'
 import {
   listsErrorSelector,
   listsLoadingSelector,
   listsSelector,
 } from 'src/store/lists/selectors'
-import { accountSelector } from 'src/store/session/selectors'
 import getParams from 'src/utils/helpers/getParams'
 
 import { ListsHook } from './types'

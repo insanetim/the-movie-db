@@ -3,6 +3,6 @@
 exports[`Login useContainer hook should match snapshot 1`] = `
 {
   "handleLogIn": [Function],
-  "loading": false,
+  "isSubmitting": false,
 }
 `;

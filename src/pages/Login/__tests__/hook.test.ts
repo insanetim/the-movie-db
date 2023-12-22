@@ -1,14 +1,11 @@
 import { unwrapResult } from '@reduxjs/toolkit'
 import { act, renderHook } from '@testing-library/react'
+import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import { dispatch } from 'src/__mocks__/react-redux'
-import * as sessionActions from 'src/store/session/actions'
+import * as sessionActions from 'src/store/auth/actions'
 
 import useContainer from '../hook'
-
-jest.mock('src/store/session/selectors', () => ({
-  loadingSelector: () => false,
-}))
 
 jest.mock('react-router-dom', () => ({
   ...jest.requireActual('react-router-dom'),
@@ -24,6 +21,9 @@ jest.mock('@reduxjs/toolkit', () => ({
 }))
 
 describe('Login useContainer hook', () => {
+  const setState = jest.fn()
+  const useStateMock = (initState: unknown) => [initState, setState]
+  jest.spyOn(React, 'useState').mockImplementation(useStateMock as never)
   const logIn = jest.spyOn(sessionActions, 'logIn')
 
   it('should match snapshot', () => {
@@ -41,6 +41,9 @@ describe('Login useContainer hook', () => {
       result.current.handleLogIn(userData)
     })
 
+    expect(setState).toHaveBeenCalledTimes(2)
+    expect(setState).toHaveBeenNthCalledWith(1, true)
+    expect(setState).toHaveBeenNthCalledWith(2, false)
     expect(dispatch).toHaveBeenCalled()
     expect(logIn).toHaveBeenCalledWith(userData)
     expect(navigate).toHaveBeenCalledWith('/', { replace: true })
@@ -55,6 +58,9 @@ describe('Login useContainer hook', () => {
       result.current.handleLogIn(userData)
     })
 
+    expect(setState).toHaveBeenCalledTimes(2)
+    expect(setState).toHaveBeenNthCalledWith(1, true)
+    expect(setState).toHaveBeenNthCalledWith(2, false)
     expect(dispatch).toHaveBeenCalled()
     expect(logIn).toHaveBeenCalledWith(userData)
     expect(navigate).not.toHaveBeenCalledWith('/', { replace: true })

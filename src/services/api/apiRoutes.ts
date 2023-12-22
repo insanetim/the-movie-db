@@ -10,8 +10,8 @@ import {
   IMoviesList,
 } from 'src/interfaces/movie.interface'
 import httpClient from 'src/services/api/httpClient'
+import { IRequestToken, ISession, IUserData } from 'src/store/auth/types'
 import { CreateListResponse } from 'src/store/lists/types'
-import { IRequestToken, ISession, IUserData } from 'src/store/session/types'
 
 // Auth
 export const createRequestToken = async () => {
