@@ -2,10 +2,10 @@ import { assoc } from 'ramda'
 
 import { fetchAccount, logIn, logOut } from '../actions'
 import authReducer from '../reducer'
-import { SessionState } from '../types'
+import { AuthState } from '../types'
 
 describe('authReducer', () => {
-  const state: SessionState = {
+  const state: AuthState = {
     account: null,
     sessionId: '',
   }

@@ -16,7 +16,7 @@ export interface ISession {
   success: boolean
 }
 
-export interface SessionState {
+export interface AuthState {
   account: IAccount | null
   sessionId: string
 }

@@ -3,9 +3,9 @@ import Cookies from 'js-cookie'
 import { IAccount } from 'src/interfaces/account.interface'
 
 import { fetchAccount, logIn, logOut } from './actions'
-import { SessionState } from './types'
+import { AuthState } from './types'
 
-const initialState: SessionState = {
+const initialState: AuthState = {
   account: null,
   sessionId: Cookies.get('tmdb.session_id') ?? '',
 }
