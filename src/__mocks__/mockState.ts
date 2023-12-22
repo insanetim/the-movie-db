@@ -31,6 +31,10 @@ const mockState: RootState = {
   },
   movie: movieInitialState,
   session: {
+    _persist: {
+      rehydrated: true,
+      version: -1,
+    },
     account: null,
     loading: false,
     sessionId: '',

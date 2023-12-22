@@ -1,4 +1,4 @@
-import store from '../index'
+import { store } from '../index'
 
 describe('store', () => {
   it('should pass tests', () => {
