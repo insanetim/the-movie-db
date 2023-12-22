@@ -6,7 +6,7 @@ exports[`NotificationsRoot useContainer hook should match snapshot 1`] = `
   "notifications": [
     {
       "duration": 2.5,
-      "id": "nanoid",
+      "id": "test/id",
       "messageText": "test/message",
       "messageType": "success",
     },
