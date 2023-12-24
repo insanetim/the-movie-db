@@ -1,7 +1,7 @@
 {
-  "name": "frontend_internship",
+  "name": "the_movie_db",
   "version": "1.0.0",
-  "description": "Frontend Internship",
+  "description": "The Movie DB",
   "author": "Timur Medvedev <insanetim1986@gmail.com>",
   "license": "ISC",
   "private": true,
