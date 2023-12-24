@@ -1,13 +1,13 @@
 import { createReducer } from '@reduxjs/toolkit'
-import Cookies from 'js-cookie'
 import { IAccount } from 'src/interfaces/account.interface'
+import getSessionId from 'src/utils/helpers/getSessionId'
 
 import { fetchAccount, logIn, logOut } from './actions'
 import { AuthState } from './types'
 
 const initialState: AuthState = {
   account: null,
-  sessionId: Cookies.get('tmdb.session_id') ?? '',
+  sessionId: getSessionId(),
 }
 
 const sessionReducer = createReducer(initialState, builder => {
