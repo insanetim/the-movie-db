@@ -3,7 +3,7 @@ import { renderHook } from '@testing-library/react'
 import useContainer from '../hook'
 
 jest.mock('src/store/auth/selectors', () => ({
-  sessionIdSelector: () => 'test/sessionId',
+  isAuthenticatedSelector: () => true,
 }))
 
 jest.mock('react-router-dom', () => ({

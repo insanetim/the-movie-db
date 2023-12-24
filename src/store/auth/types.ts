@@ -18,5 +18,6 @@ export interface ISession {
 
 export interface AuthState {
   account: IAccount | null
+  isAuthenticated: boolean
   sessionId: string
 }

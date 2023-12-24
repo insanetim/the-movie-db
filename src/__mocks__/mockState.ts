@@ -15,6 +15,7 @@ const mockState: RootState = {
       version: -1,
     },
     account: null,
+    isAuthenticated: false,
     sessionId: '',
   },
   dashboard: {

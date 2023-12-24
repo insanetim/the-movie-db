@@ -1,21 +1,20 @@
-import { isEmpty } from 'ramda'
 import { Navigate, Outlet } from 'react-router-dom'
 
 import useContainer from './hook'
 
 const ProtectedRoutes: React.FC = () => {
-  const { location, sessionId } = useContainer()
+  const { isAuthenticated, location } = useContainer()
 
   return (
     <>
-      {isEmpty(sessionId) ? (
+      {isAuthenticated ? (
+        <Outlet />
+      ) : (
         <Navigate
           replace
           state={{ from: location }}
           to='/login'
         />
-      ) : (
-        <Outlet />
       )}
     </>
   )

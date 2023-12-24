@@ -29,8 +29,8 @@ import { WatchlistHook } from 'src/pages/Watchlist/types'
 import Wrapper from 'src/utils/testHelpers/wrapperMock'
 
 const mockedProtectedRoutesHook: ProtectedRoutesHook = {
+  isAuthenticated: false,
   location: {} as Location,
-  sessionId: '',
 }
 jest.mock('../components/ProtectedRoutes/hook', () =>
   jest.fn(() => mockedProtectedRoutesHook)

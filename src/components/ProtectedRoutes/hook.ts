@@ -1,14 +1,14 @@
 import { useLocation } from 'react-router-dom'
 import { useAppSelector } from 'src/hooks/useRedux'
-import { sessionIdSelector } from 'src/store/auth/selectors'
+import { isAuthenticatedSelector } from 'src/store/auth/selectors'
 
 import { ProtectedRoutesHook } from './types'
 
 const useContainer = (): ProtectedRoutesHook => {
-  const sessionId = useAppSelector(sessionIdSelector)
+  const isAuthenticated = useAppSelector(isAuthenticatedSelector)
   const location = useLocation()
 
-  return { location, sessionId }
+  return { isAuthenticated, location }
 }
 
 export default useContainer

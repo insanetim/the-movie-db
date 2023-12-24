@@ -1,10 +1,13 @@
 import { RootState } from '../index'
 
-const sessionIdSelector = (state: RootState) => {
-  return state.auth.sessionId
-}
 const accountSelector = (state: RootState) => {
   return state.auth.account
 }
+const isAuthenticatedSelector = (state: RootState) => {
+  return state.auth.isAuthenticated
+}
+const sessionIdSelector = (state: RootState) => {
+  return state.auth.sessionId
+}
 
-export { accountSelector, sessionIdSelector }
+export { accountSelector, isAuthenticatedSelector, sessionIdSelector }

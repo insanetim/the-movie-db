@@ -6,15 +6,10 @@ import ProtectedRoutes from '../component'
 import { ProtectedRoutesHook } from '../types'
 
 const mockedHook: ProtectedRoutesHook = {
+  isAuthenticated: true,
   location: {} as Location,
-  sessionId: 'test/sessionId',
 }
 jest.mock('../hook', () => jest.fn(() => mockedHook))
-
-jest.mock('react-router-dom', () => ({
-  ...jest.requireActual('react-router-dom'),
-  Navigate: () => <></>,
-}))
 
 describe('ProtectedRoutes component', () => {
   it('should match snapshot', () => {
@@ -23,8 +18,8 @@ describe('ProtectedRoutes component', () => {
     expect(asFragment()).toMatchSnapshot()
   })
 
-  it('should match snapshot without sessionId', () => {
-    mockedHook.sessionId = ''
+  it('should match snapshot without isAuthenticated', () => {
+    mockedHook.isAuthenticated = false
     const { asFragment } = render(<ProtectedRoutes />, { wrapper: Wrapper })
 
     expect(asFragment()).toMatchSnapshot()

@@ -1,4 +1,4 @@
-import { assoc } from 'ramda'
+import { assoc, mergeDeepRight } from 'ramda'
 
 import { fetchAccount, logIn, logOut } from '../actions'
 import authReducer from '../reducer'
@@ -7,6 +7,7 @@ import { AuthState } from '../types'
 describe('authReducer', () => {
   const state: AuthState = {
     account: null,
+    isAuthenticated: false,
     sessionId: '',
   }
 
@@ -18,10 +19,13 @@ describe('authReducer', () => {
 
   it('should handle "logIn/fulfilled" action', () => {
     const action = {
-      payload: 'test/data',
+      payload: 'test/session_id',
       type: logIn.fulfilled.type,
     }
-    const newState = assoc('sessionId', action.payload, state)
+    const newState = mergeDeepRight(state, {
+      isAuthenticated: true,
+      sessionId: 'test/session_id',
+    })
     const result = authReducer(state, action)
 
     expect(result).toEqual(newState)
