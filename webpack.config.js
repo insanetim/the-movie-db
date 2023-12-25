@@ -4,6 +4,7 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin')
 const ESLintPlugin = require('eslint-webpack-plugin')
+const Dotenv = require('dotenv-webpack')
 
 const isDev = process.env.NODE_ENV === 'development'
 const isProd = !isDev
@@ -16,11 +17,11 @@ const getStyleLoaders = () => [
   {
     loader: 'css-loader',
     options: {
-      importLoaders: 1
-    }
+      importLoaders: 1,
+    },
   },
   'sass-loader',
-  'postcss-loader'
+  'postcss-loader',
 ]
 
 const getPlugins = () => {
@@ -30,17 +31,18 @@ const getPlugins = () => {
       favicon: path.resolve(__dirname, 'public/favicon.ico'),
       filename: 'index.html',
       minify: {
-        collapseWhitespace: isProd
+        collapseWhitespace: isProd,
       },
-      template: path.resolve(__dirname, 'public/index.html')
+      template: path.resolve(__dirname, 'public/index.html'),
     }),
-    new ESLintPlugin({ fix: true })
+    new ESLintPlugin({ fix: true }),
+    new Dotenv(),
   ]
 
   if (isProd) {
     plugins.push(
       new MiniCssExtractPlugin({
-        filename: getFileName('css')
+        filename: getFileName('css'),
       })
     )
   }
@@ -57,11 +59,11 @@ const getOptimization = () => {
           chunks: 'all',
           minSize: 0,
           name: 'vendor',
-          test: /[\\/]node_modules[\\/]/
-        }
+          test: /[\\/]node_modules[\\/]/,
+        },
       },
-      chunks: 'all'
-    }
+      chunks: 'all',
+    },
   }
 
   if (isProd) {
@@ -77,8 +79,8 @@ module.exports = {
     open: true,
     port: 8080,
     static: {
-      directory: path.resolve(__dirname, './public')
-    }
+      directory: path.resolve(__dirname, './public'),
+    },
   },
 
   devtool: isDev ? 'source-map' : false,
@@ -90,17 +92,17 @@ module.exports = {
       {
         exclude: /node_modules/,
         test: /\.tsx?$/,
-        use: 'ts-loader'
+        use: 'ts-loader',
       },
       {
         test: /\.s[ac]ss$/,
-        use: getStyleLoaders()
+        use: getStyleLoaders(),
       },
       {
         test: /\.(png|jpe?g|svg|gif)$/,
-        type: 'asset/resource'
-      }
-    ]
+        type: 'asset/resource',
+      },
+    ],
   },
 
   optimization: getOptimization(),
@@ -109,22 +111,22 @@ module.exports = {
     assetModuleFilename: 'images/[name][ext]',
     chunkFilename: getFileName('js'),
     filename: getFileName('js'),
-    path: path.resolve(__dirname, 'dist')
+    path: path.resolve(__dirname, 'dist'),
   },
 
   performance: {
     hints: false,
     maxAssetSize: 512000,
-    maxEntrypointSize: 512000
+    maxEntrypointSize: 512000,
   },
 
   plugins: getPlugins(),
 
   resolve: {
     alias: {
-      src: path.resolve(__dirname, 'src')
+      src: path.resolve(__dirname, 'src'),
     },
     extensions: ['.ts', '.tsx', '.js', '.jsx'],
-    modules: [path.resolve(__dirname, 'src'), 'node_modules']
-  }
+    modules: [path.resolve(__dirname, 'src'), 'node_modules'],
+  },
 }

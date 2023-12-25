@@ -4,15 +4,15 @@ module.exports = {
       '@babel/env',
       {
         corejs: '3.34.0',
-        useBuiltIns: 'usage'
-      }
+        useBuiltIns: 'usage',
+      },
     ],
     ['@babel/typescript'],
     [
       '@babel/react',
       {
-        runtime: 'automatic'
-      }
-    ]
-  ]
+        runtime: 'automatic',
+      },
+    ],
+  ],
 }
