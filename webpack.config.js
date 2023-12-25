@@ -36,7 +36,7 @@ const getPlugins = () => {
       template: path.resolve(__dirname, 'public/index.html'),
     }),
     new ESLintPlugin({ fix: true }),
-    new Dotenv(),
+    new Dotenv({ systemvars: true }),
   ]
 
   if (isProd) {
