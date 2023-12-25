@@ -3,27 +3,27 @@
 exports[`CrewList component should match snapshot 1`] = `
 <DocumentFragment>
   <div
-    class="ant-col ant-col-24 css-dev-only-do-not-override-p7e5j5"
+    class="ant-col ant-col-24 css-dev-only-do-not-override-gzal6t"
   >
     <h3
-      class="ant-typography css-dev-only-do-not-override-p7e5j5"
+      class="ant-typography css-dev-only-do-not-override-gzal6t"
     >
       Crew
     </h3>
   </div>
   <div
-    class="ant-col ant-col-24 css-dev-only-do-not-override-p7e5j5"
+    class="ant-col ant-col-24 css-dev-only-do-not-override-gzal6t"
   >
     <div
-      class="ant-row css-dev-only-do-not-override-p7e5j5"
+      class="ant-row css-dev-only-do-not-override-gzal6t"
       style="margin-left: -12px; margin-right: -12px; row-gap: 16px;"
     >
       <div
-        class="ant-col ant-col-24 ant-col-sm-12 ant-col-md-8 ant-col-lg-8 ant-col-xl-6 css-dev-only-do-not-override-p7e5j5"
+        class="ant-col ant-col-24 ant-col-sm-12 ant-col-md-8 ant-col-lg-8 ant-col-xl-6 css-dev-only-do-not-override-gzal6t"
         style="padding-left: 12px; padding-right: 12px;"
       >
         <div
-          class="ant-card ant-card-bordered css-dev-only-do-not-override-p7e5j5"
+          class="ant-card ant-card-bordered css-dev-only-do-not-override-gzal6t"
         >
           <div
             class="ant-card-cover"

@@ -5,11 +5,14 @@ import * as apiRoutes from 'src/services/api/apiRoutes'
 import { fetchWatchlist } from '../actions'
 
 const accountId = 1234
-const sessionId = 'test/session_id'
 jest.mock('src/store/auth/selectors', () => ({
   accountSelector: () => ({ id: accountId }),
-  sessionIdSelector: () => sessionId,
 }))
+
+const sessionId = 'test/session_id'
+jest.mock('src/utils/helpers/getSessionId', () => {
+  return jest.fn(() => sessionId)
+})
 
 describe('fetchWatchlist', () => {
   const getWatchlist = jest.spyOn(apiRoutes, 'getWatchlist')

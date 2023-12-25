@@ -3,22 +3,22 @@
 exports[`SearchInput component should match snapshot 1`] = `
 <DocumentFragment>
   <div
-    class="ant-row ant-row-center top-margin css-dev-only-do-not-override-p7e5j5"
+    class="ant-row ant-row-center top-margin css-dev-only-do-not-override-gzal6t"
   >
     <div
-      class="ant-col ant-col-24 ant-col-md-14 ant-col-lg-12 ant-col-xl-10 css-dev-only-do-not-override-p7e5j5"
+      class="ant-col ant-col-24 ant-col-md-14 ant-col-lg-12 ant-col-xl-10 css-dev-only-do-not-override-gzal6t"
     >
       <span
-        class="ant-input-group-wrapper ant-input-search ant-input-search-large ant-input-search-with-button css-dev-only-do-not-override-p7e5j5 ant-input-group-wrapper-lg css-dev-only-do-not-override-p7e5j5"
+        class="ant-input-group-wrapper ant-input-search ant-input-search-large ant-input-search-with-button css-dev-only-do-not-override-gzal6t ant-input-group-wrapper-lg css-dev-only-do-not-override-gzal6t"
       >
         <span
-          class="ant-input-wrapper ant-input-group css-dev-only-do-not-override-p7e5j5"
+          class="ant-input-wrapper ant-input-group css-dev-only-do-not-override-gzal6t"
         >
           <span
-            class="ant-input-affix-wrapper ant-input-affix-wrapper-lg css-dev-only-do-not-override-p7e5j5"
+            class="ant-input-affix-wrapper ant-input-affix-wrapper-lg css-dev-only-do-not-override-gzal6t"
           >
             <input
-              class="ant-input ant-input-lg css-dev-only-do-not-override-p7e5j5"
+              class="ant-input ant-input-lg css-dev-only-do-not-override-gzal6t"
               placeholder="Enter movie name"
               type="text"
               value=""
@@ -58,7 +58,7 @@ exports[`SearchInput component should match snapshot 1`] = `
             class="ant-input-group-addon"
           >
             <button
-              class="ant-btn css-dev-only-do-not-override-p7e5j5 ant-btn-primary ant-btn-lg ant-input-search-button"
+              class="ant-btn css-dev-only-do-not-override-gzal6t ant-btn-primary ant-btn-lg ant-input-search-button"
               type="button"
             >
               <span>

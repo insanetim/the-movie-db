@@ -1,10 +1,6 @@
 import mockState from 'src/__mocks__/mockState'
 
-import {
-  accountSelector,
-  isAuthenticatedSelector,
-  sessionIdSelector,
-} from '../selectors'
+import { accountSelector, isAuthenticatedSelector } from '../selectors'
 
 describe('auth selectors', () => {
   it('accountSelector', () => {
@@ -17,11 +13,5 @@ describe('auth selectors', () => {
     const result = isAuthenticatedSelector(mockState)
 
     expect(result).toBe(false)
-  })
-
-  it('sessionIdSelector', () => {
-    const result = sessionIdSelector(mockState)
-
-    expect(result).toBe('')
   })
 })

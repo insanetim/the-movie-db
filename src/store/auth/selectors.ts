@@ -6,8 +6,5 @@ const accountSelector = (state: RootState) => {
 const isAuthenticatedSelector = (state: RootState) => {
   return state.auth.isAuthenticated
 }
-const sessionIdSelector = (state: RootState) => {
-  return state.auth.sessionId
-}
 
-export { accountSelector, isAuthenticatedSelector, sessionIdSelector }
+export { accountSelector, isAuthenticatedSelector }

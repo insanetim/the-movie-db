@@ -1,8 +1,9 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
 import { IMoviesList } from 'src/interfaces/movie.interface'
 import { getFavorite } from 'src/services/api/apiRoutes'
-import { accountSelector, sessionIdSelector } from 'src/store/auth/selectors'
+import { accountSelector } from 'src/store/auth/selectors'
 import errorMessage from 'src/utils/helpers/errorMessage'
+import getSessionId from 'src/utils/helpers/getSessionId'
 
 import { RootState } from '../index'
 import * as types from './constants'
@@ -12,7 +13,7 @@ const fetchFavorite = createAsyncThunk<
   string,
   { rejectValue: string; state: RootState }
 >(types.fetchFavorite, async function (page, { getState, rejectWithValue }) {
-  const sessionId = sessionIdSelector(getState())
+  const sessionId = getSessionId()
   const accountId = accountSelector(getState())!.id
 
   try {

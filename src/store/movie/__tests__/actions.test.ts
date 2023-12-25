@@ -19,11 +19,14 @@ jest.mock<typeof import('@reduxjs/toolkit')>('@reduxjs/toolkit', () => ({
 }))
 
 const accountId = 1234
-const sessionId = 'test/session_id'
 jest.mock('src/store/auth/selectors', () => ({
   accountSelector: () => ({ id: accountId }),
-  sessionIdSelector: () => sessionId,
 }))
+
+const sessionId = 'test/session_id'
+jest.mock('src/utils/helpers/getSessionId', () => {
+  return jest.fn(() => sessionId)
+})
 
 describe('movie actions', () => {
   const addToFovorite = jest.spyOn(apiRoutes, 'addToFovorite')

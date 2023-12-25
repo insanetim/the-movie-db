@@ -10,8 +10,9 @@ import {
   removeMovieFromList,
 } from 'src/services/api/apiRoutes'
 import { showNotification } from 'src/store/app/actions'
-import { accountSelector, sessionIdSelector } from 'src/store/auth/selectors'
+import { accountSelector } from 'src/store/auth/selectors'
 import errorMessage from 'src/utils/helpers/errorMessage'
+import getSessionId from 'src/utils/helpers/getSessionId'
 import listMessage from 'src/utils/helpers/listMessage'
 
 import { RootState } from '../index'
@@ -29,7 +30,7 @@ const fetchLists = createAsyncThunk<
   string,
   { rejectValue: string; state: RootState }
 >(types.fetchLists, async function (page, { getState, rejectWithValue }) {
-  const sessionId = sessionIdSelector(getState())
+  const sessionId = getSessionId()
   const accountId = accountSelector(getState())!.id
 
   try {
@@ -45,33 +46,30 @@ const createList = createAsyncThunk<
   void,
   CreateListProps,
   { state: RootState }
->(
-  types.createList,
-  async function ({ listData, movieId }, { dispatch, getState }) {
-    const sessionId = sessionIdSelector(getState())
-    const listName = listData.name
+>(types.createList, async function ({ listData, movieId }, { dispatch }) {
+  const sessionId = getSessionId()
+  const listName = listData.name
 
-    try {
-      const listId = await createNewList({ listData, sessionId })
+  try {
+    const listId = await createNewList({ listData, sessionId })
 
-      if (typeof movieId !== 'undefined') {
-        dispatch(addToList({ listId, listName, movieId }))
-      }
-    } catch (error) {
-      dispatch(
-        showNotification({
-          messageText: errorMessage(error),
-          messageType: NOTIFICATION_TYPE.ERROR,
-        })
-      )
+    if (typeof movieId !== 'undefined') {
+      dispatch(addToList({ listId, listName, movieId }))
     }
+  } catch (error) {
+    dispatch(
+      showNotification({
+        messageText: errorMessage(error),
+        messageType: NOTIFICATION_TYPE.ERROR,
+      })
+    )
   }
-)
+})
 
 const deleteList = createAsyncThunk<void, IList['id'], { state: RootState }>(
   types.deleteList,
-  async function (listId, { dispatch, getState }) {
-    const sessionId = sessionIdSelector(getState())
+  async function (listId, { dispatch }) {
+    const sessionId = getSessionId()
 
     try {
       await deleteMyList({ listId, sessionId })
@@ -106,7 +104,7 @@ const fetchListDetail = createAsyncThunk<
 const addToList = createAsyncThunk<void, AddToListProps, { state: RootState }>(
   types.addToList,
   async function ({ listId, listName, movieId }, { dispatch, getState }) {
-    const sessionId = sessionIdSelector(getState())
+    const sessionId = getSessionId()
     const movieTitle = selectMovieById(getState(), movieId)!.title
 
     try {
@@ -130,23 +128,20 @@ const removeFromList = createAsyncThunk<
   void,
   RemoveFromListProps,
   { state: RootState }
->(
-  types.removeFromList,
-  async function ({ listId, movieId }, { dispatch, getState }) {
-    const sessionId = sessionIdSelector(getState())
+>(types.removeFromList, async function ({ listId, movieId }, { dispatch }) {
+  const sessionId = getSessionId()
 
-    try {
-      await removeMovieFromList({ listId, movieId, sessionId })
-    } catch (error) {
-      dispatch(
-        showNotification({
-          messageText: errorMessage(error),
-          messageType: NOTIFICATION_TYPE.ERROR,
-        })
-      )
-    }
+  try {
+    await removeMovieFromList({ listId, movieId, sessionId })
+  } catch (error) {
+    dispatch(
+      showNotification({
+        messageText: errorMessage(error),
+        messageType: NOTIFICATION_TYPE.ERROR,
+      })
+    )
   }
-)
+})
 
 export {
   addToList,

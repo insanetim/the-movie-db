@@ -9,8 +9,9 @@ import {
   getMovieDetails,
   getMovieImages,
 } from 'src/services/api/apiRoutes'
-import { accountSelector, sessionIdSelector } from 'src/store/auth/selectors'
+import { accountSelector } from 'src/store/auth/selectors'
 import errorMessage from 'src/utils/helpers/errorMessage'
+import getSessionId from 'src/utils/helpers/getSessionId'
 
 import { showNotification } from '../app/actions'
 import { RootState } from '../index'
@@ -24,32 +25,29 @@ const fetchMovieDetail = createAsyncThunk<
   IMovieDetailExtended,
   IMovie['id'],
   { rejectValue: string; state: RootState }
->(
-  types.fetchMovieDetail,
-  async function (movieId, { getState, rejectWithValue }) {
-    const sessionId = sessionIdSelector(getState())
+>(types.fetchMovieDetail, async function (movieId, { rejectWithValue }) {
+  const sessionId = getSessionId()
 
-    try {
-      const [movieDetail, images, accountStates, credits] = await Promise.all([
-        getMovieDetails({ movieId }),
-        getMovieImages({ movieId }),
-        getMovieAccountStates({ movieId, sessionId }),
-        getMovieCredits({ movieId }),
-      ])
+  try {
+    const [movieDetail, images, accountStates, credits] = await Promise.all([
+      getMovieDetails({ movieId }),
+      getMovieImages({ movieId }),
+      getMovieAccountStates({ movieId, sessionId }),
+      getMovieCredits({ movieId }),
+    ])
 
-      const movieDetailExtended: IMovieDetailExtended = {
-        ...movieDetail,
-        accountStates,
-        credits,
-        images,
-      }
-
-      return movieDetailExtended
-    } catch (error) {
-      return rejectWithValue(errorMessage(error))
+    const movieDetailExtended: IMovieDetailExtended = {
+      ...movieDetail,
+      accountStates,
+      credits,
+      images,
     }
+
+    return movieDetailExtended
+  } catch (error) {
+    return rejectWithValue(errorMessage(error))
   }
-)
+})
 
 const changeMovieInFavorite = createAsyncThunk<
   void,
@@ -58,7 +56,7 @@ const changeMovieInFavorite = createAsyncThunk<
 >(
   types.changeMovieInFavorite,
   async function ({ inFavorite, movieId }, { dispatch, getState }) {
-    const sessionId = sessionIdSelector(getState())
+    const sessionId = getSessionId()
     const accountId = accountSelector(getState())!.id
 
     try {
@@ -81,7 +79,7 @@ const changeMovieInWatchlist = createAsyncThunk<
 >(
   types.changeMovieInWatchlist,
   async function ({ inWatchlist, movieId }, { dispatch, getState }) {
-    const sessionId = sessionIdSelector(getState())
+    const sessionId = getSessionId()
     const accountId = accountSelector(getState())!.id
 
     try {

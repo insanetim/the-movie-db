@@ -13,9 +13,9 @@ jest.mock<typeof import('@reduxjs/toolkit')>('@reduxjs/toolkit', () => ({
 }))
 
 const sessionId = 'test/session_id'
-jest.mock('src/store/auth/selectors', () => ({
-  sessionIdSelector: () => sessionId,
-}))
+jest.mock('src/utils/helpers/getSessionId', () => {
+  return jest.fn(() => sessionId)
+})
 
 describe('auth actions', () => {
   const cookiesSetSpy = jest.spyOn(Cookies, 'set')

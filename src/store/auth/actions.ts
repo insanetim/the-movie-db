@@ -11,10 +11,10 @@ import {
 } from 'src/services/api/apiRoutes'
 import { showNotification } from 'src/store/app/actions'
 import errorMessage from 'src/utils/helpers/errorMessage'
+import getSessionId from 'src/utils/helpers/getSessionId'
 
 import { RootState } from '../index'
 import * as types from './constants'
-import { sessionIdSelector } from './selectors'
 import { IUserData } from './types'
 
 const logIn = createAsyncThunk<string | undefined, IUserData>(
@@ -41,8 +41,8 @@ const logIn = createAsyncThunk<string | undefined, IUserData>(
 
 const logOut = createAsyncThunk<void, undefined, { state: RootState }>(
   types.logOut,
-  async function (_, { dispatch, getState }) {
-    const sessionId = sessionIdSelector(getState())
+  async function (_, { dispatch }) {
+    const sessionId = getSessionId()
 
     try {
       await deleteSession({ sessionId })
@@ -63,8 +63,8 @@ const fetchAccount = createAsyncThunk<
   IAccount | undefined,
   undefined,
   { state: RootState }
->(types.fetchAccount, async function (_, { dispatch, getState }) {
-  const sessionId = sessionIdSelector(getState())
+>(types.fetchAccount, async function (_, { dispatch }) {
+  const sessionId = getSessionId()
 
   try {
     const account = await getAccountDetails({ sessionId })
