@@ -28,8 +28,8 @@
     "@types/ramda": "^0.29.9",
     "@types/react": "^18.2.43",
     "@types/react-helmet": "^6.1.11",
-    "@typescript-eslint/eslint-plugin": "^6.13.2",
-    "@typescript-eslint/parser": "^6.13.2",
+    "@typescript-eslint/eslint-plugin": "^6.15.0",
+    "@typescript-eslint/parser": "^6.15.0",
     "autoprefixer": "^10.4.16",
     "babel-jest": "^29.7.0",
     "clean-webpack-plugin": "^4.0.0",
@@ -42,7 +42,7 @@
     "eslint-plugin-perfectionist": "^2.5.0",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-webpack-plugin": "^4.0.1",
-    "html-webpack-plugin": "^5.5.4",
+    "html-webpack-plugin": "^5.6.0",
     "husky": "^8.0.3",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^29.7.0",
@@ -71,7 +71,7 @@
   "dependencies": {
     "@ant-design/icons": "^5.2.6",
     "@reduxjs/toolkit": "^2.0.1",
-    "antd": "^5.12.1",
+    "antd": "^5.12.5",
     "axios": "^1.6.2",
     "core-js": "^3.34.0",
     "date-fns": "^2.30.0",
@@ -82,7 +82,7 @@
     "react-dom": "^18.2.0",
     "react-helmet": "^6.1.0",
     "react-redux": "^9.0.3",
-    "react-router-dom": "^6.20.1",
+    "react-router-dom": "^6.21.1",
     "redux-persist": "^6.0.0"
   }
 }
