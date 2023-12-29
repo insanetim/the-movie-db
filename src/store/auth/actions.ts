@@ -15,9 +15,9 @@ import getSessionId from 'src/utils/helpers/getSessionId'
 
 import { RootState } from '../index'
 import * as types from './constants'
-import { IUserData } from './types'
+import { UserData } from './types'
 
-const logIn = createAsyncThunk<string | undefined, IUserData>(
+const logIn = createAsyncThunk<string | undefined, UserData>(
   types.logIn,
   async function (userData, { dispatch }) {
     try {

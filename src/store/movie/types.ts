@@ -1,11 +1,11 @@
 import { IMovie } from 'src/interfaces/movie.interface'
 
-export interface ChangeMovieInFavoriteProps {
+export type ChangeMovieInFavoriteProps = {
   inFavorite: boolean
   movieId: IMovie['id']
 }
 
-export interface ChangeMovieInWatchlistProps {
+export type ChangeMovieInWatchlistProps = {
   inWatchlist: boolean
   movieId: IMovie['id']
 }

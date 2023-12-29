@@ -1,3 +1,3 @@
-export interface ErrorProps {
+export type ErrorProps = {
   error: string
 }

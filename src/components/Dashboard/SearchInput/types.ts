@@ -1,15 +1,16 @@
-import { ChangeEvent } from 'react'
+import { ChangeEventHandler } from 'react'
+import { Query } from 'src/interfaces/global.interface'
 
-export interface SearchInputProps {
-  query: string
+export type SearchInputProps = {
+  query: Query
 }
 
-export interface SearchInputHookProps {
-  query: string
+export type SearchInputHookProps = {
+  query: Query
 }
 
-export interface SearchInputHook {
-  handleChange: (e: ChangeEvent<HTMLInputElement>) => void
+export type SearchInputHook = {
+  handleChange: ChangeEventHandler<HTMLInputElement>
   handleSearch: (value: string) => void
   inputValue: string
 }

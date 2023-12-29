@@ -1,3 +1,5 @@
-export interface PageTitleProps {
-  children?: React.ReactNode
+import { ReactNode } from 'react'
+
+export type PageTitleProps = {
+  children?: ReactNode
 }

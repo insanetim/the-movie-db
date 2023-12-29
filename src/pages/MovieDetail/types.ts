@@ -1,7 +1,8 @@
+import { ErrorMsg } from 'src/interfaces/global.interface'
 import { IMovieDetailExtended } from 'src/interfaces/movie.interface'
 
-export interface MovieDetailHook {
-  error: null | string
+export type MovieDetailHook = {
+  error: ErrorMsg
   handleFavoriteClick: () => void
   handleWatchlistClick: () => void
   loading: boolean

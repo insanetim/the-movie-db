@@ -1,6 +1,6 @@
-import { IUserData } from 'src/store/auth/types'
+import { UserData } from 'src/store/auth/types'
 
-export interface LoginHook {
-  handleLogIn: (userData: IUserData) => Promise<void>
+export type LoginHook = {
+  handleLogIn: (userData: UserData) => Promise<void>
   isSubmitting: boolean
 }

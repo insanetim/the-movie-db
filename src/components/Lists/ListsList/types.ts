@@ -1,5 +1,5 @@
 import { IList } from 'src/interfaces/list.interface'
 
-export interface ListsListProps {
+export type ListsListProps = {
   lists: IList[]
 }

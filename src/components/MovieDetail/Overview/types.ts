@@ -1,5 +1,5 @@
 import { IMovie } from 'src/interfaces/movie.interface'
 
-export interface OverviewProps {
+export type OverviewProps = {
   overview: IMovie['overview']
 }

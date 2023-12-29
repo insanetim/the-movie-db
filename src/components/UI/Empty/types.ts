@@ -1,3 +1,3 @@
-export interface EmptyProps {
+export type EmptyProps = {
   description?: string
 }

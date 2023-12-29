@@ -1,5 +1,5 @@
 import { ICrew } from 'src/interfaces/movie.interface'
 
-export interface CrewListProps {
+export type CrewListProps = {
   crew: ICrew[]
 }

@@ -1,22 +1,22 @@
 import { IAccount } from 'src/interfaces/account.interface'
 
-export interface IUserData {
+export type UserData = {
   password: string
   username: string
 }
 
-export interface IRequestToken {
+export type RequestToken = {
   expires_at: string
   request_token: string
   success: boolean
 }
 
-export interface ISession {
+export type Session = {
   session_id: string
   success: boolean
 }
 
-export interface AuthState {
+export type AuthState = {
   account: IAccount | null
   isAuthenticated: boolean
 }

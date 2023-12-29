@@ -1,6 +1,6 @@
 import { Location } from 'react-router-dom'
 
-export interface ProtectedRoutesHook {
+export type ProtectedRoutesHook = {
   isAuthenticated: boolean
   location: Location
 }

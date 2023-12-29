@@ -3,7 +3,7 @@ import { useState } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { useAppDispatch } from 'src/hooks/useRedux'
 import { logIn } from 'src/store/auth/actions'
-import { IUserData } from 'src/store/auth/types'
+import { UserData } from 'src/store/auth/types'
 
 import { LoginHook } from './types'
 
@@ -13,7 +13,7 @@ const useContainer = (): LoginHook => {
   const location = useLocation()
   const navigate = useNavigate()
 
-  const handleLogIn = async (userData: IUserData) => {
+  const handleLogIn = async (userData: UserData) => {
     setIsSubmitting(true)
     const to = location.state?.from?.pathname || '/'
     const sessionId = unwrapResult(await dispatch(logIn(userData)))

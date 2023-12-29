@@ -16,7 +16,7 @@ declare type AsyncThunkConfig = {
   state?: unknown
 }
 
-export interface useUpdatePageProps {
+export type useUpdatePageProps = {
   action: AsyncThunkAction<unknown, unknown, AsyncThunkConfig>
   items: undefined | unknown[]
   page: string

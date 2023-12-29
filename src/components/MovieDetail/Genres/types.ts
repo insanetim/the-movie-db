@@ -1,5 +1,5 @@
 import { IMovieDetail } from 'src/interfaces/movie.interface'
 
-export interface GenresProps {
+export type GenresProps = {
   genres: IMovieDetail['genres']
 }

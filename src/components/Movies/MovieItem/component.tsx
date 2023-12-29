@@ -41,7 +41,7 @@ const MovieItem: React.FC<MovieItemProps> = ({
       <DeleteOutlined
         data-testid='deleteMovieBtn'
         key='delete'
-        onClick={e => handleMovieDelete(id, e)}
+        onClick={event => handleMovieDelete(event, id)}
       />,
     ]
   }

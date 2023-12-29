@@ -37,8 +37,8 @@ const useContainer = (): WatchlistHook => {
   }
 
   const handleMovieDelete = (
-    movieId: IMovie['id'],
-    event: MouseEvent<HTMLSpanElement>
+    event: MouseEvent<HTMLSpanElement>,
+    movieId: IMovie['id']
   ) => {
     event.stopPropagation()
 

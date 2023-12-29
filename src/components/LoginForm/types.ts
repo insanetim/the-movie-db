@@ -1,5 +1,6 @@
-export interface LoginFormProps {
+import { UserData } from 'src/store/auth/types'
+
+export type LoginFormProps = {
   isSubmitting: boolean
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  onSubmit: (values: any) => void
+  onSubmit: (values: UserData) => void
 }

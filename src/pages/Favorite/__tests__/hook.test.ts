@@ -1,5 +1,6 @@
 import { act, renderHook } from '@testing-library/react'
 import { Modal } from 'antd'
+import { MouseEvent } from 'react'
 import { useSearchParams } from 'react-router-dom'
 import mockAccount from 'src/__mocks__/mockAccount'
 import { dispatch } from 'src/__mocks__/react-redux'
@@ -55,13 +56,14 @@ describe('Favotite useContainer hook', () => {
       movieActions,
       'changeMovieInFavorite'
     )
+    const event = {
+      stopPropagation: jest.fn(),
+    } as unknown as MouseEvent<HTMLSpanElement>
     let onOk = () => {}
     const { result } = renderHook(useContainer)
 
     await act(() => {
-      onOk = result.current.handleMovieDelete(1234, {
-        stopPropagation: jest.fn(),
-      } as never)
+      onOk = result.current.handleMovieDelete(event, 1234)
       onOk()
     })
 

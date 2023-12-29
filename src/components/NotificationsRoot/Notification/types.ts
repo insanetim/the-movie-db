@@ -1,6 +1,6 @@
 import { NOTIFICATION_TYPE } from 'src/constants/app'
 
-export interface NotificationProps {
+export type NotificationProps = {
   duration: number
   hideNotification: (id: string) => void
   id: string
@@ -8,6 +8,6 @@ export interface NotificationProps {
   messageType: NOTIFICATION_TYPE
 }
 
-export interface NotificationHook {
+export type NotificationHook = {
   closeNotification: () => void
 }

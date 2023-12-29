@@ -1,5 +1,5 @@
 import { ICast } from 'src/interfaces/movie.interface'
 
-export interface CastListProps {
+export type CastListProps = {
   cast: ICast[]
 }

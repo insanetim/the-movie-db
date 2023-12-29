@@ -37,9 +37,9 @@ const useContainer = (): FavoriteHook => {
   }
 
   const handleMovieDelete = (
-    movieId: IMovie['id'],
-    event: MouseEvent<HTMLSpanElement>
-  ): (() => void) => {
+    event: MouseEvent<HTMLSpanElement>,
+    movieId: IMovie['id']
+  ) => {
     event.stopPropagation()
 
     const onOk = async () => {

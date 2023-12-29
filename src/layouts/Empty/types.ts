@@ -1,3 +1,5 @@
-export interface EmptyLayoutProps {
-  children?: React.ReactNode
+import { ReactNode } from 'react'
+
+export type EmptyLayoutProps = {
+  children?: ReactNode
 }

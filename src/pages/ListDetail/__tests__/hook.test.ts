@@ -1,5 +1,6 @@
 import { act, renderHook } from '@testing-library/react'
 import { Modal } from 'antd'
+import { MouseEvent } from 'react'
 import { useNavigate, useParams, useSearchParams } from 'react-router-dom'
 import { dispatch } from 'src/__mocks__/react-redux'
 import useUpdatePage from 'src/hooks/useUpdatePage'
@@ -76,13 +77,14 @@ describe('ListDetail useContainer hook', () => {
 
   it('should check "handleMovieDelete" method', async () => {
     const removeFromList = jest.spyOn(listsActions, 'removeFromList')
+    const event = {
+      stopPropagation: jest.fn(),
+    } as unknown as MouseEvent<HTMLSpanElement>
     let onOk = () => {}
     const { result } = renderHook(useContainer)
 
     await act(() => {
-      onOk = result.current.handleMovieDelete(1234, {
-        stopPropagation: jest.fn(),
-      } as never)
+      onOk = result.current.handleMovieDelete(event, 1234)
       onOk()
     })
 

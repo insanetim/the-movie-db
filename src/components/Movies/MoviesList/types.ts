@@ -1,9 +1,9 @@
 import { IMovie } from 'src/interfaces/movie.interface'
 
-export interface MoviesListProps {
+export type MoviesListProps = {
   handleMovieDelete?: (
-    movieId: IMovie['id'],
-    event: React.MouseEvent<HTMLSpanElement>
-  ) => () => void
+    event: React.MouseEvent<HTMLSpanElement>,
+    id: IMovie['id']
+  ) => void
   movies: IMovie[]
 }

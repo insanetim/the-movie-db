@@ -1,6 +1,6 @@
-import { INotification } from 'src/store/app/types'
+import { Notification } from 'src/store/app/types'
 
-export interface NotificationsRootHook {
+export type NotificationsRootHook = {
   hideNotification: (id: string) => void
-  notifications: INotification[]
+  notifications: Notification[]
 }

@@ -1,14 +1,19 @@
+import {
+  ErrorMsg,
+  HandlePagination,
+  Query,
+} from 'src/interfaces/global.interface'
 import { IMoviesList } from 'src/interfaces/movie.interface'
 
-export interface SearchResultProps {
-  query: string
+export type SearchResultProps = {
+  query: Query
 }
 
-export interface SearchResultHookProps extends SearchResultProps {}
+export type SearchResultHookProps = SearchResultProps
 
-export interface SearchResultHook {
-  error: null | string
-  handlePagination: (page: number) => void
+export type SearchResultHook = {
+  error: ErrorMsg
+  handlePagination: HandlePagination
   loading: boolean
   movies: IMoviesList | null
 }

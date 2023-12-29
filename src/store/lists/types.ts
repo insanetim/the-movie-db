@@ -3,35 +3,35 @@ import { IState } from 'src/interfaces/global.interface'
 import { IList, IListDetail, IListsList } from 'src/interfaces/list.interface'
 import { IMovie } from 'src/interfaces/movie.interface'
 
-export interface CreateListProps {
+export type CreateListProps = {
   listData: ListData
   movieId?: IMovie['id']
 }
 
-export interface CreateListResponse {
+export type CreateListResponse = {
   list_id: number
   status_code: number
   status_message: string
   success: boolean
 }
 
-export interface AddToListProps {
+export type AddToListProps = {
   listId: IList['id']
   listName: string
   movieId: IMovie['id']
 }
 
-export interface RemoveFromListProps {
+export type RemoveFromListProps = {
   listId: IList['id']
   movieId: IMovie['id']
 }
 
-export interface FetchListDetailProps {
+export type FetchListDetailProps = {
   listId: IList['id']
   page: string
 }
 
-export interface ListsState {
+export type ListsState = {
   createdLists: IState<IListsList>
   listDetail: IState<IListDetail>
 }

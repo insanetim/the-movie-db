@@ -1,9 +1,10 @@
+import { ErrorMsg, HandlePagination } from 'src/interfaces/global.interface'
 import { IListsList } from 'src/interfaces/list.interface'
 
-export interface ListsHook {
-  error: null | string
+export type ListsHook = {
+  error: ErrorMsg
   handleCreateList: () => () => void
-  handlePagination: (page: number) => void
+  handlePagination: HandlePagination
   lists: IListsList | null
   loading: boolean
 }

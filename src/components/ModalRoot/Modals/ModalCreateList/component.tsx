@@ -6,7 +6,7 @@ import { ModalCreateListProps } from './types'
 const ModalCreateList: React.FC<ModalCreateListProps> = ({
   movieId,
   onSuccess,
-  ...props
+  ...otherProps
 }) => {
   const [form] = Form.useForm()
   const {
@@ -30,7 +30,7 @@ const ModalCreateList: React.FC<ModalCreateListProps> = ({
       onOk={handleOk}
       open
       title='Create list'
-      {...props}
+      {...otherProps}
     >
       <Form
         autoComplete='off'

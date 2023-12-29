@@ -1,12 +1,16 @@
-export type IError = null | string
+export type ErrorMsg = null | string
 
-export type IState<T> = {
+export type Query = string
+
+export type HandlePagination = (page: number) => void
+
+export interface IState<T> {
   data: T | null
-  error: IError
+  error: ErrorMsg
   loading: boolean
 }
 
-export type IResponse<T> = {
+export interface IResponse<T> {
   page: number
   results: T[]
   total_pages: number

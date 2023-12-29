@@ -6,7 +6,7 @@ export type ModalsMap = typeof MODAL_COMPONENTS
 export type ModalTypes = Extract<keyof ModalsMap, string>
 export type ModalProps = ComponentProps<ModalsMap[ModalTypes]>
 
-export interface ModalRootHook {
+export type ModalRootHook = {
   modalProps: ModalProps | null
   modalType: ModalTypes | null
   onCancel: () => void

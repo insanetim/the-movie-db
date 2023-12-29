@@ -1,20 +1,20 @@
 import { IMovie } from 'src/interfaces/movie.interface'
 
-export interface MovieItemProps {
+export type MovieItemProps = {
   handleMovieDelete?: (
-    id: IMovie['id'],
-    event: React.MouseEvent<HTMLSpanElement>
-  ) => () => void
+    event: React.MouseEvent<HTMLSpanElement>,
+    id: IMovie['id']
+  ) => void
   id: IMovie['id']
   overview: IMovie['overview']
   posterPath: IMovie['poster_path']
   title: IMovie['title']
 }
 
-export interface MovieItemHookProps {
+export type MovieItemHookProps = {
   id: IMovie['id']
 }
 
-export interface MovieItemHook {
+export type MovieItemHook = {
   handleClick: () => void
 }

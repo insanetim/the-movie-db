@@ -1,10 +1,11 @@
+import { Query } from 'src/interfaces/global.interface'
 import { IMoviesList } from 'src/interfaces/movie.interface'
 
-export interface FetchSearchProps {
+export type FetchSearchProps = {
   page: string
-  query: string
+  query: Query
 }
 
-export interface DashboardState {
+export type DashboardState = {
   data: IMoviesList | null
 }

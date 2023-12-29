@@ -1,5 +1,5 @@
 import { IMovie } from 'src/interfaces/movie.interface'
 
-export interface OriginalLanguageProps {
+export type OriginalLanguageProps = {
   originalLanguage: IMovie['original_language']
 }

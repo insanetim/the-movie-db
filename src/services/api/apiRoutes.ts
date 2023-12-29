@@ -10,14 +10,14 @@ import {
   IMoviesList,
 } from 'src/interfaces/movie.interface'
 import httpClient from 'src/services/api/httpClient'
-import { IRequestToken, ISession, IUserData } from 'src/store/auth/types'
+import { RequestToken, Session, UserData } from 'src/store/auth/types'
 import { CreateListResponse } from 'src/store/lists/types'
 
 // Auth
 export const createRequestToken = async () => {
   const {
     data: { request_token },
-  } = await httpClient.request<IRequestToken>({
+  } = await httpClient.request<RequestToken>({
     url: '/authentication/token/new',
   })
 
@@ -29,7 +29,7 @@ export const validateWithLogin = async ({
   userData,
 }: {
   requestToken: string
-  userData: IUserData
+  userData: UserData
 }) => {
   await httpClient.request({
     data: { ...userData, request_token: requestToken },
@@ -45,7 +45,7 @@ export const createSession = async ({
 }) => {
   const {
     data: { session_id },
-  } = await httpClient.request<ISession>({
+  } = await httpClient.request<Session>({
     data: { request_token: requestToken },
     method: 'post',
     url: '/authentication/session/new',

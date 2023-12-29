@@ -1,5 +1,5 @@
 import { IMovieDetail } from 'src/interfaces/movie.interface'
 
-export interface RevenueProps {
+export type RevenueProps = {
   revenue: IMovieDetail['revenue']
 }

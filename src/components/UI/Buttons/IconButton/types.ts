@@ -1,4 +1,6 @@
-export interface IconButtonProps {
-  handleClick?: () => void
-  icon: React.ReactNode
+import { MouseEventHandler, ReactNode } from 'react'
+
+export type IconButtonProps = {
+  handleClick?: MouseEventHandler<HTMLElement>
+  icon: ReactNode
 }
