@@ -14,10 +14,12 @@ import { selectMovieById } from 'src/store/movie/selectors'
 import favoriteMessage from 'src/utils/helpers/favoriteMessage'
 import watchlistMessage from 'src/utils/helpers/watchlistMessage'
 
-import { MovieDetailHook } from './types'
+import { MovieDetailHook, MovieDetailRouteParams } from './types'
 
 const useContainer = (): MovieDetailHook => {
-  const { movieId = '' } = useParams()
+  const { movieId } = useParams<
+    keyof MovieDetailRouteParams
+  >() as MovieDetailRouteParams
   const dispatch = useAppDispatch()
   const movie = useAppSelector(state => selectMovieById(state, movieId))
   const [popoverOpen, setPopoverOpen] = useState(false)

@@ -10,3 +10,7 @@ export type MovieDetailHook = {
   popoverOpen: boolean
   setPopoverOpen: React.Dispatch<React.SetStateAction<boolean>>
 }
+
+export type MovieDetailRouteParams = {
+  movieId: string
+}

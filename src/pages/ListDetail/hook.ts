@@ -16,10 +16,12 @@ import {
 } from 'src/store/lists/selectors'
 import getParams from 'src/utils/helpers/getParams'
 
-import { ListDetailHook } from './types'
+import { ListDetailHook, ListDetailRouteParams } from './types'
 
 const useContainer = (): ListDetailHook => {
-  const { listId = '' } = useParams()
+  const { listId } = useParams<
+    keyof ListDetailRouteParams
+  >() as ListDetailRouteParams
   const navigate = useNavigate()
   const dispatch = useAppDispatch()
   const list = useAppSelector(listDetailSelector)

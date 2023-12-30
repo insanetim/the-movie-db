@@ -13,3 +13,7 @@ export type ListDetailHook = {
   list: IListDetail | null
   loading: boolean
 }
+
+export type ListDetailRouteParams = {
+  listId: string
+}
