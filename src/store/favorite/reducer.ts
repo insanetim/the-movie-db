@@ -1,5 +1,4 @@
 import { createReducer } from '@reduxjs/toolkit'
-import setState from 'src/utils/stateHelpers/setState'
 
 import { fetchFavorite } from './actions'
 import { FavoriteState } from './types'
@@ -12,9 +11,19 @@ const initialState: FavoriteState = {
 
 const favoriteReducer = createReducer(initialState, builder => {
   builder
-    .addCase(fetchFavorite.pending, setState.pending)
-    .addCase(fetchFavorite.fulfilled, setState.fulfilled)
-    .addCase(fetchFavorite.rejected, setState.rejected)
+    .addCase(fetchFavorite.pending, state => {
+      state.loading = true
+      state.data = null
+      state.error = null
+    })
+    .addCase(fetchFavorite.fulfilled, (state, action) => {
+      state.loading = false
+      state.data = action.payload
+    })
+    .addCase(fetchFavorite.rejected, (state, action) => {
+      state.loading = false
+      state.error = action.payload as string
+    })
 })
 
 export default favoriteReducer

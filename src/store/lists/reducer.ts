@@ -1,5 +1,4 @@
 import { combineReducers, createReducer } from '@reduxjs/toolkit'
-import setState from 'src/utils/stateHelpers/setState'
 
 import { fetchListDetail, fetchLists } from './actions'
 import { ListsState } from './types'
@@ -21,17 +20,37 @@ const createdListsReducer = createReducer(
   initialState.createdLists,
   builder => {
     builder
-      .addCase(fetchLists.pending, setState.pending)
-      .addCase(fetchLists.fulfilled, setState.fulfilled)
-      .addCase(fetchLists.rejected, setState.rejected)
+      .addCase(fetchLists.pending, state => {
+        state.loading = true
+        state.data = null
+        state.error = null
+      })
+      .addCase(fetchLists.fulfilled, (state, action) => {
+        state.loading = false
+        state.data = action.payload
+      })
+      .addCase(fetchLists.rejected, (state, action) => {
+        state.loading = false
+        state.error = action.payload as string
+      })
   }
 )
 
 const listDetailReducer = createReducer(initialState.listDetail, builder => {
   builder
-    .addCase(fetchListDetail.pending, setState.pending)
-    .addCase(fetchListDetail.fulfilled, setState.fulfilled)
-    .addCase(fetchListDetail.rejected, setState.rejected)
+    .addCase(fetchListDetail.pending, state => {
+      state.loading = true
+      state.data = null
+      state.error = null
+    })
+    .addCase(fetchListDetail.fulfilled, (state, action) => {
+      state.loading = false
+      state.data = action.payload
+    })
+    .addCase(fetchListDetail.rejected, (state, action) => {
+      state.loading = false
+      state.error = action.payload as string
+    })
 })
 
 export default combineReducers({

@@ -1,10 +1,8 @@
-import setState from 'src/utils/stateHelpers/setState'
+import { mergeDeepRight } from 'ramda'
 
 import { fetchFavorite } from '../actions'
 import favoriteReducer from '../reducer'
 import { FavoriteState } from '../types'
-
-jest.mock('src/utils/stateHelpers/setState')
 
 describe('favoriteReducer', () => {
   const state: FavoriteState = {
@@ -21,9 +19,9 @@ describe('favoriteReducer', () => {
 
   it('should handle "fetchFavorite/pending" action', () => {
     const action = { type: fetchFavorite.pending.type }
-    favoriteReducer(state, action)
+    const result = favoriteReducer(state, action)
 
-    expect(setState.pending).toHaveBeenCalled()
+    expect(result).toEqual(state)
   })
 
   it('should handle "fetchFavorite/fulfilled" action', () => {
@@ -31,9 +29,13 @@ describe('favoriteReducer', () => {
       payload: 'test/data',
       type: fetchFavorite.fulfilled.type,
     }
-    favoriteReducer(state, action)
+    const newState = mergeDeepRight(state, {
+      data: action.payload,
+      loading: false,
+    })
+    const result = favoriteReducer(state, action)
 
-    expect(setState.fulfilled).toHaveBeenCalled()
+    expect(result).toEqual(newState)
   })
 
   it('should handle "fetchFavorite/rejected" action', () => {
@@ -41,8 +43,12 @@ describe('favoriteReducer', () => {
       payload: 'test/error',
       type: fetchFavorite.rejected.type,
     }
-    favoriteReducer(state, action)
+    const newState = mergeDeepRight(state, {
+      error: action.payload,
+      loading: false,
+    })
+    const result = favoriteReducer(state, action)
 
-    expect(setState.rejected).toHaveBeenCalled()
+    expect(result).toEqual(newState)
   })
 })

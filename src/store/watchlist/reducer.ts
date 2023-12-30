@@ -1,5 +1,4 @@
 import { createReducer } from '@reduxjs/toolkit'
-import setState from 'src/utils/stateHelpers/setState'
 
 import { fetchWatchlist } from './actions'
 import { WatchlistState } from './types'
@@ -12,9 +11,19 @@ const initialState: WatchlistState = {
 
 const watchlistReducer = createReducer(initialState, builder => {
   builder
-    .addCase(fetchWatchlist.pending, setState.pending)
-    .addCase(fetchWatchlist.fulfilled, setState.fulfilled)
-    .addCase(fetchWatchlist.rejected, setState.rejected)
+    .addCase(fetchWatchlist.pending, state => {
+      state.loading = true
+      state.data = null
+      state.error = null
+    })
+    .addCase(fetchWatchlist.fulfilled, (state, action) => {
+      state.loading = false
+      state.data = action.payload
+    })
+    .addCase(fetchWatchlist.rejected, (state, action) => {
+      state.loading = false
+      state.error = action.payload as string
+    })
 })
 
 export default watchlistReducer

@@ -1,10 +1,8 @@
-import setState from 'src/utils/stateHelpers/setState'
+import { mergeDeepRight } from 'ramda'
 
 import { fetchWatchlist } from '../actions'
 import watchlistReducer from '../reducer'
 import { WatchlistState } from '../types'
-
-jest.mock('src/utils/stateHelpers/setState')
 
 describe('watchlistReducer', () => {
   const state: WatchlistState = {
@@ -21,9 +19,9 @@ describe('watchlistReducer', () => {
 
   it('should handle "fetchWatchlist/pending" action', () => {
     const action = { type: fetchWatchlist.pending.type }
-    watchlistReducer(state, action)
+    const result = watchlistReducer(state, action)
 
-    expect(setState.pending).toHaveBeenCalled()
+    expect(result).toEqual(state)
   })
 
   it('should handle "fetchWatchlist/fulfilled" action', () => {
@@ -31,9 +29,13 @@ describe('watchlistReducer', () => {
       payload: 'test/data',
       type: fetchWatchlist.fulfilled.type,
     }
-    watchlistReducer(state, action)
+    const newState = mergeDeepRight(state, {
+      data: action.payload,
+      loading: false,
+    })
+    const result = watchlistReducer(state, action)
 
-    expect(setState.fulfilled).toHaveBeenCalled()
+    expect(result).toEqual(newState)
   })
 
   it('should handle "fetchWatchlist/rejected" action', () => {
@@ -41,8 +43,12 @@ describe('watchlistReducer', () => {
       payload: 'test/data',
       type: fetchWatchlist.rejected.type,
     }
-    watchlistReducer(state, action)
+    const newState = mergeDeepRight(state, {
+      error: action.payload,
+      loading: false,
+    })
+    const result = watchlistReducer(state, action)
 
-    expect(setState.rejected).toHaveBeenCalled()
+    expect(result).toEqual(newState)
   })
 })
