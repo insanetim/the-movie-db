@@ -1,3 +1,4 @@
+import { isNil } from 'ramda'
 import { useEffect } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { useAppDispatch, useAppSelector } from 'src/hooks/useRedux'
@@ -21,8 +22,10 @@ const useContainer = (): HeaderHook => {
   }
 
   useEffect(() => {
-    dispatch(fetchAccount())
-  }, [dispatch])
+    if (isNil(account)) {
+      dispatch(fetchAccount())
+    }
+  }, [account, dispatch])
 
   return { account, handleLogOut }
 }

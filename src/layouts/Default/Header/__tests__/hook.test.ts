@@ -1,12 +1,15 @@
 import { act, renderHook } from '@testing-library/react'
 import { useNavigate } from 'react-router-dom'
+import mockAccount from 'src/__mocks__/mockAccount'
 import { dispatch } from 'src/__mocks__/react-redux'
+import { IAccount } from 'src/interfaces/account.interface'
 import * as sessionActions from 'src/store/auth/actions'
 
 import useContainer from '../hook'
 
+let mockedAccount: IAccount | null = mockAccount
 jest.mock('src/store/auth/selectors', () => ({
-  accountSelector: () => ({ id: 1234 }),
+  accountSelector: () => mockedAccount,
 }))
 
 jest.mock('react-router-dom', () => ({
@@ -41,6 +44,7 @@ describe('Header useContainer hook', () => {
   })
 
   it('should check "useEffect" method', () => {
+    mockedAccount = null
     const fetchAccount = jest.spyOn(sessionActions, 'fetchAccount')
     renderHook(useContainer)
 
