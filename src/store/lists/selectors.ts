@@ -1,23 +1,30 @@
+import { createSelector } from '@reduxjs/toolkit'
+
 import { RootState } from '../index'
 
-const listsSelector = (state: RootState) => {
-  return state.lists.createdLists.data
-}
-const listsLoadingSelector = (state: RootState) => {
-  return state.lists.createdLists.loading
-}
-const listsErrorSelector = (state: RootState) => {
-  return state.lists.createdLists.error
-}
-const listDetailSelector = (state: RootState) => {
-  return state.lists.listDetail.data
-}
-const listDetailLoadingSelector = (state: RootState) => {
-  return state.lists.listDetail.loading
-}
-const listDetailErrorSelector = (state: RootState) => {
-  return state.lists.listDetail.error
-}
+const listsReducer = (state: RootState) => state.lists
+
+const createdLists = createSelector([listsReducer], lists => lists.createdLists)
+
+const listsSelector = createSelector([createdLists], lists => lists.data)
+
+const listsLoadingSelector = createSelector(
+  [createdLists],
+  lists => lists.loading
+)
+
+const listsErrorSelector = createSelector([createdLists], lists => lists.error)
+
+const listDetail = createSelector([listsReducer], lists => lists.listDetail)
+
+const listDetailSelector = createSelector([listDetail], list => list.data)
+
+const listDetailLoadingSelector = createSelector(
+  [listDetail],
+  list => list.loading
+)
+
+const listDetailErrorSelector = createSelector([listDetail], list => list.error)
 
 export {
   listDetailErrorSelector,

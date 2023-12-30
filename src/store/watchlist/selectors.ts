@@ -1,14 +1,23 @@
+import { createSelector } from '@reduxjs/toolkit'
+
 import { RootState } from '../index'
 
-const watchlistMoviesSelector = (state: RootState) => {
-  return state.watchlist.data
-}
-const watchlistLoadingSelector = (state: RootState) => {
-  return state.watchlist.loading
-}
-const watchlistErrorSelector = (state: RootState) => {
-  return state.watchlist.error
-}
+const watchlistReducer = (state: RootState) => state.watchlist
+
+const watchlistMoviesSelector = createSelector(
+  [watchlistReducer],
+  watchlist => watchlist.data
+)
+
+const watchlistLoadingSelector = createSelector(
+  [watchlistReducer],
+  watchlist => watchlist.loading
+)
+
+const watchlistErrorSelector = createSelector(
+  [watchlistReducer],
+  watchlist => watchlist.error
+)
 
 export {
   watchlistErrorSelector,

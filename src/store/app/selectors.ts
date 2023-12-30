@@ -1,13 +1,14 @@
+import { createSelector } from '@reduxjs/toolkit'
+
 import { RootState } from '../index'
 
-const modalTypeSelector = (state: RootState) => {
-  return state.app.modal.modalType
-}
-const modalPropsSelector = (state: RootState) => {
-  return state.app.modal.modalProps
-}
-const notificationsSelector = (state: RootState) => {
-  return state.app.notifications
-}
+const appReducer = (state: RootState) => state.app
 
-export { modalPropsSelector, modalTypeSelector, notificationsSelector }
+const modalSelector = createSelector([appReducer], app => app.modal)
+
+const notificationsSelector = createSelector(
+  [appReducer],
+  app => app.notifications
+)
+
+export { modalSelector, notificationsSelector }

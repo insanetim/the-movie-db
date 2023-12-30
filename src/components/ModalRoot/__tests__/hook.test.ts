@@ -5,8 +5,10 @@ import { hideModal } from 'src/store/app/actions'
 import useContainer from '../hook'
 
 jest.mock('src/store/app/selectors', () => ({
-  modalPropsSelector: () => null,
-  modalTypeSelector: () => 'MODAL_CREATE_LIST',
+  modalSelector: () => ({
+    modalProps: null,
+    modalType: 'MODAL_CREATE_LIST',
+  }),
 }))
 
 describe('ModalRoot useContainer hook', () => {
