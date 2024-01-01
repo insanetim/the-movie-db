@@ -28,7 +28,7 @@
     "@types/ramda": "^0.29.9",
     "@types/react": "^18.2.43",
     "@types/react-helmet": "^6.1.11",
-    "@typescript-eslint/eslint-plugin": "^6.15.0",
+    "@typescript-eslint/eslint-plugin": "^6.16.0",
     "@typescript-eslint/parser": "^6.15.0",
     "autoprefixer": "^10.4.16",
     "babel-jest": "^29.7.0",
