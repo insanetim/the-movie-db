@@ -3,10 +3,10 @@
 exports[`Runtime component should match snapshot 1`] = `
 <DocumentFragment>
   <div
-    class="ant-col ant-col-24 css-dev-only-do-not-override-gzal6t"
+    class="ant-col ant-col-24 css-dev-only-do-not-override-i46qwz"
   >
     <div
-      class="ant-typography css-dev-only-do-not-override-gzal6t"
+      class="ant-typography css-dev-only-do-not-override-i46qwz"
     >
       <b>
         Runtime: 

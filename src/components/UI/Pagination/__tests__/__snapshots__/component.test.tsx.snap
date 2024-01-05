@@ -3,13 +3,13 @@
 exports[`Pagination component should match snapshot 1`] = `
 <DocumentFragment>
   <div
-    class="ant-row ant-row-center css-dev-only-do-not-override-gzal6t"
+    class="ant-row ant-row-center css-dev-only-do-not-override-i46qwz"
   >
     <div
-      class="ant-col css-dev-only-do-not-override-gzal6t"
+      class="ant-col css-dev-only-do-not-override-i46qwz"
     >
       <ul
-        class="ant-pagination pagination css-dev-only-do-not-override-gzal6t"
+        class="ant-pagination pagination css-dev-only-do-not-override-i46qwz"
       >
         <li
           aria-disabled="true"
