@@ -1,5 +1,5 @@
 import { renderHook } from '@testing-library/react'
-import Wrapper from 'src/utils/testHelpers/wrapperMock'
+import { Wrapper } from 'src/utils/testHelpers/renderWithWrapper'
 
 import useContainer from '../hook'
 

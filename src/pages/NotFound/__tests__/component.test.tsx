@@ -1,11 +1,10 @@
-import { render } from '@testing-library/react'
-import Wrapper from 'src/utils/testHelpers/wrapperMock'
+import renderWithWrapper from 'src/utils/testHelpers/renderWithWrapper'
 
 import NotFound from '../component'
 
 describe('NotFound component', () => {
   it('should match snapshot', () => {
-    const { asFragment } = render(<NotFound />, { wrapper: Wrapper })
+    const { asFragment } = renderWithWrapper(<NotFound />)
 
     expect(asFragment()).toMatchSnapshot()
   })

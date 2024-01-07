@@ -1,7 +1,7 @@
-import { render, screen } from '@testing-library/react'
+import { screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { mockMovie } from 'src/__mocks__/mockMovie'
-import Wrapper from 'src/utils/testHelpers/wrapperMock'
+import renderWithWrapper from 'src/utils/testHelpers/renderWithWrapper'
 
 import SearchResult from '../component'
 import { SearchResultHook } from '../types'
@@ -21,15 +21,15 @@ jest.mock('../hook', () => jest.fn(() => mockedHook))
 
 describe('SearchResult component', () => {
   it('should match snapshot', () => {
-    const { asFragment } = render(<SearchResult query='test/search' />, {
-      wrapper: Wrapper,
-    })
+    const { asFragment } = renderWithWrapper(
+      <SearchResult query='test/search' />
+    )
 
     expect(asFragment()).toMatchSnapshot()
   })
 
   it('should call "handlePagination" when pagination clicked', async () => {
-    render(<SearchResult query='test/search' />, { wrapper: Wrapper })
+    renderWithWrapper(<SearchResult query='test/search' />)
 
     const user = userEvent.setup()
     const link = screen.getByText('2')
@@ -45,9 +45,9 @@ describe('SearchResult component', () => {
       total_pages: 1,
       total_results: 1,
     }
-    const { asFragment } = render(<SearchResult query='test/search' />, {
-      wrapper: Wrapper,
-    })
+    const { asFragment } = renderWithWrapper(
+      <SearchResult query='test/search' />
+    )
 
     expect(asFragment()).toMatchSnapshot()
   })
@@ -59,18 +59,18 @@ describe('SearchResult component', () => {
       total_pages: 1,
       total_results: 1,
     }
-    const { asFragment } = render(<SearchResult query='test/search' />, {
-      wrapper: Wrapper,
-    })
+    const { asFragment } = renderWithWrapper(
+      <SearchResult query='test/search' />
+    )
 
     expect(asFragment()).toMatchSnapshot()
   })
 
   it('should match snapshot with loading', () => {
     mockedHook.loading = true
-    const { asFragment } = render(<SearchResult query='test/search' />, {
-      wrapper: Wrapper,
-    })
+    const { asFragment } = renderWithWrapper(
+      <SearchResult query='test/search' />
+    )
 
     expect(asFragment()).toMatchSnapshot()
   })
@@ -78,9 +78,9 @@ describe('SearchResult component', () => {
   it('should match snapshot with error', () => {
     mockedHook.loading = false
     mockedHook.error = 'Something went wrong!'
-    const { asFragment } = render(<SearchResult query='test/search' />, {
-      wrapper: Wrapper,
-    })
+    const { asFragment } = renderWithWrapper(
+      <SearchResult query='test/search' />
+    )
 
     expect(asFragment()).toMatchSnapshot()
   })

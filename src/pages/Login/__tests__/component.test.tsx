@@ -1,5 +1,4 @@
-import { render } from '@testing-library/react'
-import Wrapper from 'src/utils/testHelpers/wrapperMock'
+import renderWithWrapper from 'src/utils/testHelpers/renderWithWrapper'
 
 import Login from '../component'
 import { LoginHook } from '../types'
@@ -12,14 +11,14 @@ jest.mock('../hook', () => jest.fn(() => mockedHook))
 
 describe('Login component', () => {
   it('should match snapshot', () => {
-    const { asFragment } = render(<Login />, { wrapper: Wrapper })
+    const { asFragment } = renderWithWrapper(<Login />)
 
     expect(asFragment()).toMatchSnapshot()
   })
 
   it('should match snapshot with isSubmitting', () => {
     mockedHook.isSubmitting = true
-    const { asFragment } = render(<Login />, { wrapper: Wrapper })
+    const { asFragment } = renderWithWrapper(<Login />)
 
     expect(asFragment()).toMatchSnapshot()
   })

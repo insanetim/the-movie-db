@@ -1,5 +1,4 @@
-import { render, screen } from '@testing-library/react'
-import { ReactNode, Suspense } from 'react'
+import { screen } from '@testing-library/react'
 import { Location } from 'react-router-dom'
 import { mockListDetail } from 'src/__mocks__/mockList'
 import { mockMovieDetailExtended } from 'src/__mocks__/mockMovie'
@@ -26,7 +25,7 @@ import { ListsHook } from 'src/pages/Lists/types'
 import { LoginHook } from 'src/pages/Login/types'
 import { MovieDetailHook } from 'src/pages/MovieDetail/types'
 import { WatchlistHook } from 'src/pages/Watchlist/types'
-import Wrapper from 'src/utils/testHelpers/wrapperMock'
+import renderWithWrapper from 'src/utils/testHelpers/renderWithWrapper'
 
 const mockedProtectedRoutesHook: ProtectedRoutesHook = {
   isAuthenticated: false,
@@ -133,22 +132,14 @@ jest.mock('../pages/MovieDetail/hook', () =>
 )
 
 describe('App component', () => {
-  const WrapperWithSuspense = ({ children }: { children: ReactNode }) => (
-    <Suspense fallback={null}>
-      <Wrapper>{children}</Wrapper>
-    </Suspense>
-  )
-
   it('should match snapshot', () => {
-    const { asFragment } = render(<App />, { wrapper: Wrapper })
+    const { asFragment } = renderWithWrapper(<App />)
 
     expect(asFragment()).toMatchSnapshot()
   })
 
   it('should render DefaultLayout', async () => {
-    render(<DefaultLayout />, {
-      wrapper: WrapperWithSuspense,
-    })
+    renderWithWrapper(<DefaultLayout />)
 
     expect(
       await screen.findByText(/insanetim/i, undefined, { timeout: 3000 })
@@ -156,15 +147,13 @@ describe('App component', () => {
   })
 
   it('should render Login', async () => {
-    render(<Login />, { wrapper: WrapperWithSuspense })
+    renderWithWrapper(<Login />)
 
     expect(await screen.findByText(/log in/i)).toBeInTheDocument()
   })
 
   it('should render Dashboard', async () => {
-    render(<Dashboard />, {
-      wrapper: WrapperWithSuspense,
-    })
+    renderWithWrapper(<Dashboard />)
 
     expect(
       await screen.findByPlaceholderText(/enter/i, undefined, { timeout: 3000 })
@@ -172,31 +161,31 @@ describe('App component', () => {
   })
 
   it('should render Lists', async () => {
-    render(<Lists />, { wrapper: WrapperWithSuspense })
+    renderWithWrapper(<Lists />)
 
     expect(await screen.findByText(/my lists/i)).toBeInTheDocument()
   })
 
   it('should render Watchlist', async () => {
-    render(<Watchlist />, { wrapper: WrapperWithSuspense })
+    renderWithWrapper(<Watchlist />)
 
     expect(await screen.findByText(/watchlist/i)).toBeInTheDocument()
   })
 
   it('should render Favorite', async () => {
-    render(<Favorite />, { wrapper: WrapperWithSuspense })
+    renderWithWrapper(<Favorite />)
 
     expect(await screen.findByText(/favorite/i)).toBeInTheDocument()
   })
 
   it('should render ListDetail', async () => {
-    render(<ListDetail />, { wrapper: WrapperWithSuspense })
+    renderWithWrapper(<ListDetail />)
 
     expect(await screen.findByText(/title/i)).toBeInTheDocument()
   })
 
   it('should render MovieDetail', async () => {
-    render(<MovieDetail />, { wrapper: WrapperWithSuspense })
+    renderWithWrapper(<MovieDetail />)
 
     expect(
       await screen.findByText(/title/i, undefined, { timeout: 3000 })
@@ -204,7 +193,7 @@ describe('App component', () => {
   })
 
   it('should render NotFound', async () => {
-    render(<NotFound />, { wrapper: WrapperWithSuspense })
+    renderWithWrapper(<NotFound />)
 
     expect(await screen.findByText(/oops!/i)).toBeInTheDocument()
   })

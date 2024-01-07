@@ -1,7 +1,7 @@
-import { render, screen } from '@testing-library/react'
+import { screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { mockMovie } from 'src/__mocks__/mockMovie'
-import Wrapper from 'src/utils/testHelpers/wrapperMock'
+import renderWithWrapper from 'src/utils/testHelpers/renderWithWrapper'
 
 import ListDetails from '../component'
 import { ListDetailHook } from '../types'
@@ -32,13 +32,13 @@ jest.mock('../hook', () => jest.fn(() => mockedHook))
 
 describe('ListDetail component', () => {
   it('should match snapshot', () => {
-    const { asFragment } = render(<ListDetails />, { wrapper: Wrapper })
+    const { asFragment } = renderWithWrapper(<ListDetails />)
 
     expect(asFragment()).toMatchSnapshot()
   })
 
   it('should call "handleListDelete" when delete button clicked', async () => {
-    render(<ListDetails />, { wrapper: Wrapper })
+    renderWithWrapper(<ListDetails />)
 
     const user = userEvent.setup()
     const deleteBtn = screen.getByTestId('deleteListBtn')
@@ -48,7 +48,7 @@ describe('ListDetail component', () => {
   })
 
   it('should call "handleMovieDelete" when delete button clicked', async () => {
-    render(<ListDetails />, { wrapper: Wrapper })
+    renderWithWrapper(<ListDetails />)
 
     const user = userEvent.setup()
     const deleteBtn = screen.getByTestId('deleteMovieBtn')
@@ -58,7 +58,7 @@ describe('ListDetail component', () => {
   })
 
   it('should call "handlePagination" when pagination clicked', async () => {
-    render(<ListDetails />, { wrapper: Wrapper })
+    renderWithWrapper(<ListDetails />)
 
     const user = userEvent.setup()
     const link = screen.getByText('2')
@@ -83,21 +83,21 @@ describe('ListDetail component', () => {
       total_pages: 1,
       total_results: 1,
     }
-    const { asFragment } = render(<ListDetails />, { wrapper: Wrapper })
+    const { asFragment } = renderWithWrapper(<ListDetails />)
 
     expect(asFragment()).toMatchSnapshot()
   })
 
   it('should match snapshot with empty list', () => {
     mockedHook.list = null
-    const { asFragment } = render(<ListDetails />, { wrapper: Wrapper })
+    const { asFragment } = renderWithWrapper(<ListDetails />)
 
     expect(asFragment()).toMatchSnapshot()
   })
 
   it('should match snapshot with loading', () => {
     mockedHook.loading = true
-    const { asFragment } = render(<ListDetails />, { wrapper: Wrapper })
+    const { asFragment } = renderWithWrapper(<ListDetails />)
 
     expect(asFragment()).toMatchSnapshot()
   })
@@ -105,7 +105,7 @@ describe('ListDetail component', () => {
   it('should match snapshot with error', () => {
     mockedHook.loading = false
     mockedHook.error = 'Something went wrong!'
-    const { asFragment } = render(<ListDetails />, { wrapper: Wrapper })
+    const { asFragment } = renderWithWrapper(<ListDetails />)
 
     expect(asFragment()).toMatchSnapshot()
   })

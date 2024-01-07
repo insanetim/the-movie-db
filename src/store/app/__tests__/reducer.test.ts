@@ -12,7 +12,7 @@ import { AppState } from '../types'
 
 jest.mock<typeof import('@reduxjs/toolkit')>('@reduxjs/toolkit', () => ({
   ...jest.requireActual('@reduxjs/toolkit'),
-  nanoid: jest.fn(() => 'test/id'),
+  nanoid: () => 'test/id',
 }))
 
 describe('appReducer', () => {

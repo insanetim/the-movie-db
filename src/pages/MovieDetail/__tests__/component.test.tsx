@@ -1,8 +1,8 @@
-import { render, screen } from '@testing-library/react'
+import { screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { mergeDeepRight } from 'ramda'
 import { mockMovieDetailExtended } from 'src/__mocks__/mockMovie'
-import Wrapper from 'src/utils/testHelpers/wrapperMock'
+import renderWithWrapper from 'src/utils/testHelpers/renderWithWrapper'
 
 import Movie from '../component'
 import useContainer from '../hook'
@@ -25,13 +25,13 @@ jest.mock('src/store/lists/selectors', () => ({
 
 describe('MovieDetail component', () => {
   it('should match snapshot', () => {
-    const { asFragment } = render(<Movie />, { wrapper: Wrapper })
+    const { asFragment } = renderWithWrapper(<Movie />)
 
     expect(asFragment()).toMatchSnapshot()
   })
 
   it('should call "handleFavoriteClick" when button clicked', async () => {
-    render(<Movie />, { wrapper: Wrapper })
+    renderWithWrapper(<Movie />)
 
     const user = userEvent.setup()
     const button = screen.getByTestId('addToFavoriteBtn')
@@ -41,7 +41,7 @@ describe('MovieDetail component', () => {
   })
 
   it('should call "handleWatchlistClick" when button clicked', async () => {
-    render(<Movie />, { wrapper: Wrapper })
+    renderWithWrapper(<Movie />)
 
     const user = userEvent.setup()
     const button = screen.getByTestId('addToWatchlistBtn')
@@ -51,7 +51,7 @@ describe('MovieDetail component', () => {
   })
 
   it('should call "setPopoverOpen" when popover clicked', async () => {
-    render(<Movie />, { wrapper: Wrapper })
+    renderWithWrapper(<Movie />)
 
     const user = userEvent.setup()
     const popover = screen.getByTestId('addMovieToListPopover')
@@ -72,7 +72,7 @@ describe('MovieDetail component', () => {
         },
       }) as MovieDetailHook
     )
-    const { asFragment } = render(<Movie />, { wrapper: Wrapper })
+    const { asFragment } = renderWithWrapper(<Movie />)
 
     expect(asFragment()).toMatchSnapshot()
   })
@@ -83,21 +83,21 @@ describe('MovieDetail component', () => {
         popoverOpen: true,
       }) as MovieDetailHook
     )
-    const { asFragment } = render(<Movie />, { wrapper: Wrapper })
+    const { asFragment } = renderWithWrapper(<Movie />)
 
     expect(asFragment()).toMatchSnapshot()
   })
 
   it('should match snapshot with empty movie', () => {
     mockedHook.movie = undefined
-    const { asFragment } = render(<Movie />, { wrapper: Wrapper })
+    const { asFragment } = renderWithWrapper(<Movie />)
 
     expect(asFragment()).toMatchSnapshot()
   })
 
   it('should match snapshot with loading', () => {
     mockedHook.loading = true
-    const { asFragment } = render(<Movie />, { wrapper: Wrapper })
+    const { asFragment } = renderWithWrapper(<Movie />)
 
     expect(asFragment()).toMatchSnapshot()
   })
@@ -105,7 +105,7 @@ describe('MovieDetail component', () => {
   it('should match snapshot with error', () => {
     mockedHook.loading = false
     mockedHook.error = 'Something went wrong!'
-    const { asFragment } = render(<Movie />, { wrapper: Wrapper })
+    const { asFragment } = renderWithWrapper(<Movie />)
 
     expect(asFragment()).toMatchSnapshot()
   })

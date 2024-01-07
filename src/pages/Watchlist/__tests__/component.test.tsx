@@ -1,7 +1,7 @@
-import { render, screen } from '@testing-library/react'
+import { screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { mockMovie } from 'src/__mocks__/mockMovie'
-import Wrapper from 'src/utils/testHelpers/wrapperMock'
+import renderWithWrapper from 'src/utils/testHelpers/renderWithWrapper'
 
 import Watchlist from '../component'
 import { WatchlistHook } from '../types'
@@ -22,13 +22,13 @@ jest.mock('../hook', () => jest.fn(() => mockedHook))
 
 describe('Watchlist component', () => {
   it('should match snapshot', () => {
-    const { asFragment } = render(<Watchlist />, { wrapper: Wrapper })
+    const { asFragment } = renderWithWrapper(<Watchlist />)
 
     expect(asFragment()).toMatchSnapshot()
   })
 
   it('should call "handlePagination" when pagination clicked', async () => {
-    render(<Watchlist />, { wrapper: Wrapper })
+    renderWithWrapper(<Watchlist />)
 
     const user = userEvent.setup()
     const link = screen.getByText('2')
@@ -38,7 +38,7 @@ describe('Watchlist component', () => {
   })
 
   it('should call "handleMovieDelete" when delete button clicked', async () => {
-    render(<Watchlist />, { wrapper: Wrapper })
+    renderWithWrapper(<Watchlist />)
 
     const user = userEvent.setup()
     const deleteBtn = screen.getByTestId('deleteMovieBtn')
@@ -54,21 +54,21 @@ describe('Watchlist component', () => {
       total_pages: 1,
       total_results: 1,
     }
-    const { asFragment } = render(<Watchlist />, { wrapper: Wrapper })
+    const { asFragment } = renderWithWrapper(<Watchlist />)
 
     expect(asFragment()).toMatchSnapshot()
   })
 
   it('should match snapshot with empty movies', () => {
     mockedHook.movies = null
-    const { asFragment } = render(<Watchlist />, { wrapper: Wrapper })
+    const { asFragment } = renderWithWrapper(<Watchlist />)
 
     expect(asFragment()).toMatchSnapshot()
   })
 
   it('should match snapshot with loading', () => {
     mockedHook.loading = true
-    const { asFragment } = render(<Watchlist />, { wrapper: Wrapper })
+    const { asFragment } = renderWithWrapper(<Watchlist />)
 
     expect(asFragment()).toMatchSnapshot()
   })
@@ -76,7 +76,7 @@ describe('Watchlist component', () => {
   it('should match snapshot with error', () => {
     mockedHook.loading = false
     mockedHook.error = 'Something went wrong!'
-    const { asFragment } = render(<Watchlist />, { wrapper: Wrapper })
+    const { asFragment } = renderWithWrapper(<Watchlist />)
 
     expect(asFragment()).toMatchSnapshot()
   })

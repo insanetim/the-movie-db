@@ -16,7 +16,7 @@ jest.mock('react-router-dom', () => ({
 
 jest.mock<typeof import('@reduxjs/toolkit')>('@reduxjs/toolkit', () => ({
   ...jest.requireActual('@reduxjs/toolkit'),
-  nanoid: jest.fn(() => 'test/id'),
+  nanoid: () => 'test/id',
 }))
 
 describe('MovieDetail useContainer hook', () => {

@@ -1,6 +1,5 @@
-import { render } from '@testing-library/react'
 import { Location } from 'react-router-dom'
-import Wrapper from 'src/utils/testHelpers/wrapperMock'
+import renderWithWrapper from 'src/utils/testHelpers/renderWithWrapper'
 
 import ProtectedRoutes from '../component'
 import { ProtectedRoutesHook } from '../types'
@@ -13,14 +12,14 @@ jest.mock('../hook', () => jest.fn(() => mockedHook))
 
 describe('ProtectedRoutes component', () => {
   it('should match snapshot', () => {
-    const { asFragment } = render(<ProtectedRoutes />, { wrapper: Wrapper })
+    const { asFragment } = renderWithWrapper(<ProtectedRoutes />)
 
     expect(asFragment()).toMatchSnapshot()
   })
 
   it('should match snapshot without isAuthenticated', () => {
     mockedHook.isAuthenticated = false
-    const { asFragment } = render(<ProtectedRoutes />, { wrapper: Wrapper })
+    const { asFragment } = renderWithWrapper(<ProtectedRoutes />)
 
     expect(asFragment()).toMatchSnapshot()
   })

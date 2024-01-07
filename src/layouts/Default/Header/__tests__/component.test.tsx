@@ -1,7 +1,6 @@
-import { render } from '@testing-library/react'
 import { mergeDeepRight } from 'ramda'
 import mockAccount from 'src/__mocks__/mockAccount'
-import Wrapper from 'src/utils/testHelpers/wrapperMock'
+import renderWithWrapper from 'src/utils/testHelpers/renderWithWrapper'
 
 import Header from '../component'
 import { HeaderHook } from '../types'
@@ -14,7 +13,7 @@ jest.mock('../hook', () => jest.fn(() => mockedHook))
 
 describe('Header component', () => {
   it('should match snapshot', () => {
-    const { asFragment } = render(<Header />, { wrapper: Wrapper })
+    const { asFragment } = renderWithWrapper(<Header />)
 
     expect(asFragment()).toMatchSnapshot()
   })
@@ -23,14 +22,14 @@ describe('Header component', () => {
     mockedHook.account = mergeDeepRight(mockAccount, {
       avatar: { tmdb: { avatar_path: '/image' } },
     })
-    const { asFragment } = render(<Header />, { wrapper: Wrapper })
+    const { asFragment } = renderWithWrapper(<Header />)
 
     expect(asFragment()).toMatchSnapshot()
   })
 
   it('should match snapshot with empty account', () => {
     mockedHook.account = null
-    const { asFragment } = render(<Header />, { wrapper: Wrapper })
+    const { asFragment } = renderWithWrapper(<Header />)
 
     expect(asFragment()).toMatchSnapshot()
   })

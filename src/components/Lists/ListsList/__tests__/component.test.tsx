@@ -1,6 +1,5 @@
-import { render } from '@testing-library/react'
 import { mockList } from 'src/__mocks__/mockList'
-import Wrapper from 'src/utils/testHelpers/wrapperMock'
+import renderWithWrapper from 'src/utils/testHelpers/renderWithWrapper'
 
 import ListList from '../component'
 
@@ -12,9 +11,7 @@ describe('ListsList component', () => {
   const mockedLists = [mockList]
 
   it('should match snapshot', () => {
-    const { asFragment } = render(<ListList lists={mockedLists} />, {
-      wrapper: Wrapper,
-    })
+    const { asFragment } = renderWithWrapper(<ListList lists={mockedLists} />)
 
     expect(asFragment()).toMatchSnapshot()
   })

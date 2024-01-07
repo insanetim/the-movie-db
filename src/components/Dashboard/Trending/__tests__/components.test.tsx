@@ -1,7 +1,7 @@
-import { render, screen } from '@testing-library/react'
+import { screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { mockMovie } from 'src/__mocks__/mockMovie'
-import Wrapper from 'src/utils/testHelpers/wrapperMock'
+import renderWithWrapper from 'src/utils/testHelpers/renderWithWrapper'
 
 import Trending from '../component'
 import { TrendingHook } from '../types'
@@ -21,13 +21,13 @@ jest.mock('../hook', () => jest.fn(() => mockedHook))
 
 describe('Trending component', () => {
   it('should match snapshot', () => {
-    const { asFragment } = render(<Trending />, { wrapper: Wrapper })
+    const { asFragment } = renderWithWrapper(<Trending />)
 
     expect(asFragment()).toMatchSnapshot()
   })
 
   it('should call "handlePagination" when pagination clicked', async () => {
-    render(<Trending />, { wrapper: Wrapper })
+    renderWithWrapper(<Trending />)
 
     const user = userEvent.setup()
     const link = screen.getByText('2')
@@ -43,7 +43,7 @@ describe('Trending component', () => {
       total_pages: 1,
       total_results: 1,
     }
-    const { asFragment } = render(<Trending />, { wrapper: Wrapper })
+    const { asFragment } = renderWithWrapper(<Trending />)
 
     expect(asFragment()).toMatchSnapshot()
   })
@@ -55,14 +55,14 @@ describe('Trending component', () => {
       total_pages: 1,
       total_results: 1,
     }
-    const { asFragment } = render(<Trending />, { wrapper: Wrapper })
+    const { asFragment } = renderWithWrapper(<Trending />)
 
     expect(asFragment()).toMatchSnapshot()
   })
 
   it('should match snapshot with loading', () => {
     mockedHook.loading = true
-    const { asFragment } = render(<Trending />, { wrapper: Wrapper })
+    const { asFragment } = renderWithWrapper(<Trending />)
 
     expect(asFragment()).toMatchSnapshot()
   })
@@ -70,7 +70,7 @@ describe('Trending component', () => {
   it('should match snapshot with error', () => {
     mockedHook.loading = false
     mockedHook.error = 'Something went wrong!'
-    const { asFragment } = render(<Trending />, { wrapper: Wrapper })
+    const { asFragment } = renderWithWrapper(<Trending />)
 
     expect(asFragment()).toMatchSnapshot()
   })

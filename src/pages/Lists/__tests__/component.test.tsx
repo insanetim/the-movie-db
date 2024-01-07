@@ -1,7 +1,7 @@
-import { render, screen } from '@testing-library/react'
+import { screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { mockList } from 'src/__mocks__/mockList'
-import Wrapper from 'src/utils/testHelpers/wrapperMock'
+import renderWithWrapper from 'src/utils/testHelpers/renderWithWrapper'
 
 import Lists from '../component'
 import { ListsHook } from '../types'
@@ -26,13 +26,13 @@ jest.mock('src/store/lists/selectors', () => ({
 
 describe('Lists component', () => {
   it('should match snapshot', () => {
-    const { asFragment } = render(<Lists />, { wrapper: Wrapper })
+    const { asFragment } = renderWithWrapper(<Lists />)
 
     expect(asFragment()).toMatchSnapshot()
   })
 
   it('should call "handleCreateList" when button clicked', async () => {
-    render(<Lists />, { wrapper: Wrapper })
+    renderWithWrapper(<Lists />)
 
     const user = userEvent.setup()
     const createListBtn = screen.getByTestId('createListBtn')
@@ -42,7 +42,7 @@ describe('Lists component', () => {
   })
 
   it('should call "handlePagination" when pagination clicked', async () => {
-    render(<Lists />, { wrapper: Wrapper })
+    renderWithWrapper(<Lists />)
 
     const user = userEvent.setup()
     const link = screen.getByText('2')
@@ -59,21 +59,21 @@ describe('Lists component', () => {
       total_results: 1,
     }
 
-    const { asFragment } = render(<Lists />, { wrapper: Wrapper })
+    const { asFragment } = renderWithWrapper(<Lists />)
 
     expect(asFragment()).toMatchSnapshot()
   })
 
   it('should match snapshot with empty lists', () => {
     mockedHook.lists = null
-    const { asFragment } = render(<Lists />, { wrapper: Wrapper })
+    const { asFragment } = renderWithWrapper(<Lists />)
 
     expect(asFragment()).toMatchSnapshot()
   })
 
   it('should match snapshot with loading', () => {
     mockedHook.loading = true
-    const { asFragment } = render(<Lists />, { wrapper: Wrapper })
+    const { asFragment } = renderWithWrapper(<Lists />)
 
     expect(asFragment()).toMatchSnapshot()
   })
@@ -81,7 +81,7 @@ describe('Lists component', () => {
   it('should match snapshot with error', () => {
     mockedHook.loading = false
     mockedHook.error = 'Something went wrong!'
-    const { asFragment } = render(<Lists />, { wrapper: Wrapper })
+    const { asFragment } = renderWithWrapper(<Lists />)
 
     expect(asFragment()).toMatchSnapshot()
   })

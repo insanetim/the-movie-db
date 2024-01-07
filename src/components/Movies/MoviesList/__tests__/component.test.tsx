@@ -1,7 +1,7 @@
-import { render, screen } from '@testing-library/react'
+import { screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { mockMovie } from 'src/__mocks__/mockMovie'
-import Wrapper from 'src/utils/testHelpers/wrapperMock'
+import renderWithWrapper from 'src/utils/testHelpers/renderWithWrapper'
 
 import MoviesList from '../component'
 
@@ -13,15 +13,13 @@ describe('MoviesList component', () => {
   }
 
   it('should match snapshot', () => {
-    const { asFragment } = render(<MoviesList {...props} />, {
-      wrapper: Wrapper,
-    })
+    const { asFragment } = renderWithWrapper(<MoviesList {...props} />)
 
     expect(asFragment()).toMatchSnapshot()
   })
 
   it('should call "handleMovieDelete" when delete button clicked', async () => {
-    render(<MoviesList {...props} />, { wrapper: Wrapper })
+    renderWithWrapper(<MoviesList {...props} />)
 
     const user = userEvent.setup()
     const deleteBtn = screen.getByTestId('deleteMovieBtn')

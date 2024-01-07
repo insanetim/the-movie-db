@@ -1,7 +1,7 @@
-import { render, screen } from '@testing-library/react'
+import { screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { mockList } from 'src/__mocks__/mockList'
-import Wrapper from 'src/utils/testHelpers/wrapperMock'
+import renderWithWrapper from 'src/utils/testHelpers/renderWithWrapper'
 
 import ListItem from '../component'
 import { ListItemHook } from '../types'
@@ -14,28 +14,24 @@ jest.mock('../hook', () => jest.fn(() => mockedHook))
 
 describe('ListItem component', () => {
   it('should match snapshot', () => {
-    const { asFragment } = render(
+    const { asFragment } = renderWithWrapper(
       <ListItem
         description={mockList.description}
         id={mockList.id}
         name={mockList.name}
-      />,
-      {
-        wrapper: Wrapper,
-      }
+      />
     )
 
     expect(asFragment()).toMatchSnapshot()
   })
 
   it('should call "handleClick" when card clicked', async () => {
-    render(
+    renderWithWrapper(
       <ListItem
         description={mockList.description}
         id={mockList.id}
         name={mockList.name}
-      />,
-      { wrapper: Wrapper }
+      />
     )
 
     const user = userEvent.setup()
@@ -46,13 +42,12 @@ describe('ListItem component', () => {
   })
 
   it('should call "handleListDelete" when delete button clicked', async () => {
-    render(
+    renderWithWrapper(
       <ListItem
         description={mockList.description}
         id={mockList.id}
         name={mockList.name}
-      />,
-      { wrapper: Wrapper }
+      />
     )
 
     const user = userEvent.setup()

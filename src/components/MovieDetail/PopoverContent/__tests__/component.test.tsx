@@ -1,7 +1,6 @@
 import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { mockList } from 'src/__mocks__/mockList'
-import Wrapper from 'src/utils/testHelpers/wrapperMock'
 
 import PopoverContent from '../component'
 import { PopoverContentHook, PopoverContentProps } from '../types'
@@ -25,15 +24,13 @@ describe('PopoverContent component', () => {
   }
 
   it('should match snapshot', () => {
-    const { asFragment } = render(<PopoverContent {...props} />, {
-      wrapper: Wrapper,
-    })
+    const { asFragment } = render(<PopoverContent {...props} />)
 
     expect(asFragment()).toMatchSnapshot()
   })
 
   it('should call "handleAddToList" when addToList button clicked', async () => {
-    render(<PopoverContent {...props} />, { wrapper: Wrapper })
+    render(<PopoverContent {...props} />)
 
     const user = userEvent.setup()
     const addToListBtn = screen.getByText('test/list')
@@ -46,7 +43,7 @@ describe('PopoverContent component', () => {
   })
 
   it('should call "handleAddToNewList" when createList button clicked', async () => {
-    render(<PopoverContent {...props} />, { wrapper: Wrapper })
+    render(<PopoverContent {...props} />)
 
     const user = userEvent.setup()
     const createListBtn = screen.getByText(/create/i)
