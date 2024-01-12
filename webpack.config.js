@@ -79,7 +79,7 @@ module.exports = {
     open: true,
     port: 8080,
     static: {
-      directory: path.resolve(__dirname, './public'),
+      directory: path.resolve(__dirname, 'public'),
     },
   },
 
