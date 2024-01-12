@@ -43,9 +43,15 @@ const appSlice = createSlice({
       })
     },
   },
+  selectors: {
+    modalSelector: state => state.modal,
+    notificationsSelector: state => state.notifications,
+  },
 })
 
 export const { hideModal, hideNotification, showModal, showNotification } =
   appSlice.actions
+
+export const { modalSelector, notificationsSelector } = appSlice.selectors
 
 export default appSlice.reducer
