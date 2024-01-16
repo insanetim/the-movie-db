@@ -1,15 +1,17 @@
 import { useEffect } from 'react'
+import { useSelector } from 'react-redux'
 import { useSearchParams } from 'react-router-dom'
-import { useAppSelector } from 'src/hooks/useRedux'
 import useRequest from 'src/hooks/useRequest'
 import { fetchSearch } from 'src/store/dashboard/actions'
 import { dashboardMoviesSelector } from 'src/store/dashboard/selectors'
 import getParams from 'src/utils/helpers/getParams'
 
-import { SearchResultHook, SearchResultHookProps } from './types'
+import { SearchResultHookProps, SearchResultHookReturn } from './types'
 
-const useContainer = ({ query }: SearchResultHookProps): SearchResultHook => {
-  const movies = useAppSelector(dashboardMoviesSelector)
+const useContainer = ({
+  query,
+}: SearchResultHookProps): SearchResultHookReturn => {
+  const movies = useSelector(dashboardMoviesSelector)
   const { error, loading, request } = useRequest()
   const [searchParams, setSearchParams] = useSearchParams()
   const page = searchParams.get('page') ?? '1'

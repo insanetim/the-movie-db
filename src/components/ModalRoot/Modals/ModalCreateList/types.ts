@@ -14,7 +14,7 @@ export type ModalCreateListHookProps = {
   onSuccess?: () => void
 }
 
-export type ModalCreateListHook = {
+export type ModalCreateListHookReturn = {
   handleAfterClose: () => void
   handleAfterOpenChange: (open: boolean) => void
   handleOk: () => void

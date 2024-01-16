@@ -1,8 +1,10 @@
 import { isNil } from 'ramda'
 import { useEffect, useState } from 'react'
+import { useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
-import { useAppDispatch, useAppSelector } from 'src/hooks/useRedux'
+import { useAppDispatch } from 'src/hooks/useRedux'
 import useRequest from 'src/hooks/useRequest'
+import { RootState } from 'src/store'
 import { showNotification } from 'src/store/app/actions'
 import { fetchLists } from 'src/store/lists/actions'
 import {
@@ -14,14 +16,16 @@ import { selectMovieById } from 'src/store/movie/selectors'
 import favoriteMessage from 'src/utils/helpers/favoriteMessage'
 import watchlistMessage from 'src/utils/helpers/watchlistMessage'
 
-import { MovieDetailHook, MovieDetailRouteParams } from './types'
+import { MovieDetailHookReturn, MovieDetailRouteParams } from './types'
 
-const useContainer = (): MovieDetailHook => {
+const useContainer = (): MovieDetailHookReturn => {
   const { movieId } = useParams<
     keyof MovieDetailRouteParams
   >() as MovieDetailRouteParams
   const dispatch = useAppDispatch()
-  const movie = useAppSelector(state => selectMovieById(state, movieId))
+  const movie = useSelector((state: RootState) =>
+    selectMovieById(state, movieId)
+  )
   const [popoverOpen, setPopoverOpen] = useState(false)
   const { error, loading, request } = useRequest(isNil(movie))
 

@@ -1,7 +1,7 @@
 import { ErrorMsg } from 'src/interfaces/global.interface'
 import { IMovieDetailExtended } from 'src/interfaces/movie.interface'
 
-export type MovieDetailHook = {
+export type MovieDetailHookReturn = {
   error: ErrorMsg
   handleFavoriteClick: () => void
   handleWatchlistClick: () => void

@@ -4,9 +4,9 @@ import { mockMovie } from 'src/__mocks__/mockMovie'
 import renderWithWrapper from 'src/utils/testHelpers/renderWithWrapper'
 
 import Favorite from '../component'
-import { FavoriteHook } from '../types'
+import { FavoriteHookReturn } from '../types'
 
-const mockedHook: FavoriteHook = {
+const mockedHook: FavoriteHookReturn = {
   error: null,
   handleMovieDelete: jest.fn(),
   handlePagination: jest.fn(),

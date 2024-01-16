@@ -1,17 +1,18 @@
 import { Modal } from 'antd'
 import { MouseEvent } from 'react'
+import { useSelector } from 'react-redux'
 import { useNavigate, useSearchParams } from 'react-router-dom'
-import { useAppDispatch, useAppSelector } from 'src/hooks/useRedux'
+import { useAppDispatch } from 'src/hooks/useRedux'
 import useUpdatePage from 'src/hooks/useUpdatePage'
 import { deleteList, fetchLists } from 'src/store/lists/actions'
 import { listsSelector } from 'src/store/lists/selectors'
 
-import { ListItemHook, ListItemHookProps } from './types'
+import { ListItemHookProps, ListItemHookReturn } from './types'
 
-const useContainer = ({ id }: ListItemHookProps): ListItemHook => {
+const useContainer = ({ id }: ListItemHookProps): ListItemHookReturn => {
   const navigate = useNavigate()
   const dispatch = useAppDispatch()
-  const lists = useAppSelector(listsSelector)
+  const lists = useSelector(listsSelector)
   const [searchParams, setSearchParams] = useSearchParams()
   const page = searchParams.get('page') ?? '1'
   const { updatePage } = useUpdatePage({

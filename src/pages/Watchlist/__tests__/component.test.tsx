@@ -4,9 +4,9 @@ import { mockMovie } from 'src/__mocks__/mockMovie'
 import renderWithWrapper from 'src/utils/testHelpers/renderWithWrapper'
 
 import Watchlist from '../component'
-import { WatchlistHook } from '../types'
+import { WatchlistHookReturn } from '../types'
 
-const mockedHook: WatchlistHook = {
+const mockedHook: WatchlistHookReturn = {
   error: null,
   handleMovieDelete: jest.fn(),
   handlePagination: jest.fn(),

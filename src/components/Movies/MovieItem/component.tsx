@@ -35,7 +35,7 @@ const MovieItem: React.FC<MovieItemProps> = ({
     )
   }
 
-  let actions
+  let actions: JSX.Element[] | undefined
   if (isNotNil(handleMovieDelete)) {
     actions = [
       <DeleteOutlined

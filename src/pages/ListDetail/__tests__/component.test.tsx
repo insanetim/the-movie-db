@@ -4,9 +4,9 @@ import { mockMovie } from 'src/__mocks__/mockMovie'
 import renderWithWrapper from 'src/utils/testHelpers/renderWithWrapper'
 
 import ListDetails from '../component'
-import { ListDetailHook } from '../types'
+import { ListDetailHookReturn } from '../types'
 
-const mockedHook: ListDetailHook = {
+const mockedHook: ListDetailHookReturn = {
   error: null,
   handleListDelete: jest.fn(),
   handleMovieDelete: jest.fn(),

@@ -1,7 +1,7 @@
 import { isNil } from 'ramda'
 
 import useContainer from './hook'
-import MODAL_COMPONENTS from './modalComponents'
+import { MODAL_COMPONENTS } from './modalComponents'
 
 const ModalRoot: React.FC = () => {
   const { modalProps, modalType, onCancel } = useContainer()

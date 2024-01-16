@@ -4,9 +4,9 @@ import { mockList } from 'src/__mocks__/mockList'
 import renderWithWrapper from 'src/utils/testHelpers/renderWithWrapper'
 
 import ListItem from '../component'
-import { ListItemHook } from '../types'
+import { ListItemHookReturn } from '../types'
 
-const mockedHook: ListItemHook = {
+const mockedHook: ListItemHookReturn = {
   handleClick: jest.fn(),
   handleListDelete: jest.fn(),
 }

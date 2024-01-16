@@ -1,8 +1,8 @@
 import { useNavigate } from 'react-router-dom'
 
-import { MovieItemHook, MovieItemHookProps } from './types'
+import { MovieItemHookProps, MovieItemHookReturn } from './types'
 
-const useContainer = ({ id }: MovieItemHookProps): MovieItemHook => {
+const useContainer = ({ id }: MovieItemHookProps): MovieItemHookReturn => {
   const navigate = useNavigate()
 
   const handleClick = () => {

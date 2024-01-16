@@ -13,21 +13,21 @@ import App, {
   NotFound,
   Watchlist,
 } from 'src/App'
-import { TrendingHook } from 'src/components/Dashboard/Trending/types'
-import { ModalRootHook } from 'src/components/ModalRoot/types'
-import { NotificationsRootHook } from 'src/components/NotificationsRoot/types'
-import { ProtectedRoutesHook } from 'src/components/ProtectedRoutes/types'
-import { HeaderHook } from 'src/layouts/Default/Header/types'
-import { DashboardHook } from 'src/pages/Dashboard/types'
-import { FavoriteHook } from 'src/pages/Favorite/types'
-import { ListDetailHook } from 'src/pages/ListDetail/types'
-import { ListsHook } from 'src/pages/Lists/types'
-import { LoginHook } from 'src/pages/Login/types'
-import { MovieDetailHook } from 'src/pages/MovieDetail/types'
-import { WatchlistHook } from 'src/pages/Watchlist/types'
+import { TrendingHookReturn } from 'src/components/Dashboard/Trending/types'
+import { ModalRootHookReturn } from 'src/components/ModalRoot/types'
+import { NotificationsRootHookReturn } from 'src/components/NotificationsRoot/types'
+import { ProtectedRoutesHookReturn } from 'src/components/ProtectedRoutes/types'
+import { HeaderHookReturn } from 'src/layouts/Default/Header/types'
+import { DashboardHookReturn } from 'src/pages/Dashboard/types'
+import { FavoriteHookReturn } from 'src/pages/Favorite/types'
+import { ListDetailHookReturn } from 'src/pages/ListDetail/types'
+import { ListsHookReturn } from 'src/pages/Lists/types'
+import { LoginHookReturn } from 'src/pages/Login/types'
+import { MovieDetailHookReturn } from 'src/pages/MovieDetail/types'
+import { WatchlistHookReturn } from 'src/pages/Watchlist/types'
 import renderWithWrapper from 'src/utils/testHelpers/renderWithWrapper'
 
-const mockedProtectedRoutesHook: ProtectedRoutesHook = {
+const mockedProtectedRoutesHook: ProtectedRoutesHookReturn = {
   isAuthenticated: false,
   location: {} as Location,
 }
@@ -35,7 +35,7 @@ jest.mock('../components/ProtectedRoutes/hook', () =>
   jest.fn(() => mockedProtectedRoutesHook)
 )
 
-const mockedModalRootHook: ModalRootHook = {
+const mockedModalRootHook: ModalRootHookReturn = {
   modalProps: null,
   modalType: null,
   onCancel: jest.fn(),
@@ -44,7 +44,7 @@ jest.mock('../components/ModalRoot/hook', () =>
   jest.fn(() => mockedModalRootHook)
 )
 
-const mockedNotificationsRootHook: NotificationsRootHook = {
+const mockedNotificationsRootHook: NotificationsRootHookReturn = {
   hideNotification: jest.fn(),
   notifications: [],
 }
@@ -52,7 +52,7 @@ jest.mock('../components/NotificationsRoot/hook', () =>
   jest.fn(() => mockedNotificationsRootHook)
 )
 
-const mockedHeaderHook: HeaderHook = {
+const mockedHeaderHook: HeaderHookReturn = {
   account: null,
   handleLogOut: jest.fn(),
 }
@@ -60,18 +60,18 @@ jest.mock('../layouts/Default/Header/hook', () =>
   jest.fn(() => mockedHeaderHook)
 )
 
-const mockedLoginHook: LoginHook = {
+const mockedLoginHook: LoginHookReturn = {
   handleLogIn: jest.fn(),
   isSubmitting: false,
 }
 jest.mock('../pages/Login/hook', () => jest.fn(() => mockedLoginHook))
 
-const mockedDashboardHook: DashboardHook = {
+const mockedDashboardHook: DashboardHookReturn = {
   query: '',
 }
 jest.mock('../pages/Dashboard/hook', () => jest.fn(() => mockedDashboardHook))
 
-const mockedTrendingHook: TrendingHook = {
+const mockedTrendingHook: TrendingHookReturn = {
   error: null,
   handlePagination: () => jest.fn(),
   loading: false,
@@ -81,7 +81,7 @@ jest.mock('../components/Dashboard/Trending/hook', () =>
   jest.fn(() => mockedTrendingHook)
 )
 
-const mockedListsHook: ListsHook = {
+const mockedListsHook: ListsHookReturn = {
   error: null,
   handleCreateList: jest.fn(),
   handlePagination: jest.fn(),
@@ -90,7 +90,7 @@ const mockedListsHook: ListsHook = {
 }
 jest.mock('../pages/Lists/hook', () => jest.fn(() => mockedListsHook))
 
-const mockedWatchlistHook: WatchlistHook = {
+const mockedWatchlistHook: WatchlistHookReturn = {
   error: null,
   handleMovieDelete: jest.fn(),
   handlePagination: jest.fn(),
@@ -99,7 +99,7 @@ const mockedWatchlistHook: WatchlistHook = {
 }
 jest.mock('../pages/Watchlist/hook', () => jest.fn(() => mockedWatchlistHook))
 
-const mockedFavoriteHook: FavoriteHook = {
+const mockedFavoriteHook: FavoriteHookReturn = {
   error: null,
   handleMovieDelete: jest.fn(),
   handlePagination: jest.fn(),
@@ -108,7 +108,7 @@ const mockedFavoriteHook: FavoriteHook = {
 }
 jest.mock('../pages/Favorite/hook', () => jest.fn(() => mockedFavoriteHook))
 
-const mockedListDetailHook: ListDetailHook = {
+const mockedListDetailHook: ListDetailHookReturn = {
   error: null,
   handleListDelete: jest.fn(),
   handleMovieDelete: jest.fn(),
@@ -118,7 +118,7 @@ const mockedListDetailHook: ListDetailHook = {
 }
 jest.mock('../pages/ListDetail/hook', () => jest.fn(() => mockedListDetailHook))
 
-const mockedMovieDetailHook: MovieDetailHook = {
+const mockedMovieDetailHook: MovieDetailHookReturn = {
   error: null,
   handleFavoriteClick: jest.fn(),
   handleWatchlistClick: jest.fn(),

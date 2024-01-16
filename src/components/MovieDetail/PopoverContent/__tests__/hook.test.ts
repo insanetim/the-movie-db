@@ -1,5 +1,6 @@
 import { act, renderHook } from '@testing-library/react'
 import { dispatch } from 'src/__mocks__/react-redux'
+import { modalComponentsMap } from 'src/components/ModalRoot/modalComponents'
 import { showModal } from 'src/store/app/actions'
 import * as listsActions from 'src/store/lists/actions'
 
@@ -29,7 +30,7 @@ describe('PopoverContent useContainer hook', () => {
     expect(dispatch).toHaveBeenCalledWith(
       showModal({
         modalProps: { movieId: 1234 },
-        modalType: 'MODAL_CREATE_LIST',
+        modalType: modalComponentsMap.MODAL_CREATE_LIST,
       })
     )
     expect(setPopoverOpen).toHaveBeenCalledWith(false)

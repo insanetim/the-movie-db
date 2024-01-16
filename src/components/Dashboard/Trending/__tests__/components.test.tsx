@@ -4,9 +4,9 @@ import { mockMovie } from 'src/__mocks__/mockMovie'
 import renderWithWrapper from 'src/utils/testHelpers/renderWithWrapper'
 
 import Trending from '../component'
-import { TrendingHook } from '../types'
+import { TrendingHookReturn } from '../types'
 
-const mockedHook: TrendingHook = {
+const mockedHook: TrendingHookReturn = {
   error: null,
   handlePagination: jest.fn(),
   loading: false,

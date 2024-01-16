@@ -1,6 +1,6 @@
 import { Location } from 'react-router-dom'
 
-export type ProtectedRoutesHook = {
+export type ProtectedRoutesHookReturn = {
   isAuthenticated: boolean
   location: Location
 }

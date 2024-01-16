@@ -4,9 +4,9 @@ import { mockMovie } from 'src/__mocks__/mockMovie'
 import renderWithWrapper from 'src/utils/testHelpers/renderWithWrapper'
 
 import SearchResult from '../component'
-import { SearchResultHook } from '../types'
+import { SearchResultHookReturn } from '../types'
 
-const mockedHook: SearchResultHook = {
+const mockedHook: SearchResultHookReturn = {
   error: null,
   handlePagination: jest.fn(),
   loading: false,

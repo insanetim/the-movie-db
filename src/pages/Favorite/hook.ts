@@ -1,8 +1,9 @@
 import { Modal } from 'antd'
 import { isNotNil } from 'ramda'
 import { MouseEvent, useEffect } from 'react'
+import { useSelector } from 'react-redux'
 import { useSearchParams } from 'react-router-dom'
-import { useAppDispatch, useAppSelector } from 'src/hooks/useRedux'
+import { useAppDispatch } from 'src/hooks/useRedux'
 import useUpdatePage from 'src/hooks/useUpdatePage'
 import { IMovie } from 'src/interfaces/movie.interface'
 import { accountSelector } from 'src/store/auth/selectors'
@@ -15,14 +16,14 @@ import {
 import { changeMovieInFavorite } from 'src/store/movie/actions'
 import getParams from 'src/utils/helpers/getParams'
 
-import { FavoriteHook } from './types'
+import { FavoriteHookReturn } from './types'
 
-const useContainer = (): FavoriteHook => {
+const useContainer = (): FavoriteHookReturn => {
   const dispatch = useAppDispatch()
-  const account = useAppSelector(accountSelector)
-  const movies = useAppSelector(favoriteMoviesSelector)
-  const loading = useAppSelector(favoriteLoadingSelector)
-  const error = useAppSelector(favoriteErrorSelector)
+  const account = useSelector(accountSelector)
+  const movies = useSelector(favoriteMoviesSelector)
+  const loading = useSelector(favoriteLoadingSelector)
+  const error = useSelector(favoriteErrorSelector)
   const [searchParams, setSearchParams] = useSearchParams()
   const page = searchParams.get('page') ?? '1'
   const { updatePage } = useUpdatePage({

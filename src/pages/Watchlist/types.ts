@@ -1,7 +1,7 @@
 import { ErrorMsg, HandlePagination } from 'src/interfaces/global.interface'
 import { IMovie, IMoviesList } from 'src/interfaces/movie.interface'
 
-export type WatchlistHook = {
+export type WatchlistHookReturn = {
   error: ErrorMsg
   handleMovieDelete: (
     event: React.MouseEvent<HTMLSpanElement>,

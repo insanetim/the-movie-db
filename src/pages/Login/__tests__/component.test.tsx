@@ -1,9 +1,9 @@
 import renderWithWrapper from 'src/utils/testHelpers/renderWithWrapper'
 
 import Login from '../component'
-import { LoginHook } from '../types'
+import { LoginHookReturn } from '../types'
 
-const mockedHook: LoginHook = {
+const mockedHook: LoginHookReturn = {
   handleLogIn: jest.fn(),
   isSubmitting: false,
 }

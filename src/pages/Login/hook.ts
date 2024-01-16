@@ -5,9 +5,9 @@ import { useAppDispatch } from 'src/hooks/useRedux'
 import { logIn } from 'src/store/auth/actions'
 import { UserData } from 'src/store/auth/types'
 
-import { LoginHook } from './types'
+import { LoginHookReturn } from './types'
 
-const useContainer = (): LoginHook => {
+const useContainer = (): LoginHookReturn => {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const dispatch = useAppDispatch()
   const location = useLocation()

@@ -9,7 +9,7 @@ export type SearchInputHookProps = {
   query: Query
 }
 
-export type SearchInputHook = {
+export type SearchInputHookReturn = {
   handleChange: ChangeEventHandler<HTMLInputElement>
   handleSearch: (value: string) => void
   inputValue: string

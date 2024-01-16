@@ -1,15 +1,16 @@
 import { isNil } from 'ramda'
 import { useEffect } from 'react'
+import { useSelector } from 'react-redux'
 import { useLocation, useNavigate } from 'react-router-dom'
-import { useAppDispatch, useAppSelector } from 'src/hooks/useRedux'
+import { useAppDispatch } from 'src/hooks/useRedux'
 import { fetchAccount, logOut } from 'src/store/auth/actions'
 import { accountSelector } from 'src/store/auth/selectors'
 
-import { HeaderHook } from './types'
+import { HeaderHookReturn } from './types'
 
-const useContainer = (): HeaderHook => {
+const useContainer = (): HeaderHookReturn => {
   const dispatch = useAppDispatch()
-  const account = useAppSelector(accountSelector)
+  const account = useSelector(accountSelector)
   const location = useLocation()
   const navigate = useNavigate()
 

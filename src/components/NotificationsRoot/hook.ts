@@ -1,12 +1,13 @@
-import { useAppDispatch, useAppSelector } from 'src/hooks/useRedux'
+import { useSelector } from 'react-redux'
+import { useAppDispatch } from 'src/hooks/useRedux'
 import { hideNotification as hideNotificationAction } from 'src/store/app/actions'
 import { notificationsSelector } from 'src/store/app/selectors'
 
-import { NotificationsRootHook } from './types'
+import { NotificationsRootHookReturn } from './types'
 
-const useContainer = (): NotificationsRootHook => {
+const useContainer = (): NotificationsRootHookReturn => {
   const dispatch = useAppDispatch()
-  const notifications = useAppSelector(notificationsSelector)
+  const notifications = useSelector(notificationsSelector)
 
   const hideNotification = (id: string) => {
     dispatch(hideNotificationAction(id))

@@ -2,6 +2,7 @@ import { act, renderHook } from '@testing-library/react'
 import { useSearchParams } from 'react-router-dom'
 import mockAccount from 'src/__mocks__/mockAccount'
 import { dispatch } from 'src/__mocks__/react-redux'
+import { modalComponentsMap } from 'src/components/ModalRoot/modalComponents'
 import { showModal } from 'src/store/app/actions'
 import * as sessionSelectors from 'src/store/auth/selectors'
 import * as listsActions from 'src/store/lists/actions'
@@ -58,7 +59,7 @@ describe('Lists useContainer hook', () => {
       1,
       showModal({
         modalProps: { onSuccess },
-        modalType: 'MODAL_CREATE_LIST',
+        modalType: modalComponentsMap.MODAL_CREATE_LIST,
       })
     )
     expect(fetchLists).toHaveBeenCalledWith('1')
@@ -81,7 +82,7 @@ describe('Lists useContainer hook', () => {
     expect(dispatch).toHaveBeenCalledWith(
       showModal({
         modalProps: { onSuccess },
-        modalType: 'MODAL_CREATE_LIST',
+        modalType: modalComponentsMap.MODAL_CREATE_LIST,
       })
     )
     expect(setSearchParams).toHaveBeenCalledWith({})

@@ -1,7 +1,9 @@
 import { isNotNil } from 'ramda'
 import { useEffect } from 'react'
+import { useSelector } from 'react-redux'
 import { useSearchParams } from 'react-router-dom'
-import { useAppDispatch, useAppSelector } from 'src/hooks/useRedux'
+import { modalComponentsMap } from 'src/components/ModalRoot/modalComponents'
+import { useAppDispatch } from 'src/hooks/useRedux'
 import { showModal } from 'src/store/app/actions'
 import { accountSelector } from 'src/store/auth/selectors'
 import { fetchLists } from 'src/store/lists/actions'
@@ -12,14 +14,14 @@ import {
 } from 'src/store/lists/selectors'
 import getParams from 'src/utils/helpers/getParams'
 
-import { ListsHook } from './types'
+import { ListsHookReturn } from './types'
 
-const useContainer = (): ListsHook => {
+const useContainer = (): ListsHookReturn => {
   const dispatch = useAppDispatch()
-  const account = useAppSelector(accountSelector)
-  const lists = useAppSelector(listsSelector)
-  const loading = useAppSelector(listsLoadingSelector)
-  const error = useAppSelector(listsErrorSelector)
+  const account = useSelector(accountSelector)
+  const lists = useSelector(listsSelector)
+  const loading = useSelector(listsLoadingSelector)
+  const error = useSelector(listsErrorSelector)
   const [searchParams, setSearchParams] = useSearchParams()
   const page = searchParams.get('page') ?? '1'
 
@@ -39,7 +41,7 @@ const useContainer = (): ListsHook => {
     dispatch(
       showModal({
         modalProps: { onSuccess },
-        modalType: 'MODAL_CREATE_LIST',
+        modalType: modalComponentsMap.MODAL_CREATE_LIST,
       })
     )
 

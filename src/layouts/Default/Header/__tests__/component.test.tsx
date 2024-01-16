@@ -3,9 +3,9 @@ import mockAccount from 'src/__mocks__/mockAccount'
 import renderWithWrapper from 'src/utils/testHelpers/renderWithWrapper'
 
 import Header from '../component'
-import { HeaderHook } from '../types'
+import { HeaderHookReturn } from '../types'
 
-const mockedHook: HeaderHook = {
+const mockedHook: HeaderHookReturn = {
   account: mockAccount,
   handleLogOut: jest.fn(),
 }

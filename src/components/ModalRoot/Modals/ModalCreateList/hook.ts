@@ -7,15 +7,15 @@ import { createList } from 'src/store/lists/actions'
 
 import {
   ListData,
-  ModalCreateListHook,
   ModalCreateListHookProps,
+  ModalCreateListHookReturn,
 } from './types'
 
 const useContainer = ({
   form,
   movieId,
   onSuccess,
-}: ModalCreateListHookProps): ModalCreateListHook => {
+}: ModalCreateListHookProps): ModalCreateListHookReturn => {
   const inputRef = useRef<InputRef>(null)
   const dispatch = useAppDispatch()
 

@@ -1,9 +1,9 @@
 import { render } from '@testing-library/react'
 
 import ModalRoot from '../component'
-import { ModalRootHook } from '../types'
+import { ModalRootHookReturn } from '../types'
 
-const mockedHook: ModalRootHook = {
+const mockedHook: ModalRootHookReturn = {
   modalProps: null,
   modalType: 'MODAL_CREATE_LIST',
   onCancel: jest.fn(),

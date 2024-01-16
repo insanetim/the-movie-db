@@ -4,9 +4,9 @@ import { assoc } from 'ramda'
 import { mockMovie } from 'src/__mocks__/mockMovie'
 
 import MovieItem from '../component'
-import { MovieItemHook } from '../types'
+import { MovieItemHookReturn } from '../types'
 
-const mockedHook: MovieItemHook = {
+const mockedHook: MovieItemHookReturn = {
   handleClick: jest.fn(),
 }
 jest.mock('../hook', () => jest.fn(() => mockedHook))

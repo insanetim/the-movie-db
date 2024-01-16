@@ -6,9 +6,9 @@ import renderWithWrapper from 'src/utils/testHelpers/renderWithWrapper'
 
 import Movie from '../component'
 import useContainer from '../hook'
-import { MovieDetailHook } from '../types'
+import { MovieDetailHookReturn } from '../types'
 
-const mockedHook: MovieDetailHook = {
+const mockedHook: MovieDetailHookReturn = {
   error: null,
   handleFavoriteClick: jest.fn(),
   handleWatchlistClick: jest.fn(),
@@ -70,7 +70,7 @@ describe('MovieDetail component', () => {
           },
           release_date: undefined,
         },
-      }) as MovieDetailHook
+      }) as MovieDetailHookReturn
     )
     const { asFragment } = renderWithWrapper(<Movie />)
 
@@ -81,7 +81,7 @@ describe('MovieDetail component', () => {
     jest.mocked(useContainer).mockReturnValueOnce(
       mergeDeepRight(mockedHook, {
         popoverOpen: true,
-      }) as MovieDetailHook
+      }) as MovieDetailHookReturn
     )
     const { asFragment } = renderWithWrapper(<Movie />)
 

@@ -8,6 +8,6 @@ export type NotificationProps = {
   messageType: NOTIFICATION_TYPE
 }
 
-export type NotificationHook = {
+export type NotificationHookReturn = {
   closeNotification: () => void
 }

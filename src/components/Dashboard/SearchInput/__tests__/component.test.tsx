@@ -2,9 +2,9 @@ import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 
 import SearchInput from '../component'
-import { SearchInputHook } from '../types'
+import { SearchInputHookReturn } from '../types'
 
-const mockedHook: SearchInputHook = {
+const mockedHook: SearchInputHookReturn = {
   handleChange: jest.fn(),
   handleSearch: jest.fn(),
   inputValue: '',

@@ -4,9 +4,9 @@ import { mockList } from 'src/__mocks__/mockList'
 import renderWithWrapper from 'src/utils/testHelpers/renderWithWrapper'
 
 import Lists from '../component'
-import { ListsHook } from '../types'
+import { ListsHookReturn } from '../types'
 
-const mockedHook: ListsHook = {
+const mockedHook: ListsHookReturn = {
   error: null,
   handleCreateList: jest.fn(),
   handlePagination: jest.fn(),

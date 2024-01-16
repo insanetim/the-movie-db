@@ -1,6 +1,6 @@
 import { IAccount } from 'src/interfaces/account.interface'
 
-export type HeaderHook = {
+export type HeaderHookReturn = {
   account: IAccount | null
   handleLogOut: () => Promise<void>
 }

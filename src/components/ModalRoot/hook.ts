@@ -1,12 +1,13 @@
-import { useAppDispatch, useAppSelector } from 'src/hooks/useRedux'
+import { useSelector } from 'react-redux'
+import { useAppDispatch } from 'src/hooks/useRedux'
 import { hideModal } from 'src/store/app/actions'
 import { modalSelector } from 'src/store/app/selectors'
 
-import { ModalRootHook } from './types'
+import { ModalRootHookReturn } from './types'
 
-const useContainer = (): ModalRootHook => {
+const useContainer = (): ModalRootHookReturn => {
   const dispatch = useAppDispatch()
-  const { modalProps, modalType } = useAppSelector(modalSelector)
+  const { modalProps, modalType } = useSelector(modalSelector)
 
   const onCancel = () => {
     dispatch(hideModal())

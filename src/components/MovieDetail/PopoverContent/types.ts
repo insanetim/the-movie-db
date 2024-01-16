@@ -13,7 +13,7 @@ export type HandleAddToListProps = {
   listName: string
 }
 
-export type PopoverContentHook = {
+export type PopoverContentHookReturn = {
   handleAddToList: (props: HandleAddToListProps) => void
   handleAddToNewList: () => void
   lists: IListsList | null

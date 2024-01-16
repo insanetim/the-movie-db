@@ -11,7 +11,7 @@ export type SearchResultProps = {
 
 export type SearchResultHookProps = SearchResultProps
 
-export type SearchResultHook = {
+export type SearchResultHookReturn = {
   error: ErrorMsg
   handlePagination: HandlePagination
   loading: boolean

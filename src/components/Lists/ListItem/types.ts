@@ -11,7 +11,7 @@ export type ListItemHookProps = {
   id: IList['id']
 }
 
-export type ListItemHook = {
+export type ListItemHookReturn = {
   handleClick: () => void
   handleListDelete: (event: MouseEvent<HTMLSpanElement>) => () => Promise<void>
 }

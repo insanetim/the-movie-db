@@ -15,6 +15,6 @@ export type MovieItemHookProps = {
   id: IMovie['id']
 }
 
-export type MovieItemHook = {
+export type MovieItemHookReturn = {
   handleClick: () => void
 }

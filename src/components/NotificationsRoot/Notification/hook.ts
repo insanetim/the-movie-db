@@ -1,9 +1,9 @@
 import { notification } from 'antd'
 import { useCallback, useEffect } from 'react'
 
-import { NotificationHook, NotificationProps } from './types'
+import { NotificationHookReturn, NotificationProps } from './types'
 
-const useContainer = (props: NotificationProps): NotificationHook => {
+const useContainer = (props: NotificationProps): NotificationHookReturn => {
   const { duration, hideNotification, id, messageText, messageType } = props
 
   const closeNotification = useCallback(() => {

@@ -1,6 +1,6 @@
 import { Notification } from 'src/store/app/types'
 
-export type NotificationsRootHook = {
+export type NotificationsRootHookReturn = {
   hideNotification: (id: string) => void
   notifications: Notification[]
 }

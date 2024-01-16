@@ -3,9 +3,9 @@ import userEvent from '@testing-library/user-event'
 import { mockList } from 'src/__mocks__/mockList'
 
 import PopoverContent from '../component'
-import { PopoverContentHook, PopoverContentProps } from '../types'
+import { PopoverContentHookReturn, PopoverContentProps } from '../types'
 
-const mockedHook: PopoverContentHook = {
+const mockedHook: PopoverContentHookReturn = {
   handleAddToList: jest.fn(),
   handleAddToNewList: jest.fn(),
   lists: {

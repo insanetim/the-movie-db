@@ -1,5 +1,5 @@
 import { Query } from 'src/interfaces/global.interface'
 
-export type DashboardHook = {
+export type DashboardHookReturn = {
   query: Query
 }

@@ -1,9 +1,9 @@
 import renderWithWrapper from 'src/utils/testHelpers/renderWithWrapper'
 
 import Dashboard from '../component'
-import { DashboardHook } from '../types'
+import { DashboardHookReturn } from '../types'
 
-const mockedHook: DashboardHook = { query: '' }
+const mockedHook: DashboardHookReturn = { query: '' }
 jest.mock('../hook', () => jest.fn(() => mockedHook))
 
 jest.mock('src/store/dashboard/selectors', () => ({

@@ -2,9 +2,9 @@ import { Location } from 'react-router-dom'
 import renderWithWrapper from 'src/utils/testHelpers/renderWithWrapper'
 
 import ProtectedRoutes from '../component'
-import { ProtectedRoutesHook } from '../types'
+import { ProtectedRoutesHookReturn } from '../types'
 
-const mockedHook: ProtectedRoutesHook = {
+const mockedHook: ProtectedRoutesHookReturn = {
   isAuthenticated: true,
   location: {} as Location,
 }
