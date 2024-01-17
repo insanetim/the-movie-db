@@ -92,7 +92,21 @@ module.exports = {
       {
         exclude: /node_modules/,
         test: /\.tsx?$/,
-        use: 'ts-loader',
+        use: {
+          loader: 'swc-loader',
+          options: {
+            jsc: {
+              parser: {
+                syntax: 'typescript',
+              },
+              transform: {
+                react: {
+                  runtime: 'automatic',
+                },
+              },
+            },
+          },
+        },
       },
       {
         test: /\.s[ac]ss$/,
