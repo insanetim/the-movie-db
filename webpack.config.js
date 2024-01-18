@@ -29,9 +29,7 @@ const getPlugins = () => {
     new HtmlWebpackPlugin({
       favicon: path.resolve(__dirname, 'public/favicon.ico'),
       filename: 'index.html',
-      minify: {
-        collapseWhitespace: isProd,
-      },
+      minify: 'auto',
       template: path.resolve(__dirname, 'public/index.html'),
     }),
     new Dotenv({ systemvars: true }),
