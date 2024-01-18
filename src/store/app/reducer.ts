@@ -1,7 +1,7 @@
 import { PayloadAction, createSlice, nanoid } from '@reduxjs/toolkit'
 import { NOTIFICATION_DURATION, NOTIFICATION_TYPE } from 'src/constants/app'
 
-import { AppState } from './types'
+import { AppState, Notification, ShowNotificationProps } from './types'
 
 const initialState: AppState = {
   modal: {
@@ -27,20 +27,20 @@ const appSlice = createSlice({
       state.modal.modalType = action.payload.modalType
       state.modal.modalProps = action.payload.modalProps ?? null
     },
-    showNotification(
-      state,
-      action: PayloadAction<{
-        duration?: number
-        messageText: string
-        messageType?: NOTIFICATION_TYPE
-      }>
-    ) {
-      state.notifications.push({
-        duration: action.payload.duration ?? NOTIFICATION_DURATION,
-        id: nanoid(),
-        messageText: action.payload.messageText,
-        messageType: action.payload.messageType ?? NOTIFICATION_TYPE.SUCCESS,
-      })
+    showNotification: {
+      prepare({ duration, messageText, messageType }: ShowNotificationProps) {
+        return {
+          payload: {
+            duration: duration ?? NOTIFICATION_DURATION,
+            id: nanoid(),
+            messageText: messageText,
+            messageType: messageType ?? NOTIFICATION_TYPE.SUCCESS,
+          },
+        }
+      },
+      reducer(state, action: PayloadAction<Notification>) {
+        state.notifications.push(action.payload)
+      },
     },
   },
   selectors: {

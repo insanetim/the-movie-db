@@ -20,3 +20,9 @@ export type AppState = {
   modal: Modal
   notifications: Notification[]
 }
+
+export type ShowNotificationProps = {
+  duration?: number
+  messageText: string
+  messageType?: NOTIFICATION_TYPE
+}
