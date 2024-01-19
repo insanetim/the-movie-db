@@ -29,6 +29,8 @@ jest.mock('src/hooks/useUpdatePage')
 const updatePage = jest.fn()
 jest.mocked(useUpdatePage).mockReturnValue({ updatePage })
 
+jest.mock('src/store/auth/selectors')
+
 describe('Watchlist useContainer hook', () => {
   const confirmSpy = jest.spyOn(Modal, 'confirm')
   const accountSelector = jest

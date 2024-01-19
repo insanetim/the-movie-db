@@ -23,6 +23,8 @@ const searchParams = new URLSearchParams()
 const setSearchParams = jest.fn()
 jest.mocked(useSearchParams).mockReturnValue([searchParams, setSearchParams])
 
+jest.mock('src/store/auth/selectors')
+
 describe('Lists useContainer hook', () => {
   const fetchLists = jest.spyOn(listsActions, 'fetchLists')
   const accountSelector = jest

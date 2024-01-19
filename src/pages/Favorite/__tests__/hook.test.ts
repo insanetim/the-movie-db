@@ -5,7 +5,7 @@ import { useSearchParams } from 'react-router-dom'
 import mockAccount from 'src/__mocks__/mockAccount'
 import { dispatch } from 'src/__mocks__/react-redux'
 import useUpdatePage from 'src/hooks/useUpdatePage'
-import * as sessionSelectors from 'src/store/auth/selectors'
+import * as authSelectors from 'src/store/auth/selectors'
 import * as favoriteActions from 'src/store/favorite/actions'
 import * as movieActions from 'src/store/movie/actions'
 
@@ -29,10 +29,12 @@ jest.mock('src/hooks/useUpdatePage')
 const updatePage = jest.fn()
 jest.mocked(useUpdatePage).mockReturnValue({ updatePage })
 
+jest.mock('src/store/auth/selectors')
+
 describe('Favotite useContainer hook', () => {
   const modalSpy = jest.spyOn(Modal, 'confirm')
   const accountSelector = jest
-    .spyOn(sessionSelectors, 'accountSelector')
+    .spyOn(authSelectors, 'accountSelector')
     .mockReturnValue(null)
 
   it('should match snapshot', () => {
