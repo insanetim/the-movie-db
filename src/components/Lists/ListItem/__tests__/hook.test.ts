@@ -9,7 +9,7 @@ import * as listsActions from 'src/store/lists/actions'
 import useContainer from '../hook'
 
 jest.mock('src/store/lists/selectors', () => ({
-  listsSelector: () => null,
+  createdListsSelector: () => null,
 }))
 
 jest.mock('react-router-dom', () => ({

@@ -21,7 +21,7 @@ const mockedHook: ListsHookReturn = {
 jest.mock('../hook', () => jest.fn(() => mockedHook))
 
 jest.mock('src/store/lists/selectors', () => ({
-  listsSelector: () => null,
+  createdListsSelector: () => null,
 }))
 
 describe('Lists component', () => {

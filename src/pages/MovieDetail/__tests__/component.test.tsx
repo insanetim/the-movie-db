@@ -20,7 +20,7 @@ const mockedHook: MovieDetailHookReturn = {
 jest.mock('../hook', () => jest.fn(() => mockedHook))
 
 jest.mock('src/store/lists/selectors', () => ({
-  listsSelector: () => null,
+  createdListsSelector: () => null,
 }))
 
 describe('MovieDetail component', () => {

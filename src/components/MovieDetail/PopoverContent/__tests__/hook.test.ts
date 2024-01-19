@@ -7,7 +7,7 @@ import * as listsActions from 'src/store/lists/actions'
 import useContainer from '../hook'
 
 jest.mock('src/store/lists/selectors', () => ({
-  listsSelector: () => null,
+  createdListsSelector: () => null,
 }))
 
 describe('PopoverContent useContainer hook', () => {

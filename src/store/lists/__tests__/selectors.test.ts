@@ -1,29 +1,29 @@
 import mockState from 'src/__mocks__/mockState'
 
 import {
+  createdListsErrorSelector,
+  createdListsLoadingSelector,
+  createdListsSelector,
   listDetailErrorSelector,
   listDetailLoadingSelector,
   listDetailSelector,
-  listsErrorSelector,
-  listsLoadingSelector,
-  listsSelector,
 } from '../selectors'
 
-describe('lists selectors', () => {
-  it('listsSelector', () => {
-    const result = listsSelector(mockState)
+describe('createdLists selectors', () => {
+  it('createdListsSelector', () => {
+    const result = createdListsSelector(mockState)
 
     expect(result).toBe(null)
   })
 
-  it('listsLoadingSelector', () => {
-    const result = listsLoadingSelector(mockState)
+  it('createdListsLoadingSelector', () => {
+    const result = createdListsLoadingSelector(mockState)
 
     expect(result).toBe(true)
   })
 
-  it('listsErrorSelector', () => {
-    const result = listsErrorSelector(mockState)
+  it('createdListsErrorSelector', () => {
+    const result = createdListsErrorSelector(mockState)
 
     expect(result).toBe(null)
   })

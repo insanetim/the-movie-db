@@ -3,7 +3,7 @@ import { modalComponentsMap } from 'src/components/ModalRoot/modalComponents'
 import { useAppDispatch } from 'src/hooks/useRedux'
 import { showModal } from 'src/store/app/actions'
 import { addToList } from 'src/store/lists/actions'
-import { listsSelector } from 'src/store/lists/selectors'
+import { createdListsSelector } from 'src/store/lists/selectors'
 
 import {
   HandleAddToListProps,
@@ -16,7 +16,7 @@ const useContainer = ({
   setPopoverOpen,
 }: PopoverContentHookProps): PopoverContentHookReturn => {
   const dispatch = useAppDispatch()
-  const lists = useSelector(listsSelector)
+  const lists = useSelector(createdListsSelector)
 
   const handleAddToNewList = () => {
     dispatch(
