@@ -1,12 +1,7 @@
 module.exports = {
   presets: [
-    '@babel/env',
+    '@babel/preset-env',
     '@babel/typescript',
-    [
-      '@babel/react',
-      {
-        runtime: 'automatic',
-      },
-    ],
+    ['@babel/react', { runtime: 'automatic' }],
   ],
 }
