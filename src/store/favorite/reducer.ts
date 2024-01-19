@@ -1,4 +1,4 @@
-import { createReducer } from '@reduxjs/toolkit'
+import { createSlice } from '@reduxjs/toolkit'
 
 import { fetchFavorite } from './actions'
 import { FavoriteState } from './types'
@@ -9,21 +9,37 @@ const initialState: FavoriteState = {
   loading: true,
 }
 
-const favoriteReducer = createReducer(initialState, builder => {
-  builder
-    .addCase(fetchFavorite.pending, state => {
-      state.loading = true
-      state.data = null
-      state.error = null
-    })
-    .addCase(fetchFavorite.fulfilled, (state, action) => {
-      state.loading = false
-      state.data = action.payload
-    })
-    .addCase(fetchFavorite.rejected, (state, action) => {
-      state.loading = false
-      state.error = action.payload as string
-    })
+const favoriteSlice = createSlice({
+  extraReducers(builder) {
+    builder
+      .addCase(fetchFavorite.pending, state => {
+        state.loading = true
+        state.data = null
+        state.error = null
+      })
+      .addCase(fetchFavorite.fulfilled, (state, action) => {
+        state.loading = false
+        state.data = action.payload
+      })
+      .addCase(fetchFavorite.rejected, (state, action) => {
+        state.loading = false
+        state.error = action.payload as string
+      })
+  },
+  initialState,
+  name: 'favorite',
+  reducers: {},
+  selectors: {
+    favoriteErrorSelector: state => state.error,
+    favoriteLoadingSelector: state => state.loading,
+    favoriteMoviesSelector: state => state.data,
+  },
 })
 
-export default favoriteReducer
+export const {
+  favoriteErrorSelector,
+  favoriteLoadingSelector,
+  favoriteMoviesSelector,
+} = favoriteSlice.selectors
+
+export default favoriteSlice.reducer

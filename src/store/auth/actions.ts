@@ -13,7 +13,6 @@ import { showNotification } from 'src/store/app/actions'
 import errorMessage from 'src/utils/helpers/errorMessage'
 import getSessionId from 'src/utils/helpers/getSessionId'
 
-import { RootState } from '../index'
 import * as types from './constants'
 import { UserData } from './types'
 
@@ -39,7 +38,7 @@ const logIn = createAsyncThunk<string | undefined, UserData>(
   }
 )
 
-const logOut = createAsyncThunk<void, undefined, { state: RootState }>(
+const logOut = createAsyncThunk<void, void>(
   types.logOut,
   async function (_, { dispatch }) {
     const sessionId = getSessionId()
@@ -59,25 +58,24 @@ const logOut = createAsyncThunk<void, undefined, { state: RootState }>(
   }
 )
 
-const fetchAccount = createAsyncThunk<
-  IAccount | undefined,
-  undefined,
-  { state: RootState }
->(types.fetchAccount, async function (_, { dispatch }) {
-  const sessionId = getSessionId()
+const fetchAccount = createAsyncThunk<IAccount | undefined, void>(
+  types.fetchAccount,
+  async function (_, { dispatch }) {
+    const sessionId = getSessionId()
 
-  try {
-    const account = await getAccountDetails({ sessionId })
+    try {
+      const account = await getAccountDetails({ sessionId })
 
-    return account
-  } catch (error) {
-    dispatch(
-      showNotification({
-        messageText: errorMessage(error),
-        messageType: NOTIFICATION_TYPE.ERROR,
-      })
-    )
+      return account
+    } catch (error) {
+      dispatch(
+        showNotification({
+          messageText: errorMessage(error),
+          messageType: NOTIFICATION_TYPE.ERROR,
+        })
+      )
+    }
   }
-})
+)
 
 export { fetchAccount, logIn, logOut }

@@ -1,4 +1,4 @@
-import { createReducer } from '@reduxjs/toolkit'
+import { createSlice } from '@reduxjs/toolkit'
 
 import { fetchWatchlist } from './actions'
 import { WatchlistState } from './types'
@@ -9,21 +9,37 @@ const initialState: WatchlistState = {
   loading: true,
 }
 
-const watchlistReducer = createReducer(initialState, builder => {
-  builder
-    .addCase(fetchWatchlist.pending, state => {
-      state.loading = true
-      state.data = null
-      state.error = null
-    })
-    .addCase(fetchWatchlist.fulfilled, (state, action) => {
-      state.loading = false
-      state.data = action.payload
-    })
-    .addCase(fetchWatchlist.rejected, (state, action) => {
-      state.loading = false
-      state.error = action.payload as string
-    })
+const watchlistSlice = createSlice({
+  extraReducers(builder) {
+    builder
+      .addCase(fetchWatchlist.pending, state => {
+        state.loading = true
+        state.data = null
+        state.error = null
+      })
+      .addCase(fetchWatchlist.fulfilled, (state, action) => {
+        state.loading = false
+        state.data = action.payload
+      })
+      .addCase(fetchWatchlist.rejected, (state, action) => {
+        state.loading = false
+        state.error = action.payload as string
+      })
+  },
+  initialState,
+  name: 'watchlist',
+  reducers: {},
+  selectors: {
+    watchlistErrorSelector: state => state.error,
+    watchlistLoadingSelector: state => state.loading,
+    watchlistMoviesSelector: state => state.data,
+  },
 })
 
-export default watchlistReducer
+export const {
+  watchlistErrorSelector,
+  watchlistLoadingSelector,
+  watchlistMoviesSelector,
+} = watchlistSlice.selectors
+
+export default watchlistSlice.reducer
