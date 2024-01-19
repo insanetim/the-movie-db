@@ -2,11 +2,11 @@ import { act, renderHook } from '@testing-library/react'
 import { dispatch } from 'src/__mocks__/react-redux'
 import { modalComponentsMap } from 'src/components/ModalRoot/modalComponents'
 import { showModal } from 'src/store/app/actions'
-import * as listsActions from 'src/store/lists/actions'
+import * as createdListsActions from 'src/store/createdLists/actions'
 
 import useContainer from '../hook'
 
-jest.mock('src/store/lists/selectors', () => ({
+jest.mock('src/store/createdLists/selectors', () => ({
   createdListsSelector: () => null,
 }))
 
@@ -37,7 +37,7 @@ describe('PopoverContent useContainer hook', () => {
   })
 
   it('should check "handleAddToList" method', () => {
-    const addToList = jest.spyOn(listsActions, 'addToList')
+    const addToList = jest.spyOn(createdListsActions, 'addToList')
     const { result } = renderHook(() => useContainer(props))
 
     act(() => {

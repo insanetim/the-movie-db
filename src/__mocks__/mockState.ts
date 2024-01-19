@@ -17,6 +17,11 @@ const mockState: RootState = {
     account: null,
     isAuthenticated: false,
   },
+  createdLists: {
+    data: null,
+    error: null,
+    loading: true,
+  },
   dashboard: {
     data: null,
   },
@@ -25,17 +30,10 @@ const mockState: RootState = {
     error: null,
     loading: true,
   },
-  lists: {
-    createdLists: {
-      data: null,
-      error: null,
-      loading: true,
-    },
-    listDetail: {
-      data: null,
-      error: null,
-      loading: true,
-    },
+  listDetails: {
+    data: null,
+    error: null,
+    loading: true,
   },
   movie: movieInitialState,
   watchlist: {

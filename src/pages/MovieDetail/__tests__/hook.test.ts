@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom'
 import { mockMovieDetailExtended } from 'src/__mocks__/mockMovie'
 import { dispatch } from 'src/__mocks__/react-redux'
 import { showNotification } from 'src/store/app/actions'
-import * as listsActions from 'src/store/lists/actions'
+import * as createdListsActions from 'src/store/createdLists/actions'
 import * as movieActions from 'src/store/movie/actions'
 import * as movieSelectors from 'src/store/movie/selectors'
 
@@ -81,7 +81,7 @@ describe('MovieDetail useContainer hook', () => {
 
   it('should check "useEffect" method', () => {
     const fetchMovieDetail = jest.spyOn(movieActions, 'fetchMovieDetail')
-    const fetchLists = jest.spyOn(listsActions, 'fetchLists')
+    const fetchLists = jest.spyOn(createdListsActions, 'fetchLists')
     selectMovieById.mockReturnValueOnce(undefined as never)
     renderHook(useContainer)
 

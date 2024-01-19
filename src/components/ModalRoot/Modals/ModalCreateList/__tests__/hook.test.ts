@@ -3,12 +3,12 @@ import { FormInstance } from 'antd'
 import React from 'react'
 import { dispatch } from 'src/__mocks__/react-redux'
 import { hideModal } from 'src/store/app/actions'
-import * as listsActions from 'src/store/lists/actions'
+import * as createdListsActions from 'src/store/createdLists/actions'
 
 import useContainer from '../hook'
 
 describe('ModalCreateList useContainer hook', () => {
-  const createList = jest.spyOn(listsActions, 'createList')
+  const createList = jest.spyOn(createdListsActions, 'createList')
   const props = {
     form: {
       resetFields: jest.fn(),

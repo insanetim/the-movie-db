@@ -4,11 +4,11 @@ import { MouseEvent } from 'react'
 import { useNavigate, useSearchParams } from 'react-router-dom'
 import { dispatch } from 'src/__mocks__/react-redux'
 import useUpdatePage from 'src/hooks/useUpdatePage'
-import * as listsActions from 'src/store/lists/actions'
+import * as createdListsActions from 'src/store/createdLists/actions'
 
 import useContainer from '../hook'
 
-jest.mock('src/store/lists/selectors', () => ({
+jest.mock('src/store/createdLists/selectors', () => ({
   createdListsSelector: () => null,
 }))
 
@@ -48,7 +48,7 @@ describe('ListItem useContainer hook', () => {
 
   it('should check "handleListDelete" method', async () => {
     const modalSpy = jest.spyOn(Modal, 'confirm')
-    const deleteList = jest.spyOn(listsActions, 'deleteList')
+    const deleteList = jest.spyOn(createdListsActions, 'deleteList')
     const event = {
       stopPropagation: jest.fn(),
     } as unknown as MouseEvent<HTMLSpanElement>

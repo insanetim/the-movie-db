@@ -1,5 +1,5 @@
 import { IResponse } from 'src/interfaces/global.interface'
-import { IList, IListDetail } from 'src/interfaces/list.interface'
+import { IList, IListDetails } from 'src/interfaces/list.interface'
 
 import { mockMovie } from './mockMovie'
 
@@ -14,7 +14,7 @@ const mockList: IList = {
   poster_path: null,
 }
 
-const mockListDetail: IListDetail = {
+const mockListDetail: IListDetails = {
   created_by: 'test/author',
   description: 'test/description',
   favorite_count: 0,

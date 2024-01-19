@@ -5,11 +5,11 @@ import { dispatch } from 'src/__mocks__/react-redux'
 import { modalComponentsMap } from 'src/components/ModalRoot/modalComponents'
 import { showModal } from 'src/store/app/actions'
 import * as sessionSelectors from 'src/store/auth/selectors'
-import * as listsActions from 'src/store/lists/actions'
+import * as createdListsActions from 'src/store/createdLists/actions'
 
 import useContainer from '../hook'
 
-jest.mock('src/store/lists/selectors', () => ({
+jest.mock('src/store/createdLists/selectors', () => ({
   createdListsErrorSelector: () => null,
   createdListsLoadingSelector: () => true,
   createdListsSelector: () => null,
@@ -26,7 +26,7 @@ jest.mocked(useSearchParams).mockReturnValue([searchParams, setSearchParams])
 jest.mock('src/store/auth/selectors')
 
 describe('Lists useContainer hook', () => {
-  const fetchLists = jest.spyOn(listsActions, 'fetchLists')
+  const fetchLists = jest.spyOn(createdListsActions, 'fetchLists')
   const accountSelector = jest
     .spyOn(sessionSelectors, 'accountSelector')
     .mockReturnValue(null)

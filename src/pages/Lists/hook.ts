@@ -6,12 +6,12 @@ import { modalComponentsMap } from 'src/components/ModalRoot/modalComponents'
 import { useAppDispatch } from 'src/hooks/useRedux'
 import { showModal } from 'src/store/app/actions'
 import { accountSelector } from 'src/store/auth/selectors'
-import { fetchLists } from 'src/store/lists/actions'
+import { fetchLists } from 'src/store/createdLists/actions'
 import {
   createdListsErrorSelector,
   createdListsLoadingSelector,
   createdListsSelector,
-} from 'src/store/lists/selectors'
+} from 'src/store/createdLists/selectors'
 import getParams from 'src/utils/helpers/getParams'
 
 import { ListsHookReturn } from './types'

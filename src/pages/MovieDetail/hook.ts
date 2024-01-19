@@ -6,7 +6,7 @@ import { useAppDispatch } from 'src/hooks/useRedux'
 import useRequest from 'src/hooks/useRequest'
 import { RootState } from 'src/store'
 import { showNotification } from 'src/store/app/actions'
-import { fetchLists } from 'src/store/lists/actions'
+import { fetchLists } from 'src/store/createdLists/actions'
 import {
   changeMovieInFavorite,
   changeMovieInWatchlist,

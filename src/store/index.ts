@@ -14,9 +14,10 @@ import storage from 'redux-persist/lib/storage'
 import appReducer from './app'
 import { showModal } from './app/actions'
 import authReducer from './auth'
+import createdListsReducer from './createdLists'
 import dashboardReducer from './dashboard'
 import favoriteReducer from './favorite'
-import listsReducer from './lists'
+import listDetailsReducer from './listDetails'
 import movieReducer from './movie'
 import watchlistReducer from './watchlist'
 
@@ -29,9 +30,10 @@ const authPersistConfig = {
 const rootReducer = combineReducers({
   app: appReducer,
   auth: persistReducer(authPersistConfig, authReducer),
+  createdLists: createdListsReducer,
   dashboard: dashboardReducer,
   favorite: favoriteReducer,
-  lists: listsReducer,
+  listDetails: listDetailsReducer,
   movie: movieReducer,
   watchlist: watchlistReducer,
 })

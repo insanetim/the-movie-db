@@ -5,16 +5,13 @@ import { useNavigate, useParams, useSearchParams } from 'react-router-dom'
 import { useAppDispatch } from 'src/hooks/useRedux'
 import useUpdatePage from 'src/hooks/useUpdatePage'
 import { IMovie } from 'src/interfaces/movie.interface'
+import { deleteList, removeFromList } from 'src/store/createdLists/actions'
+import { fetchListDetails } from 'src/store/listDetails/actions'
 import {
-  deleteList,
-  fetchListDetail,
-  removeFromList,
-} from 'src/store/lists/actions'
-import {
-  listDetailErrorSelector,
-  listDetailLoadingSelector,
-  listDetailSelector,
-} from 'src/store/lists/selectors'
+  listDetailsErrorSelector,
+  listDetailsLoadingSelector,
+  listDetailsSelector,
+} from 'src/store/listDetails/selectors'
 import getParams from 'src/utils/helpers/getParams'
 
 import { ListDetailHookReturn, ListDetailRouteParams } from './types'
@@ -25,13 +22,13 @@ const useContainer = (): ListDetailHookReturn => {
   >() as ListDetailRouteParams
   const navigate = useNavigate()
   const dispatch = useAppDispatch()
-  const list = useSelector(listDetailSelector)
-  const loading = useSelector(listDetailLoadingSelector)
-  const error = useSelector(listDetailErrorSelector)
+  const list = useSelector(listDetailsSelector)
+  const loading = useSelector(listDetailsLoadingSelector)
+  const error = useSelector(listDetailsErrorSelector)
   const [searchParams, setSearchParams] = useSearchParams()
   const page = searchParams.get('page') ?? '1'
   const { updatePage } = useUpdatePage({
-    action: fetchListDetail({ listId, page }),
+    action: fetchListDetails({ listId, page }),
     items: list?.items,
     page,
     setSearchParams,
@@ -75,7 +72,7 @@ const useContainer = (): ListDetailHookReturn => {
   }
 
   useEffect(() => {
-    dispatch(fetchListDetail({ listId, page }))
+    dispatch(fetchListDetails({ listId, page }))
   }, [page, listId, dispatch])
 
   return {

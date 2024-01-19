@@ -3,7 +3,7 @@ import renderWithWrapper from 'src/utils/testHelpers/renderWithWrapper'
 
 import ListList from '../component'
 
-jest.mock('src/store/lists/selectors', () => ({
+jest.mock('src/store/createdLists/selectors', () => ({
   createdListsSelector: () => null,
 }))
 

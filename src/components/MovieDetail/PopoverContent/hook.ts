@@ -2,8 +2,8 @@ import { useSelector } from 'react-redux'
 import { modalComponentsMap } from 'src/components/ModalRoot/modalComponents'
 import { useAppDispatch } from 'src/hooks/useRedux'
 import { showModal } from 'src/store/app/actions'
-import { addToList } from 'src/store/lists/actions'
-import { createdListsSelector } from 'src/store/lists/selectors'
+import { addToList } from 'src/store/createdLists/actions'
+import { createdListsSelector } from 'src/store/createdLists/selectors'
 
 import {
   HandleAddToListProps,

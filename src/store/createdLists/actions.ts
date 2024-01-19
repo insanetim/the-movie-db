@@ -1,12 +1,11 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
 import { NOTIFICATION_TYPE } from 'src/constants/app'
-import { IList, IListDetail, IListsList } from 'src/interfaces/list.interface'
+import { IList, IListsList } from 'src/interfaces/list.interface'
 import {
   addMovieToList,
   createNewList,
   deleteMyList,
   getCreatedLists,
-  getListDetails,
   removeMovieFromList,
 } from 'src/services/api/apiRoutes'
 import { showNotification } from 'src/store/app/actions'
@@ -18,12 +17,7 @@ import listMessage from 'src/utils/helpers/listMessage'
 import { RootState } from '../index'
 import { selectMovieById } from '../movie/selectors'
 import * as types from './constants'
-import {
-  AddToListProps,
-  CreateListProps,
-  FetchListDetailProps,
-  RemoveFromListProps,
-} from './types'
+import { AddToListProps, CreateListProps, RemoveFromListProps } from './types'
 
 const fetchLists = createAsyncThunk<
   IListsList,
@@ -84,23 +78,6 @@ const deleteList = createAsyncThunk<void, IList['id'], { state: RootState }>(
   }
 )
 
-const fetchListDetail = createAsyncThunk<
-  IListDetail,
-  FetchListDetailProps,
-  { rejectValue: string }
->(
-  types.fetchListDetail,
-  async function ({ listId, page }, { rejectWithValue }) {
-    try {
-      const listDetail = await getListDetails({ listId, page })
-
-      return listDetail
-    } catch (error) {
-      return rejectWithValue(errorMessage(error))
-    }
-  }
-)
-
 const addToList = createAsyncThunk<void, AddToListProps, { state: RootState }>(
   types.addToList,
   async function ({ listId, listName, movieId }, { dispatch, getState }) {
@@ -143,11 +120,4 @@ const removeFromList = createAsyncThunk<
   }
 })
 
-export {
-  addToList,
-  createList,
-  deleteList,
-  fetchListDetail,
-  fetchLists,
-  removeFromList,
-}
+export { addToList, createList, deleteList, fetchLists, removeFromList }

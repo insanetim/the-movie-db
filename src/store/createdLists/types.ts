@@ -1,6 +1,6 @@
 import { ListData } from 'src/components/ModalRoot/Modals/ModalCreateList/types'
 import { IState } from 'src/interfaces/global.interface'
-import { IList, IListDetail, IListsList } from 'src/interfaces/list.interface'
+import { IList, IListsList } from 'src/interfaces/list.interface'
 import { IMovie } from 'src/interfaces/movie.interface'
 
 export type CreateListProps = {
@@ -26,12 +26,4 @@ export type RemoveFromListProps = {
   movieId: IMovie['id']
 }
 
-export type FetchListDetailProps = {
-  listId: IList['id']
-  page: string
-}
-
-export type ListsState = {
-  createdLists: IState<IListsList>
-  listDetail: IState<IListDetail>
-}
+export type CreatedListsState = IState<IListsList>

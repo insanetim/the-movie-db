@@ -1,6 +1,6 @@
 import { ListData } from 'src/components/ModalRoot/Modals/ModalCreateList/types'
 import { IAccount } from 'src/interfaces/account.interface'
-import { IList, IListDetail, IListsList } from 'src/interfaces/list.interface'
+import { IList, IListDetails, IListsList } from 'src/interfaces/list.interface'
 import {
   IMovie,
   IMovieAccountStates,
@@ -11,7 +11,7 @@ import {
 } from 'src/interfaces/movie.interface'
 import httpClient from 'src/services/api/httpClient'
 import { RequestToken, Session, UserData } from 'src/store/auth/types'
-import { CreateListResponse } from 'src/store/lists/types'
+import { CreateListResponse } from 'src/store/createdLists/types'
 
 // Auth
 export const createRequestToken = async () => {
@@ -126,7 +126,7 @@ export const getListDetails = async ({
   listId: IList['id']
   page: string
 }) => {
-  const { data } = await httpClient.request<IListDetail>({
+  const { data } = await httpClient.request<IListDetails>({
     params: { page },
     url: `/list/${listId}`,
   })

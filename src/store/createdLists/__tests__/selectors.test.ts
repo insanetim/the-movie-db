@@ -4,9 +4,6 @@ import {
   createdListsErrorSelector,
   createdListsLoadingSelector,
   createdListsSelector,
-  listDetailErrorSelector,
-  listDetailLoadingSelector,
-  listDetailSelector,
 } from '../selectors'
 
 describe('createdLists selectors', () => {
@@ -24,24 +21,6 @@ describe('createdLists selectors', () => {
 
   it('createdListsErrorSelector', () => {
     const result = createdListsErrorSelector(mockState)
-
-    expect(result).toBe(null)
-  })
-
-  it('listDetailSelector', () => {
-    const result = listDetailSelector(mockState)
-
-    expect(result).toBe(null)
-  })
-
-  it('listDetailLoadingSelector', () => {
-    const result = listDetailLoadingSelector(mockState)
-
-    expect(result).toBe(true)
-  })
-
-  it('listDetailErrorSelector', () => {
-    const result = listDetailErrorSelector(mockState)
 
     expect(result).toBe(null)
   })

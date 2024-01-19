@@ -1,5 +1,5 @@
 import { ErrorMsg, HandlePagination } from 'src/interfaces/global.interface'
-import { IListDetail } from 'src/interfaces/list.interface'
+import { IListDetails } from 'src/interfaces/list.interface'
 import { IMovie } from 'src/interfaces/movie.interface'
 
 export type ListDetailHookReturn = {
@@ -10,7 +10,7 @@ export type ListDetailHookReturn = {
     movieId: IMovie['id']
   ) => () => Promise<void>
   handlePagination: HandlePagination
-  list: IListDetail | null
+  list: IListDetails | null
   loading: boolean
 }
 

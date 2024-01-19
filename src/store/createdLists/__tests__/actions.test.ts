@@ -1,4 +1,4 @@
-import { mockListDetail, mockListsResponse } from 'src/__mocks__/mockList'
+import { mockListsResponse } from 'src/__mocks__/mockList'
 import { dispatch, getState } from 'src/__mocks__/react-redux'
 import { NOTIFICATION_TYPE } from 'src/constants/app'
 import * as apiRoutes from 'src/services/api/apiRoutes'
@@ -8,7 +8,6 @@ import {
   addToList,
   createList,
   deleteList,
-  fetchListDetail,
   fetchLists,
   removeFromList,
 } from '../actions'
@@ -28,8 +27,10 @@ jest.mock('src/store/movie/selectors', () => ({
 }))
 
 const listId = 1234
-jest.mock('src/store//lists/selectors', () => ({
-  listsSelector: () => ({ results: [{ id: listId, name: 'test/list' }] }),
+jest.mock('src/store/createdLists/selectors', () => ({
+  createdListsSelector: () => ({
+    results: [{ id: listId, name: 'test/list' }],
+  }),
 }))
 
 const sessionId = 'test/session_id'
@@ -42,7 +43,6 @@ describe('lists actions', () => {
   const createNewList = jest.spyOn(apiRoutes, 'createNewList')
   const deleteMyList = jest.spyOn(apiRoutes, 'deleteMyList')
   const getCreatedLists = jest.spyOn(apiRoutes, 'getCreatedLists')
-  const getListDetails = jest.spyOn(apiRoutes, 'getListDetails')
   const removeMovieFromList = jest.spyOn(apiRoutes, 'removeMovieFromList')
   const errorMessage = 'Something went wrong!'
   const errorNotification = showNotification({
@@ -154,35 +154,6 @@ describe('lists actions', () => {
       expect(calls[1][0].type).toBe(showNotification.type)
       expect(calls[2][0].type).toBe(deleteList.fulfilled.type)
       expect(dispatch).toHaveBeenCalledWith(errorNotification)
-    })
-  })
-
-  describe('fetchListDetail', () => {
-    const thunk = fetchListDetail({ listId, page })
-
-    it('should handle success', async () => {
-      getListDetails.mockResolvedValueOnce(mockListDetail)
-
-      const result = await thunk(dispatch, getState, undefined)
-      const { calls } = dispatch.mock
-
-      expect(getListDetails).toHaveBeenCalledWith({ listId, page })
-      expect(calls).toHaveLength(2)
-      expect(calls[0][0].type).toBe(fetchListDetail.pending.type)
-      expect(calls[1][0].type).toBe(fetchListDetail.fulfilled.type)
-      expect(result.payload).toEqual(mockListDetail)
-    })
-
-    it('should handle failure', async () => {
-      getListDetails.mockRejectedValueOnce(errorMessage)
-
-      const result = await thunk(dispatch, getState, undefined)
-      const { calls } = dispatch.mock
-
-      expect(calls).toHaveLength(2)
-      expect(calls[0][0].type).toBe(fetchListDetail.pending.type)
-      expect(calls[1][0].type).toBe(fetchListDetail.rejected.type)
-      expect(result.payload).toBe(errorMessage)
     })
   })
 

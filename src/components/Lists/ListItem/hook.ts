@@ -4,8 +4,8 @@ import { useSelector } from 'react-redux'
 import { useNavigate, useSearchParams } from 'react-router-dom'
 import { useAppDispatch } from 'src/hooks/useRedux'
 import useUpdatePage from 'src/hooks/useUpdatePage'
-import { deleteList, fetchLists } from 'src/store/lists/actions'
-import { createdListsSelector } from 'src/store/lists/selectors'
+import { deleteList, fetchLists } from 'src/store/createdLists/actions'
+import { createdListsSelector } from 'src/store/createdLists/selectors'
 
 import { ListItemHookProps, ListItemHookReturn } from './types'
 

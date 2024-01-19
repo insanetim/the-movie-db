@@ -12,7 +12,7 @@ export interface IList {
   poster_path: null | string
 }
 
-export interface IListDetail extends IList {
+export interface IListDetails extends IList {
   created_by: string
   items: IMovie[]
   page: number

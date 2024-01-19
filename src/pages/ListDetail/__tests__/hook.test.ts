@@ -4,14 +4,15 @@ import { MouseEvent } from 'react'
 import { useNavigate, useParams, useSearchParams } from 'react-router-dom'
 import { dispatch } from 'src/__mocks__/react-redux'
 import useUpdatePage from 'src/hooks/useUpdatePage'
-import * as listsActions from 'src/store/lists/actions'
+import * as createdListsActions from 'src/store/createdLists/actions'
+import * as listDetailsActions from 'src/store/listDetails/actions'
 
 import useContainer from '../hook'
 
-jest.mock('src/store/lists/selectors', () => ({
-  listDetailErrorSelector: () => null,
-  listDetailLoadingSelector: () => true,
-  listDetailSelector: () => null,
+jest.mock('src/store/listDetails/selectors', () => ({
+  listDetailsErrorSelector: () => null,
+  listDetailsLoadingSelector: () => true,
+  listDetailsSelector: () => null,
 }))
 
 jest.mock('react-router-dom', () => ({
@@ -57,7 +58,7 @@ describe('ListDetail useContainer hook', () => {
   })
 
   it('should check "handleListDelete" method', async () => {
-    const deleteList = jest.spyOn(listsActions, 'deleteList')
+    const deleteList = jest.spyOn(createdListsActions, 'deleteList')
     let onOk = () => {}
     const { result } = renderHook(useContainer)
 
@@ -76,7 +77,7 @@ describe('ListDetail useContainer hook', () => {
   })
 
   it('should check "handleMovieDelete" method', async () => {
-    const removeFromList = jest.spyOn(listsActions, 'removeFromList')
+    const removeFromList = jest.spyOn(createdListsActions, 'removeFromList')
     const event = {
       stopPropagation: jest.fn(),
     } as unknown as MouseEvent<HTMLSpanElement>
@@ -98,7 +99,7 @@ describe('ListDetail useContainer hook', () => {
   })
 
   it('should check "useEffect" method', () => {
-    const fetchListDetail = jest.spyOn(listsActions, 'fetchListDetail')
+    const fetchListDetail = jest.spyOn(listDetailsActions, 'fetchListDetails')
     renderHook(useContainer)
 
     expect(dispatch).toHaveBeenCalled()
