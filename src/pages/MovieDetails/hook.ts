@@ -3,31 +3,35 @@ import { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
 import { useAppDispatch } from 'src/hooks/useRedux'
-import useRequest from 'src/hooks/useRequest'
 import { RootState } from 'src/store'
 import { showNotification } from 'src/store/app/actions'
 import { fetchLists } from 'src/store/createdLists/actions'
 import {
   changeMovieInFavorite,
   changeMovieInWatchlist,
-  fetchMovieDetail,
-} from 'src/store/movie/actions'
-import { selectMovieById } from 'src/store/movie/selectors'
+  fetchMovieDetails,
+} from 'src/store/movieDetails/actions'
+import {
+  movieDetailsErrorSelector,
+  movieDetailsLoadingSelector,
+  movieDetailsSelector,
+} from 'src/store/movieDetails/selectors'
 import favoriteMessage from 'src/utils/helpers/favoriteMessage'
 import watchlistMessage from 'src/utils/helpers/watchlistMessage'
 
-import { MovieDetailHookReturn, MovieDetailRouteParams } from './types'
+import { MovieDetailsHookReturn, MovieDetailsRouteParams } from './types'
 
-const useContainer = (): MovieDetailHookReturn => {
+const useContainer = (): MovieDetailsHookReturn => {
   const { movieId } = useParams<
-    keyof MovieDetailRouteParams
-  >() as MovieDetailRouteParams
+    keyof MovieDetailsRouteParams
+  >() as MovieDetailsRouteParams
   const dispatch = useAppDispatch()
   const movie = useSelector((state: RootState) =>
-    selectMovieById(state, movieId)
+    movieDetailsSelector(state, movieId)
   )
+  const loading = useSelector(movieDetailsLoadingSelector)
+  const error = useSelector(movieDetailsErrorSelector)
   const [popoverOpen, setPopoverOpen] = useState(false)
-  const { error, loading, request } = useRequest(isNil(movie))
 
   const handleFavoriteClick = () => {
     const inFavorite = !movie!.accountStates.favorite
@@ -53,10 +57,10 @@ const useContainer = (): MovieDetailHookReturn => {
 
   useEffect(() => {
     if (isNil(movie)) {
-      request(fetchMovieDetail(movieId))
+      dispatch(fetchMovieDetails(movieId))
     }
     dispatch(fetchLists('1'))
-  }, [dispatch, movieId, movie, request])
+  }, [dispatch, movie, movieId])
 
   return {
     error,

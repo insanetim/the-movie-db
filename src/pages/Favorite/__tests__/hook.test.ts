@@ -7,7 +7,7 @@ import { dispatch } from 'src/__mocks__/react-redux'
 import useUpdatePage from 'src/hooks/useUpdatePage'
 import * as authSelectors from 'src/store/auth/selectors'
 import * as favoriteActions from 'src/store/favorite/actions'
-import * as movieActions from 'src/store/movie/actions'
+import * as movieActions from 'src/store/movieDetails/actions'
 
 import useContainer from '../hook'
 

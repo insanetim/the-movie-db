@@ -13,7 +13,7 @@ import {
   favoriteLoadingSelector,
   favoriteMoviesSelector,
 } from 'src/store/favorite/selectors'
-import { changeMovieInFavorite } from 'src/store/movie/actions'
+import { changeMovieInFavorite } from 'src/store/movieDetails/actions'
 import getParams from 'src/utils/helpers/getParams'
 
 import { FavoriteHookReturn } from './types'

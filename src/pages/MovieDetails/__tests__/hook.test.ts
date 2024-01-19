@@ -4,8 +4,8 @@ import { mockMovieDetailExtended } from 'src/__mocks__/mockMovie'
 import { dispatch } from 'src/__mocks__/react-redux'
 import { showNotification } from 'src/store/app/actions'
 import * as createdListsActions from 'src/store/createdLists/actions'
-import * as movieActions from 'src/store/movie/actions'
-import * as movieSelectors from 'src/store/movie/selectors'
+import * as movieDetailsActions from 'src/store/movieDetails/actions'
+import * as movieDetailsSelectors from 'src/store/movieDetails/selectors'
 
 import useContainer from '../hook'
 
@@ -19,9 +19,17 @@ jest.mock<typeof import('@reduxjs/toolkit')>('@reduxjs/toolkit', () => ({
   nanoid: () => 'test/id',
 }))
 
-describe('MovieDetail useContainer hook', () => {
+jest.mock('src/store/movieDetails/selectors')
+
+describe('MovieDetails useContainer hook', () => {
+  jest
+    .spyOn(movieDetailsSelectors, 'movieDetailsLoadingSelector')
+    .mockReturnValue(false)
+  jest
+    .spyOn(movieDetailsSelectors, 'movieDetailsErrorSelector')
+    .mockReturnValue(null)
   const selectMovieById = jest
-    .spyOn(movieSelectors, 'selectMovieById')
+    .spyOn(movieDetailsSelectors, 'movieDetailsSelector')
     .mockReturnValue(mockMovieDetailExtended)
 
   it('should match snapshot', () => {
@@ -39,7 +47,7 @@ describe('MovieDetail useContainer hook', () => {
 
   it('should check "handleFavoriteClick" method', () => {
     const changeMovieInFavorite = jest.spyOn(
-      movieActions,
+      movieDetailsActions,
       'changeMovieInFavorite'
     )
     const notification = showNotification({
@@ -60,7 +68,7 @@ describe('MovieDetail useContainer hook', () => {
 
   it('should check "handleWatchlistClick" method', () => {
     const changeMovieInWatchlist = jest.spyOn(
-      movieActions,
+      movieDetailsActions,
       'changeMovieInWatchlist'
     )
     const notification = showNotification({
@@ -80,7 +88,10 @@ describe('MovieDetail useContainer hook', () => {
   })
 
   it('should check "useEffect" method', () => {
-    const fetchMovieDetail = jest.spyOn(movieActions, 'fetchMovieDetail')
+    const fetchMovieDetail = jest.spyOn(
+      movieDetailsActions,
+      'fetchMovieDetails'
+    )
     const fetchLists = jest.spyOn(createdListsActions, 'fetchLists')
     selectMovieById.mockReturnValueOnce(undefined as never)
     renderHook(useContainer)

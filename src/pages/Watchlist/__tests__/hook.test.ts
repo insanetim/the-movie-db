@@ -6,7 +6,7 @@ import mockAccount from 'src/__mocks__/mockAccount'
 import { dispatch } from 'src/__mocks__/react-redux'
 import useUpdatePage from 'src/hooks/useUpdatePage'
 import * as sessionSelectors from 'src/store/auth/selectors'
-import * as movieActions from 'src/store/movie/actions'
+import * as movieActions from 'src/store/movieDetails/actions'
 import * as watchlistActions from 'src/store/watchlist/actions'
 
 import useContainer from '../hook'

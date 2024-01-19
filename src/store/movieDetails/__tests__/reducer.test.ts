@@ -1,17 +1,26 @@
-import { assocPath } from 'ramda'
+import { assocPath, mergeDeepRight } from 'ramda'
 
 import {
   changeMovieInFavorite,
   changeMovieInWatchlist,
-  fetchMovieDetail,
+  fetchMovieDetails,
 } from '../actions'
-import movieReducer, { movieInitialState } from '../reducer'
+import movieDetailsReducer, { movieDetailsInitialState } from '../reducer'
 
-describe('movieReducer', () => {
-  const state = movieInitialState
+describe('movieDetailsReducer', () => {
+  const state = movieDetailsInitialState
 
   it('should return initial state with empty action', () => {
-    const result = movieReducer(undefined, { type: '' })
+    const result = movieDetailsReducer(undefined, { type: '' })
+
+    expect(result).toEqual(state)
+  })
+
+  it('should handle "fetchMovieDetail/pending" action', () => {
+    const action = {
+      type: fetchMovieDetails.pending.type,
+    }
+    const result = movieDetailsReducer(state, action)
 
     expect(result).toEqual(state)
   })
@@ -19,13 +28,28 @@ describe('movieReducer', () => {
   it('should handle "fetchMovieDetail/fulfilled" action', () => {
     const action = {
       payload: { data: 'test/data', id: '1234' },
-      type: fetchMovieDetail.fulfilled.type,
+      type: fetchMovieDetails.fulfilled.type,
     }
-    const newState = {
+    const newState = mergeDeepRight(state, {
       entities: { '1234': { data: 'test/data', id: '1234' } },
       ids: ['1234'],
+      loading: false,
+    })
+    const result = movieDetailsReducer(state, action)
+
+    expect(result).toEqual(newState)
+  })
+
+  it('should handle "fetchMovieDetail/rejected" action', () => {
+    const action = {
+      payload: 'test/data',
+      type: fetchMovieDetails.rejected.type,
     }
-    const result = movieReducer(state, action)
+    const newState = mergeDeepRight(state, {
+      error: action.payload,
+      loading: false,
+    })
+    const result = movieDetailsReducer(state, action)
 
     expect(result).toEqual(newState)
   })
@@ -44,7 +68,7 @@ describe('movieReducer', () => {
       true,
       state
     )
-    const result = movieReducer(state, action)
+    const result = movieDetailsReducer(state, action)
 
     expect(result).toEqual(newState)
   })
@@ -54,7 +78,7 @@ describe('movieReducer', () => {
       meta: { arg: { inFavorite: true, movieId: '1234' } },
       type: changeMovieInFavorite.pending.type,
     }
-    const result = movieReducer(state, action)
+    const result = movieDetailsReducer(state, action)
 
     expect(result).toEqual(state)
   })
@@ -73,7 +97,7 @@ describe('movieReducer', () => {
       true,
       state
     )
-    const result = movieReducer(state, action)
+    const result = movieDetailsReducer(state, action)
 
     expect(result).toEqual(newState)
   })
@@ -83,7 +107,7 @@ describe('movieReducer', () => {
       meta: { arg: { inWatchlist: true, movieId: '1234' } },
       type: changeMovieInWatchlist.pending.type,
     }
-    const result = movieReducer(state, action)
+    const result = movieDetailsReducer(state, action)
 
     expect(result).toEqual(state)
   })

@@ -22,8 +22,8 @@ jest.mock('src/store/auth/selectors', () => ({
   accountSelector: () => ({ id: accountId }),
 }))
 
-jest.mock('src/store/movie/selectors', () => ({
-  selectMovieById: () => ({ title: 'test/movie' }),
+jest.mock('src/store/movieDetails/selectors', () => ({
+  movieDetailsSelector: () => ({ title: 'test/movie' }),
 }))
 
 const listId = 1234

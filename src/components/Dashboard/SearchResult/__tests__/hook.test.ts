@@ -6,6 +6,8 @@ import * as dashboardActions from 'src/store/dashboard/actions'
 import useContainer from '../hook'
 
 jest.mock('src/store/dashboard/selectors', () => ({
+  dashboardErrorSelector: () => null,
+  dashboardLoadingSelector: () => true,
   dashboardMoviesSelector: () => null,
 }))
 

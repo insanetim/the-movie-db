@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`MovieDetail component should match snapshot 1`] = `
+exports[`MovieDetails component should match snapshot 1`] = `
 <DocumentFragment>
   <div
     class="ant-row css-dev-only-do-not-override-dkbvqv"
@@ -367,7 +367,7 @@ exports[`MovieDetail component should match snapshot 1`] = `
 </DocumentFragment>
 `;
 
-exports[`MovieDetail component should match snapshot with empty movie 1`] = `
+exports[`MovieDetails component should match snapshot with empty movie 1`] = `
 <DocumentFragment>
   <div
     class="css-dev-only-do-not-override-dkbvqv ant-empty ant-empty-normal"
@@ -417,7 +417,7 @@ exports[`MovieDetail component should match snapshot with empty movie 1`] = `
 </DocumentFragment>
 `;
 
-exports[`MovieDetail component should match snapshot with error 1`] = `
+exports[`MovieDetails component should match snapshot with error 1`] = `
 <DocumentFragment>
   <div
     class="container top-margin"
@@ -459,7 +459,7 @@ exports[`MovieDetail component should match snapshot with error 1`] = `
 </DocumentFragment>
 `;
 
-exports[`MovieDetail component should match snapshot with loading 1`] = `
+exports[`MovieDetails component should match snapshot with loading 1`] = `
 <DocumentFragment>
   <div
     class="container top-margin"
@@ -498,7 +498,7 @@ exports[`MovieDetail component should match snapshot with loading 1`] = `
 </DocumentFragment>
 `;
 
-exports[`MovieDetail component should match snapshot with open popover 1`] = `
+exports[`MovieDetails component should match snapshot with open popover 1`] = `
 <DocumentFragment>
   <div
     class="ant-row css-dev-only-do-not-override-dkbvqv"
@@ -865,7 +865,7 @@ exports[`MovieDetail component should match snapshot with open popover 1`] = `
 </DocumentFragment>
 `;
 
-exports[`MovieDetail component should match snapshot with other data 1`] = `
+exports[`MovieDetails component should match snapshot with other data 1`] = `
 <DocumentFragment>
   <div
     class="ant-row css-dev-only-do-not-override-dkbvqv"

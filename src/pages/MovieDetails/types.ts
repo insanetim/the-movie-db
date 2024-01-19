@@ -1,7 +1,7 @@
 import { ErrorMsg } from 'src/interfaces/global.interface'
 import { IMovieDetailExtended } from 'src/interfaces/movie.interface'
 
-export type MovieDetailHookReturn = {
+export type MovieDetailsHookReturn = {
   error: ErrorMsg
   handleFavoriteClick: () => void
   handleWatchlistClick: () => void
@@ -11,6 +11,6 @@ export type MovieDetailHookReturn = {
   setPopoverOpen: React.Dispatch<React.SetStateAction<boolean>>
 }
 
-export type MovieDetailRouteParams = {
+export type MovieDetailsRouteParams = {
   movieId: string
 }

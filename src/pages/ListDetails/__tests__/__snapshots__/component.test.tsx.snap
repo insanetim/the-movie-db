@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ListDetail component should match snapshot 1`] = `
+exports[`ListDetails component should match snapshot 1`] = `
 <DocumentFragment>
   <div
     class="container top-margin"
@@ -319,7 +319,7 @@ exports[`ListDetail component should match snapshot 1`] = `
 </DocumentFragment>
 `;
 
-exports[`ListDetail component should match snapshot with 1 page 1`] = `
+exports[`ListDetails component should match snapshot with 1 page 1`] = `
 <DocumentFragment>
   <div
     class="container top-margin"
@@ -458,7 +458,7 @@ exports[`ListDetail component should match snapshot with 1 page 1`] = `
 </DocumentFragment>
 `;
 
-exports[`ListDetail component should match snapshot with empty list 1`] = `
+exports[`ListDetails component should match snapshot with empty list 1`] = `
 <DocumentFragment>
   <div
     class="container top-margin"
@@ -563,7 +563,7 @@ exports[`ListDetail component should match snapshot with empty list 1`] = `
 </DocumentFragment>
 `;
 
-exports[`ListDetail component should match snapshot with error 1`] = `
+exports[`ListDetails component should match snapshot with error 1`] = `
 <DocumentFragment>
   <div
     class="container top-margin"
@@ -605,7 +605,7 @@ exports[`ListDetail component should match snapshot with error 1`] = `
 </DocumentFragment>
 `;
 
-exports[`ListDetail component should match snapshot with loading 1`] = `
+exports[`ListDetails component should match snapshot with loading 1`] = `
 <DocumentFragment>
   <div
     class="container top-margin"

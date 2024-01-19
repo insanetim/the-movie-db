@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`MovieDetail useContainer hook should match snapshot 1`] = `
+exports[`MovieDetails useContainer hook should match snapshot 1`] = `
 {
   "error": null,
   "handleFavoriteClick": [Function],
@@ -116,7 +116,7 @@ exports[`MovieDetail useContainer hook should match snapshot 1`] = `
 }
 `;
 
-exports[`MovieDetail useContainer hook should match snapshot without params 1`] = `
+exports[`MovieDetails useContainer hook should match snapshot without params 1`] = `
 {
   "error": null,
   "handleFavoriteClick": [Function],

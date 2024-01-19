@@ -10,7 +10,7 @@ import { showNotification } from 'src/store/app/actions'
 import {
   changeMovieInFavorite,
   changeMovieInWatchlist,
-  fetchMovieDetail,
+  fetchMovieDetails,
 } from '../actions'
 
 jest.mock<typeof import('@reduxjs/toolkit')>('@reduxjs/toolkit', () => ({
@@ -28,7 +28,7 @@ jest.mock('src/utils/helpers/getSessionId', () => {
   return jest.fn(() => sessionId)
 })
 
-describe('movie actions', () => {
+describe('movieDetails actions', () => {
   const addToFovorite = jest.spyOn(apiRoutes, 'addToFovorite')
   const addToWatchlist = jest.spyOn(apiRoutes, 'addToWatchlist')
   const getMovieAccountStates = jest.spyOn(apiRoutes, 'getMovieAccountStates')
@@ -45,7 +45,7 @@ describe('movie actions', () => {
   const inWatchlist = true
 
   describe('fetchMovie', () => {
-    const thunk = fetchMovieDetail(movieId)
+    const thunk = fetchMovieDetails(movieId)
 
     it('should handle success', async () => {
       getMovieDetails.mockResolvedValueOnce(mockMovieDetail)
@@ -63,8 +63,8 @@ describe('movie actions', () => {
       expect(getMovieAccountStates).toHaveBeenCalledWith({ movieId, sessionId })
       expect(getMovieCredits).toHaveBeenCalledWith({ movieId })
       expect(calls).toHaveLength(2)
-      expect(calls[0][0].type).toBe(fetchMovieDetail.pending.type)
-      expect(calls[1][0].type).toBe(fetchMovieDetail.fulfilled.type)
+      expect(calls[0][0].type).toBe(fetchMovieDetails.pending.type)
+      expect(calls[1][0].type).toBe(fetchMovieDetails.fulfilled.type)
       expect(result.payload).toEqual(mockMovieDetailExtended)
     })
 
@@ -75,8 +75,8 @@ describe('movie actions', () => {
       const { calls } = dispatch.mock
 
       expect(calls).toHaveLength(2)
-      expect(calls[0][0].type).toBe(fetchMovieDetail.pending.type)
-      expect(calls[1][0].type).toBe(fetchMovieDetail.rejected.type)
+      expect(calls[0][0].type).toBe(fetchMovieDetails.pending.type)
+      expect(calls[1][0].type).toBe(fetchMovieDetails.rejected.type)
       expect(result.payload).toBe(errorMessage)
     })
   })

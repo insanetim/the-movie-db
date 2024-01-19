@@ -21,11 +21,11 @@ import {
   ChangeMovieInWatchlistProps,
 } from './types'
 
-const fetchMovieDetail = createAsyncThunk<
+const fetchMovieDetails = createAsyncThunk<
   IMovieDetailExtended,
   IMovie['id'],
   { rejectValue: string; state: RootState }
->(types.fetchMovieDetail, async function (movieId, { rejectWithValue }) {
+>(types.fetchMovieDetails, async function (movieId, { rejectWithValue }) {
   const sessionId = getSessionId()
 
   try {
@@ -95,4 +95,4 @@ const changeMovieInWatchlist = createAsyncThunk<
   }
 )
 
-export { changeMovieInFavorite, changeMovieInWatchlist, fetchMovieDetail }
+export { changeMovieInFavorite, changeMovieInWatchlist, fetchMovieDetails }

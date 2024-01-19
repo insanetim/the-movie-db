@@ -6,10 +6,10 @@ import App, {
   Dashboard,
   DefaultLayout,
   Favorite,
-  ListDetail,
+  ListDetails,
   Lists,
   Login,
-  MovieDetail,
+  MovieDetails,
   NotFound,
   Watchlist,
 } from 'src/App'
@@ -20,10 +20,10 @@ import { ProtectedRoutesHookReturn } from 'src/components/ProtectedRoutes/types'
 import { HeaderHookReturn } from 'src/layouts/Default/Header/types'
 import { DashboardHookReturn } from 'src/pages/Dashboard/types'
 import { FavoriteHookReturn } from 'src/pages/Favorite/types'
-import { ListDetailHookReturn } from 'src/pages/ListDetail/types'
+import { ListDetailsHookReturn } from 'src/pages/ListDetails/types'
 import { ListsHookReturn } from 'src/pages/Lists/types'
 import { LoginHookReturn } from 'src/pages/Login/types'
-import { MovieDetailHookReturn } from 'src/pages/MovieDetail/types'
+import { MovieDetailsHookReturn } from 'src/pages/MovieDetails/types'
 import { WatchlistHookReturn } from 'src/pages/Watchlist/types'
 import renderWithWrapper from 'src/utils/testHelpers/renderWithWrapper'
 
@@ -108,7 +108,7 @@ const mockedFavoriteHook: FavoriteHookReturn = {
 }
 jest.mock('../pages/Favorite/hook', () => jest.fn(() => mockedFavoriteHook))
 
-const mockedListDetailHook: ListDetailHookReturn = {
+const mockedListDetailsHook: ListDetailsHookReturn = {
   error: null,
   handleListDelete: jest.fn(),
   handleMovieDelete: jest.fn(),
@@ -116,9 +116,11 @@ const mockedListDetailHook: ListDetailHookReturn = {
   list: mockListDetail,
   loading: false,
 }
-jest.mock('../pages/ListDetail/hook', () => jest.fn(() => mockedListDetailHook))
+jest.mock('../pages/ListDetails/hook', () =>
+  jest.fn(() => mockedListDetailsHook)
+)
 
-const mockedMovieDetailHook: MovieDetailHookReturn = {
+const mockedMovieDetailsHook: MovieDetailsHookReturn = {
   error: null,
   handleFavoriteClick: jest.fn(),
   handleWatchlistClick: jest.fn(),
@@ -127,8 +129,8 @@ const mockedMovieDetailHook: MovieDetailHookReturn = {
   popoverOpen: false,
   setPopoverOpen: jest.fn(),
 }
-jest.mock('../pages/MovieDetail/hook', () =>
-  jest.fn(() => mockedMovieDetailHook)
+jest.mock('../pages/MovieDetails/hook', () =>
+  jest.fn(() => mockedMovieDetailsHook)
 )
 
 describe('App component', () => {
@@ -178,14 +180,14 @@ describe('App component', () => {
     expect(await screen.findByText(/favorite/i)).toBeInTheDocument()
   })
 
-  it('should render ListDetail', async () => {
-    renderWithWrapper(<ListDetail />)
+  it('should render ListDetails', async () => {
+    renderWithWrapper(<ListDetails />)
 
     expect(await screen.findByText(/title/i)).toBeInTheDocument()
   })
 
-  it('should render MovieDetail', async () => {
-    renderWithWrapper(<MovieDetail />)
+  it('should render MovieDetails', async () => {
+    renderWithWrapper(<MovieDetails />)
 
     expect(
       await screen.findByText(/title/i, undefined, { timeout: 3000 })

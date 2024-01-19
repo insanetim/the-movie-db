@@ -15,7 +15,7 @@ import getSessionId from 'src/utils/helpers/getSessionId'
 import listMessage from 'src/utils/helpers/listMessage'
 
 import { RootState } from '../index'
-import { selectMovieById } from '../movie/selectors'
+import { movieDetailsSelector } from '../movieDetails/selectors'
 import * as types from './constants'
 import { AddToListProps, CreateListProps, RemoveFromListProps } from './types'
 
@@ -82,7 +82,7 @@ const addToList = createAsyncThunk<void, AddToListProps, { state: RootState }>(
   types.addToList,
   async function ({ listId, listName, movieId }, { dispatch, getState }) {
     const sessionId = getSessionId()
-    const movieTitle = selectMovieById(getState(), movieId)!.title
+    const movieTitle = movieDetailsSelector(getState(), movieId)!.title
 
     try {
       await addMovieToList({ listId, movieId, sessionId })

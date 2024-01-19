@@ -1,9 +1,15 @@
+import { mergeDeepRight } from 'ramda'
+
 import { fetchSearch, fetchTrending } from '../actions'
 import dashboardReducer from '../reducer'
 import { DashboardState } from '../types'
 
 describe('dashboardReducer', () => {
-  const state: DashboardState = { data: null }
+  const state: DashboardState = {
+    data: null,
+    error: null,
+    loading: true,
+  }
 
   it('should return initial state with empty action', () => {
     const result = dashboardReducer(undefined, { type: '' })
@@ -23,7 +29,24 @@ describe('dashboardReducer', () => {
       payload: 'test/data',
       type: fetchTrending.fulfilled.type,
     }
-    const newState = { data: action.payload }
+    const newState = mergeDeepRight(state, {
+      data: action.payload,
+      loading: false,
+    })
+    const result = dashboardReducer(state, action)
+
+    expect(result).toEqual(newState)
+  })
+
+  it('should handle "fetchTrending/rejected" action', () => {
+    const action = {
+      payload: 'test/error',
+      type: fetchTrending.rejected.type,
+    }
+    const newState = mergeDeepRight(state, {
+      error: action.payload,
+      loading: false,
+    })
     const result = dashboardReducer(state, action)
 
     expect(result).toEqual(newState)
@@ -41,7 +64,24 @@ describe('dashboardReducer', () => {
       payload: 'test/data',
       type: fetchSearch.fulfilled.type,
     }
-    const newState = { data: action.payload }
+    const newState = mergeDeepRight(state, {
+      data: action.payload,
+      loading: false,
+    })
+    const result = dashboardReducer(state, action)
+
+    expect(result).toEqual(newState)
+  })
+
+  it('should handle "fetchSearch/rejected" action', () => {
+    const action = {
+      payload: 'test/error',
+      type: fetchSearch.rejected.type,
+    }
+    const newState = mergeDeepRight(state, {
+      error: action.payload,
+      loading: false,
+    })
     const result = dashboardReducer(state, action)
 
     expect(result).toEqual(newState)

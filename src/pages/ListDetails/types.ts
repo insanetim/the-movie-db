@@ -2,7 +2,7 @@ import { ErrorMsg, HandlePagination } from 'src/interfaces/global.interface'
 import { IListDetails } from 'src/interfaces/list.interface'
 import { IMovie } from 'src/interfaces/movie.interface'
 
-export type ListDetailHookReturn = {
+export type ListDetailsHookReturn = {
   error: ErrorMsg
   handleListDelete: () => () => Promise<void>
   handleMovieDelete: (
@@ -14,6 +14,6 @@ export type ListDetailHookReturn = {
   loading: boolean
 }
 
-export type ListDetailRouteParams = {
+export type ListDetailsRouteParams = {
   listId: string
 }

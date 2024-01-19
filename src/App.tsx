@@ -10,8 +10,8 @@ export const Dashboard = lazy(() => import('src/pages/Dashboard'))
 export const Lists = lazy(() => import('src/pages/Lists'))
 export const Watchlist = lazy(() => import('src/pages/Watchlist'))
 export const Favorite = lazy(() => import('src/pages/Favorite'))
-export const ListDetail = lazy(() => import('src/pages/ListDetail'))
-export const MovieDetail = lazy(() => import('src/pages/MovieDetail'))
+export const ListDetails = lazy(() => import('src/pages/ListDetails'))
+export const MovieDetails = lazy(() => import('src/pages/MovieDetails'))
 export const NotFound = lazy(() => import('src/pages/NotFound'))
 
 const App: React.FC = () => (
@@ -31,7 +31,7 @@ const App: React.FC = () => (
             path='/lists'
           />
           <Route
-            element={<ListDetail />}
+            element={<ListDetails />}
             path='/list/:listId'
           />
           <Route
@@ -43,7 +43,7 @@ const App: React.FC = () => (
             path='/favorite'
           />
           <Route
-            element={<MovieDetail />}
+            element={<MovieDetails />}
             path='/movie/:movieId'
           />
           <Route

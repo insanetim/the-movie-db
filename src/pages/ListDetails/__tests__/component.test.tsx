@@ -4,9 +4,9 @@ import { mockMovie } from 'src/__mocks__/mockMovie'
 import renderWithWrapper from 'src/utils/testHelpers/renderWithWrapper'
 
 import ListDetails from '../component'
-import { ListDetailHookReturn } from '../types'
+import { ListDetailsHookReturn } from '../types'
 
-const mockedHook: ListDetailHookReturn = {
+const mockedHook: ListDetailsHookReturn = {
   error: null,
   handleListDelete: jest.fn(),
   handleMovieDelete: jest.fn(),
@@ -30,7 +30,7 @@ const mockedHook: ListDetailHookReturn = {
 }
 jest.mock('../hook', () => jest.fn(() => mockedHook))
 
-describe('ListDetail component', () => {
+describe('ListDetails component', () => {
   it('should match snapshot', () => {
     const { asFragment } = renderWithWrapper(<ListDetails />)
 

@@ -31,7 +31,7 @@ jest.mock('src/hooks/useUpdatePage')
 const updatePage = jest.fn()
 jest.mocked(useUpdatePage).mockReturnValue({ updatePage })
 
-describe('ListDetail useContainer hook', () => {
+describe('ListDetails useContainer hook', () => {
   const modalSpy = jest.spyOn(Modal, 'confirm')
 
   it('should match snapshot', () => {

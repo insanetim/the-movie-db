@@ -24,7 +24,7 @@ import metaTitle from 'src/utils/helpers/metaTitle'
 
 import useContainer from './hook'
 
-const Movie: React.FC = () => {
+const MovieDetails: React.FC = () => {
   const {
     error,
     handleFavoriteClick,
@@ -126,4 +126,4 @@ const Movie: React.FC = () => {
   )
 }
 
-export default Movie
+export default MovieDetails

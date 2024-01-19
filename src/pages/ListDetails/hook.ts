@@ -14,12 +14,12 @@ import {
 } from 'src/store/listDetails/selectors'
 import getParams from 'src/utils/helpers/getParams'
 
-import { ListDetailHookReturn, ListDetailRouteParams } from './types'
+import { ListDetailsHookReturn, ListDetailsRouteParams } from './types'
 
-const useContainer = (): ListDetailHookReturn => {
+const useContainer = (): ListDetailsHookReturn => {
   const { listId } = useParams<
-    keyof ListDetailRouteParams
-  >() as ListDetailRouteParams
+    keyof ListDetailsRouteParams
+  >() as ListDetailsRouteParams
   const navigate = useNavigate()
   const dispatch = useAppDispatch()
   const list = useSelector(listDetailsSelector)
