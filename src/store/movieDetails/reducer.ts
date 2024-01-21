@@ -17,9 +17,6 @@ export const movieDetailsInitialState =
     loading: true,
   })
 
-const movieDetailsGlobalizedSelectors =
-  movieDetailsAdapter.getSelectors<RootState>(state => state.movieDetails)
-
 const movieDetailsSlice = createSlice({
   extraReducers(builder) {
     builder
@@ -78,7 +75,7 @@ const movieDetailsSlice = createSlice({
 })
 
 export const { selectById: movieDetailsSelector } =
-  movieDetailsGlobalizedSelectors
+  movieDetailsAdapter.getSelectors<RootState>(state => state.movieDetails)
 
 export const { movieDetailsErrorSelector, movieDetailsLoadingSelector } =
   movieDetailsSlice.selectors
