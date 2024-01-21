@@ -34,7 +34,7 @@ const useContainer = (): MovieDetailsHookReturn => {
   const [popoverOpen, setPopoverOpen] = useState(false)
 
   const handleFavoriteClick = () => {
-    const inFavorite = !movie!.accountStates.favorite
+    const inFavorite = !movie!.account_states.favorite
 
     dispatch(changeMovieInFavorite({ inFavorite, movieId }))
     dispatch(
@@ -45,7 +45,7 @@ const useContainer = (): MovieDetailsHookReturn => {
   }
 
   const handleWatchlistClick = () => {
-    const inWatchlist = !movie?.accountStates.watchlist
+    const inWatchlist = !movie?.account_states.watchlist
 
     dispatch(changeMovieInWatchlist({ inWatchlist, movieId }))
     dispatch(

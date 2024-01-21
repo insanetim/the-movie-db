@@ -1,11 +1,11 @@
 import { IResponse } from 'src/interfaces/global.interface'
 import {
-  IBackdrop,
   ICast,
   ICrew,
   IMovie,
-  IMovieDetail,
-  IMovieDetailExtended,
+  IMovieDetails,
+  IMovieDetailsExtended,
+  IMovieImage,
 } from 'src/interfaces/movie.interface'
 
 const mockMovie: IMovie = {
@@ -25,7 +25,7 @@ const mockMovie: IMovie = {
   vote_count: 1234,
 }
 
-const mockMovieDetail: IMovieDetail = {
+const mockMovieDetails: IMovieDetails = {
   ...mockMovie,
   belongs_to_collection: null,
   budget: 1000000,
@@ -41,56 +41,6 @@ const mockMovieDetail: IMovieDetail = {
   spoken_languages: [{ iso_639_1: 'en', name: 'EN' }],
   status: 'test/status',
   tagline: null,
-}
-
-const mockMovieDetailExtended: IMovieDetailExtended = {
-  ...mockMovieDetail,
-  accountStates: { favorite: false, id: 1234, rated: false, watchlist: false },
-  credits: {
-    cast: [
-      {
-        adult: true,
-        cast_id: 1234,
-        character: 'test/character',
-        credit_id: '123',
-        gender: null,
-        id: 1234,
-        known_for_department: '',
-        name: 'test/name',
-        order: 1234,
-        original_name: 'test/name',
-        popularity: 1234,
-        profile_path: '/image',
-      },
-    ],
-    crew: [
-      {
-        adult: true,
-        credit_id: '123',
-        department: 'test/department',
-        gender: null,
-        id: 1234,
-        job: 'test/job',
-        known_for_department: '',
-        name: 'test/name',
-        original_name: 'test/name',
-        popularity: 1234,
-        profile_path: '/image',
-      },
-    ],
-    id: 1234,
-  },
-  images: [
-    {
-      aspect_ratio: 0.5625,
-      file_path: '/image',
-      height: 900,
-      iso_639_1: null,
-      vote_average: 1234,
-      vote_count: 1234,
-      width: 1600,
-    },
-  ],
 }
 
 const mockCast: ICast = {
@@ -122,7 +72,7 @@ const mockCrew: ICrew = {
   profile_path: '/image',
 }
 
-const mockImage: IBackdrop = {
+const mockImage: IMovieImage = {
   aspect_ratio: 0.5625,
   file_path: '/image',
   height: 900,
@@ -130,6 +80,20 @@ const mockImage: IBackdrop = {
   vote_average: 1234,
   vote_count: 1234,
   width: 1600,
+}
+
+const mockMovieDetailsExtended: IMovieDetailsExtended = {
+  ...mockMovieDetails,
+  account_states: { favorite: false, rated: false, watchlist: false },
+  credits: {
+    cast: [mockCast],
+    crew: [mockCrew],
+  },
+  images: {
+    backdrops: [mockImage],
+    logos: [mockImage],
+    posters: [mockImage],
+  },
 }
 
 const mockMoviesResponse: IResponse<IMovie> = {
@@ -144,7 +108,7 @@ export {
   mockCrew,
   mockImage,
   mockMovie,
-  mockMovieDetail,
-  mockMovieDetailExtended,
+  mockMovieDetails as mockMovieDetail,
+  mockMovieDetailsExtended as mockMovieDetailExtended,
   mockMoviesResponse,
 }

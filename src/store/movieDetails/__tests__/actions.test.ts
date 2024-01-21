@@ -1,7 +1,4 @@
-import {
-  mockMovieDetail,
-  mockMovieDetailExtended,
-} from 'src/__mocks__/mockMovie'
+import { mockMovieDetailExtended } from 'src/__mocks__/mockMovie'
 import { dispatch, getState } from 'src/__mocks__/react-redux'
 import { NOTIFICATION_TYPE } from 'src/constants/app'
 import * as apiRoutes from 'src/services/api/apiRoutes'
@@ -31,10 +28,7 @@ jest.mock('src/utils/helpers/getSessionId', () => {
 describe('movieDetails actions', () => {
   const addToFovorite = jest.spyOn(apiRoutes, 'addToFovorite')
   const addToWatchlist = jest.spyOn(apiRoutes, 'addToWatchlist')
-  const getMovieAccountStates = jest.spyOn(apiRoutes, 'getMovieAccountStates')
-  const getMovieCredits = jest.spyOn(apiRoutes, 'getMovieCredits')
   const getMovieDetails = jest.spyOn(apiRoutes, 'getMovieDetails')
-  const getMovieImages = jest.spyOn(apiRoutes, 'getMovieImages')
   const errorMessage = 'Something went wrong!'
   const errorNotification = showNotification({
     messageText: errorMessage,
@@ -48,20 +42,12 @@ describe('movieDetails actions', () => {
     const thunk = fetchMovieDetails(movieId)
 
     it('should handle success', async () => {
-      getMovieDetails.mockResolvedValueOnce(mockMovieDetail)
-      getMovieImages.mockResolvedValueOnce(mockMovieDetailExtended.images)
-      getMovieAccountStates.mockResolvedValueOnce(
-        mockMovieDetailExtended.accountStates
-      )
-      getMovieCredits.mockResolvedValueOnce(mockMovieDetailExtended.credits)
+      getMovieDetails.mockResolvedValueOnce(mockMovieDetailExtended)
 
       const result = await thunk(dispatch, getState, undefined)
       const { calls } = dispatch.mock
 
-      expect(getMovieDetails).toHaveBeenCalledWith({ movieId })
-      expect(getMovieImages).toHaveBeenCalledWith({ movieId })
-      expect(getMovieAccountStates).toHaveBeenCalledWith({ movieId, sessionId })
-      expect(getMovieCredits).toHaveBeenCalledWith({ movieId })
+      expect(getMovieDetails).toHaveBeenCalledWith({ movieId, sessionId })
       expect(calls).toHaveLength(2)
       expect(calls[0][0].type).toBe(fetchMovieDetails.pending.type)
       expect(calls[1][0].type).toBe(fetchMovieDetails.fulfilled.type)

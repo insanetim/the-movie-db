@@ -1,5 +1,5 @@
-import { IMovieDetail } from 'src/interfaces/movie.interface'
+import { IMovieDetails } from 'src/interfaces/movie.interface'
 
 export type GenresProps = {
-  genres: IMovieDetail['genres']
+  genres: IMovieDetails['genres']
 }

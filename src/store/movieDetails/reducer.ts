@@ -1,5 +1,5 @@
 import { createEntityAdapter, createSlice } from '@reduxjs/toolkit'
-import { IMovieDetailExtended } from 'src/interfaces/movie.interface'
+import { IMovieDetailsExtended } from 'src/interfaces/movie.interface'
 import { RootState } from 'src/store'
 
 import {
@@ -9,7 +9,7 @@ import {
 } from './actions'
 import { MovieDetailsState } from './types'
 
-const movieDetailsAdapter = createEntityAdapter<IMovieDetailExtended>()
+const movieDetailsAdapter = createEntityAdapter<IMovieDetailsExtended>()
 
 export const movieDetailsInitialState =
   movieDetailsAdapter.getInitialState<MovieDetailsState>({
@@ -33,14 +33,12 @@ const movieDetailsSlice = createSlice({
         state.error = action.payload as string
       })
       .addCase(changeMovieInFavorite.pending, (state, action) => {
-        const movie = movieDetailsAdapter
-          .getSelectors()
-          .selectById(state, action.meta.arg.movieId)
+        const movie = state.entities[action.meta.arg.movieId]
         if (movie) {
           movieDetailsAdapter.updateOne(state, {
             changes: {
-              accountStates: {
-                ...movie.accountStates,
+              account_states: {
+                ...movie.account_states,
                 favorite: action.meta.arg.inFavorite,
               },
             },
@@ -49,14 +47,12 @@ const movieDetailsSlice = createSlice({
         }
       })
       .addCase(changeMovieInWatchlist.pending, (state, action) => {
-        const movie = movieDetailsAdapter
-          .getSelectors()
-          .selectById(state, action.meta.arg.movieId)
+        const movie = state.entities[action.meta.arg.movieId]
         if (movie) {
           movieDetailsAdapter.updateOne(state, {
             changes: {
-              accountStates: {
-                ...movie.accountStates,
+              account_states: {
+                ...movie.account_states,
                 watchlist: action.meta.arg.inWatchlist,
               },
             },

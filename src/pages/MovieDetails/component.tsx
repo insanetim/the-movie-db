@@ -66,7 +66,7 @@ const MovieDetails: React.FC = () => {
       <Helmet title={metaTitle(title)} />
       {!isEmpty(movie.images) && (
         <ImageGallery
-          images={movie.images}
+          images={movie.images.backdrops.slice(0, 7)}
           title={movie.title}
         />
       )}
@@ -97,12 +97,12 @@ const MovieDetails: React.FC = () => {
           <AddToFavoriteButton
             data-testid='addToFavoriteBtn'
             handleClick={handleFavoriteClick}
-            inFavorite={movie.accountStates.favorite}
+            inFavorite={movie.account_states.favorite}
           />
           <AddToWatchlistButton
             data-testid='addToWatchlistBtn'
             handleClick={handleWatchlistClick}
-            inWatchlist={movie.accountStates.watchlist}
+            inWatchlist={movie.account_states.watchlist}
           />
         </PageTitle>
         <Row>

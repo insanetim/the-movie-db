@@ -60,11 +60,11 @@ describe('movieDetailsReducer', () => {
       type: changeMovieInFavorite.pending.type,
     }
     const state = {
-      entities: { '1234': { accountStates: { favorite: false }, id: '1234' } },
+      entities: { '1234': { account_states: { favorite: false }, id: '1234' } },
       ids: ['1234'],
     } as never
     const newState = assocPath(
-      ['entities', '1234', 'accountStates', 'favorite'],
+      ['entities', '1234', 'account_states', 'favorite'],
       true,
       state
     )
@@ -89,11 +89,13 @@ describe('movieDetailsReducer', () => {
       type: changeMovieInWatchlist.pending.type,
     }
     const state = {
-      entities: { '1234': { accountStates: { watchlist: false }, id: '1234' } },
+      entities: {
+        '1234': { account_states: { watchlist: false }, id: '1234' },
+      },
       ids: ['1234'],
     } as never
     const newState = assocPath(
-      ['entities', '1234', 'accountStates', 'watchlist'],
+      ['entities', '1234', 'account_states', 'watchlist'],
       true,
       state
     )

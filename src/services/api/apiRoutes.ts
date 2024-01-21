@@ -3,10 +3,7 @@ import { IAccount } from 'src/interfaces/account.interface'
 import { IList, IListDetails, IListsList } from 'src/interfaces/list.interface'
 import {
   IMovie,
-  IMovieAccountStates,
-  IMovieCredits,
-  IMovieDetail,
-  IMovieImages,
+  IMovieDetailsExtended,
   IMoviesList,
 } from 'src/interfaces/movie.interface'
 import httpClient from 'src/services/api/httpClient'
@@ -275,55 +272,20 @@ export const addToFovorite = async ({
   })
 }
 
-// Movie
+// MovieDetails
 export const getMovieDetails = async ({
-  movieId,
-}: {
-  movieId: IMovie['id']
-}) => {
-  const { data } = await httpClient.request<IMovieDetail>({
-    url: `/movie/${movieId}`,
-  })
-
-  return data
-}
-
-export const getMovieImages = async ({
-  movieId,
-}: {
-  movieId: IMovie['id']
-}) => {
-  const {
-    data: { backdrops },
-  } = await httpClient.request<IMovieImages>({
-    url: `/movie/${movieId}/images`,
-  })
-
-  return backdrops.slice(0, 7)
-}
-
-export const getMovieAccountStates = async ({
   movieId,
   sessionId,
 }: {
   movieId: IMovie['id']
   sessionId: string
 }) => {
-  const { data } = await httpClient.request<IMovieAccountStates>({
-    params: { session_id: sessionId },
-    url: `/movie/${movieId}/account_states`,
-  })
-
-  return data
-}
-
-export const getMovieCredits = async ({
-  movieId,
-}: {
-  movieId: IMovie['id']
-}) => {
-  const { data } = await httpClient.request<IMovieCredits>({
-    url: `/movie/${movieId}/credits`,
+  const { data } = await httpClient.request<IMovieDetailsExtended>({
+    params: {
+      append_to_response: 'images,account_states,credits',
+      session_id: sessionId,
+    },
+    url: `/movie/${movieId}`,
   })
 
   return data

@@ -1,8 +1,6 @@
 import mockAccount from 'src/__mocks__/mockAccount'
 import { mockListDetail, mockListsResponse } from 'src/__mocks__/mockList'
 import {
-  mockImage,
-  mockMovieDetail,
   mockMovieDetailExtended,
   mockMoviesResponse,
 } from 'src/__mocks__/mockMovie'
@@ -21,7 +19,6 @@ describe('apiRoutes', () => {
   const listId = 1234
   const listData = { description: 'test/description', name: 'test/name' }
   const movieId = 1234
-  const movieImages = { backdrops: [mockImage], id: 1234, posters: [mockImage] }
 
   it('should handle "createRequestToken" request', async () => {
     const request = { url: '/authentication/token/new' }
@@ -283,49 +280,19 @@ describe('apiRoutes', () => {
   })
 
   it('should handle "getMovieDetails" request', async () => {
-    const request = { url: `/movie/${movieId}` }
-    const response = { data: mockMovieDetail }
-    requestSpy.mockResolvedValueOnce(response)
-
-    const result = await apiRoutes.getMovieDetails({ movieId })
-
-    expect(requestSpy).toHaveBeenCalledWith(request)
-    expect(result).toEqual(mockMovieDetail)
-  })
-
-  it('should handle "getMovieImages" request', async () => {
-    const request = { url: `/movie/${movieId}/images` }
-    const response = { data: movieImages }
-    requestSpy.mockResolvedValueOnce(response)
-
-    const result = await apiRoutes.getMovieImages({ movieId })
-
-    expect(requestSpy).toHaveBeenCalledWith(request)
-    expect(result).toEqual([mockImage])
-  })
-
-  it('should handle "getMovieAccountStates" request', async () => {
     const request = {
-      params: { session_id: sessionId },
-      url: `/movie/${movieId}/account_states`,
+      params: {
+        append_to_response: 'images,account_states,credits',
+        session_id: sessionId,
+      },
+      url: `/movie/${movieId}`,
     }
-    const response = { data: mockMovieDetailExtended.accountStates }
+    const response = { data: mockMovieDetailExtended }
     requestSpy.mockResolvedValueOnce(response)
 
-    const result = await apiRoutes.getMovieAccountStates({ movieId, sessionId })
+    const result = await apiRoutes.getMovieDetails({ movieId, sessionId })
 
     expect(requestSpy).toHaveBeenCalledWith(request)
-    expect(result).toEqual(mockMovieDetailExtended.accountStates)
-  })
-
-  it('should handle "getMovieCredits" request', async () => {
-    const request = { url: `/movie/${movieId}/credits` }
-    const response = { data: mockMovieDetailExtended.credits }
-    requestSpy.mockResolvedValueOnce(response)
-
-    const result = await apiRoutes.getMovieCredits({ movieId })
-
-    expect(requestSpy).toHaveBeenCalledWith(request)
-    expect(result).toEqual(mockMovieDetailExtended.credits)
+    expect(result).toEqual(mockMovieDetailExtended)
   })
 })

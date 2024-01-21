@@ -39,7 +39,7 @@ interface ISpokenLanguage {
   name: string
 }
 
-export interface IMovieDetail extends IMovie {
+export interface IMovieDetails extends IMovie {
   belongs_to_collection: null
   budget: number
   genres: IGenre[]
@@ -54,7 +54,7 @@ export interface IMovieDetail extends IMovie {
   tagline: null | string
 }
 
-export interface IBackdrop {
+export interface IMovieImage {
   aspect_ratio: number
   file_path: string
   height: number
@@ -64,17 +64,14 @@ export interface IBackdrop {
   width: number
 }
 
-interface IPoster extends IBackdrop {}
-
 export interface IMovieImages {
-  backdrops: IBackdrop[]
-  id: number
-  posters: IPoster[]
+  backdrops: IMovieImage[]
+  logos: IMovieImage[]
+  posters: IMovieImage[]
 }
 
 export interface IMovieAccountStates {
   favorite: boolean
-  id: number
   rated: boolean
   watchlist: boolean
 }
@@ -111,13 +108,12 @@ export interface ICrew {
 export interface IMovieCredits {
   cast: ICast[]
   crew: ICrew[]
-  id: number
 }
 
-export interface IMovieDetailExtended extends IMovieDetail {
-  accountStates: IMovieAccountStates
+export interface IMovieDetailsExtended extends IMovieDetails {
+  account_states: IMovieAccountStates
   credits: IMovieCredits
-  images: IBackdrop[]
+  images: IMovieImages
 }
 
 export type IMoviesList = IResponse<IMovie>

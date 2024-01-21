@@ -1,5 +1,5 @@
-import { IMovieDetail } from 'src/interfaces/movie.interface'
+import { IMovieDetails } from 'src/interfaces/movie.interface'
 
 export type RuntimeProps = {
-  runtime: IMovieDetail['runtime']
+  runtime: IMovieDetails['runtime']
 }

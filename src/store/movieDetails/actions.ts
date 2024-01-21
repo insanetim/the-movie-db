@@ -1,13 +1,10 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
 import { NOTIFICATION_TYPE } from 'src/constants/app'
-import { IMovie, IMovieDetailExtended } from 'src/interfaces/movie.interface'
+import { IMovie, IMovieDetailsExtended } from 'src/interfaces/movie.interface'
 import {
   addToFovorite,
   addToWatchlist,
-  getMovieAccountStates,
-  getMovieCredits,
   getMovieDetails,
-  getMovieImages,
 } from 'src/services/api/apiRoutes'
 import { accountSelector } from 'src/store/auth/selectors'
 import errorMessage from 'src/utils/helpers/errorMessage'
@@ -22,28 +19,16 @@ import {
 } from './types'
 
 const fetchMovieDetails = createAsyncThunk<
-  IMovieDetailExtended,
+  IMovieDetailsExtended,
   IMovie['id'],
   { rejectValue: string; state: RootState }
 >(types.fetchMovieDetails, async function (movieId, { rejectWithValue }) {
   const sessionId = getSessionId()
 
   try {
-    const [movieDetail, images, accountStates, credits] = await Promise.all([
-      getMovieDetails({ movieId }),
-      getMovieImages({ movieId }),
-      getMovieAccountStates({ movieId, sessionId }),
-      getMovieCredits({ movieId }),
-    ])
+    const movieDetails = await getMovieDetails({ movieId, sessionId })
 
-    const movieDetailExtended: IMovieDetailExtended = {
-      ...movieDetail,
-      accountStates,
-      credits,
-      images,
-    }
-
-    return movieDetailExtended
+    return movieDetails
   } catch (error) {
     return rejectWithValue(errorMessage(error))
   }
