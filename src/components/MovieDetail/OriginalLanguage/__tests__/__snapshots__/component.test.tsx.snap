@@ -3,10 +3,10 @@
 exports[`OriginalLanguage component should match snapshot 1`] = `
 <DocumentFragment>
   <div
-    class="ant-col ant-col-24 css-dev-only-do-not-override-dkbvqv"
+    class="ant-col ant-col-24 css-dev-only-do-not-override-1qhpsh8"
   >
     <div
-      class="ant-typography css-dev-only-do-not-override-dkbvqv"
+      class="ant-typography css-dev-only-do-not-override-1qhpsh8"
     >
       <b>
         Original Language: 

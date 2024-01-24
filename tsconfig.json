@@ -1,26 +1,39 @@
 {
   "compilerOptions": {
-    "lib": ["DOM", "DOM.Iterable", "ESNext"],
+    /* Language and Environment */
+    "target": "ES2020",
+    "lib": ["DOM", "DOM.Iterable", "ES2020"],
+    "jsx": "react-jsx",
+    "useDefineForClassFields": true,
+
+    /* Modules */
     "module": "ESNext",
     "moduleResolution": "Bundler",
-    "target": "ES2015",
+    "baseUrl": "./",
+    "paths": {
+      "*": ["*"]
+    },
+    "resolveJsonModule": true,
 
-    "strict": true,
-    "allowJs": true,
+    /* Emit */
+    "sourceMap": true,
+    "outDir": "dist",
+    "removeComments": true,
+
+    /* Interop Constraints */
+    "isolatedModules": true,
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
-    "isolatedModules": true,
-    "jsx": "react-jsx",
+
+    /* Type Checking */
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
-    "resolveJsonModule": true,
-    "skipLibCheck": true,
-    "sourceMap": true,
-    "outDir": "dist",
-    "baseUrl": ".",
-    "paths": {
-      "*": ["*"]
-    }
+
+    /* Completeness */
+    "skipLibCheck": true
   },
   "include": ["src"],
   "exclude": ["node_modules", "**.config.js"]
