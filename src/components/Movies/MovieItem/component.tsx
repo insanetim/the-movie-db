@@ -13,7 +13,7 @@ const MovieItem: React.FC<MovieItemProps> = ({
   posterPath,
   title,
 }) => {
-  const { handleClick } = useContainer({ id })
+  const { handleClick } = useContainer({ id, title })
 
   let cover = (
     <div className='ant-card-cover--no-image'>

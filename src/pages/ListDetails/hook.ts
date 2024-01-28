@@ -12,12 +12,13 @@ import {
   listDetailsLoadingSelector,
   listDetailsSelector,
 } from 'src/store/listDetails/selectors'
+import getIdFromSlug from 'src/utils/helpers/getIdFromSlug'
 import getParams from 'src/utils/helpers/getParams'
 
 import { ListDetailsHookReturn, ListDetailsRouteParams } from './types'
 
 const useContainer = (): ListDetailsHookReturn => {
-  const { listId } = useParams<
+  const { listSlug } = useParams<
     keyof ListDetailsRouteParams
   >() as ListDetailsRouteParams
   const navigate = useNavigate()
@@ -27,6 +28,7 @@ const useContainer = (): ListDetailsHookReturn => {
   const error = useSelector(listDetailsErrorSelector)
   const [searchParams, setSearchParams] = useSearchParams()
   const page = searchParams.get('page') ?? '1'
+  const listId = getIdFromSlug(listSlug)
   const { updatePage } = useUpdatePage({
     action: fetchListDetails({ listId, page }),
     items: list?.items,

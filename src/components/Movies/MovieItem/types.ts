@@ -13,6 +13,7 @@ export type MovieItemProps = {
 
 export type MovieItemHookProps = {
   id: IMovie['id']
+  title: IMovie['title']
 }
 
 export type MovieItemHookReturn = {

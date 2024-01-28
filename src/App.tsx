@@ -32,7 +32,7 @@ const App: React.FC = () => (
           />
           <Route
             element={<ListDetails />}
-            path='/list/:listId'
+            path='/list/:listSlug'
           />
           <Route
             element={<Watchlist />}
@@ -44,7 +44,7 @@ const App: React.FC = () => (
           />
           <Route
             element={<MovieDetails />}
-            path='/movie/:movieId'
+            path='/movie/:movieSlug'
           />
           <Route
             element={<NotFound />}

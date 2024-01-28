@@ -17,15 +17,17 @@ import {
   movieDetailsSelector,
 } from 'src/store/movieDetails/selectors'
 import favoriteMessage from 'src/utils/helpers/favoriteMessage'
+import getIdFromSlug from 'src/utils/helpers/getIdFromSlug'
 import watchlistMessage from 'src/utils/helpers/watchlistMessage'
 
 import { MovieDetailsHookReturn, MovieDetailsRouteParams } from './types'
 
 const useContainer = (): MovieDetailsHookReturn => {
-  const { movieId } = useParams<
+  const { movieSlug } = useParams<
     keyof MovieDetailsRouteParams
   >() as MovieDetailsRouteParams
   const dispatch = useAppDispatch()
+  const movieId = getIdFromSlug(movieSlug)
   const movie = useSelector((state: RootState) =>
     movieDetailsSelector(state, movieId)
   )

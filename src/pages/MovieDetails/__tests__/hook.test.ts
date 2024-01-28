@@ -11,7 +11,7 @@ import useContainer from '../hook'
 
 jest.mock('react-router-dom', () => ({
   ...jest.requireActual('react-router-dom'),
-  useParams: jest.fn(() => ({ movieId: 1234 })),
+  useParams: jest.fn(() => ({ movieSlug: '1234-the-movie' })),
 }))
 
 jest.mock<typeof import('@reduxjs/toolkit')>('@reduxjs/toolkit', () => ({

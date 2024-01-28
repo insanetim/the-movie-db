@@ -18,7 +18,7 @@ jest.mock('src/store/listDetails/selectors', () => ({
 jest.mock('react-router-dom', () => ({
   ...jest.requireActual('react-router-dom'),
   useNavigate: jest.fn(),
-  useParams: jest.fn(() => ({ listId: 1234 })),
+  useParams: jest.fn(() => ({ listSlug: '1234-the-list' })),
   useSearchParams: jest.fn(),
 }))
 const navigate = jest.fn()

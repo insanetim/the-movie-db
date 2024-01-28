@@ -15,5 +15,5 @@ export type ListDetailsHookReturn = {
 }
 
 export type ListDetailsRouteParams = {
-  listId: string
+  listSlug: string
 }

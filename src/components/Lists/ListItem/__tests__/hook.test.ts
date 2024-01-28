@@ -7,6 +7,7 @@ import useUpdatePage from 'src/hooks/useUpdatePage'
 import * as createdListsActions from 'src/store/createdLists/actions'
 
 import useContainer from '../hook'
+import { ListItemHookProps } from '../types'
 
 jest.mock('src/store/createdLists/selectors', () => ({
   createdListsSelector: () => null,
@@ -28,7 +29,7 @@ const updatePage = jest.fn()
 jest.mocked(useUpdatePage).mockReturnValue({ updatePage })
 
 describe('ListItem useContainer hook', () => {
-  const props = { id: 1234 }
+  const props: ListItemHookProps = { id: 1234, name: 'list' }
 
   it('should match snapshot', () => {
     const { result } = renderHook(() => useContainer(props))
@@ -43,7 +44,7 @@ describe('ListItem useContainer hook', () => {
       result.current.handleClick()
     })
 
-    expect(navigate).toHaveBeenCalledWith('/list/1234')
+    expect(navigate).toHaveBeenCalledWith('/list/1234-list')
   })
 
   it('should check "handleListDelete" method', async () => {

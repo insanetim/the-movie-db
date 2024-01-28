@@ -5,7 +5,7 @@ import useContainer from './hook'
 import { ListItemProps } from './types'
 
 const ListItem: React.FC<ListItemProps> = ({ description, id, name }) => {
-  const { handleClick, handleListDelete } = useContainer({ id })
+  const { handleClick, handleListDelete } = useContainer({ id, name })
 
   return (
     <Card

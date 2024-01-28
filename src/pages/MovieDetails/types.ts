@@ -12,5 +12,5 @@ export type MovieDetailsHookReturn = {
 }
 
 export type MovieDetailsRouteParams = {
-  movieId: string
+  movieSlug: string
 }

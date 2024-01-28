@@ -6,10 +6,11 @@ import { useAppDispatch } from 'src/hooks/useRedux'
 import useUpdatePage from 'src/hooks/useUpdatePage'
 import { deleteList, fetchLists } from 'src/store/createdLists/actions'
 import { createdListsSelector } from 'src/store/createdLists/selectors'
+import getSlug from 'src/utils/helpers/getSlug'
 
 import { ListItemHookProps, ListItemHookReturn } from './types'
 
-const useContainer = ({ id }: ListItemHookProps): ListItemHookReturn => {
+const useContainer = ({ id, name }: ListItemHookProps): ListItemHookReturn => {
   const navigate = useNavigate()
   const dispatch = useAppDispatch()
   const lists = useSelector(createdListsSelector)
@@ -23,7 +24,7 @@ const useContainer = ({ id }: ListItemHookProps): ListItemHookReturn => {
   })
 
   const handleClick = () => {
-    navigate(`/list/${id}`)
+    navigate(`/list/${getSlug(id, name)}`)
   }
 
   const handleListDelete = (event: MouseEvent<HTMLSpanElement>) => {

@@ -9,6 +9,7 @@ export type ListItemProps = {
 
 export type ListItemHookProps = {
   id: IList['id']
+  name: IList['name']
 }
 
 export type ListItemHookReturn = {
