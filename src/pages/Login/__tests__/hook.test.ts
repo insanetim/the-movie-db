@@ -1,4 +1,3 @@
-import { unwrapResult } from '@reduxjs/toolkit'
 import { act, renderHook } from '@testing-library/react'
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
@@ -15,11 +14,6 @@ jest.mock('react-router-dom', () => ({
 const navigate = jest.fn()
 jest.mocked(useNavigate).mockReturnValue(navigate)
 
-jest.mock('@reduxjs/toolkit', () => ({
-  ...jest.requireActual('@reduxjs/toolkit'),
-  unwrapResult: jest.fn(),
-}))
-
 describe('Login useContainer hook', () => {
   const setState = jest.fn()
   const useStateMock = (initState: unknown) => [initState, setState]
@@ -33,7 +27,9 @@ describe('Login useContainer hook', () => {
   })
 
   it('should check "handleLogIn" method with success', async () => {
-    jest.mocked(unwrapResult).mockReturnValueOnce('test/session_id')
+    jest
+      .mocked(dispatch)
+      .mockReturnValueOnce({ unwrap: () => 'test/session_id' })
     const userData = { password: 'password', username: 'user' }
     const { result } = renderHook(useContainer)
 
@@ -50,7 +46,7 @@ describe('Login useContainer hook', () => {
   })
 
   it('should check "handleLogIn" method with failure', async () => {
-    jest.mocked(unwrapResult).mockReturnValueOnce(undefined)
+    jest.mocked(dispatch).mockReturnValueOnce({ unwrap: () => undefined })
     const userData = { password: 'password', username: 'user' }
     const { result } = renderHook(useContainer)
 

@@ -1,4 +1,3 @@
-import { unwrapResult } from '@reduxjs/toolkit'
 import { useState } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { useAppDispatch } from 'src/hooks/useRedux'
@@ -16,7 +15,7 @@ const useContainer = (): LoginHookReturn => {
   const handleLogIn = async (userData: UserData) => {
     setIsSubmitting(true)
     const to = location.state?.from?.pathname || '/'
-    const sessionId = unwrapResult(await dispatch(logIn(userData)))
+    const sessionId = await dispatch(logIn(userData)).unwrap()
     setIsSubmitting(false)
 
     if (sessionId) {
