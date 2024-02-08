@@ -15,7 +15,7 @@ const useContainer = (): HeaderHookReturn => {
   const navigate = useNavigate()
 
   const handleLogOut = async () => {
-    await dispatch(logOut())
+    dispatch(logOut())
     navigate('/login', {
       replace: true,
       state: { from: location },

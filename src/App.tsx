@@ -4,8 +4,8 @@ import ModalRoot from 'src/components/ModalRoot/component'
 import NotificationsRoot from 'src/components/NotificationsRoot'
 import ProtectedRoutes from 'src/components/ProtectedRoutes'
 
-export const DefaultLayout = lazy(() => import('src/layouts/Default'))
 export const Login = lazy(() => import('src/pages/Login'))
+export const DefaultLayout = lazy(() => import('src/layouts/Default'))
 export const Dashboard = lazy(() => import('src/pages/Dashboard'))
 export const Lists = lazy(() => import('src/pages/Lists'))
 export const Watchlist = lazy(() => import('src/pages/Watchlist'))
@@ -17,6 +17,10 @@ export const NotFound = lazy(() => import('src/pages/NotFound'))
 const App: React.FC = () => (
   <Suspense fallback={null}>
     <Routes>
+      <Route
+        element={<Login />}
+        path='/login'
+      />
       <Route element={<ProtectedRoutes />}>
         <Route
           element={<DefaultLayout />}
@@ -28,23 +32,23 @@ const App: React.FC = () => (
           />
           <Route
             element={<Lists />}
-            path='/lists'
+            path='lists'
           />
           <Route
             element={<ListDetails />}
-            path='/list/:listSlug'
+            path='list/:listSlug'
           />
           <Route
             element={<Watchlist />}
-            path='/watchlist'
+            path='watchlist'
           />
           <Route
             element={<Favorite />}
-            path='/favorite'
+            path='favorite'
           />
           <Route
             element={<MovieDetails />}
-            path='/movie/:movieSlug'
+            path='movie/:movieSlug'
           />
           <Route
             element={<NotFound />}
@@ -52,10 +56,6 @@ const App: React.FC = () => (
           />
         </Route>
       </Route>
-      <Route
-        element={<Login />}
-        path='/login'
-      />
     </Routes>
     <ModalRoot />
     <NotificationsRoot />

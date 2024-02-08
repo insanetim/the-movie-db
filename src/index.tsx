@@ -1,6 +1,6 @@
 import { createRoot } from 'react-dom/client'
 import { Provider } from 'react-redux'
-import { BrowserRouter as Router } from 'react-router-dom'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import { PersistGate } from 'redux-persist/integration/react'
 import App from 'src/App'
 import { persistor, store } from 'src/store'
@@ -16,9 +16,14 @@ root.render(
       loading={null}
       persistor={persistor}
     >
-      <Router>
-        <App />
-      </Router>
+      <BrowserRouter>
+        <Routes>
+          <Route
+            element={<App />}
+            path='/*'
+          />
+        </Routes>
+      </BrowserRouter>
     </PersistGate>
   </Provider>
 )

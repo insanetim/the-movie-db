@@ -3,14 +3,14 @@
 exports[`Footer component should match snapshot 1`] = `
 <DocumentFragment>
   <footer
-    class="ant-layout-footer css-dev-only-do-not-override-1b0bdye"
+    class="ant-layout-footer css-dev-only-do-not-override-1rqnfsa"
   >
     <span
       style="opacity: 0.8;"
     >
       Made with ❤ by 
       <a
-        class="ant-typography css-dev-only-do-not-override-1b0bdye"
+        class="ant-typography css-dev-only-do-not-override-1rqnfsa"
         href="https://github.com/insanetim/frontend-internship"
         rel="noreferrer"
         target="_blank"
