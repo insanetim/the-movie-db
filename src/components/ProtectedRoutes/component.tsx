@@ -5,19 +5,17 @@ import useContainer from './hook'
 const ProtectedRoutes: React.FC = () => {
   const { isAuthenticated, location } = useContainer()
 
-  return (
-    <>
-      {isAuthenticated ? (
-        <Outlet />
-      ) : (
-        <Navigate
-          replace
-          state={{ from: location }}
-          to='/login'
-        />
-      )}
-    </>
+  const content = isAuthenticated ? (
+    <Outlet />
+  ) : (
+    <Navigate
+      replace
+      state={{ from: location }}
+      to='/login'
+    />
   )
+
+  return content
 }
 
 export default ProtectedRoutes

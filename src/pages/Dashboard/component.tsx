@@ -10,15 +10,14 @@ import useContainer from './hook'
 const Dashboard: React.FC = () => {
   const { query } = useContainer()
 
+  const content = isEmpty(query) ? <Trending /> : <SearchResult query={query} />
+
   return (
     <>
       <Helmet title={APP_NAME} />
       <div className='container'>
         <SearchInput query={query} />
-        <div className='top-margin'>
-          {isEmpty(query) && <Trending />}
-          {query && <SearchResult query={query} />}
-        </div>
+        <div className='top-margin'>{content}</div>
       </div>
     </>
   )
