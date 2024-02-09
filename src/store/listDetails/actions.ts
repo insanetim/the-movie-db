@@ -1,6 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
+import { getListDetails } from 'src/api/apiRoutes'
 import { IListDetails } from 'src/interfaces/list.interface'
-import { getListDetails } from 'src/services/api/apiRoutes'
 import errorMessage from 'src/utils/helpers/errorMessage'
 
 import * as types from './constants'

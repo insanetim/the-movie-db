@@ -1,11 +1,11 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
-import { NOTIFICATION_TYPE } from 'src/constants/app'
-import { IMovie, IMovieDetailsExtended } from 'src/interfaces/movie.interface'
 import {
   addToFovorite,
   addToWatchlist,
   getMovieDetails,
-} from 'src/services/api/apiRoutes'
+} from 'src/api/apiRoutes'
+import { NOTIFICATION_TYPE } from 'src/constants/app'
+import { IMovie, IMovieDetailsExtended } from 'src/interfaces/movie.interface'
 import { accountSelector } from 'src/store/auth/selectors'
 import errorMessage from 'src/utils/helpers/errorMessage'
 import getSessionId from 'src/utils/helpers/getSessionId'

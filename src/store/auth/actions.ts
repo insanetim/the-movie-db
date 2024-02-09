@@ -1,14 +1,14 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
 import Cookies from 'js-cookie'
-import { NOTIFICATION_TYPE } from 'src/constants/app'
-import { IAccount } from 'src/interfaces/account.interface'
 import {
   createRequestToken,
   createSession,
   deleteSession,
   getAccountDetails,
   validateWithLogin,
-} from 'src/services/api/apiRoutes'
+} from 'src/api/apiRoutes'
+import { NOTIFICATION_TYPE } from 'src/constants/app'
+import { IAccount } from 'src/interfaces/account.interface'
 import { showNotification } from 'src/store/app/actions'
 import errorMessage from 'src/utils/helpers/errorMessage'
 import getSessionId from 'src/utils/helpers/getSessionId'

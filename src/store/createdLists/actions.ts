@@ -1,13 +1,13 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
-import { NOTIFICATION_TYPE } from 'src/constants/app'
-import { IList, IListsList } from 'src/interfaces/list.interface'
 import {
   addMovieToList,
   createNewList,
   deleteMyList,
   getCreatedLists,
   removeMovieFromList,
-} from 'src/services/api/apiRoutes'
+} from 'src/api/apiRoutes'
+import { NOTIFICATION_TYPE } from 'src/constants/app'
+import { IList, IListsList } from 'src/interfaces/list.interface'
 import { showNotification } from 'src/store/app/actions'
 import { accountSelector } from 'src/store/auth/selectors'
 import errorMessage from 'src/utils/helpers/errorMessage'

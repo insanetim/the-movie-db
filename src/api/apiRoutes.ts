@@ -1,3 +1,4 @@
+import httpClient from 'src/api/httpClient'
 import { ListData } from 'src/components/ModalRoot/Modals/ModalCreateList/types'
 import { IAccount } from 'src/interfaces/account.interface'
 import { IList, IListDetails, IListsList } from 'src/interfaces/list.interface'
@@ -6,7 +7,6 @@ import {
   IMovieDetailsExtended,
   IMoviesList,
 } from 'src/interfaces/movie.interface'
-import httpClient from 'src/services/api/httpClient'
 import { RequestToken, Session, UserData } from 'src/store/auth/types'
 import { CreateListResponse } from 'src/store/createdLists/types'
 
