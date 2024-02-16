@@ -1,3 +1,4 @@
+import { disableReactDevTools } from '@fvilers/disable-react-devtools'
 import { createRoot } from 'react-dom/client'
 import { Provider } from 'react-redux'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
@@ -6,6 +7,10 @@ import App from 'src/App'
 import { persistor, store } from 'src/store'
 
 import './assets/styles/styles.scss'
+
+if (process.env.NODE_ENV === 'production') {
+  disableReactDevTools()
+}
 
 const rootElement = document.getElementById('root')
 const root = createRoot(rootElement as HTMLElement)
