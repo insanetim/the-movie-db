@@ -3,10 +3,15 @@ import { Col, Row, Typography } from 'antd'
 import CreditsItem from '../CreditsItem'
 import { CastListProps } from './type'
 
-const CastList: React.FC<CastListProps> = ({ cast }) => (
+const CastList: React.FC<CastListProps> = ({ cast, showTotal }) => (
   <>
     <Col span={24}>
-      <Typography.Title level={3}>Cast</Typography.Title>
+      <Typography.Title level={3}>
+        Cast
+        {showTotal && (
+          <span className='total-count'>{` (${cast.length})`}</span>
+        )}
+      </Typography.Title>
     </Col>
     <Col span={24}>
       <Row gutter={[24, 16]}>

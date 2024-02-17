@@ -12,6 +12,7 @@ export const Watchlist = lazy(() => import('src/pages/Watchlist'))
 export const Favorite = lazy(() => import('src/pages/Favorite'))
 export const ListDetails = lazy(() => import('src/pages/ListDetails'))
 export const MovieDetails = lazy(() => import('src/pages/MovieDetails'))
+export const Cast = lazy(() => import('src/pages/Cast'))
 export const NotFound = lazy(() => import('src/pages/NotFound'))
 
 const App: React.FC = () => (
@@ -21,6 +22,7 @@ const App: React.FC = () => (
         element={<Login />}
         path='/login'
       />
+
       <Route element={<ProtectedRoutes />}>
         <Route
           element={<DefaultLayout />}
@@ -46,10 +48,16 @@ const App: React.FC = () => (
             element={<Favorite />}
             path='favorite'
           />
-          <Route
-            element={<MovieDetails />}
-            path='movie/:movieSlug'
-          />
+          <Route path='movie/:movieSlug'>
+            <Route
+              element={<MovieDetails />}
+              index
+            />
+            <Route
+              element={<Cast />}
+              path='cast'
+            />
+          </Route>
           <Route
             element={<NotFound />}
             path='*'

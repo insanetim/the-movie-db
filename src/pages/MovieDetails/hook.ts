@@ -1,7 +1,7 @@
 import { isNil } from 'ramda'
 import { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import { useAppDispatch } from 'src/hooks/useRedux'
 import { RootState } from 'src/store'
 import { showNotification } from 'src/store/app/actions'
@@ -26,6 +26,7 @@ const useContainer = (): MovieDetailsHookReturn => {
   const { movieSlug } = useParams<
     keyof MovieDetailsRouteParams
   >() as MovieDetailsRouteParams
+  const navigate = useNavigate()
   const dispatch = useAppDispatch()
   const movieId = getIdFromSlug(movieSlug)
   const movie = useSelector((state: RootState) =>
@@ -57,6 +58,10 @@ const useContainer = (): MovieDetailsHookReturn => {
     )
   }
 
+  const handleGoToCast = () => {
+    navigate('cast')
+  }
+
   useEffect(() => {
     if (isNil(movie)) {
       dispatch(fetchMovieDetails(movieId))
@@ -67,6 +72,7 @@ const useContainer = (): MovieDetailsHookReturn => {
   return {
     error,
     handleFavoriteClick,
+    handleGoToCast,
     handleWatchlistClick,
     loading,
     movie,

@@ -76,6 +76,10 @@ body {
   margin-top: 24px;
 }
 
+.bottom-margin {
+  margin-bottom: 24px;
+}
+
 .pagination {
   margin-top: 16px;
   margin-bottom: 16px;
@@ -160,4 +164,14 @@ body {
 .logo {
   font-size: 1.2rem;
   font-weight: 600;
+}
+
+.total-count {
+  opacity: 0.55;
+
+  font-weight: 400;
+}
+
+.crew-group + .crew-group {
+  margin-top: 12px;
 }

@@ -11,6 +11,7 @@ import { MovieDetailsHookReturn } from '../types'
 const mockedHook: MovieDetailsHookReturn = {
   error: null,
   handleFavoriteClick: jest.fn(),
+  handleGoToCast: jest.fn(),
   handleWatchlistClick: jest.fn(),
   loading: false,
   movie: mockMovieDetailExtended,

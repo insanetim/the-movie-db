@@ -1,11 +1,10 @@
 import { PlusCircleOutlined } from '@ant-design/icons'
-import { Popover, Row, Typography } from 'antd'
+import { Button, Col, Divider, Popover, Row, Typography } from 'antd'
 import { format } from 'date-fns'
 import { isEmpty, isNil } from 'ramda'
 import { Helmet } from 'react-helmet'
 import Budget from 'src/components/MovieDetail/Budget'
 import CastList from 'src/components/MovieDetail/CastList'
-import CrewList from 'src/components/MovieDetail/CrewList'
 import Genres from 'src/components/MovieDetail/Genres'
 import ImageGallery from 'src/components/MovieDetail/ImageGallery'
 import OriginalLanguage from 'src/components/MovieDetail/OriginalLanguage'
@@ -28,6 +27,7 @@ const MovieDetails: React.FC = () => {
   const {
     error,
     handleFavoriteClick,
+    handleGoToCast,
     handleWatchlistClick,
     loading,
     movie,
@@ -115,10 +115,25 @@ const MovieDetails: React.FC = () => {
           {movie.revenue !== 0 && <Revenue revenue={movie.revenue} />}
           {!isEmpty(movie.genres) && <Genres genres={movie.genres} />}
           {!isEmpty(movie.credits.cast) && (
-            <CastList cast={movie.credits.cast.slice(0, 12)} />
+            <>
+              <Divider />
+              <CastList cast={movie.credits.cast.slice(0, 12)} />
+            </>
           )}
-          {!isEmpty(movie.credits.crew) && (
-            <CrewList crew={movie.credits.crew.slice(0, 12)} />
+          {(movie.credits.cast.length > 12 ||
+            movie.credits.crew.length > 12) && (
+            <Col
+              className='top-margin text-center'
+              span={24}
+            >
+              <Button
+                ghost
+                onClick={handleGoToCast}
+                type='primary'
+              >
+                Full Cast & Crew
+              </Button>
+            </Col>
           )}
         </Row>
       </div>

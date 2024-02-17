@@ -4,6 +4,7 @@ import { IMovieDetailsExtended } from 'src/interfaces/movie.interface'
 export type MovieDetailsHookReturn = {
   error: ErrorMsg
   handleFavoriteClick: () => void
+  handleGoToCast: () => void
   handleWatchlistClick: () => void
   loading: boolean
   movie: IMovieDetailsExtended | undefined

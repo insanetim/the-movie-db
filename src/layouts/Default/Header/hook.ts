@@ -3,6 +3,7 @@ import { useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { useAppDispatch } from 'src/hooks/useRedux'
+import useScrollToTop from 'src/hooks/useScrollToTop'
 import { fetchAccount, logOut } from 'src/store/auth/actions'
 import { accountSelector } from 'src/store/auth/selectors'
 
@@ -13,6 +14,7 @@ const useContainer = (): HeaderHookReturn => {
   const account = useSelector(accountSelector)
   const location = useLocation()
   const navigate = useNavigate()
+  useScrollToTop()
 
   const handleLogOut = async () => {
     dispatch(logOut())

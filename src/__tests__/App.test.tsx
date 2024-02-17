@@ -123,6 +123,7 @@ jest.mock('../pages/ListDetails/hook', () =>
 const mockedMovieDetailsHook: MovieDetailsHookReturn = {
   error: null,
   handleFavoriteClick: jest.fn(),
+  handleGoToCast: jest.fn(),
   handleWatchlistClick: jest.fn(),
   loading: false,
   movie: mockMovieDetailExtended,
