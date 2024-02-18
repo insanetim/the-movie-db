@@ -1,5 +1,5 @@
 import { act, renderHook } from '@testing-library/react'
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import { mockMovieDetailExtended } from 'src/__mocks__/mockMovie'
 import { dispatch } from 'src/__mocks__/react-redux'
 import { showNotification } from 'src/store/app/actions'
@@ -11,8 +11,11 @@ import useContainer from '../hook'
 
 jest.mock('react-router-dom', () => ({
   ...jest.requireActual('react-router-dom'),
+  useNavigate: jest.fn(),
   useParams: jest.fn(() => ({ movieSlug: '1234-the-movie' })),
 }))
+const navigate = jest.fn()
+jest.mocked(useNavigate).mockReturnValue(navigate)
 
 jest.mock<typeof import('@reduxjs/toolkit')>('@reduxjs/toolkit', () => ({
   ...jest.requireActual('@reduxjs/toolkit'),
@@ -85,6 +88,16 @@ describe('MovieDetails useContainer hook', () => {
       movieId: 1234,
     })
     expect(dispatch).toHaveBeenCalledWith(notification)
+  })
+
+  it('should check "handleGoToCast" method', () => {
+    const { result } = renderHook(useContainer)
+
+    act(() => {
+      result.current.handleGoToCast()
+    })
+
+    expect(navigate).toHaveBeenCalledWith('cast')
   })
 
   it('should check "useEffect" method', () => {

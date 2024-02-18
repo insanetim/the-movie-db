@@ -120,8 +120,7 @@ const MovieDetails: React.FC = () => {
               <CastList cast={movie.credits.cast.slice(0, 12)} />
             </>
           )}
-          {(movie.credits.cast.length > 12 ||
-            movie.credits.crew.length > 12) && (
+          {(!isEmpty(movie.credits.cast) || !isEmpty(movie.credits.crew)) && (
             <Col
               className='top-margin text-center'
               span={24}

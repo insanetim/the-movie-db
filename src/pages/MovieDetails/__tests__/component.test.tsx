@@ -69,6 +69,10 @@ describe('MovieDetails component', () => {
             favorite: true,
             watchlist: true,
           },
+          credits: {
+            cast: [],
+            crew: [],
+          },
           release_date: undefined,
         },
       }) as MovieDetailsHookReturn

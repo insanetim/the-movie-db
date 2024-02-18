@@ -249,6 +249,10 @@ exports[`MovieDetails component should match snapshot 1`] = `
         </div>
       </div>
       <div
+        class="ant-divider css-dev-only-do-not-override-1rqnfsa ant-divider-horizontal"
+        role="separator"
+      />
+      <div
         class="ant-col ant-col-24 css-dev-only-do-not-override-1rqnfsa"
       >
         <h3
@@ -306,61 +310,16 @@ exports[`MovieDetails component should match snapshot 1`] = `
         </div>
       </div>
       <div
-        class="ant-col ant-col-24 css-dev-only-do-not-override-1rqnfsa"
+        class="ant-col ant-col-24 top-margin text-center css-dev-only-do-not-override-1rqnfsa"
       >
-        <h3
-          class="ant-typography css-dev-only-do-not-override-1rqnfsa"
+        <button
+          class="ant-btn css-dev-only-do-not-override-1rqnfsa ant-btn-primary ant-btn-background-ghost"
+          type="button"
         >
-          Crew
-        </h3>
-      </div>
-      <div
-        class="ant-col ant-col-24 css-dev-only-do-not-override-1rqnfsa"
-      >
-        <div
-          class="ant-row css-dev-only-do-not-override-1rqnfsa"
-          style="margin-left: -12px; margin-right: -12px; row-gap: 16px;"
-        >
-          <div
-            class="ant-col ant-col-24 ant-col-sm-12 ant-col-md-8 ant-col-lg-8 ant-col-xl-6 css-dev-only-do-not-override-1rqnfsa"
-            style="padding-left: 12px; padding-right: 12px;"
-          >
-            <div
-              class="ant-card ant-card-bordered css-dev-only-do-not-override-1rqnfsa"
-            >
-              <div
-                class="ant-card-cover"
-              >
-                <img
-                  alt="test/name"
-                  src="https://image.tmdb.org/t/p/w500/image"
-                />
-              </div>
-              <div
-                class="ant-card-body"
-              >
-                <div
-                  class="ant-card-meta"
-                >
-                  <div
-                    class="ant-card-meta-detail"
-                  >
-                    <div
-                      class="ant-card-meta-title"
-                    >
-                      test/name
-                    </div>
-                    <div
-                      class="ant-card-meta-description"
-                    >
-                      test/job
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+          <span>
+            Full Cast & Crew
+          </span>
+        </button>
       </div>
     </div>
   </div>
@@ -747,6 +706,10 @@ exports[`MovieDetails component should match snapshot with open popover 1`] = `
         </div>
       </div>
       <div
+        class="ant-divider css-dev-only-do-not-override-1rqnfsa ant-divider-horizontal"
+        role="separator"
+      />
+      <div
         class="ant-col ant-col-24 css-dev-only-do-not-override-1rqnfsa"
       >
         <h3
@@ -804,61 +767,16 @@ exports[`MovieDetails component should match snapshot with open popover 1`] = `
         </div>
       </div>
       <div
-        class="ant-col ant-col-24 css-dev-only-do-not-override-1rqnfsa"
+        class="ant-col ant-col-24 top-margin text-center css-dev-only-do-not-override-1rqnfsa"
       >
-        <h3
-          class="ant-typography css-dev-only-do-not-override-1rqnfsa"
+        <button
+          class="ant-btn css-dev-only-do-not-override-1rqnfsa ant-btn-primary ant-btn-background-ghost"
+          type="button"
         >
-          Crew
-        </h3>
-      </div>
-      <div
-        class="ant-col ant-col-24 css-dev-only-do-not-override-1rqnfsa"
-      >
-        <div
-          class="ant-row css-dev-only-do-not-override-1rqnfsa"
-          style="margin-left: -12px; margin-right: -12px; row-gap: 16px;"
-        >
-          <div
-            class="ant-col ant-col-24 ant-col-sm-12 ant-col-md-8 ant-col-lg-8 ant-col-xl-6 css-dev-only-do-not-override-1rqnfsa"
-            style="padding-left: 12px; padding-right: 12px;"
-          >
-            <div
-              class="ant-card ant-card-bordered css-dev-only-do-not-override-1rqnfsa"
-            >
-              <div
-                class="ant-card-cover"
-              >
-                <img
-                  alt="test/name"
-                  src="https://image.tmdb.org/t/p/w500/image"
-                />
-              </div>
-              <div
-                class="ant-card-body"
-              >
-                <div
-                  class="ant-card-meta"
-                >
-                  <div
-                    class="ant-card-meta-detail"
-                  >
-                    <div
-                      class="ant-card-meta-title"
-                    >
-                      test/name
-                    </div>
-                    <div
-                      class="ant-card-meta-description"
-                    >
-                      test/job
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+          <span>
+            Full Cast & Crew
+          </span>
+        </button>
       </div>
     </div>
   </div>
@@ -1111,120 +1029,6 @@ exports[`MovieDetails component should match snapshot with other data 1`] = `
           >
             TEST/GENRE
           </span>
-        </div>
-      </div>
-      <div
-        class="ant-col ant-col-24 css-dev-only-do-not-override-1rqnfsa"
-      >
-        <h3
-          class="ant-typography css-dev-only-do-not-override-1rqnfsa"
-        >
-          Cast
-        </h3>
-      </div>
-      <div
-        class="ant-col ant-col-24 css-dev-only-do-not-override-1rqnfsa"
-      >
-        <div
-          class="ant-row css-dev-only-do-not-override-1rqnfsa"
-          style="margin-left: -12px; margin-right: -12px; row-gap: 16px;"
-        >
-          <div
-            class="ant-col ant-col-24 ant-col-sm-12 ant-col-md-8 ant-col-lg-8 ant-col-xl-6 css-dev-only-do-not-override-1rqnfsa"
-            style="padding-left: 12px; padding-right: 12px;"
-          >
-            <div
-              class="ant-card ant-card-bordered css-dev-only-do-not-override-1rqnfsa"
-            >
-              <div
-                class="ant-card-cover"
-              >
-                <img
-                  alt="test/name"
-                  src="https://image.tmdb.org/t/p/w500/image"
-                />
-              </div>
-              <div
-                class="ant-card-body"
-              >
-                <div
-                  class="ant-card-meta"
-                >
-                  <div
-                    class="ant-card-meta-detail"
-                  >
-                    <div
-                      class="ant-card-meta-title"
-                    >
-                      test/name
-                    </div>
-                    <div
-                      class="ant-card-meta-description"
-                    >
-                      test/character
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div
-        class="ant-col ant-col-24 css-dev-only-do-not-override-1rqnfsa"
-      >
-        <h3
-          class="ant-typography css-dev-only-do-not-override-1rqnfsa"
-        >
-          Crew
-        </h3>
-      </div>
-      <div
-        class="ant-col ant-col-24 css-dev-only-do-not-override-1rqnfsa"
-      >
-        <div
-          class="ant-row css-dev-only-do-not-override-1rqnfsa"
-          style="margin-left: -12px; margin-right: -12px; row-gap: 16px;"
-        >
-          <div
-            class="ant-col ant-col-24 ant-col-sm-12 ant-col-md-8 ant-col-lg-8 ant-col-xl-6 css-dev-only-do-not-override-1rqnfsa"
-            style="padding-left: 12px; padding-right: 12px;"
-          >
-            <div
-              class="ant-card ant-card-bordered css-dev-only-do-not-override-1rqnfsa"
-            >
-              <div
-                class="ant-card-cover"
-              >
-                <img
-                  alt="test/name"
-                  src="https://image.tmdb.org/t/p/w500/image"
-                />
-              </div>
-              <div
-                class="ant-card-body"
-              >
-                <div
-                  class="ant-card-meta"
-                >
-                  <div
-                    class="ant-card-meta-detail"
-                  >
-                    <div
-                      class="ant-card-meta-title"
-                    >
-                      test/name
-                    </div>
-                    <div
-                      class="ant-card-meta-description"
-                    >
-                      test/job
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
         </div>
       </div>
     </div>
