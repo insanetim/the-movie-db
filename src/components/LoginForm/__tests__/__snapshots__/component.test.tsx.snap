@@ -4,21 +4,21 @@ exports[`LoginForm component should match snapshot 1`] = `
 <DocumentFragment>
   <form
     autocomplete="off"
-    class="ant-form ant-form-horizontal css-dev-only-do-not-override-1rqnfsa"
+    class="ant-form ant-form-horizontal css-dev-only-do-not-override-1xg9z9n"
   >
     <h1
-      class="ant-typography css-dev-only-do-not-override-1rqnfsa"
+      class="ant-typography css-dev-only-do-not-override-1xg9z9n"
     >
       The Movie DB
     </h1>
     <div
-      class="ant-form-item css-dev-only-do-not-override-1rqnfsa"
+      class="ant-form-item css-dev-only-do-not-override-1xg9z9n"
     >
       <div
-        class="ant-row ant-form-item-row css-dev-only-do-not-override-1rqnfsa"
+        class="ant-row ant-form-item-row css-dev-only-do-not-override-1xg9z9n"
       >
         <div
-          class="ant-col ant-form-item-control css-dev-only-do-not-override-1rqnfsa"
+          class="ant-col ant-form-item-control css-dev-only-do-not-override-1xg9z9n"
         >
           <div
             class="ant-form-item-control-input"
@@ -27,7 +27,7 @@ exports[`LoginForm component should match snapshot 1`] = `
               class="ant-form-item-control-input-content"
             >
               <span
-                class="ant-input-affix-wrapper css-dev-only-do-not-override-1rqnfsa ant-input-outlined"
+                class="ant-input-affix-wrapper css-dev-only-do-not-override-1xg9z9n ant-input-outlined"
               >
                 <span
                   class="ant-input-prefix"
@@ -55,7 +55,7 @@ exports[`LoginForm component should match snapshot 1`] = `
                 </span>
                 <input
                   aria-required="true"
-                  class="ant-input css-dev-only-do-not-override-1rqnfsa"
+                  class="ant-input css-dev-only-do-not-override-1xg9z9n"
                   id="username"
                   placeholder="Username"
                   type="text"
@@ -68,13 +68,13 @@ exports[`LoginForm component should match snapshot 1`] = `
       </div>
     </div>
     <div
-      class="ant-form-item css-dev-only-do-not-override-1rqnfsa"
+      class="ant-form-item css-dev-only-do-not-override-1xg9z9n"
     >
       <div
-        class="ant-row ant-form-item-row css-dev-only-do-not-override-1rqnfsa"
+        class="ant-row ant-form-item-row css-dev-only-do-not-override-1xg9z9n"
       >
         <div
-          class="ant-col ant-form-item-control css-dev-only-do-not-override-1rqnfsa"
+          class="ant-col ant-form-item-control css-dev-only-do-not-override-1xg9z9n"
         >
           <div
             class="ant-form-item-control-input"
@@ -83,7 +83,7 @@ exports[`LoginForm component should match snapshot 1`] = `
               class="ant-form-item-control-input-content"
             >
               <span
-                class="ant-input-affix-wrapper css-dev-only-do-not-override-1rqnfsa ant-input-outlined"
+                class="ant-input-affix-wrapper css-dev-only-do-not-override-1xg9z9n ant-input-outlined"
               >
                 <span
                   class="ant-input-prefix"
@@ -111,7 +111,7 @@ exports[`LoginForm component should match snapshot 1`] = `
                 </span>
                 <input
                   aria-required="true"
-                  class="ant-input css-dev-only-do-not-override-1rqnfsa"
+                  class="ant-input css-dev-only-do-not-override-1xg9z9n"
                   id="password"
                   placeholder="Password"
                   type="password"
@@ -124,13 +124,13 @@ exports[`LoginForm component should match snapshot 1`] = `
       </div>
     </div>
     <div
-      class="ant-form-item css-dev-only-do-not-override-1rqnfsa"
+      class="ant-form-item css-dev-only-do-not-override-1xg9z9n"
     >
       <div
-        class="ant-row ant-form-item-row css-dev-only-do-not-override-1rqnfsa"
+        class="ant-row ant-form-item-row css-dev-only-do-not-override-1xg9z9n"
       >
         <div
-          class="ant-col ant-form-item-control css-dev-only-do-not-override-1rqnfsa"
+          class="ant-col ant-form-item-control css-dev-only-do-not-override-1xg9z9n"
         >
           <div
             class="ant-form-item-control-input"
@@ -139,7 +139,7 @@ exports[`LoginForm component should match snapshot 1`] = `
               class="ant-form-item-control-input-content"
             >
               <button
-                class="ant-btn css-dev-only-do-not-override-1rqnfsa ant-btn-primary"
+                class="ant-btn css-dev-only-do-not-override-1xg9z9n ant-btn-primary"
                 type="submit"
               >
                 <span>

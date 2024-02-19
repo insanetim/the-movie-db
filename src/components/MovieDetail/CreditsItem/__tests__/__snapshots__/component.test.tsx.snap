@@ -3,7 +3,7 @@
 exports[`CreditsItem component should match snapshot 1`] = `
 <DocumentFragment>
   <div
-    class="ant-card ant-card-bordered css-dev-only-do-not-override-1rqnfsa"
+    class="ant-card ant-card-bordered css-dev-only-do-not-override-1xg9z9n"
   >
     <div
       class="ant-card-cover"
@@ -42,7 +42,7 @@ exports[`CreditsItem component should match snapshot 1`] = `
 exports[`CreditsItem component should match snapshot without profilePath 1`] = `
 <DocumentFragment>
   <div
-    class="ant-card ant-card-bordered css-dev-only-do-not-override-1rqnfsa"
+    class="ant-card ant-card-bordered css-dev-only-do-not-override-1xg9z9n"
   >
     <div
       class="ant-card-cover"
