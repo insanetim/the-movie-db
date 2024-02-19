@@ -140,7 +140,7 @@ const mockedCastHook: CastHookReturn = {
   error: null,
   loading: false,
   movie: mockMovieDetailExtended,
-  movieSlug: 'test-movie',
+  movieSlug: '1234-test-movie',
 }
 jest.mock('../pages/Cast/hook', () => jest.fn(() => mockedCastHook))
 

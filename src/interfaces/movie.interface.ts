@@ -7,10 +7,10 @@ export interface IMovie {
   id: number | string
   original_language: string
   original_title: string
-  overview: string
+  overview?: string
   popularity: number
   poster_path: null | string
-  release_date: string
+  release_date?: string
   title: string
   video: boolean
   vote_average: number

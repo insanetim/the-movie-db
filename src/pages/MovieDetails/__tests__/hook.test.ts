@@ -12,7 +12,7 @@ import useContainer from '../hook'
 jest.mock('react-router-dom', () => ({
   ...jest.requireActual('react-router-dom'),
   useNavigate: jest.fn(),
-  useParams: jest.fn(() => ({ movieSlug: '1234-the-movie' })),
+  useParams: jest.fn(() => ({ movieSlug: '1234-test-movie' })),
 }))
 const navigate = jest.fn()
 jest.mocked(useNavigate).mockReturnValue(navigate)
