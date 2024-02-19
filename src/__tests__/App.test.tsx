@@ -3,6 +3,7 @@ import { Location } from 'react-router-dom'
 import { mockListDetail } from 'src/__mocks__/mockList'
 import { mockMovieDetailExtended } from 'src/__mocks__/mockMovie'
 import App, {
+  Cast,
   Dashboard,
   DefaultLayout,
   Favorite,
@@ -18,6 +19,7 @@ import { ModalRootHookReturn } from 'src/components/ModalRoot/types'
 import { NotificationsRootHookReturn } from 'src/components/NotificationsRoot/types'
 import { ProtectedRoutesHookReturn } from 'src/components/ProtectedRoutes/types'
 import { HeaderHookReturn } from 'src/layouts/Default/Header/types'
+import { CastHookReturn } from 'src/pages/Cast/types'
 import { DashboardHookReturn } from 'src/pages/Dashboard/types'
 import { FavoriteHookReturn } from 'src/pages/Favorite/types'
 import { ListDetailsHookReturn } from 'src/pages/ListDetails/types'
@@ -134,6 +136,14 @@ jest.mock('../pages/MovieDetails/hook', () =>
   jest.fn(() => mockedMovieDetailsHook)
 )
 
+const mockedCastHook: CastHookReturn = {
+  error: null,
+  loading: false,
+  movie: mockMovieDetailExtended,
+  movieSlug: 'test-movie',
+}
+jest.mock('../pages/Cast/hook', () => jest.fn(() => mockedCastHook))
+
 describe('App component', () => {
   it('should match snapshot', () => {
     const { asFragment } = renderWithWrapper(<App />)
@@ -192,6 +202,14 @@ describe('App component', () => {
 
     expect(
       await screen.findByText(/title/i, undefined, { timeout: 3000 })
+    ).toBeInTheDocument()
+  })
+
+  it('should render Cast', async () => {
+    renderWithWrapper(<Cast />)
+
+    expect(
+      await screen.findByText(/back to movie/i, undefined, { timeout: 3000 })
     ).toBeInTheDocument()
   })
 
