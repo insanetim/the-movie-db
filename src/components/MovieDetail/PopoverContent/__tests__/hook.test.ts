@@ -5,6 +5,7 @@ import { showModal } from 'src/store/app/actions'
 import * as createdListsActions from 'src/store/createdLists/actions'
 
 import useContainer from '../hook'
+import { PopoverContentHookProps } from '../types'
 
 jest.mock('src/store/createdLists/selectors', () => ({
   createdListsSelector: () => null,
@@ -12,7 +13,7 @@ jest.mock('src/store/createdLists/selectors', () => ({
 
 describe('PopoverContent useContainer hook', () => {
   const setPopoverOpen = jest.fn()
-  const props = { movieId: 1234, setPopoverOpen }
+  const props: PopoverContentHookProps = { movieId: 1234, setPopoverOpen }
 
   it('should match snapshot', () => {
     const { result } = renderHook(() => useContainer(props))

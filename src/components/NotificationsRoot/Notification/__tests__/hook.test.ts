@@ -3,11 +3,12 @@ import { notification } from 'antd'
 import { NOTIFICATION_DURATION, NOTIFICATION_TYPE } from 'src/constants/app'
 
 import useContainer from '../hook'
+import { NotificationHookProps } from '../types'
 
 describe('Notification useContainer hook', () => {
   const successSpy = jest.spyOn(notification, 'success')
   const destroySpy = jest.spyOn(notification, 'destroy')
-  const props = {
+  const props: NotificationHookProps = {
     duration: NOTIFICATION_DURATION,
     hideNotification: jest.fn(),
     id: 'test/id',

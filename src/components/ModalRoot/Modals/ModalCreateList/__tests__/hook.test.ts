@@ -6,10 +6,11 @@ import { hideModal } from 'src/store/app/actions'
 import * as createdListsActions from 'src/store/createdLists/actions'
 
 import useContainer from '../hook'
+import { ModalCreateListHookProps } from '../types'
 
 describe('ModalCreateList useContainer hook', () => {
   const createList = jest.spyOn(createdListsActions, 'createList')
-  const props = {
+  const props: ModalCreateListHookProps = {
     form: {
       resetFields: jest.fn(),
       submit: jest.fn(),

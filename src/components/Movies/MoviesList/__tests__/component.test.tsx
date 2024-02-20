@@ -4,10 +4,11 @@ import { mockMovie } from 'src/__mocks__/mockMovie'
 import renderWithWrapper from 'src/utils/testHelpers/renderWithWrapper'
 
 import MoviesList from '../component'
+import { MoviesListProps } from '../types'
 
 describe('MoviesList component', () => {
   const handleMovieDelete = jest.fn()
-  const props = {
+  const props: MoviesListProps = {
     handleMovieDelete,
     movies: [mockMovie],
   }

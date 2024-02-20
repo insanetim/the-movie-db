@@ -1,13 +1,13 @@
 import { act, renderHook } from '@testing-library/react'
 import { dispatch } from 'src/__mocks__/react-redux'
 
-import { useUpdatePageProps } from '../useUpdatePage'
+import { UseUpdatePageProps } from '../useUpdatePage'
 import useUpdatePage from '../useUpdatePage'
 
 describe('useUpdatePage', () => {
   const action = jest.fn()
   const setSearchParams = jest.fn()
-  const props: useUpdatePageProps = {
+  const props: UseUpdatePageProps = {
     action,
     items: [1],
     page: '3',

@@ -4,6 +4,7 @@ import { dispatch } from 'src/__mocks__/react-redux'
 import * as dashboardActions from 'src/store/dashboard/actions'
 
 import useContainer from '../hook'
+import { SearchResultHookProps } from '../types'
 
 jest.mock('src/store/dashboard/selectors', () => ({
   dashboardErrorSelector: () => null,
@@ -20,7 +21,7 @@ const setSearchParams = jest.fn()
 jest.mocked(useSearchParams).mockReturnValue([searchParams, setSearchParams])
 
 describe('SearchResult useContainer hook', () => {
-  const props = { query: 'test/search' }
+  const props: SearchResultHookProps = { query: 'test/search' }
 
   it('should match snapshot', () => {
     const { result } = renderHook(() => useContainer(props))

@@ -4,7 +4,7 @@ import { assoc } from 'ramda'
 import { mockMovie } from 'src/__mocks__/mockMovie'
 
 import MovieItem from '../component'
-import { MovieItemHookReturn } from '../types'
+import { MovieItemHookReturn, MovieItemProps } from '../types'
 
 const mockedHook: MovieItemHookReturn = {
   handleClick: jest.fn(),
@@ -12,7 +12,7 @@ const mockedHook: MovieItemHookReturn = {
 jest.mock('../hook', () => jest.fn(() => mockedHook))
 
 describe('MovieItem component', () => {
-  const props = {
+  const props: MovieItemProps = {
     handleMovieDelete: jest.fn(),
     id: mockMovie.id,
     overview: mockMovie.overview,
