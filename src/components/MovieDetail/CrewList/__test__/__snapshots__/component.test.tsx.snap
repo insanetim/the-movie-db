@@ -33,7 +33,7 @@ exports[`CrewList component should match snapshot 1`] = `
         style="padding-left: 12px; padding-right: 12px;"
       >
         <div
-          class="ant-card ant-card-bordered css-dev-only-do-not-override-1xg9z9n"
+          class="ant-card ant-card-bordered ant-card-hoverable css-dev-only-do-not-override-1xg9z9n"
         >
           <div
             class="ant-card-cover"

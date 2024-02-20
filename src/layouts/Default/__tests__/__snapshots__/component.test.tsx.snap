@@ -31,7 +31,7 @@ exports[`DefaultLayout component should match snapshot 1`] = `
             >
               <img
                 alt="User avatar"
-                src="https://www.gravatar.com/avatar//image"
+                src="https://www.gravatar.com/avatar/image"
               />
             </span>
              

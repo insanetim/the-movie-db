@@ -1,4 +1,4 @@
-import { render } from '@testing-library/react'
+import renderWithWrapper from 'src/utils/testHelpers/renderWithWrapper'
 
 import CreditsItem from '../component'
 import { CreditsItemProps } from '../types'
@@ -11,14 +11,14 @@ describe('CreditsItem component', () => {
     title: 'test/title',
   }
   it('should match snapshot', () => {
-    const { asFragment } = render(<CreditsItem {...props} />)
+    const { asFragment } = renderWithWrapper(<CreditsItem {...props} />)
 
     expect(asFragment()).toMatchSnapshot()
   })
 
   it('should match snapshot without profilePath', () => {
     props.profilePath = undefined
-    const { asFragment } = render(<CreditsItem {...props} />)
+    const { asFragment } = renderWithWrapper(<CreditsItem {...props} />)
 
     expect(asFragment()).toMatchSnapshot()
   })
