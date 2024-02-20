@@ -19,6 +19,7 @@ import dashboardReducer from './dashboard'
 import favoriteReducer from './favorite'
 import listDetailsReducer from './listDetails'
 import movieDetailsReducer from './movieDetails'
+import personDetailsReducer from './personDetails'
 import watchlistReducer from './watchlist'
 
 const authPersistConfig = {
@@ -35,6 +36,7 @@ const rootReducer = combineReducers({
   favorite: favoriteReducer,
   listDetails: listDetailsReducer,
   movieDetails: movieDetailsReducer,
+  personDetails: personDetailsReducer,
   watchlist: watchlistReducer,
 })
 

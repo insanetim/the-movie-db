@@ -12,6 +12,7 @@ import Overview from 'src/components/MovieDetail/Overview'
 import PopoverContent from 'src/components/MovieDetail/PopoverContent'
 import Revenue from 'src/components/MovieDetail/Revenue'
 import Runtime from 'src/components/MovieDetail/Runtime'
+import Status from 'src/components/MovieDetail/Status'
 import AddToFavoriteButton from 'src/components/UI/Buttons/AddToFavoriteButton'
 import AddToWatchlistButton from 'src/components/UI/Buttons/AddToWatchlistButton'
 import IconButton from 'src/components/UI/Buttons/IconButton'
@@ -107,6 +108,7 @@ const MovieDetails: React.FC = () => {
         </PageTitle>
         <Row>
           {!isEmpty(movie.overview) && <Overview overview={movie.overview} />}
+          {movie.status && <Status status={movie.status} />}
           {movie.original_language && (
             <OriginalLanguage originalLanguage={movie.original_language} />
           )}

@@ -26,6 +26,7 @@ const CastList: React.FC<CastListProps> = ({ cast, showTotal }) => (
           >
             <CreditsItem
               description={item.character}
+              id={item.id}
               profilePath={item.profile_path}
               title={item.name}
             />

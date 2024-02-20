@@ -1,5 +1,6 @@
 import { RootState } from 'src/store/index'
 import { movieDetailsInitialState } from 'src/store/movieDetails/reducer'
+import { personDetailsInitialState } from 'src/store/personDetails/reducer'
 
 const mockState: RootState = {
   app: {
@@ -38,6 +39,7 @@ const mockState: RootState = {
     loading: true,
   },
   movieDetails: movieDetailsInitialState,
+  personDetails: personDetailsInitialState,
   watchlist: {
     data: null,
     error: null,

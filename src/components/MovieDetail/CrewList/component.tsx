@@ -33,6 +33,7 @@ const CrewList: React.FC<CrewListProps> = ({ crew }) => {
               >
                 <CreditsItem
                   description={item.job}
+                  id={item.id}
                   profilePath={item.profile_path}
                   title={item.name}
                 />

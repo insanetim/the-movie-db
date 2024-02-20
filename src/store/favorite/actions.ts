@@ -1,11 +1,11 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
 import { getFavorite } from 'src/api/apiRoutes'
 import { IMoviesList } from 'src/interfaces/movie.interface'
+import { RootState } from 'src/store'
 import { accountSelector } from 'src/store/auth/selectors'
 import errorMessage from 'src/utils/helpers/errorMessage'
 import getSessionId from 'src/utils/helpers/getSessionId'
 
-import { RootState } from '../index'
 import * as types from './constants'
 
 const fetchFavorite = createAsyncThunk<

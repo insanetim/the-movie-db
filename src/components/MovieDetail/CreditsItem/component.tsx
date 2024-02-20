@@ -2,13 +2,17 @@ import { Card } from 'antd'
 import { isNotNil } from 'ramda'
 import NoImage from 'src/assets/images/no-image.svg'
 
+import useContainer from './hook'
 import { CreditsItemProps } from './types'
 
 const CreditsItem: React.FC<CreditsItemProps> = ({
   description,
+  id,
   profilePath,
   title,
 }) => {
+  const { handleClick } = useContainer({ id, title })
+
   let cover = (
     <div className='ant-card-cover--no-image'>
       <img
@@ -27,7 +31,11 @@ const CreditsItem: React.FC<CreditsItemProps> = ({
   }
 
   return (
-    <Card cover={cover}>
+    <Card
+      cover={cover}
+      hoverable
+      onClick={handleClick}
+    >
       <Card.Meta
         description={description}
         title={title}

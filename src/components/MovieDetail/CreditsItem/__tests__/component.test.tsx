@@ -6,6 +6,7 @@ import { CreditsItemProps } from '../types'
 describe('CreditsItem component', () => {
   const props: CreditsItemProps = {
     description: 'test/description',
+    id: 1234,
     profilePath: 'test/image',
     title: 'test/title',
   }
@@ -16,7 +17,7 @@ describe('CreditsItem component', () => {
   })
 
   it('should match snapshot without profilePath', () => {
-    props.profilePath = null
+    props.profilePath = undefined
     const { asFragment } = render(<CreditsItem {...props} />)
 
     expect(asFragment()).toMatchSnapshot()

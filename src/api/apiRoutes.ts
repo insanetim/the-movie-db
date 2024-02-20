@@ -7,6 +7,7 @@ import {
   IMovieDetailsExtended,
   IMoviesList,
 } from 'src/interfaces/movie.interface'
+import { IPersonDetails } from 'src/interfaces/person.interface'
 import { RequestToken, Session, UserData } from 'src/store/auth/types'
 import { CreateListResponse } from 'src/store/createdLists/types'
 
@@ -286,6 +287,18 @@ export const getMovieDetails = async ({
       session_id: sessionId,
     },
     url: `/movie/${movieId}`,
+  })
+
+  return data
+}
+
+// Person
+export const getPersonDetails = async ({ personId }: { personId: number }) => {
+  const { data } = await httpClient.request<IPersonDetails>({
+    params: {
+      append_to_response: 'external_ids,movie_credits',
+    },
+    url: `/person/${personId}`,
   })
 
   return data

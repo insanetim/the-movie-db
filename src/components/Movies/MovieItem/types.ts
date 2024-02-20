@@ -6,7 +6,7 @@ export type MovieItemProps = {
     id: IMovie['id']
   ) => void
   id: IMovie['id']
-  overview: IMovie['overview']
+  overview?: IMovie['overview']
   posterPath: IMovie['poster_path']
   title: IMovie['title']
 }

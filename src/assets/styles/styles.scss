@@ -175,3 +175,53 @@ body {
 .crew-group + .crew-group {
   margin-top: 12px;
 }
+
+.person-poster {
+  overflow: clip;
+
+  border-radius: 8px;
+
+  img {
+    display: block;
+
+    width: 100%;
+  }
+}
+
+.person-poster--no-image {
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 8px;
+  background-color: #dbdbdb;
+  aspect-ratio: calc(5 / 7.5);
+
+  img {
+    width: 50%;
+  }
+}
+
+.social-link__list {
+  margin-top: 16px;
+
+  @media (width <= 575px) {
+    margin-top: 12px;
+    margin-bottom: 16px;
+  }
+}
+
+.social-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: #2a2a2a;
+
+  font-size: 28px;
+
+  &:hover,
+  &:focus {
+    color: #666;
+  }
+}
