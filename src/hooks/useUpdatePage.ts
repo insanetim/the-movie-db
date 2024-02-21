@@ -16,7 +16,7 @@ declare type AsyncThunkConfig = {
   state?: unknown
 }
 
-export type useUpdatePageProps = {
+export type UseUpdatePageProps = {
   action: AsyncThunkAction<unknown, unknown, AsyncThunkConfig>
   items: undefined | unknown[]
   page: string
@@ -28,7 +28,7 @@ const useUpdatePage = ({
   items,
   page,
   setSearchParams,
-}: useUpdatePageProps) => {
+}: UseUpdatePageProps) => {
   const dispatch = useAppDispatch()
 
   const updatePage = () => {

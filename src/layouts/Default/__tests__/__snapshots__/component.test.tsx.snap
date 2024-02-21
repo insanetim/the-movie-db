@@ -31,7 +31,7 @@ exports[`DefaultLayout component should match snapshot 1`] = `
             >
               <img
                 alt="User avatar"
-                src="https://www.gravatar.com/avatar//image"
+                src="https://www.gravatar.com/avatar/image"
               />
             </span>
              
@@ -76,7 +76,7 @@ exports[`DefaultLayout component should match snapshot 1`] = `
         Made with ❤ by 
         <a
           class="ant-typography css-dev-only-do-not-override-1xg9z9n"
-          href="https://github.com/insanetim/frontend-internship"
+          href="https://github.com/insanetim/the-movie-db"
           rel="noreferrer"
           target="_blank"
         >

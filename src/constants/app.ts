@@ -6,11 +6,13 @@ enum NOTIFICATION_TYPE {
   SUCCESS = 'success',
 }
 const NOTIFICATION_DURATION = 2.5
+const GENDERS = ['Not set / not specified', 'Female', 'Male', 'Non-binary']
 
 export {
   ACCESS_TOKEN_AUTH,
   API_URL,
   APP_NAME,
+  GENDERS,
   NOTIFICATION_DURATION,
   NOTIFICATION_TYPE,
 }

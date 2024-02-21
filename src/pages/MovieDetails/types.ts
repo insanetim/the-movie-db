@@ -7,7 +7,7 @@ export type MovieDetailsHookReturn = {
   handleGoToCast: () => void
   handleWatchlistClick: () => void
   loading: boolean
-  movie: IMovieDetailsExtended | undefined
+  movie?: IMovieDetailsExtended
   popoverOpen: boolean
   setPopoverOpen: React.Dispatch<React.SetStateAction<boolean>>
 }

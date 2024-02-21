@@ -4,8 +4,8 @@ import { format } from 'date-fns'
 import { isEmpty, isNil } from 'ramda'
 import { Helmet } from 'react-helmet'
 import { Link } from 'react-router-dom'
-import CastList from 'src/components/MovieDetail/CastList'
-import CrewList from 'src/components/MovieDetail/CrewList'
+import CastList from 'src/components/MovieDetails/CastList'
+import CrewList from 'src/components/MovieDetails/CrewList'
 import Empty from 'src/components/UI/Empty'
 import Error from 'src/components/UI/Error'
 import Loading from 'src/components/UI/Loading'
@@ -38,9 +38,7 @@ const Cast: React.FC = () => {
   }
 
   const title = `${movie.title}${
-    movie.release_date
-      ? ` (${format(new Date(movie.release_date), 'yyyy')})`
-      : ''
+    movie.release_date ? ` (${format(movie.release_date, 'yyyy')})` : ''
   }`
   const pageTitle = `${title} - Cast & Crew`
 

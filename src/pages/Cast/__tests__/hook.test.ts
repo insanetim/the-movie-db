@@ -1,6 +1,6 @@
 import { renderHook } from '@testing-library/react'
 import { useParams } from 'react-router-dom'
-import { mockMovieDetailExtended } from 'src/__mocks__/mockMovie'
+import { mockMovieDetailsExtended } from 'src/__mocks__/mockMovie'
 import { dispatch } from 'src/__mocks__/react-redux'
 import * as movieDetailsActions from 'src/store/movieDetails/actions'
 import * as movieDetailsSelectors from 'src/store/movieDetails/selectors'
@@ -23,7 +23,7 @@ describe('Cast useContainer hook', () => {
     .mockReturnValue(null)
   const selectMovieById = jest
     .spyOn(movieDetailsSelectors, 'movieDetailsSelector')
-    .mockReturnValue(mockMovieDetailExtended)
+    .mockReturnValue(mockMovieDetailsExtended)
 
   it('should match snapshot', () => {
     const { result } = renderHook(useContainer)
@@ -39,7 +39,7 @@ describe('Cast useContainer hook', () => {
   })
 
   it('should check "useEffect" method', () => {
-    const fetchMovieDetail = jest.spyOn(
+    const fetchMovieDetails = jest.spyOn(
       movieDetailsActions,
       'fetchMovieDetails'
     )
@@ -47,6 +47,6 @@ describe('Cast useContainer hook', () => {
     renderHook(useContainer)
 
     expect(dispatch).toHaveBeenCalled()
-    expect(fetchMovieDetail).toHaveBeenCalledWith(1234)
+    expect(fetchMovieDetails).toHaveBeenCalledWith(1234)
   })
 })

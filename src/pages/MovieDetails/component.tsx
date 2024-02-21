@@ -3,15 +3,17 @@ import { Button, Col, Divider, Popover, Row, Typography } from 'antd'
 import { format } from 'date-fns'
 import { isEmpty, isNil } from 'ramda'
 import { Helmet } from 'react-helmet'
-import Budget from 'src/components/MovieDetail/Budget'
-import CastList from 'src/components/MovieDetail/CastList'
-import Genres from 'src/components/MovieDetail/Genres'
-import ImageGallery from 'src/components/MovieDetail/ImageGallery'
-import OriginalLanguage from 'src/components/MovieDetail/OriginalLanguage'
-import Overview from 'src/components/MovieDetail/Overview'
-import PopoverContent from 'src/components/MovieDetail/PopoverContent'
-import Revenue from 'src/components/MovieDetail/Revenue'
-import Runtime from 'src/components/MovieDetail/Runtime'
+import Budget from 'src/components/MovieDetails/Budget'
+import CastList from 'src/components/MovieDetails/CastList'
+import Countries from 'src/components/MovieDetails/Countries'
+import Genres from 'src/components/MovieDetails/Genres'
+import ImageGallery from 'src/components/MovieDetails/ImageGallery'
+import OriginalLanguage from 'src/components/MovieDetails/OriginalLanguage'
+import Overview from 'src/components/MovieDetails/Overview'
+import PopoverContent from 'src/components/MovieDetails/PopoverContent'
+import Revenue from 'src/components/MovieDetails/Revenue'
+import Runtime from 'src/components/MovieDetails/Runtime'
+import Status from 'src/components/MovieDetails/Status'
 import AddToFavoriteButton from 'src/components/UI/Buttons/AddToFavoriteButton'
 import AddToWatchlistButton from 'src/components/UI/Buttons/AddToWatchlistButton'
 import IconButton from 'src/components/UI/Buttons/IconButton'
@@ -56,9 +58,7 @@ const MovieDetails: React.FC = () => {
   }
 
   const title = `${movie.title}${
-    movie.release_date
-      ? ` (${format(new Date(movie.release_date), 'yyyy')})`
-      : ''
+    movie.release_date ? ` (${format(movie.release_date, 'yyyy')})` : ''
   }`
 
   return (
@@ -107,8 +107,12 @@ const MovieDetails: React.FC = () => {
         </PageTitle>
         <Row>
           {!isEmpty(movie.overview) && <Overview overview={movie.overview} />}
+          {movie.status && <Status status={movie.status} />}
           {movie.original_language && (
             <OriginalLanguage originalLanguage={movie.original_language} />
+          )}
+          {!isEmpty(movie.production_countries) && (
+            <Countries countries={movie.production_countries} />
           )}
           {movie.runtime !== 0 && <Runtime runtime={movie.runtime} />}
           {movie.budget !== 0 && <Budget budget={movie.budget} />}

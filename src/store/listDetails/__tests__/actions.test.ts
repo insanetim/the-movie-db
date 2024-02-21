@@ -1,4 +1,4 @@
-import { mockListDetail } from 'src/__mocks__/mockList'
+import { mockListDetails } from 'src/__mocks__/mockList'
 import { dispatch, getState } from 'src/__mocks__/react-redux'
 import * as apiRoutes from 'src/api/apiRoutes'
 
@@ -20,7 +20,7 @@ describe('listDetails actions', () => {
     const thunk = fetchListDetails({ listId, page })
 
     it('should handle success', async () => {
-      getListDetails.mockResolvedValueOnce(mockListDetail)
+      getListDetails.mockResolvedValueOnce(mockListDetails)
 
       const result = await thunk(dispatch, getState, undefined)
       const { calls } = dispatch.mock
@@ -29,7 +29,7 @@ describe('listDetails actions', () => {
       expect(calls).toHaveLength(2)
       expect(calls[0][0].type).toBe(fetchListDetails.pending.type)
       expect(calls[1][0].type).toBe(fetchListDetails.fulfilled.type)
-      expect(result.payload).toEqual(mockListDetail)
+      expect(result.payload).toEqual(mockListDetails)
     })
 
     it('should handle failure', async () => {

@@ -1,4 +1,4 @@
-import { mockMovieDetailExtended } from 'src/__mocks__/mockMovie'
+import { mockMovieDetailsExtended } from 'src/__mocks__/mockMovie'
 import renderWithWrapper from 'src/utils/testHelpers/renderWithWrapper'
 
 import Cast from '../component'
@@ -7,7 +7,7 @@ import { CastHookReturn } from '../types'
 const mockedHook: CastHookReturn = {
   error: null,
   loading: false,
-  movie: mockMovieDetailExtended,
+  movie: mockMovieDetailsExtended,
   movieSlug: '1234-test-movie',
 }
 jest.mock('../hook', () => jest.fn(() => mockedHook))

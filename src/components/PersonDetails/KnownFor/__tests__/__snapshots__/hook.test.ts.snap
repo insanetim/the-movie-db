@@ -1,0 +1,38 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CrewList useContainer hook should match snapshot 1`] = `
+{
+  "sortedItems": [
+    {
+      "character": "Neo",
+      "id": 1234,
+      "popularity": 100500,
+      "poster_path": "/image",
+      "title": "The Matrix",
+    },
+  ],
+}
+`;
+
+exports[`CrewList useContainer hook should match snapshot with other data 1`] = `
+{
+  "sortedItems": [
+    {
+      "department": "Directing",
+      "id": 1234,
+      "job": "Director",
+      "popularity": 100500,
+      "poster_path": "/image",
+      "title": "The Matrix",
+    },
+    {
+      "department": "Directing",
+      "id": 4321,
+      "job": "Director",
+      "popularity": 999,
+      "poster_path": "/image",
+      "title": "Jupiter Ascending",
+    },
+  ],
+}
+`;

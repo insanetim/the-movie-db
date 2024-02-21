@@ -4,7 +4,7 @@ import { assoc } from 'ramda'
 import { mockMovie } from 'src/__mocks__/mockMovie'
 
 import MovieItem from '../component'
-import { MovieItemHookReturn } from '../types'
+import { MovieItemHookReturn, MovieItemProps } from '../types'
 
 const mockedHook: MovieItemHookReturn = {
   handleClick: jest.fn(),
@@ -12,7 +12,7 @@ const mockedHook: MovieItemHookReturn = {
 jest.mock('../hook', () => jest.fn(() => mockedHook))
 
 describe('MovieItem component', () => {
-  const props = {
+  const props: MovieItemProps = {
     handleMovieDelete: jest.fn(),
     id: mockMovie.id,
     overview: mockMovie.overview,
@@ -27,7 +27,7 @@ describe('MovieItem component', () => {
   })
 
   it('should match snapshot without poster_path', () => {
-    const newProps = assoc('posterPath', null, props)
+    const newProps = assoc('posterPath', undefined, props)
     const { asFragment } = render(<MovieItem {...newProps} />)
 
     expect(asFragment()).toMatchSnapshot()

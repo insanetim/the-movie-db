@@ -26,7 +26,7 @@ const movieDetailsSlice = createSlice({
       })
       .addCase(fetchMovieDetails.fulfilled, (state, action) => {
         state.loading = false
-        movieDetailsAdapter.addOne(state, action.payload)
+        movieDetailsAdapter.setOne(state, action.payload)
       })
       .addCase(fetchMovieDetails.rejected, (state, action) => {
         state.loading = false

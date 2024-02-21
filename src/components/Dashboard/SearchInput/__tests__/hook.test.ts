@@ -3,6 +3,7 @@ import React from 'react'
 import { useSearchParams } from 'react-router-dom'
 
 import useContainer from '../hook'
+import { SearchInputHookProps } from '../types'
 
 jest.mock('react-router-dom', () => ({
   ...jest.requireActual('react-router-dom'),
@@ -17,7 +18,7 @@ describe('SearchInput useContainer hook', () => {
   const useStateMock = (initState: unknown) => [initState, setState]
   jest.spyOn(React, 'useState').mockImplementation(useStateMock as never)
 
-  const props = { query: '' }
+  const props: SearchInputHookProps = { query: '' }
 
   it('should match snapshot', () => {
     const { result } = renderHook(() => useContainer(props))

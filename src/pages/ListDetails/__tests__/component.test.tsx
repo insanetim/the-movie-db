@@ -12,17 +12,11 @@ const mockedHook: ListDetailsHookReturn = {
   handleMovieDelete: jest.fn(),
   handlePagination: jest.fn(),
   list: {
-    created_by: 'test/author',
     description: 'test/description',
-    favorite_count: 0,
     id: 1234,
-    iso_639_1: 'en',
-    item_count: 1,
     items: [mockMovie],
-    list_type: '',
     name: 'test/list',
     page: 1,
-    poster_path: null,
     total_pages: 10,
     total_results: 200,
   },
@@ -69,17 +63,11 @@ describe('ListDetails component', () => {
 
   it('should match snapshot with 1 page', () => {
     mockedHook.list = {
-      created_by: 'test/author',
       description: 'test/description',
-      favorite_count: 0,
       id: 1234,
-      iso_639_1: 'en',
-      item_count: 1,
       items: [mockMovie],
-      list_type: '',
       name: 'test/list',
       page: 1,
-      poster_path: null,
       total_pages: 1,
       total_results: 1,
     }

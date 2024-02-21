@@ -1,4 +1,4 @@
-import Notification from './Notification'
+import Notification from '../Notification'
 import useContainer from './hook'
 
 const NotificationsRoot: React.FC = () => {

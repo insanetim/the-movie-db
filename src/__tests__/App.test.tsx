@@ -1,7 +1,8 @@
 import { screen } from '@testing-library/react'
 import { Location } from 'react-router-dom'
-import { mockListDetail } from 'src/__mocks__/mockList'
-import { mockMovieDetailExtended } from 'src/__mocks__/mockMovie'
+import { mockListDetails } from 'src/__mocks__/mockList'
+import { mockMovieDetailsExtended } from 'src/__mocks__/mockMovie'
+import { mockPersonDetails } from 'src/__mocks__/mockPerson'
 import App, {
   Cast,
   Dashboard,
@@ -12,6 +13,7 @@ import App, {
   Login,
   MovieDetails,
   NotFound,
+  PersonDetails,
   Watchlist,
 } from 'src/App'
 import { TrendingHookReturn } from 'src/components/Dashboard/Trending/types'
@@ -26,6 +28,7 @@ import { ListDetailsHookReturn } from 'src/pages/ListDetails/types'
 import { ListsHookReturn } from 'src/pages/Lists/types'
 import { LoginHookReturn } from 'src/pages/Login/types'
 import { MovieDetailsHookReturn } from 'src/pages/MovieDetails/types'
+import { PersonDetailsHookReturn } from 'src/pages/PersonDetails/types'
 import { WatchlistHookReturn } from 'src/pages/Watchlist/types'
 import renderWithWrapper from 'src/utils/testHelpers/renderWithWrapper'
 
@@ -115,7 +118,7 @@ const mockedListDetailsHook: ListDetailsHookReturn = {
   handleListDelete: jest.fn(),
   handleMovieDelete: jest.fn(),
   handlePagination: jest.fn(),
-  list: mockListDetail,
+  list: mockListDetails,
   loading: false,
 }
 jest.mock('../pages/ListDetails/hook', () =>
@@ -128,7 +131,7 @@ const mockedMovieDetailsHook: MovieDetailsHookReturn = {
   handleGoToCast: jest.fn(),
   handleWatchlistClick: jest.fn(),
   loading: false,
-  movie: mockMovieDetailExtended,
+  movie: mockMovieDetailsExtended,
   popoverOpen: false,
   setPopoverOpen: jest.fn(),
 }
@@ -139,10 +142,19 @@ jest.mock('../pages/MovieDetails/hook', () =>
 const mockedCastHook: CastHookReturn = {
   error: null,
   loading: false,
-  movie: mockMovieDetailExtended,
+  movie: mockMovieDetailsExtended,
   movieSlug: '1234-test-movie',
 }
 jest.mock('../pages/Cast/hook', () => jest.fn(() => mockedCastHook))
+
+const mockedPersonDetailsHook: PersonDetailsHookReturn = {
+  error: null,
+  loading: false,
+  person: mockPersonDetails,
+}
+jest.mock('../pages/PersonDetails/hook', () =>
+  jest.fn(() => mockedPersonDetailsHook)
+)
 
 describe('App component', () => {
   it('should match snapshot', () => {
@@ -210,6 +222,14 @@ describe('App component', () => {
 
     expect(
       await screen.findByText(/back to movie/i, undefined, { timeout: 3000 })
+    ).toBeInTheDocument()
+  })
+
+  it('should render PersonDetails', async () => {
+    renderWithWrapper(<PersonDetails />)
+
+    expect(
+      await screen.findByText(/personal info/i, undefined, { timeout: 3000 })
     ).toBeInTheDocument()
   })
 

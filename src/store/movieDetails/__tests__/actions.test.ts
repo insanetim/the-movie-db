@@ -1,4 +1,4 @@
-import { mockMovieDetailExtended } from 'src/__mocks__/mockMovie'
+import { mockMovieDetailsExtended } from 'src/__mocks__/mockMovie'
 import { dispatch, getState } from 'src/__mocks__/react-redux'
 import * as apiRoutes from 'src/api/apiRoutes'
 import { NOTIFICATION_TYPE } from 'src/constants/app'
@@ -38,11 +38,11 @@ describe('movieDetails actions', () => {
   const inFavorite = true
   const inWatchlist = true
 
-  describe('fetchMovie', () => {
+  describe('fetchMovieDetails', () => {
     const thunk = fetchMovieDetails(movieId)
 
     it('should handle success', async () => {
-      getMovieDetails.mockResolvedValueOnce(mockMovieDetailExtended)
+      getMovieDetails.mockResolvedValueOnce(mockMovieDetailsExtended)
 
       const result = await thunk(dispatch, getState, undefined)
       const { calls } = dispatch.mock
@@ -51,7 +51,7 @@ describe('movieDetails actions', () => {
       expect(calls).toHaveLength(2)
       expect(calls[0][0].type).toBe(fetchMovieDetails.pending.type)
       expect(calls[1][0].type).toBe(fetchMovieDetails.fulfilled.type)
-      expect(result.payload).toEqual(mockMovieDetailExtended)
+      expect(result.payload).toEqual(mockMovieDetailsExtended)
     })
 
     it('should handle failure', async () => {

@@ -1,4 +1,4 @@
-import ModalCreateList from './Modals/ModalCreateList'
+import ModalCreateList from '../Modals/ModalCreateList'
 import { ModalComponentsMap } from './types'
 
 export const MODAL_COMPONENTS = {

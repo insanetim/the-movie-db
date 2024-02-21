@@ -13,6 +13,7 @@ export const Favorite = lazy(() => import('src/pages/Favorite'))
 export const ListDetails = lazy(() => import('src/pages/ListDetails'))
 export const MovieDetails = lazy(() => import('src/pages/MovieDetails'))
 export const Cast = lazy(() => import('src/pages/Cast'))
+export const PersonDetails = lazy(() => import('src/pages/PersonDetails'))
 export const NotFound = lazy(() => import('src/pages/NotFound'))
 
 const App: React.FC = () => (
@@ -58,6 +59,10 @@ const App: React.FC = () => (
               path='cast'
             />
           </Route>
+          <Route
+            element={<PersonDetails />}
+            path='person/:personSlug'
+          />
           <Route
             element={<NotFound />}
             path='*'

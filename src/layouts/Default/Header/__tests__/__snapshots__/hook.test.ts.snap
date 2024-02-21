@@ -5,17 +5,13 @@ exports[`Header useContainer hook should match snapshot 1`] = `
   "account": {
     "avatar": {
       "gravatar": {
-        "hash": "/image",
+        "hash": "image",
       },
       "tmdb": {
-        "avatar_path": null,
+        "avatar_path": undefined,
       },
     },
     "id": 1234,
-    "include_adult": true,
-    "iso_3166_1": "en",
-    "iso_639_1": "en",
-    "name": "",
     "username": "test/username",
   },
   "handleLogOut": [Function],
