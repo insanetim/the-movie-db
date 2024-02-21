@@ -5,6 +5,7 @@ import { isEmpty, isNil } from 'ramda'
 import { Helmet } from 'react-helmet'
 import Budget from 'src/components/MovieDetails/Budget'
 import CastList from 'src/components/MovieDetails/CastList'
+import Countries from 'src/components/MovieDetails/Countries'
 import Genres from 'src/components/MovieDetails/Genres'
 import ImageGallery from 'src/components/MovieDetails/ImageGallery'
 import OriginalLanguage from 'src/components/MovieDetails/OriginalLanguage'
@@ -109,6 +110,9 @@ const MovieDetails: React.FC = () => {
           {movie.status && <Status status={movie.status} />}
           {movie.original_language && (
             <OriginalLanguage originalLanguage={movie.original_language} />
+          )}
+          {!isEmpty(movie.production_countries) && (
+            <Countries countries={movie.production_countries} />
           )}
           {movie.runtime !== 0 && <Runtime runtime={movie.runtime} />}
           {movie.budget !== 0 && <Budget budget={movie.budget} />}

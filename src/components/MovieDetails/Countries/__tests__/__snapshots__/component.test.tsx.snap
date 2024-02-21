@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Countries component should match snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="ant-col ant-col-24 css-dev-only-do-not-override-1xg9z9n"
+  >
+    <div
+      class="ant-typography css-dev-only-do-not-override-1xg9z9n"
+    >
+      <b>
+        Country: 
+      </b>
+      <span>
+        United States of America
+      </span>
+    </div>
+  </div>
+</DocumentFragment>
+`;

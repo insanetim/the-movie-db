@@ -211,6 +211,20 @@ exports[`MovieDetails component should match snapshot 1`] = `
           class="ant-typography css-dev-only-do-not-override-1xg9z9n"
         >
           <b>
+            Country: 
+          </b>
+          <span>
+            United States of America
+          </span>
+        </div>
+      </div>
+      <div
+        class="ant-col ant-col-24 css-dev-only-do-not-override-1xg9z9n"
+      >
+        <div
+          class="ant-typography css-dev-only-do-not-override-1xg9z9n"
+        >
+          <b>
             Runtime: 
           </b>
           <span>
@@ -682,6 +696,20 @@ exports[`MovieDetails component should match snapshot with open popover 1`] = `
           class="ant-typography css-dev-only-do-not-override-1xg9z9n"
         >
           <b>
+            Country: 
+          </b>
+          <span>
+            United States of America
+          </span>
+        </div>
+      </div>
+      <div
+        class="ant-col ant-col-24 css-dev-only-do-not-override-1xg9z9n"
+      >
+        <div
+          class="ant-typography css-dev-only-do-not-override-1xg9z9n"
+        >
+          <b>
             Runtime: 
           </b>
           <span>
@@ -1012,6 +1040,20 @@ exports[`MovieDetails component should match snapshot with other data 1`] = `
           </b>
           <span>
             English
+          </span>
+        </div>
+      </div>
+      <div
+        class="ant-col ant-col-24 css-dev-only-do-not-override-1xg9z9n"
+      >
+        <div
+          class="ant-typography css-dev-only-do-not-override-1xg9z9n"
+        >
+          <b>
+            Country: 
+          </b>
+          <span>
+            United States of America
           </span>
         </div>
       </div>

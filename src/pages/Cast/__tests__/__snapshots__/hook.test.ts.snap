@@ -58,6 +58,12 @@ exports[`Cast useContainer hook should match snapshot 1`] = `
     "original_language": "en",
     "overview": "test/overview",
     "poster_path": "/image",
+    "production_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America",
+      },
+    ],
     "release_date": "01-01-1999",
     "revenue": 3000000,
     "runtime": 150,
@@ -126,6 +132,12 @@ exports[`Cast useContainer hook should match snapshot without params 1`] = `
     "original_language": "en",
     "overview": "test/overview",
     "poster_path": "/image",
+    "production_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America",
+      },
+    ],
     "release_date": "01-01-1999",
     "revenue": 3000000,
     "runtime": 150,

@@ -14,9 +14,15 @@ interface IGenre {
   name: string
 }
 
+interface ICountry {
+  iso_3166_1: string
+  name: string
+}
+
 export interface IMovieDetails extends IMovie {
   budget: number
   genres: IGenre[]
+  production_countries: ICountry[]
   revenue: number
   runtime: number
   status: string

@@ -21,6 +21,9 @@ const mockMovieDetails: IMovieDetails = {
   ...mockMovie,
   budget: 1000000,
   genres: [{ id: 1, name: 'test/genre' }],
+  production_countries: [
+    { iso_3166_1: 'US', name: 'United States of America' },
+  ],
   revenue: 3000000,
   runtime: 150,
   status: 'test/status',
