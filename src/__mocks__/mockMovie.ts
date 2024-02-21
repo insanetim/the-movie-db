@@ -73,7 +73,6 @@ export {
   mockCrew,
   mockImage,
   mockMovie,
-  mockMovieDetails as mockMovieDetail,
-  mockMovieDetailsExtended as mockMovieDetailExtended,
+  mockMovieDetailsExtended,
   mockMoviesResponse,
 }

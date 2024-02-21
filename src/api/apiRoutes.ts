@@ -292,7 +292,7 @@ export const getMovieDetails = async ({
   return data
 }
 
-// Person
+// PersonDetails
 export const getPersonDetails = async ({ personId }: { personId: number }) => {
   const { data } = await httpClient.request<IPersonDetails>({
     params: {

@@ -38,9 +38,7 @@ const Cast: React.FC = () => {
   }
 
   const title = `${movie.title}${
-    movie.release_date
-      ? ` (${format(new Date(movie.release_date), 'yyyy')})`
-      : ''
+    movie.release_date ? ` (${format(movie.release_date, 'yyyy')})` : ''
   }`
   const pageTitle = `${title} - Cast & Crew`
 

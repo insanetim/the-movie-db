@@ -11,7 +11,7 @@ import PageTitle from 'src/components/UI/PageTitle'
 
 import useContainer from './hook'
 
-const Person = () => {
+const PersonDetails = () => {
   const { error, loading, person } = useContainer()
 
   if (loading) {
@@ -102,4 +102,4 @@ const Person = () => {
   )
 }
 
-export default Person
+export default PersonDetails

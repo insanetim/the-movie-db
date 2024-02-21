@@ -1,7 +1,7 @@
 import { screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { mergeDeepRight } from 'ramda'
-import { mockMovieDetailExtended } from 'src/__mocks__/mockMovie'
+import { mockMovieDetailsExtended } from 'src/__mocks__/mockMovie'
 import renderWithWrapper from 'src/utils/testHelpers/renderWithWrapper'
 
 import MovieDetails from '../component'
@@ -14,7 +14,7 @@ const mockedHook: MovieDetailsHookReturn = {
   handleGoToCast: jest.fn(),
   handleWatchlistClick: jest.fn(),
   loading: false,
-  movie: mockMovieDetailExtended,
+  movie: mockMovieDetailsExtended,
   popoverOpen: false,
   setPopoverOpen: jest.fn(),
 }

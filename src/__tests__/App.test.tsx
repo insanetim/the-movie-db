@@ -1,7 +1,7 @@
 import { screen } from '@testing-library/react'
 import { Location } from 'react-router-dom'
-import { mockListDetail } from 'src/__mocks__/mockList'
-import { mockMovieDetailExtended } from 'src/__mocks__/mockMovie'
+import { mockListDetails } from 'src/__mocks__/mockList'
+import { mockMovieDetailsExtended } from 'src/__mocks__/mockMovie'
 import { mockPersonDetails } from 'src/__mocks__/mockPerson'
 import App, {
   Cast,
@@ -118,7 +118,7 @@ const mockedListDetailsHook: ListDetailsHookReturn = {
   handleListDelete: jest.fn(),
   handleMovieDelete: jest.fn(),
   handlePagination: jest.fn(),
-  list: mockListDetail,
+  list: mockListDetails,
   loading: false,
 }
 jest.mock('../pages/ListDetails/hook', () =>
@@ -131,7 +131,7 @@ const mockedMovieDetailsHook: MovieDetailsHookReturn = {
   handleGoToCast: jest.fn(),
   handleWatchlistClick: jest.fn(),
   loading: false,
-  movie: mockMovieDetailExtended,
+  movie: mockMovieDetailsExtended,
   popoverOpen: false,
   setPopoverOpen: jest.fn(),
 }
@@ -142,7 +142,7 @@ jest.mock('../pages/MovieDetails/hook', () =>
 const mockedCastHook: CastHookReturn = {
   error: null,
   loading: false,
-  movie: mockMovieDetailExtended,
+  movie: mockMovieDetailsExtended,
   movieSlug: '1234-test-movie',
 }
 jest.mock('../pages/Cast/hook', () => jest.fn(() => mockedCastHook))

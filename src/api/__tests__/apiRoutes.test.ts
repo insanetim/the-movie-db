@@ -1,7 +1,7 @@
 import mockAccount from 'src/__mocks__/mockAccount'
-import { mockListDetail, mockListsResponse } from 'src/__mocks__/mockList'
+import { mockListDetails, mockListsResponse } from 'src/__mocks__/mockList'
 import {
-  mockMovieDetailExtended,
+  mockMovieDetailsExtended,
   mockMoviesResponse,
 } from 'src/__mocks__/mockMovie'
 import { mockPersonDetails } from 'src/__mocks__/mockPerson'
@@ -140,7 +140,7 @@ describe('apiRoutes', () => {
       params: { page: '1' },
       url: `/list/${listId}`,
     }
-    const response = { data: mockListDetail }
+    const response = { data: mockListDetails }
     requestSpy.mockResolvedValueOnce(response)
 
     const result = await apiRoutes.getListDetails({ listId, page })
@@ -289,13 +289,13 @@ describe('apiRoutes', () => {
       },
       url: `/movie/${movieId}`,
     }
-    const response = { data: mockMovieDetailExtended }
+    const response = { data: mockMovieDetailsExtended }
     requestSpy.mockResolvedValueOnce(response)
 
     const result = await apiRoutes.getMovieDetails({ movieId, sessionId })
 
     expect(requestSpy).toHaveBeenCalledWith(request)
-    expect(result).toEqual(mockMovieDetailExtended)
+    expect(result).toEqual(mockMovieDetailsExtended)
   })
 
   it('should handle "getPersonDetails" request', async () => {

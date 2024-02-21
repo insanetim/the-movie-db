@@ -9,7 +9,7 @@ const mockList: IList = {
   name: 'test/list',
 }
 
-const mockListDetail: IListDetails = {
+const mockListDetails: IListDetails = {
   ...mockList,
   items: [mockMovie],
   page: 1,
@@ -24,4 +24,4 @@ const mockListsResponse: IResponse<IList> = {
   total_results: 1,
 }
 
-export { mockList, mockListDetail, mockListsResponse }
+export { mockList, mockListDetails, mockListsResponse }
