@@ -4,6 +4,7 @@ import {
   mockMovieDetailExtended,
   mockMoviesResponse,
 } from 'src/__mocks__/mockMovie'
+import { mockPersonDetails } from 'src/__mocks__/mockPerson'
 import httpClient from 'src/api/httpClient'
 
 import * as apiRoutes from '../apiRoutes'
@@ -19,6 +20,7 @@ describe('apiRoutes', () => {
   const listId = 1234
   const listData = { description: 'test/description', name: 'test/name' }
   const movieId = 1234
+  const personId = 1234
 
   it('should handle "createRequestToken" request', async () => {
     const request = { url: '/authentication/token/new' }
@@ -294,5 +296,21 @@ describe('apiRoutes', () => {
 
     expect(requestSpy).toHaveBeenCalledWith(request)
     expect(result).toEqual(mockMovieDetailExtended)
+  })
+
+  it('should handle "getPersonDetails" request', async () => {
+    const request = {
+      params: {
+        append_to_response: 'external_ids,movie_credits',
+      },
+      url: `/person/${personId}`,
+    }
+    const response = { data: mockPersonDetails }
+    requestSpy.mockResolvedValueOnce(response)
+
+    const result = await apiRoutes.getPersonDetails({ personId })
+
+    expect(requestSpy).toHaveBeenCalledWith(request)
+    expect(result).toEqual(mockPersonDetails)
   })
 })

@@ -38,7 +38,7 @@ describe('movieDetails actions', () => {
   const inFavorite = true
   const inWatchlist = true
 
-  describe('fetchMovie', () => {
+  describe('fetchMovieDetails', () => {
     const thunk = fetchMovieDetails(movieId)
 
     it('should handle success', async () => {

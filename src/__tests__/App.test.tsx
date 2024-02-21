@@ -2,6 +2,7 @@ import { screen } from '@testing-library/react'
 import { Location } from 'react-router-dom'
 import { mockListDetail } from 'src/__mocks__/mockList'
 import { mockMovieDetailExtended } from 'src/__mocks__/mockMovie'
+import { mockPersonDetails } from 'src/__mocks__/mockPerson'
 import App, {
   Cast,
   Dashboard,
@@ -12,6 +13,7 @@ import App, {
   Login,
   MovieDetails,
   NotFound,
+  PersonDetails,
   Watchlist,
 } from 'src/App'
 import { TrendingHookReturn } from 'src/components/Dashboard/Trending/types'
@@ -26,6 +28,7 @@ import { ListDetailsHookReturn } from 'src/pages/ListDetails/types'
 import { ListsHookReturn } from 'src/pages/Lists/types'
 import { LoginHookReturn } from 'src/pages/Login/types'
 import { MovieDetailsHookReturn } from 'src/pages/MovieDetails/types'
+import { PersonDetailsHookReturn } from 'src/pages/PersonDetails/types'
 import { WatchlistHookReturn } from 'src/pages/Watchlist/types'
 import renderWithWrapper from 'src/utils/testHelpers/renderWithWrapper'
 
@@ -144,6 +147,15 @@ const mockedCastHook: CastHookReturn = {
 }
 jest.mock('../pages/Cast/hook', () => jest.fn(() => mockedCastHook))
 
+const mockedPersonDetailsHook: PersonDetailsHookReturn = {
+  error: null,
+  loading: false,
+  person: mockPersonDetails,
+}
+jest.mock('../pages/PersonDetails/hook', () =>
+  jest.fn(() => mockedPersonDetailsHook)
+)
+
 describe('App component', () => {
   it('should match snapshot', () => {
     const { asFragment } = renderWithWrapper(<App />)
@@ -210,6 +222,14 @@ describe('App component', () => {
 
     expect(
       await screen.findByText(/back to movie/i, undefined, { timeout: 3000 })
+    ).toBeInTheDocument()
+  })
+
+  it('should render PersonDetails', async () => {
+    renderWithWrapper(<PersonDetails />)
+
+    expect(
+      await screen.findByText(/personal info/i, undefined, { timeout: 3000 })
     ).toBeInTheDocument()
   })
 
