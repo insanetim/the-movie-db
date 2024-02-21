@@ -19,6 +19,7 @@ const SocialLinks: React.FC<SocialLinksProps> = ({ externalIds }) => {
         <a
           className='social-link'
           href={`https://facebook.com/${externalIds.facebook_id}`}
+          rel='noreferrer'
           target='_blank'
         >
           <FacebookFilled />
@@ -28,6 +29,7 @@ const SocialLinks: React.FC<SocialLinksProps> = ({ externalIds }) => {
         <a
           className='social-link'
           href={`https://instagram.com/${externalIds.instagram_id}`}
+          rel='noreferrer'
           target='_blank'
         >
           <InstagramOutlined />
@@ -37,6 +39,7 @@ const SocialLinks: React.FC<SocialLinksProps> = ({ externalIds }) => {
         <a
           className='social-link'
           href={`https://tiktok.com/@${externalIds.tiktok_id}`}
+          rel='noreferrer'
           target='_blank'
         >
           <TikTokFilled />
@@ -46,6 +49,7 @@ const SocialLinks: React.FC<SocialLinksProps> = ({ externalIds }) => {
         <a
           className='social-link'
           href={`https://twitter.com/${externalIds.twitter_id}`}
+          rel='noreferrer'
           target='_blank'
         >
           <TwitterOutlined />

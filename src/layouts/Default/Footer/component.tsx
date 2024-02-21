@@ -6,7 +6,7 @@ const Footer: React.FC = () => {
       <span style={{ opacity: 0.8 }}>
         Made with ❤ by{' '}
         <Typography.Link
-          href='https://github.com/insanetim/frontend-internship'
+          href='https://github.com/insanetim/the-movie-db'
           rel='noreferrer'
           target='_blank'
         >
