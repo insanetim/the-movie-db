@@ -1,4 +1,4 @@
-import { ListData } from 'src/components/ModalRoot/Modals/ModalCreateList/types'
+import { ListData } from 'src/components/Modals/ModalCreateList/types'
 import { IState } from 'src/interfaces/global.interface'
 import { IList, IListsList } from 'src/interfaces/list.interface'
 import { IMovie } from 'src/interfaces/movie.interface'

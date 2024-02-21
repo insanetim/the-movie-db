@@ -1,5 +1,5 @@
 import httpClient from 'src/api/httpClient'
-import { ListData } from 'src/components/ModalRoot/Modals/ModalCreateList/types'
+import { ListData } from 'src/components/Modals/ModalCreateList/types'
 import { IAccount } from 'src/interfaces/account.interface'
 import { IList, IListDetails, IListsList } from 'src/interfaces/list.interface'
 import {
