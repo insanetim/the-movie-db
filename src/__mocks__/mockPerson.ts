@@ -1,7 +1,6 @@
 import {
-  ICreditCast,
-  ICreditCrew,
   IExternalIds,
+  IPersonCredit,
   IPersonDetails,
 } from 'src/interfaces/person.interface'
 
@@ -12,7 +11,7 @@ const mockExternalIds: IExternalIds = {
   twitter_id: 'twitter_user',
 }
 
-const mockCreditCast: ICreditCast = {
+const mockCreditCast: IPersonCredit = {
   character: 'Neo',
   id: 1234,
   popularity: 100500,
@@ -20,7 +19,7 @@ const mockCreditCast: ICreditCast = {
   title: 'The Matrix',
 }
 
-const mockedCreditCrew: ICreditCrew[] = [
+const mockedCreditCrew: IPersonCredit[] = [
   {
     department: 'Directing',
     id: 1234,

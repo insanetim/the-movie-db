@@ -1,12 +1,12 @@
 import { renderHook } from '@testing-library/react'
-import { ICrew } from 'src/interfaces/movie.interface'
+import { IMovieCredit } from 'src/interfaces/movie.interface'
 
 import useContainer from '../hook'
 import { CrewListHookProps } from '../types'
 
 describe('CrewList useContainer hook', () => {
   const props: CrewListHookProps = {
-    crew: [{ department: 'A' }, { department: 'B' }] as ICrew[],
+    crew: [{ department: 'A' }, { department: 'B' }] as IMovieCredit[],
   }
 
   it('should match snapshot', () => {

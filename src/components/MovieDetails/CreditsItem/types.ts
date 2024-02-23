@@ -1,5 +1,5 @@
 export type CreditsItemProps = {
-  description: string
+  description?: string
   id: number
   profilePath?: string
   title: string

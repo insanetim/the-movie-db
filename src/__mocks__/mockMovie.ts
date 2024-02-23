@@ -1,8 +1,7 @@
 import { IResponse } from 'src/interfaces/global.interface'
 import {
-  ICast,
-  ICrew,
   IMovie,
+  IMovieCredit,
   IMovieDetails,
   IMovieDetailsExtended,
   IMovieImage,
@@ -29,15 +28,8 @@ const mockMovieDetails: IMovieDetails = {
   status: 'test/status',
 }
 
-const mockCast: ICast = {
+const mockMovieCredit: IMovieCredit = {
   character: 'test/character',
-  credit_id: '1234',
-  id: 1234,
-  name: 'test/name',
-  profile_path: '/image',
-}
-
-const mockCrew: ICrew = {
   credit_id: '1234',
   department: 'test/department',
   id: 1234,
@@ -54,8 +46,8 @@ const mockMovieDetailsExtended: IMovieDetailsExtended = {
   ...mockMovieDetails,
   account_states: { favorite: false, watchlist: false },
   credits: {
-    cast: [mockCast],
-    crew: [mockCrew],
+    cast: [mockMovieCredit],
+    crew: [mockMovieCredit],
   },
   images: {
     backdrops: [mockImage],
@@ -72,10 +64,9 @@ const mockMoviesResponse: IResponse<IMovie> = {
 }
 
 export {
-  mockCast,
-  mockCrew,
   mockImage,
   mockMovie,
+  mockMovieCredit,
   mockMovieDetailsExtended,
   mockMoviesResponse,
 }

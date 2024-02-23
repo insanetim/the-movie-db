@@ -1,15 +1,15 @@
-import { ICrew } from 'src/interfaces/movie.interface'
+import { IMovieCredit } from 'src/interfaces/movie.interface'
 
 export type CrewListProps = {
-  crew: ICrew[]
+  crew: IMovieCredit[]
 }
 
 export type CrewListHookProps = {
-  crew: ICrew[]
+  crew: IMovieCredit[]
 }
 
 export type CrewListHookReturn = {
-  groupedCrew: Partial<Record<string, ICrew[]>> & {
+  groupedCrew: Partial<Record<string, IMovieCredit[]>> & {
     groupNames: string[]
   }
 }

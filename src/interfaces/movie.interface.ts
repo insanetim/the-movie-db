@@ -43,19 +43,12 @@ export interface IMovieAccountStates {
   watchlist: boolean
 }
 
-export interface ICast {
-  character: string
+export interface IMovieCredit {
+  character?: string
   credit_id: string
+  department?: string
   id: number
-  name: string
-  profile_path?: string
-}
-
-export interface ICrew {
-  credit_id: string
-  department: string
-  id: number
-  job: string
+  job?: string
   name: string
   profile_path?: string
 }
@@ -63,8 +56,8 @@ export interface ICrew {
 export interface IMovieDetailsExtended extends IMovieDetails {
   account_states: IMovieAccountStates
   credits: {
-    cast: ICast[]
-    crew: ICrew[]
+    cast: IMovieCredit[]
+    crew: IMovieCredit[]
   }
   images: IMovieImages
 }

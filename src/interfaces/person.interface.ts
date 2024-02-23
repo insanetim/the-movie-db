@@ -17,26 +17,20 @@ export interface IExternalIds {
   twitter_id?: string
 }
 
-export interface ICredit {
+export interface IPersonCredit {
+  character?: string
+  department?: string
   id: number
+  job?: string
   popularity: number
   poster_path: string
   title: string
 }
 
-export interface ICreditCast extends ICredit {
-  character: string
-}
-
-export interface ICreditCrew extends ICredit {
-  department: string
-  job: string
-}
-
 export interface IPersonDetails extends IPerson {
   external_ids: IExternalIds
   movie_credits: {
-    cast: ICreditCast[]
-    crew: ICreditCrew[]
+    cast: IPersonCredit[]
+    crew: IPersonCredit[]
   }
 }

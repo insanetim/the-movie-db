@@ -18,13 +18,16 @@ exports[`MovieDetails useContainer hook should match snapshot 1`] = `
         {
           "character": "test/character",
           "credit_id": "1234",
+          "department": "test/department",
           "id": 1234,
+          "job": "test/job",
           "name": "test/name",
           "profile_path": "/image",
         },
       ],
       "crew": [
         {
+          "character": "test/character",
           "credit_id": "1234",
           "department": "test/department",
           "id": 1234,
@@ -96,13 +99,16 @@ exports[`MovieDetails useContainer hook should match snapshot without params 1`]
         {
           "character": "test/character",
           "credit_id": "1234",
+          "department": "test/department",
           "id": 1234,
+          "job": "test/job",
           "name": "test/name",
           "profile_path": "/image",
         },
       ],
       "crew": [
         {
+          "character": "test/character",
           "credit_id": "1234",
           "department": "test/department",
           "id": 1234,

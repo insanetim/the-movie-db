@@ -1,6 +1,6 @@
-import { ICast } from 'src/interfaces/movie.interface'
+import { IMovieCredit } from 'src/interfaces/movie.interface'
 
 export type CastListProps = {
-  cast: ICast[]
+  cast: IMovieCredit[]
   showTotal?: boolean
 }
