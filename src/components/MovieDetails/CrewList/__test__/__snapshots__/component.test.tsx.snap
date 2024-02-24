@@ -3,10 +3,10 @@
 exports[`CrewList component should match snapshot 1`] = `
 <DocumentFragment>
   <div
-    class="ant-col ant-col-24 css-dev-only-do-not-override-1xg9z9n"
+    class="ant-col ant-col-24 css-dev-only-do-not-override-1k979oh"
   >
     <h3
-      class="ant-typography css-dev-only-do-not-override-1xg9z9n"
+      class="ant-typography css-dev-only-do-not-override-1k979oh"
     >
       Crew 
       <span
@@ -17,23 +17,23 @@ exports[`CrewList component should match snapshot 1`] = `
     </h3>
   </div>
   <div
-    class="ant-col ant-col-24 crew-group css-dev-only-do-not-override-1xg9z9n"
+    class="ant-col ant-col-24 crew-group css-dev-only-do-not-override-1k979oh"
   >
     <h4
-      class="ant-typography css-dev-only-do-not-override-1xg9z9n"
+      class="ant-typography css-dev-only-do-not-override-1k979oh"
     >
       test/department
     </h4>
     <div
-      class="ant-row css-dev-only-do-not-override-1xg9z9n"
+      class="ant-row css-dev-only-do-not-override-1k979oh"
       style="margin-left: -12px; margin-right: -12px; row-gap: 16px;"
     >
       <div
-        class="ant-col ant-col-24 ant-col-sm-12 ant-col-md-8 ant-col-lg-8 ant-col-xl-6 css-dev-only-do-not-override-1xg9z9n"
+        class="ant-col ant-col-24 ant-col-sm-12 ant-col-md-8 ant-col-lg-8 ant-col-xl-6 css-dev-only-do-not-override-1k979oh"
         style="padding-left: 12px; padding-right: 12px;"
       >
         <div
-          class="ant-card ant-card-bordered ant-card-hoverable css-dev-only-do-not-override-1xg9z9n"
+          class="ant-card ant-card-bordered ant-card-hoverable css-dev-only-do-not-override-1k979oh"
         >
           <div
             class="ant-card-cover"

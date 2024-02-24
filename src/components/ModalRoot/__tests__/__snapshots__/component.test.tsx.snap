@@ -5,7 +5,7 @@ exports[`ModalRoot component should match snapshot 1`] = `
   <div />
   <div>
     <div
-      class="ant-modal-root css-dev-only-do-not-override-1xg9z9n"
+      class="ant-modal-root css-dev-only-do-not-override-1k979oh"
     >
       <div
         class="ant-modal-mask"
@@ -17,7 +17,7 @@ exports[`ModalRoot component should match snapshot 1`] = `
         <div
           aria-labelledby="test-id"
           aria-modal="true"
-          class="ant-modal css-dev-only-do-not-override-1xg9z9n ant-zoom-appear ant-zoom-appear-prepare ant-zoom"
+          class="ant-modal css-dev-only-do-not-override-1k979oh ant-zoom-appear ant-zoom-appear-prepare ant-zoom"
           role="dialog"
           style="width: 520px;"
         >
@@ -74,16 +74,16 @@ exports[`ModalRoot component should match snapshot 1`] = `
             >
               <form
                 autocomplete="off"
-                class="ant-form ant-form-horizontal css-dev-only-do-not-override-1xg9z9n"
+                class="ant-form ant-form-horizontal css-dev-only-do-not-override-1k979oh"
               >
                 <div
-                  class="ant-form-item css-dev-only-do-not-override-1xg9z9n"
+                  class="ant-form-item css-dev-only-do-not-override-1k979oh"
                 >
                   <div
-                    class="ant-row ant-form-item-row css-dev-only-do-not-override-1xg9z9n"
+                    class="ant-row ant-form-item-row css-dev-only-do-not-override-1k979oh"
                   >
                     <div
-                      class="ant-col ant-form-item-control css-dev-only-do-not-override-1xg9z9n"
+                      class="ant-col ant-form-item-control css-dev-only-do-not-override-1k979oh"
                     >
                       <div
                         class="ant-form-item-control-input"
@@ -93,7 +93,7 @@ exports[`ModalRoot component should match snapshot 1`] = `
                         >
                           <input
                             aria-required="true"
-                            class="ant-input css-dev-only-do-not-override-1xg9z9n ant-input-outlined"
+                            class="ant-input css-dev-only-do-not-override-1k979oh ant-input-outlined"
                             id="name"
                             placeholder="Name"
                             type="text"
@@ -105,13 +105,13 @@ exports[`ModalRoot component should match snapshot 1`] = `
                   </div>
                 </div>
                 <div
-                  class="ant-form-item css-dev-only-do-not-override-1xg9z9n"
+                  class="ant-form-item css-dev-only-do-not-override-1k979oh"
                 >
                   <div
-                    class="ant-row ant-form-item-row css-dev-only-do-not-override-1xg9z9n"
+                    class="ant-row ant-form-item-row css-dev-only-do-not-override-1k979oh"
                   >
                     <div
-                      class="ant-col ant-form-item-control css-dev-only-do-not-override-1xg9z9n"
+                      class="ant-col ant-form-item-control css-dev-only-do-not-override-1k979oh"
                     >
                       <div
                         class="ant-form-item-control-input"
@@ -121,7 +121,7 @@ exports[`ModalRoot component should match snapshot 1`] = `
                         >
                           <input
                             aria-required="true"
-                            class="ant-input css-dev-only-do-not-override-1xg9z9n ant-input-outlined"
+                            class="ant-input css-dev-only-do-not-override-1k979oh ant-input-outlined"
                             id="description"
                             placeholder="Description"
                             type="text"
@@ -138,7 +138,7 @@ exports[`ModalRoot component should match snapshot 1`] = `
               class="ant-modal-footer"
             >
               <button
-                class="ant-btn css-dev-only-do-not-override-1xg9z9n ant-btn-default"
+                class="ant-btn css-dev-only-do-not-override-1k979oh ant-btn-default"
                 type="button"
               >
                 <span>
@@ -146,7 +146,7 @@ exports[`ModalRoot component should match snapshot 1`] = `
                 </span>
               </button>
               <button
-                class="ant-btn css-dev-only-do-not-override-1xg9z9n ant-btn-primary"
+                class="ant-btn css-dev-only-do-not-override-1k979oh ant-btn-primary"
                 type="button"
               >
                 <span>
