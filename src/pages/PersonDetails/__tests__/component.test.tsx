@@ -6,6 +6,7 @@ import { PersonDetailsHookReturn } from '../types'
 
 const mockedHook: PersonDetailsHookReturn = {
   error: null,
+  handleGoToCredits: jest.fn(),
   loading: false,
   person: mockPersonDetails,
 }

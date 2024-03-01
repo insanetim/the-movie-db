@@ -1,4 +1,4 @@
-import { Col, Divider, Row, Typography } from 'antd'
+import { Button, Col, Divider, Row, Typography } from 'antd'
 import { isEmpty, isNil, isNotNil } from 'ramda'
 import NoImage from 'src/assets/images/no-image.svg'
 import KnownFor from 'src/components/PersonDetails/KnownFor'
@@ -12,7 +12,7 @@ import PageTitle from 'src/components/UI/PageTitle'
 import useContainer from './hook'
 
 const PersonDetails = () => {
-  const { error, loading, person } = useContainer()
+  const { error, handleGoToCredits, loading, person } = useContainer()
 
   if (loading) {
     return (
@@ -91,10 +91,24 @@ const PersonDetails = () => {
           </Col>
           {(!isEmpty(person.movie_credits.cast) ||
             !isEmpty(person.movie_credits.crew)) && (
-            <KnownFor
-              credits={person.movie_credits}
-              knownForDepartment={person.known_for_department}
-            />
+            <>
+              <KnownFor
+                credits={person.movie_credits}
+                knownForDepartment={person.known_for_department}
+              />
+              <Col
+                className='top-margin text-center'
+                span={24}
+              >
+                <Button
+                  ghost
+                  onClick={handleGoToCredits}
+                  type='primary'
+                >
+                  Show all credits
+                </Button>
+              </Col>
+            </>
           )}
         </Row>
       </div>

@@ -149,6 +149,7 @@ jest.mock('../pages/Cast/hook', () => jest.fn(() => mockedCastHook))
 
 const mockedPersonDetailsHook: PersonDetailsHookReturn = {
   error: null,
+  handleGoToCredits: jest.fn(),
   loading: false,
   person: mockPersonDetails,
 }
