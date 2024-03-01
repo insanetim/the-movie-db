@@ -263,6 +263,19 @@ exports[`PersonDetails component should match snapshot 1`] = `
           </div>
         </div>
       </div>
+      <div
+        class="ant-col ant-col-24 top-margin text-center css-dev-only-do-not-override-1k979oh"
+        style="padding-left: 12px; padding-right: 12px;"
+      >
+        <button
+          class="ant-btn css-dev-only-do-not-override-1k979oh ant-btn-primary ant-btn-background-ghost"
+          type="button"
+        >
+          <span>
+            Show all credits
+          </span>
+        </button>
+      </div>
     </div>
   </div>
 </DocumentFragment>
@@ -622,6 +635,19 @@ exports[`PersonDetails component should match snapshot with other data 1`] = `
           class="ant-row css-dev-only-do-not-override-1k979oh"
           style="margin-left: -12px; margin-right: -12px; row-gap: 16px;"
         />
+      </div>
+      <div
+        class="ant-col ant-col-24 top-margin text-center css-dev-only-do-not-override-1k979oh"
+        style="padding-left: 12px; padding-right: 12px;"
+      >
+        <button
+          class="ant-btn css-dev-only-do-not-override-1k979oh ant-btn-primary ant-btn-background-ghost"
+          type="button"
+        >
+          <span>
+            Show all credits
+          </span>
+        </button>
       </div>
     </div>
   </div>

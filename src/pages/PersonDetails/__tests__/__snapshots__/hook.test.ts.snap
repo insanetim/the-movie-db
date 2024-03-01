@@ -3,6 +3,7 @@
 exports[`PersonDetails useContainer hook should match snapshot 1`] = `
 {
   "error": null,
+  "handleGoToCredits": [Function],
   "loading": false,
   "person": {
     "biography": "test-biography",
@@ -56,6 +57,7 @@ exports[`PersonDetails useContainer hook should match snapshot 1`] = `
 exports[`PersonDetails useContainer hook should match snapshot without params 1`] = `
 {
   "error": null,
+  "handleGoToCredits": [Function],
   "loading": false,
   "person": {
     "biography": "test-biography",
