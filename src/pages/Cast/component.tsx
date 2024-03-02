@@ -50,7 +50,7 @@ const Cast: React.FC = () => {
           <Col span={24}>
             <Typography.Paragraph>
               <Link to={`/movie/${movieSlug}`}>
-                <ArrowLeftOutlined /> Back to movie
+                <ArrowLeftOutlined /> Back to movie details
               </Link>
             </Typography.Paragraph>
           </Col>

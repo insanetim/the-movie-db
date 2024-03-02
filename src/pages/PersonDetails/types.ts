@@ -8,6 +8,6 @@ export type PersonDetailsHookReturn = {
   person?: IPersonDetails
 }
 
-export type PersonRouteParams = {
+export type PersonDetailsRouteParams = {
   personSlug: string
 }

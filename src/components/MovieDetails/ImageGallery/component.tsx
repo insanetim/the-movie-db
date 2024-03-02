@@ -5,7 +5,11 @@ import { ImageGalleryProps } from './types'
 const ImageGallery: React.FC<ImageGalleryProps> = ({ images, title }) => (
   <Row>
     <Col span={24}>
-      <Carousel autoplay>
+      <Carousel
+        autoplay
+        effect='fade'
+        speed={700}
+      >
         {images.map(image => (
           <div
             className='movie-image'

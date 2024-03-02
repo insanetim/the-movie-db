@@ -4,7 +4,7 @@ export interface IMovie {
   id: number | string
   original_language: string
   overview?: string
-  poster_path?: string
+  poster_path: null | string
   release_date?: string
   title: string
 }

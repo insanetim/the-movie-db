@@ -1,5 +1,148 @@
+import { ArrowLeftOutlined } from '@ant-design/icons'
+import { Col, Flex, Image, Row, Segmented, Table, Typography } from 'antd'
+import { ColumnsType } from 'antd/es/table'
+import { compareAsc } from 'date-fns'
+import { isNil } from 'ramda'
+import { Link } from 'react-router-dom'
+import NoImage from 'src/assets/images/no-image.svg'
+import Empty from 'src/components/UI/Empty'
+import Error from 'src/components/UI/Error'
+import Loading from 'src/components/UI/Loading'
+import PageTitle from 'src/components/UI/PageTitle'
+
+import useContainer from './hook'
+import { FilterOptions, ICredit } from './types'
+
 const Credits = () => {
-  return <div>Credits Page</div>
+  const { dataSource, error, handleChangeFilter, loading, person, personSlug } =
+    useContainer()
+
+  if (loading) {
+    return (
+      <div className='container top-margin'>
+        <Loading />
+      </div>
+    )
+  }
+
+  if (error) {
+    return (
+      <div className='container top-margin'>
+        <Error error={error} />
+      </div>
+    )
+  }
+
+  if (isNil(person)) {
+    return <Empty description='Person not found' />
+  }
+
+  const columns: ColumnsType<ICredit> = [
+    {
+      dataIndex: 'releaseDateTitle',
+      fixed: 'left',
+      key: 'releaseDateTitle',
+      sorter: (a, b) => compareAsc(a.releaseDate, b.releaseDate),
+      title: 'Release Date',
+      width: 200,
+    },
+    {
+      dataIndex: 'title',
+      key: 'title',
+      render: (title: string, credit) => {
+        return <Link to={`/movie/${credit.movieSlug}`}>{title}</Link>
+      },
+      sorter: (a, b) => a.title.localeCompare(b.title),
+      title: 'Title',
+    },
+    {
+      dataIndex: 'role',
+      key: 'role',
+      title: 'Role',
+    },
+    {
+      align: 'center',
+      dataIndex: 'posterPath',
+      key: 'posterPath',
+      render: (posterPath: string, credit) => {
+        const POSTER_HEIGHT = 120
+        let poster: JSX.Element
+        if (isNil(posterPath)) {
+          poster = (
+            <div
+              className='person-poster--no-image'
+              style={{ height: POSTER_HEIGHT, margin: '0 auto' }}
+            >
+              <img
+                alt={credit.title}
+                src={NoImage}
+              />
+            </div>
+          )
+        } else {
+          poster = (
+            <Image
+              alt={credit.title}
+              height={POSTER_HEIGHT}
+              src={`https://image.tmdb.org/t/p/w500${posterPath}`}
+              style={{ borderRadius: 8 }}
+            />
+          )
+        }
+        return poster
+      },
+      title: 'Poster',
+    },
+  ]
+
+  return (
+    <div className='container top-margin'>
+      <Row>
+        <Col span={24}>
+          <Typography.Paragraph>
+            <Link to={`/person/${personSlug}`}>
+              <ArrowLeftOutlined /> Back to person details
+            </Link>
+          </Typography.Paragraph>
+        </Col>
+      </Row>
+      <PageTitle>
+        <Typography.Title
+          level={1}
+          style={{ marginBottom: 0 }}
+        >
+          {person.name}
+        </Typography.Title>
+      </PageTitle>
+      <Row>
+        <Col
+          span={24}
+          style={{ marginBottom: 12 }}
+        >
+          <Flex justify='end'>
+            <Segmented
+              onChange={handleChangeFilter}
+              options={Object.values(FilterOptions)}
+            />
+          </Flex>
+        </Col>
+        <Col span={24}>
+          <Table<ICredit>
+            className='credits-table'
+            columns={columns}
+            dataSource={dataSource}
+            pagination={{
+              hideOnSinglePage: true,
+              pageSize: 5,
+              position: ['bottomCenter'],
+              showSizeChanger: false,
+            }}
+            scroll={{ x: 744 }}
+          />
+        </Col>
+      </Row>
+    </div>
+  )
 }
 
 export default Credits

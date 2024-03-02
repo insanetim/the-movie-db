@@ -16,6 +16,7 @@ const mockCreditCast: IPersonCredit = {
   id: 1234,
   popularity: 100500,
   poster_path: '/image',
+  release_date: '1999-01-01',
   title: 'The Matrix',
 }
 
@@ -26,6 +27,7 @@ const mockedCreditCrew: IPersonCredit[] = [
     job: 'Director',
     popularity: 100500,
     poster_path: '/image',
+    release_date: '1999-01-01',
     title: 'The Matrix',
   },
   {
@@ -34,6 +36,7 @@ const mockedCreditCrew: IPersonCredit[] = [
     job: 'Director',
     popularity: 999,
     poster_path: '/image',
+    release_date: '',
     title: 'Jupiter Ascending',
   },
 ]

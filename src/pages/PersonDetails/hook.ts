@@ -12,12 +12,12 @@ import {
 } from 'src/store/personDetails/selectors'
 import getIdFromSlug from 'src/utils/helpers/getIdFromSlug'
 
-import { PersonDetailsHookReturn, PersonRouteParams } from './types'
+import { PersonDetailsHookReturn, PersonDetailsRouteParams } from './types'
 
 const useContainer = (): PersonDetailsHookReturn => {
   const { personSlug } = useParams<
-    keyof PersonRouteParams
-  >() as PersonRouteParams
+    keyof PersonDetailsRouteParams
+  >() as PersonDetailsRouteParams
   const navigate = useNavigate()
   const dispatch = useAppDispatch()
   const personId = getIdFromSlug(personSlug)
