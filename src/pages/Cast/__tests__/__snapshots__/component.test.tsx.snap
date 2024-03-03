@@ -36,7 +36,7 @@ exports[`Cast component should match snapshot 1`] = `
                 />
               </svg>
             </span>
-             Back to movie
+             Back to movie details
           </a>
         </div>
       </div>
@@ -368,7 +368,7 @@ exports[`Cast component should match snapshot without release_date 1`] = `
                 />
               </svg>
             </span>
-             Back to movie
+             Back to movie details
           </a>
         </div>
       </div>

@@ -1,12 +1,14 @@
-import { mockMovieCredit } from 'src/__mocks__/mockMovie'
 import renderWithWrapper from 'src/utils/testHelpers/renderWithWrapper'
 
-import CastList from '../component'
+import GoBackLink from '../component'
 
-describe('CastList component', () => {
+describe('GoBackLink component', () => {
   it('should match snapshot', () => {
     const { asFragment } = renderWithWrapper(
-      <CastList cast={mockMovieCredit} />
+      <GoBackLink
+        href='/movie/1234-test-movie'
+        title='Back to movie details'
+      />
     )
 
     expect(asFragment()).toMatchSnapshot()

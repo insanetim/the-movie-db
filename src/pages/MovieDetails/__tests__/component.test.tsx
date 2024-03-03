@@ -51,6 +51,16 @@ describe('MovieDetails component', () => {
     expect(mockedHook.handleWatchlistClick).toHaveBeenCalled()
   })
 
+  it('should call "handleGoToCast" when button clicked', async () => {
+    renderWithWrapper(<MovieDetails />)
+
+    const user = userEvent.setup()
+    const button = screen.getByText('Full Cast & Crew')
+    await user.click(button)
+
+    expect(mockedHook.handleGoToCast).toHaveBeenCalled()
+  })
+
   it('should call "setPopoverOpen" when popover clicked', async () => {
     renderWithWrapper(<MovieDetails />)
 

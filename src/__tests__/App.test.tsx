@@ -2,9 +2,10 @@ import { screen } from '@testing-library/react'
 import { Location } from 'react-router-dom'
 import { mockListDetails } from 'src/__mocks__/mockList'
 import { mockMovieDetailsExtended } from 'src/__mocks__/mockMovie'
-import { mockPersonDetails } from 'src/__mocks__/mockPerson'
+import { mockPersonDetails, mockedCredits } from 'src/__mocks__/mockPerson'
 import App, {
   Cast,
+  Credits,
   Dashboard,
   DefaultLayout,
   Favorite,
@@ -22,6 +23,7 @@ import { NotificationsRootHookReturn } from 'src/components/NotificationsRoot/ty
 import { ProtectedRoutesHookReturn } from 'src/components/ProtectedRoutes/types'
 import { HeaderHookReturn } from 'src/layouts/Default/Header/types'
 import { CastHookReturn } from 'src/pages/Cast/types'
+import { CreditsHookReturn } from 'src/pages/Credits/types'
 import { DashboardHookReturn } from 'src/pages/Dashboard/types'
 import { FavoriteHookReturn } from 'src/pages/Favorite/types'
 import { ListDetailsHookReturn } from 'src/pages/ListDetails/types'
@@ -149,12 +151,23 @@ jest.mock('../pages/Cast/hook', () => jest.fn(() => mockedCastHook))
 
 const mockedPersonDetailsHook: PersonDetailsHookReturn = {
   error: null,
+  handleGoToCredits: jest.fn(),
   loading: false,
   person: mockPersonDetails,
 }
 jest.mock('../pages/PersonDetails/hook', () =>
   jest.fn(() => mockedPersonDetailsHook)
 )
+
+const mockedCreditsHook: CreditsHookReturn = {
+  dataSource: mockedCredits,
+  error: null,
+  handleChangeFilter: jest.fn(),
+  loading: false,
+  person: mockPersonDetails,
+  personSlug: '1234-test-person',
+}
+jest.mock('../pages/Credits/hook', () => jest.fn(() => mockedCreditsHook))
 
 describe('App component', () => {
   it('should match snapshot', () => {
@@ -221,7 +234,9 @@ describe('App component', () => {
     renderWithWrapper(<Cast />)
 
     expect(
-      await screen.findByText(/back to movie/i, undefined, { timeout: 3000 })
+      await screen.findByText(/back to movie details/i, undefined, {
+        timeout: 3000,
+      })
     ).toBeInTheDocument()
   })
 
@@ -230,6 +245,16 @@ describe('App component', () => {
 
     expect(
       await screen.findByText(/personal info/i, undefined, { timeout: 3000 })
+    ).toBeInTheDocument()
+  })
+
+  it('should render Credits', async () => {
+    renderWithWrapper(<Credits />)
+
+    expect(
+      await screen.findByText(/back to person details/i, undefined, {
+        timeout: 3000,
+      })
     ).toBeInTheDocument()
   })
 

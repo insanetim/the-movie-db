@@ -23,7 +23,8 @@ export interface IPersonCredit {
   id: number
   job?: string
   popularity: number
-  poster_path: string
+  poster_path: null | string
+  release_date: string
   title: string
 }
 

@@ -27,7 +27,7 @@ describe('MovieItem component', () => {
   })
 
   it('should match snapshot without poster_path', () => {
-    const newProps = assoc('posterPath', undefined, props)
+    const newProps = assoc('posterPath', null, props)
     const { asFragment } = render(<MovieItem {...newProps} />)
 
     expect(asFragment()).toMatchSnapshot()

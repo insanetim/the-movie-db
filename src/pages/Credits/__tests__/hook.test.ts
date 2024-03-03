@@ -1,23 +1,24 @@
 import { act, renderHook } from '@testing-library/react'
-import { useNavigate, useParams } from 'react-router-dom'
+import React from 'react'
+import { useParams } from 'react-router-dom'
 import { mockPersonDetails } from 'src/__mocks__/mockPerson'
 import { dispatch } from 'src/__mocks__/react-redux'
 import * as personDetailsActions from 'src/store/personDetails/actions'
 import * as personDetailsSelectors from 'src/store/personDetails/selectors'
 
 import useContainer from '../hook'
+import { FilterOptions } from '../types'
+
+jest.useFakeTimers().setSystemTime(new Date('2020-01-01'))
 
 jest.mock('react-router-dom', () => ({
   ...jest.requireActual('react-router-dom'),
-  useNavigate: jest.fn(),
   useParams: jest.fn(() => ({ personSlug: '1234-darth-maul' })),
 }))
-const navigate = jest.fn()
-jest.mocked(useNavigate).mockReturnValue(navigate)
 
 jest.mock('src/store/personDetails/selectors')
 
-describe('PersonDetails useContainer hook', () => {
+describe('Credits useContainer hook', () => {
   jest
     .spyOn(personDetailsSelectors, 'personDetailsLoadingSelector')
     .mockReturnValue(false)
@@ -27,8 +28,25 @@ describe('PersonDetails useContainer hook', () => {
   const selectPersonById = jest
     .spyOn(personDetailsSelectors, 'personDetailsSelector')
     .mockReturnValue(mockPersonDetails)
+  const setState = jest.fn()
+  const useStateSpy = jest.spyOn(React, 'useState')
+  useStateSpy.mockImplementation(() => [FilterOptions.All, setState])
 
   it('should match snapshot', () => {
+    const { result } = renderHook(useContainer)
+
+    expect(result.current).toMatchSnapshot()
+  })
+
+  it('should match snapshot with "cast" filter', () => {
+    useStateSpy.mockImplementationOnce(() => [FilterOptions.Cast, setState])
+    const { result } = renderHook(useContainer)
+
+    expect(result.current).toMatchSnapshot()
+  })
+
+  it('should match snapshot with "crew" filter', () => {
+    useStateSpy.mockImplementationOnce(() => [FilterOptions.Crew, setState])
     const { result } = renderHook(useContainer)
 
     expect(result.current).toMatchSnapshot()
@@ -41,14 +59,14 @@ describe('PersonDetails useContainer hook', () => {
     expect(result.current).toMatchSnapshot()
   })
 
-  it('should check "handleGoToCast" method', () => {
+  it('should check "handleChangeFilter" method', () => {
     const { result } = renderHook(useContainer)
 
     act(() => {
-      result.current.handleGoToCredits()
+      result.current.handleChangeFilter(FilterOptions.Cast)
     })
 
-    expect(navigate).toHaveBeenCalledWith('credits')
+    expect(setState).toHaveBeenCalledWith('cast')
   })
 
   it('should check "useEffect" method', () => {

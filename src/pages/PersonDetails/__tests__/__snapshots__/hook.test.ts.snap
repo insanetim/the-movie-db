@@ -3,6 +3,7 @@
 exports[`PersonDetails useContainer hook should match snapshot 1`] = `
 {
   "error": null,
+  "handleGoToCredits": [Function],
   "loading": false,
   "person": {
     "biography": "test-biography",
@@ -23,7 +24,16 @@ exports[`PersonDetails useContainer hook should match snapshot 1`] = `
           "id": 1234,
           "popularity": 100500,
           "poster_path": "/image",
+          "release_date": "1999-01-01",
           "title": "The Matrix",
+        },
+        {
+          "character": "",
+          "id": 1223,
+          "popularity": 100500,
+          "poster_path": "/image",
+          "release_date": "2003-01-01",
+          "title": "The Matrix Reloaded",
         },
       ],
       "crew": [
@@ -33,6 +43,7 @@ exports[`PersonDetails useContainer hook should match snapshot 1`] = `
           "job": "Director",
           "popularity": 100500,
           "poster_path": "/image",
+          "release_date": "1999-01-01",
           "title": "The Matrix",
         },
         {
@@ -40,7 +51,8 @@ exports[`PersonDetails useContainer hook should match snapshot 1`] = `
           "id": 4321,
           "job": "Director",
           "popularity": 999,
-          "poster_path": "/image",
+          "poster_path": null,
+          "release_date": "",
           "title": "Jupiter Ascending",
         },
       ],
@@ -56,6 +68,7 @@ exports[`PersonDetails useContainer hook should match snapshot 1`] = `
 exports[`PersonDetails useContainer hook should match snapshot without params 1`] = `
 {
   "error": null,
+  "handleGoToCredits": [Function],
   "loading": false,
   "person": {
     "biography": "test-biography",
@@ -76,7 +89,16 @@ exports[`PersonDetails useContainer hook should match snapshot without params 1`
           "id": 1234,
           "popularity": 100500,
           "poster_path": "/image",
+          "release_date": "1999-01-01",
           "title": "The Matrix",
+        },
+        {
+          "character": "",
+          "id": 1223,
+          "popularity": 100500,
+          "poster_path": "/image",
+          "release_date": "2003-01-01",
+          "title": "The Matrix Reloaded",
         },
       ],
       "crew": [
@@ -86,6 +108,7 @@ exports[`PersonDetails useContainer hook should match snapshot without params 1`
           "job": "Director",
           "popularity": 100500,
           "poster_path": "/image",
+          "release_date": "1999-01-01",
           "title": "The Matrix",
         },
         {
@@ -93,7 +116,8 @@ exports[`PersonDetails useContainer hook should match snapshot without params 1`
           "id": 4321,
           "job": "Director",
           "popularity": 999,
-          "poster_path": "/image",
+          "poster_path": null,
+          "release_date": "",
           "title": "Jupiter Ascending",
         },
       ],

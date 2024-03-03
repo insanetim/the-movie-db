@@ -28,15 +28,17 @@ const mockMovieDetails: IMovieDetails = {
   status: 'test/status',
 }
 
-const mockMovieCredit: IMovieCredit = {
-  character: 'test/character',
-  credit_id: '1234',
-  department: 'test/department',
-  id: 1234,
-  job: 'test/job',
-  name: 'test/name',
-  profile_path: '/image',
-}
+const mockMovieCredit: IMovieCredit[] = [
+  {
+    character: 'test/character',
+    credit_id: '1234',
+    department: 'test/department',
+    id: 1234,
+    job: 'test/job',
+    name: 'test/name',
+    profile_path: '/image',
+  },
+]
 
 const mockImage: IMovieImage = {
   file_path: '/image',
@@ -46,8 +48,8 @@ const mockMovieDetailsExtended: IMovieDetailsExtended = {
   ...mockMovieDetails,
   account_states: { favorite: false, watchlist: false },
   credits: {
-    cast: [mockMovieCredit],
-    crew: [mockMovieCredit],
+    cast: mockMovieCredit,
+    crew: mockMovieCredit,
   },
   images: {
     backdrops: [mockImage],
