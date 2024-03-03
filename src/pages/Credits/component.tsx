@@ -1,4 +1,3 @@
-import { ArrowLeftOutlined } from '@ant-design/icons'
 import { Col, Flex, Image, Row, Segmented, Table, Typography } from 'antd'
 import { ColumnsType } from 'antd/es/table'
 import { isNil } from 'ramda'
@@ -6,6 +5,7 @@ import { Link } from 'react-router-dom'
 import NoImage from 'src/assets/images/no-image.svg'
 import Empty from 'src/components/UI/Empty'
 import Error from 'src/components/UI/Error'
+import GoBackLink from 'src/components/UI/GoBackLink'
 import Loading from 'src/components/UI/Loading'
 import PageTitle from 'src/components/UI/PageTitle'
 import {
@@ -102,15 +102,10 @@ const Credits: React.FC = () => {
 
   return (
     <div className='container top-margin'>
-      <Row>
-        <Col span={24}>
-          <Typography.Paragraph>
-            <Link to={`/person/${personSlug}`}>
-              <ArrowLeftOutlined /> Back to person details
-            </Link>
-          </Typography.Paragraph>
-        </Col>
-      </Row>
+      <GoBackLink
+        href={`/person/${personSlug}`}
+        title='Back to person details'
+      />
       <PageTitle>
         <Typography.Title
           level={1}

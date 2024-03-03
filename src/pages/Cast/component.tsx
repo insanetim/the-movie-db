@@ -1,13 +1,12 @@
-import { ArrowLeftOutlined } from '@ant-design/icons'
-import { Col, Divider, Row, Typography } from 'antd'
+import { Divider, Row, Typography } from 'antd'
 import { format } from 'date-fns'
 import { isEmpty, isNil } from 'ramda'
 import { Helmet } from 'react-helmet'
-import { Link } from 'react-router-dom'
 import CastList from 'src/components/MovieDetails/CastList'
 import CrewList from 'src/components/MovieDetails/CrewList'
 import Empty from 'src/components/UI/Empty'
 import Error from 'src/components/UI/Error'
+import GoBackLink from 'src/components/UI/GoBackLink'
 import Loading from 'src/components/UI/Loading'
 import PageTitle from 'src/components/UI/PageTitle'
 import metaTitle from 'src/utils/helpers/metaTitle'
@@ -46,15 +45,10 @@ const Cast: React.FC = () => {
     <>
       <Helmet title={metaTitle(pageTitle)} />
       <div className='container top-margin'>
-        <Row>
-          <Col span={24}>
-            <Typography.Paragraph>
-              <Link to={`/movie/${movieSlug}`}>
-                <ArrowLeftOutlined /> Back to movie details
-              </Link>
-            </Typography.Paragraph>
-          </Col>
-        </Row>
+        <GoBackLink
+          href={`/movie/${movieSlug}`}
+          title='Back to movie details'
+        />
         <PageTitle>
           <Typography.Title style={{ marginBottom: 0 }}>
             {title}
