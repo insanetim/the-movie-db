@@ -6,7 +6,7 @@ import CrewList from '../component'
 describe('CrewList component', () => {
   it('should match snapshot', () => {
     const { asFragment } = renderWithWrapper(
-      <CrewList crew={[mockMovieCredit]} />
+      <CrewList crew={mockMovieCredit} />
     )
 
     expect(asFragment()).toMatchSnapshot()

@@ -1,3 +1,5 @@
+import { screen } from '@testing-library/react'
+import userEvent from '@testing-library/user-event'
 import { mockPersonDetails } from 'src/__mocks__/mockPerson'
 import renderWithWrapper from 'src/utils/testHelpers/renderWithWrapper'
 
@@ -19,6 +21,16 @@ describe('PersonDetails component', () => {
     expect(asFragment()).toMatchSnapshot()
   })
 
+  it('should call "handleGoToCredits" when button clicked', async () => {
+    renderWithWrapper(<PersonDetails />)
+
+    const user = userEvent.setup()
+    const button = screen.getByText('Show all credits')
+    await user.click(button)
+
+    expect(mockedHook.handleGoToCredits).toHaveBeenCalled()
+  })
+
   it('should match snapshot with other data', () => {
     mockedHook.person!.profile_path = undefined
     mockedHook.person!.movie_credits.cast = []
@@ -27,7 +39,7 @@ describe('PersonDetails component', () => {
     expect(asFragment()).toMatchSnapshot()
   })
 
-  it('should match snapshot with empty movie', () => {
+  it('should match snapshot with empty person', () => {
     mockedHook.person = undefined
     const { asFragment } = renderWithWrapper(<PersonDetails />)
 

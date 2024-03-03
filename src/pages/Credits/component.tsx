@@ -1,7 +1,6 @@
 import { ArrowLeftOutlined } from '@ant-design/icons'
 import { Col, Flex, Image, Row, Segmented, Table, Typography } from 'antd'
 import { ColumnsType } from 'antd/es/table'
-import { compareAsc } from 'date-fns'
 import { isNil } from 'ramda'
 import { Link } from 'react-router-dom'
 import NoImage from 'src/assets/images/no-image.svg'
@@ -9,11 +8,15 @@ import Empty from 'src/components/UI/Empty'
 import Error from 'src/components/UI/Error'
 import Loading from 'src/components/UI/Loading'
 import PageTitle from 'src/components/UI/PageTitle'
+import {
+  releaseDateSorter,
+  titleSorter,
+} from 'src/utils/helpers/creditsSorters'
 
 import useContainer from './hook'
 import { FilterOptions, ICredit } from './types'
 
-const Credits = () => {
+const Credits: React.FC = () => {
   const { dataSource, error, handleChangeFilter, loading, person, personSlug } =
     useContainer()
 
@@ -42,7 +45,7 @@ const Credits = () => {
       dataIndex: 'releaseDateTitle',
       fixed: 'left',
       key: 'releaseDateTitle',
-      sorter: (a, b) => compareAsc(a.releaseDate, b.releaseDate),
+      sorter: releaseDateSorter,
       title: 'Release Date',
       width: 200,
     },
@@ -52,7 +55,7 @@ const Credits = () => {
       render: (title: string, credit) => {
         return <Link to={`/movie/${credit.movieSlug}`}>{title}</Link>
       },
-      sorter: (a, b) => a.title.localeCompare(b.title),
+      sorter: titleSorter,
       title: 'Title',
     },
     {
@@ -66,6 +69,7 @@ const Credits = () => {
       key: 'posterPath',
       render: (posterPath: string, credit) => {
         const POSTER_HEIGHT = 120
+
         let poster: JSX.Element
         if (isNil(posterPath)) {
           poster = (
@@ -89,6 +93,7 @@ const Credits = () => {
             />
           )
         }
+
         return poster
       },
       title: 'Poster',

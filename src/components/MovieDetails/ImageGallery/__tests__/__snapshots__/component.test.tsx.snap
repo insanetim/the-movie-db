@@ -19,13 +19,13 @@ exports[`ImageGallery component should match snapshot 1`] = `
           >
             <div
               class="slick-track"
-              style="opacity: 1; transform: translate3d(0px, 0px, 0px);"
+              style="opacity: 1;"
             >
               <div
                 aria-hidden="false"
                 class="slick-slide slick-active slick-current"
                 data-index="0"
-                style="outline: none; width: 0px;"
+                style="outline: none; width: 0px; position: relative; left: 0px; opacity: 1; transition: opacity 700ms ease, visibility 700ms ease;"
                 tabindex="-1"
               >
                 <div>

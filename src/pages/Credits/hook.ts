@@ -1,6 +1,7 @@
 import { addYears } from 'date-fns'
 import {
   groupBy,
+  head,
   isEmpty,
   isNil,
   isNotNil,
@@ -20,7 +21,7 @@ import {
   personDetailsErrorSelector,
   personDetailsLoadingSelector,
   personDetailsSelector,
-} from 'src/store/personDetails/reducer'
+} from 'src/store/personDetails/selectors'
 import getIdFromSlug from 'src/utils/helpers/getIdFromSlug'
 import getSlug from 'src/utils/helpers/getSlug'
 
@@ -40,37 +41,31 @@ const useContainer = () => {
   const [filter, setFilter] = useState<FilterOptions>(FilterOptions.All)
 
   const filteredCredits: IPersonCredit[] = useMemo(() => {
-    let result: IPersonCredit[] = []
     if (isNotNil(person)) {
       const crewCredits = pipe(
         groupBy<IPersonCredit>(item => item.id.toString()),
         values,
         map(credits => {
-          if (credits) {
-            const jobs = pluck('job', credits).join(', ')
-            return { ...credits[0], job: jobs }
-          }
+          const jobs = pluck('job', credits as IPersonCredit[]).join(', ')
+          return { ...head(credits as IPersonCredit[]), job: jobs }
         })
       )(person.movie_credits.crew) as IPersonCredit[]
       switch (filter) {
         case 'all':
-          result = [...person.movie_credits.cast, ...crewCredits]
-          break
+          return [...person.movie_credits.cast, ...crewCredits]
         case 'cast':
-          result = [...person.movie_credits.cast]
-          break
+          return [...person.movie_credits.cast]
         case 'crew':
-          result = [...crewCredits]
-          break
+          return [...crewCredits]
       }
     }
-    return result
+    return []
   }, [person, filter])
 
   const dataSource: ICredit[] = useMemo(() => {
     if (!isEmpty(filteredCredits)) {
       return filteredCredits.map(credit => ({
-        key: `${credit.id}-${credit.character || credit.job || credit.title}`,
+        key: `${credit.id}-${credit.character || credit.job}`,
         movieSlug: getSlug(credit.id, credit.title),
         posterPath: credit.poster_path,
         releaseDate: isEmpty(credit.release_date)
@@ -79,7 +74,7 @@ const useContainer = () => {
         releaseDateTitle: isEmpty(credit.release_date)
           ? '—'
           : new Date(credit.release_date).getFullYear().toString(),
-        role: credit.character ? `as ${credit.character}` : credit.job ?? '',
+        role: credit.character ? `as ${credit.character}` : credit.job ?? '—',
         title: credit.title,
       }))
     }
