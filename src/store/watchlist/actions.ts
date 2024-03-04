@@ -1,5 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
-import { getWatchlist } from 'src/api/apiRoutes'
+import { getWatchlist } from 'src/api/tmdb/apiRoutes'
 import { IMoviesList } from 'src/interfaces/movie.interface'
 import { RootState } from 'src/store'
 import { accountSelector } from 'src/store/auth/selectors'

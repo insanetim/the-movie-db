@@ -5,7 +5,7 @@ import {
   deleteMyList,
   getCreatedLists,
   removeMovieFromList,
-} from 'src/api/apiRoutes'
+} from 'src/api/tmdb/apiRoutes'
 import { NOTIFICATION_TYPE } from 'src/constants/app'
 import { IList, IListsList } from 'src/interfaces/list.interface'
 import { RootState } from 'src/store'

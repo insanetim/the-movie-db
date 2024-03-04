@@ -54,6 +54,16 @@ export interface IMovieCredit {
   profile_path?: string
 }
 
+interface IRating {
+  count: number
+  star: number
+}
+
+export interface IMDBInfo {
+  contentRating: string
+  rating: IRating
+}
+
 export interface IMovieDetailsExtended extends IMovieDetails {
   account_states: IMovieAccountStates
   credits: {
@@ -61,6 +71,7 @@ export interface IMovieDetailsExtended extends IMovieDetails {
     crew: IMovieCredit[]
   }
   images: IMovieImages
+  imdbInfo: IMDBInfo
 }
 
 export type IMoviesList = IResponse<IMovie>

@@ -3,7 +3,7 @@ import {
   addToFovorite,
   addToWatchlist,
   getMovieDetails,
-} from 'src/api/apiRoutes'
+} from 'src/api/tmdb/apiRoutes'
 import { NOTIFICATION_TYPE } from 'src/constants/app'
 import { IMovie, IMovieDetailsExtended } from 'src/interfaces/movie.interface'
 import { RootState } from 'src/store'

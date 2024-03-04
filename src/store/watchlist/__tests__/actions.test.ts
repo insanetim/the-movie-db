@@ -1,6 +1,6 @@
 import { mockMoviesResponse } from 'src/__mocks__/mockMovie'
 import { dispatch, getState } from 'src/__mocks__/react-redux'
-import * as apiRoutes from 'src/api/apiRoutes'
+import * as apiRoutes from 'src/api/tmdb/apiRoutes'
 
 import { fetchWatchlist } from '../actions'
 

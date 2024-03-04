@@ -1,6 +1,6 @@
 import { mockListDetails } from 'src/__mocks__/mockList'
 import { dispatch, getState } from 'src/__mocks__/react-redux'
-import * as apiRoutes from 'src/api/apiRoutes'
+import * as apiRoutes from 'src/api/tmdb/apiRoutes'
 
 import { fetchListDetails } from '../actions'
 
