@@ -20,6 +20,7 @@ const mockMovieDetails: IMovieDetails = {
   ...mockMovie,
   budget: 1000000,
   genres: [{ id: 1, name: 'test/genre' }],
+  imdb_id: 'tt1234567',
   production_countries: [
     { iso_3166_1: 'US', name: 'United States of America' },
   ],

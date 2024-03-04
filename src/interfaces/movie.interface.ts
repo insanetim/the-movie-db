@@ -22,6 +22,7 @@ interface ICountry {
 export interface IMovieDetails extends IMovie {
   budget: number
   genres: IGenre[]
+  imdb_id: string
   production_countries: ICountry[]
   revenue: number
   runtime: number
