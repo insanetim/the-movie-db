@@ -3,27 +3,27 @@
 exports[`KnownFor component should match snapshot 1`] = `
 <DocumentFragment>
   <div
-    class="ant-col ant-col-24 top-margin css-dev-only-do-not-override-1k979oh"
+    class="ant-col ant-col-24 top-margin css-dev-only-do-not-override-1drr2mu"
   >
     <h2
-      class="ant-typography css-dev-only-do-not-override-1k979oh"
+      class="ant-typography css-dev-only-do-not-override-1drr2mu"
     >
       Known For
     </h2>
   </div>
   <div
-    class="ant-col ant-col-24 css-dev-only-do-not-override-1k979oh"
+    class="ant-col ant-col-24 css-dev-only-do-not-override-1drr2mu"
   >
     <div
-      class="ant-row css-dev-only-do-not-override-1k979oh"
+      class="ant-row css-dev-only-do-not-override-1drr2mu"
       style="margin-left: -12px; margin-right: -12px; row-gap: 16px;"
     >
       <div
-        class="ant-col ant-col-24 ant-col-sm-12 ant-col-md-8 ant-col-lg-8 ant-col-xl-6 css-dev-only-do-not-override-1k979oh"
+        class="ant-col ant-col-24 ant-col-sm-12 ant-col-md-8 ant-col-lg-8 ant-col-xl-6 css-dev-only-do-not-override-1drr2mu"
         style="padding-left: 12px; padding-right: 12px;"
       >
         <div
-          class="ant-card ant-card-bordered ant-card-hoverable css-dev-only-do-not-override-1k979oh"
+          class="ant-card ant-card-bordered ant-card-hoverable css-dev-only-do-not-override-1drr2mu"
           data-testid="movieItemCard"
         >
           <div
@@ -57,11 +57,11 @@ exports[`KnownFor component should match snapshot 1`] = `
         </div>
       </div>
       <div
-        class="ant-col ant-col-24 ant-col-sm-12 ant-col-md-8 ant-col-lg-8 ant-col-xl-6 css-dev-only-do-not-override-1k979oh"
+        class="ant-col ant-col-24 ant-col-sm-12 ant-col-md-8 ant-col-lg-8 ant-col-xl-6 css-dev-only-do-not-override-1drr2mu"
         style="padding-left: 12px; padding-right: 12px;"
       >
         <div
-          class="ant-card ant-card-bordered ant-card-hoverable css-dev-only-do-not-override-1k979oh"
+          class="ant-card ant-card-bordered ant-card-hoverable css-dev-only-do-not-override-1drr2mu"
           data-testid="movieItemCard"
         >
           <div

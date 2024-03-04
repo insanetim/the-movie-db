@@ -3,31 +3,31 @@
 exports[`DefaultLayout component should match snapshot 1`] = `
 <DocumentFragment>
   <div
-    class="ant-layout css-dev-only-do-not-override-1k979oh"
+    class="ant-layout css-dev-only-do-not-override-1drr2mu"
   >
     <header
-      class="ant-layout-header css-dev-only-do-not-override-1k979oh"
+      class="ant-layout-header css-dev-only-do-not-override-1drr2mu"
     >
       <div
-        class="ant-row ant-row-space-between css-dev-only-do-not-override-1k979oh"
+        class="ant-row ant-row-space-between css-dev-only-do-not-override-1drr2mu"
       >
         <div
-          class="ant-col css-dev-only-do-not-override-1k979oh"
+          class="ant-col css-dev-only-do-not-override-1drr2mu"
         >
           <span
-            class="ant-typography logo css-dev-only-do-not-override-1k979oh"
+            class="ant-typography logo css-dev-only-do-not-override-1drr2mu"
           >
             The Movie DB
           </span>
         </div>
         <div
-          class="ant-col css-dev-only-do-not-override-1k979oh"
+          class="ant-col css-dev-only-do-not-override-1drr2mu"
         >
           <span
-            class="ant-typography ant-dropdown-trigger css-dev-only-do-not-override-1k979oh"
+            class="ant-typography ant-dropdown-trigger css-dev-only-do-not-override-1drr2mu"
           >
             <span
-              class="ant-avatar ant-avatar-circle ant-avatar-image css-dev-only-do-not-override-1k979oh"
+              class="ant-avatar ant-avatar-circle ant-avatar-image css-dev-only-do-not-override-1drr2mu"
             >
               <img
                 alt="User avatar"
@@ -65,17 +65,17 @@ exports[`DefaultLayout component should match snapshot 1`] = `
       </div>
     </header>
     <main
-      class="ant-layout-content css-dev-only-do-not-override-1k979oh"
+      class="ant-layout-content css-dev-only-do-not-override-1drr2mu"
     />
     <footer
-      class="ant-layout-footer css-dev-only-do-not-override-1k979oh"
+      class="ant-layout-footer css-dev-only-do-not-override-1drr2mu"
     >
       <span
         style="opacity: 0.8;"
       >
         Made with ❤ by 
         <a
-          class="ant-typography css-dev-only-do-not-override-1k979oh"
+          class="ant-typography css-dev-only-do-not-override-1drr2mu"
           href="https://github.com/insanetim/the-movie-db"
           rel="noreferrer"
           target="_blank"
