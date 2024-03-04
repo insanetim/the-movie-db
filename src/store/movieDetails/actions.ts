@@ -1,4 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
+import { isNil } from 'ramda'
+import { getImdbInfo } from 'src/api/imdb/apiRoutes'
 import {
   addToFovorite,
   addToWatchlist,
@@ -26,7 +28,11 @@ const fetchMovieDetails = createAsyncThunk<
   const sessionId = getSessionId()
 
   try {
-    const movieDetails = await getMovieDetails({ movieId, sessionId })
+    let movieDetails = await getMovieDetails({ movieId, sessionId })
+    if (!isNil(movieDetails.imdb_id)) {
+      const imdbInfo = await getImdbInfo({ imdbId: movieDetails.imdb_id })
+      movieDetails = { ...movieDetails, imdbInfo }
+    }
 
     return movieDetails
   } catch (error) {

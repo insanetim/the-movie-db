@@ -22,7 +22,7 @@ interface ICountry {
 export interface IMovieDetails extends IMovie {
   budget: number
   genres: IGenre[]
-  imdb_id: string
+  imdb_id: null | string
   production_countries: ICountry[]
   revenue: number
   runtime: number
@@ -55,13 +55,14 @@ export interface IMovieCredit {
 }
 
 interface IRating {
-  count: number
-  star: number
+  count?: number
+  star?: number
 }
 
 export interface IMDBInfo {
-  contentRating: string
-  rating: IRating
+  contentRating?: string
+  id: string
+  rating?: IRating
 }
 
 export interface IMovieDetailsExtended extends IMovieDetails {
@@ -71,7 +72,7 @@ export interface IMovieDetailsExtended extends IMovieDetails {
     crew: IMovieCredit[]
   }
   images: IMovieImages
-  imdbInfo: IMDBInfo
+  imdbInfo?: IMDBInfo
 }
 
 export type IMoviesList = IResponse<IMovie>

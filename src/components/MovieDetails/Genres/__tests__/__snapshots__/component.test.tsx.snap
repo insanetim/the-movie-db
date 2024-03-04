@@ -11,11 +11,16 @@ exports[`Genres component should match snapshot 1`] = `
       <b>
         Genres: 
       </b>
-      <span
-        class="ant-tag css-dev-only-do-not-override-1drr2mu"
+      <div
+        class="ant-flex css-dev-only-do-not-override-1drr2mu"
+        style="display: inline-flex; gap: 4px;"
       >
-        TEST/GENRE
-      </span>
+        <span
+          class="ant-tag css-dev-only-do-not-override-1drr2mu"
+        >
+          TEST/GENRE
+        </span>
+      </div>
     </div>
   </div>
 </DocumentFragment>

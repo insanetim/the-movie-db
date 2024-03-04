@@ -48,6 +48,7 @@ const mockImage: IMovieImage = {
 
 const mockImdbInfo: IMDBInfo = {
   contentRating: 'PG-13',
+  id: 'tt1234567',
   rating: {
     count: 100500,
     star: 9,

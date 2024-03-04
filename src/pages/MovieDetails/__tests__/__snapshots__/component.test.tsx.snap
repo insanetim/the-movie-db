@@ -183,6 +183,20 @@ exports[`MovieDetails component should match snapshot 1`] = `
           class="ant-typography css-dev-only-do-not-override-1drr2mu"
         >
           <b>
+            IMDB Rating: 
+          </b>
+          <span>
+            9
+          </span>
+        </div>
+      </div>
+      <div
+        class="ant-col ant-col-24 css-dev-only-do-not-override-1drr2mu"
+      >
+        <div
+          class="ant-typography css-dev-only-do-not-override-1drr2mu"
+        >
+          <b>
             Status: 
           </b>
           <span>
@@ -269,10 +283,31 @@ exports[`MovieDetails component should match snapshot 1`] = `
           <b>
             Genres: 
           </b>
+          <div
+            class="ant-flex css-dev-only-do-not-override-1drr2mu"
+            style="display: inline-flex; gap: 4px;"
+          >
+            <span
+              class="ant-tag css-dev-only-do-not-override-1drr2mu"
+            >
+              TEST/GENRE
+            </span>
+          </div>
+        </div>
+      </div>
+      <div
+        class="ant-col ant-col-24 css-dev-only-do-not-override-1drr2mu"
+      >
+        <div
+          class="ant-typography css-dev-only-do-not-override-1drr2mu"
+        >
+          <b>
+            Rating: 
+          </b>
           <span
             class="ant-tag css-dev-only-do-not-override-1drr2mu"
           >
-            TEST/GENRE
+            PG-13
           </span>
         </div>
       </div>
@@ -668,6 +703,20 @@ exports[`MovieDetails component should match snapshot with open popover 1`] = `
           class="ant-typography css-dev-only-do-not-override-1drr2mu"
         >
           <b>
+            IMDB Rating: 
+          </b>
+          <span>
+            9
+          </span>
+        </div>
+      </div>
+      <div
+        class="ant-col ant-col-24 css-dev-only-do-not-override-1drr2mu"
+      >
+        <div
+          class="ant-typography css-dev-only-do-not-override-1drr2mu"
+        >
+          <b>
             Status: 
           </b>
           <span>
@@ -754,10 +803,31 @@ exports[`MovieDetails component should match snapshot with open popover 1`] = `
           <b>
             Genres: 
           </b>
+          <div
+            class="ant-flex css-dev-only-do-not-override-1drr2mu"
+            style="display: inline-flex; gap: 4px;"
+          >
+            <span
+              class="ant-tag css-dev-only-do-not-override-1drr2mu"
+            >
+              TEST/GENRE
+            </span>
+          </div>
+        </div>
+      </div>
+      <div
+        class="ant-col ant-col-24 css-dev-only-do-not-override-1drr2mu"
+      >
+        <div
+          class="ant-typography css-dev-only-do-not-override-1drr2mu"
+        >
+          <b>
+            Rating: 
+          </b>
           <span
             class="ant-tag css-dev-only-do-not-override-1drr2mu"
           >
-            TEST/GENRE
+            PG-13
           </span>
         </div>
       </div>
@@ -1022,6 +1092,20 @@ exports[`MovieDetails component should match snapshot with other data 1`] = `
           class="ant-typography css-dev-only-do-not-override-1drr2mu"
         >
           <b>
+            IMDB Rating: 
+          </b>
+          <span>
+            9
+          </span>
+        </div>
+      </div>
+      <div
+        class="ant-col ant-col-24 css-dev-only-do-not-override-1drr2mu"
+      >
+        <div
+          class="ant-typography css-dev-only-do-not-override-1drr2mu"
+        >
+          <b>
             Status: 
           </b>
           <span>
@@ -1108,10 +1192,31 @@ exports[`MovieDetails component should match snapshot with other data 1`] = `
           <b>
             Genres: 
           </b>
+          <div
+            class="ant-flex css-dev-only-do-not-override-1drr2mu"
+            style="display: inline-flex; gap: 4px;"
+          >
+            <span
+              class="ant-tag css-dev-only-do-not-override-1drr2mu"
+            >
+              TEST/GENRE
+            </span>
+          </div>
+        </div>
+      </div>
+      <div
+        class="ant-col ant-col-24 css-dev-only-do-not-override-1drr2mu"
+      >
+        <div
+          class="ant-typography css-dev-only-do-not-override-1drr2mu"
+        >
+          <b>
+            Rating: 
+          </b>
           <span
             class="ant-tag css-dev-only-do-not-override-1drr2mu"
           >
-            TEST/GENRE
+            PG-13
           </span>
         </div>
       </div>

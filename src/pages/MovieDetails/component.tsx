@@ -5,9 +5,11 @@ import { isEmpty, isNil } from 'ramda'
 import { Helmet } from 'react-helmet'
 import Budget from 'src/components/MovieDetails/Budget'
 import CastList from 'src/components/MovieDetails/CastList'
+import ContentRating from 'src/components/MovieDetails/ContentRating'
 import Countries from 'src/components/MovieDetails/Countries'
 import Genres from 'src/components/MovieDetails/Genres'
 import ImageGallery from 'src/components/MovieDetails/ImageGallery'
+import ImdbRating from 'src/components/MovieDetails/ImdbRating'
 import OriginalLanguage from 'src/components/MovieDetails/OriginalLanguage'
 import Overview from 'src/components/MovieDetails/Overview'
 import PopoverContent from 'src/components/MovieDetails/PopoverContent'
@@ -107,6 +109,9 @@ const MovieDetails: React.FC = () => {
         </PageTitle>
         <Row>
           {!isEmpty(movie.overview) && <Overview overview={movie.overview} />}
+          {!isNil(movie.imdbInfo?.rating?.star) && (
+            <ImdbRating rating={movie.imdbInfo.rating.star} />
+          )}
           {movie.status && <Status status={movie.status} />}
           {movie.original_language && (
             <OriginalLanguage originalLanguage={movie.original_language} />
@@ -118,6 +123,9 @@ const MovieDetails: React.FC = () => {
           {movie.budget !== 0 && <Budget budget={movie.budget} />}
           {movie.revenue !== 0 && <Revenue revenue={movie.revenue} />}
           {!isEmpty(movie.genres) && <Genres genres={movie.genres} />}
+          {!isNil(movie?.imdbInfo?.contentRating) && (
+            <ContentRating contentRating={movie.imdbInfo.contentRating} />
+          )}
           {!isEmpty(movie.credits.cast) && (
             <>
               <Divider />

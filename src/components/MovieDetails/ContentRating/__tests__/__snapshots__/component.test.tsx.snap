@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ContentRating component should match snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="ant-col ant-col-24 css-dev-only-do-not-override-1drr2mu"
+  >
+    <div
+      class="ant-typography css-dev-only-do-not-override-1drr2mu"
+    >
+      <b>
+        Rating: 
+      </b>
+      <span
+        class="ant-tag css-dev-only-do-not-override-1drr2mu"
+      >
+        PG-13
+      </span>
+    </div>
+  </div>
+</DocumentFragment>
+`;
