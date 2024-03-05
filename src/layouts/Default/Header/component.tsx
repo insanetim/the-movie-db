@@ -1,9 +1,9 @@
 import { CaretDownOutlined, UserOutlined } from '@ant-design/icons'
 import { Avatar, Col, Dropdown, Layout, Row, Typography } from 'antd'
 import { ItemType } from 'antd/es/menu/hooks/useItems'
-import { isNotNil } from 'ramda'
 import { Link } from 'react-router-dom'
 import { APP_NAME } from 'src/constants/app'
+import isPresent from 'src/utils/helpers/isPresent'
 
 import useContainer from './hook'
 
@@ -20,8 +20,8 @@ const Header: React.FC = () => {
     { key: 'item-7', label: 'Logout', onClick: handleLogOut },
   ]
 
-  let avatar = <Avatar icon={<UserOutlined />} />
-  if (isNotNil(account)) {
+  let avatar: JSX.Element
+  if (isPresent(account)) {
     const url = account.avatar.tmdb.avatar_path
       ? `https://www.themoviedb.org/t/p/w32_and_h32_face${account.avatar.tmdb.avatar_path}`
       : `https://www.gravatar.com/avatar/${account.avatar.gravatar.hash}`
@@ -31,10 +31,15 @@ const Header: React.FC = () => {
         src={url}
       />
     )
+  } else {
+    avatar = <Avatar icon={<UserOutlined />} />
   }
-  let username = 'Username'
-  if (isNotNil(account)) {
+
+  let username: string
+  if (isPresent(account)) {
     username = account.username
+  } else {
+    username = 'Username'
   }
 
   return (

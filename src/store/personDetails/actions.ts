@@ -1,5 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
-import { getPersonDetails } from 'src/api/apiRoutes'
+import { getPersonDetails } from 'src/api/tmdb/apiRoutes'
 import { IPersonDetails } from 'src/interfaces/person.interface'
 import { RootState } from 'src/store'
 import errorMessage from 'src/utils/helpers/errorMessage'

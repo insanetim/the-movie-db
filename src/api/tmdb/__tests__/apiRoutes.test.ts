@@ -5,12 +5,12 @@ import {
   mockMoviesResponse,
 } from 'src/__mocks__/mockMovie'
 import { mockPersonDetails } from 'src/__mocks__/mockPerson'
-import httpClient from 'src/api/httpClient'
 
-import * as apiRoutes from '../apiRoutes'
+import tmdbClient from '../apiClient'
+import * as tmdbRoutes from '../apiRoutes'
 
-describe('apiRoutes', () => {
-  const requestSpy = jest.spyOn(httpClient, 'request')
+describe('tmdbRoutes', () => {
+  const requestSpy = jest.spyOn(tmdbClient, 'request')
   const requestToken = 'test/request_token'
   const userData = { password: 'test/password', username: 'test/username' }
   const sessionId = 'test/session_id'
@@ -29,7 +29,7 @@ describe('apiRoutes', () => {
     }
     requestSpy.mockResolvedValueOnce(response)
 
-    const result = await apiRoutes.createRequestToken()
+    const result = await tmdbRoutes.createRequestToken()
 
     expect(requestSpy).toHaveBeenCalledWith(request)
     expect(result).toEqual(requestToken)
@@ -44,7 +44,7 @@ describe('apiRoutes', () => {
     const response = { data: { success: true } }
     requestSpy.mockResolvedValueOnce(response)
 
-    await apiRoutes.validateWithLogin({ requestToken, userData })
+    await tmdbRoutes.validateWithLogin({ requestToken, userData })
 
     expect(requestSpy).toHaveBeenCalledWith(request)
   })
@@ -58,7 +58,7 @@ describe('apiRoutes', () => {
     const response = { data: { session_id: sessionId } }
     requestSpy.mockResolvedValueOnce(response)
 
-    const result = await apiRoutes.createSession({ requestToken })
+    const result = await tmdbRoutes.createSession({ requestToken })
 
     expect(requestSpy).toHaveBeenCalledWith(request)
     expect(result).toEqual(response.data.session_id)
@@ -73,7 +73,7 @@ describe('apiRoutes', () => {
     const response = { data: { success: true } }
     requestSpy.mockResolvedValueOnce(response)
 
-    await apiRoutes.deleteSession({ sessionId })
+    await tmdbRoutes.deleteSession({ sessionId })
 
     expect(requestSpy).toHaveBeenCalledWith(request)
   })
@@ -86,7 +86,7 @@ describe('apiRoutes', () => {
     const response = { data: mockAccount }
     requestSpy.mockResolvedValueOnce(response)
 
-    const result = await apiRoutes.getAccountDetails({ sessionId })
+    const result = await tmdbRoutes.getAccountDetails({ sessionId })
 
     expect(requestSpy).toHaveBeenCalledWith(request)
     expect(result).toEqual(response.data)
@@ -97,7 +97,7 @@ describe('apiRoutes', () => {
     const response = { data: mockMoviesResponse }
     requestSpy.mockResolvedValueOnce(response)
 
-    const result = await apiRoutes.getTrending({ page })
+    const result = await tmdbRoutes.getTrending({ page })
 
     expect(requestSpy).toHaveBeenCalledWith(request)
     expect(result).toEqual(response.data)
@@ -111,7 +111,7 @@ describe('apiRoutes', () => {
     const response = { data: mockMoviesResponse }
     requestSpy.mockResolvedValueOnce(response)
 
-    const result = await apiRoutes.searchMovies({ page, query })
+    const result = await tmdbRoutes.searchMovies({ page, query })
 
     expect(requestSpy).toHaveBeenCalledWith(request)
     expect(result).toEqual(response.data)
@@ -125,7 +125,7 @@ describe('apiRoutes', () => {
     const response = { data: mockListsResponse }
     requestSpy.mockResolvedValueOnce(response)
 
-    const result = await apiRoutes.getCreatedLists({
+    const result = await tmdbRoutes.getCreatedLists({
       accountId,
       page,
       sessionId,
@@ -143,7 +143,7 @@ describe('apiRoutes', () => {
     const response = { data: mockListDetails }
     requestSpy.mockResolvedValueOnce(response)
 
-    const result = await apiRoutes.getListDetails({ listId, page })
+    const result = await tmdbRoutes.getListDetails({ listId, page })
 
     expect(requestSpy).toHaveBeenCalledWith(request)
     expect(result).toEqual(response.data)
@@ -159,7 +159,7 @@ describe('apiRoutes', () => {
     const response = { data: { list_id: 1234 } }
     requestSpy.mockResolvedValueOnce(response)
 
-    const result = await apiRoutes.createNewList({ listData, sessionId })
+    const result = await tmdbRoutes.createNewList({ listData, sessionId })
 
     expect(requestSpy).toHaveBeenCalledWith(request)
     expect(result).toEqual(response.data.list_id)
@@ -175,7 +175,7 @@ describe('apiRoutes', () => {
     const response = { data: { success: true } }
     requestSpy.mockResolvedValueOnce(response)
 
-    await apiRoutes.addMovieToList({
+    await tmdbRoutes.addMovieToList({
       listId: 1234,
       movieId: 1234,
       sessionId: 'test/session_id',
@@ -194,7 +194,7 @@ describe('apiRoutes', () => {
     const response = { data: { success: true } }
     requestSpy.mockResolvedValueOnce(response)
 
-    await apiRoutes.removeMovieFromList({ listId, movieId, sessionId })
+    await tmdbRoutes.removeMovieFromList({ listId, movieId, sessionId })
 
     expect(requestSpy).toHaveBeenCalledWith(request)
   })
@@ -208,7 +208,7 @@ describe('apiRoutes', () => {
     const response = { data: { success: true } }
     requestSpy.mockResolvedValueOnce(response)
 
-    await apiRoutes.deleteMyList({ listId, sessionId })
+    await tmdbRoutes.deleteMyList({ listId, sessionId })
 
     expect(requestSpy).toHaveBeenCalledWith(request)
   })
@@ -221,7 +221,7 @@ describe('apiRoutes', () => {
     const response = { data: mockMoviesResponse }
     requestSpy.mockResolvedValueOnce(response)
 
-    const result = await apiRoutes.getWatchlist({ accountId, page, sessionId })
+    const result = await tmdbRoutes.getWatchlist({ accountId, page, sessionId })
 
     expect(requestSpy).toHaveBeenCalledWith(request)
     expect(result).toEqual(mockMoviesResponse)
@@ -237,7 +237,7 @@ describe('apiRoutes', () => {
     const response = { data: { success: true } }
     requestSpy.mockResolvedValueOnce(response)
 
-    await apiRoutes.addToWatchlist({
+    await tmdbRoutes.addToWatchlist({
       accountId,
       inWatchlist: true,
       movieId,
@@ -255,7 +255,7 @@ describe('apiRoutes', () => {
     const response = { data: mockMoviesResponse }
     requestSpy.mockResolvedValueOnce(response)
 
-    const result = await apiRoutes.getFavorite({ accountId, page, sessionId })
+    const result = await tmdbRoutes.getFavorite({ accountId, page, sessionId })
 
     expect(requestSpy).toHaveBeenCalledWith(request)
     expect(result).toEqual(mockMoviesResponse)
@@ -271,7 +271,7 @@ describe('apiRoutes', () => {
     const response = { data: { success: true } }
     requestSpy.mockResolvedValueOnce(response)
 
-    await apiRoutes.addToFovorite({
+    await tmdbRoutes.addToFovorite({
       accountId,
       inFavorite: true,
       movieId,
@@ -292,7 +292,7 @@ describe('apiRoutes', () => {
     const response = { data: mockMovieDetailsExtended }
     requestSpy.mockResolvedValueOnce(response)
 
-    const result = await apiRoutes.getMovieDetails({ movieId, sessionId })
+    const result = await tmdbRoutes.getMovieDetails({ movieId, sessionId })
 
     expect(requestSpy).toHaveBeenCalledWith(request)
     expect(result).toEqual(mockMovieDetailsExtended)
@@ -308,7 +308,7 @@ describe('apiRoutes', () => {
     const response = { data: mockPersonDetails }
     requestSpy.mockResolvedValueOnce(response)
 
-    const result = await apiRoutes.getPersonDetails({ personId })
+    const result = await tmdbRoutes.getPersonDetails({ personId })
 
     expect(requestSpy).toHaveBeenCalledWith(request)
     expect(result).toEqual(mockPersonDetails)

@@ -1,5 +1,4 @@
 import { Modal } from 'antd'
-import { isNotNil } from 'ramda'
 import { MouseEvent, useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import { useSearchParams } from 'react-router-dom'
@@ -15,6 +14,7 @@ import {
   watchlistMoviesSelector,
 } from 'src/store/watchlist/selectors'
 import getParams from 'src/utils/helpers/getParams'
+import isPresent from 'src/utils/helpers/isPresent'
 
 import { WatchlistHookReturn } from './types'
 
@@ -57,7 +57,7 @@ const useContainer = (): WatchlistHookReturn => {
   }
 
   useEffect(() => {
-    if (isNotNil(account)) {
+    if (isPresent(account)) {
       dispatch(fetchWatchlist(page))
     }
   }, [account, page, dispatch])

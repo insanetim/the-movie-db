@@ -1,5 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
-import { getListDetails } from 'src/api/apiRoutes'
+import { getListDetails } from 'src/api/tmdb/apiRoutes'
 import { IListDetails } from 'src/interfaces/list.interface'
 import errorMessage from 'src/utils/helpers/errorMessage'
 

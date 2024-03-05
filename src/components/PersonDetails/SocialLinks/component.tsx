@@ -5,7 +5,7 @@ import {
   TwitterOutlined,
 } from '@ant-design/icons'
 import { Flex } from 'antd'
-import { isNotNil } from 'ramda'
+import isPresent from 'src/utils/helpers/isPresent'
 
 import { SocialLinksProps } from './types'
 
@@ -15,7 +15,7 @@ const SocialLinks: React.FC<SocialLinksProps> = ({ externalIds }) => {
       className='social-link__list'
       gap={16}
     >
-      {isNotNil(externalIds.facebook_id) && (
+      {isPresent(externalIds.facebook_id) && (
         <a
           className='social-link'
           href={`https://facebook.com/${externalIds.facebook_id}`}
@@ -25,7 +25,7 @@ const SocialLinks: React.FC<SocialLinksProps> = ({ externalIds }) => {
           <FacebookFilled />
         </a>
       )}
-      {isNotNil(externalIds.instagram_id) && (
+      {isPresent(externalIds.instagram_id) && (
         <a
           className='social-link'
           href={`https://instagram.com/${externalIds.instagram_id}`}
@@ -35,7 +35,7 @@ const SocialLinks: React.FC<SocialLinksProps> = ({ externalIds }) => {
           <InstagramOutlined />
         </a>
       )}
-      {isNotNil(externalIds.tiktok_id) && (
+      {isPresent(externalIds.tiktok_id) && (
         <a
           className='social-link'
           href={`https://tiktok.com/@${externalIds.tiktok_id}`}
@@ -45,7 +45,7 @@ const SocialLinks: React.FC<SocialLinksProps> = ({ externalIds }) => {
           <TikTokFilled />
         </a>
       )}
-      {isNotNil(externalIds.twitter_id) && (
+      {isPresent(externalIds.twitter_id) && (
         <a
           className='social-link'
           href={`https://twitter.com/${externalIds.twitter_id}`}

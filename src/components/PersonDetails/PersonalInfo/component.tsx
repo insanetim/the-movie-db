@@ -1,7 +1,7 @@
 import { Typography } from 'antd'
-import { isNotNil } from 'ramda'
 import { GENDERS } from 'src/constants/app'
 import getAge from 'src/utils/helpers/getAge'
+import isPresent from 'src/utils/helpers/isPresent'
 
 import { PersonalInfoProps } from './types'
 
@@ -17,13 +17,13 @@ const PersonalInfo: React.FC<PersonalInfoProps> = ({
         <b>Gender: </b>
         <span>{GENDERS[gender]}</span>
       </Typography.Paragraph>
-      {isNotNil(birthday) && (
+      {isPresent(birthday) && (
         <Typography.Paragraph>
           <b>Birthday: </b>
           <span>{getAge(birthday)}</span>
         </Typography.Paragraph>
       )}
-      {isNotNil(placeOfBirth) && (
+      {isPresent(placeOfBirth) && (
         <Typography.Paragraph>
           <b>Place of Birth: </b>
           <span>{placeOfBirth}</span>

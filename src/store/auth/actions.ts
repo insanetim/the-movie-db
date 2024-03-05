@@ -6,7 +6,7 @@ import {
   deleteSession,
   getAccountDetails,
   validateWithLogin,
-} from 'src/api/apiRoutes'
+} from 'src/api/tmdb/apiRoutes'
 import { NOTIFICATION_TYPE } from 'src/constants/app'
 import { IAccount } from 'src/interfaces/account.interface'
 import { showNotification } from 'src/store/app/actions'

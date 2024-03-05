@@ -12,6 +12,7 @@ import {
   releaseDateSorter,
   titleSorter,
 } from 'src/utils/helpers/creditsSorters'
+import isPresent from 'src/utils/helpers/isPresent'
 
 import useContainer from './hook'
 import { FilterOptions, ICredit } from './types'
@@ -42,12 +43,13 @@ const Credits: React.FC = () => {
 
   const columns: ColumnsType<ICredit> = [
     {
+      align: 'center',
       dataIndex: 'releaseDateTitle',
       fixed: 'left',
       key: 'releaseDateTitle',
       sorter: releaseDateSorter,
       title: 'Release Date',
-      width: 200,
+      width: 180,
     },
     {
       dataIndex: 'title',
@@ -71,7 +73,16 @@ const Credits: React.FC = () => {
         const POSTER_HEIGHT = 120
 
         let poster: JSX.Element
-        if (isNil(posterPath)) {
+        if (isPresent(posterPath)) {
+          poster = (
+            <Image
+              alt={credit.title}
+              height={POSTER_HEIGHT}
+              src={`https://image.tmdb.org/t/p/w500${posterPath}`}
+              style={{ borderRadius: 8 }}
+            />
+          )
+        } else {
           poster = (
             <div
               className='person-poster--no-image'
@@ -82,15 +93,6 @@ const Credits: React.FC = () => {
                 src={NoImage}
               />
             </div>
-          )
-        } else {
-          poster = (
-            <Image
-              alt={credit.title}
-              height={POSTER_HEIGHT}
-              src={`https://image.tmdb.org/t/p/w500${posterPath}`}
-              style={{ borderRadius: 8 }}
-            />
           )
         }
 

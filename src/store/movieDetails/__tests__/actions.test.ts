@@ -1,6 +1,7 @@
-import { mockMovieDetailsExtended } from 'src/__mocks__/mockMovie'
+import { mockImdbInfo, mockMovieDetailsExtended } from 'src/__mocks__/mockMovie'
 import { dispatch, getState } from 'src/__mocks__/react-redux'
-import * as apiRoutes from 'src/api/apiRoutes'
+import * as imdbRoutes from 'src/api/imdb/apiRoutes'
+import * as tmdbRoutes from 'src/api/tmdb/apiRoutes'
 import { NOTIFICATION_TYPE } from 'src/constants/app'
 import { showNotification } from 'src/store/app/actions'
 
@@ -26,9 +27,10 @@ jest.mock('src/utils/helpers/getSessionId', () => {
 })
 
 describe('movieDetails actions', () => {
-  const addToFovorite = jest.spyOn(apiRoutes, 'addToFovorite')
-  const addToWatchlist = jest.spyOn(apiRoutes, 'addToWatchlist')
-  const getMovieDetails = jest.spyOn(apiRoutes, 'getMovieDetails')
+  const addToFovorite = jest.spyOn(tmdbRoutes, 'addToFovorite')
+  const addToWatchlist = jest.spyOn(tmdbRoutes, 'addToWatchlist')
+  const getMovieDetails = jest.spyOn(tmdbRoutes, 'getMovieDetails')
+  const getImdbInfo = jest.spyOn(imdbRoutes, 'getImdbInfo')
   const errorMessage = 'Something went wrong!'
   const errorNotification = showNotification({
     messageText: errorMessage,
@@ -37,21 +39,39 @@ describe('movieDetails actions', () => {
   const movieId = 1234
   const inFavorite = true
   const inWatchlist = true
+  const imdbId = 'tt1234567'
 
   describe('fetchMovieDetails', () => {
     const thunk = fetchMovieDetails(movieId)
 
     it('should handle success', async () => {
       getMovieDetails.mockResolvedValueOnce(mockMovieDetailsExtended)
+      getImdbInfo.mockResolvedValueOnce(mockImdbInfo)
 
       const result = await thunk(dispatch, getState, undefined)
       const { calls } = dispatch.mock
 
       expect(getMovieDetails).toHaveBeenCalledWith({ movieId, sessionId })
+      expect(getImdbInfo).toHaveBeenCalledWith({ imdbId })
       expect(calls).toHaveLength(2)
       expect(calls[0][0].type).toBe(fetchMovieDetails.pending.type)
       expect(calls[1][0].type).toBe(fetchMovieDetails.fulfilled.type)
       expect(result.payload).toEqual(mockMovieDetailsExtended)
+    })
+
+    it('should handle success without imdb_id', async () => {
+      const response = { ...mockMovieDetailsExtended, imdb_id: null }
+      getMovieDetails.mockResolvedValueOnce(response)
+
+      const result = await thunk(dispatch, getState, undefined)
+      const { calls } = dispatch.mock
+
+      expect(getMovieDetails).toHaveBeenCalledWith({ movieId, sessionId })
+      expect(getImdbInfo).not.toHaveBeenCalled()
+      expect(calls).toHaveLength(2)
+      expect(calls[0][0].type).toBe(fetchMovieDetails.pending.type)
+      expect(calls[1][0].type).toBe(fetchMovieDetails.fulfilled.type)
+      expect(result.payload).toEqual(response)
     })
 
     it('should handle failure', async () => {

@@ -1,4 +1,3 @@
-import httpClient from 'src/api/httpClient'
 import { ListData } from 'src/components/Modals/ModalCreateList/types'
 import { IAccount } from 'src/interfaces/account.interface'
 import { IList, IListDetails, IListsList } from 'src/interfaces/list.interface'
@@ -11,11 +10,13 @@ import { IPersonDetails } from 'src/interfaces/person.interface'
 import { RequestToken, Session, UserData } from 'src/store/auth/types'
 import { CreateListResponse } from 'src/store/createdLists/types'
 
+import tmdbClient from './apiClient'
+
 // Auth
 export const createRequestToken = async () => {
   const {
     data: { request_token },
-  } = await httpClient.request<RequestToken>({
+  } = await tmdbClient.request<RequestToken>({
     url: '/authentication/token/new',
   })
 
@@ -29,7 +30,7 @@ export const validateWithLogin = async ({
   requestToken: string
   userData: UserData
 }) => {
-  await httpClient.request({
+  await tmdbClient.request({
     data: { ...userData, request_token: requestToken },
     method: 'post',
     url: '/authentication/token/validate_with_login',
@@ -43,7 +44,7 @@ export const createSession = async ({
 }) => {
   const {
     data: { session_id },
-  } = await httpClient.request<Session>({
+  } = await tmdbClient.request<Session>({
     data: { request_token: requestToken },
     method: 'post',
     url: '/authentication/session/new',
@@ -53,7 +54,7 @@ export const createSession = async ({
 }
 
 export const deleteSession = async ({ sessionId }: { sessionId: string }) => {
-  await httpClient.request({
+  await tmdbClient.request({
     data: { session_id: sessionId },
     method: 'delete',
     url: '/authentication/session',
@@ -66,7 +67,7 @@ export const getAccountDetails = async ({
 }: {
   sessionId: string
 }) => {
-  const { data } = await httpClient.request<IAccount>({
+  const { data } = await tmdbClient.request<IAccount>({
     params: { session_id: sessionId },
     url: '/account',
   })
@@ -76,7 +77,7 @@ export const getAccountDetails = async ({
 
 // Dashboard
 export const getTrending = async ({ page }: { page: string }) => {
-  const { data } = await httpClient.request<IMoviesList>({
+  const { data } = await tmdbClient.request<IMoviesList>({
     params: { page },
     url: '/trending/movie/day',
   })
@@ -91,7 +92,7 @@ export const searchMovies = async ({
   page: string
   query: string
 }) => {
-  const { data } = await httpClient.request<IMoviesList>({
+  const { data } = await tmdbClient.request<IMoviesList>({
     params: { page, query },
     url: '/search/movie',
   })
@@ -109,7 +110,7 @@ export const getCreatedLists = async ({
   page: string
   sessionId: string
 }) => {
-  const { data } = await httpClient.request<IListsList>({
+  const { data } = await tmdbClient.request<IListsList>({
     params: { page, session_id: sessionId },
     url: `/account/${accountId}/lists`,
   })
@@ -124,7 +125,7 @@ export const getListDetails = async ({
   listId: IList['id']
   page: string
 }) => {
-  const { data } = await httpClient.request<IListDetails>({
+  const { data } = await tmdbClient.request<IListDetails>({
     params: { page },
     url: `/list/${listId}`,
   })
@@ -141,7 +142,7 @@ export const createNewList = async ({
 }) => {
   const {
     data: { list_id },
-  } = await httpClient.request<CreateListResponse>({
+  } = await tmdbClient.request<CreateListResponse>({
     data: { ...listData },
     method: 'post',
     params: { session_id: sessionId },
@@ -160,7 +161,7 @@ export const addMovieToList = async ({
   movieId: IMovie['id']
   sessionId: string
 }) => {
-  await httpClient.request({
+  await tmdbClient.request({
     data: { media_id: movieId },
     method: 'post',
     params: { session_id: sessionId },
@@ -177,7 +178,7 @@ export const removeMovieFromList = async ({
   movieId: IMovie['id']
   sessionId: string
 }) => {
-  await httpClient.request({
+  await tmdbClient.request({
     data: { media_id: movieId },
     method: 'post',
     params: { session_id: sessionId },
@@ -192,7 +193,7 @@ export const deleteMyList = async ({
   listId: IList['id']
   sessionId: string
 }) => {
-  await httpClient.request({
+  await tmdbClient.request({
     method: 'delete',
     params: { session_id: sessionId },
     url: `/list/${listId}`,
@@ -209,7 +210,7 @@ export const getWatchlist = async ({
   page: string
   sessionId: string
 }) => {
-  const { data } = await httpClient.request<IMoviesList>({
+  const { data } = await tmdbClient.request<IMoviesList>({
     params: { page, session_id: sessionId },
     url: `/account/${accountId}/watchlist/movies`,
   })
@@ -228,7 +229,7 @@ export const addToWatchlist = async ({
   movieId: IMovie['id']
   sessionId: string
 }) => {
-  await httpClient.request({
+  await tmdbClient.request({
     data: { media_id: movieId, media_type: 'movie', watchlist: inWatchlist },
     method: 'post',
     params: { session_id: sessionId },
@@ -246,7 +247,7 @@ export const getFavorite = async ({
   page: string
   sessionId: string
 }) => {
-  const { data } = await httpClient.request<IMoviesList>({
+  const { data } = await tmdbClient.request<IMoviesList>({
     params: { page, session_id: sessionId },
     url: `/account/${accountId}/favorite/movies`,
   })
@@ -265,7 +266,7 @@ export const addToFovorite = async ({
   movieId: IMovie['id']
   sessionId: string
 }) => {
-  await httpClient.request({
+  await tmdbClient.request({
     data: { favorite: inFavorite, media_id: movieId, media_type: 'movie' },
     method: 'post',
     params: { session_id: sessionId },
@@ -281,7 +282,7 @@ export const getMovieDetails = async ({
   movieId: IMovie['id']
   sessionId: string
 }) => {
-  const { data } = await httpClient.request<IMovieDetailsExtended>({
+  const { data } = await tmdbClient.request<IMovieDetailsExtended>({
     params: {
       append_to_response: 'images,account_states,credits',
       session_id: sessionId,
@@ -294,7 +295,7 @@ export const getMovieDetails = async ({
 
 // PersonDetails
 export const getPersonDetails = async ({ personId }: { personId: number }) => {
-  const { data } = await httpClient.request<IPersonDetails>({
+  const { data } = await tmdbClient.request<IPersonDetails>({
     params: {
       append_to_response: 'external_ids,movie_credits',
     },

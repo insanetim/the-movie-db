@@ -1,5 +1,4 @@
 import { Modal } from 'antd'
-import { isNotNil } from 'ramda'
 import { MouseEvent, useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import { useSearchParams } from 'react-router-dom'
@@ -15,6 +14,7 @@ import {
 } from 'src/store/favorite/selectors'
 import { changeMovieInFavorite } from 'src/store/movieDetails/actions'
 import getParams from 'src/utils/helpers/getParams'
+import isPresent from 'src/utils/helpers/isPresent'
 
 import { FavoriteHookReturn } from './types'
 
@@ -57,7 +57,7 @@ const useContainer = (): FavoriteHookReturn => {
   }
 
   useEffect(() => {
-    if (isNotNil(account)) {
+    if (isPresent(account)) {
       dispatch(fetchFavorite(page))
     }
   }, [account, page, dispatch])

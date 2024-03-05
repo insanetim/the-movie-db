@@ -1,5 +1,5 @@
 import { Button, Col, Divider, Row, Typography } from 'antd'
-import { isEmpty, isNil, isNotNil } from 'ramda'
+import { isNil } from 'ramda'
 import NoImage from 'src/assets/images/no-image.svg'
 import KnownFor from 'src/components/PersonDetails/KnownFor'
 import PersonalInfo from 'src/components/PersonDetails/PersonalInfo'
@@ -8,6 +8,7 @@ import Empty from 'src/components/UI/Empty'
 import Error from 'src/components/UI/Error'
 import Loading from 'src/components/UI/Loading'
 import PageTitle from 'src/components/UI/PageTitle'
+import isPresent from 'src/utils/helpers/isPresent'
 
 import useContainer from './hook'
 
@@ -34,20 +35,22 @@ const PersonDetails = () => {
     return <Empty description='Person not found' />
   }
 
-  let poster = (
-    <div className='person-poster--no-image'>
-      <img
-        alt={person.name}
-        src={NoImage}
-      />
-    </div>
-  )
-  if (isNotNil(person.profile_path)) {
+  let poster: JSX.Element
+  if (isPresent(person.profile_path)) {
     poster = (
       <div className='person-poster'>
         <img
           alt={person.name}
           src={`https://image.tmdb.org/t/p/w500${person.profile_path}`}
+        />
+      </div>
+    )
+  } else {
+    poster = (
+      <div className='person-poster--no-image'>
+        <img
+          alt={person.name}
+          src={NoImage}
         />
       </div>
     )
@@ -81,7 +84,7 @@ const PersonDetails = () => {
               gender={person.gender}
               placeOfBirth={person.place_of_birth}
             />
-            {!isEmpty(person.biography) && (
+            {isPresent(person.biography) && (
               <>
                 <Divider />
                 <Typography.Title level={3}>Biography</Typography.Title>
@@ -89,8 +92,8 @@ const PersonDetails = () => {
               </>
             )}
           </Col>
-          {(!isEmpty(person.movie_credits.cast) ||
-            !isEmpty(person.movie_credits.crew)) && (
+          {(isPresent(person.movie_credits.cast) ||
+            isPresent(person.movie_credits.crew)) && (
             <>
               <KnownFor
                 credits={person.movie_credits}

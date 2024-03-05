@@ -58,6 +58,14 @@ exports[`Cast useContainer hook should match snapshot 1`] = `
         },
       ],
     },
+    "imdbInfo": {
+      "contentRating": "PG-13",
+      "id": "tt1234567",
+      "rating": {
+        "count": 100500,
+        "star": 9,
+      },
+    },
     "imdb_id": "tt1234567",
     "original_language": "en",
     "overview": "test/overview",
@@ -135,6 +143,14 @@ exports[`Cast useContainer hook should match snapshot without params 1`] = `
           "file_path": "/image",
         },
       ],
+    },
+    "imdbInfo": {
+      "contentRating": "PG-13",
+      "id": "tt1234567",
+      "rating": {
+        "count": 100500,
+        "star": 9,
+      },
     },
     "imdb_id": "tt1234567",
     "original_language": "en",

@@ -1,5 +1,5 @@
 import { InternalAxiosRequestConfig } from 'axios'
-import { ACCESS_TOKEN_AUTH } from 'src/constants/app'
+import { TMDB_ACCESS_TOKEN_AUTH } from 'src/constants/app'
 
 import requestInterceptor from '../requestInterceptor'
 
@@ -9,6 +9,8 @@ describe('requestInterceptor', () => {
     const result = requestInterceptor(config)
 
     expect(result.headers.Accept).toBe('application/json')
-    expect(result.headers.Authorization).toBe(`Bearer ${ACCESS_TOKEN_AUTH}`)
+    expect(result.headers.Authorization).toBe(
+      `Bearer ${TMDB_ACCESS_TOKEN_AUTH}`
+    )
   })
 })

@@ -1,4 +1,3 @@
-import { isNotNil } from 'ramda'
 import { useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import { useSearchParams } from 'react-router-dom'
@@ -13,6 +12,7 @@ import {
   createdListsSelector,
 } from 'src/store/createdLists/selectors'
 import getParams from 'src/utils/helpers/getParams'
+import isPresent from 'src/utils/helpers/isPresent'
 
 import { ListsHookReturn } from './types'
 
@@ -49,7 +49,7 @@ const useContainer = (): ListsHookReturn => {
   }
 
   useEffect(() => {
-    if (isNotNil(account)) {
+    if (isPresent(account)) {
       dispatch(fetchLists(page))
     }
   }, [account, page, dispatch])

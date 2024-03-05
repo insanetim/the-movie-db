@@ -1,5 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
-import { getTrending, searchMovies } from 'src/api/apiRoutes'
+import { getTrending, searchMovies } from 'src/api/tmdb/apiRoutes'
 import { IMoviesList } from 'src/interfaces/movie.interface'
 import errorMessage from 'src/utils/helpers/errorMessage'
 

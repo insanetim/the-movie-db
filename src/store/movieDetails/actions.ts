@@ -1,15 +1,17 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
+import { getImdbInfo } from 'src/api/imdb/apiRoutes'
 import {
   addToFovorite,
   addToWatchlist,
   getMovieDetails,
-} from 'src/api/apiRoutes'
+} from 'src/api/tmdb/apiRoutes'
 import { NOTIFICATION_TYPE } from 'src/constants/app'
 import { IMovie, IMovieDetailsExtended } from 'src/interfaces/movie.interface'
 import { RootState } from 'src/store'
 import { accountSelector } from 'src/store/auth/selectors'
 import errorMessage from 'src/utils/helpers/errorMessage'
 import getSessionId from 'src/utils/helpers/getSessionId'
+import isPresent from 'src/utils/helpers/isPresent'
 
 import { showNotification } from '../app/actions'
 import * as types from './constants'
@@ -26,7 +28,11 @@ const fetchMovieDetails = createAsyncThunk<
   const sessionId = getSessionId()
 
   try {
-    const movieDetails = await getMovieDetails({ movieId, sessionId })
+    let movieDetails = await getMovieDetails({ movieId, sessionId })
+    if (isPresent(movieDetails.imdb_id)) {
+      const imdbInfo = await getImdbInfo({ imdbId: movieDetails.imdb_id })
+      movieDetails = { ...movieDetails, imdbInfo }
+    }
 
     return movieDetails
   } catch (error) {

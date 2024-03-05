@@ -1,13 +1,15 @@
 import { PlusCircleOutlined } from '@ant-design/icons'
 import { Button, Col, Divider, Popover, Row, Typography } from 'antd'
 import { format } from 'date-fns'
-import { isEmpty, isNil } from 'ramda'
+import { isNil } from 'ramda'
 import { Helmet } from 'react-helmet'
 import Budget from 'src/components/MovieDetails/Budget'
 import CastList from 'src/components/MovieDetails/CastList'
+import ContentRating from 'src/components/MovieDetails/ContentRating'
 import Countries from 'src/components/MovieDetails/Countries'
 import Genres from 'src/components/MovieDetails/Genres'
 import ImageGallery from 'src/components/MovieDetails/ImageGallery'
+import ImdbRating from 'src/components/MovieDetails/ImdbRating'
 import OriginalLanguage from 'src/components/MovieDetails/OriginalLanguage'
 import Overview from 'src/components/MovieDetails/Overview'
 import PopoverContent from 'src/components/MovieDetails/PopoverContent'
@@ -21,6 +23,7 @@ import Empty from 'src/components/UI/Empty/component'
 import Error from 'src/components/UI/Error'
 import Loading from 'src/components/UI/Loading'
 import PageTitle from 'src/components/UI/PageTitle'
+import isPresent from 'src/utils/helpers/isPresent'
 import metaTitle from 'src/utils/helpers/metaTitle'
 
 import useContainer from './hook'
@@ -64,7 +67,7 @@ const MovieDetails: React.FC = () => {
   return (
     <>
       <Helmet title={metaTitle(title)} />
-      {!isEmpty(movie.images) && (
+      {isPresent(movie.images) && (
         <ImageGallery
           images={movie.images.backdrops.slice(0, 7)}
           title={movie.title}
@@ -106,25 +109,31 @@ const MovieDetails: React.FC = () => {
           />
         </PageTitle>
         <Row>
-          {!isEmpty(movie.overview) && <Overview overview={movie.overview} />}
+          {isPresent(movie.overview) && <Overview overview={movie.overview} />}
+          {isPresent(movie.imdbInfo?.rating?.star) && (
+            <ImdbRating rating={movie.imdbInfo.rating.star} />
+          )}
           {movie.status && <Status status={movie.status} />}
           {movie.original_language && (
             <OriginalLanguage originalLanguage={movie.original_language} />
           )}
-          {!isEmpty(movie.production_countries) && (
+          {isPresent(movie.production_countries) && (
             <Countries countries={movie.production_countries} />
           )}
           {movie.runtime !== 0 && <Runtime runtime={movie.runtime} />}
           {movie.budget !== 0 && <Budget budget={movie.budget} />}
           {movie.revenue !== 0 && <Revenue revenue={movie.revenue} />}
-          {!isEmpty(movie.genres) && <Genres genres={movie.genres} />}
-          {!isEmpty(movie.credits.cast) && (
+          {isPresent(movie.genres) && <Genres genres={movie.genres} />}
+          {isPresent(movie?.imdbInfo?.contentRating) && (
+            <ContentRating contentRating={movie.imdbInfo.contentRating} />
+          )}
+          {isPresent(movie.credits.cast) && (
             <>
               <Divider />
               <CastList cast={movie.credits.cast.slice(0, 12)} />
             </>
           )}
-          {(!isEmpty(movie.credits.cast) || !isEmpty(movie.credits.crew)) && (
+          {(isPresent(movie.credits.cast) || isPresent(movie.credits.crew)) && (
             <Col
               className='top-margin text-center'
               span={24}

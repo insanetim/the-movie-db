@@ -1,5 +1,6 @@
 import { IResponse } from 'src/interfaces/global.interface'
 import {
+  IMDBInfo,
   IMovie,
   IMovieCredit,
   IMovieDetails,
@@ -45,6 +46,15 @@ const mockImage: IMovieImage = {
   file_path: '/image',
 }
 
+const mockImdbInfo: IMDBInfo = {
+  contentRating: 'PG-13',
+  id: 'tt1234567',
+  rating: {
+    count: 100500,
+    star: 9,
+  },
+}
+
 const mockMovieDetailsExtended: IMovieDetailsExtended = {
   ...mockMovieDetails,
   account_states: { favorite: false, watchlist: false },
@@ -57,6 +67,7 @@ const mockMovieDetailsExtended: IMovieDetailsExtended = {
     logos: [mockImage],
     posters: [mockImage],
   },
+  imdbInfo: mockImdbInfo,
 }
 
 const mockMoviesResponse: IResponse<IMovie> = {
@@ -68,6 +79,7 @@ const mockMoviesResponse: IResponse<IMovie> = {
 
 export {
   mockImage,
+  mockImdbInfo,
   mockMovie,
   mockMovieCredit,
   mockMovieDetailsExtended,

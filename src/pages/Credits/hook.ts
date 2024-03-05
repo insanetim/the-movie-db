@@ -1,15 +1,5 @@
 import { addYears } from 'date-fns'
-import {
-  groupBy,
-  head,
-  isEmpty,
-  isNil,
-  isNotNil,
-  map,
-  pipe,
-  pluck,
-  values,
-} from 'ramda'
+import { groupBy, head, isEmpty, isNil, map, pipe, pluck, values } from 'ramda'
 import { useEffect, useMemo, useState } from 'react'
 import { useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
@@ -24,6 +14,7 @@ import {
 } from 'src/store/personDetails/selectors'
 import getIdFromSlug from 'src/utils/helpers/getIdFromSlug'
 import getSlug from 'src/utils/helpers/getSlug'
+import isPresent from 'src/utils/helpers/isPresent'
 
 import { CreditsRouteParams, FilterOptions, ICredit } from './types'
 
@@ -41,7 +32,7 @@ const useContainer = () => {
   const [filter, setFilter] = useState<FilterOptions>(FilterOptions.All)
 
   const filteredCredits: IPersonCredit[] = useMemo(() => {
-    if (isNotNil(person)) {
+    if (isPresent(person)) {
       const crewCredits = pipe(
         groupBy<IPersonCredit>(item => item.id.toString()),
         values,
@@ -63,7 +54,7 @@ const useContainer = () => {
   }, [person, filter])
 
   const dataSource: ICredit[] = useMemo(() => {
-    if (!isEmpty(filteredCredits)) {
+    if (isPresent(filteredCredits)) {
       return filteredCredits.map(credit => ({
         key: `${credit.id}-${credit.character || credit.job}`,
         movieSlug: getSlug(credit.id, credit.title),
