@@ -1,6 +1,6 @@
 import { PlusCircleOutlined } from '@ant-design/icons'
 import { Typography } from 'antd'
-import { isEmpty, isNotNil } from 'ramda'
+import { isEmpty } from 'ramda'
 import { Helmet } from 'react-helmet'
 import ListsList from 'src/components/Lists/ListsList'
 import IconButton from 'src/components/UI/Buttons/IconButton'
@@ -9,6 +9,7 @@ import Error from 'src/components/UI/Error'
 import Loading from 'src/components/UI/Loading'
 import PageTitle from 'src/components/UI/PageTitle'
 import Pagination from 'src/components/UI/Pagination'
+import isPresent from 'src/utils/helpers/isPresent'
 import metaTitle from 'src/utils/helpers/metaTitle'
 
 import useContainer from './hook'
@@ -29,7 +30,7 @@ const Lists: React.FC = () => {
   if (error) {
     content = <Error error={error} />
   }
-  if (isNotNil(lists) && !isEmpty(lists.results)) {
+  if (isPresent(lists) && !isEmpty(lists.results)) {
     content = (
       <>
         <ListsList lists={lists.results} />

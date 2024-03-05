@@ -8,8 +8,14 @@ exports[`ImdbRating component should match snapshot 1`] = `
     <div
       class="ant-typography css-dev-only-do-not-override-1drr2mu"
     >
+      <img
+        alt="imdb"
+        height="24"
+        src="test-file-stub"
+        title="imdb rating"
+      />
       <b>
-        IMDB Rating: 
+         : 
       </b>
       <span>
         9

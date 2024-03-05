@@ -1,14 +1,14 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { isEmpty, not } from 'ramda'
 import { IAccount } from 'src/interfaces/account.interface'
 import getSessionId from 'src/utils/helpers/getSessionId'
+import isPresent from 'src/utils/helpers/isPresent'
 
 import { fetchAccount, logIn, logOut } from './actions'
 import { AuthState } from './types'
 
 const initialState: AuthState = {
   account: null,
-  isAuthenticated: not(isEmpty(getSessionId())),
+  isAuthenticated: isPresent(getSessionId()),
 }
 
 const authSlice = createSlice({

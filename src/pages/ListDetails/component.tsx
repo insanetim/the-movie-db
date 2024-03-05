@@ -1,6 +1,6 @@
 import { MinusCircleOutlined } from '@ant-design/icons'
 import { Typography } from 'antd'
-import { isEmpty, isNotNil } from 'ramda'
+import { isEmpty } from 'ramda'
 import { Helmet } from 'react-helmet'
 import MoviesList from 'src/components/Movies/MoviesList'
 import IconButton from 'src/components/UI/Buttons/IconButton'
@@ -9,6 +9,7 @@ import Error from 'src/components/UI/Error'
 import Loading from 'src/components/UI/Loading'
 import PageTitle from 'src/components/UI/PageTitle'
 import Pagination from 'src/components/UI/Pagination'
+import isPresent from 'src/utils/helpers/isPresent'
 import metaTitle from 'src/utils/helpers/metaTitle'
 
 import useContainer from './hook'
@@ -41,7 +42,7 @@ const ListDetails: React.FC = () => {
 
   let content = <Empty />
 
-  if (isNotNil(list) && !isEmpty(list.items)) {
+  if (isPresent(list) && !isEmpty(list.items)) {
     content = (
       <>
         <MoviesList

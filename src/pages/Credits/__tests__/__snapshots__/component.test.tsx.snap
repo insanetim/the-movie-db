@@ -150,7 +150,7 @@ exports[`Credits component should match snapshot 1`] = `
                     >
                       <colgroup>
                         <col
-                          style="width: 200px;"
+                          style="width: 180px;"
                         />
                       </colgroup>
                       <thead
@@ -161,7 +161,7 @@ exports[`Credits component should match snapshot 1`] = `
                             aria-label="Release Date"
                             class="ant-table-cell ant-table-cell-fix-left ant-table-cell-fix-left-last ant-table-column-has-sorters"
                             scope="col"
-                            style="position: sticky; left: 0px;"
+                            style="position: sticky; left: 0px; text-align: center;"
                             tabindex="0"
                           >
                             <div
@@ -350,7 +350,7 @@ exports[`Credits component should match snapshot 1`] = `
                         >
                           <td
                             class="ant-table-cell ant-table-cell-fix-left ant-table-cell-fix-left-last"
-                            style="position: sticky; left: 0px;"
+                            style="position: sticky; left: 0px; text-align: center;"
                           >
                             1999
                           </td>
@@ -420,7 +420,7 @@ exports[`Credits component should match snapshot 1`] = `
                         >
                           <td
                             class="ant-table-cell ant-table-cell-fix-left ant-table-cell-fix-left-last"
-                            style="position: sticky; left: 0px;"
+                            style="position: sticky; left: 0px; text-align: center;"
                           >
                             2020
                           </td>

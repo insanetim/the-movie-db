@@ -1,6 +1,6 @@
 import { Card } from 'antd'
-import { isNotNil } from 'ramda'
 import NoImage from 'src/assets/images/no-image.svg'
+import isPresent from 'src/utils/helpers/isPresent'
 
 import useContainer from './hook'
 import { CreditsItemProps } from './types'
@@ -13,20 +13,22 @@ const CreditsItem: React.FC<CreditsItemProps> = ({
 }) => {
   const { handleClick } = useContainer({ id, title })
 
-  let cover = (
-    <div className='ant-card-cover--no-image'>
-      <img
-        alt={title}
-        src={NoImage}
-      />
-    </div>
-  )
-  if (isNotNil(profilePath)) {
+  let cover: JSX.Element
+  if (isPresent(profilePath)) {
     cover = (
       <img
         alt={title}
         src={`https://image.tmdb.org/t/p/w500${profilePath}`}
       />
+    )
+  } else {
+    cover = (
+      <div className='ant-card-cover--no-image'>
+        <img
+          alt={title}
+          src={NoImage}
+        />
+      </div>
     )
   }
 
