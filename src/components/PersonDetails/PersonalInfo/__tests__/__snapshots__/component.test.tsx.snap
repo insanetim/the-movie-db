@@ -3,12 +3,12 @@
 exports[`PersonalInfo component should match snapshot 1`] = `
 <DocumentFragment>
   <h3
-    class="ant-typography css-dev-only-do-not-override-1drr2mu"
+    class="ant-typography css-dev-only-do-not-override-1ae8k9u"
   >
     Personal Info
   </h3>
   <div
-    class="ant-typography css-dev-only-do-not-override-1drr2mu"
+    class="ant-typography css-dev-only-do-not-override-1ae8k9u"
   >
     <b>
       Gender: 
@@ -18,7 +18,7 @@ exports[`PersonalInfo component should match snapshot 1`] = `
     </span>
   </div>
   <div
-    class="ant-typography css-dev-only-do-not-override-1drr2mu"
+    class="ant-typography css-dev-only-do-not-override-1ae8k9u"
   >
     <b>
       Birthday: 
@@ -28,7 +28,7 @@ exports[`PersonalInfo component should match snapshot 1`] = `
     </span>
   </div>
   <div
-    class="ant-typography css-dev-only-do-not-override-1drr2mu"
+    class="ant-typography css-dev-only-do-not-override-1ae8k9u"
   >
     <b>
       Place of Birth: 
