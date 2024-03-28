@@ -3,15 +3,15 @@
 exports[`Trending component should match snapshot 1`] = `
 <DocumentFragment>
   <div
-    class="ant-row css-dev-only-do-not-override-1ae8k9u"
+    class="ant-row css-dev-only-do-not-override-djtmh8"
     style="margin-left: -12px; margin-right: -12px; row-gap: 16px;"
   >
     <div
-      class="ant-col ant-col-24 ant-col-sm-12 ant-col-md-8 ant-col-lg-8 ant-col-xl-6 css-dev-only-do-not-override-1ae8k9u"
+      class="ant-col ant-col-24 ant-col-sm-12 ant-col-md-8 ant-col-lg-8 ant-col-xl-6 css-dev-only-do-not-override-djtmh8"
       style="padding-left: 12px; padding-right: 12px;"
     >
       <div
-        class="ant-card ant-card-bordered ant-card-hoverable css-dev-only-do-not-override-1ae8k9u"
+        class="ant-card ant-card-bordered ant-card-hoverable css-dev-only-do-not-override-djtmh8"
         data-testid="movieItemCard"
       >
         <div
@@ -51,13 +51,13 @@ exports[`Trending component should match snapshot 1`] = `
     </div>
   </div>
   <div
-    class="ant-row ant-row-center css-dev-only-do-not-override-1ae8k9u"
+    class="ant-row ant-row-center css-dev-only-do-not-override-djtmh8"
   >
     <div
-      class="ant-col css-dev-only-do-not-override-1ae8k9u"
+      class="ant-col css-dev-only-do-not-override-djtmh8"
     >
       <ul
-        class="ant-pagination pagination css-dev-only-do-not-override-1ae8k9u"
+        class="ant-pagination pagination css-dev-only-do-not-override-djtmh8"
       >
         <li
           aria-disabled="true"
@@ -236,15 +236,15 @@ exports[`Trending component should match snapshot 1`] = `
 exports[`Trending component should match snapshot with 1 page 1`] = `
 <DocumentFragment>
   <div
-    class="ant-row css-dev-only-do-not-override-1ae8k9u"
+    class="ant-row css-dev-only-do-not-override-djtmh8"
     style="margin-left: -12px; margin-right: -12px; row-gap: 16px;"
   >
     <div
-      class="ant-col ant-col-24 ant-col-sm-12 ant-col-md-8 ant-col-lg-8 ant-col-xl-6 css-dev-only-do-not-override-1ae8k9u"
+      class="ant-col ant-col-24 ant-col-sm-12 ant-col-md-8 ant-col-lg-8 ant-col-xl-6 css-dev-only-do-not-override-djtmh8"
       style="padding-left: 12px; padding-right: 12px;"
     >
       <div
-        class="ant-card ant-card-bordered ant-card-hoverable css-dev-only-do-not-override-1ae8k9u"
+        class="ant-card ant-card-bordered ant-card-hoverable css-dev-only-do-not-override-djtmh8"
         data-testid="movieItemCard"
       >
         <div
@@ -289,7 +289,7 @@ exports[`Trending component should match snapshot with 1 page 1`] = `
 exports[`Trending component should match snapshot with error 1`] = `
 <DocumentFragment>
   <div
-    class="ant-result ant-result-error css-dev-only-do-not-override-1ae8k9u"
+    class="ant-result ant-result-error css-dev-only-do-not-override-djtmh8"
   >
     <div
       class="ant-result-icon"
@@ -327,15 +327,15 @@ exports[`Trending component should match snapshot with error 1`] = `
 exports[`Trending component should match snapshot with loading 1`] = `
 <DocumentFragment>
   <div
-    class="ant-row ant-row-center css-dev-only-do-not-override-1ae8k9u"
+    class="ant-row ant-row-center css-dev-only-do-not-override-djtmh8"
   >
     <div
-      class="ant-col css-dev-only-do-not-override-1ae8k9u"
+      class="ant-col css-dev-only-do-not-override-djtmh8"
     >
       <div
         aria-busy="true"
         aria-live="polite"
-        class="ant-spin ant-spin-spinning css-dev-only-do-not-override-1ae8k9u"
+        class="ant-spin ant-spin-spinning css-dev-only-do-not-override-djtmh8"
       >
         <span
           class="ant-spin-dot ant-spin-dot-spin"
@@ -362,7 +362,7 @@ exports[`Trending component should match snapshot with loading 1`] = `
 exports[`Trending component should match snapshot without movies 1`] = `
 <DocumentFragment>
   <div
-    class="css-dev-only-do-not-override-1ae8k9u ant-empty ant-empty-normal"
+    class="css-dev-only-do-not-override-djtmh8 ant-empty ant-empty-normal"
   >
     <div
       class="ant-empty-image"
