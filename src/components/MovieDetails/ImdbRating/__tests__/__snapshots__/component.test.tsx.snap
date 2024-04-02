@@ -3,10 +3,10 @@
 exports[`ImdbRating component should match snapshot 1`] = `
 <DocumentFragment>
   <div
-    class="ant-col ant-col-24 css-dev-only-do-not-override-djtmh8"
+    class="ant-col ant-col-24 css-dev-only-do-not-override-11xg00t"
   >
     <div
-      class="ant-typography css-dev-only-do-not-override-djtmh8"
+      class="ant-typography css-dev-only-do-not-override-11xg00t"
     >
       <img
         alt="imdb"

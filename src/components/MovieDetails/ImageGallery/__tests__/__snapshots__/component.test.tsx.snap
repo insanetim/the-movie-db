@@ -3,16 +3,17 @@
 exports[`ImageGallery component should match snapshot 1`] = `
 <DocumentFragment>
   <div
-    class="ant-row css-dev-only-do-not-override-djtmh8"
+    class="ant-row css-dev-only-do-not-override-11xg00t"
   >
     <div
-      class="ant-col ant-col-24 css-dev-only-do-not-override-djtmh8"
+      class="ant-col ant-col-24 css-dev-only-do-not-override-11xg00t"
     >
       <div
-        class="ant-carousel css-dev-only-do-not-override-djtmh8"
+        class="ant-carousel css-dev-only-do-not-override-11xg00t"
       >
         <div
           class="slick-slider slick-initialized"
+          dir="ltr"
         >
           <div
             class="slick-list"
@@ -25,7 +26,7 @@ exports[`ImageGallery component should match snapshot 1`] = `
                 aria-hidden="false"
                 class="slick-slide slick-active slick-current"
                 data-index="0"
-                style="outline: none; width: 0px; position: relative; left: 0px; opacity: 1; transition: opacity 700ms ease, visibility 700ms ease;"
+                style="outline: none; width: 0px; position: relative; left: 0px; opacity: 1; z-index: 999; transition: opacity 700ms ease, visibility 700ms ease;"
                 tabindex="-1"
               >
                 <div>
@@ -43,6 +44,18 @@ exports[`ImageGallery component should match snapshot 1`] = `
               </div>
             </div>
           </div>
+          <ul
+            class="slick-dots slick-dots-bottom"
+            style="display: block;"
+          >
+            <li
+              class="slick-active"
+            >
+              <button>
+                1
+              </button>
+            </li>
+          </ul>
         </div>
       </div>
     </div>
