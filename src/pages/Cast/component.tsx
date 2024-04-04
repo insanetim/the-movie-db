@@ -40,11 +40,10 @@ const Cast: React.FC = () => {
   const title = `${movie.title}${
     movie.release_date ? ` (${format(movie.release_date, 'yyyy')})` : ''
   }`
-  const pageTitle = `${title} - Cast & Crew`
 
   return (
     <>
-      <Helmet title={metaTitle(pageTitle)} />
+      <Helmet title={metaTitle(title)} />
       <div className='container top-margin'>
         <GoBackLink
           href={`/movie/${movieSlug}`}

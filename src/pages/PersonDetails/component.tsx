@@ -1,5 +1,6 @@
 import { Button, Col, Divider, Row, Typography } from 'antd'
 import { isNil } from 'ramda'
+import { Helmet } from 'react-helmet'
 import NoImage from 'src/assets/images/no-image.svg'
 import KnownFor from 'src/components/PersonDetails/KnownFor'
 import PersonalInfo from 'src/components/PersonDetails/PersonalInfo'
@@ -9,6 +10,7 @@ import Error from 'src/components/UI/Error'
 import Loading from 'src/components/UI/Loading'
 import PageTitle from 'src/components/UI/PageTitle'
 import isPresent from 'src/utils/helpers/isPresent'
+import metaTitle from 'src/utils/helpers/metaTitle'
 
 import useContainer from './hook'
 
@@ -58,6 +60,7 @@ const PersonDetails = () => {
 
   return (
     <>
+      <Helmet title={metaTitle(person.name)} />
       <div className='container top-margin'>
         <PageTitle>
           <Typography.Title
