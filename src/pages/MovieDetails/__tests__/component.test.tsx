@@ -12,6 +12,7 @@ const mockedHook: MovieDetailsHookReturn = {
   error: null,
   handleFavoriteClick: jest.fn(),
   handleGoToCast: jest.fn(),
+  handlePopoverMouseEnter: jest.fn(),
   handleWatchlistClick: jest.fn(),
   loading: false,
   movie: mockMovieDetailsExtended,
@@ -29,6 +30,26 @@ describe('MovieDetails component', () => {
     const { asFragment } = renderWithWrapper(<MovieDetails />)
 
     expect(asFragment()).toMatchSnapshot()
+  })
+
+  it('should call "handlePopoverMouseEnter" when popover hovered', async () => {
+    renderWithWrapper(<MovieDetails />)
+
+    const user = userEvent.setup()
+    const popover = screen.getByTestId('addMovieToListPopover')
+    await user.hover(popover)
+
+    expect(mockedHook.handlePopoverMouseEnter).toHaveBeenCalled()
+  })
+
+  it('should call "setPopoverOpen" when popover clicked', async () => {
+    renderWithWrapper(<MovieDetails />)
+
+    const user = userEvent.setup()
+    const popover = screen.getByTestId('addMovieToListPopover')
+    await user.click(popover)
+
+    expect(mockedHook.setPopoverOpen).toHaveBeenCalled()
   })
 
   it('should call "handleFavoriteClick" when button clicked', async () => {
@@ -59,16 +80,6 @@ describe('MovieDetails component', () => {
     await user.click(button)
 
     expect(mockedHook.handleGoToCast).toHaveBeenCalled()
-  })
-
-  it('should call "setPopoverOpen" when popover clicked', async () => {
-    renderWithWrapper(<MovieDetails />)
-
-    const user = userEvent.setup()
-    const popover = screen.getByTestId('addMovieToListPopover')
-    await user.click(popover)
-
-    expect(mockedHook.setPopoverOpen).toHaveBeenCalled()
   })
 
   it('should match snapshot with other data', () => {

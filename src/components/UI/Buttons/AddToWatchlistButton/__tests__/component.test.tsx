@@ -9,8 +9,8 @@ describe('AddToWatchlistButton component', () => {
   it('should match snapshot', () => {
     const { asFragment } = render(
       <AddToWatchlistButton
-        handleClick={handleClick}
         inWatchlist={true}
+        onClick={handleClick}
       />
     )
 
@@ -20,8 +20,8 @@ describe('AddToWatchlistButton component', () => {
   it('should match snapshot with other data', () => {
     const { asFragment } = render(
       <AddToWatchlistButton
-        handleClick={handleClick}
         inWatchlist={false}
+        onClick={handleClick}
       />
     )
 
@@ -31,8 +31,8 @@ describe('AddToWatchlistButton component', () => {
   it('should call "handleClick" when button clicked', async () => {
     render(
       <AddToWatchlistButton
-        handleClick={handleClick}
         inWatchlist={true}
+        onClick={handleClick}
       />
     )
 

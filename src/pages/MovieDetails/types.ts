@@ -5,6 +5,7 @@ export type MovieDetailsHookReturn = {
   error: ErrorMsg
   handleFavoriteClick: () => void
   handleGoToCast: () => void
+  handlePopoverMouseEnter: () => void
   handleWatchlistClick: () => void
   loading: boolean
   movie?: IMovieDetailsExtended

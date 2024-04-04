@@ -1,6 +1,5 @@
-import { MouseEventHandler } from 'react'
+import { ButtonProps } from 'antd'
 
-export type AddToWatchlistButtonProps = {
-  handleClick: MouseEventHandler<HTMLElement>
+export type AddToWatchlistButtonProps = ButtonProps & {
   inWatchlist: boolean
 }

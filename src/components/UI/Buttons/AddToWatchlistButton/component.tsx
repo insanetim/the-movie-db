@@ -4,7 +4,6 @@ import { Button } from 'antd'
 import { AddToWatchlistButtonProps } from './types'
 
 const AddToWatchlistButton: React.FC<AddToWatchlistButtonProps> = ({
-  handleClick,
   inWatchlist,
   ...props
 }) => {
@@ -13,7 +12,6 @@ const AddToWatchlistButton: React.FC<AddToWatchlistButtonProps> = ({
   return (
     <Button
       icon={watchlistIcon}
-      onClick={handleClick}
       shape='circle'
       type='text'
       {...props}

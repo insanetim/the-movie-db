@@ -131,6 +131,7 @@ const mockedMovieDetailsHook: MovieDetailsHookReturn = {
   error: null,
   handleFavoriteClick: jest.fn(),
   handleGoToCast: jest.fn(),
+  handlePopoverMouseEnter: jest.fn(),
   handleWatchlistClick: jest.fn(),
   loading: false,
   movie: mockMovieDetailsExtended,

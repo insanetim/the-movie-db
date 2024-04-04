@@ -1,6 +1,5 @@
-import { MouseEventHandler } from 'react'
+import { ButtonProps } from 'antd'
 
-export type AddToFavoriteButtonProps = {
-  handleClick: MouseEventHandler<HTMLElement>
+export type AddToFavoriteButtonProps = ButtonProps & {
   inFavorite: boolean
 }

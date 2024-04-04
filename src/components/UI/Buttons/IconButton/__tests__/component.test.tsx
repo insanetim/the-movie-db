@@ -10,8 +10,8 @@ describe('IconButton component', () => {
   it('should match snapshot', () => {
     const { asFragment } = render(
       <IconButton
-        handleClick={handleClick}
         icon={<PlusCircleOutlined />}
+        onClick={handleClick}
       />
     )
 
@@ -21,8 +21,8 @@ describe('IconButton component', () => {
   it('should call "handleClick" when button clicked', async () => {
     render(
       <IconButton
-        handleClick={handleClick}
         icon={<PlusCircleOutlined />}
+        onClick={handleClick}
       />
     )
 

@@ -9,8 +9,8 @@ describe('AddToFavoriteButton component', () => {
   it('should match snapshot', () => {
     const { asFragment } = render(
       <AddToFavoriteButton
-        handleClick={handleClick}
         inFavorite={true}
+        onClick={handleClick}
       />
     )
 
@@ -20,8 +20,8 @@ describe('AddToFavoriteButton component', () => {
   it('should match snapshot with other data', () => {
     const { asFragment } = render(
       <AddToFavoriteButton
-        handleClick={handleClick}
         inFavorite={false}
+        onClick={handleClick}
       />
     )
 
@@ -31,8 +31,8 @@ describe('AddToFavoriteButton component', () => {
   it('should call "handleClick" when button clicked', async () => {
     render(
       <AddToFavoriteButton
-        handleClick={handleClick}
         inFavorite={true}
+        onClick={handleClick}
       />
     )
 

@@ -1,6 +1,6 @@
-import { MouseEventHandler, ReactNode } from 'react'
+import { ButtonProps } from 'antd'
+import { ReactNode } from 'react'
 
-export type IconButtonProps = {
-  handleClick?: MouseEventHandler<HTMLElement>
+export type IconButtonProps = ButtonProps & {
   icon: ReactNode
 }

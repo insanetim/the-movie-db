@@ -33,6 +33,7 @@ const MovieDetails: React.FC = () => {
     error,
     handleFavoriteClick,
     handleGoToCast,
+    handlePopoverMouseEnter,
     handleWatchlistClick,
     loading,
     movie,
@@ -95,17 +96,18 @@ const MovieDetails: React.FC = () => {
             <IconButton
               data-testid='addMovieToListPopover'
               icon={<PlusCircleOutlined />}
+              onMouseEnter={handlePopoverMouseEnter}
             />
           </Popover>
           <AddToFavoriteButton
             data-testid='addToFavoriteBtn'
-            handleClick={handleFavoriteClick}
             inFavorite={movie.account_states.favorite}
+            onClick={handleFavoriteClick}
           />
           <AddToWatchlistButton
             data-testid='addToWatchlistBtn'
-            handleClick={handleWatchlistClick}
             inWatchlist={movie.account_states.watchlist}
+            onClick={handleWatchlistClick}
           />
         </PageTitle>
         <Row>

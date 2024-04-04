@@ -71,8 +71,8 @@ const ListDetails: React.FC = () => {
           </Typography.Title>
           <IconButton
             data-testid='deleteListBtn'
-            handleClick={handleListDelete}
             icon={<MinusCircleOutlined />}
+            onClick={handleListDelete}
           />
         </PageTitle>
         {content}

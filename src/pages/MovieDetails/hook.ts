@@ -5,7 +5,9 @@ import { useNavigate, useParams } from 'react-router-dom'
 import { useAppDispatch } from 'src/hooks/useRedux'
 import { RootState } from 'src/store'
 import { showNotification } from 'src/store/app/actions'
+import { accountSelector } from 'src/store/auth/selectors'
 import { fetchLists } from 'src/store/createdLists/actions'
+import { createdListsSelector } from 'src/store/createdLists/selectors'
 import {
   changeMovieInFavorite,
   changeMovieInWatchlist,
@@ -18,6 +20,7 @@ import {
 } from 'src/store/movieDetails/selectors'
 import favoriteMessage from 'src/utils/helpers/favoriteMessage'
 import getIdFromSlug from 'src/utils/helpers/getIdFromSlug'
+import isPresent from 'src/utils/helpers/isPresent'
 import watchlistMessage from 'src/utils/helpers/watchlistMessage'
 
 import { MovieDetailsHookReturn, MovieDetailsRouteParams } from './types'
@@ -28,6 +31,8 @@ const useContainer = (): MovieDetailsHookReturn => {
   >() as MovieDetailsRouteParams
   const navigate = useNavigate()
   const dispatch = useAppDispatch()
+  const account = useSelector(accountSelector)
+  const lists = useSelector(createdListsSelector)
   const movieId = getIdFromSlug(movieSlug)
   const movie = useSelector((state: RootState) =>
     movieDetailsSelector(state, movieId)
@@ -35,6 +40,12 @@ const useContainer = (): MovieDetailsHookReturn => {
   const loading = useSelector(movieDetailsLoadingSelector)
   const error = useSelector(movieDetailsErrorSelector)
   const [popoverOpen, setPopoverOpen] = useState(false)
+
+  const handlePopoverMouseEnter = () => {
+    if (isPresent(account) && isNil(lists)) {
+      dispatch(fetchLists('1'))
+    }
+  }
 
   const handleFavoriteClick = () => {
     const inFavorite = !movie!.account_states.favorite
@@ -66,13 +77,13 @@ const useContainer = (): MovieDetailsHookReturn => {
     if (isNil(movie)) {
       dispatch(fetchMovieDetails(movieId))
     }
-    dispatch(fetchLists('1'))
   }, [dispatch, movie, movieId])
 
   return {
     error,
     handleFavoriteClick,
     handleGoToCast,
+    handlePopoverMouseEnter,
     handleWatchlistClick,
     loading,
     movie,

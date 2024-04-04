@@ -56,8 +56,8 @@ const Lists: React.FC = () => {
           </Typography.Title>
           <IconButton
             data-testid='createListBtn'
-            handleClick={handleCreateList}
             icon={<PlusCircleOutlined />}
+            onClick={handleCreateList}
           />
         </PageTitle>
         {content}
