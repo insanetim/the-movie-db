@@ -3,15 +3,15 @@
 exports[`Loading component should match snapshot 1`] = `
 <DocumentFragment>
   <div
-    class="ant-row ant-row-center css-dev-only-do-not-override-11xg00t"
+    class="ant-row ant-row-center css-dev-only-do-not-override-1kuana8"
   >
     <div
-      class="ant-col css-dev-only-do-not-override-11xg00t"
+      class="ant-col css-dev-only-do-not-override-1kuana8"
     >
       <div
         aria-busy="true"
         aria-live="polite"
-        class="ant-spin ant-spin-spinning css-dev-only-do-not-override-11xg00t"
+        class="ant-spin ant-spin-spinning css-dev-only-do-not-override-1kuana8"
       >
         <span
           class="ant-spin-dot ant-spin-dot-spin"

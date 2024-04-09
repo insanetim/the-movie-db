@@ -3,13 +3,13 @@
 exports[`MovieDetails component should match snapshot 1`] = `
 <DocumentFragment>
   <div
-    class="ant-row css-dev-only-do-not-override-11xg00t"
+    class="ant-row css-dev-only-do-not-override-1kuana8"
   >
     <div
-      class="ant-col ant-col-24 css-dev-only-do-not-override-11xg00t"
+      class="ant-col ant-col-24 css-dev-only-do-not-override-1kuana8"
     >
       <div
-        class="ant-carousel css-dev-only-do-not-override-11xg00t"
+        class="ant-carousel css-dev-only-do-not-override-1kuana8"
       >
         <div
           class="slick-slider slick-initialized"
@@ -64,23 +64,23 @@ exports[`MovieDetails component should match snapshot 1`] = `
     class="container top-margin"
   >
     <div
-      class="ant-row css-dev-only-do-not-override-11xg00t"
+      class="ant-row css-dev-only-do-not-override-1kuana8"
     >
       <div
-        class="ant-col ant-col-24 css-dev-only-do-not-override-11xg00t"
+        class="ant-col ant-col-24 css-dev-only-do-not-override-1kuana8"
       >
         <div
-          class="ant-flex css-dev-only-do-not-override-11xg00t ant-flex-align-center ant-flex-gap-middle"
+          class="ant-flex css-dev-only-do-not-override-1kuana8 ant-flex-align-center ant-flex-gap-middle"
           style="margin-bottom: 24px;"
         >
           <h1
-            class="ant-typography css-dev-only-do-not-override-11xg00t"
+            class="ant-typography css-dev-only-do-not-override-1kuana8"
             style="margin-bottom: 0px;"
           >
             test/title (1999)
           </h1>
           <button
-            class="ant-btn css-dev-only-do-not-override-11xg00t ant-btn-circle ant-btn-text ant-btn-icon-only"
+            class="ant-btn css-dev-only-do-not-override-1kuana8 ant-btn-circle ant-btn-text ant-btn-icon-only"
             data-testid="addMovieToListPopover"
             type="button"
           >
@@ -112,7 +112,7 @@ exports[`MovieDetails component should match snapshot 1`] = `
             </span>
           </button>
           <button
-            class="ant-btn css-dev-only-do-not-override-11xg00t ant-btn-circle ant-btn-text ant-btn-icon-only"
+            class="ant-btn css-dev-only-do-not-override-1kuana8 ant-btn-circle ant-btn-text ant-btn-icon-only"
             data-testid="addToFavoriteBtn"
             type="button"
           >
@@ -141,7 +141,7 @@ exports[`MovieDetails component should match snapshot 1`] = `
             </span>
           </button>
           <button
-            class="ant-btn css-dev-only-do-not-override-11xg00t ant-btn-circle ant-btn-text ant-btn-icon-only"
+            class="ant-btn css-dev-only-do-not-override-1kuana8 ant-btn-circle ant-btn-text ant-btn-icon-only"
             data-testid="addToWatchlistBtn"
             type="button"
           >
@@ -173,27 +173,27 @@ exports[`MovieDetails component should match snapshot 1`] = `
       </div>
     </div>
     <div
-      class="ant-row css-dev-only-do-not-override-11xg00t"
+      class="ant-row css-dev-only-do-not-override-1kuana8"
     >
       <div
-        class="ant-col ant-col-24 css-dev-only-do-not-override-11xg00t"
+        class="ant-col ant-col-24 css-dev-only-do-not-override-1kuana8"
       >
         <h3
-          class="ant-typography css-dev-only-do-not-override-11xg00t"
+          class="ant-typography css-dev-only-do-not-override-1kuana8"
         >
           Overview
         </h3>
         <div
-          class="ant-typography css-dev-only-do-not-override-11xg00t"
+          class="ant-typography css-dev-only-do-not-override-1kuana8"
         >
           test/overview
         </div>
       </div>
       <div
-        class="ant-col ant-col-24 css-dev-only-do-not-override-11xg00t"
+        class="ant-col ant-col-24 css-dev-only-do-not-override-1kuana8"
       >
         <div
-          class="ant-typography css-dev-only-do-not-override-11xg00t"
+          class="ant-typography css-dev-only-do-not-override-1kuana8"
         >
           <img
             alt="imdb"
@@ -210,10 +210,10 @@ exports[`MovieDetails component should match snapshot 1`] = `
         </div>
       </div>
       <div
-        class="ant-col ant-col-24 css-dev-only-do-not-override-11xg00t"
+        class="ant-col ant-col-24 css-dev-only-do-not-override-1kuana8"
       >
         <div
-          class="ant-typography css-dev-only-do-not-override-11xg00t"
+          class="ant-typography css-dev-only-do-not-override-1kuana8"
         >
           <b>
             Status: 
@@ -224,10 +224,10 @@ exports[`MovieDetails component should match snapshot 1`] = `
         </div>
       </div>
       <div
-        class="ant-col ant-col-24 css-dev-only-do-not-override-11xg00t"
+        class="ant-col ant-col-24 css-dev-only-do-not-override-1kuana8"
       >
         <div
-          class="ant-typography css-dev-only-do-not-override-11xg00t"
+          class="ant-typography css-dev-only-do-not-override-1kuana8"
         >
           <b>
             Original Language: 
@@ -238,10 +238,10 @@ exports[`MovieDetails component should match snapshot 1`] = `
         </div>
       </div>
       <div
-        class="ant-col ant-col-24 css-dev-only-do-not-override-11xg00t"
+        class="ant-col ant-col-24 css-dev-only-do-not-override-1kuana8"
       >
         <div
-          class="ant-typography css-dev-only-do-not-override-11xg00t"
+          class="ant-typography css-dev-only-do-not-override-1kuana8"
         >
           <b>
             Country: 
@@ -252,10 +252,10 @@ exports[`MovieDetails component should match snapshot 1`] = `
         </div>
       </div>
       <div
-        class="ant-col ant-col-24 css-dev-only-do-not-override-11xg00t"
+        class="ant-col ant-col-24 css-dev-only-do-not-override-1kuana8"
       >
         <div
-          class="ant-typography css-dev-only-do-not-override-11xg00t"
+          class="ant-typography css-dev-only-do-not-override-1kuana8"
         >
           <b>
             Runtime: 
@@ -266,10 +266,10 @@ exports[`MovieDetails component should match snapshot 1`] = `
         </div>
       </div>
       <div
-        class="ant-col ant-col-24 css-dev-only-do-not-override-11xg00t"
+        class="ant-col ant-col-24 css-dev-only-do-not-override-1kuana8"
       >
         <div
-          class="ant-typography css-dev-only-do-not-override-11xg00t"
+          class="ant-typography css-dev-only-do-not-override-1kuana8"
         >
           <b>
             Budget: 
@@ -280,10 +280,10 @@ exports[`MovieDetails component should match snapshot 1`] = `
         </div>
       </div>
       <div
-        class="ant-col ant-col-24 css-dev-only-do-not-override-11xg00t"
+        class="ant-col ant-col-24 css-dev-only-do-not-override-1kuana8"
       >
         <div
-          class="ant-typography css-dev-only-do-not-override-11xg00t"
+          class="ant-typography css-dev-only-do-not-override-1kuana8"
         >
           <b>
             Revenue: 
@@ -294,20 +294,20 @@ exports[`MovieDetails component should match snapshot 1`] = `
         </div>
       </div>
       <div
-        class="ant-col ant-col-24 css-dev-only-do-not-override-11xg00t"
+        class="ant-col ant-col-24 css-dev-only-do-not-override-1kuana8"
       >
         <div
-          class="ant-typography css-dev-only-do-not-override-11xg00t"
+          class="ant-typography css-dev-only-do-not-override-1kuana8"
         >
           <b>
             Genres: 
           </b>
           <div
-            class="ant-flex css-dev-only-do-not-override-11xg00t"
+            class="ant-flex css-dev-only-do-not-override-1kuana8"
             style="display: inline-flex; gap: 4px;"
           >
             <span
-              class="ant-tag css-dev-only-do-not-override-11xg00t"
+              class="ant-tag css-dev-only-do-not-override-1kuana8"
             >
               TEST/GENRE
             </span>
@@ -315,47 +315,47 @@ exports[`MovieDetails component should match snapshot 1`] = `
         </div>
       </div>
       <div
-        class="ant-col ant-col-24 css-dev-only-do-not-override-11xg00t"
+        class="ant-col ant-col-24 css-dev-only-do-not-override-1kuana8"
       >
         <div
-          class="ant-typography css-dev-only-do-not-override-11xg00t"
+          class="ant-typography css-dev-only-do-not-override-1kuana8"
         >
           <b>
             Rating: 
           </b>
           <span
-            class="ant-tag css-dev-only-do-not-override-11xg00t"
+            class="ant-tag css-dev-only-do-not-override-1kuana8"
           >
             PG-13
           </span>
         </div>
       </div>
       <div
-        class="ant-divider css-dev-only-do-not-override-11xg00t ant-divider-horizontal"
+        class="ant-divider css-dev-only-do-not-override-1kuana8 ant-divider-horizontal"
         role="separator"
       />
       <div
-        class="ant-col ant-col-24 css-dev-only-do-not-override-11xg00t"
+        class="ant-col ant-col-24 css-dev-only-do-not-override-1kuana8"
       >
         <h3
-          class="ant-typography css-dev-only-do-not-override-11xg00t"
+          class="ant-typography css-dev-only-do-not-override-1kuana8"
         >
           Cast
         </h3>
       </div>
       <div
-        class="ant-col ant-col-24 css-dev-only-do-not-override-11xg00t"
+        class="ant-col ant-col-24 css-dev-only-do-not-override-1kuana8"
       >
         <div
-          class="ant-row css-dev-only-do-not-override-11xg00t"
+          class="ant-row css-dev-only-do-not-override-1kuana8"
           style="margin-left: -12px; margin-right: -12px; row-gap: 16px;"
         >
           <div
-            class="ant-col ant-col-24 ant-col-sm-12 ant-col-md-8 ant-col-lg-8 ant-col-xl-6 css-dev-only-do-not-override-11xg00t"
+            class="ant-col ant-col-24 ant-col-sm-12 ant-col-md-8 ant-col-lg-8 ant-col-xl-6 css-dev-only-do-not-override-1kuana8"
             style="padding-left: 12px; padding-right: 12px;"
           >
             <div
-              class="ant-card ant-card-bordered ant-card-hoverable css-dev-only-do-not-override-11xg00t"
+              class="ant-card ant-card-bordered ant-card-hoverable css-dev-only-do-not-override-1kuana8"
             >
               <div
                 class="ant-card-cover"
@@ -392,10 +392,10 @@ exports[`MovieDetails component should match snapshot 1`] = `
         </div>
       </div>
       <div
-        class="ant-col ant-col-24 top-margin text-center css-dev-only-do-not-override-11xg00t"
+        class="ant-col ant-col-24 top-margin text-center css-dev-only-do-not-override-1kuana8"
       >
         <button
-          class="ant-btn css-dev-only-do-not-override-11xg00t ant-btn-primary ant-btn-background-ghost"
+          class="ant-btn css-dev-only-do-not-override-1kuana8 ant-btn-primary ant-btn-background-ghost"
           type="button"
         >
           <span>
@@ -411,7 +411,7 @@ exports[`MovieDetails component should match snapshot 1`] = `
 exports[`MovieDetails component should match snapshot with empty movie 1`] = `
 <DocumentFragment>
   <div
-    class="css-dev-only-do-not-override-11xg00t ant-empty ant-empty-normal"
+    class="css-dev-only-do-not-override-1kuana8 ant-empty ant-empty-normal"
   >
     <div
       class="ant-empty-image"
@@ -464,7 +464,7 @@ exports[`MovieDetails component should match snapshot with error 1`] = `
     class="container top-margin"
   >
     <div
-      class="ant-result ant-result-error css-dev-only-do-not-override-11xg00t"
+      class="ant-result ant-result-error css-dev-only-do-not-override-1kuana8"
     >
       <div
         class="ant-result-icon"
@@ -506,15 +506,15 @@ exports[`MovieDetails component should match snapshot with loading 1`] = `
     class="container top-margin"
   >
     <div
-      class="ant-row ant-row-center css-dev-only-do-not-override-11xg00t"
+      class="ant-row ant-row-center css-dev-only-do-not-override-1kuana8"
     >
       <div
-        class="ant-col css-dev-only-do-not-override-11xg00t"
+        class="ant-col css-dev-only-do-not-override-1kuana8"
       >
         <div
           aria-busy="true"
           aria-live="polite"
-          class="ant-spin ant-spin-spinning css-dev-only-do-not-override-11xg00t"
+          class="ant-spin ant-spin-spinning css-dev-only-do-not-override-1kuana8"
         >
           <span
             class="ant-spin-dot ant-spin-dot-spin"
@@ -542,13 +542,13 @@ exports[`MovieDetails component should match snapshot with loading 1`] = `
 exports[`MovieDetails component should match snapshot with open popover 1`] = `
 <DocumentFragment>
   <div
-    class="ant-row css-dev-only-do-not-override-11xg00t"
+    class="ant-row css-dev-only-do-not-override-1kuana8"
   >
     <div
-      class="ant-col ant-col-24 css-dev-only-do-not-override-11xg00t"
+      class="ant-col ant-col-24 css-dev-only-do-not-override-1kuana8"
     >
       <div
-        class="ant-carousel css-dev-only-do-not-override-11xg00t"
+        class="ant-carousel css-dev-only-do-not-override-1kuana8"
       >
         <div
           class="slick-slider slick-initialized"
@@ -603,23 +603,23 @@ exports[`MovieDetails component should match snapshot with open popover 1`] = `
     class="container top-margin"
   >
     <div
-      class="ant-row css-dev-only-do-not-override-11xg00t"
+      class="ant-row css-dev-only-do-not-override-1kuana8"
     >
       <div
-        class="ant-col ant-col-24 css-dev-only-do-not-override-11xg00t"
+        class="ant-col ant-col-24 css-dev-only-do-not-override-1kuana8"
       >
         <div
-          class="ant-flex css-dev-only-do-not-override-11xg00t ant-flex-align-center ant-flex-gap-middle"
+          class="ant-flex css-dev-only-do-not-override-1kuana8 ant-flex-align-center ant-flex-gap-middle"
           style="margin-bottom: 24px;"
         >
           <h1
-            class="ant-typography css-dev-only-do-not-override-11xg00t"
+            class="ant-typography css-dev-only-do-not-override-1kuana8"
             style="margin-bottom: 0px;"
           >
             test/title (1999)
           </h1>
           <button
-            class="ant-btn css-dev-only-do-not-override-11xg00t ant-btn-circle ant-btn-text ant-btn-icon-only ant-popover-open"
+            class="ant-btn css-dev-only-do-not-override-1kuana8 ant-btn-circle ant-btn-text ant-btn-icon-only ant-popover-open"
             data-testid="addMovieToListPopover"
             type="button"
           >
@@ -651,7 +651,7 @@ exports[`MovieDetails component should match snapshot with open popover 1`] = `
             </span>
           </button>
           <button
-            class="ant-btn css-dev-only-do-not-override-11xg00t ant-btn-circle ant-btn-text ant-btn-icon-only"
+            class="ant-btn css-dev-only-do-not-override-1kuana8 ant-btn-circle ant-btn-text ant-btn-icon-only"
             data-testid="addToFavoriteBtn"
             type="button"
           >
@@ -680,7 +680,7 @@ exports[`MovieDetails component should match snapshot with open popover 1`] = `
             </span>
           </button>
           <button
-            class="ant-btn css-dev-only-do-not-override-11xg00t ant-btn-circle ant-btn-text ant-btn-icon-only"
+            class="ant-btn css-dev-only-do-not-override-1kuana8 ant-btn-circle ant-btn-text ant-btn-icon-only"
             data-testid="addToWatchlistBtn"
             type="button"
           >
@@ -712,27 +712,27 @@ exports[`MovieDetails component should match snapshot with open popover 1`] = `
       </div>
     </div>
     <div
-      class="ant-row css-dev-only-do-not-override-11xg00t"
+      class="ant-row css-dev-only-do-not-override-1kuana8"
     >
       <div
-        class="ant-col ant-col-24 css-dev-only-do-not-override-11xg00t"
+        class="ant-col ant-col-24 css-dev-only-do-not-override-1kuana8"
       >
         <h3
-          class="ant-typography css-dev-only-do-not-override-11xg00t"
+          class="ant-typography css-dev-only-do-not-override-1kuana8"
         >
           Overview
         </h3>
         <div
-          class="ant-typography css-dev-only-do-not-override-11xg00t"
+          class="ant-typography css-dev-only-do-not-override-1kuana8"
         >
           test/overview
         </div>
       </div>
       <div
-        class="ant-col ant-col-24 css-dev-only-do-not-override-11xg00t"
+        class="ant-col ant-col-24 css-dev-only-do-not-override-1kuana8"
       >
         <div
-          class="ant-typography css-dev-only-do-not-override-11xg00t"
+          class="ant-typography css-dev-only-do-not-override-1kuana8"
         >
           <img
             alt="imdb"
@@ -749,10 +749,10 @@ exports[`MovieDetails component should match snapshot with open popover 1`] = `
         </div>
       </div>
       <div
-        class="ant-col ant-col-24 css-dev-only-do-not-override-11xg00t"
+        class="ant-col ant-col-24 css-dev-only-do-not-override-1kuana8"
       >
         <div
-          class="ant-typography css-dev-only-do-not-override-11xg00t"
+          class="ant-typography css-dev-only-do-not-override-1kuana8"
         >
           <b>
             Status: 
@@ -763,10 +763,10 @@ exports[`MovieDetails component should match snapshot with open popover 1`] = `
         </div>
       </div>
       <div
-        class="ant-col ant-col-24 css-dev-only-do-not-override-11xg00t"
+        class="ant-col ant-col-24 css-dev-only-do-not-override-1kuana8"
       >
         <div
-          class="ant-typography css-dev-only-do-not-override-11xg00t"
+          class="ant-typography css-dev-only-do-not-override-1kuana8"
         >
           <b>
             Original Language: 
@@ -777,10 +777,10 @@ exports[`MovieDetails component should match snapshot with open popover 1`] = `
         </div>
       </div>
       <div
-        class="ant-col ant-col-24 css-dev-only-do-not-override-11xg00t"
+        class="ant-col ant-col-24 css-dev-only-do-not-override-1kuana8"
       >
         <div
-          class="ant-typography css-dev-only-do-not-override-11xg00t"
+          class="ant-typography css-dev-only-do-not-override-1kuana8"
         >
           <b>
             Country: 
@@ -791,10 +791,10 @@ exports[`MovieDetails component should match snapshot with open popover 1`] = `
         </div>
       </div>
       <div
-        class="ant-col ant-col-24 css-dev-only-do-not-override-11xg00t"
+        class="ant-col ant-col-24 css-dev-only-do-not-override-1kuana8"
       >
         <div
-          class="ant-typography css-dev-only-do-not-override-11xg00t"
+          class="ant-typography css-dev-only-do-not-override-1kuana8"
         >
           <b>
             Runtime: 
@@ -805,10 +805,10 @@ exports[`MovieDetails component should match snapshot with open popover 1`] = `
         </div>
       </div>
       <div
-        class="ant-col ant-col-24 css-dev-only-do-not-override-11xg00t"
+        class="ant-col ant-col-24 css-dev-only-do-not-override-1kuana8"
       >
         <div
-          class="ant-typography css-dev-only-do-not-override-11xg00t"
+          class="ant-typography css-dev-only-do-not-override-1kuana8"
         >
           <b>
             Budget: 
@@ -819,10 +819,10 @@ exports[`MovieDetails component should match snapshot with open popover 1`] = `
         </div>
       </div>
       <div
-        class="ant-col ant-col-24 css-dev-only-do-not-override-11xg00t"
+        class="ant-col ant-col-24 css-dev-only-do-not-override-1kuana8"
       >
         <div
-          class="ant-typography css-dev-only-do-not-override-11xg00t"
+          class="ant-typography css-dev-only-do-not-override-1kuana8"
         >
           <b>
             Revenue: 
@@ -833,20 +833,20 @@ exports[`MovieDetails component should match snapshot with open popover 1`] = `
         </div>
       </div>
       <div
-        class="ant-col ant-col-24 css-dev-only-do-not-override-11xg00t"
+        class="ant-col ant-col-24 css-dev-only-do-not-override-1kuana8"
       >
         <div
-          class="ant-typography css-dev-only-do-not-override-11xg00t"
+          class="ant-typography css-dev-only-do-not-override-1kuana8"
         >
           <b>
             Genres: 
           </b>
           <div
-            class="ant-flex css-dev-only-do-not-override-11xg00t"
+            class="ant-flex css-dev-only-do-not-override-1kuana8"
             style="display: inline-flex; gap: 4px;"
           >
             <span
-              class="ant-tag css-dev-only-do-not-override-11xg00t"
+              class="ant-tag css-dev-only-do-not-override-1kuana8"
             >
               TEST/GENRE
             </span>
@@ -854,47 +854,47 @@ exports[`MovieDetails component should match snapshot with open popover 1`] = `
         </div>
       </div>
       <div
-        class="ant-col ant-col-24 css-dev-only-do-not-override-11xg00t"
+        class="ant-col ant-col-24 css-dev-only-do-not-override-1kuana8"
       >
         <div
-          class="ant-typography css-dev-only-do-not-override-11xg00t"
+          class="ant-typography css-dev-only-do-not-override-1kuana8"
         >
           <b>
             Rating: 
           </b>
           <span
-            class="ant-tag css-dev-only-do-not-override-11xg00t"
+            class="ant-tag css-dev-only-do-not-override-1kuana8"
           >
             PG-13
           </span>
         </div>
       </div>
       <div
-        class="ant-divider css-dev-only-do-not-override-11xg00t ant-divider-horizontal"
+        class="ant-divider css-dev-only-do-not-override-1kuana8 ant-divider-horizontal"
         role="separator"
       />
       <div
-        class="ant-col ant-col-24 css-dev-only-do-not-override-11xg00t"
+        class="ant-col ant-col-24 css-dev-only-do-not-override-1kuana8"
       >
         <h3
-          class="ant-typography css-dev-only-do-not-override-11xg00t"
+          class="ant-typography css-dev-only-do-not-override-1kuana8"
         >
           Cast
         </h3>
       </div>
       <div
-        class="ant-col ant-col-24 css-dev-only-do-not-override-11xg00t"
+        class="ant-col ant-col-24 css-dev-only-do-not-override-1kuana8"
       >
         <div
-          class="ant-row css-dev-only-do-not-override-11xg00t"
+          class="ant-row css-dev-only-do-not-override-1kuana8"
           style="margin-left: -12px; margin-right: -12px; row-gap: 16px;"
         >
           <div
-            class="ant-col ant-col-24 ant-col-sm-12 ant-col-md-8 ant-col-lg-8 ant-col-xl-6 css-dev-only-do-not-override-11xg00t"
+            class="ant-col ant-col-24 ant-col-sm-12 ant-col-md-8 ant-col-lg-8 ant-col-xl-6 css-dev-only-do-not-override-1kuana8"
             style="padding-left: 12px; padding-right: 12px;"
           >
             <div
-              class="ant-card ant-card-bordered ant-card-hoverable css-dev-only-do-not-override-11xg00t"
+              class="ant-card ant-card-bordered ant-card-hoverable css-dev-only-do-not-override-1kuana8"
             >
               <div
                 class="ant-card-cover"
@@ -931,10 +931,10 @@ exports[`MovieDetails component should match snapshot with open popover 1`] = `
         </div>
       </div>
       <div
-        class="ant-col ant-col-24 top-margin text-center css-dev-only-do-not-override-11xg00t"
+        class="ant-col ant-col-24 top-margin text-center css-dev-only-do-not-override-1kuana8"
       >
         <button
-          class="ant-btn css-dev-only-do-not-override-11xg00t ant-btn-primary ant-btn-background-ghost"
+          class="ant-btn css-dev-only-do-not-override-1kuana8 ant-btn-primary ant-btn-background-ghost"
           type="button"
         >
           <span>
@@ -950,13 +950,13 @@ exports[`MovieDetails component should match snapshot with open popover 1`] = `
 exports[`MovieDetails component should match snapshot with other data 1`] = `
 <DocumentFragment>
   <div
-    class="ant-row css-dev-only-do-not-override-11xg00t"
+    class="ant-row css-dev-only-do-not-override-1kuana8"
   >
     <div
-      class="ant-col ant-col-24 css-dev-only-do-not-override-11xg00t"
+      class="ant-col ant-col-24 css-dev-only-do-not-override-1kuana8"
     >
       <div
-        class="ant-carousel css-dev-only-do-not-override-11xg00t"
+        class="ant-carousel css-dev-only-do-not-override-1kuana8"
       >
         <div
           class="slick-slider slick-initialized"
@@ -1011,23 +1011,23 @@ exports[`MovieDetails component should match snapshot with other data 1`] = `
     class="container top-margin"
   >
     <div
-      class="ant-row css-dev-only-do-not-override-11xg00t"
+      class="ant-row css-dev-only-do-not-override-1kuana8"
     >
       <div
-        class="ant-col ant-col-24 css-dev-only-do-not-override-11xg00t"
+        class="ant-col ant-col-24 css-dev-only-do-not-override-1kuana8"
       >
         <div
-          class="ant-flex css-dev-only-do-not-override-11xg00t ant-flex-align-center ant-flex-gap-middle"
+          class="ant-flex css-dev-only-do-not-override-1kuana8 ant-flex-align-center ant-flex-gap-middle"
           style="margin-bottom: 24px;"
         >
           <h1
-            class="ant-typography css-dev-only-do-not-override-11xg00t"
+            class="ant-typography css-dev-only-do-not-override-1kuana8"
             style="margin-bottom: 0px;"
           >
             test/title
           </h1>
           <button
-            class="ant-btn css-dev-only-do-not-override-11xg00t ant-btn-circle ant-btn-text ant-btn-icon-only"
+            class="ant-btn css-dev-only-do-not-override-1kuana8 ant-btn-circle ant-btn-text ant-btn-icon-only"
             data-testid="addMovieToListPopover"
             type="button"
           >
@@ -1059,7 +1059,7 @@ exports[`MovieDetails component should match snapshot with other data 1`] = `
             </span>
           </button>
           <button
-            class="ant-btn css-dev-only-do-not-override-11xg00t ant-btn-circle ant-btn-text ant-btn-icon-only"
+            class="ant-btn css-dev-only-do-not-override-1kuana8 ant-btn-circle ant-btn-text ant-btn-icon-only"
             data-testid="addToFavoriteBtn"
             type="button"
           >
@@ -1088,7 +1088,7 @@ exports[`MovieDetails component should match snapshot with other data 1`] = `
             </span>
           </button>
           <button
-            class="ant-btn css-dev-only-do-not-override-11xg00t ant-btn-circle ant-btn-text ant-btn-icon-only"
+            class="ant-btn css-dev-only-do-not-override-1kuana8 ant-btn-circle ant-btn-text ant-btn-icon-only"
             data-testid="addToWatchlistBtn"
             type="button"
           >
@@ -1120,27 +1120,27 @@ exports[`MovieDetails component should match snapshot with other data 1`] = `
       </div>
     </div>
     <div
-      class="ant-row css-dev-only-do-not-override-11xg00t"
+      class="ant-row css-dev-only-do-not-override-1kuana8"
     >
       <div
-        class="ant-col ant-col-24 css-dev-only-do-not-override-11xg00t"
+        class="ant-col ant-col-24 css-dev-only-do-not-override-1kuana8"
       >
         <h3
-          class="ant-typography css-dev-only-do-not-override-11xg00t"
+          class="ant-typography css-dev-only-do-not-override-1kuana8"
         >
           Overview
         </h3>
         <div
-          class="ant-typography css-dev-only-do-not-override-11xg00t"
+          class="ant-typography css-dev-only-do-not-override-1kuana8"
         >
           test/overview
         </div>
       </div>
       <div
-        class="ant-col ant-col-24 css-dev-only-do-not-override-11xg00t"
+        class="ant-col ant-col-24 css-dev-only-do-not-override-1kuana8"
       >
         <div
-          class="ant-typography css-dev-only-do-not-override-11xg00t"
+          class="ant-typography css-dev-only-do-not-override-1kuana8"
         >
           <img
             alt="imdb"
@@ -1157,10 +1157,10 @@ exports[`MovieDetails component should match snapshot with other data 1`] = `
         </div>
       </div>
       <div
-        class="ant-col ant-col-24 css-dev-only-do-not-override-11xg00t"
+        class="ant-col ant-col-24 css-dev-only-do-not-override-1kuana8"
       >
         <div
-          class="ant-typography css-dev-only-do-not-override-11xg00t"
+          class="ant-typography css-dev-only-do-not-override-1kuana8"
         >
           <b>
             Status: 
@@ -1171,10 +1171,10 @@ exports[`MovieDetails component should match snapshot with other data 1`] = `
         </div>
       </div>
       <div
-        class="ant-col ant-col-24 css-dev-only-do-not-override-11xg00t"
+        class="ant-col ant-col-24 css-dev-only-do-not-override-1kuana8"
       >
         <div
-          class="ant-typography css-dev-only-do-not-override-11xg00t"
+          class="ant-typography css-dev-only-do-not-override-1kuana8"
         >
           <b>
             Original Language: 
@@ -1185,10 +1185,10 @@ exports[`MovieDetails component should match snapshot with other data 1`] = `
         </div>
       </div>
       <div
-        class="ant-col ant-col-24 css-dev-only-do-not-override-11xg00t"
+        class="ant-col ant-col-24 css-dev-only-do-not-override-1kuana8"
       >
         <div
-          class="ant-typography css-dev-only-do-not-override-11xg00t"
+          class="ant-typography css-dev-only-do-not-override-1kuana8"
         >
           <b>
             Country: 
@@ -1199,10 +1199,10 @@ exports[`MovieDetails component should match snapshot with other data 1`] = `
         </div>
       </div>
       <div
-        class="ant-col ant-col-24 css-dev-only-do-not-override-11xg00t"
+        class="ant-col ant-col-24 css-dev-only-do-not-override-1kuana8"
       >
         <div
-          class="ant-typography css-dev-only-do-not-override-11xg00t"
+          class="ant-typography css-dev-only-do-not-override-1kuana8"
         >
           <b>
             Runtime: 
@@ -1213,10 +1213,10 @@ exports[`MovieDetails component should match snapshot with other data 1`] = `
         </div>
       </div>
       <div
-        class="ant-col ant-col-24 css-dev-only-do-not-override-11xg00t"
+        class="ant-col ant-col-24 css-dev-only-do-not-override-1kuana8"
       >
         <div
-          class="ant-typography css-dev-only-do-not-override-11xg00t"
+          class="ant-typography css-dev-only-do-not-override-1kuana8"
         >
           <b>
             Budget: 
@@ -1227,10 +1227,10 @@ exports[`MovieDetails component should match snapshot with other data 1`] = `
         </div>
       </div>
       <div
-        class="ant-col ant-col-24 css-dev-only-do-not-override-11xg00t"
+        class="ant-col ant-col-24 css-dev-only-do-not-override-1kuana8"
       >
         <div
-          class="ant-typography css-dev-only-do-not-override-11xg00t"
+          class="ant-typography css-dev-only-do-not-override-1kuana8"
         >
           <b>
             Revenue: 
@@ -1241,20 +1241,20 @@ exports[`MovieDetails component should match snapshot with other data 1`] = `
         </div>
       </div>
       <div
-        class="ant-col ant-col-24 css-dev-only-do-not-override-11xg00t"
+        class="ant-col ant-col-24 css-dev-only-do-not-override-1kuana8"
       >
         <div
-          class="ant-typography css-dev-only-do-not-override-11xg00t"
+          class="ant-typography css-dev-only-do-not-override-1kuana8"
         >
           <b>
             Genres: 
           </b>
           <div
-            class="ant-flex css-dev-only-do-not-override-11xg00t"
+            class="ant-flex css-dev-only-do-not-override-1kuana8"
             style="display: inline-flex; gap: 4px;"
           >
             <span
-              class="ant-tag css-dev-only-do-not-override-11xg00t"
+              class="ant-tag css-dev-only-do-not-override-1kuana8"
             >
               TEST/GENRE
             </span>
@@ -1262,16 +1262,16 @@ exports[`MovieDetails component should match snapshot with other data 1`] = `
         </div>
       </div>
       <div
-        class="ant-col ant-col-24 css-dev-only-do-not-override-11xg00t"
+        class="ant-col ant-col-24 css-dev-only-do-not-override-1kuana8"
       >
         <div
-          class="ant-typography css-dev-only-do-not-override-11xg00t"
+          class="ant-typography css-dev-only-do-not-override-1kuana8"
         >
           <b>
             Rating: 
           </b>
           <span
-            class="ant-tag css-dev-only-do-not-override-11xg00t"
+            class="ant-tag css-dev-only-do-not-override-1kuana8"
           >
             PG-13
           </span>

@@ -3,20 +3,20 @@
 exports[`Genres component should match snapshot 1`] = `
 <DocumentFragment>
   <div
-    class="ant-col ant-col-24 css-dev-only-do-not-override-11xg00t"
+    class="ant-col ant-col-24 css-dev-only-do-not-override-1kuana8"
   >
     <div
-      class="ant-typography css-dev-only-do-not-override-11xg00t"
+      class="ant-typography css-dev-only-do-not-override-1kuana8"
     >
       <b>
         Genres: 
       </b>
       <div
-        class="ant-flex css-dev-only-do-not-override-11xg00t"
+        class="ant-flex css-dev-only-do-not-override-1kuana8"
         style="display: inline-flex; gap: 4px;"
       >
         <span
-          class="ant-tag css-dev-only-do-not-override-11xg00t"
+          class="ant-tag css-dev-only-do-not-override-1kuana8"
         >
           TEST/GENRE
         </span>
