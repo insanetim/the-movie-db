@@ -3,10 +3,10 @@ import { IMovie } from 'src/interfaces/movie.interface'
 
 export type ListData = { description: string; name: string }
 
-export type ModalCreateListProps = ModalProps & {
+export type ModalCreateListProps = {
   movieId?: IMovie['id']
   onSuccess?: () => void
-}
+} & ModalProps
 
 export type ModalCreateListHookProps = {
   form: FormInstance

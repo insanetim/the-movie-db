@@ -9,7 +9,7 @@ export type CrewListHookProps = {
 }
 
 export type CrewListHookReturn = {
-  groupedCrew: Partial<Record<string, IMovieCredit[]>> & {
+  groupedCrew: {
     groupNames: string[]
-  }
+  } & Partial<Record<string, IMovieCredit[]>>
 }
