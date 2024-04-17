@@ -5,16 +5,16 @@ import { AddToFavoriteButtonProps } from './types'
 
 const AddToFavoriteButton: React.FC<AddToFavoriteButtonProps> = ({
   inFavorite,
-  ...props
+  ...buttonProps
 }) => {
-  const favoriteIcon = inFavorite ? <HeartFilled /> : <HeartOutlined />
+  const icon = inFavorite ? <HeartFilled /> : <HeartOutlined />
 
   return (
     <Button
-      icon={favoriteIcon}
+      icon={icon}
       shape='circle'
       type='text'
-      {...props}
+      {...buttonProps}
     />
   )
 }

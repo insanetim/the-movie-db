@@ -5,16 +5,16 @@ import { AddToWatchlistButtonProps } from './types'
 
 const AddToWatchlistButton: React.FC<AddToWatchlistButtonProps> = ({
   inWatchlist,
-  ...props
+  ...buttonProps
 }) => {
-  const watchlistIcon = inWatchlist ? <BookFilled /> : <BookOutlined />
+  const icon = inWatchlist ? <BookFilled /> : <BookOutlined />
 
   return (
     <Button
-      icon={watchlistIcon}
+      icon={icon}
       shape='circle'
       type='text'
-      {...props}
+      {...buttonProps}
     />
   )
 }
