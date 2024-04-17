@@ -1,5 +1,6 @@
 const getIdFromSlug = (slug: string) => {
-  return Number(slug.split('-').at(0))
+  const [idString] = slug.split('-')
+  return Number(idString)
 }
 
 export default getIdFromSlug

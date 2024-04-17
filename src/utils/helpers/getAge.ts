@@ -1,8 +1,8 @@
 import { differenceInYears, format } from 'date-fns'
 
-const getAge = (date: string) => {
-  const formatedDate = format(date, 'MMMM d, yyyy')
-  const age = differenceInYears(new Date(), date)
+const getAge = (dateOfBirth: string) => {
+  const formatedDate = format(dateOfBirth, 'MMMM d, yyyy')
+  const age = differenceInYears(new Date(), dateOfBirth)
 
   return `${formatedDate} (${age} years old)`
 }

@@ -1,10 +1,10 @@
-const convertDuration = (duration: number): string => {
-  const hours = Math.floor(duration / 60)
-  const minutes = duration - hours * 60
-  const result = []
-  if (hours > 0) result.push(`${hours}h`)
-  if (minutes > 0) result.push(`${minutes}m`)
-  return result.join(' ')
+const convertDuration = (totalMinutes: number): string => {
+  const hours = Math.floor(totalMinutes / 60)
+  const minutes = totalMinutes % 60
+  const parts = []
+  hours && parts.push(`${hours}h`)
+  minutes && parts.push(`${minutes}m`)
+  return parts.join(' ')
 }
 
 export default convertDuration

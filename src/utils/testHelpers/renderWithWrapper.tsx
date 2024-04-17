@@ -6,19 +6,13 @@ type WrapperProps = {
   children: ReactNode
 }
 
-export const Wrapper = ({ children }: WrapperProps) => {
-  return (
-    <Suspense fallback={null}>
-      <BrowserRouter>{children}</BrowserRouter>
-    </Suspense>
-  )
-}
+export const WrapperComponent = ({ children: component }: WrapperProps) => (
+  <Suspense fallback={null}>
+    <BrowserRouter>{component}</BrowserRouter>
+  </Suspense>
+)
 
-const renderWithWrapper = (
-  ui: ReactElement,
-  { ...renderOptions }: RenderOptions = {}
-) => {
-  return { ...render(ui, { wrapper: Wrapper, ...renderOptions }) }
-}
+const renderWithWrapper = (ui: ReactElement, options?: RenderOptions) =>
+  render(ui, { wrapper: WrapperComponent, ...options })
 
 export default renderWithWrapper

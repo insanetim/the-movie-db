@@ -1,8 +1,6 @@
 import { AsyncThunkAction, Dispatch } from '@reduxjs/toolkit'
-import { max } from 'ramda'
 import { SetURLSearchParams } from 'react-router-dom'
 import getParams from 'src/utils/helpers/getParams'
-import isPresent from 'src/utils/helpers/isPresent'
 
 import { useAppDispatch } from './useRedux'
 
@@ -26,16 +24,18 @@ export type UseUpdatePageProps = {
 
 const useUpdatePage = ({
   action,
-  items,
-  page,
-  setSearchParams,
+  items: itemsProp,
+  page: pageProp,
+  setSearchParams: setSearchParamsProp,
 }: UseUpdatePageProps) => {
   const dispatch = useAppDispatch()
 
   const updatePage = () => {
-    if (isPresent(items) && items.length === 1 && page !== '1') {
-      const nextPage = max(Number(page) - 1, 1)
-      setSearchParams(getParams({ page: nextPage }))
+    const items = itemsProp || []
+    const page = Number(pageProp)
+
+    if (items.length === 1 && page > 1) {
+      setSearchParamsProp(getParams({ page: page - 1 }))
     } else {
       dispatch(action)
     }

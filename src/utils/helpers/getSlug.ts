@@ -1,7 +1,6 @@
 import slug from 'slug'
 
-const getSlug = (id: number | string, title: string) => {
-  return `${id}-${slug(title)}`
-}
+const getSlugFromTitle = (id: number | string, title: string) =>
+  `${id}-${slug(title)}`
 
-export default getSlug
+export default getSlugFromTitle
