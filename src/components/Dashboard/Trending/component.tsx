@@ -10,7 +10,7 @@ import useContainer from './hook'
 const Trending: React.FC = () => {
   const { error, handlePagination, loading, movies } = useContainer()
 
-  if (loading) {
+  if (loading || isNil(movies)) {
     return <Loading />
   }
 
@@ -18,7 +18,7 @@ const Trending: React.FC = () => {
     return <Error error={error} />
   }
 
-  if (isNil(movies) || isEmpty(movies.results)) {
+  if (isEmpty(movies.results)) {
     return <Empty description='No movies found' />
   }
 

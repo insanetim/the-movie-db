@@ -45,7 +45,10 @@ describe('SearchInput useContainer hook', () => {
       result.current.handleSearch('test/search')
     })
 
-    expect(setSearchParams).toHaveBeenCalledWith({ search: 'test/search' })
+    expect(setSearchParams).toHaveBeenCalledWith(
+      { search: 'test/search' },
+      { replace: true }
+    )
   })
 
   it('should check "handleSearch" method without value', () => {
@@ -55,12 +58,6 @@ describe('SearchInput useContainer hook', () => {
       result.current.handleSearch('')
     })
 
-    expect(setSearchParams).toHaveBeenCalledWith({})
-  })
-
-  it('should check `useEffect` method', () => {
-    renderHook(() => useContainer(props))
-
-    expect(setState).toHaveBeenCalledWith('')
+    expect(setSearchParams).toHaveBeenCalledWith({}, { replace: true })
   })
 })

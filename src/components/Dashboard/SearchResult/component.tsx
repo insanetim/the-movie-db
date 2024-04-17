@@ -11,7 +11,7 @@ import { SearchResultProps } from './types'
 const SearchResult: React.FC<SearchResultProps> = ({ query }) => {
   const { error, handlePagination, loading, movies } = useContainer({ query })
 
-  if (loading) {
+  if (loading || isNil(movies)) {
     return <Loading />
   }
 
@@ -19,7 +19,7 @@ const SearchResult: React.FC<SearchResultProps> = ({ query }) => {
     return <Error error={error} />
   }
 
-  if (isNil(movies) || isEmpty(movies.results)) {
+  if (isEmpty(movies.results)) {
     return <Empty description='No movies found' />
   }
 
