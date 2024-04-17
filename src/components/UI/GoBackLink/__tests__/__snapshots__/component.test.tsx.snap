@@ -3,13 +3,13 @@
 exports[`GoBackLink component should match snapshot 1`] = `
 <DocumentFragment>
   <div
-    class="ant-row css-dev-only-do-not-override-1kuana8"
+    class="ant-row css-dev-only-do-not-override-usln0u"
   >
     <div
-      class="ant-col ant-col-24 css-dev-only-do-not-override-1kuana8"
+      class="ant-col ant-col-24 css-dev-only-do-not-override-usln0u"
     >
       <div
-        class="ant-typography css-dev-only-do-not-override-1kuana8"
+        class="ant-typography css-dev-only-do-not-override-usln0u"
       >
         <a
           href="/movie/1234-test-movie"

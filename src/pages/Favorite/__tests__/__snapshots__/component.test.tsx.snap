@@ -6,17 +6,17 @@ exports[`Favorite component should match snapshot 1`] = `
     class="container top-margin"
   >
     <div
-      class="ant-row css-dev-only-do-not-override-1kuana8"
+      class="ant-row css-dev-only-do-not-override-usln0u"
     >
       <div
-        class="ant-col ant-col-24 css-dev-only-do-not-override-1kuana8"
+        class="ant-col ant-col-24 css-dev-only-do-not-override-usln0u"
       >
         <div
-          class="ant-flex css-dev-only-do-not-override-1kuana8 ant-flex-align-center ant-flex-gap-middle"
+          class="ant-flex css-dev-only-do-not-override-usln0u ant-flex-align-center ant-flex-gap-middle"
           style="margin-bottom: 24px;"
         >
           <h1
-            class="ant-typography css-dev-only-do-not-override-1kuana8"
+            class="ant-typography css-dev-only-do-not-override-usln0u"
             style="margin-bottom: 0px;"
           >
             Favorite
@@ -25,15 +25,15 @@ exports[`Favorite component should match snapshot 1`] = `
       </div>
     </div>
     <div
-      class="ant-row css-dev-only-do-not-override-1kuana8"
+      class="ant-row css-dev-only-do-not-override-usln0u"
       style="margin-left: -12px; margin-right: -12px; row-gap: 16px;"
     >
       <div
-        class="ant-col ant-col-24 ant-col-sm-12 ant-col-md-8 ant-col-lg-8 ant-col-xl-6 css-dev-only-do-not-override-1kuana8"
+        class="ant-col ant-col-24 ant-col-sm-12 ant-col-md-8 ant-col-lg-8 ant-col-xl-6 css-dev-only-do-not-override-usln0u"
         style="padding-left: 12px; padding-right: 12px;"
       >
         <div
-          class="ant-card ant-card-bordered ant-card-hoverable css-dev-only-do-not-override-1kuana8"
+          class="ant-card ant-card-bordered ant-card-hoverable css-dev-only-do-not-override-usln0u"
           data-testid="movieItemCard"
         >
           <div
@@ -104,13 +104,13 @@ exports[`Favorite component should match snapshot 1`] = `
       </div>
     </div>
     <div
-      class="ant-row ant-row-center css-dev-only-do-not-override-1kuana8"
+      class="ant-row ant-row-center css-dev-only-do-not-override-usln0u"
     >
       <div
-        class="ant-col css-dev-only-do-not-override-1kuana8"
+        class="ant-col css-dev-only-do-not-override-usln0u"
       >
         <ul
-          class="ant-pagination pagination css-dev-only-do-not-override-1kuana8"
+          class="ant-pagination pagination css-dev-only-do-not-override-usln0u"
         >
           <li
             aria-disabled="true"
@@ -293,17 +293,17 @@ exports[`Favorite component should match snapshot with 1 page 1`] = `
     class="container top-margin"
   >
     <div
-      class="ant-row css-dev-only-do-not-override-1kuana8"
+      class="ant-row css-dev-only-do-not-override-usln0u"
     >
       <div
-        class="ant-col ant-col-24 css-dev-only-do-not-override-1kuana8"
+        class="ant-col ant-col-24 css-dev-only-do-not-override-usln0u"
       >
         <div
-          class="ant-flex css-dev-only-do-not-override-1kuana8 ant-flex-align-center ant-flex-gap-middle"
+          class="ant-flex css-dev-only-do-not-override-usln0u ant-flex-align-center ant-flex-gap-middle"
           style="margin-bottom: 24px;"
         >
           <h1
-            class="ant-typography css-dev-only-do-not-override-1kuana8"
+            class="ant-typography css-dev-only-do-not-override-usln0u"
             style="margin-bottom: 0px;"
           >
             Favorite
@@ -312,15 +312,15 @@ exports[`Favorite component should match snapshot with 1 page 1`] = `
       </div>
     </div>
     <div
-      class="ant-row css-dev-only-do-not-override-1kuana8"
+      class="ant-row css-dev-only-do-not-override-usln0u"
       style="margin-left: -12px; margin-right: -12px; row-gap: 16px;"
     >
       <div
-        class="ant-col ant-col-24 ant-col-sm-12 ant-col-md-8 ant-col-lg-8 ant-col-xl-6 css-dev-only-do-not-override-1kuana8"
+        class="ant-col ant-col-24 ant-col-sm-12 ant-col-md-8 ant-col-lg-8 ant-col-xl-6 css-dev-only-do-not-override-usln0u"
         style="padding-left: 12px; padding-right: 12px;"
       >
         <div
-          class="ant-card ant-card-bordered ant-card-hoverable css-dev-only-do-not-override-1kuana8"
+          class="ant-card ant-card-bordered ant-card-hoverable css-dev-only-do-not-override-usln0u"
           data-testid="movieItemCard"
         >
           <div
@@ -400,17 +400,17 @@ exports[`Favorite component should match snapshot with empty movies 1`] = `
     class="container top-margin"
   >
     <div
-      class="ant-row css-dev-only-do-not-override-1kuana8"
+      class="ant-row css-dev-only-do-not-override-usln0u"
     >
       <div
-        class="ant-col ant-col-24 css-dev-only-do-not-override-1kuana8"
+        class="ant-col ant-col-24 css-dev-only-do-not-override-usln0u"
       >
         <div
-          class="ant-flex css-dev-only-do-not-override-1kuana8 ant-flex-align-center ant-flex-gap-middle"
+          class="ant-flex css-dev-only-do-not-override-usln0u ant-flex-align-center ant-flex-gap-middle"
           style="margin-bottom: 24px;"
         >
           <h1
-            class="ant-typography css-dev-only-do-not-override-1kuana8"
+            class="ant-typography css-dev-only-do-not-override-usln0u"
             style="margin-bottom: 0px;"
           >
             Favorite
@@ -419,7 +419,7 @@ exports[`Favorite component should match snapshot with empty movies 1`] = `
       </div>
     </div>
     <div
-      class="css-dev-only-do-not-override-1kuana8 ant-empty ant-empty-normal"
+      class="css-dev-only-do-not-override-usln0u ant-empty ant-empty-normal"
     >
       <div
         class="ant-empty-image"
@@ -473,17 +473,17 @@ exports[`Favorite component should match snapshot with error 1`] = `
     class="container top-margin"
   >
     <div
-      class="ant-row css-dev-only-do-not-override-1kuana8"
+      class="ant-row css-dev-only-do-not-override-usln0u"
     >
       <div
-        class="ant-col ant-col-24 css-dev-only-do-not-override-1kuana8"
+        class="ant-col ant-col-24 css-dev-only-do-not-override-usln0u"
       >
         <div
-          class="ant-flex css-dev-only-do-not-override-1kuana8 ant-flex-align-center ant-flex-gap-middle"
+          class="ant-flex css-dev-only-do-not-override-usln0u ant-flex-align-center ant-flex-gap-middle"
           style="margin-bottom: 24px;"
         >
           <h1
-            class="ant-typography css-dev-only-do-not-override-1kuana8"
+            class="ant-typography css-dev-only-do-not-override-usln0u"
             style="margin-bottom: 0px;"
           >
             Favorite
@@ -492,7 +492,7 @@ exports[`Favorite component should match snapshot with error 1`] = `
       </div>
     </div>
     <div
-      class="ant-result ant-result-error css-dev-only-do-not-override-1kuana8"
+      class="ant-result ant-result-error css-dev-only-do-not-override-usln0u"
     >
       <div
         class="ant-result-icon"
@@ -534,17 +534,17 @@ exports[`Favorite component should match snapshot with loading 1`] = `
     class="container top-margin"
   >
     <div
-      class="ant-row css-dev-only-do-not-override-1kuana8"
+      class="ant-row css-dev-only-do-not-override-usln0u"
     >
       <div
-        class="ant-col ant-col-24 css-dev-only-do-not-override-1kuana8"
+        class="ant-col ant-col-24 css-dev-only-do-not-override-usln0u"
       >
         <div
-          class="ant-flex css-dev-only-do-not-override-1kuana8 ant-flex-align-center ant-flex-gap-middle"
+          class="ant-flex css-dev-only-do-not-override-usln0u ant-flex-align-center ant-flex-gap-middle"
           style="margin-bottom: 24px;"
         >
           <h1
-            class="ant-typography css-dev-only-do-not-override-1kuana8"
+            class="ant-typography css-dev-only-do-not-override-usln0u"
             style="margin-bottom: 0px;"
           >
             Favorite
@@ -556,15 +556,15 @@ exports[`Favorite component should match snapshot with loading 1`] = `
       class="top-margin"
     >
       <div
-        class="ant-row ant-row-center css-dev-only-do-not-override-1kuana8"
+        class="ant-row ant-row-center css-dev-only-do-not-override-usln0u"
       >
         <div
-          class="ant-col css-dev-only-do-not-override-1kuana8"
+          class="ant-col css-dev-only-do-not-override-usln0u"
         >
           <div
             aria-busy="true"
             aria-live="polite"
-            class="ant-spin ant-spin-spinning css-dev-only-do-not-override-1kuana8"
+            class="ant-spin ant-spin-spinning css-dev-only-do-not-override-usln0u"
           >
             <span
               class="ant-spin-dot ant-spin-dot-spin"
