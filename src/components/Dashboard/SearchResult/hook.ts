@@ -20,7 +20,7 @@ const useContainer = ({
   const loading = useSelector(dashboardLoadingSelector)
   const error = useSelector(dashboardErrorSelector)
   const [searchParams, setSearchParams] = useSearchParams()
-  const page = searchParams.get('page') ?? '1'
+  const page = searchParams.get('page') || '1'
 
   const handlePagination = (page: number) => {
     setSearchParams(getParams({ page, search: query }))

@@ -7,7 +7,7 @@ import { KnownForHookProps } from '../types'
 describe('CrewList useContainer hook', () => {
   const props: KnownForHookProps = {
     credits: mockPersonDetails.movie_credits,
-    knownForDepartment: 'Acting',
+    department: 'Acting',
   }
 
   it('should match snapshot', () => {
@@ -17,7 +17,7 @@ describe('CrewList useContainer hook', () => {
   })
 
   it('should match snapshot with other data', () => {
-    props.knownForDepartment = 'Directing'
+    props.department = 'Directing'
     const { result } = renderHook(() => useContainer(props))
 
     expect(result.current).toMatchSnapshot()

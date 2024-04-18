@@ -14,7 +14,6 @@ import {
   watchlistMoviesSelector,
 } from 'src/store/watchlist/selectors'
 import getParams from 'src/utils/helpers/getParams'
-import isPresent from 'src/utils/helpers/isPresent'
 
 import { WatchlistHookReturn } from './types'
 
@@ -25,7 +24,7 @@ const useContainer = (): WatchlistHookReturn => {
   const loading = useSelector(watchlistLoadingSelector)
   const error = useSelector(watchlistErrorSelector)
   const [searchParams, setSearchParams] = useSearchParams()
-  const page = searchParams.get('page') ?? '1'
+  const page = searchParams.get('page') || '1'
   const { updatePage } = useUpdatePage({
     action: fetchWatchlist(page),
     items: movies?.results,
@@ -57,7 +56,7 @@ const useContainer = (): WatchlistHookReturn => {
   }
 
   useEffect(() => {
-    if (isPresent(account)) {
+    if (account) {
       dispatch(fetchWatchlist(page))
     }
   }, [account, page, dispatch])

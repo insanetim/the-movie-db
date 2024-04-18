@@ -53,8 +53,8 @@ const createList = createAsyncThunk<
   } catch (error) {
     dispatch(
       showNotification({
-        messageText: errorMessage(error),
-        messageType: NOTIFICATION_TYPE.ERROR,
+        message: errorMessage(error),
+        type: NOTIFICATION_TYPE.ERROR,
       })
     )
   }
@@ -70,8 +70,8 @@ const deleteList = createAsyncThunk<void, IList['id'], { state: RootState }>(
     } catch (error) {
       dispatch(
         showNotification({
-          messageText: errorMessage(error),
-          messageType: NOTIFICATION_TYPE.ERROR,
+          message: errorMessage(error),
+          type: NOTIFICATION_TYPE.ERROR,
         })
       )
     }
@@ -86,15 +86,13 @@ const addToList = createAsyncThunk<void, AddToListProps, { state: RootState }>(
 
     try {
       await addMovieToList({ listId, movieId, sessionId })
-      dispatch(
-        showNotification({ messageText: listMessage(movieTitle, listName) })
-      )
+      dispatch(showNotification({ message: listMessage(movieTitle, listName) }))
       await dispatch(fetchLists('1'))
     } catch (error) {
       dispatch(
         showNotification({
-          messageText: errorMessage(error),
-          messageType: NOTIFICATION_TYPE.ERROR,
+          message: errorMessage(error),
+          type: NOTIFICATION_TYPE.ERROR,
         })
       )
     }
@@ -113,8 +111,8 @@ const removeFromList = createAsyncThunk<
   } catch (error) {
     dispatch(
       showNotification({
-        messageText: errorMessage(error),
-        messageType: NOTIFICATION_TYPE.ERROR,
+        message: errorMessage(error),
+        type: NOTIFICATION_TYPE.ERROR,
       })
     )
   }

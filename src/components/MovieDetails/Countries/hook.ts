@@ -3,10 +3,10 @@ import { CountriesHookProps, CountriesHookReturn } from './types'
 const useContainer = ({
   countries,
 }: CountriesHookProps): CountriesHookReturn => {
-  const title = countries.length > 1 ? 'Countries' : 'Country'
-  const formatedCountries = countries.map(country => country.name).join(', ')
+  const pluralizedTitle = countries.length > 1 ? 'Countries' : 'Country'
+  const formattedCountries = countries.map(({ name }) => name).join(', ')
 
-  return { formatedCountries, title }
+  return { formattedCountries, pluralizedTitle }
 }
 
 export default useContainer

@@ -2,14 +2,14 @@
 
 exports[`CrewList useContainer hook should match snapshot 1`] = `
 {
-  "formatedCountries": "United States of America",
-  "title": "Country",
+  "formattedCountries": "United States of America",
+  "pluralizedTitle": "Country",
 }
 `;
 
 exports[`CrewList useContainer hook should match snapshot with other data 1`] = `
 {
-  "formatedCountries": "United States of America, United Kingdom",
-  "title": "Countries",
+  "formattedCountries": "United States of America, United Kingdom",
+  "pluralizedTitle": "Countries",
 }
 `;

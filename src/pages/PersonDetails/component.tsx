@@ -1,5 +1,4 @@
 import { Button, Col, Divider, Row, Typography } from 'antd'
-import { isNil } from 'ramda'
 import { Helmet } from 'react-helmet'
 import NoImage from 'src/assets/images/no-image.svg'
 import KnownFor from 'src/components/PersonDetails/KnownFor'
@@ -9,7 +8,6 @@ import Empty from 'src/components/UI/Empty'
 import Error from 'src/components/UI/Error'
 import Loading from 'src/components/UI/Loading'
 import PageTitle from 'src/components/UI/PageTitle'
-import isPresent from 'src/utils/helpers/isPresent'
 import metaTitle from 'src/utils/helpers/metaTitle'
 
 import useContainer from './hook'
@@ -23,22 +21,18 @@ const PersonDetails = () => {
         <Loading />
       </div>
     )
-  }
-
-  if (error) {
+  } else if (error) {
     return (
       <div className='container top-margin'>
         <Error error={error} />
       </div>
     )
-  }
-
-  if (isNil(person)) {
+  } else if (!person) {
     return <Empty description='Person not found' />
   }
 
   let poster: JSX.Element
-  if (isPresent(person.profile_path)) {
+  if (person.profile_path) {
     poster = (
       <div className='person-poster'>
         <img
@@ -87,7 +81,7 @@ const PersonDetails = () => {
               gender={person.gender}
               placeOfBirth={person.place_of_birth}
             />
-            {isPresent(person.biography) && (
+            {person.biography && (
               <>
                 <Divider />
                 <Typography.Title level={3}>Biography</Typography.Title>
@@ -95,12 +89,12 @@ const PersonDetails = () => {
               </>
             )}
           </Col>
-          {(isPresent(person.movie_credits.cast) ||
-            isPresent(person.movie_credits.crew)) && (
+          {(person.movie_credits.cast.length > 0 ||
+            person.movie_credits.crew.length > 0) && (
             <>
               <KnownFor
                 credits={person.movie_credits}
-                knownForDepartment={person.known_for_department}
+                department={person.known_for_department}
               />
               <Col
                 className='top-margin text-center'

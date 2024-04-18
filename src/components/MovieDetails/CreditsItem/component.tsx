@@ -1,6 +1,5 @@
 import { Card } from 'antd'
 import NoImage from 'src/assets/images/no-image.svg'
-import isPresent from 'src/utils/helpers/isPresent'
 
 import useContainer from './hook'
 import { CreditsItemProps } from './types'
@@ -14,7 +13,7 @@ const CreditsItem: React.FC<CreditsItemProps> = ({
   const { handleClick } = useContainer({ id, title })
 
   let cover: JSX.Element
-  if (isPresent(profilePath)) {
+  if (profilePath) {
     cover = (
       <img
         alt={title}

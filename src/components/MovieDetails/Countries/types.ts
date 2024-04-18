@@ -7,6 +7,6 @@ export type CountriesProps = {
 export type CountriesHookProps = CountriesProps
 
 export type CountriesHookReturn = {
-  formatedCountries: string
-  title: string
+  formattedCountries: string
+  pluralizedTitle: string
 }

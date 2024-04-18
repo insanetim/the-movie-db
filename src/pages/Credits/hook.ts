@@ -1,5 +1,5 @@
 import { addYears } from 'date-fns'
-import { groupBy, head, isEmpty, isNil, map, pipe, pluck, values } from 'ramda'
+import { groupBy, head, map, pipe, pluck, values } from 'ramda'
 import { useEffect, useMemo, useState } from 'react'
 import { useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
@@ -14,7 +14,6 @@ import {
 } from 'src/store/personDetails/selectors'
 import getIdFromSlug from 'src/utils/helpers/getIdFromSlug'
 import getSlug from 'src/utils/helpers/getSlug'
-import isPresent from 'src/utils/helpers/isPresent'
 
 import { CreditsRouteParams, FilterOptions, ICredit } from './types'
 
@@ -32,7 +31,7 @@ const useContainer = () => {
   const [filter, setFilter] = useState<FilterOptions>(FilterOptions.All)
 
   const filteredCredits: IPersonCredit[] = useMemo(() => {
-    if (isPresent(person)) {
+    if (person) {
       const crewCredits = pipe(
         groupBy<IPersonCredit>(item => item.id.toString()),
         values,
@@ -54,22 +53,18 @@ const useContainer = () => {
   }, [person, filter])
 
   const dataSource: ICredit[] = useMemo(() => {
-    if (isPresent(filteredCredits)) {
-      return filteredCredits.map(credit => ({
-        key: `${credit.id}-${credit.character || credit.job}`,
-        movieSlug: getSlug(credit.id, credit.title),
-        posterPath: credit.poster_path,
-        releaseDate: isEmpty(credit.release_date)
-          ? addYears(new Date(), 100).toISOString()
-          : credit.release_date,
-        releaseDateTitle: isEmpty(credit.release_date)
-          ? '—'
-          : new Date(credit.release_date).getFullYear().toString(),
-        role: credit.character ? `as ${credit.character}` : credit.job ?? '—',
-        title: credit.title,
-      }))
-    }
-    return []
+    return filteredCredits.map(credit => ({
+      key: `${credit.id}-${credit.character || credit.job}`,
+      movieSlug: getSlug(credit.id, credit.title),
+      posterPath: credit.poster_path,
+      releaseDate:
+        credit.release_date || addYears(new Date(), 100).toISOString(),
+      releaseDateTitle: credit.release_date
+        ? new Date(credit.release_date).getFullYear().toString()
+        : '—',
+      role: credit.character ? `as ${credit.character}` : credit.job || '—',
+      title: credit.title,
+    }))
   }, [filteredCredits])
 
   const handleChangeFilter = (filter: FilterOptions) => {
@@ -77,7 +72,7 @@ const useContainer = () => {
   }
 
   useEffect(() => {
-    if (isNil(person)) {
+    if (!person) {
       dispatch(fetchPersonDetails(personId))
     }
   }, [dispatch, person, personId])

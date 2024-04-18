@@ -1,7 +1,6 @@
 import { PlusCircleOutlined } from '@ant-design/icons'
 import { Button, Col, Divider, Popover, Row, Typography } from 'antd'
 import { format } from 'date-fns'
-import { isNil } from 'ramda'
 import { Helmet } from 'react-helmet'
 import Budget from 'src/components/MovieDetails/Budget'
 import CastList from 'src/components/MovieDetails/CastList'
@@ -23,7 +22,6 @@ import Empty from 'src/components/UI/Empty/component'
 import Error from 'src/components/UI/Error'
 import Loading from 'src/components/UI/Loading'
 import PageTitle from 'src/components/UI/PageTitle'
-import isPresent from 'src/utils/helpers/isPresent'
 import metaTitle from 'src/utils/helpers/metaTitle'
 
 import useContainer from './hook'
@@ -47,17 +45,13 @@ const MovieDetails: React.FC = () => {
         <Loading />
       </div>
     )
-  }
-
-  if (error) {
+  } else if (error) {
     return (
       <div className='container top-margin'>
         <Error error={error} />
       </div>
     )
-  }
-
-  if (isNil(movie)) {
+  } else if (!movie) {
     return <Empty description='Movie not found' />
   }
 
@@ -68,7 +62,7 @@ const MovieDetails: React.FC = () => {
   return (
     <>
       <Helmet title={metaTitle(title)} />
-      {isPresent(movie.images) && (
+      {movie.images.backdrops.length > 0 && (
         <ImageGallery
           images={movie.images.backdrops.slice(0, 7)}
           title={movie.title}
@@ -111,31 +105,31 @@ const MovieDetails: React.FC = () => {
           />
         </PageTitle>
         <Row>
-          {isPresent(movie.overview) && <Overview overview={movie.overview} />}
-          {isPresent(movie.imdbInfo?.rating?.star) && (
+          {movie.overview && <Overview overview={movie.overview} />}
+          {movie.imdbInfo?.rating?.star && (
             <ImdbRating rating={movie.imdbInfo.rating.star} />
           )}
           {movie.status && <Status status={movie.status} />}
           {movie.original_language && (
             <OriginalLanguage originalLanguage={movie.original_language} />
           )}
-          {isPresent(movie.production_countries) && (
+          {movie.production_countries.length > 0 && (
             <Countries countries={movie.production_countries} />
           )}
           {movie.runtime !== 0 && <Runtime runtime={movie.runtime} />}
           {movie.budget !== 0 && <Budget budget={movie.budget} />}
           {movie.revenue !== 0 && <Revenue revenue={movie.revenue} />}
-          {isPresent(movie.genres) && <Genres genres={movie.genres} />}
-          {isPresent(movie?.imdbInfo?.contentRating) && (
+          {movie.genres.length > 0 && <Genres genres={movie.genres} />}
+          {movie?.imdbInfo?.contentRating && (
             <ContentRating contentRating={movie.imdbInfo.contentRating} />
           )}
-          {isPresent(movie.credits.cast) && (
+          {movie.credits.cast.length > 0 && (
             <>
               <Divider />
               <CastList cast={movie.credits.cast.slice(0, 12)} />
             </>
           )}
-          {(isPresent(movie.credits.cast) || isPresent(movie.credits.crew)) && (
+          {(movie.credits.cast.length > 0 || movie.credits.crew.length > 0) && (
             <Col
               className='top-margin text-center'
               span={24}

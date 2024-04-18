@@ -1,6 +1,5 @@
 import { MinusCircleOutlined } from '@ant-design/icons'
 import { Typography } from 'antd'
-import { isEmpty } from 'ramda'
 import { Helmet } from 'react-helmet'
 import MoviesList from 'src/components/Movies/MoviesList'
 import IconButton from 'src/components/UI/Buttons/IconButton'
@@ -9,7 +8,6 @@ import Error from 'src/components/UI/Error'
 import Loading from 'src/components/UI/Loading'
 import PageTitle from 'src/components/UI/PageTitle'
 import Pagination from 'src/components/UI/Pagination'
-import isPresent from 'src/utils/helpers/isPresent'
 import metaTitle from 'src/utils/helpers/metaTitle'
 
 import useContainer from './hook'
@@ -30,9 +28,7 @@ const ListDetails: React.FC = () => {
         <Loading />
       </div>
     )
-  }
-
-  if (error) {
+  } else if (error) {
     return (
       <div className='container top-margin'>
         <Error error={error} />
@@ -40,9 +36,10 @@ const ListDetails: React.FC = () => {
     )
   }
 
-  let content = <Empty />
-
-  if (isPresent(list) && !isEmpty(list.items)) {
+  let content: JSX.Element
+  if (!list || list.items.length === 0) {
+    content = <Empty />
+  } else {
     content = (
       <>
         <MoviesList
@@ -61,13 +58,15 @@ const ListDetails: React.FC = () => {
     )
   }
 
+  const title = list?.name || 'My List'
+
   return (
     <>
-      <Helmet title={metaTitle(list?.name ?? 'My List')} />
+      <Helmet title={metaTitle(title)} />
       <div className='container top-margin'>
         <PageTitle>
           <Typography.Title style={{ marginBottom: 0 }}>
-            {list?.name ?? 'My List'}
+            {title}
           </Typography.Title>
           <IconButton
             data-testid='deleteListBtn'

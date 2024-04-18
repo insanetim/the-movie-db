@@ -14,7 +14,6 @@ import {
 } from 'src/store/favorite/selectors'
 import { changeMovieInFavorite } from 'src/store/movieDetails/actions'
 import getParams from 'src/utils/helpers/getParams'
-import isPresent from 'src/utils/helpers/isPresent'
 
 import { FavoriteHookReturn } from './types'
 
@@ -25,7 +24,7 @@ const useContainer = (): FavoriteHookReturn => {
   const loading = useSelector(favoriteLoadingSelector)
   const error = useSelector(favoriteErrorSelector)
   const [searchParams, setSearchParams] = useSearchParams()
-  const page = searchParams.get('page') ?? '1'
+  const page = searchParams.get('page') || '1'
   const { updatePage } = useUpdatePage({
     action: fetchFavorite(page),
     items: movies?.results,
@@ -57,7 +56,7 @@ const useContainer = (): FavoriteHookReturn => {
   }
 
   useEffect(() => {
-    if (isPresent(account)) {
+    if (account) {
       dispatch(fetchFavorite(page))
     }
   }, [account, page, dispatch])

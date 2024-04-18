@@ -12,8 +12,8 @@ describe('Notification useContainer hook', () => {
     duration: NOTIFICATION_DURATION,
     hideNotification: jest.fn(),
     id: 'test/id',
-    messageText: 'test/message',
-    messageType: NOTIFICATION_TYPE.SUCCESS,
+    message: 'test/message',
+    type: NOTIFICATION_TYPE.SUCCESS,
   }
 
   it('should match snapshot', () => {
@@ -22,11 +22,11 @@ describe('Notification useContainer hook', () => {
     expect(result.current).toMatchSnapshot()
   })
 
-  it('should check "closeNotification" method', () => {
+  it('should check "onClose" method', () => {
     const { result } = renderHook(() => useContainer(props))
 
     act(() => {
-      result.current.closeNotification()
+      result.current.onClose()
     })
 
     expect(props.hideNotification).toHaveBeenCalledWith(props.id)
@@ -39,8 +39,8 @@ describe('Notification useContainer hook', () => {
     expect(successSpy).toHaveBeenCalledWith({
       duration: props.duration,
       key: props.id,
-      message: props.messageText,
-      onClose: result.current.closeNotification,
+      message: props.message,
+      onClose: result.current.onClose,
     })
   })
 })

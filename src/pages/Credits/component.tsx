@@ -1,6 +1,5 @@
 import { Col, Flex, Image, Row, Segmented, Table, Typography } from 'antd'
 import { ColumnsType } from 'antd/es/table'
-import { isNil } from 'ramda'
 import { Helmet } from 'react-helmet'
 import { Link } from 'react-router-dom'
 import NoImage from 'src/assets/images/no-image.svg'
@@ -13,7 +12,6 @@ import {
   releaseDateSorter,
   titleSorter,
 } from 'src/utils/helpers/creditsSorters'
-import isPresent from 'src/utils/helpers/isPresent'
 import metaTitle from 'src/utils/helpers/metaTitle'
 
 import useContainer from './hook'
@@ -29,17 +27,13 @@ const Credits: React.FC = () => {
         <Loading />
       </div>
     )
-  }
-
-  if (error) {
+  } else if (error) {
     return (
       <div className='container top-margin'>
         <Error error={error} />
       </div>
     )
-  }
-
-  if (isNil(person)) {
+  } else if (!person) {
     return <Empty description='Person not found' />
   }
 
@@ -71,11 +65,11 @@ const Credits: React.FC = () => {
       align: 'center',
       dataIndex: 'posterPath',
       key: 'posterPath',
-      render: (posterPath: string, credit) => {
+      render: (posterPath: null | string, credit) => {
         const POSTER_HEIGHT = 120
 
         let poster: JSX.Element
-        if (isPresent(posterPath)) {
+        if (posterPath) {
           poster = (
             <Image
               alt={credit.title}

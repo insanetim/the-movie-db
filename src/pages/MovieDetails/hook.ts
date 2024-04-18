@@ -1,4 +1,3 @@
-import { isNil } from 'ramda'
 import { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import { useNavigate, useParams } from 'react-router-dom'
@@ -20,7 +19,6 @@ import {
 } from 'src/store/movieDetails/selectors'
 import favoriteMessage from 'src/utils/helpers/favoriteMessage'
 import getIdFromSlug from 'src/utils/helpers/getIdFromSlug'
-import isPresent from 'src/utils/helpers/isPresent'
 import watchlistMessage from 'src/utils/helpers/watchlistMessage'
 
 import { MovieDetailsHookReturn, MovieDetailsRouteParams } from './types'
@@ -42,7 +40,7 @@ const useContainer = (): MovieDetailsHookReturn => {
   const [popoverOpen, setPopoverOpen] = useState(false)
 
   const handlePopoverMouseEnter = () => {
-    if (isPresent(account) && isNil(lists)) {
+    if (account && !lists) {
       dispatch(fetchLists('1'))
     }
   }
@@ -53,7 +51,7 @@ const useContainer = (): MovieDetailsHookReturn => {
     dispatch(changeMovieInFavorite({ inFavorite, movieId }))
     dispatch(
       showNotification({
-        messageText: favoriteMessage(movie!.title, inFavorite),
+        message: favoriteMessage(movie!.title, inFavorite),
       })
     )
   }
@@ -64,7 +62,7 @@ const useContainer = (): MovieDetailsHookReturn => {
     dispatch(changeMovieInWatchlist({ inWatchlist, movieId }))
     dispatch(
       showNotification({
-        messageText: watchlistMessage(movie!.title, inWatchlist),
+        message: watchlistMessage(movie!.title, inWatchlist),
       })
     )
   }
@@ -74,7 +72,7 @@ const useContainer = (): MovieDetailsHookReturn => {
   }
 
   useEffect(() => {
-    if (isNil(movie)) {
+    if (!movie) {
       dispatch(fetchMovieDetails(movieId))
     }
   }, [dispatch, movie, movieId])

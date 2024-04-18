@@ -15,7 +15,7 @@ const useContainer = ({ id, name }: ListItemHookProps): ListItemHookReturn => {
   const dispatch = useAppDispatch()
   const lists = useSelector(createdListsSelector)
   const [searchParams, setSearchParams] = useSearchParams()
-  const page = searchParams.get('page') ?? '1'
+  const page = searchParams.get('page') || '1'
   const { updatePage } = useUpdatePage({
     action: fetchLists(page),
     items: lists?.results,

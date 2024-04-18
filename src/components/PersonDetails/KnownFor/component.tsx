@@ -4,8 +4,8 @@ import MovieItem from 'src/components/Movies/MovieItem'
 import useContainer from './hook'
 import { KnownForProps } from './types'
 
-const KnownFor: React.FC<KnownForProps> = ({ credits, knownForDepartment }) => {
-  const { sortedItems } = useContainer({ credits, knownForDepartment })
+const KnownFor: React.FC<KnownForProps> = ({ credits, department }) => {
+  const { sortedItems } = useContainer({ credits, department })
 
   return (
     <>

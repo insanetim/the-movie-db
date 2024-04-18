@@ -667,36 +667,32 @@ exports[`Lists component should match snapshot with loading 1`] = `
       </div>
     </div>
     <div
-      class="top-margin"
+      class="ant-row ant-row-center top-margin css-dev-only-do-not-override-usln0u"
     >
       <div
-        class="ant-row ant-row-center css-dev-only-do-not-override-usln0u"
+        class="ant-col css-dev-only-do-not-override-usln0u"
       >
         <div
-          class="ant-col css-dev-only-do-not-override-usln0u"
+          aria-busy="true"
+          aria-live="polite"
+          class="ant-spin ant-spin-spinning css-dev-only-do-not-override-usln0u"
         >
-          <div
-            aria-busy="true"
-            aria-live="polite"
-            class="ant-spin ant-spin-spinning css-dev-only-do-not-override-usln0u"
+          <span
+            class="ant-spin-dot ant-spin-dot-spin"
           >
-            <span
-              class="ant-spin-dot ant-spin-dot-spin"
-            >
-              <i
-                class="ant-spin-dot-item"
-              />
-              <i
-                class="ant-spin-dot-item"
-              />
-              <i
-                class="ant-spin-dot-item"
-              />
-              <i
-                class="ant-spin-dot-item"
-              />
-            </span>
-          </div>
+            <i
+              class="ant-spin-dot-item"
+            />
+            <i
+              class="ant-spin-dot-item"
+            />
+            <i
+              class="ant-spin-dot-item"
+            />
+            <i
+              class="ant-spin-dot-item"
+            />
+          </span>
         </div>
       </div>
     </div>

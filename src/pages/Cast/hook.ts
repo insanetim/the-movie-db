@@ -1,4 +1,3 @@
-import { isNil } from 'ramda'
 import { useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
@@ -25,7 +24,7 @@ const useContainer = (): CastHookReturn => {
   const error = useSelector(movieDetailsErrorSelector)
 
   useEffect(() => {
-    if (isNil(movie)) {
+    if (!movie) {
       dispatch(fetchMovieDetails(movieId))
     }
   }, [dispatch, movie, movieId])

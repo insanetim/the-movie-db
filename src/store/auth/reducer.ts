@@ -1,14 +1,13 @@
 import { createSlice } from '@reduxjs/toolkit'
 import { IAccount } from 'src/interfaces/account.interface'
 import getSessionId from 'src/utils/helpers/getSessionId'
-import isPresent from 'src/utils/helpers/isPresent'
 
 import { fetchAccount, logIn, logOut } from './actions'
 import { AuthState } from './types'
 
 const initialState: AuthState = {
   account: null,
-  isAuthenticated: isPresent(getSessionId()),
+  isAuthenticated: Boolean(getSessionId()),
 }
 
 const authSlice = createSlice({

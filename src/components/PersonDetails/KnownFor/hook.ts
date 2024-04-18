@@ -1,17 +1,19 @@
 import { sort } from 'ramda'
-import { IPersonCredit } from 'src/interfaces/person.interface'
 
 import { KnownForHookProps } from './types'
 
-const useContainer = ({ credits, knownForDepartment }: KnownForHookProps) => {
+const useContainer = ({
+  credits: { cast, crew },
+  department,
+}: KnownForHookProps) => {
   const items =
-    knownForDepartment === 'Acting'
-      ? credits.cast
-      : credits.crew.filter(item => item.department === knownForDepartment)
-  const sortedItems = sort<IPersonCredit>(
-    (a, b) => b.popularity - a.popularity,
-    items
-  ).slice(0, 12)
+    department === 'Acting'
+      ? cast
+      : crew.filter(item => item.department === department)
+  const sortedItems = sort((a, b) => b.popularity - a.popularity, items).slice(
+    0,
+    12
+  )
 
   return { sortedItems }
 }

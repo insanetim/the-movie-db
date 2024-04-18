@@ -1,4 +1,3 @@
-import { isEmpty, isNil } from 'ramda'
 import MoviesList from 'src/components/Movies/MoviesList'
 import Empty from 'src/components/UI/Empty'
 import Error from 'src/components/UI/Error'
@@ -11,15 +10,11 @@ import { SearchResultProps } from './types'
 const SearchResult: React.FC<SearchResultProps> = ({ query }) => {
   const { error, handlePagination, loading, movies } = useContainer({ query })
 
-  if (loading || isNil(movies)) {
+  if (loading) {
     return <Loading />
-  }
-
-  if (error) {
+  } else if (error) {
     return <Error error={error} />
-  }
-
-  if (isEmpty(movies.results)) {
+  } else if (!movies || movies.results.length === 0) {
     return <Empty description='No movies found' />
   }
 

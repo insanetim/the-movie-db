@@ -17,7 +17,6 @@ const useContainer = (): LoginHookReturn => {
     const to = location.state?.from?.pathname || '/'
     const sessionId = await dispatch(logIn(userData)).unwrap()
     setIsSubmitting(false)
-
     if (sessionId) {
       navigate(to, { replace: true })
     }

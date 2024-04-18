@@ -12,7 +12,6 @@ import {
   createdListsSelector,
 } from 'src/store/createdLists/selectors'
 import getParams from 'src/utils/helpers/getParams'
-import isPresent from 'src/utils/helpers/isPresent'
 
 import { ListsHookReturn } from './types'
 
@@ -23,7 +22,7 @@ const useContainer = (): ListsHookReturn => {
   const loading = useSelector(createdListsLoadingSelector)
   const error = useSelector(createdListsErrorSelector)
   const [searchParams, setSearchParams] = useSearchParams()
-  const page = searchParams.get('page') ?? '1'
+  const page = searchParams.get('page') || '1'
 
   const handlePagination = (page: number) => {
     setSearchParams(getParams({ page }))
@@ -49,7 +48,7 @@ const useContainer = (): ListsHookReturn => {
   }
 
   useEffect(() => {
-    if (isPresent(account)) {
+    if (account) {
       dispatch(fetchLists(page))
     }
   }, [account, page, dispatch])

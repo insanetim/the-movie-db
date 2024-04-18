@@ -46,8 +46,8 @@ describe('lists actions', () => {
   const removeMovieFromList = jest.spyOn(apiRoutes, 'removeMovieFromList')
   const errorMessage = 'Something went wrong!'
   const errorNotification = showNotification({
-    messageText: errorMessage,
-    messageType: NOTIFICATION_TYPE.ERROR,
+    message: errorMessage,
+    type: NOTIFICATION_TYPE.ERROR,
   })
   const listData = { description: 'test/description', name: 'test/list' }
   const listName = listData.name
@@ -163,7 +163,7 @@ describe('lists actions', () => {
     it('should handle success', async () => {
       addMovieToList.mockResolvedValueOnce()
       const notification = showNotification({
-        messageText: 'test/movie added to test/list',
+        message: 'test/movie added to test/list',
       })
 
       await thunk(dispatch, getState, undefined)

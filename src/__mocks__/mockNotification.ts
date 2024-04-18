@@ -1,10 +1,11 @@
 import { NOTIFICATION_DURATION, NOTIFICATION_TYPE } from 'src/constants/app'
+import { Notification } from 'src/store/app/types'
 
-const mockNotification = {
+const mockNotification: Notification = {
   duration: NOTIFICATION_DURATION,
   id: 'test/id',
-  messageText: 'test/message',
-  messageType: NOTIFICATION_TYPE.SUCCESS,
+  message: 'test/message',
+  type: NOTIFICATION_TYPE.SUCCESS,
 }
 
 export default mockNotification

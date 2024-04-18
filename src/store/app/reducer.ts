@@ -25,16 +25,16 @@ const appSlice = createSlice({
     },
     showModal(state, action) {
       state.modal.modalType = action.payload.modalType
-      state.modal.modalProps = action.payload.modalProps ?? null
+      state.modal.modalProps = action.payload.modalProps || null
     },
     showNotification: {
-      prepare({ duration, messageText, messageType }: ShowNotificationProps) {
+      prepare({ duration, message, type }: ShowNotificationProps) {
         return {
           payload: {
-            duration: duration ?? NOTIFICATION_DURATION,
+            duration: duration || NOTIFICATION_DURATION,
             id: nanoid(),
-            messageText: messageText,
-            messageType: messageType ?? NOTIFICATION_TYPE.SUCCESS,
+            message,
+            type: type || NOTIFICATION_TYPE.SUCCESS,
           },
         }
       },

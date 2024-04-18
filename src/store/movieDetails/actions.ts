@@ -11,7 +11,6 @@ import { RootState } from 'src/store'
 import { accountSelector } from 'src/store/auth/selectors'
 import errorMessage from 'src/utils/helpers/errorMessage'
 import getSessionId from 'src/utils/helpers/getSessionId'
-import isPresent from 'src/utils/helpers/isPresent'
 
 import { showNotification } from '../app/actions'
 import * as types from './constants'
@@ -29,7 +28,7 @@ const fetchMovieDetails = createAsyncThunk<
 
   try {
     let movieDetails = await getMovieDetails({ movieId, sessionId })
-    if (isPresent(movieDetails.imdb_id)) {
+    if (movieDetails.imdb_id) {
       const imdbInfo = await getImdbInfo({ imdbId: movieDetails.imdb_id })
       movieDetails = { ...movieDetails, imdbInfo }
     }
@@ -55,8 +54,8 @@ const changeMovieInFavorite = createAsyncThunk<
     } catch (error) {
       dispatch(
         showNotification({
-          messageText: errorMessage(error),
-          messageType: NOTIFICATION_TYPE.ERROR,
+          message: errorMessage(error),
+          type: NOTIFICATION_TYPE.ERROR,
         })
       )
     }
@@ -78,8 +77,8 @@ const changeMovieInWatchlist = createAsyncThunk<
     } catch (error) {
       dispatch(
         showNotification({
-          messageText: errorMessage(error),
-          messageType: NOTIFICATION_TYPE.ERROR,
+          message: errorMessage(error),
+          type: NOTIFICATION_TYPE.ERROR,
         })
       )
     }

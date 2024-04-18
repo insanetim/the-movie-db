@@ -1,6 +1,5 @@
 import { Divider, Row, Typography } from 'antd'
 import { format } from 'date-fns'
-import { isNil } from 'ramda'
 import { Helmet } from 'react-helmet'
 import CastList from 'src/components/MovieDetails/CastList'
 import CrewList from 'src/components/MovieDetails/CrewList'
@@ -9,7 +8,6 @@ import Error from 'src/components/UI/Error'
 import GoBackLink from 'src/components/UI/GoBackLink'
 import Loading from 'src/components/UI/Loading'
 import PageTitle from 'src/components/UI/PageTitle'
-import isPresent from 'src/utils/helpers/isPresent'
 import metaTitle from 'src/utils/helpers/metaTitle'
 
 import useContainer from './hook'
@@ -23,17 +21,13 @@ const Cast: React.FC = () => {
         <Loading />
       </div>
     )
-  }
-
-  if (error) {
+  } else if (error) {
     return (
       <div className='container top-margin'>
         <Error error={error} />
       </div>
     )
-  }
-
-  if (isNil(movie)) {
+  } else if (!movie) {
     return <Empty description='Movie not found' />
   }
 
@@ -55,13 +49,13 @@ const Cast: React.FC = () => {
           </Typography.Title>
         </PageTitle>
         <Row>
-          {isPresent(movie.credits.cast) && (
+          {movie.credits.cast.length > 0 && (
             <CastList
               cast={movie.credits.cast}
               showTotal
             />
           )}
-          {isPresent(movie.credits.crew) && (
+          {movie.credits.crew.length > 0 && (
             <>
               <Divider />
               <CrewList crew={movie.credits.crew} />

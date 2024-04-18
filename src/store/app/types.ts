@@ -12,8 +12,8 @@ export type Modal = {
 export type Notification = {
   duration: number
   id: string
-  messageText: string
-  messageType: NOTIFICATION_TYPE
+  message: string
+  type: NOTIFICATION_TYPE
 }
 
 export type AppState = {
@@ -23,6 +23,6 @@ export type AppState = {
 
 export type ShowNotificationProps = {
   duration?: number
-  messageText: string
-  messageType?: NOTIFICATION_TYPE
+  message: string
+  type?: NOTIFICATION_TYPE
 }

@@ -3,7 +3,6 @@ import { useRef } from 'react'
 import { useAppDispatch } from 'src/hooks/useRedux'
 import { hideModal } from 'src/store/app/actions'
 import { createList } from 'src/store/createdLists/actions'
-import isPresent from 'src/utils/helpers/isPresent'
 
 import {
   ListData,
@@ -27,7 +26,7 @@ const useContainer = ({
     dispatch(hideModal())
     await dispatch(createList({ listData, movieId }))
 
-    if (isPresent(onSuccess)) {
+    if (onSuccess) {
       onSuccess()
     }
   }

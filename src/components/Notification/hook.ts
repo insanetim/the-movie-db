@@ -3,24 +3,28 @@ import { useCallback, useEffect } from 'react'
 
 import { NotificationHookProps, NotificationHookReturn } from './types'
 
-const useContainer = (props: NotificationHookProps): NotificationHookReturn => {
-  const { duration, hideNotification, id, messageText, messageType } = props
-
-  const closeNotification = useCallback(() => {
+const useContainer = ({
+  duration,
+  hideNotification,
+  id,
+  message,
+  type,
+}: NotificationHookProps): NotificationHookReturn => {
+  const onClose = useCallback(() => {
     hideNotification(id)
     notification.destroy(id)
-  }, [hideNotification, id])
+  }, [id, hideNotification])
 
   useEffect(() => {
-    notification[messageType]({
+    notification[type]({
       duration,
       key: id,
-      message: messageText,
-      onClose: closeNotification,
+      message,
+      onClose,
     })
-  }, [closeNotification, duration, id, messageText, messageType])
+  }, [onClose, duration, id, message, type])
 
-  return { closeNotification }
+  return { onClose }
 }
 
 export default useContainer

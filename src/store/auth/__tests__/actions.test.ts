@@ -27,8 +27,8 @@ describe('auth actions', () => {
   const validateWithLogin = jest.spyOn(apiRoutes, 'validateWithLogin')
   const errorMessage = 'Something went wrong!'
   const errorNotification = showNotification({
-    messageText: errorMessage,
-    messageType: NOTIFICATION_TYPE.ERROR,
+    message: errorMessage,
+    type: NOTIFICATION_TYPE.ERROR,
   })
   const userData = {
     password: 'test/password',

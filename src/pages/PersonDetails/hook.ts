@@ -1,4 +1,3 @@
-import { isNil } from 'ramda'
 import { useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import { useNavigate, useParams } from 'react-router-dom'
@@ -32,7 +31,7 @@ const useContainer = (): PersonDetailsHookReturn => {
   }
 
   useEffect(() => {
-    if (isNil(person)) {
+    if (!person) {
       dispatch(fetchPersonDetails(personId))
     }
   }, [dispatch, person, personId])

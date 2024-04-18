@@ -1,7 +1,6 @@
 import { DeleteOutlined } from '@ant-design/icons'
 import { Card } from 'antd'
 import NoImage from 'src/assets/images/no-image.svg'
-import isPresent from 'src/utils/helpers/isPresent'
 
 import useContainer from './hook'
 import { MovieItemProps } from './types'
@@ -16,7 +15,7 @@ const MovieItem: React.FC<MovieItemProps> = ({
   const { handleClick } = useContainer({ id, title })
 
   let cover: JSX.Element
-  if (isPresent(posterPath)) {
+  if (posterPath) {
     cover = (
       <img
         alt={title}
@@ -38,7 +37,7 @@ const MovieItem: React.FC<MovieItemProps> = ({
   }
 
   let actions: JSX.Element[] | undefined
-  if (isPresent(handleMovieDelete)) {
+  if (handleMovieDelete) {
     actions = [
       <DeleteOutlined
         data-testid='deleteMovieBtn'

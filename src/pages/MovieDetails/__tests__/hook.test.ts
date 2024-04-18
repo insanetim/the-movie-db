@@ -88,7 +88,7 @@ describe('MovieDetails useContainer hook', () => {
       'changeMovieInFavorite'
     )
     const notification = showNotification({
-      messageText: 'test/title added to Favorite',
+      message: 'test/title added to Favorite',
     })
     const { result } = renderHook(useContainer)
 
@@ -109,7 +109,7 @@ describe('MovieDetails useContainer hook', () => {
       'changeMovieInWatchlist'
     )
     const notification = showNotification({
-      messageText: 'test/title added to Watchlist',
+      message: 'test/title added to Watchlist',
     })
     const { result } = renderHook(useContainer)
 

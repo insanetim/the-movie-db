@@ -3,15 +3,13 @@ import convertDuration from 'src/utils/convertDataHelpers/convertDuration'
 
 import { RuntimeProps } from './types'
 
-const Runtime: React.FC<RuntimeProps> = ({ runtime }) => {
-  return (
-    <Col span={24}>
-      <Typography.Paragraph>
-        <b>Runtime: </b>
-        <span>{convertDuration(runtime)}</span>
-      </Typography.Paragraph>
-    </Col>
-  )
-}
+const Runtime: React.FC<RuntimeProps> = ({ runtime }) => (
+  <Col span={24}>
+    <Typography.Paragraph>
+      <b>Runtime: </b>
+      <span>{convertDuration(runtime)}</span>
+    </Typography.Paragraph>
+  </Col>
+)
 
 export default Runtime

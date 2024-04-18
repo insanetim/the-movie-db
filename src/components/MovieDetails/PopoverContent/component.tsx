@@ -1,5 +1,4 @@
 import { Button } from 'antd'
-import isPresent from 'src/utils/helpers/isPresent'
 
 import useContainer from './hook'
 import { PopoverContentProps } from './types'
@@ -17,7 +16,7 @@ const PopoverContent: React.FC<PopoverContentProps> = props => {
           Create new list ...
         </Button>
       </div>
-      {isPresent(lists) &&
+      {lists &&
         lists.results.map(list => (
           <div key={list.id}>
             <Button

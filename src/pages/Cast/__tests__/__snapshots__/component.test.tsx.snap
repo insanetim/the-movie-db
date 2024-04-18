@@ -299,7 +299,7 @@ exports[`Cast component should match snapshot with loading 1`] = `
     class="container top-margin"
   >
     <div
-      class="ant-row ant-row-center css-dev-only-do-not-override-usln0u"
+      class="ant-row ant-row-center top-margin css-dev-only-do-not-override-usln0u"
     >
       <div
         class="ant-col css-dev-only-do-not-override-usln0u"

@@ -49,8 +49,8 @@ describe('appReducer', () => {
         {
           duration: NOTIFICATION_DURATION,
           id: action.payload,
-          messageText: 'test/message',
-          messageType: NOTIFICATION_TYPE.SUCCESS,
+          message: 'test/message',
+          type: NOTIFICATION_TYPE.SUCCESS,
         },
       ],
     }
@@ -85,15 +85,15 @@ describe('appReducer', () => {
   })
 
   it('should handle "showNotification" action', () => {
-    const action = showNotification({ messageText: 'test/message' })
+    const action = showNotification({ message: 'test/message' })
     const newState = assoc(
       'notifications',
       [
         {
           duration: NOTIFICATION_DURATION,
           id: 'test/id',
-          messageText: 'test/message',
-          messageType: NOTIFICATION_TYPE.SUCCESS,
+          message: 'test/message',
+          type: NOTIFICATION_TYPE.SUCCESS,
         },
       ],
       state

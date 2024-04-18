@@ -1,7 +1,10 @@
 import { Col, Row, Spin } from 'antd'
 
 const Loading: React.FC = () => (
-  <Row justify='center'>
+  <Row
+    className='top-margin'
+    justify='center'
+  >
     <Col>
       <Spin />
     </Col>

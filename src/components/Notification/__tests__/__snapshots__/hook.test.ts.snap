@@ -2,6 +2,6 @@
 
 exports[`Notification useContainer hook should match snapshot 1`] = `
 {
-  "closeNotification": [Function],
+  "onClose": [Function],
 }
 `;

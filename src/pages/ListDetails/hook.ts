@@ -27,7 +27,7 @@ const useContainer = (): ListDetailsHookReturn => {
   const loading = useSelector(listDetailsLoadingSelector)
   const error = useSelector(listDetailsErrorSelector)
   const [searchParams, setSearchParams] = useSearchParams()
-  const page = searchParams.get('page') ?? '1'
+  const page = searchParams.get('page') || '1'
   const listId = getIdFromSlug(listSlug)
   const { updatePage } = useUpdatePage({
     action: fetchListDetails({ listId, page }),

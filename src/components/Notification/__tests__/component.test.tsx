@@ -5,7 +5,7 @@ import Notification from '../component'
 import { NotificationHookReturn, NotificationProps } from '../types'
 
 const mockedHook: NotificationHookReturn = {
-  closeNotification: jest.fn(),
+  onClose: jest.fn(),
 }
 jest.mock('../hook', () => jest.fn(() => mockedHook))
 
@@ -14,8 +14,8 @@ describe('Notification component', () => {
     duration: NOTIFICATION_DURATION,
     hideNotification: jest.fn(),
     id: 'test/id',
-    messageText: 'test/message',
-    messageType: NOTIFICATION_TYPE.SUCCESS,
+    message: 'test/message',
+    type: NOTIFICATION_TYPE.SUCCESS,
   }
 
   it('should match snapshot', () => {

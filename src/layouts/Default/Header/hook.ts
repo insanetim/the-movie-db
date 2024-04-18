@@ -1,4 +1,3 @@
-import { isNil } from 'ramda'
 import { useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import { useLocation, useNavigate } from 'react-router-dom'
@@ -25,7 +24,7 @@ const useContainer = (): HeaderHookReturn => {
   }
 
   useEffect(() => {
-    if (isNil(account)) {
+    if (!account) {
       dispatch(fetchAccount())
     }
   }, [account, dispatch])

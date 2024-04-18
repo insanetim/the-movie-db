@@ -33,8 +33,8 @@ describe('movieDetails actions', () => {
   const getImdbInfo = jest.spyOn(imdbRoutes, 'getImdbInfo')
   const errorMessage = 'Something went wrong!'
   const errorNotification = showNotification({
-    messageText: errorMessage,
-    messageType: NOTIFICATION_TYPE.ERROR,
+    message: errorMessage,
+    type: NOTIFICATION_TYPE.ERROR,
   })
   const movieId = 1234
   const inFavorite = true

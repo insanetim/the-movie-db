@@ -30,8 +30,8 @@ const logIn = createAsyncThunk<string | undefined, UserData>(
     } catch (error) {
       dispatch(
         showNotification({
-          messageText: errorMessage(error),
-          messageType: NOTIFICATION_TYPE.ERROR,
+          message: errorMessage(error),
+          type: NOTIFICATION_TYPE.ERROR,
         })
       )
     }
@@ -50,8 +50,8 @@ const logOut = createAsyncThunk<void, void>(
     } catch (error) {
       dispatch(
         showNotification({
-          messageText: errorMessage(error),
-          messageType: NOTIFICATION_TYPE.ERROR,
+          message: errorMessage(error),
+          type: NOTIFICATION_TYPE.ERROR,
         })
       )
     }
@@ -70,8 +70,8 @@ const fetchAccount = createAsyncThunk<IAccount | undefined, void>(
     } catch (error) {
       dispatch(
         showNotification({
-          messageText: errorMessage(error),
-          messageType: NOTIFICATION_TYPE.ERROR,
+          message: errorMessage(error),
+          type: NOTIFICATION_TYPE.ERROR,
         })
       )
     }

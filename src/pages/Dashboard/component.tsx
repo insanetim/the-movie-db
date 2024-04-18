@@ -1,4 +1,3 @@
-import { isEmpty } from 'ramda'
 import { Helmet } from 'react-helmet'
 import SearchInput from 'src/components/Dashboard/SearchInput'
 import SearchResult from 'src/components/Dashboard/SearchResult/component'
@@ -10,14 +9,14 @@ import useContainer from './hook'
 const Dashboard: React.FC = () => {
   const { query } = useContainer()
 
-  const content = isEmpty(query) ? <Trending /> : <SearchResult query={query} />
-
   return (
     <>
       <Helmet title={APP_NAME} />
       <div className='container'>
         <SearchInput query={query} />
-        <div className='top-margin'>{content}</div>
+        <div className='top-margin'>
+          {query ? <SearchResult query={query} /> : <Trending />}
+        </div>
       </div>
     </>
   )

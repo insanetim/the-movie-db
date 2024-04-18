@@ -8,7 +8,7 @@ describe('KnownFor component', () => {
     const { asFragment } = renderWithWrapper(
       <KnownFor
         credits={mockPersonDetails.movie_credits}
-        knownForDepartment='Acting'
+        department='Acting'
       />
     )
 

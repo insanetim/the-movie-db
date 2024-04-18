@@ -4,12 +4,12 @@ export type NotificationProps = {
   duration: number
   hideNotification: (id: string) => void
   id: string
-  messageText: string
-  messageType: NOTIFICATION_TYPE
+  message: string
+  type: NOTIFICATION_TYPE
 }
 
 export type NotificationHookProps = NotificationProps
 
 export type NotificationHookReturn = {
-  closeNotification: () => void
+  onClose: () => void
 }
