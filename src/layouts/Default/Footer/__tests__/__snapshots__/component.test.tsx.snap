@@ -3,14 +3,14 @@
 exports[`Footer component should match snapshot 1`] = `
 <DocumentFragment>
   <footer
-    class="ant-layout-footer css-dev-only-do-not-override-usln0u"
+    class="ant-layout-footer css-dev-only-do-not-override-1tkybi2"
   >
     <span
       style="opacity: 0.8;"
     >
       Made with ❤ by 
       <a
-        class="ant-typography css-dev-only-do-not-override-usln0u"
+        class="ant-typography css-dev-only-do-not-override-1tkybi2"
         href="https://github.com/insanetim/the-movie-db"
         rel="noreferrer"
         target="_blank"
