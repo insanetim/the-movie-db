@@ -4,7 +4,7 @@ import getParams from 'src/utils/helpers/getParams'
 
 import { useAppDispatch } from './useRedux'
 
-declare type AsyncThunkConfig = {
+type AsyncThunkConfig = {
   dispatch?: Dispatch
   extra?: unknown
   fulfilledMeta?: unknown
