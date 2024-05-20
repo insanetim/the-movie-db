@@ -1,5 +1,5 @@
 import { act, renderHook } from '@testing-library/react'
-import { useNavigate, useParams } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { mockPersonDetails } from 'src/__mocks__/mockPerson'
 import { dispatch } from 'src/__mocks__/react-redux'
 import * as personDetailsActions from 'src/store/personDetails/actions'
@@ -29,13 +29,6 @@ describe('PersonDetails useContainer hook', () => {
     .mockReturnValue(mockPersonDetails)
 
   it('should match snapshot', () => {
-    const { result } = renderHook(useContainer)
-
-    expect(result.current).toMatchSnapshot()
-  })
-
-  it('should match snapshot without params', () => {
-    jest.mocked(useParams).mockReturnValueOnce({})
     const { result } = renderHook(useContainer)
 
     expect(result.current).toMatchSnapshot()

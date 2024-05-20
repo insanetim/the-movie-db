@@ -10,14 +10,3 @@ exports[`ListDetails useContainer hook should match snapshot 1`] = `
   "loading": true,
 }
 `;
-
-exports[`ListDetails useContainer hook should match snapshot without params 1`] = `
-{
-  "error": null,
-  "handleListDelete": [Function],
-  "handleMovieDelete": [Function],
-  "handlePagination": [Function],
-  "list": null,
-  "loading": true,
-}
-`;

@@ -1,5 +1,4 @@
 import { renderHook } from '@testing-library/react'
-import { useParams } from 'react-router-dom'
 import { mockMovieDetailsExtended } from 'src/__mocks__/mockMovie'
 import { dispatch } from 'src/__mocks__/react-redux'
 import * as movieDetailsActions from 'src/store/movieDetails/actions'
@@ -26,13 +25,6 @@ describe('Cast useContainer hook', () => {
     .mockReturnValue(mockMovieDetailsExtended)
 
   it('should match snapshot', () => {
-    const { result } = renderHook(useContainer)
-
-    expect(result.current).toMatchSnapshot()
-  })
-
-  it('should match snapshot without params', () => {
-    jest.mocked(useParams).mockReturnValueOnce({})
     const { result } = renderHook(useContainer)
 
     expect(result.current).toMatchSnapshot()

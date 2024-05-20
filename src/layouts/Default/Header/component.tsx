@@ -1,6 +1,5 @@
 import { CaretDownOutlined, UserOutlined } from '@ant-design/icons'
-import { Avatar, Col, Dropdown, Layout, Row, Typography } from 'antd'
-import { ItemType } from 'antd/es/menu/hooks/useItems'
+import { Avatar, Col, Dropdown, Layout, MenuProps, Row, Typography } from 'antd'
 import { Link } from 'react-router-dom'
 import { APP_NAME } from 'src/constants/app'
 
@@ -9,7 +8,7 @@ import useContainer from './hook'
 const Header: React.FC = () => {
   const { account, handleLogOut } = useContainer()
 
-  const items: ItemType[] = [
+  const items: MenuProps['items'] = [
     { key: 'item-1', label: <Link to='/'>Dashboard</Link> },
     { key: 'item-2', type: 'divider' },
     { key: 'item-3', label: <Link to='/lists'>My Lists</Link> },

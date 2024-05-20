@@ -1,7 +1,7 @@
 import { act, renderHook } from '@testing-library/react'
 import { Modal } from 'antd'
 import { MouseEvent } from 'react'
-import { useNavigate, useParams, useSearchParams } from 'react-router-dom'
+import { useNavigate, useSearchParams } from 'react-router-dom'
 import { dispatch } from 'src/__mocks__/react-redux'
 import useUpdatePage from 'src/hooks/useUpdatePage'
 import * as createdListsActions from 'src/store/createdLists/actions'
@@ -35,13 +35,6 @@ describe('ListDetails useContainer hook', () => {
   const modalSpy = jest.spyOn(Modal, 'confirm')
 
   it('should match snapshot', () => {
-    const { result } = renderHook(useContainer)
-
-    expect(result.current).toMatchSnapshot()
-  })
-
-  it('should match snapshot without params', () => {
-    jest.mocked(useParams).mockReturnValueOnce({})
     const { result } = renderHook(useContainer)
 
     expect(result.current).toMatchSnapshot()

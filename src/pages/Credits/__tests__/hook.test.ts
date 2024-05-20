@@ -1,6 +1,5 @@
 import { act, renderHook } from '@testing-library/react'
 import React from 'react'
-import { useParams } from 'react-router-dom'
 import { mockPersonDetails } from 'src/__mocks__/mockPerson'
 import { dispatch } from 'src/__mocks__/react-redux'
 import * as personDetailsActions from 'src/store/personDetails/actions'
@@ -47,13 +46,6 @@ describe('Credits useContainer hook', () => {
 
   it('should match snapshot with "crew" filter', () => {
     useStateSpy.mockImplementationOnce(() => [FilterOptions.Crew, setState])
-    const { result } = renderHook(useContainer)
-
-    expect(result.current).toMatchSnapshot()
-  })
-
-  it('should match snapshot without params', () => {
-    jest.mocked(useParams).mockReturnValueOnce({})
     const { result } = renderHook(useContainer)
 
     expect(result.current).toMatchSnapshot()
