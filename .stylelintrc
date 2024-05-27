@@ -9,6 +9,7 @@
   "ignoreFiles": ["dist/**.*", "**/*.html"],
   "rules": {
     "prettier/prettier": true,
-    "selector-class-pattern": null
+    "selector-class-pattern": null,
+    "no-descending-specificity": null
   }
 }

@@ -1,5 +1,5 @@
 const APP_NAME = 'The Movie DB'
-const TMDB_API_URL = 'https://api.themoviedb.org/3'
+const TMDB_API_URL = process.env.TMDB_API_URL as string
 const TMDB_ACCESS_TOKEN_AUTH = process.env.TMDB_ACCESS_TOKEN_AUTH as string
 const IMDB_API_URL = process.env.IMDB_API_URL as string
 const enum NOTIFICATION_TYPE {
