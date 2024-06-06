@@ -3,16 +3,16 @@
 exports[`ContentRating component should match snapshot 1`] = `
 <DocumentFragment>
   <div
-    class="ant-col ant-col-24 css-dev-only-do-not-override-17seli4"
+    class="ant-col ant-col-24 css-dev-only-do-not-override-j9bb5n"
   >
     <div
-      class="ant-typography css-dev-only-do-not-override-17seli4"
+      class="ant-typography css-dev-only-do-not-override-j9bb5n"
     >
       <b>
         Rating: 
       </b>
       <span
-        class="ant-tag css-dev-only-do-not-override-17seli4"
+        class="ant-tag css-dev-only-do-not-override-j9bb5n"
       >
         PG-13
       </span>
