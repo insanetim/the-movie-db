@@ -4,18 +4,28 @@ import { useLocation, useNavigate } from 'react-router-dom'
 import { useAppDispatch } from 'src/hooks/useRedux'
 import useScrollToTop from 'src/hooks/useScrollToTop'
 import { fetchAccount, logOut } from 'src/store/auth/actions'
-import { accountSelector } from 'src/store/auth/selectors'
+import {
+  accountSelector,
+  isAuthenticatedSelector,
+} from 'src/store/auth/selectors'
 
 import { HeaderHookReturn } from './types'
 
 const useContainer = (): HeaderHookReturn => {
   const dispatch = useAppDispatch()
   const account = useSelector(accountSelector)
+  const isAuthenticated = useSelector(isAuthenticatedSelector)
   const location = useLocation()
   const navigate = useNavigate()
   useScrollToTop()
 
-  const handleLogOut = async () => {
+  const handleLogIn = () => {
+    navigate('/login', {
+      state: { from: location },
+    })
+  }
+
+  const handleLogOut = () => {
     dispatch(logOut())
     navigate('/login', {
       replace: true,
@@ -24,12 +34,12 @@ const useContainer = (): HeaderHookReturn => {
   }
 
   useEffect(() => {
-    if (!account) {
+    if (!account && isAuthenticated) {
       dispatch(fetchAccount())
     }
-  }, [account, dispatch])
+  }, [account, dispatch, isAuthenticated])
 
-  return { account, handleLogOut }
+  return { account, handleLogIn, handleLogOut, isAuthenticated }
 }
 
 export default useContainer

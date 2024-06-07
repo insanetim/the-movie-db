@@ -14,11 +14,12 @@ exports[`DefaultLayout component should match snapshot 1`] = `
         <div
           class="ant-col css-dev-only-do-not-override-j9bb5n"
         >
-          <span
-            class="ant-typography logo css-dev-only-do-not-override-j9bb5n"
+          <a
+            class="logo text-white"
+            href="/"
           >
             The Movie DB
-          </span>
+          </a>
         </div>
         <div
           class="ant-col css-dev-only-do-not-override-j9bb5n"

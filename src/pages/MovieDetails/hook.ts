@@ -4,7 +4,10 @@ import { useNavigate, useParams } from 'react-router-dom'
 import { useAppDispatch } from 'src/hooks/useRedux'
 import { RootState } from 'src/store'
 import { showNotification } from 'src/store/app/actions'
-import { accountSelector } from 'src/store/auth/selectors'
+import {
+  accountSelector,
+  isAuthenticatedSelector,
+} from 'src/store/auth/selectors'
 import { fetchLists } from 'src/store/createdLists/actions'
 import { createdListsSelector } from 'src/store/createdLists/selectors'
 import {
@@ -30,6 +33,7 @@ const useContainer = (): MovieDetailsHookReturn => {
   const navigate = useNavigate()
   const dispatch = useAppDispatch()
   const account = useSelector(accountSelector)
+  const isAuthenticated = useSelector(isAuthenticatedSelector)
   const lists = useSelector(createdListsSelector)
   const movieId = getIdFromSlug(movieSlug)
   const movie = useSelector((state: RootState) =>
@@ -83,6 +87,7 @@ const useContainer = (): MovieDetailsHookReturn => {
     handleGoToCast,
     handlePopoverMouseEnter,
     handleWatchlistClick,
+    isAuthenticated,
     loading,
     movie,
     popoverOpen,

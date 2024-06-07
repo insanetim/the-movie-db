@@ -61,7 +61,9 @@ jest.mock('../components/NotificationsRoot/hook', () =>
 
 const mockedHeaderHook: HeaderHookReturn = {
   account: null,
+  handleLogIn: jest.fn(),
   handleLogOut: jest.fn(),
+  isAuthenticated: false,
 }
 jest.mock('../layouts/Default/Header/hook', () =>
   jest.fn(() => mockedHeaderHook)
@@ -133,6 +135,7 @@ const mockedMovieDetailsHook: MovieDetailsHookReturn = {
   handleGoToCast: jest.fn(),
   handlePopoverMouseEnter: jest.fn(),
   handleWatchlistClick: jest.fn(),
+  isAuthenticated: true,
   loading: false,
   movie: mockMovieDetailsExtended,
   popoverOpen: false,
@@ -188,7 +191,7 @@ describe('App component', () => {
   it('should render Login', async () => {
     renderWithWrapper(<Login />)
 
-    expect(await screen.findByText(/log in/i)).toBeInTheDocument()
+    expect(await screen.findByText(/sign in/i)).toBeInTheDocument()
   })
 
   it('should render Dashboard', async () => {

@@ -7,6 +7,7 @@ export type MovieDetailsHookReturn = {
   handleGoToCast: () => void
   handlePopoverMouseEnter: () => void
   handleWatchlistClick: () => void
+  isAuthenticated: boolean
   loading: boolean
   movie?: IMovieDetailsExtended
   popoverOpen: boolean

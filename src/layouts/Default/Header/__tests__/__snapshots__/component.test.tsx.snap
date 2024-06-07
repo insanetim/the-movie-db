@@ -11,11 +11,12 @@ exports[`Header component should match snapshot 1`] = `
       <div
         class="ant-col css-dev-only-do-not-override-j9bb5n"
       >
-        <span
-          class="ant-typography logo css-dev-only-do-not-override-j9bb5n"
+        <a
+          class="logo text-white"
+          href="/"
         >
           The Movie DB
-        </span>
+        </a>
       </div>
       <div
         class="ant-col css-dev-only-do-not-override-j9bb5n"
@@ -64,6 +65,38 @@ exports[`Header component should match snapshot 1`] = `
 </DocumentFragment>
 `;
 
+exports[`Header component should match snapshot for unauthenticated 1`] = `
+<DocumentFragment>
+  <header
+    class="ant-layout-header css-dev-only-do-not-override-j9bb5n"
+  >
+    <div
+      class="ant-row ant-row-space-between css-dev-only-do-not-override-j9bb5n"
+    >
+      <div
+        class="ant-col css-dev-only-do-not-override-j9bb5n"
+      >
+        <a
+          class="logo text-white"
+          href="/"
+        >
+          The Movie DB
+        </a>
+      </div>
+      <div
+        class="ant-col css-dev-only-do-not-override-j9bb5n"
+      >
+        <a
+          class="ant-typography text-white css-dev-only-do-not-override-j9bb5n"
+        >
+          Sign in
+        </a>
+      </div>
+    </div>
+  </header>
+</DocumentFragment>
+`;
+
 exports[`Header component should match snapshot with avatar_path 1`] = `
 <DocumentFragment>
   <header
@@ -75,11 +108,12 @@ exports[`Header component should match snapshot with avatar_path 1`] = `
       <div
         class="ant-col css-dev-only-do-not-override-j9bb5n"
       >
-        <span
-          class="ant-typography logo css-dev-only-do-not-override-j9bb5n"
+        <a
+          class="logo text-white"
+          href="/"
         >
           The Movie DB
-        </span>
+        </a>
       </div>
       <div
         class="ant-col css-dev-only-do-not-override-j9bb5n"
@@ -139,11 +173,12 @@ exports[`Header component should match snapshot with empty account 1`] = `
       <div
         class="ant-col css-dev-only-do-not-override-j9bb5n"
       >
-        <span
-          class="ant-typography logo css-dev-only-do-not-override-j9bb5n"
+        <a
+          class="logo text-white"
+          href="/"
         >
           The Movie DB
-        </span>
+        </a>
       </div>
       <div
         class="ant-col css-dev-only-do-not-override-j9bb5n"

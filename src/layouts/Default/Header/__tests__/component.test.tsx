@@ -7,7 +7,9 @@ import { HeaderHookReturn } from '../types'
 
 const mockedHook: HeaderHookReturn = {
   account: mockAccount,
+  handleLogIn: jest.fn(),
   handleLogOut: jest.fn(),
+  isAuthenticated: true,
 }
 jest.mock('../hook', () => jest.fn(() => mockedHook))
 
@@ -29,6 +31,13 @@ describe('Header component', () => {
 
   it('should match snapshot with empty account', () => {
     mockedHook.account = null
+    const { asFragment } = renderWithWrapper(<Header />)
+
+    expect(asFragment()).toMatchSnapshot()
+  })
+
+  it('should match snapshot for unauthenticated', () => {
+    mockedHook.isAuthenticated = false
     const { asFragment } = renderWithWrapper(<Header />)
 
     expect(asFragment()).toMatchSnapshot()

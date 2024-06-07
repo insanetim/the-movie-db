@@ -40,7 +40,7 @@ const LoginForm: React.FC<LoginFormProps> = ({ isSubmitting, onSubmit }) => (
         loading={isSubmitting}
         type='primary'
       >
-        Log in
+        Sign in
       </Button>
     </Form.Item>
   </Form>

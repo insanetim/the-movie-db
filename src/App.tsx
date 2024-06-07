@@ -25,15 +25,40 @@ const App: React.FC = () => (
         path='/login'
       />
 
-      <Route element={<ProtectedRoutes />}>
+      <Route
+        element={<DefaultLayout />}
+        path='/'
+      >
         <Route
-          element={<DefaultLayout />}
-          path='/'
-        >
+          element={<Dashboard />}
+          index
+        />
+        <Route path='movie/:movieSlug'>
           <Route
-            element={<Dashboard />}
+            element={<MovieDetails />}
             index
           />
+          <Route
+            element={<Cast />}
+            path='cast'
+          />
+        </Route>
+        <Route path='person/:personSlug'>
+          <Route
+            element={<PersonDetails />}
+            index
+          />
+          <Route
+            element={<Credits />}
+            path='credits'
+          />
+        </Route>
+        <Route
+          element={<NotFound />}
+          path='*'
+        />
+
+        <Route element={<ProtectedRoutes />}>
           <Route
             element={<Lists />}
             path='lists'
@@ -49,30 +74,6 @@ const App: React.FC = () => (
           <Route
             element={<Favorite />}
             path='favorite'
-          />
-          <Route path='movie/:movieSlug'>
-            <Route
-              element={<MovieDetails />}
-              index
-            />
-            <Route
-              element={<Cast />}
-              path='cast'
-            />
-          </Route>
-          <Route path='person/:personSlug'>
-            <Route
-              element={<PersonDetails />}
-              index
-            />
-            <Route
-              element={<Credits />}
-              path='credits'
-            />
-          </Route>
-          <Route
-            element={<NotFound />}
-            path='*'
           />
         </Route>
       </Route>

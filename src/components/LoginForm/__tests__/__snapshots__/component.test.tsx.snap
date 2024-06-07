@@ -143,7 +143,7 @@ exports[`LoginForm component should match snapshot 1`] = `
                 type="submit"
               >
                 <span>
-                  Log in
+                  Sign in
                 </span>
               </button>
             </div>

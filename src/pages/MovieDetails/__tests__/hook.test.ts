@@ -33,6 +33,7 @@ describe('MovieDetails useContainer hook', () => {
   const accountSelector = jest
     .spyOn(sessionSelectors, 'accountSelector')
     .mockReturnValue(mockAccount)
+  jest.spyOn(sessionSelectors, 'isAuthenticatedSelector').mockReturnValue(true)
   jest
     .spyOn(createdListsSelectors, 'createdListsSelector')
     .mockReturnValue(null)

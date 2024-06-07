@@ -33,6 +33,7 @@ const MovieDetails: React.FC = () => {
     handleGoToCast,
     handlePopoverMouseEnter,
     handleWatchlistClick,
+    isAuthenticated,
     loading,
     movie,
     popoverOpen,
@@ -73,36 +74,40 @@ const MovieDetails: React.FC = () => {
           <Typography.Title style={{ marginBottom: 0 }}>
             {title}
           </Typography.Title>
-          <Popover
-            content={
-              <PopoverContent
-                movieId={movie.id}
-                setPopoverOpen={setPopoverOpen}
+          {isAuthenticated && (
+            <>
+              <Popover
+                content={
+                  <PopoverContent
+                    movieId={movie.id}
+                    setPopoverOpen={setPopoverOpen}
+                  />
+                }
+                destroyTooltipOnHide
+                onOpenChange={open => setPopoverOpen(open)}
+                open={popoverOpen}
+                placement='top'
+                title='Add movie to list'
+                trigger='click'
+              >
+                <IconButton
+                  data-testid='addMovieToListPopover'
+                  icon={<PlusCircleOutlined />}
+                  onMouseEnter={handlePopoverMouseEnter}
+                />
+              </Popover>
+              <AddToFavoriteButton
+                data-testid='addToFavoriteBtn'
+                inFavorite={movie.account_states.favorite}
+                onClick={handleFavoriteClick}
               />
-            }
-            destroyTooltipOnHide
-            onOpenChange={open => setPopoverOpen(open)}
-            open={popoverOpen}
-            placement='top'
-            title='Add movie to list'
-            trigger='click'
-          >
-            <IconButton
-              data-testid='addMovieToListPopover'
-              icon={<PlusCircleOutlined />}
-              onMouseEnter={handlePopoverMouseEnter}
-            />
-          </Popover>
-          <AddToFavoriteButton
-            data-testid='addToFavoriteBtn'
-            inFavorite={movie.account_states.favorite}
-            onClick={handleFavoriteClick}
-          />
-          <AddToWatchlistButton
-            data-testid='addToWatchlistBtn'
-            inWatchlist={movie.account_states.watchlist}
-            onClick={handleWatchlistClick}
-          />
+              <AddToWatchlistButton
+                data-testid='addToWatchlistBtn'
+                inWatchlist={movie.account_states.watchlist}
+                onClick={handleWatchlistClick}
+              />
+            </>
+          )}
         </PageTitle>
         <Row>
           {movie.overview && <Overview overview={movie.overview} />}

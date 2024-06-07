@@ -1,5 +1,4 @@
 import { disableReactDevTools } from '@fvilers/disable-react-devtools'
-import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import { Provider } from 'react-redux'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
@@ -17,21 +16,19 @@ const rootElement = document.getElementById('root')
 const root = createRoot(rootElement as HTMLElement)
 
 root.render(
-  <StrictMode>
-    <Provider store={store}>
-      <PersistGate
-        loading={null}
-        persistor={persistor}
-      >
-        <BrowserRouter>
-          <Routes>
-            <Route
-              element={<App />}
-              path='/*'
-            />
-          </Routes>
-        </BrowserRouter>
-      </PersistGate>
-    </Provider>
-  </StrictMode>
+  <Provider store={store}>
+    <PersistGate
+      loading={null}
+      persistor={persistor}
+    >
+      <BrowserRouter>
+        <Routes>
+          <Route
+            element={<App />}
+            path='/*'
+          />
+        </Routes>
+      </BrowserRouter>
+    </PersistGate>
+  </Provider>
 )

@@ -14,6 +14,7 @@ const mockedHook: MovieDetailsHookReturn = {
   handleGoToCast: jest.fn(),
   handlePopoverMouseEnter: jest.fn(),
   handleWatchlistClick: jest.fn(),
+  isAuthenticated: true,
   loading: false,
   movie: mockMovieDetailsExtended,
   popoverOpen: false,

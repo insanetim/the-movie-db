@@ -10,6 +10,7 @@ import useContainer from '../hook'
 let mockedAccount: IAccount | null = mockAccount
 jest.mock('src/store/auth/selectors', () => ({
   accountSelector: () => mockedAccount,
+  isAuthenticatedSelector: () => true,
 }))
 
 jest.mock('react-router-dom', () => ({
@@ -27,11 +28,23 @@ describe('Header useContainer hook', () => {
     expect(result.current).toMatchSnapshot()
   })
 
-  it('should check "handleLogOut" method', async () => {
+  it('should check "handleLogIn" method', () => {
+    const { result } = renderHook(useContainer)
+
+    act(() => {
+      result.current.handleLogIn()
+    })
+
+    expect(navigate).toHaveBeenCalledWith('/login', {
+      state: { from: {} },
+    })
+  })
+
+  it('should check "handleLogOut" method', () => {
     const logOut = jest.spyOn(sessionActions, 'logOut')
     const { result } = renderHook(useContainer)
 
-    await act(() => {
+    act(() => {
       result.current.handleLogOut()
     })
 
