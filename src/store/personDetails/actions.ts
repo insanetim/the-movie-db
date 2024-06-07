@@ -12,9 +12,9 @@ const fetchPersonDetails = createAsyncThunk<
   { rejectValue: string; state: RootState }
 >(types.fetchPersonDetails, async function (personId, { rejectWithValue }) {
   try {
-    const movieDetails = await getPersonDetails({ personId })
+    const personDetails = await getPersonDetails({ personId })
 
-    return movieDetails
+    return personDetails
   } catch (error) {
     return rejectWithValue(errorMessage(error))
   }

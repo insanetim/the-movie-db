@@ -1,11 +1,12 @@
 import { Typography } from 'antd'
 import { GENDERS } from 'src/constants/app'
-import getAge from 'src/utils/helpers/getAge'
+import { getAge, getFormatedDate } from 'src/utils/helpers/getAge'
 
 import { PersonalInfoProps } from './types'
 
 const PersonalInfo: React.FC<PersonalInfoProps> = ({
   birthday,
+  deathday,
   gender,
   placeOfBirth,
 }) => (
@@ -18,7 +19,13 @@ const PersonalInfo: React.FC<PersonalInfoProps> = ({
     {birthday && (
       <Typography.Paragraph>
         <b>Birthday: </b>
-        <span>{getAge(birthday)}</span>
+        <span>{deathday ? getFormatedDate(birthday) : getAge(birthday)}</span>
+      </Typography.Paragraph>
+    )}
+    {deathday && birthday && (
+      <Typography.Paragraph>
+        <b>Deathday: </b>
+        <span>{getAge(birthday, deathday)}</span>
       </Typography.Paragraph>
     )}
     {placeOfBirth && (

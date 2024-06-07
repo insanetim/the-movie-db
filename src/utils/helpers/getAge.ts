@@ -1,10 +1,12 @@
 import { differenceInYears, format } from 'date-fns'
 
-const getAge = (dateOfBirth: string) => {
-  const formatedDate = format(dateOfBirth, 'MMMM d, yyyy')
-  const age = differenceInYears(new Date(), dateOfBirth)
+export const getAge = (birthday: string, deathday?: string) => {
+  const formatedDate = format(deathday ? deathday : birthday, 'MMMM d, yyyy')
+  const age = differenceInYears(deathday ? deathday : new Date(), birthday)
 
   return `${formatedDate} (${age} years old)`
 }
 
-export default getAge
+export const getFormatedDate = (date: string) => {
+  return format(date, 'MMMM d, yyyy')
+}

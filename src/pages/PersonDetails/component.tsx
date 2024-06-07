@@ -78,6 +78,7 @@ const PersonDetails = () => {
           >
             <PersonalInfo
               birthday={person.birthday}
+              deathday={person.deathday}
               gender={person.gender}
               placeOfBirth={person.place_of_birth}
             />

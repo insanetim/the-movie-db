@@ -1,6 +1,7 @@
 interface IPerson {
   biography: string
   birthday?: string
+  deathday?: string
   gender: number
   id: number
   known_for_department: string
