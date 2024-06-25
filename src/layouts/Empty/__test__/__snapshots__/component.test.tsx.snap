@@ -6,10 +6,10 @@ exports[`EmptyLayout component should match snapshot 1`] = `
     class="center"
   >
     <div
-      class="ant-layout css-dev-only-do-not-override-3rel02"
+      class="ant-layout css-dev-only-do-not-override-m4timi"
     >
       <main
-        class="ant-layout-content css-dev-only-do-not-override-3rel02"
+        class="ant-layout-content css-dev-only-do-not-override-m4timi"
       />
     </div>
   </div>

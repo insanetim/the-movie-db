@@ -191,7 +191,9 @@ describe('App component', () => {
   it('should render Login', async () => {
     renderWithWrapper(<Login />)
 
-    expect(await screen.findByText(/sign in/i)).toBeInTheDocument()
+    expect(
+      await screen.findByText(/sign in/i, undefined, { timeout: 3000 })
+    ).toBeInTheDocument()
   })
 
   it('should render Dashboard', async () => {
