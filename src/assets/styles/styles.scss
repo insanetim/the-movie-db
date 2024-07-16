@@ -2,9 +2,8 @@
 @import 'https://fonts.googleapis.com/css2?family=Ubuntu&display=swap';
 
 body {
-  overflow-x: hidden;
-
   font-family: Ubuntu, sans-serif;
+  overflow-x: hidden;
 
   * {
     font-family: inherit !important;
@@ -14,18 +13,17 @@ body {
 .container {
   width: 100%;
   max-width: 1320px;
-  margin-right: auto;
-  margin-left: auto;
   padding-right: 12px;
   padding-left: 12px;
+  margin-right: auto;
+  margin-left: auto;
 }
 
 .center {
   display: flex;
+  height: 100vh;
   align-items: center;
   justify-content: center;
-
-  height: 100vh;
 }
 
 .text-center {
@@ -53,11 +51,8 @@ body {
   position: sticky;
   z-index: 999;
   top: 0;
-
   padding: 0 12px;
-
   background-color: #032541;
-
   box-shadow:
     0 1px 2px -2px rgb(0 0 0 / 16%),
     0 3px 6px 0 rgb(0 0 0 / 12%),
@@ -91,7 +86,6 @@ body {
 
 .ant-carousel .slick-slide {
   overflow: hidden;
-
   background: #364d79;
 }
 
@@ -101,7 +95,6 @@ body {
 
   img {
     display: block;
-
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -134,10 +127,9 @@ body {
   display: flex !important;
   align-items: center;
   justify-content: center;
-
   border-radius: 8px 8px 0 0;
-  background-color: #dbdbdb;
   aspect-ratio: calc(5 / 7.5);
+  background-color: #dbdbdb;
 
   img {
     width: 50%;
@@ -146,13 +138,11 @@ body {
 
 .ant-btn.ant-btn-circle.ant-btn-text.ant-btn-icon-only {
   display: inline-flex;
-  align-items: center;
-  justify-content: center;
-
   width: 38px;
   height: 38px;
+  align-items: center;
+  justify-content: center;
   padding: 0;
-
   cursor: pointer;
 
   .anticon {
@@ -171,9 +161,8 @@ body {
 }
 
 .total-count {
-  opacity: 0.55;
-
   font-weight: 400;
+  opacity: 0.55;
 }
 
 .crew-group + .crew-group {
@@ -182,12 +171,10 @@ body {
 
 .person-poster {
   overflow: clip;
-
   border-radius: 8px;
 
   img {
     display: block;
-
     width: 100%;
   }
 }
@@ -196,10 +183,9 @@ body {
   display: flex !important;
   align-items: center;
   justify-content: center;
-
   border-radius: 8px;
-  background-color: #dbdbdb;
   aspect-ratio: calc(5 / 7.5);
+  background-color: #dbdbdb;
 
   img {
     width: 50%;
@@ -219,9 +205,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-
   color: #2a2a2a;
-
   font-size: 28px;
 
   &:hover,

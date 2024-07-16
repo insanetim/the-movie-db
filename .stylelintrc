@@ -1,7 +1,7 @@
 {
   "extends": [
     "stylelint-config-standard-scss",
-    "stylelint-order-config-standard",
+    "stylelint-config-idiomatic-order",
     "stylelint-prettier/recommended"
   ],
   "plugins": ["stylelint-order", "stylelint-prettier"],

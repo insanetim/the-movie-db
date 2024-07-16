@@ -3,12 +3,12 @@
 exports[`PersonalInfo component should match snapshot 1`] = `
 <DocumentFragment>
   <h3
-    class="ant-typography css-dev-only-do-not-override-98ntnt"
+    class="ant-typography css-dev-only-do-not-override-p8b6i"
   >
     Personal Info
   </h3>
   <div
-    class="ant-typography css-dev-only-do-not-override-98ntnt"
+    class="ant-typography css-dev-only-do-not-override-p8b6i"
   >
     <b>
       Gender: 
@@ -18,7 +18,7 @@ exports[`PersonalInfo component should match snapshot 1`] = `
     </span>
   </div>
   <div
-    class="ant-typography css-dev-only-do-not-override-98ntnt"
+    class="ant-typography css-dev-only-do-not-override-p8b6i"
   >
     <b>
       Birthday: 
@@ -28,7 +28,7 @@ exports[`PersonalInfo component should match snapshot 1`] = `
     </span>
   </div>
   <div
-    class="ant-typography css-dev-only-do-not-override-98ntnt"
+    class="ant-typography css-dev-only-do-not-override-p8b6i"
   >
     <b>
       Place of Birth: 
@@ -43,12 +43,12 @@ exports[`PersonalInfo component should match snapshot 1`] = `
 exports[`PersonalInfo component should match snapshot with other data 1`] = `
 <DocumentFragment>
   <h3
-    class="ant-typography css-dev-only-do-not-override-98ntnt"
+    class="ant-typography css-dev-only-do-not-override-p8b6i"
   >
     Personal Info
   </h3>
   <div
-    class="ant-typography css-dev-only-do-not-override-98ntnt"
+    class="ant-typography css-dev-only-do-not-override-p8b6i"
   >
     <b>
       Gender: 
@@ -58,7 +58,7 @@ exports[`PersonalInfo component should match snapshot with other data 1`] = `
     </span>
   </div>
   <div
-    class="ant-typography css-dev-only-do-not-override-98ntnt"
+    class="ant-typography css-dev-only-do-not-override-p8b6i"
   >
     <b>
       Birthday: 
@@ -68,7 +68,7 @@ exports[`PersonalInfo component should match snapshot with other data 1`] = `
     </span>
   </div>
   <div
-    class="ant-typography css-dev-only-do-not-override-98ntnt"
+    class="ant-typography css-dev-only-do-not-override-p8b6i"
   >
     <b>
       Deathday: 
@@ -78,7 +78,7 @@ exports[`PersonalInfo component should match snapshot with other data 1`] = `
     </span>
   </div>
   <div
-    class="ant-typography css-dev-only-do-not-override-98ntnt"
+    class="ant-typography css-dev-only-do-not-override-p8b6i"
   >
     <b>
       Place of Birth: 
