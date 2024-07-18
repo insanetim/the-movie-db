@@ -12,6 +12,7 @@
     "check-types": "tsc --noEmit --skipLibCheck",
     "lint": "eslint --format codeframe src/ --fix",
     "stylelint": "stylelint 'src/**/*.scss' --fix",
+    "format": "prettier --write src/",
     "prepare": "husky"
   },
   "dependencies": {
