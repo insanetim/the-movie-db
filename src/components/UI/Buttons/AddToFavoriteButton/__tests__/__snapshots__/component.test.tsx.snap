@@ -3,7 +3,7 @@
 exports[`AddToFavoriteButton component should match snapshot 1`] = `
 <DocumentFragment>
   <button
-    class="ant-btn css-dev-only-do-not-override-p8b6i ant-btn-circle ant-btn-text ant-btn-icon-only"
+    class="ant-btn css-dev-only-do-not-override-1uq9j6g ant-btn-circle ant-btn-text ant-btn-icon-only"
     type="button"
   >
     <span
@@ -36,7 +36,7 @@ exports[`AddToFavoriteButton component should match snapshot 1`] = `
 exports[`AddToFavoriteButton component should match snapshot with other data 1`] = `
 <DocumentFragment>
   <button
-    class="ant-btn css-dev-only-do-not-override-p8b6i ant-btn-circle ant-btn-text ant-btn-icon-only"
+    class="ant-btn css-dev-only-do-not-override-1uq9j6g ant-btn-circle ant-btn-text ant-btn-icon-only"
     type="button"
   >
     <span
