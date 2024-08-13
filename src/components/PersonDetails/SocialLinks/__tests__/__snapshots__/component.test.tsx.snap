@@ -3,7 +3,7 @@
 exports[`SocialLinks component should match snapshot 1`] = `
 <DocumentFragment>
   <div
-    class="social-link__list ant-flex css-dev-only-do-not-override-1uq9j6g"
+    class="social-link__list ant-flex css-dev-only-do-not-override-1c0na6j"
     style="gap: 16px;"
   >
     <a
