@@ -19,7 +19,13 @@ const getStyleLoaders = () => [
       importLoaders: 1,
     },
   },
-  'sass-loader',
+  {
+    loader: 'sass-loader',
+    options: {
+      api: 'modern-compiler',
+      implementation: require('sass-embedded'),
+    },
+  },
   'postcss-loader',
 ]
 
