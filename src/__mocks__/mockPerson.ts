@@ -90,4 +90,4 @@ const mockPersonDetails: IPersonDetails = {
   profile_path: '/image',
 }
 
-export { mockPersonDetails, mockedCredits }
+export { mockedCredits, mockPersonDetails }

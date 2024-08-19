@@ -1,4 +1,4 @@
-import { mockPersonDetails, mockedCredits } from 'src/__mocks__/mockPerson'
+import { mockedCredits, mockPersonDetails } from 'src/__mocks__/mockPerson'
 import renderWithWrapper from 'src/utils/testHelpers/renderWithWrapper'
 
 import Credits from '../component'

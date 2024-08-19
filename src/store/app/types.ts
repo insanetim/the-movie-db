@@ -1,11 +1,11 @@
 import { ComponentProps } from 'react'
-import { ModalTypes, ModalsMap } from 'src/components/ModalRoot/types'
+import { ModalsMap, ModalTypes } from 'src/components/ModalRoot/types'
 import { NOTIFICATION_TYPE } from 'src/constants/app'
 
 export type Modal = {
   [T in ModalTypes]: {
     modalProps: ComponentProps<ModalsMap[T]> | null
-    modalType: T | null
+    modalType: null | T
   }
 }[ModalTypes]
 

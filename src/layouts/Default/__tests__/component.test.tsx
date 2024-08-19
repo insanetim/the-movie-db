@@ -1,8 +1,8 @@
 import mockAccount from 'src/__mocks__/mockAccount'
 import renderWithWrapper from 'src/utils/testHelpers/renderWithWrapper'
 
-import { HeaderHookReturn } from '../Header/types'
 import DefaultLayout from '../component'
+import { HeaderHookReturn } from '../Header/types'
 
 const mockedHeader: HeaderHookReturn = {
   account: mockAccount,

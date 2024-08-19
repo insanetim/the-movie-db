@@ -9,8 +9,8 @@ type AsyncThunkConfig = {
   extra?: unknown
   fulfilledMeta?: unknown
   pendingMeta?: unknown
-  rejectValue?: unknown
   rejectedMeta?: unknown
+  rejectValue?: unknown
   serializedErrorType?: unknown
   state?: unknown
 }

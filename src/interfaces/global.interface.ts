@@ -5,7 +5,7 @@ export type Query = string
 export type HandlePagination = (page: number) => void
 
 export interface IState<T> {
-  data: T | null
+  data: null | T
   error: ErrorMsg
   loading: boolean
 }

@@ -1,4 +1,4 @@
-import { PayloadAction, createSlice, nanoid } from '@reduxjs/toolkit'
+import { createSlice, nanoid, PayloadAction } from '@reduxjs/toolkit'
 import { NOTIFICATION_DURATION, NOTIFICATION_TYPE } from 'src/constants/app'
 
 import { AppState, Notification, ShowNotificationProps } from './types'

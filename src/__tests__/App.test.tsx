@@ -2,7 +2,7 @@ import { screen } from '@testing-library/react'
 import { Location } from 'react-router-dom'
 import { mockListDetails } from 'src/__mocks__/mockList'
 import { mockMovieDetailsExtended } from 'src/__mocks__/mockMovie'
-import { mockPersonDetails, mockedCredits } from 'src/__mocks__/mockPerson'
+import { mockedCredits, mockPersonDetails } from 'src/__mocks__/mockPerson'
 import App, {
   Cast,
   Credits,
