@@ -6,13 +6,13 @@ exports[`Credits component should match snapshot 1`] = `
     class="container top-margin"
   >
     <div
-      class="ant-row css-dev-only-do-not-override-qnu6hi"
+      class="ant-row css-dev-only-do-not-override-5wsri9"
     >
       <div
-        class="ant-col ant-col-24 css-dev-only-do-not-override-qnu6hi"
+        class="ant-col ant-col-24 css-dev-only-do-not-override-5wsri9"
       >
         <div
-          class="ant-typography css-dev-only-do-not-override-qnu6hi"
+          class="ant-typography css-dev-only-do-not-override-5wsri9"
         >
           <a
             href="/person/1234-test-person"
@@ -42,17 +42,17 @@ exports[`Credits component should match snapshot 1`] = `
       </div>
     </div>
     <div
-      class="ant-row css-dev-only-do-not-override-qnu6hi"
+      class="ant-row css-dev-only-do-not-override-5wsri9"
     >
       <div
-        class="ant-col ant-col-24 css-dev-only-do-not-override-qnu6hi"
+        class="ant-col ant-col-24 css-dev-only-do-not-override-5wsri9"
       >
         <div
-          class="ant-flex css-dev-only-do-not-override-qnu6hi ant-flex-align-center ant-flex-gap-middle"
+          class="ant-flex css-dev-only-do-not-override-5wsri9 ant-flex-align-center ant-flex-gap-middle"
           style="margin-bottom: 24px;"
         >
           <h1
-            class="ant-typography css-dev-only-do-not-override-qnu6hi"
+            class="ant-typography css-dev-only-do-not-override-5wsri9"
             style="margin-bottom: 0px;"
           >
             test-person
@@ -61,17 +61,19 @@ exports[`Credits component should match snapshot 1`] = `
       </div>
     </div>
     <div
-      class="ant-row css-dev-only-do-not-override-qnu6hi"
+      class="ant-row css-dev-only-do-not-override-5wsri9"
     >
       <div
-        class="ant-col ant-col-24 css-dev-only-do-not-override-qnu6hi"
+        class="ant-col ant-col-24 css-dev-only-do-not-override-5wsri9"
         style="margin-bottom: 12px;"
       >
         <div
-          class="ant-flex css-dev-only-do-not-override-qnu6hi ant-flex-justify-end"
+          class="ant-flex css-dev-only-do-not-override-5wsri9 ant-flex-justify-end"
         >
           <div
-            class="ant-segmented css-dev-only-do-not-override-qnu6hi"
+            aria-label="segmented control"
+            class="ant-segmented css-dev-only-do-not-override-5wsri9"
+            role="listbox"
           >
             <div
               class="ant-segmented-group"
@@ -85,7 +87,9 @@ exports[`Credits component should match snapshot 1`] = `
                   type="radio"
                 />
                 <div
+                  aria-selected="true"
                   class="ant-segmented-item-label"
+                  role="option"
                   title="all"
                 >
                   all
@@ -99,7 +103,9 @@ exports[`Credits component should match snapshot 1`] = `
                   type="radio"
                 />
                 <div
+                  aria-selected="false"
                   class="ant-segmented-item-label"
+                  role="option"
                   title="cast"
                 >
                   cast
@@ -113,7 +119,9 @@ exports[`Credits component should match snapshot 1`] = `
                   type="radio"
                 />
                 <div
+                  aria-selected="false"
                   class="ant-segmented-item-label"
+                  role="option"
                   title="crew"
                 >
                   crew
@@ -124,19 +132,19 @@ exports[`Credits component should match snapshot 1`] = `
         </div>
       </div>
       <div
-        class="ant-col ant-col-24 css-dev-only-do-not-override-qnu6hi"
+        class="ant-col ant-col-24 css-dev-only-do-not-override-5wsri9"
       >
         <div
-          class="ant-table-wrapper credits-table css-dev-only-do-not-override-qnu6hi"
+          class="ant-table-wrapper credits-table css-dev-only-do-not-override-5wsri9"
         >
           <div
-            class="ant-spin-nested-loading css-dev-only-do-not-override-qnu6hi"
+            class="ant-spin-nested-loading css-dev-only-do-not-override-5wsri9"
           >
             <div
               class="ant-spin-container"
             >
               <div
-                class="ant-table css-dev-only-do-not-override-qnu6hi ant-table-fixed-column ant-table-scroll-horizontal ant-table-has-fix-left"
+                class="ant-table css-dev-only-do-not-override-5wsri9 ant-table-ping-right ant-table-fixed-column ant-table-scroll-horizontal ant-table-has-fix-left"
               >
                 <div
                   class="ant-table-container"
@@ -373,12 +381,12 @@ exports[`Credits component should match snapshot 1`] = `
                             style="text-align: center;"
                           >
                             <div
-                              class="ant-image css-dev-only-do-not-override-qnu6hi"
+                              class="ant-image css-dev-only-do-not-override-5wsri9"
                               style="height: 120px;"
                             >
                               <img
                                 alt="the-matrix"
-                                class="ant-image-img css-dev-only-do-not-override-qnu6hi"
+                                class="ant-image-img css-dev-only-do-not-override-5wsri9"
                                 height="120"
                                 src="https://image.tmdb.org/t/p/w500/image"
                                 style="height: 120px; border-radius: 8px;"
@@ -470,7 +478,7 @@ exports[`Credits component should match snapshot 1`] = `
 exports[`Credits component should match snapshot with empty person 1`] = `
 <DocumentFragment>
   <div
-    class="css-dev-only-do-not-override-qnu6hi ant-empty ant-empty-normal"
+    class="css-dev-only-do-not-override-5wsri9 ant-empty ant-empty-normal"
   >
     <div
       class="ant-empty-image"
@@ -526,7 +534,7 @@ exports[`Credits component should match snapshot with error 1`] = `
     class="container top-margin"
   >
     <div
-      class="ant-result ant-result-error css-dev-only-do-not-override-qnu6hi"
+      class="ant-result ant-result-error css-dev-only-do-not-override-5wsri9"
     >
       <div
         class="ant-result-icon"
@@ -568,15 +576,15 @@ exports[`Credits component should match snapshot with loading 1`] = `
     class="container top-margin"
   >
     <div
-      class="ant-row ant-row-center top-margin css-dev-only-do-not-override-qnu6hi"
+      class="ant-row ant-row-center top-margin css-dev-only-do-not-override-5wsri9"
     >
       <div
-        class="ant-col css-dev-only-do-not-override-qnu6hi"
+        class="ant-col css-dev-only-do-not-override-5wsri9"
       >
         <div
           aria-busy="true"
           aria-live="polite"
-          class="ant-spin ant-spin-spinning css-dev-only-do-not-override-qnu6hi"
+          class="ant-spin ant-spin-spinning css-dev-only-do-not-override-5wsri9"
         >
           <span
             class="ant-spin-dot-holder"

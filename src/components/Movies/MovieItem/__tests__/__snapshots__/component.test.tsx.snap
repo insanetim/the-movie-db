@@ -3,7 +3,7 @@
 exports[`MovieItem component should match snapshot 1`] = `
 <DocumentFragment>
   <div
-    class="ant-card ant-card-bordered ant-card-hoverable css-dev-only-do-not-override-qnu6hi"
+    class="ant-card ant-card-bordered ant-card-hoverable css-dev-only-do-not-override-5wsri9"
     data-testid="movieItemCard"
   >
     <div
@@ -77,7 +77,7 @@ exports[`MovieItem component should match snapshot 1`] = `
 exports[`MovieItem component should match snapshot without poster_path 1`] = `
 <DocumentFragment>
   <div
-    class="ant-card ant-card-bordered ant-card-hoverable css-dev-only-do-not-override-qnu6hi"
+    class="ant-card ant-card-bordered ant-card-hoverable css-dev-only-do-not-override-5wsri9"
     data-testid="movieItemCard"
   >
     <div
