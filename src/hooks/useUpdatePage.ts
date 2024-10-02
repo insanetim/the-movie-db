@@ -1,10 +1,11 @@
+import { AsyncThunkAction } from '@reduxjs/toolkit'
 import { SetURLSearchParams } from 'react-router-dom'
-import { AppThunk } from 'src/store'
+import { AppDispatch } from 'src/store'
 import { useAppDispatch } from 'src/store/hooks'
 import getParams from 'src/utils/helpers/getParams'
 
 export type UseUpdatePageProps = {
-  action: AppThunk
+  action: AsyncThunkAction<unknown, unknown, { dispatch: AppDispatch }>
   items: undefined | unknown[]
   page: string
   setSearchParams: SetURLSearchParams

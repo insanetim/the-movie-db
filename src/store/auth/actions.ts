@@ -1,4 +1,3 @@
-import { createAsyncThunk } from '@reduxjs/toolkit'
 import Cookies from 'js-cookie'
 import {
   createRequestToken,
@@ -8,17 +7,17 @@ import {
   validateWithLogin,
 } from 'src/api/tmdb/apiRoutes'
 import { NOTIFICATION_TYPE } from 'src/constants/app'
-import { IAccount } from 'src/interfaces/account.interface'
 import { showNotification } from 'src/store/app/actions'
 import errorMessage from 'src/utils/helpers/errorMessage'
 import getSessionId from 'src/utils/helpers/getSessionId'
 
+import { createAppAsyncThunk } from '../withTypes'
 import * as types from './constants'
 import { UserData } from './types'
 
-const logIn = createAsyncThunk<string | undefined, UserData>(
+const logIn = createAppAsyncThunk(
   types.logIn,
-  async function (userData, { dispatch }) {
+  async function (userData: UserData, { dispatch }) {
     try {
       const requestToken = await createRequestToken()
       await validateWithLogin({ requestToken, userData })
@@ -38,7 +37,7 @@ const logIn = createAsyncThunk<string | undefined, UserData>(
   }
 )
 
-const logOut = createAsyncThunk<void, void>(
+const logOut = createAppAsyncThunk(
   types.logOut,
   async function (_, { dispatch }) {
     const sessionId = getSessionId()
@@ -58,7 +57,7 @@ const logOut = createAsyncThunk<void, void>(
   }
 )
 
-const fetchAccount = createAsyncThunk<IAccount | undefined, void>(
+const fetchAccount = createAppAsyncThunk(
   types.fetchAccount,
   async function (_, { dispatch }) {
     const sessionId = getSessionId()

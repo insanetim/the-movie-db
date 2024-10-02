@@ -1,37 +1,34 @@
-import { createAsyncThunk } from '@reduxjs/toolkit'
 import { getTrending, searchMovies } from 'src/api/tmdb/apiRoutes'
-import { IMoviesList } from 'src/interfaces/movie.interface'
 import errorMessage from 'src/utils/helpers/errorMessage'
 
+import { createAppAsyncThunk } from '../withTypes'
 import * as types from './constants'
 import { FetchSearchProps } from './types'
 
-const fetchTrending = createAsyncThunk<
-  IMoviesList,
-  string,
-  { rejectValue: string }
->(types.fetchTrending, async function (page, { rejectWithValue }) {
-  try {
-    const movies = await getTrending({ page })
+const fetchTrending = createAppAsyncThunk(
+  types.fetchTrending,
+  async function (page: string, { rejectWithValue }) {
+    try {
+      const movies = await getTrending({ page })
 
-    return movies
-  } catch (error) {
-    return rejectWithValue(errorMessage(error))
+      return movies
+    } catch (error) {
+      return rejectWithValue(errorMessage(error))
+    }
   }
-})
+)
 
-const fetchSearch = createAsyncThunk<
-  IMoviesList,
-  FetchSearchProps,
-  { rejectValue: string }
->(types.fetchSearch, async function ({ page, query }, { rejectWithValue }) {
-  try {
-    const movies = await searchMovies({ page, query })
+const fetchSearch = createAppAsyncThunk(
+  types.fetchSearch,
+  async function ({ page, query }: FetchSearchProps, { rejectWithValue }) {
+    try {
+      const movies = await searchMovies({ page, query })
 
-    return movies
-  } catch (error) {
-    return rejectWithValue(errorMessage(error))
+      return movies
+    } catch (error) {
+      return rejectWithValue(errorMessage(error))
+    }
   }
-})
+)
 
 export { fetchSearch, fetchTrending }

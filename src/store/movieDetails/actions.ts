@@ -1,4 +1,3 @@
-import { createAsyncThunk } from '@reduxjs/toolkit'
 import { getImdbInfo } from 'src/api/imdb/apiRoutes'
 import {
   addToFovorite,
@@ -6,48 +5,46 @@ import {
   getMovieDetails,
 } from 'src/api/tmdb/apiRoutes'
 import { NOTIFICATION_TYPE } from 'src/constants/app'
-import { IMovie, IMovieDetailsExtended } from 'src/interfaces/movie.interface'
-import { RootState } from 'src/store'
+import { IMovie } from 'src/interfaces/movie.interface'
 import { accountSelector } from 'src/store/auth/selectors'
 import errorMessage from 'src/utils/helpers/errorMessage'
 import getSessionId from 'src/utils/helpers/getSessionId'
 
 import { showNotification } from '../app/actions'
+import { createAppAsyncThunk } from '../withTypes'
 import * as types from './constants'
 import {
   ChangeMovieInFavoriteProps,
   ChangeMovieInWatchlistProps,
 } from './types'
 
-const fetchMovieDetails = createAsyncThunk<
-  IMovieDetailsExtended,
-  IMovie['id'],
-  { rejectValue: string; state: RootState }
->(types.fetchMovieDetails, async function (movieId, { rejectWithValue }) {
-  const sessionId = getSessionId()
-
-  try {
-    let movieDetails = await getMovieDetails({ movieId, sessionId })
-    if (movieDetails.imdb_id) {
-      const imdbInfo = await getImdbInfo({ imdbId: movieDetails.imdb_id })
-      movieDetails = { ...movieDetails, imdbInfo }
-    }
-
-    return movieDetails
-  } catch (error) {
-    return rejectWithValue(errorMessage(error))
-  }
-})
-
-const changeMovieInFavorite = createAsyncThunk<
-  void,
-  ChangeMovieInFavoriteProps,
-  { state: RootState }
->(
-  types.changeMovieInFavorite,
-  async function ({ inFavorite, movieId }, { dispatch, getState }) {
+const fetchMovieDetails = createAppAsyncThunk(
+  types.fetchMovieDetails,
+  async function (movieId: IMovie['id'], { rejectWithValue }) {
     const sessionId = getSessionId()
-    const accountId = accountSelector(getState())!.id
+
+    try {
+      let movieDetails = await getMovieDetails({ movieId, sessionId })
+      if (movieDetails.imdb_id) {
+        const imdbInfo = await getImdbInfo({ imdbId: movieDetails.imdb_id })
+        movieDetails = { ...movieDetails, imdbInfo }
+      }
+
+      return movieDetails
+    } catch (error) {
+      return rejectWithValue(errorMessage(error))
+    }
+  }
+)
+
+const changeMovieInFavorite = createAppAsyncThunk(
+  types.changeMovieInFavorite,
+  async function (
+    { inFavorite, movieId }: ChangeMovieInFavoriteProps,
+    { dispatch, getState }
+  ) {
+    const sessionId = getSessionId()
+    const { id: accountId } = accountSelector(getState())!
 
     try {
       await addToFovorite({ accountId, inFavorite, movieId, sessionId })
@@ -62,15 +59,14 @@ const changeMovieInFavorite = createAsyncThunk<
   }
 )
 
-const changeMovieInWatchlist = createAsyncThunk<
-  void,
-  ChangeMovieInWatchlistProps,
-  { state: RootState }
->(
+const changeMovieInWatchlist = createAppAsyncThunk(
   types.changeMovieInWatchlist,
-  async function ({ inWatchlist, movieId }, { dispatch, getState }) {
+  async function (
+    { inWatchlist, movieId }: ChangeMovieInWatchlistProps,
+    { dispatch, getState }
+  ) {
     const sessionId = getSessionId()
-    const accountId = accountSelector(getState())!.id
+    const { id: accountId } = accountSelector(getState())!
 
     try {
       await addToWatchlist({ accountId, inWatchlist, movieId, sessionId })
