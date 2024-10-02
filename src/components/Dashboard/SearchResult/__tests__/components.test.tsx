@@ -1,7 +1,7 @@
 import { screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { mockMovie } from 'src/__mocks__/mockMovie'
-import renderWithWrapper from 'src/utils/testHelpers/renderWithWrapper'
+import { renderWithWrapper } from 'src/utils/testHelpers/renderWithWrapper'
 
 import SearchResult from '../component'
 import { SearchResultHookReturn } from '../types'

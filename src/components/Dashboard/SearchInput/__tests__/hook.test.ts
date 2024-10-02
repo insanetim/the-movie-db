@@ -1,6 +1,7 @@
-import { act, renderHook } from '@testing-library/react'
+import { act } from '@testing-library/react'
 import React from 'react'
 import { useSearchParams } from 'react-router-dom'
+import { renderHookWithWrapper } from 'src/utils/testHelpers/renderWithWrapper'
 
 import useContainer from '../hook'
 import { SearchInputHookProps } from '../types'
@@ -14,20 +15,20 @@ const setSearchParams = jest.fn()
 jest.mocked(useSearchParams).mockReturnValue([searchParams, setSearchParams])
 
 describe('SearchInput useContainer hook', () => {
-  const setState = jest.fn()
-  const useStateMock = (initState: unknown) => [initState, setState]
-  jest.spyOn(React, 'useState').mockImplementation(useStateMock as never)
-
   const props: SearchInputHookProps = { query: '' }
 
   it('should match snapshot', () => {
-    const { result } = renderHook(() => useContainer(props))
+    const { result } = renderHookWithWrapper(() => useContainer(props))
 
     expect(result.current).toMatchSnapshot()
   })
 
   it('should check "handleChange" method', () => {
-    const { result } = renderHook(() => useContainer(props))
+    const setState = jest.fn()
+    const useStateMock = (initState: unknown) => [initState, setState]
+    jest.spyOn(React, 'useState').mockImplementation(useStateMock as never)
+
+    const { result } = renderHookWithWrapper(() => useContainer(props))
 
     act(() => {
       result.current.handleChange({
@@ -39,7 +40,7 @@ describe('SearchInput useContainer hook', () => {
   })
 
   it('should check "handleSearch" method with value', () => {
-    const { result } = renderHook(() => useContainer(props))
+    const { result } = renderHookWithWrapper(() => useContainer(props))
 
     act(() => {
       result.current.handleSearch('test/search')
@@ -52,7 +53,7 @@ describe('SearchInput useContainer hook', () => {
   })
 
   it('should check "handleSearch" method without value', () => {
-    const { result } = renderHook(() => useContainer(props))
+    const { result } = renderHookWithWrapper(() => useContainer(props))
 
     act(() => {
       result.current.handleSearch('')

@@ -1,10 +1,10 @@
-import { render } from '@testing-library/react'
+import { renderWithWrapper } from 'src/utils/testHelpers/renderWithWrapper'
 
 import Status from '../component'
 
 describe('Status component', () => {
   it('should match snapshot', () => {
-    const { asFragment } = render(<Status status='Released' />)
+    const { asFragment } = renderWithWrapper(<Status status='Released' />)
 
     expect(asFragment()).toMatchSnapshot()
   })

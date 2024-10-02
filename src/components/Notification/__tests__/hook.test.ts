@@ -1,6 +1,7 @@
-import { act, renderHook } from '@testing-library/react'
+import { act } from '@testing-library/react'
 import { notification } from 'antd'
 import { NOTIFICATION_DURATION, NOTIFICATION_TYPE } from 'src/constants/app'
+import { renderHookWithWrapper } from 'src/utils/testHelpers/renderWithWrapper'
 
 import useContainer from '../hook'
 import { NotificationHookProps } from '../types'
@@ -17,13 +18,13 @@ describe('Notification useContainer hook', () => {
   }
 
   it('should match snapshot', () => {
-    const { result } = renderHook(() => useContainer(props))
+    const { result } = renderHookWithWrapper(() => useContainer(props))
 
     expect(result.current).toMatchSnapshot()
   })
 
   it('should check "onClose" method', () => {
-    const { result } = renderHook(() => useContainer(props))
+    const { result } = renderHookWithWrapper(() => useContainer(props))
 
     act(() => {
       result.current.onClose()
@@ -34,7 +35,7 @@ describe('Notification useContainer hook', () => {
   })
 
   it('should check "useEffect" method', () => {
-    const { result } = renderHook(() => useContainer(props))
+    const { result } = renderHookWithWrapper(() => useContainer(props))
 
     expect(successSpy).toHaveBeenCalledWith({
       duration: props.duration,

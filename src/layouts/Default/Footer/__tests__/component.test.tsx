@@ -1,10 +1,10 @@
-import { render } from '@testing-library/react'
+import { renderWithWrapper } from 'src/utils/testHelpers/renderWithWrapper'
 
 import Footer from '../component'
 
 describe('Footer component', () => {
   it('should match snapshot', () => {
-    const { asFragment } = render(<Footer />)
+    const { asFragment } = renderWithWrapper(<Footer />)
 
     expect(asFragment()).toMatchSnapshot()
   })

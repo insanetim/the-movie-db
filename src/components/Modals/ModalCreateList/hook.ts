@@ -1,8 +1,8 @@
 import { InputRef } from 'antd'
 import { useRef } from 'react'
-import { useAppDispatch } from 'src/hooks/useRedux'
 import { hideModal } from 'src/store/app/actions'
 import { createList } from 'src/store/createdLists/actions'
+import { useAppDispatch } from 'src/store/hooks'
 
 import {
   ListData,

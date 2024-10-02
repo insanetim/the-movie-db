@@ -1,6 +1,7 @@
 import { PlusCircleOutlined } from '@ant-design/icons'
-import { render, screen } from '@testing-library/react'
+import { screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
+import { renderWithWrapper } from 'src/utils/testHelpers/renderWithWrapper'
 
 import IconButton from '../component'
 
@@ -8,7 +9,7 @@ describe('IconButton component', () => {
   const handleClick = jest.fn()
 
   it('should match snapshot', () => {
-    const { asFragment } = render(
+    const { asFragment } = renderWithWrapper(
       <IconButton
         icon={<PlusCircleOutlined />}
         onClick={handleClick}
@@ -19,7 +20,7 @@ describe('IconButton component', () => {
   })
 
   it('should call "handleClick" when button clicked', async () => {
-    render(
+    renderWithWrapper(
       <IconButton
         icon={<PlusCircleOutlined />}
         onClick={handleClick}

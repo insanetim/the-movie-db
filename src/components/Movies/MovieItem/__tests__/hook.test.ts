@@ -1,5 +1,6 @@
 import { act, renderHook } from '@testing-library/react'
 import { useNavigate } from 'react-router-dom'
+import { renderHookWithWrapper } from 'src/utils/testHelpers/renderWithWrapper'
 
 import useContainer from '../hook'
 import { MovieItemHookProps } from '../types'
@@ -15,7 +16,7 @@ describe('MovieItem useContainer hook', () => {
   const props: MovieItemHookProps = { id: 1234, title: 'movie' }
 
   it('should match snapshot', () => {
-    const { result } = renderHook(() => useContainer(props))
+    const { result } = renderHookWithWrapper(() => useContainer(props))
 
     expect(result.current).toMatchSnapshot()
   })

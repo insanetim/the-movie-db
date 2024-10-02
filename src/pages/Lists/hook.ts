@@ -1,8 +1,6 @@
 import { useEffect } from 'react'
-import { useSelector } from 'react-redux'
 import { useSearchParams } from 'react-router-dom'
 import { modalComponentsMap } from 'src/components/ModalRoot/modalComponents'
-import { useAppDispatch } from 'src/hooks/useRedux'
 import { showModal } from 'src/store/app/actions'
 import { accountSelector } from 'src/store/auth/selectors'
 import { fetchLists } from 'src/store/createdLists/actions'
@@ -11,16 +9,17 @@ import {
   createdListsLoadingSelector,
   createdListsSelector,
 } from 'src/store/createdLists/selectors'
+import { useAppDispatch, useAppSelector } from 'src/store/hooks'
 import getParams from 'src/utils/helpers/getParams'
 
 import { ListsHookReturn } from './types'
 
 const useContainer = (): ListsHookReturn => {
   const dispatch = useAppDispatch()
-  const account = useSelector(accountSelector)
-  const lists = useSelector(createdListsSelector)
-  const loading = useSelector(createdListsLoadingSelector)
-  const error = useSelector(createdListsErrorSelector)
+  const account = useAppSelector(accountSelector)
+  const lists = useAppSelector(createdListsSelector)
+  const loading = useAppSelector(createdListsLoadingSelector)
+  const error = useAppSelector(createdListsErrorSelector)
   const [searchParams, setSearchParams] = useSearchParams()
   const page = searchParams.get('page') || '1'
 

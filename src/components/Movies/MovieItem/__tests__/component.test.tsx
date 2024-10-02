@@ -1,7 +1,8 @@
-import { render, screen } from '@testing-library/react'
+import { screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { assoc } from 'ramda'
 import { mockMovie } from 'src/__mocks__/mockMovie'
+import { renderWithWrapper } from 'src/utils/testHelpers/renderWithWrapper'
 
 import MovieItem from '../component'
 import { MovieItemHookReturn, MovieItemProps } from '../types'
@@ -21,20 +22,21 @@ describe('MovieItem component', () => {
   }
 
   it('should match snapshot', () => {
-    const { asFragment } = render(<MovieItem {...props} />)
+    const { asFragment } = renderWithWrapper(<MovieItem {...props} />)
 
     expect(asFragment()).toMatchSnapshot()
   })
 
   it('should match snapshot without poster_path', () => {
     const newProps = assoc('posterPath', null, props)
-    const { asFragment } = render(<MovieItem {...newProps} />)
+
+    const { asFragment } = renderWithWrapper(<MovieItem {...newProps} />)
 
     expect(asFragment()).toMatchSnapshot()
   })
 
   it('should call "handleClick" when card clicked', async () => {
-    render(<MovieItem {...props} />)
+    renderWithWrapper(<MovieItem {...props} />)
 
     const user = userEvent.setup()
     const card = screen.getByTestId('movieItemCard')
@@ -44,7 +46,7 @@ describe('MovieItem component', () => {
   })
 
   it('should call "handleMovieDelete" when delete button clicked', async () => {
-    render(<MovieItem {...props} />)
+    renderWithWrapper(<MovieItem {...props} />)
 
     const user = userEvent.setup()
     const deleteBtn = screen.getByTestId('deleteMovieBtn')

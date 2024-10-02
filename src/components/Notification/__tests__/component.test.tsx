@@ -1,5 +1,5 @@
-import { render } from '@testing-library/react'
 import { NOTIFICATION_DURATION, NOTIFICATION_TYPE } from 'src/constants/app'
+import { renderWithWrapper } from 'src/utils/testHelpers/renderWithWrapper'
 
 import Notification from '../component'
 import { NotificationHookReturn, NotificationProps } from '../types'
@@ -19,7 +19,7 @@ describe('Notification component', () => {
   }
 
   it('should match snapshot', () => {
-    const { asFragment } = render(<Notification {...props} />)
+    const { asFragment } = renderWithWrapper(<Notification {...props} />)
 
     expect(asFragment()).toMatchSnapshot()
   })

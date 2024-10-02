@@ -1,11 +1,10 @@
 import { Modal } from 'antd'
 import { MouseEvent, useEffect } from 'react'
-import { useSelector } from 'react-redux'
 import { useSearchParams } from 'react-router-dom'
-import { useAppDispatch } from 'src/hooks/useRedux'
 import useUpdatePage from 'src/hooks/useUpdatePage'
 import { IMovie } from 'src/interfaces/movie.interface'
 import { accountSelector } from 'src/store/auth/selectors'
+import { useAppDispatch, useAppSelector } from 'src/store/hooks'
 import { changeMovieInWatchlist } from 'src/store/movieDetails/actions'
 import { fetchWatchlist } from 'src/store/watchlist/actions'
 import {
@@ -19,10 +18,10 @@ import { WatchlistHookReturn } from './types'
 
 const useContainer = (): WatchlistHookReturn => {
   const dispatch = useAppDispatch()
-  const account = useSelector(accountSelector)
-  const movies = useSelector(watchlistMoviesSelector)
-  const loading = useSelector(watchlistLoadingSelector)
-  const error = useSelector(watchlistErrorSelector)
+  const account = useAppSelector(accountSelector)
+  const movies = useAppSelector(watchlistMoviesSelector)
+  const loading = useAppSelector(watchlistLoadingSelector)
+  const error = useAppSelector(watchlistErrorSelector)
   const [searchParams, setSearchParams] = useSearchParams()
   const page = searchParams.get('page') || '1'
   const { updatePage } = useUpdatePage({

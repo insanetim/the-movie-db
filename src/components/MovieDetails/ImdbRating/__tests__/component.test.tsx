@@ -1,10 +1,10 @@
-import { render } from '@testing-library/react'
+import { renderWithWrapper } from 'src/utils/testHelpers/renderWithWrapper'
 
 import ImdbRating from '../component'
 
 describe('ImdbRating component', () => {
   it('should match snapshot', () => {
-    const { asFragment } = render(<ImdbRating rating={9} />)
+    const { asFragment } = renderWithWrapper(<ImdbRating rating={9} />)
 
     expect(asFragment()).toMatchSnapshot()
   })

@@ -1,4 +1,9 @@
-import { combineReducers, configureStore } from '@reduxjs/toolkit'
+import {
+  Action,
+  combineReducers,
+  configureStore,
+  ThunkAction,
+} from '@reduxjs/toolkit'
 import {
   FLUSH,
   PAUSE,
@@ -61,5 +66,11 @@ export const store = configureStore({
 
 export const persistor = persistStore(store)
 
-export type RootState = ReturnType<typeof store.getState>
+// Infer the type of `store`
+export type AppStore = typeof store
+// Infer the `AppDispatch` type from the store itself
 export type AppDispatch = typeof store.dispatch
+// Same for the `RootState` type
+export type RootState = ReturnType<typeof store.getState>
+// Export a reusable type for handwritten thunks
+export type AppThunk = ThunkAction<void, RootState, unknown, Action>

@@ -1,4 +1,4 @@
-import renderWithWrapper from 'src/utils/testHelpers/renderWithWrapper'
+import { renderWithWrapper } from 'src/utils/testHelpers/renderWithWrapper'
 
 import Login from '../component'
 import { LoginHookReturn } from '../types'
@@ -18,6 +18,7 @@ describe('Login component', () => {
 
   it('should match snapshot with isSubmitting', () => {
     mockedHook.isSubmitting = true
+
     const { asFragment } = renderWithWrapper(<Login />)
 
     expect(asFragment()).toMatchSnapshot()

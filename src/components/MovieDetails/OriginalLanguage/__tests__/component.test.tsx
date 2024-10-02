@@ -1,10 +1,12 @@
-import { render } from '@testing-library/react'
+import { renderWithWrapper } from 'src/utils/testHelpers/renderWithWrapper'
 
 import OriginalLanguage from '../component'
 
 describe('OriginalLanguage component', () => {
   it('should match snapshot', () => {
-    const { asFragment } = render(<OriginalLanguage originalLanguage='en' />)
+    const { asFragment } = renderWithWrapper(
+      <OriginalLanguage originalLanguage='en' />
+    )
 
     expect(asFragment()).toMatchSnapshot()
   })

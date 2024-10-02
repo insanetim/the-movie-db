@@ -1,5 +1,5 @@
-import { render } from '@testing-library/react'
 import { mockImage } from 'src/__mocks__/mockMovie'
+import { renderWithWrapper } from 'src/utils/testHelpers/renderWithWrapper'
 
 import ImageGallery from '../component'
 import { ImageGalleryProps } from '../types'
@@ -10,7 +10,8 @@ describe('ImageGallery component', () => {
       images: [mockImage],
       title: 'test/title',
     }
-    const { asFragment } = render(<ImageGallery {...props} />)
+
+    const { asFragment } = renderWithWrapper(<ImageGallery {...props} />)
 
     expect(asFragment()).toMatchSnapshot()
   })

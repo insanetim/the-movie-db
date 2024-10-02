@@ -1,5 +1,5 @@
 import { mockPersonDetails } from 'src/__mocks__/mockPerson'
-import renderWithWrapper from 'src/utils/testHelpers/renderWithWrapper'
+import { renderWithWrapper } from 'src/utils/testHelpers/renderWithWrapper'
 
 import KnownFor from '../component'
 

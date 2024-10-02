@@ -1,9 +1,9 @@
-import { act, renderHook } from '@testing-library/react'
+import { act } from '@testing-library/react'
 import { useNavigate } from 'react-router-dom'
 import { mockPersonDetails } from 'src/__mocks__/mockPerson'
-import { dispatch } from 'src/__mocks__/react-redux'
+import * as reactRedux from 'src/store/hooks'
 import * as personDetailsActions from 'src/store/personDetails/actions'
-import * as personDetailsSelectors from 'src/store/personDetails/selectors'
+import { renderHookWithWrapper } from 'src/utils/testHelpers/renderWithWrapper'
 
 import useContainer from '../hook'
 
@@ -15,27 +15,24 @@ jest.mock('react-router-dom', () => ({
 const navigate = jest.fn()
 jest.mocked(useNavigate).mockReturnValue(navigate)
 
-jest.mock('src/store/personDetails/selectors')
-
 describe('PersonDetails useContainer hook', () => {
-  jest
-    .spyOn(personDetailsSelectors, 'personDetailsLoadingSelector')
-    .mockReturnValue(false)
-  jest
-    .spyOn(personDetailsSelectors, 'personDetailsErrorSelector')
-    .mockReturnValue(null)
-  const selectPersonById = jest
-    .spyOn(personDetailsSelectors, 'personDetailsSelector')
-    .mockReturnValue(mockPersonDetails)
+  const mockDispatch = jest.fn()
+  jest.spyOn(reactRedux, 'useAppDispatch').mockReturnValue(mockDispatch)
+  const useSelectorMock = jest.spyOn(reactRedux, 'useAppSelector')
 
   it('should match snapshot', () => {
-    const { result } = renderHook(useContainer)
+    useSelectorMock
+      .mockReturnValueOnce(mockPersonDetails)
+      .mockReturnValueOnce(false)
+      .mockReturnValueOnce(null)
+
+    const { result } = renderHookWithWrapper(useContainer)
 
     expect(result.current).toMatchSnapshot()
   })
 
   it('should check "handleGoToCast" method', () => {
-    const { result } = renderHook(useContainer)
+    const { result } = renderHookWithWrapper(useContainer)
 
     act(() => {
       result.current.handleGoToCredits()
@@ -49,10 +46,10 @@ describe('PersonDetails useContainer hook', () => {
       personDetailsActions,
       'fetchPersonDetails'
     )
-    selectPersonById.mockReturnValueOnce(undefined as never)
-    renderHook(useContainer)
 
-    expect(dispatch).toHaveBeenCalled()
+    renderHookWithWrapper(useContainer)
+
+    expect(mockDispatch).toHaveBeenCalled()
     expect(fetchPersonDetails).toHaveBeenCalledWith(1234)
   })
 })

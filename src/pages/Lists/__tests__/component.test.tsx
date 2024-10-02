@@ -1,7 +1,7 @@
 import { screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { mockList } from 'src/__mocks__/mockList'
-import renderWithWrapper from 'src/utils/testHelpers/renderWithWrapper'
+import { renderWithWrapper } from 'src/utils/testHelpers/renderWithWrapper'
 
 import Lists from '../component'
 import { ListsHookReturn } from '../types'
@@ -19,10 +19,6 @@ const mockedHook: ListsHookReturn = {
   loading: false,
 }
 jest.mock('../hook', () => jest.fn(() => mockedHook))
-
-jest.mock('src/store/createdLists/selectors', () => ({
-  createdListsSelector: () => null,
-}))
 
 describe('Lists component', () => {
   it('should match snapshot', () => {

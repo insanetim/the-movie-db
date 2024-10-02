@@ -1,21 +1,15 @@
-import { act, renderHook } from '@testing-library/react'
+import { act } from '@testing-library/react'
 import { Modal } from 'antd'
 import { MouseEvent } from 'react'
 import { useSearchParams } from 'react-router-dom'
 import mockAccount from 'src/__mocks__/mockAccount'
-import { dispatch } from 'src/__mocks__/react-redux'
 import useUpdatePage from 'src/hooks/useUpdatePage'
-import * as authSelectors from 'src/store/auth/selectors'
 import * as favoriteActions from 'src/store/favorite/actions'
+import * as reactRedux from 'src/store/hooks'
 import * as movieDetailsActions from 'src/store/movieDetails/actions'
+import { renderHookWithWrapper } from 'src/utils/testHelpers/renderWithWrapper'
 
 import useContainer from '../hook'
-
-jest.mock('src/store/favorite/selectors', () => ({
-  favoriteErrorSelector: () => null,
-  favoriteLoadingSelector: () => true,
-  favoriteMoviesSelector: () => null,
-}))
 
 jest.mock('react-router-dom', () => ({
   ...jest.requireActual('react-router-dom'),
@@ -29,22 +23,26 @@ jest.mock('src/hooks/useUpdatePage')
 const updatePage = jest.fn()
 jest.mocked(useUpdatePage).mockReturnValue({ updatePage })
 
-jest.mock('src/store/auth/selectors')
-
 describe('Favotite useContainer hook', () => {
+  const mockDispatch = jest.fn()
+  jest.spyOn(reactRedux, 'useAppDispatch').mockReturnValue(mockDispatch)
+  const useSelectorMock = jest.spyOn(reactRedux, 'useAppSelector')
   const modalSpy = jest.spyOn(Modal, 'confirm')
-  const accountSelector = jest
-    .spyOn(authSelectors, 'accountSelector')
-    .mockReturnValue(null)
 
   it('should match snapshot', () => {
-    const { result } = renderHook(useContainer)
+    useSelectorMock
+      .mockReturnValueOnce(null)
+      .mockReturnValueOnce(null)
+      .mockReturnValueOnce(true)
+      .mockReturnValueOnce(null)
+
+    const { result } = renderHookWithWrapper(useContainer)
 
     expect(result.current).toMatchSnapshot()
   })
 
   it('should check "handlePagination" method', () => {
-    const { result } = renderHook(useContainer)
+    const { result } = renderHookWithWrapper(useContainer)
 
     act(() => {
       result.current.handlePagination(3)
@@ -62,7 +60,8 @@ describe('Favotite useContainer hook', () => {
       stopPropagation: jest.fn(),
     } as unknown as MouseEvent<HTMLSpanElement>
     let onOk = () => {}
-    const { result } = renderHook(useContainer)
+
+    const { result } = renderHookWithWrapper(useContainer)
 
     await act(() => {
       onOk = result.current.handleMovieDelete(event, 1234)
@@ -73,7 +72,7 @@ describe('Favotite useContainer hook', () => {
       onOk,
       title: 'Do you want to delete movie from favorite?',
     })
-    expect(dispatch).toHaveBeenCalled()
+    expect(mockDispatch).toHaveBeenCalled()
     expect(changeMovieInFavorite).toHaveBeenCalledWith({
       inFavorite: false,
       movieId: 1234,
@@ -82,11 +81,12 @@ describe('Favotite useContainer hook', () => {
   })
 
   it('should check "useEffect" method with account', () => {
+    useSelectorMock.mockReturnValueOnce(mockAccount)
     const fetchFavorite = jest.spyOn(favoriteActions, 'fetchFavorite')
-    accountSelector.mockReturnValueOnce(mockAccount)
-    renderHook(useContainer)
 
-    expect(dispatch).toHaveBeenCalled()
+    renderHookWithWrapper(useContainer)
+
+    expect(mockDispatch).toHaveBeenCalled()
     expect(fetchFavorite).toHaveBeenCalledWith('1')
   })
 })

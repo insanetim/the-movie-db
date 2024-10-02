@@ -1,10 +1,10 @@
-import { render } from '@testing-library/react'
+import { renderWithWrapper } from 'src/utils/testHelpers/renderWithWrapper'
 
 import PageTitle from '../component'
 
 describe('PageTitle component', () => {
   it('should match snapshot', () => {
-    const { asFragment } = render(<PageTitle>test/title</PageTitle>)
+    const { asFragment } = renderWithWrapper(<PageTitle>test/title</PageTitle>)
 
     expect(asFragment()).toMatchSnapshot()
   })

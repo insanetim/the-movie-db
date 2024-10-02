@@ -1,15 +1,10 @@
-import { act, renderHook } from '@testing-library/react'
+import { act } from '@testing-library/react'
 import { useSearchParams } from 'react-router-dom'
-import { dispatch } from 'src/__mocks__/react-redux'
 import * as dashboardActions from 'src/store/dashboard/actions'
+import * as reactRedux from 'src/store/hooks'
+import { renderHookWithWrapper } from 'src/utils/testHelpers/renderWithWrapper'
 
 import useContainer from '../hook'
-
-jest.mock('src/store/dashboard/selectors', () => ({
-  dashboardErrorSelector: () => null,
-  dashboardLoadingSelector: () => true,
-  dashboardMoviesSelector: () => null,
-}))
 
 jest.mock('react-router-dom', () => ({
   ...jest.requireActual('react-router-dom'),
@@ -20,14 +15,22 @@ const setSearchParams = jest.fn()
 jest.mocked(useSearchParams).mockReturnValue([searchParams, setSearchParams])
 
 describe('Trending useContainer hook', () => {
+  const mockDispatch = jest.fn()
+  jest.spyOn(reactRedux, 'useAppDispatch').mockReturnValue(mockDispatch)
+  const useSelectorMock = jest.spyOn(reactRedux, 'useAppSelector')
+
   it('should match snapshot', () => {
-    const { result } = renderHook(useContainer)
+    useSelectorMock.mockReturnValueOnce(null)
+    useSelectorMock.mockReturnValueOnce(true)
+    useSelectorMock.mockReturnValueOnce(null)
+
+    const { result } = renderHookWithWrapper(useContainer)
 
     expect(result.current).toMatchSnapshot()
   })
 
   it('should check `handlePagination` method', () => {
-    const { result } = renderHook(useContainer)
+    const { result } = renderHookWithWrapper(useContainer)
 
     act(() => {
       result.current.handlePagination(3)
@@ -38,9 +41,10 @@ describe('Trending useContainer hook', () => {
 
   it('should check `useEffect` method', () => {
     const fetchTrending = jest.spyOn(dashboardActions, 'fetchTrending')
-    renderHook(useContainer)
 
-    expect(dispatch).toHaveBeenCalled()
+    renderHookWithWrapper(useContainer)
+
+    expect(mockDispatch).toHaveBeenCalled()
     expect(fetchTrending).toHaveBeenCalledWith('1')
   })
 })

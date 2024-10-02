@@ -1,28 +1,31 @@
-import { act, renderHook } from '@testing-library/react'
+import { act } from '@testing-library/react'
 import mockNotification from 'src/__mocks__/mockNotification'
-import { dispatch } from 'src/__mocks__/react-redux'
 import { hideNotification } from 'src/store/app/actions'
+import * as reactRedux from 'src/store/hooks'
+import { renderHookWithWrapper } from 'src/utils/testHelpers/renderWithWrapper'
 
 import useContainer from '../hook'
 
-jest.mock('src/store/app/selectors', () => ({
-  notificationsSelector: () => [mockNotification],
-}))
-
 describe('NotificationsRoot useContainer hook', () => {
+  const mockDispatch = jest.fn()
+  jest.spyOn(reactRedux, 'useAppDispatch').mockReturnValue(mockDispatch)
+  const useSelectorMock = jest.spyOn(reactRedux, 'useAppSelector')
+
   it('should match snapshot', () => {
-    const { result } = renderHook(useContainer)
+    useSelectorMock.mockReturnValueOnce([mockNotification])
+
+    const { result } = renderHookWithWrapper(useContainer)
 
     expect(result.current).toMatchSnapshot()
   })
 
   it('should check "hideNotification" method', () => {
-    const { result } = renderHook(useContainer)
+    const { result } = renderHookWithWrapper(useContainer)
 
     act(() => {
       result.current.hideNotification('test/id')
     })
 
-    expect(dispatch).toHaveBeenCalledWith(hideNotification('test/id'))
+    expect(mockDispatch).toHaveBeenCalledWith(hideNotification('test/id'))
   })
 })

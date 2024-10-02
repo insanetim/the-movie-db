@@ -1,9 +1,9 @@
-import { act, renderHook } from '@testing-library/react'
+import { act } from '@testing-library/react'
 import React from 'react'
 import { mockPersonDetails } from 'src/__mocks__/mockPerson'
-import { dispatch } from 'src/__mocks__/react-redux'
+import * as reactRedux from 'src/store/hooks'
 import * as personDetailsActions from 'src/store/personDetails/actions'
-import * as personDetailsSelectors from 'src/store/personDetails/selectors'
+import { renderHookWithWrapper } from 'src/utils/testHelpers/renderWithWrapper'
 
 import useContainer from '../hook'
 import { FilterOptions } from '../types'
@@ -15,61 +15,85 @@ jest.mock('react-router-dom', () => ({
   useParams: jest.fn(() => ({ personSlug: '1234-darth-maul' })),
 }))
 
-jest.mock('src/store/personDetails/selectors')
-
 describe('Credits useContainer hook', () => {
-  jest
-    .spyOn(personDetailsSelectors, 'personDetailsLoadingSelector')
-    .mockReturnValue(false)
-  jest
-    .spyOn(personDetailsSelectors, 'personDetailsErrorSelector')
-    .mockReturnValue(null)
-  const selectPersonById = jest
-    .spyOn(personDetailsSelectors, 'personDetailsSelector')
-    .mockReturnValue(mockPersonDetails)
-  const setState = jest.fn()
-  const useStateSpy = jest.spyOn(React, 'useState')
-  useStateSpy.mockImplementation(() => [FilterOptions.All, setState])
+  const useSelectorMock = jest.spyOn(reactRedux, 'useAppSelector')
 
   it('should match snapshot', () => {
-    const { result } = renderHook(useContainer)
+    useSelectorMock
+      .mockReturnValueOnce(mockPersonDetails)
+      .mockReturnValueOnce(false)
+      .mockReturnValueOnce(null)
+
+    const { result } = renderHookWithWrapper(useContainer)
 
     expect(result.current).toMatchSnapshot()
   })
 
   it('should match snapshot with "cast" filter', () => {
-    useStateSpy.mockImplementationOnce(() => [FilterOptions.Cast, setState])
-    const { result } = renderHook(useContainer)
+    useSelectorMock
+      .mockReturnValueOnce(mockPersonDetails)
+      .mockReturnValueOnce(false)
+      .mockReturnValueOnce(null)
+
+    const { result } = renderHookWithWrapper(useContainer)
+
+    act(() => {
+      useSelectorMock
+        .mockReturnValueOnce(mockPersonDetails)
+        .mockReturnValueOnce(false)
+        .mockReturnValueOnce(null)
+
+      result.current.handleChangeFilter(FilterOptions.Cast)
+    })
 
     expect(result.current).toMatchSnapshot()
   })
 
   it('should match snapshot with "crew" filter', () => {
-    useStateSpy.mockImplementationOnce(() => [FilterOptions.Crew, setState])
-    const { result } = renderHook(useContainer)
+    useSelectorMock
+      .mockReturnValueOnce(mockPersonDetails)
+      .mockReturnValueOnce(false)
+      .mockReturnValueOnce(null)
+
+    const { result } = renderHookWithWrapper(useContainer)
+
+    act(() => {
+      useSelectorMock
+        .mockReturnValueOnce(mockPersonDetails)
+        .mockReturnValueOnce(false)
+        .mockReturnValueOnce(null)
+
+      result.current.handleChangeFilter(FilterOptions.Crew)
+    })
 
     expect(result.current).toMatchSnapshot()
   })
 
   it('should check "handleChangeFilter" method', () => {
-    const { result } = renderHook(useContainer)
+    const setState = jest.fn()
+    // @ts-expect-error - mocking useState
+    jest.spyOn(React, 'useState').mockImplementation(init => [init, setState])
+
+    const { result } = renderHookWithWrapper(useContainer)
 
     act(() => {
       result.current.handleChangeFilter(FilterOptions.Cast)
     })
 
-    expect(setState).toHaveBeenCalledWith('cast')
+    expect(setState).toHaveBeenCalledWith(FilterOptions.Cast)
   })
 
   it('should check "useEffect" method', () => {
+    const mockDispatch = jest.fn()
+    jest.spyOn(reactRedux, 'useAppDispatch').mockReturnValue(mockDispatch)
     const fetchPersonDetails = jest.spyOn(
       personDetailsActions,
       'fetchPersonDetails'
     )
-    selectPersonById.mockReturnValueOnce(undefined as never)
-    renderHook(useContainer)
 
-    expect(dispatch).toHaveBeenCalled()
+    renderHookWithWrapper(useContainer)
+
+    expect(mockDispatch).toHaveBeenCalled()
     expect(fetchPersonDetails).toHaveBeenCalledWith(1234)
   })
 })

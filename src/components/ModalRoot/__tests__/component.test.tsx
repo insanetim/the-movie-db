@@ -1,4 +1,4 @@
-import { render } from '@testing-library/react'
+import { renderWithWrapper } from 'src/utils/testHelpers/renderWithWrapper'
 
 import ModalRoot from '../component'
 import { ModalRootHookReturn } from '../types'
@@ -12,14 +12,15 @@ jest.mock('../hook', () => jest.fn(() => mockedHook))
 
 describe('ModalRoot component', () => {
   it('should match snapshot', () => {
-    const { baseElement } = render(<ModalRoot />)
+    const { baseElement } = renderWithWrapper(<ModalRoot />)
 
     expect(baseElement).toMatchSnapshot()
   })
 
   it('should match snapshot without modalType', () => {
     mockedHook.modalType = null
-    const { baseElement } = render(<ModalRoot />)
+
+    const { baseElement } = renderWithWrapper(<ModalRoot />)
 
     expect(baseElement).toMatchSnapshot()
   })

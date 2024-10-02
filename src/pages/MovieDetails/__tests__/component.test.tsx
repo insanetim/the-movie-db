@@ -2,7 +2,7 @@ import { screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { mergeDeepRight } from 'ramda'
 import { mockMovieDetailsExtended } from 'src/__mocks__/mockMovie'
-import renderWithWrapper from 'src/utils/testHelpers/renderWithWrapper'
+import { renderWithWrapper } from 'src/utils/testHelpers/renderWithWrapper'
 
 import MovieDetails from '../component'
 import useContainer from '../hook'

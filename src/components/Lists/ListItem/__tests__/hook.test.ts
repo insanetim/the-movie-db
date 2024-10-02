@@ -1,17 +1,14 @@
-import { act, renderHook } from '@testing-library/react'
+import { act } from '@testing-library/react'
 import { Modal } from 'antd'
 import { MouseEvent } from 'react'
 import { useNavigate, useSearchParams } from 'react-router-dom'
-import { dispatch } from 'src/__mocks__/react-redux'
 import useUpdatePage from 'src/hooks/useUpdatePage'
 import * as createdListsActions from 'src/store/createdLists/actions'
+import * as reactRedux from 'src/store/hooks'
+import { renderHookWithWrapper } from 'src/utils/testHelpers/renderWithWrapper'
 
 import useContainer from '../hook'
 import { ListItemHookProps } from '../types'
-
-jest.mock('src/store/createdLists/selectors', () => ({
-  createdListsSelector: () => null,
-}))
 
 jest.mock('react-router-dom', () => ({
   ...jest.requireActual('react-router-dom'),
@@ -29,16 +26,22 @@ const updatePage = jest.fn()
 jest.mocked(useUpdatePage).mockReturnValue({ updatePage })
 
 describe('ListItem useContainer hook', () => {
+  const mockDispatch = jest.fn()
+  jest.spyOn(reactRedux, 'useAppDispatch').mockReturnValue(mockDispatch)
+  const useSelectorMock = jest.spyOn(reactRedux, 'useAppSelector')
+
   const props: ListItemHookProps = { id: 1234, name: 'list' }
 
   it('should match snapshot', () => {
-    const { result } = renderHook(() => useContainer(props))
+    useSelectorMock.mockReturnValueOnce(null)
+
+    const { result } = renderHookWithWrapper(() => useContainer(props))
 
     expect(result.current).toMatchSnapshot()
   })
 
   it('should check "handleClick" method', () => {
-    const { result } = renderHook(() => useContainer(props))
+    const { result } = renderHookWithWrapper(() => useContainer(props))
 
     act(() => {
       result.current.handleClick()
@@ -54,7 +57,8 @@ describe('ListItem useContainer hook', () => {
       stopPropagation: jest.fn(),
     } as unknown as MouseEvent<HTMLSpanElement>
     let onOk = () => {}
-    const { result } = renderHook(() => useContainer(props))
+
+    const { result } = renderHookWithWrapper(() => useContainer(props))
 
     act(() => {
       onOk = result.current.handleListDelete(event)
@@ -65,7 +69,7 @@ describe('ListItem useContainer hook', () => {
       onOk,
       title: 'Do you want to delete list?',
     })
-    expect(dispatch).toHaveBeenCalled()
+    expect(mockDispatch).toHaveBeenCalled()
     expect(deleteList).toHaveBeenCalledWith(props.id)
     expect(updatePage).toHaveBeenCalled()
   })

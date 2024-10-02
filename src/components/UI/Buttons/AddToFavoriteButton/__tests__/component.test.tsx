@@ -1,5 +1,6 @@
-import { render, screen } from '@testing-library/react'
+import { screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
+import { renderWithWrapper } from 'src/utils/testHelpers/renderWithWrapper'
 
 import AddToFavoriteButton from '../component'
 
@@ -7,7 +8,7 @@ describe('AddToFavoriteButton component', () => {
   const handleClick = jest.fn()
 
   it('should match snapshot', () => {
-    const { asFragment } = render(
+    const { asFragment } = renderWithWrapper(
       <AddToFavoriteButton
         inFavorite={true}
         onClick={handleClick}
@@ -18,7 +19,7 @@ describe('AddToFavoriteButton component', () => {
   })
 
   it('should match snapshot with other data', () => {
-    const { asFragment } = render(
+    const { asFragment } = renderWithWrapper(
       <AddToFavoriteButton
         inFavorite={false}
         onClick={handleClick}
@@ -29,7 +30,7 @@ describe('AddToFavoriteButton component', () => {
   })
 
   it('should call "handleClick" when button clicked', async () => {
-    render(
+    renderWithWrapper(
       <AddToFavoriteButton
         inFavorite={true}
         onClick={handleClick}

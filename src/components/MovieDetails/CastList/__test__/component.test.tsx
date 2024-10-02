@@ -1,5 +1,5 @@
 import { mockMovieCredit } from 'src/__mocks__/mockMovie'
-import renderWithWrapper from 'src/utils/testHelpers/renderWithWrapper'
+import { renderWithWrapper } from 'src/utils/testHelpers/renderWithWrapper'
 
 import CastList from '../component'
 

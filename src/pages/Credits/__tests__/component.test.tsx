@@ -1,5 +1,5 @@
 import { mockedCredits, mockPersonDetails } from 'src/__mocks__/mockPerson'
-import renderWithWrapper from 'src/utils/testHelpers/renderWithWrapper'
+import { renderWithWrapper } from 'src/utils/testHelpers/renderWithWrapper'
 
 import Credits from '../component'
 import { CreditsHookReturn } from '../types'
@@ -21,29 +21,9 @@ describe('Credits component', () => {
     expect(asFragment()).toMatchSnapshot()
   })
 
-  // it('should match snapshot with other data', () => {
-  //   jest.mocked(useContainer).mockReturnValueOnce(
-  //     mergeDeepRight(mockedHook, {
-  //       movie: {
-  //         accountStates: {
-  //           favorite: true,
-  //           watchlist: true,
-  //         },
-  //         credits: {
-  //           cast: [],
-  //           crew: [],
-  //         },
-  //         release_date: undefined,
-  //       },
-  //     }) as MovieDetailsHookReturn
-  //   )
-  //   const { asFragment } = renderWithWrapper(<MovieDetails />)
-
-  //   expect(asFragment()).toMatchSnapshot()
-  // })
-
   it('should match snapshot with empty person', () => {
     mockedHook.person = undefined
+
     const { asFragment } = renderWithWrapper(<Credits />)
 
     expect(asFragment()).toMatchSnapshot()
@@ -51,6 +31,7 @@ describe('Credits component', () => {
 
   it('should match snapshot with loading', () => {
     mockedHook.loading = true
+
     const { asFragment } = renderWithWrapper(<Credits />)
 
     expect(asFragment()).toMatchSnapshot()
@@ -59,6 +40,7 @@ describe('Credits component', () => {
   it('should match snapshot with error', () => {
     mockedHook.loading = false
     mockedHook.error = 'Something went wrong!'
+
     const { asFragment } = renderWithWrapper(<Credits />)
 
     expect(asFragment()).toMatchSnapshot()

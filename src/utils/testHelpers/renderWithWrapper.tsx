@@ -1,18 +1,21 @@
-import { render, RenderOptions } from '@testing-library/react'
+import { render, renderHook, RenderOptions } from '@testing-library/react'
 import { ReactElement, ReactNode, Suspense } from 'react'
-import { BrowserRouter } from 'react-router-dom'
+import { Provider } from 'react-redux'
+import { MemoryRouter as Router } from 'react-router-dom'
+import { store } from 'src/store'
 
-type WrapperProps = {
-  children: ReactNode
-}
-
-export const WrapperComponent = ({ children: component }: WrapperProps) => (
-  <Suspense fallback={null}>
-    <BrowserRouter>{component}</BrowserRouter>
-  </Suspense>
+const Wrapper = ({ children }: { children: ReactNode }) => (
+  <Provider store={store}>
+    <Suspense fallback={null}>
+      <Router>{children}</Router>
+    </Suspense>
+  </Provider>
 )
 
-const renderWithWrapper = (ui: ReactElement, options?: RenderOptions) =>
-  render(ui, { wrapper: WrapperComponent, ...options })
+export const renderWithWrapper = (ui: ReactElement, options?: RenderOptions) =>
+  render(ui, { wrapper: Wrapper, ...options })
 
-export default renderWithWrapper
+export const renderHookWithWrapper = <T,>(
+  hook: () => T,
+  options?: RenderOptions
+) => renderHook(hook, { wrapper: Wrapper, ...options })

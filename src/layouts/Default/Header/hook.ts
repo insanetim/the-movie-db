@@ -1,20 +1,19 @@
 import { useEffect } from 'react'
-import { useSelector } from 'react-redux'
 import { useLocation, useNavigate } from 'react-router-dom'
-import { useAppDispatch } from 'src/hooks/useRedux'
 import useScrollToTop from 'src/hooks/useScrollToTop'
 import { fetchAccount, logOut } from 'src/store/auth/actions'
 import {
   accountSelector,
   isAuthenticatedSelector,
 } from 'src/store/auth/selectors'
+import { useAppDispatch, useAppSelector } from 'src/store/hooks'
 
 import { HeaderHookReturn } from './types'
 
 const useContainer = (): HeaderHookReturn => {
   const dispatch = useAppDispatch()
-  const account = useSelector(accountSelector)
-  const isAuthenticated = useSelector(isAuthenticatedSelector)
+  const account = useAppSelector(accountSelector)
+  const isAuthenticated = useAppSelector(isAuthenticatedSelector)
   const location = useLocation()
   const navigate = useNavigate()
   useScrollToTop()

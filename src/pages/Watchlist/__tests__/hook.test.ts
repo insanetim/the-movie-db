@@ -3,19 +3,13 @@ import { Modal } from 'antd'
 import { MouseEvent } from 'react'
 import { useSearchParams } from 'react-router-dom'
 import mockAccount from 'src/__mocks__/mockAccount'
-import { dispatch } from 'src/__mocks__/react-redux'
 import useUpdatePage from 'src/hooks/useUpdatePage'
-import * as sessionSelectors from 'src/store/auth/selectors'
+import * as reactRedux from 'src/store/hooks'
 import * as movieDetailsActions from 'src/store/movieDetails/actions'
 import * as watchlistActions from 'src/store/watchlist/actions'
+import { renderHookWithWrapper } from 'src/utils/testHelpers/renderWithWrapper'
 
 import useContainer from '../hook'
-
-jest.mock('src/store/watchlist/selectors', () => ({
-  watchlistErrorSelector: () => null,
-  watchlistLoadingSelector: () => true,
-  watchlistMoviesSelector: () => null,
-}))
 
 jest.mock('react-router-dom', () => ({
   ...jest.requireActual('react-router-dom'),
@@ -29,22 +23,26 @@ jest.mock('src/hooks/useUpdatePage')
 const updatePage = jest.fn()
 jest.mocked(useUpdatePage).mockReturnValue({ updatePage })
 
-jest.mock('src/store/auth/selectors')
-
 describe('Watchlist useContainer hook', () => {
+  const mockDispatch = jest.fn()
+  jest.spyOn(reactRedux, 'useAppDispatch').mockReturnValue(mockDispatch)
+  const useSelectorMock = jest.spyOn(reactRedux, 'useAppSelector')
   const confirmSpy = jest.spyOn(Modal, 'confirm')
-  const accountSelector = jest
-    .spyOn(sessionSelectors, 'accountSelector')
-    .mockReturnValue(null)
 
   it('should match snapshot', () => {
-    const { result } = renderHook(useContainer)
+    useSelectorMock
+      .mockReturnValueOnce(null)
+      .mockReturnValueOnce(null)
+      .mockReturnValueOnce(true)
+      .mockReturnValueOnce(null)
+
+    const { result } = renderHookWithWrapper(useContainer)
 
     expect(result.current).toMatchSnapshot()
   })
 
   it('should check "handlePagination" method', () => {
-    const { result } = renderHook(useContainer)
+    const { result } = renderHookWithWrapper(useContainer)
 
     act(() => {
       result.current.handlePagination(3)
@@ -62,7 +60,8 @@ describe('Watchlist useContainer hook', () => {
       stopPropagation: jest.fn(),
     } as unknown as MouseEvent<HTMLSpanElement>
     let onOk = () => {}
-    const { result } = renderHook(useContainer)
+
+    const { result } = renderHookWithWrapper(useContainer)
 
     await act(() => {
       onOk = result.current.handleMovieDelete(event, 1234)
@@ -73,7 +72,7 @@ describe('Watchlist useContainer hook', () => {
       onOk,
       title: 'Do you want to delete movie from watchlist?',
     })
-    expect(dispatch).toHaveBeenCalled()
+    expect(mockDispatch).toHaveBeenCalled()
     expect(changeMovieInWatchlist).toHaveBeenCalledWith({
       inWatchlist: false,
       movieId: 1234,
@@ -82,11 +81,16 @@ describe('Watchlist useContainer hook', () => {
   })
 
   it('should check "useEffect" method with account', () => {
+    useSelectorMock
+      .mockReturnValueOnce(mockAccount)
+      .mockReturnValueOnce(null)
+      .mockReturnValueOnce(true)
+      .mockReturnValueOnce(null)
     const fetchWatchlist = jest.spyOn(watchlistActions, 'fetchWatchlist')
-    accountSelector.mockReturnValueOnce(mockAccount)
+
     renderHook(useContainer)
 
-    expect(dispatch).toHaveBeenCalled()
+    expect(mockDispatch).toHaveBeenCalled()
     expect(fetchWatchlist).toHaveBeenCalledWith('1')
   })
 })

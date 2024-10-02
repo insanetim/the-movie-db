@@ -1,5 +1,4 @@
 import { mockMoviesResponse } from 'src/__mocks__/mockMovie'
-import { dispatch, getState } from 'src/__mocks__/react-redux'
 import * as apiRoutes from 'src/api/tmdb/apiRoutes'
 
 import { fetchFavorite } from '../actions'
@@ -15,6 +14,8 @@ jest.mock('src/utils/helpers/getSessionId', () => {
 })
 
 describe('fetchFavorite', () => {
+  const dispatch = jest.fn()
+  const getState = jest.fn()
   const getFavorite = jest.spyOn(apiRoutes, 'getFavorite')
   const errorMessage = 'Something went wrong!'
   const page = '1'

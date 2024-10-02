@@ -1,10 +1,11 @@
 import { mockPersonDetails } from 'src/__mocks__/mockPerson'
-import { dispatch, getState } from 'src/__mocks__/react-redux'
 import * as apiRoutes from 'src/api/tmdb/apiRoutes'
 
 import { fetchPersonDetails } from '../actions'
 
 describe('personDetails actions', () => {
+  const dispatch = jest.fn()
+  const getState = jest.fn()
   const getPersonDetails = jest.spyOn(apiRoutes, 'getPersonDetails')
   const errorMessage = 'Something went wrong!'
   const personId = 1234

@@ -1,10 +1,10 @@
-import { render } from '@testing-library/react'
+import { renderWithWrapper } from 'src/utils/testHelpers/renderWithWrapper'
 
 import Empty from '../component'
 
 describe('Empty component', () => {
   it('should match snapshot', () => {
-    const { asFragment } = render(<Empty />)
+    const { asFragment } = renderWithWrapper(<Empty />)
 
     expect(asFragment()).toMatchSnapshot()
   })

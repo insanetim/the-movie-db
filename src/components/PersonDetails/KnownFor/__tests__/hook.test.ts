@@ -1,5 +1,5 @@
-import { renderHook } from '@testing-library/react'
 import { mockPersonDetails } from 'src/__mocks__/mockPerson'
+import { renderHookWithWrapper } from 'src/utils/testHelpers/renderWithWrapper'
 
 import useContainer from '../hook'
 import { KnownForHookProps } from '../types'
@@ -11,14 +11,15 @@ describe('CrewList useContainer hook', () => {
   }
 
   it('should match snapshot', () => {
-    const { result } = renderHook(() => useContainer(props))
+    const { result } = renderHookWithWrapper(() => useContainer(props))
 
     expect(result.current).toMatchSnapshot()
   })
 
   it('should match snapshot with other data', () => {
     props.department = 'Directing'
-    const { result } = renderHook(() => useContainer(props))
+
+    const { result } = renderHookWithWrapper(() => useContainer(props))
 
     expect(result.current).toMatchSnapshot()
   })

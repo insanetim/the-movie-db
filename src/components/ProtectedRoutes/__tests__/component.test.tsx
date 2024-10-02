@@ -1,5 +1,5 @@
 import { Location } from 'react-router-dom'
-import renderWithWrapper from 'src/utils/testHelpers/renderWithWrapper'
+import { renderWithWrapper } from 'src/utils/testHelpers/renderWithWrapper'
 
 import ProtectedRoutes from '../component'
 import { ProtectedRoutesHookReturn } from '../types'
@@ -19,6 +19,7 @@ describe('ProtectedRoutes component', () => {
 
   it('should match snapshot without isAuthenticated', () => {
     mockedHook.isAuthenticated = false
+
     const { asFragment } = renderWithWrapper(<ProtectedRoutes />)
 
     expect(asFragment()).toMatchSnapshot()

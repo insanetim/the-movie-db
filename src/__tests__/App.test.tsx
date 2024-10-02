@@ -32,7 +32,7 @@ import { LoginHookReturn } from 'src/pages/Login/types'
 import { MovieDetailsHookReturn } from 'src/pages/MovieDetails/types'
 import { PersonDetailsHookReturn } from 'src/pages/PersonDetails/types'
 import { WatchlistHookReturn } from 'src/pages/Watchlist/types'
-import renderWithWrapper from 'src/utils/testHelpers/renderWithWrapper'
+import { renderWithWrapper } from 'src/utils/testHelpers/renderWithWrapper'
 
 const mockedProtectedRoutesHook: ProtectedRoutesHookReturn = {
   isAuthenticated: false,
@@ -176,97 +176,72 @@ jest.mock('../pages/Credits/hook', () => jest.fn(() => mockedCreditsHook))
 describe('App component', () => {
   it('should match snapshot', () => {
     const { asFragment } = renderWithWrapper(<App />)
-
     expect(asFragment()).toMatchSnapshot()
   })
-
   it('should render DefaultLayout', async () => {
     renderWithWrapper(<DefaultLayout />)
-
     expect(
       await screen.findByText(/insanetim/i, undefined, { timeout: 3000 })
     ).toBeInTheDocument()
   })
-
   it('should render Login', async () => {
     renderWithWrapper(<Login />)
-
     expect(
       await screen.findByText(/sign in/i, undefined, { timeout: 3000 })
     ).toBeInTheDocument()
   })
-
   it('should render Dashboard', async () => {
     renderWithWrapper(<Dashboard />)
-
     expect(
       await screen.findByPlaceholderText(/enter/i, undefined, { timeout: 3000 })
     ).toBeInTheDocument()
   })
-
   it('should render Lists', async () => {
     renderWithWrapper(<Lists />)
-
     expect(await screen.findByText(/my lists/i)).toBeInTheDocument()
   })
-
   it('should render Watchlist', async () => {
     renderWithWrapper(<Watchlist />)
-
     expect(await screen.findByText(/watchlist/i)).toBeInTheDocument()
   })
-
   it('should render Favorite', async () => {
     renderWithWrapper(<Favorite />)
-
     expect(await screen.findByText(/favorite/i)).toBeInTheDocument()
   })
-
   it('should render ListDetails', async () => {
     renderWithWrapper(<ListDetails />)
-
     expect(await screen.findByText(/title/i)).toBeInTheDocument()
   })
-
   it('should render MovieDetails', async () => {
     renderWithWrapper(<MovieDetails />)
-
     expect(
       await screen.findByText(/title/i, undefined, { timeout: 3000 })
     ).toBeInTheDocument()
   })
-
   it('should render Cast', async () => {
     renderWithWrapper(<Cast />)
-
     expect(
       await screen.findByText(/back to movie details/i, undefined, {
         timeout: 3000,
       })
     ).toBeInTheDocument()
   })
-
   it('should render PersonDetails', async () => {
     renderWithWrapper(<PersonDetails />)
-
     expect(
       await screen.findByText(/personal info/i, undefined, { timeout: 3000 })
     ).toBeInTheDocument()
   })
-
   it('should render Credits', async () => {
     renderWithWrapper(<Credits />)
-
     expect(
       await screen.findByText(/back to person details/i, undefined, {
         timeout: 3000,
       })
     ).toBeInTheDocument()
   })
-
   it('should render NotFound', async () => {
     renderWithWrapper(<NotFound />)
-
     expect(await screen.findByText(/oops!/i)).toBeInTheDocument()
   })
 })

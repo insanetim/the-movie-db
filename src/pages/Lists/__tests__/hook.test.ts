@@ -1,19 +1,13 @@
-import { act, renderHook } from '@testing-library/react'
+import { act } from '@testing-library/react'
 import { useSearchParams } from 'react-router-dom'
 import mockAccount from 'src/__mocks__/mockAccount'
-import { dispatch } from 'src/__mocks__/react-redux'
 import { modalComponentsMap } from 'src/components/ModalRoot/modalComponents'
 import { showModal } from 'src/store/app/actions'
-import * as sessionSelectors from 'src/store/auth/selectors'
 import * as createdListsActions from 'src/store/createdLists/actions'
+import * as reactRedux from 'src/store/hooks'
+import { renderHookWithWrapper } from 'src/utils/testHelpers/renderWithWrapper'
 
 import useContainer from '../hook'
-
-jest.mock('src/store/createdLists/selectors', () => ({
-  createdListsErrorSelector: () => null,
-  createdListsLoadingSelector: () => true,
-  createdListsSelector: () => null,
-}))
 
 jest.mock('react-router-dom', () => ({
   ...jest.requireActual('react-router-dom'),
@@ -23,22 +17,26 @@ const searchParams = new URLSearchParams()
 const setSearchParams = jest.fn()
 jest.mocked(useSearchParams).mockReturnValue([searchParams, setSearchParams])
 
-jest.mock('src/store/auth/selectors')
-
 describe('Lists useContainer hook', () => {
+  const mockDispatch = jest.fn()
+  jest.spyOn(reactRedux, 'useAppDispatch').mockReturnValue(mockDispatch)
+  const useSelectorMock = jest.spyOn(reactRedux, 'useAppSelector')
   const fetchLists = jest.spyOn(createdListsActions, 'fetchLists')
-  const accountSelector = jest
-    .spyOn(sessionSelectors, 'accountSelector')
-    .mockReturnValue(null)
 
   it('should match snapshot', () => {
-    const { result } = renderHook(useContainer)
+    useSelectorMock
+      .mockReturnValueOnce(null)
+      .mockReturnValueOnce(null)
+      .mockReturnValueOnce(true)
+      .mockReturnValueOnce(null)
+
+    const { result } = renderHookWithWrapper(useContainer)
 
     expect(result.current).toMatchSnapshot()
   })
 
   it('should check "handlePagination" method', () => {
-    const { result } = renderHook(useContainer)
+    const { result } = renderHookWithWrapper(useContainer)
 
     act(() => {
       result.current.handlePagination(3)
@@ -49,15 +47,16 @@ describe('Lists useContainer hook', () => {
 
   it('should check "handleCreateList" method', () => {
     let onSuccess = () => {}
-    const { result } = renderHook(useContainer)
+
+    const { result } = renderHookWithWrapper(useContainer)
 
     act(() => {
       onSuccess = result.current.handleCreateList()
       onSuccess()
     })
 
-    expect(dispatch).toHaveBeenCalledTimes(2)
-    expect(dispatch).toHaveBeenNthCalledWith(
+    expect(mockDispatch).toHaveBeenCalledTimes(2)
+    expect(mockDispatch).toHaveBeenNthCalledWith(
       1,
       showModal({
         modalProps: { onSuccess },
@@ -73,15 +72,16 @@ describe('Lists useContainer hook', () => {
       .mocked(useSearchParams)
       .mockReturnValueOnce([searchParams, setSearchParams])
     let onSuccess = () => {}
-    const { result } = renderHook(useContainer)
+
+    const { result } = renderHookWithWrapper(useContainer)
 
     act(() => {
       onSuccess = result.current.handleCreateList()
       onSuccess()
     })
 
-    expect(dispatch).toHaveBeenCalledTimes(1)
-    expect(dispatch).toHaveBeenCalledWith(
+    expect(mockDispatch).toHaveBeenCalledTimes(1)
+    expect(mockDispatch).toHaveBeenCalledWith(
       showModal({
         modalProps: { onSuccess },
         modalType: modalComponentsMap.MODAL_CREATE_LIST,
@@ -91,10 +91,11 @@ describe('Lists useContainer hook', () => {
   })
 
   it('should check "useEffect" method with account', () => {
-    accountSelector.mockReturnValueOnce(mockAccount)
-    renderHook(useContainer)
+    useSelectorMock.mockReturnValueOnce(mockAccount)
 
-    expect(dispatch).toHaveBeenCalled()
+    renderHookWithWrapper(useContainer)
+
+    expect(mockDispatch).toHaveBeenCalled()
     expect(fetchLists).toHaveBeenCalledWith('1')
   })
 })

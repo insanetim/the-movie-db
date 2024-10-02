@@ -1,11 +1,10 @@
 import { Modal } from 'antd'
 import { MouseEvent, useEffect } from 'react'
-import { useSelector } from 'react-redux'
 import { useNavigate, useParams, useSearchParams } from 'react-router-dom'
-import { useAppDispatch } from 'src/hooks/useRedux'
 import useUpdatePage from 'src/hooks/useUpdatePage'
 import { IMovie } from 'src/interfaces/movie.interface'
 import { deleteList, removeFromList } from 'src/store/createdLists/actions'
+import { useAppDispatch, useAppSelector } from 'src/store/hooks'
 import { fetchListDetails } from 'src/store/listDetails/actions'
 import {
   listDetailsErrorSelector,
@@ -23,9 +22,9 @@ const useContainer = (): ListDetailsHookReturn => {
   >() as ListDetailsRouteParams
   const navigate = useNavigate()
   const dispatch = useAppDispatch()
-  const list = useSelector(listDetailsSelector)
-  const loading = useSelector(listDetailsLoadingSelector)
-  const error = useSelector(listDetailsErrorSelector)
+  const list = useAppSelector(listDetailsSelector)
+  const loading = useAppSelector(listDetailsLoadingSelector)
+  const error = useAppSelector(listDetailsErrorSelector)
   const [searchParams, setSearchParams] = useSearchParams()
   const page = searchParams.get('page') || '1'
   const listId = getIdFromSlug(listSlug)

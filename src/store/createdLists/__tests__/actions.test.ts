@@ -1,5 +1,4 @@
 import { mockListsResponse } from 'src/__mocks__/mockList'
-import { dispatch, getState } from 'src/__mocks__/react-redux'
 import * as apiRoutes from 'src/api/tmdb/apiRoutes'
 import { NOTIFICATION_TYPE } from 'src/constants/app'
 import { showNotification } from 'src/store/app/actions'
@@ -39,6 +38,8 @@ jest.mock('src/utils/helpers/getSessionId', () => {
 })
 
 describe('lists actions', () => {
+  const dispatch = jest.fn()
+  const getState = jest.fn()
   const addMovieToList = jest.spyOn(apiRoutes, 'addMovieToList')
   const createNewList = jest.spyOn(apiRoutes, 'createNewList')
   const deleteMyList = jest.spyOn(apiRoutes, 'deleteMyList')

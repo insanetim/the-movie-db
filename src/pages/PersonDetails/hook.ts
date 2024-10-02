@@ -1,8 +1,6 @@
 import { useEffect } from 'react'
-import { useSelector } from 'react-redux'
 import { useNavigate, useParams } from 'react-router-dom'
-import { useAppDispatch } from 'src/hooks/useRedux'
-import { RootState } from 'src/store'
+import { useAppDispatch, useAppSelector } from 'src/store/hooks'
 import { fetchPersonDetails } from 'src/store/personDetails/actions'
 import {
   personDetailsErrorSelector,
@@ -20,11 +18,9 @@ const useContainer = (): PersonDetailsHookReturn => {
   const navigate = useNavigate()
   const dispatch = useAppDispatch()
   const personId = getIdFromSlug(personSlug)
-  const person = useSelector((state: RootState) =>
-    personDetailsSelector(state, personId)
-  )
-  const loading = useSelector(personDetailsLoadingSelector)
-  const error = useSelector(personDetailsErrorSelector)
+  const person = useAppSelector(state => personDetailsSelector(state, personId))
+  const loading = useAppSelector(personDetailsLoadingSelector)
+  const error = useAppSelector(personDetailsErrorSelector)
 
   const handleGoToCredits = () => {
     navigate('credits')

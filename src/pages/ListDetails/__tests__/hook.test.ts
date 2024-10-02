@@ -1,19 +1,14 @@
-import { act, renderHook } from '@testing-library/react'
+import { act } from '@testing-library/react'
 import { Modal } from 'antd'
 import { MouseEvent } from 'react'
 import { useNavigate, useSearchParams } from 'react-router-dom'
-import { dispatch } from 'src/__mocks__/react-redux'
 import useUpdatePage from 'src/hooks/useUpdatePage'
 import * as createdListsActions from 'src/store/createdLists/actions'
+import * as reactRedux from 'src/store/hooks'
 import * as listDetailsActions from 'src/store/listDetails/actions'
+import { renderHookWithWrapper } from 'src/utils/testHelpers/renderWithWrapper'
 
 import useContainer from '../hook'
-
-jest.mock('src/store/listDetails/selectors', () => ({
-  listDetailsErrorSelector: () => null,
-  listDetailsLoadingSelector: () => true,
-  listDetailsSelector: () => null,
-}))
 
 jest.mock('react-router-dom', () => ({
   ...jest.requireActual('react-router-dom'),
@@ -32,16 +27,24 @@ const updatePage = jest.fn()
 jest.mocked(useUpdatePage).mockReturnValue({ updatePage })
 
 describe('ListDetails useContainer hook', () => {
+  const mockDispatch = jest.fn()
+  jest.spyOn(reactRedux, 'useAppDispatch').mockReturnValue(mockDispatch)
+  const useSelectorMock = jest.spyOn(reactRedux, 'useAppSelector')
   const modalSpy = jest.spyOn(Modal, 'confirm')
 
   it('should match snapshot', () => {
-    const { result } = renderHook(useContainer)
+    useSelectorMock
+      .mockReturnValueOnce(null)
+      .mockReturnValueOnce(true)
+      .mockReturnValueOnce(null)
+
+    const { result } = renderHookWithWrapper(useContainer)
 
     expect(result.current).toMatchSnapshot()
   })
 
   it('should check "handlePagination" method', () => {
-    const { result } = renderHook(useContainer)
+    const { result } = renderHookWithWrapper(useContainer)
 
     act(() => {
       result.current.handlePagination(3)
@@ -53,7 +56,8 @@ describe('ListDetails useContainer hook', () => {
   it('should check "handleListDelete" method', async () => {
     const deleteList = jest.spyOn(createdListsActions, 'deleteList')
     let onOk = () => {}
-    const { result } = renderHook(useContainer)
+
+    const { result } = renderHookWithWrapper(useContainer)
 
     await act(() => {
       onOk = result.current.handleListDelete()
@@ -64,7 +68,7 @@ describe('ListDetails useContainer hook', () => {
       onOk,
       title: 'Do you want to delete list?',
     })
-    expect(dispatch).toHaveBeenCalled()
+    expect(mockDispatch).toHaveBeenCalled()
     expect(deleteList).toHaveBeenCalledWith(1234)
     expect(navigate).toHaveBeenCalledWith('/lists')
   })
@@ -75,7 +79,8 @@ describe('ListDetails useContainer hook', () => {
       stopPropagation: jest.fn(),
     } as unknown as MouseEvent<HTMLSpanElement>
     let onOk = () => {}
-    const { result } = renderHook(useContainer)
+
+    const { result } = renderHookWithWrapper(useContainer)
 
     await act(() => {
       onOk = result.current.handleMovieDelete(event, 1234)
@@ -86,16 +91,17 @@ describe('ListDetails useContainer hook', () => {
       onOk,
       title: 'Do you want to delete movie from this list?',
     })
-    expect(dispatch).toHaveBeenCalled()
+    expect(mockDispatch).toHaveBeenCalled()
     expect(removeFromList).toHaveBeenCalledWith({ listId: 1234, movieId: 1234 })
     expect(updatePage).toHaveBeenCalled()
   })
 
   it('should check "useEffect" method', () => {
     const fetchListDetail = jest.spyOn(listDetailsActions, 'fetchListDetails')
-    renderHook(useContainer)
 
-    expect(dispatch).toHaveBeenCalled()
+    renderHookWithWrapper(useContainer)
+
+    expect(mockDispatch).toHaveBeenCalled()
     expect(fetchListDetail).toHaveBeenCalledWith({ listId: 1234, page: '1' })
   })
 })

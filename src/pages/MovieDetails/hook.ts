@@ -1,8 +1,5 @@
 import { useEffect, useState } from 'react'
-import { useSelector } from 'react-redux'
 import { useNavigate, useParams } from 'react-router-dom'
-import { useAppDispatch } from 'src/hooks/useRedux'
-import { RootState } from 'src/store'
 import { showNotification } from 'src/store/app/actions'
 import {
   accountSelector,
@@ -10,6 +7,7 @@ import {
 } from 'src/store/auth/selectors'
 import { fetchLists } from 'src/store/createdLists/actions'
 import { createdListsSelector } from 'src/store/createdLists/selectors'
+import { useAppDispatch, useAppSelector } from 'src/store/hooks'
 import {
   changeMovieInFavorite,
   changeMovieInWatchlist,
@@ -32,15 +30,13 @@ const useContainer = (): MovieDetailsHookReturn => {
   >() as MovieDetailsRouteParams
   const navigate = useNavigate()
   const dispatch = useAppDispatch()
-  const account = useSelector(accountSelector)
-  const isAuthenticated = useSelector(isAuthenticatedSelector)
-  const lists = useSelector(createdListsSelector)
+  const account = useAppSelector(accountSelector)
+  const isAuthenticated = useAppSelector(isAuthenticatedSelector)
+  const lists = useAppSelector(createdListsSelector)
   const movieId = getIdFromSlug(movieSlug)
-  const movie = useSelector((state: RootState) =>
-    movieDetailsSelector(state, movieId)
-  )
-  const loading = useSelector(movieDetailsLoadingSelector)
-  const error = useSelector(movieDetailsErrorSelector)
+  const movie = useAppSelector(state => movieDetailsSelector(state, movieId))
+  const loading = useAppSelector(movieDetailsLoadingSelector)
+  const error = useAppSelector(movieDetailsErrorSelector)
   const [popoverOpen, setPopoverOpen] = useState(false)
 
   const handlePopoverMouseEnter = () => {

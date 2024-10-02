@@ -1,5 +1,4 @@
 import { mockImdbInfo, mockMovieDetailsExtended } from 'src/__mocks__/mockMovie'
-import { dispatch, getState } from 'src/__mocks__/react-redux'
 import * as imdbRoutes from 'src/api/imdb/apiRoutes'
 import * as tmdbRoutes from 'src/api/tmdb/apiRoutes'
 import { NOTIFICATION_TYPE } from 'src/constants/app'
@@ -27,6 +26,8 @@ jest.mock('src/utils/helpers/getSessionId', () => {
 })
 
 describe('movieDetails actions', () => {
+  const dispatch = jest.fn()
+  const getState = jest.fn()
   const addToFovorite = jest.spyOn(tmdbRoutes, 'addToFovorite')
   const addToWatchlist = jest.spyOn(tmdbRoutes, 'addToWatchlist')
   const getMovieDetails = jest.spyOn(tmdbRoutes, 'getMovieDetails')

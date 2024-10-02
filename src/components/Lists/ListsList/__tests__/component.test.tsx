@@ -1,5 +1,5 @@
 import { mockList } from 'src/__mocks__/mockList'
-import renderWithWrapper from 'src/utils/testHelpers/renderWithWrapper'
+import { renderWithWrapper } from 'src/utils/testHelpers/renderWithWrapper'
 
 import ListList from '../component'
 

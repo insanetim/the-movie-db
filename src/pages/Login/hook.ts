@@ -1,8 +1,8 @@
 import { useState } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
-import { useAppDispatch } from 'src/hooks/useRedux'
 import { logIn } from 'src/store/auth/actions'
 import { UserData } from 'src/store/auth/types'
+import { useAppDispatch } from 'src/store/hooks'
 
 import { LoginHookReturn } from './types'
 

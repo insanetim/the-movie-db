@@ -1,30 +1,33 @@
-import { act, renderHook } from '@testing-library/react'
-import { dispatch } from 'src/__mocks__/react-redux'
+import { act } from '@testing-library/react'
 import { hideModal } from 'src/store/app/actions'
+import * as reactRedux from 'src/store/hooks'
+import { renderHookWithWrapper } from 'src/utils/testHelpers/renderWithWrapper'
 
 import useContainer from '../hook'
 
-jest.mock('src/store/app/selectors', () => ({
-  modalSelector: () => ({
-    modalProps: null,
-    modalType: 'MODAL_CREATE_LIST',
-  }),
-}))
-
 describe('ModalRoot useContainer hook', () => {
+  const mockDispatch = jest.fn()
+  jest.spyOn(reactRedux, 'useAppDispatch').mockReturnValue(mockDispatch)
+  const useSelectorMock = jest.spyOn(reactRedux, 'useAppSelector')
+
   it('should match snapshot', () => {
-    const { result } = renderHook(useContainer)
+    useSelectorMock.mockReturnValueOnce({
+      modalProps: null,
+      modalType: 'MODAL_CREATE_LIST',
+    })
+
+    const { result } = renderHookWithWrapper(useContainer)
 
     expect(result.current).toMatchSnapshot()
   })
 
   it('should check "onCancel" method', () => {
-    const { result } = renderHook(useContainer)
+    const { result } = renderHookWithWrapper(useContainer)
 
     act(() => {
       result.current.onCancel()
     })
 
-    expect(dispatch).toHaveBeenCalledWith(hideModal())
+    expect(mockDispatch).toHaveBeenCalledWith(hideModal())
   })
 })

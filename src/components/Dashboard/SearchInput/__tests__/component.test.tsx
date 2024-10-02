@@ -1,5 +1,6 @@
-import { render, screen } from '@testing-library/react'
+import { screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
+import { renderWithWrapper } from 'src/utils/testHelpers/renderWithWrapper'
 
 import SearchInput from '../component'
 import { SearchInputHookReturn } from '../types'
@@ -13,13 +14,13 @@ jest.mock('../hook', () => jest.fn(() => mockedHook))
 
 describe('SearchInput component', () => {
   it('should match snapshot', () => {
-    const { asFragment } = render(<SearchInput query={''} />)
+    const { asFragment } = renderWithWrapper(<SearchInput query={''} />)
 
     expect(asFragment()).toMatchSnapshot()
   })
 
   it('should call "handleChange" when input changed', async () => {
-    render(<SearchInput query={''} />)
+    renderWithWrapper(<SearchInput query={''} />)
 
     const user = userEvent.setup()
     const input = screen.getByRole('textbox')
@@ -29,7 +30,7 @@ describe('SearchInput component', () => {
   })
 
   it('should call "handleSearch" when button clicked', async () => {
-    render(<SearchInput query={''} />)
+    renderWithWrapper(<SearchInput query={''} />)
 
     const user = userEvent.setup()
     const button = screen.getByRole('button')
@@ -39,7 +40,7 @@ describe('SearchInput component', () => {
   })
 
   it('should call "handleSearch" when enter pressed', async () => {
-    render(<SearchInput query={''} />)
+    renderWithWrapper(<SearchInput query={''} />)
 
     const user = userEvent.setup()
     const input = screen.getByRole('textbox')

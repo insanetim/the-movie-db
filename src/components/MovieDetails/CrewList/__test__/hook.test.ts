@@ -1,5 +1,5 @@
-import { renderHook } from '@testing-library/react'
 import { IMovieCredit } from 'src/interfaces/movie.interface'
+import { renderHookWithWrapper } from 'src/utils/testHelpers/renderWithWrapper'
 
 import useContainer from '../hook'
 import { CrewListHookProps } from '../types'
@@ -10,7 +10,7 @@ describe('CrewList useContainer hook', () => {
   }
 
   it('should match snapshot', () => {
-    const { result } = renderHook(() => useContainer(props))
+    const { result } = renderHookWithWrapper(() => useContainer(props))
 
     expect(result.current).toMatchSnapshot()
   })

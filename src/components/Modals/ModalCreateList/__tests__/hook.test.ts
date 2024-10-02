@@ -1,15 +1,19 @@
 import { act, renderHook } from '@testing-library/react'
 import { FormInstance } from 'antd'
 import React from 'react'
-import { dispatch } from 'src/__mocks__/react-redux'
 import { hideModal } from 'src/store/app/actions'
 import * as createdListsActions from 'src/store/createdLists/actions'
+import * as reactRedux from 'src/store/hooks'
+import { renderHookWithWrapper } from 'src/utils/testHelpers/renderWithWrapper'
 
 import useContainer from '../hook'
 import { ModalCreateListHookProps } from '../types'
 
 describe('ModalCreateList useContainer hook', () => {
+  const mockDispatch = jest.fn()
+  jest.spyOn(reactRedux, 'useAppDispatch').mockReturnValue(mockDispatch)
   const createList = jest.spyOn(createdListsActions, 'createList')
+
   const props: ModalCreateListHookProps = {
     form: {
       resetFields: jest.fn(),
@@ -19,7 +23,7 @@ describe('ModalCreateList useContainer hook', () => {
   }
 
   it('should match snapshot', () => {
-    const { result } = renderHook(() => useContainer(props))
+    const { result } = renderHookWithWrapper(() => useContainer(props))
 
     expect(result.current).toMatchSnapshot()
   })
@@ -36,14 +40,15 @@ describe('ModalCreateList useContainer hook', () => {
 
   it('should check "handleSubmit" method', () => {
     const listData = { description: 'test/description', name: 'test/name' }
+
     const { result } = renderHook(() => useContainer(props))
 
     act(() => {
       result.current.handleSubmit(listData)
     })
 
-    expect(dispatch).toHaveBeenCalledTimes(2)
-    expect(dispatch).toHaveBeenNthCalledWith(1, hideModal())
+    expect(mockDispatch).toHaveBeenCalledTimes(2)
+    expect(mockDispatch).toHaveBeenNthCalledWith(1, hideModal())
     expect(createList).toHaveBeenCalledWith({
       listData,
       movieId: props.movieId,
@@ -54,14 +59,15 @@ describe('ModalCreateList useContainer hook', () => {
     const onSuccess = jest.fn()
     const extendedProps = { ...props, onSuccess }
     const listData = { description: 'test/description', name: 'test/list' }
+
     const { result } = renderHook(() => useContainer(extendedProps))
 
     await act(() => {
       result.current.handleSubmit(listData)
     })
 
-    expect(dispatch).toHaveBeenCalledTimes(2)
-    expect(dispatch).toHaveBeenNthCalledWith(1, hideModal())
+    expect(mockDispatch).toHaveBeenCalledTimes(2)
+    expect(mockDispatch).toHaveBeenNthCalledWith(1, hideModal())
     expect(createList).toHaveBeenCalledWith({
       listData,
       movieId: props.movieId,
@@ -82,6 +88,7 @@ describe('ModalCreateList useContainer hook', () => {
   it('should check "handleAfterOpenChange" method with true', () => {
     const focus = jest.fn()
     jest.spyOn(React, 'useRef').mockReturnValue({ current: { focus } })
+
     const { result } = renderHook(() => useContainer(props))
 
     act(() => {
@@ -94,6 +101,7 @@ describe('ModalCreateList useContainer hook', () => {
   it('should check "handleAfterOpenChange" method with false', () => {
     const focus = jest.fn()
     jest.spyOn(React, 'useRef').mockReturnValue({ current: { focus } })
+
     const { result } = renderHook(() => useContainer(props))
 
     act(() => {

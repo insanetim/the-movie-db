@@ -1,17 +1,11 @@
-import { act, renderHook } from '@testing-library/react'
+import { act } from '@testing-library/react'
 import { useNavigate } from 'react-router-dom'
 import mockAccount from 'src/__mocks__/mockAccount'
-import { dispatch } from 'src/__mocks__/react-redux'
-import { IAccount } from 'src/interfaces/account.interface'
 import * as sessionActions from 'src/store/auth/actions'
+import * as reactRedux from 'src/store/hooks'
+import { renderHookWithWrapper } from 'src/utils/testHelpers/renderWithWrapper'
 
 import useContainer from '../hook'
-
-let mockedAccount: IAccount | null = mockAccount
-jest.mock('src/store/auth/selectors', () => ({
-  accountSelector: () => mockedAccount,
-  isAuthenticatedSelector: () => true,
-}))
 
 jest.mock('react-router-dom', () => ({
   ...jest.requireActual('react-router-dom'),
@@ -22,14 +16,21 @@ const navigate = jest.fn()
 jest.mocked(useNavigate).mockReturnValue(navigate)
 
 describe('Header useContainer hook', () => {
+  const mockDispatch = jest.fn()
+  jest.spyOn(reactRedux, 'useAppDispatch').mockReturnValue(mockDispatch)
+  const useSelectorMock = jest.spyOn(reactRedux, 'useAppSelector')
+
   it('should match snapshot', () => {
-    const { result } = renderHook(useContainer)
+    useSelectorMock.mockReturnValueOnce(mockAccount)
+    useSelectorMock.mockReturnValueOnce(true)
+
+    const { result } = renderHookWithWrapper(useContainer)
 
     expect(result.current).toMatchSnapshot()
   })
 
   it('should check "handleLogIn" method', () => {
-    const { result } = renderHook(useContainer)
+    const { result } = renderHookWithWrapper(useContainer)
 
     act(() => {
       result.current.handleLogIn()
@@ -42,13 +43,14 @@ describe('Header useContainer hook', () => {
 
   it('should check "handleLogOut" method', () => {
     const logOut = jest.spyOn(sessionActions, 'logOut')
-    const { result } = renderHook(useContainer)
+
+    const { result } = renderHookWithWrapper(useContainer)
 
     act(() => {
       result.current.handleLogOut()
     })
 
-    expect(dispatch).toHaveBeenCalled()
+    expect(mockDispatch).toHaveBeenCalled()
     expect(logOut).toHaveBeenCalled()
     expect(navigate).toHaveBeenCalledWith('/login', {
       replace: true,
@@ -57,11 +59,13 @@ describe('Header useContainer hook', () => {
   })
 
   it('should check "useEffect" method', () => {
-    mockedAccount = null
+    useSelectorMock.mockReturnValueOnce(null)
+    useSelectorMock.mockReturnValueOnce(true)
     const fetchAccount = jest.spyOn(sessionActions, 'fetchAccount')
-    renderHook(useContainer)
 
-    expect(dispatch).toHaveBeenCalled()
+    renderHookWithWrapper(useContainer)
+
+    expect(mockDispatch).toHaveBeenCalled()
     expect(fetchAccount).toHaveBeenCalled()
   })
 })

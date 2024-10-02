@@ -1,7 +1,7 @@
 import { screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { mockMovie } from 'src/__mocks__/mockMovie'
-import renderWithWrapper from 'src/utils/testHelpers/renderWithWrapper'
+import { renderWithWrapper } from 'src/utils/testHelpers/renderWithWrapper'
 
 import Watchlist from '../component'
 import { WatchlistHookReturn } from '../types'
@@ -54,6 +54,7 @@ describe('Watchlist component', () => {
       total_pages: 1,
       total_results: 1,
     }
+
     const { asFragment } = renderWithWrapper(<Watchlist />)
 
     expect(asFragment()).toMatchSnapshot()
@@ -61,6 +62,7 @@ describe('Watchlist component', () => {
 
   it('should match snapshot with empty movies', () => {
     mockedHook.movies = null
+
     const { asFragment } = renderWithWrapper(<Watchlist />)
 
     expect(asFragment()).toMatchSnapshot()
@@ -68,6 +70,7 @@ describe('Watchlist component', () => {
 
   it('should match snapshot with loading', () => {
     mockedHook.loading = true
+
     const { asFragment } = renderWithWrapper(<Watchlist />)
 
     expect(asFragment()).toMatchSnapshot()
@@ -76,6 +79,7 @@ describe('Watchlist component', () => {
   it('should match snapshot with error', () => {
     mockedHook.loading = false
     mockedHook.error = 'Something went wrong!'
+
     const { asFragment } = renderWithWrapper(<Watchlist />)
 
     expect(asFragment()).toMatchSnapshot()

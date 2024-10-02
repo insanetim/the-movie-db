@@ -1,5 +1,5 @@
-import { render } from '@testing-library/react'
 import mockNotification from 'src/__mocks__/mockNotification'
+import { renderWithWrapper } from 'src/utils/testHelpers/renderWithWrapper'
 
 import NotificationsRoot from '../component'
 import { NotificationsRootHookReturn } from '../types'
@@ -12,7 +12,7 @@ jest.mock('../hook', () => jest.fn(() => mockedHook))
 
 describe('NotificationsRoot component', () => {
   it('should match snapshot', () => {
-    const { asFragment } = render(<NotificationsRoot />)
+    const { asFragment } = renderWithWrapper(<NotificationsRoot />)
 
     expect(asFragment()).toMatchSnapshot()
   })

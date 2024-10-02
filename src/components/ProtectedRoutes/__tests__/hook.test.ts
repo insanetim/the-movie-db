@@ -1,10 +1,7 @@
-import { renderHook } from '@testing-library/react'
+import * as reactRedux from 'src/store/hooks'
+import { renderHookWithWrapper } from 'src/utils/testHelpers/renderWithWrapper'
 
 import useContainer from '../hook'
-
-jest.mock('src/store/auth/selectors', () => ({
-  isAuthenticatedSelector: () => true,
-}))
 
 jest.mock('react-router-dom', () => ({
   ...jest.requireActual('react-router-dom'),
@@ -12,8 +9,12 @@ jest.mock('react-router-dom', () => ({
 }))
 
 describe('ProtectedRoutes useContainer hook', () => {
+  const useSelectorMock = jest.spyOn(reactRedux, 'useAppSelector')
+
   it('should match snapshot', () => {
-    const { result } = renderHook(useContainer)
+    useSelectorMock.mockReturnValueOnce(true)
+
+    const { result } = renderHookWithWrapper(useContainer)
 
     expect(result.current).toMatchSnapshot()
   })

@@ -1,10 +1,10 @@
-import { render } from '@testing-library/react'
+import { renderWithWrapper } from 'src/utils/testHelpers/renderWithWrapper'
 
 import Runtime from '../component'
 
 describe('Runtime component', () => {
   it('should match snapshot', () => {
-    const { asFragment } = render(<Runtime runtime={150} />)
+    const { asFragment } = renderWithWrapper(<Runtime runtime={150} />)
 
     expect(asFragment()).toMatchSnapshot()
   })

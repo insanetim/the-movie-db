@@ -1,5 +1,4 @@
 import { mockListDetails } from 'src/__mocks__/mockList'
-import { dispatch, getState } from 'src/__mocks__/react-redux'
 import * as apiRoutes from 'src/api/tmdb/apiRoutes'
 
 import { fetchListDetails } from '../actions'
@@ -12,6 +11,8 @@ jest.mock('src/store/createdLists/selectors', () => ({
 }))
 
 describe('listDetails actions', () => {
+  const dispatch = jest.fn()
+  const getState = jest.fn()
   const getListDetails = jest.spyOn(apiRoutes, 'getListDetails')
   const errorMessage = 'Something went wrong!'
   const page = '1'

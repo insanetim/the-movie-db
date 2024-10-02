@@ -1,11 +1,9 @@
 import { addYears } from 'date-fns'
 import { groupBy, head, map, pipe, pluck, values } from 'ramda'
 import { useEffect, useMemo, useState } from 'react'
-import { useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
-import { useAppDispatch } from 'src/hooks/useRedux'
 import { IPersonCredit } from 'src/interfaces/person.interface'
-import { RootState } from 'src/store'
+import { useAppDispatch, useAppSelector } from 'src/store/hooks'
 import { fetchPersonDetails } from 'src/store/personDetails/actions'
 import {
   personDetailsErrorSelector,
@@ -23,11 +21,9 @@ const useContainer = () => {
   >() as CreditsRouteParams
   const dispatch = useAppDispatch()
   const personId = getIdFromSlug(personSlug)
-  const person = useSelector((state: RootState) =>
-    personDetailsSelector(state, personId)
-  )
-  const loading = useSelector(personDetailsLoadingSelector)
-  const error = useSelector(personDetailsErrorSelector)
+  const person = useAppSelector(state => personDetailsSelector(state, personId))
+  const loading = useAppSelector(personDetailsLoadingSelector)
+  const error = useAppSelector(personDetailsErrorSelector)
   const [filter, setFilter] = useState<FilterOptions>(FilterOptions.All)
 
   const filteredCredits: IPersonCredit[] = useMemo(() => {
@@ -40,6 +36,7 @@ const useContainer = () => {
           return { ...head(credits as IPersonCredit[]), job: jobs }
         })
       )(person.movie_credits.crew) as IPersonCredit[]
+      console.log('filter', filter)
       switch (filter) {
         case 'all':
           return [...person.movie_credits.cast, ...crewCredits]
