@@ -3,15 +3,15 @@
 exports[`Overview component should match snapshot 1`] = `
 <DocumentFragment>
   <div
-    class="ant-col ant-col-24 css-dev-only-do-not-override-5wsri9"
+    class="ant-col ant-col-24 css-dev-only-do-not-override-ccdg5a"
   >
     <h3
-      class="ant-typography css-dev-only-do-not-override-5wsri9"
+      class="ant-typography css-dev-only-do-not-override-ccdg5a"
     >
       Overview
     </h3>
     <div
-      class="ant-typography css-dev-only-do-not-override-5wsri9"
+      class="ant-typography css-dev-only-do-not-override-ccdg5a"
     >
       test/overview
     </div>
