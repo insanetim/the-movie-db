@@ -10,29 +10,46 @@ jest.mock('react-router-dom', () => ({
   useParams: jest.fn(() => ({ movieSlug: '1234-test-movie' })),
 }))
 
+const mockDispatch = jest.fn()
+jest.spyOn(reactRedux, 'useAppDispatch').mockReturnValue(mockDispatch)
+
 describe('Cast useContainer hook', () => {
-  const mockDispatch = jest.fn()
-  jest.spyOn(reactRedux, 'useAppDispatch').mockReturnValue(mockDispatch)
-  const useSelectorMock = jest.spyOn(reactRedux, 'useAppSelector')
+  const mockState = {
+    movieDetails: {
+      entities: {
+        [mockMovieDetailsExtended.id]: mockMovieDetailsExtended,
+      },
+      error: null,
+      ids: [mockMovieDetailsExtended.id],
+      loading: false,
+    },
+  }
 
   it('should match snapshot', () => {
-    useSelectorMock
-      .mockReturnValueOnce(mockMovieDetailsExtended)
-      .mockReturnValueOnce(false)
-      .mockReturnValueOnce(null)
-
-    const { result } = renderHookWithWrapper(useContainer)
+    const { result } = renderHookWithWrapper(useContainer, {
+      preloadedState: mockState,
+    })
 
     expect(result.current).toMatchSnapshot()
   })
 
   it('should check "useEffect" method', () => {
+    const mockState = {
+      movieDetails: {
+        entities: {},
+        error: null,
+        ids: [],
+        loading: false,
+      },
+    }
     const fetchMovieDetails = jest.spyOn(
       movieDetailsActions,
       'fetchMovieDetails'
     )
 
-    renderHookWithWrapper(useContainer)
+    renderHookWithWrapper(useContainer, {
+      preloadedState: mockState,
+    })
 
     expect(mockDispatch).toHaveBeenCalled()
     expect(fetchMovieDetails).toHaveBeenCalledWith(1234)

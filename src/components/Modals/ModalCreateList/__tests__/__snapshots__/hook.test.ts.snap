@@ -7,7 +7,9 @@ exports[`ModalCreateList useContainer hook should match snapshot 1`] = `
   "handleOk": [Function],
   "handleSubmit": [Function],
   "inputRef": {
-    "current": null,
+    "current": {
+      "focus": [MockFunction],
+    },
   },
 }
 `;

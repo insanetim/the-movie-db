@@ -15,22 +15,33 @@ jest.mock('react-router-dom', () => ({
 const navigate = jest.fn()
 jest.mocked(useNavigate).mockReturnValue(navigate)
 
+const mockDispatch = jest.fn()
+jest.spyOn(reactRedux, 'useAppDispatch').mockReturnValue(mockDispatch)
+
 describe('Header useContainer hook', () => {
-  const mockDispatch = jest.fn()
-  jest.spyOn(reactRedux, 'useAppDispatch').mockReturnValue(mockDispatch)
-  const useSelectorMock = jest.spyOn(reactRedux, 'useAppSelector')
+  const mockState = {
+    auth: {
+      _persist: {
+        rehydrated: true,
+        version: -1,
+      },
+      account: mockAccount,
+      isAuthenticated: true,
+    },
+  }
 
   it('should match snapshot', () => {
-    useSelectorMock.mockReturnValueOnce(mockAccount)
-    useSelectorMock.mockReturnValueOnce(true)
-
-    const { result } = renderHookWithWrapper(useContainer)
+    const { result } = renderHookWithWrapper(useContainer, {
+      preloadedState: mockState,
+    })
 
     expect(result.current).toMatchSnapshot()
   })
 
   it('should check "handleLogIn" method', () => {
-    const { result } = renderHookWithWrapper(useContainer)
+    const { result } = renderHookWithWrapper(useContainer, {
+      preloadedState: mockState,
+    })
 
     act(() => {
       result.current.handleLogIn()
@@ -44,7 +55,9 @@ describe('Header useContainer hook', () => {
   it('should check "handleLogOut" method', () => {
     const logOut = jest.spyOn(sessionActions, 'logOut')
 
-    const { result } = renderHookWithWrapper(useContainer)
+    const { result } = renderHookWithWrapper(useContainer, {
+      preloadedState: mockState,
+    })
 
     act(() => {
       result.current.handleLogOut()
@@ -59,11 +72,21 @@ describe('Header useContainer hook', () => {
   })
 
   it('should check "useEffect" method', () => {
-    useSelectorMock.mockReturnValueOnce(null)
-    useSelectorMock.mockReturnValueOnce(true)
+    const mockState = {
+      auth: {
+        _persist: {
+          rehydrated: true,
+          version: -1,
+        },
+        account: null,
+        isAuthenticated: true,
+      },
+    }
     const fetchAccount = jest.spyOn(sessionActions, 'fetchAccount')
 
-    renderHookWithWrapper(useContainer)
+    renderHookWithWrapper(useContainer, {
+      preloadedState: mockState,
+    })
 
     expect(mockDispatch).toHaveBeenCalled()
     expect(fetchAccount).toHaveBeenCalled()

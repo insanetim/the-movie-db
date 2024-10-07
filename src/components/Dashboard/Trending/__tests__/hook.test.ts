@@ -14,16 +14,11 @@ const searchParams = new URLSearchParams()
 const setSearchParams = jest.fn()
 jest.mocked(useSearchParams).mockReturnValue([searchParams, setSearchParams])
 
+const mockDispatch = jest.fn()
+jest.spyOn(reactRedux, 'useAppDispatch').mockReturnValue(mockDispatch)
+
 describe('Trending useContainer hook', () => {
-  const mockDispatch = jest.fn()
-  jest.spyOn(reactRedux, 'useAppDispatch').mockReturnValue(mockDispatch)
-  const useSelectorMock = jest.spyOn(reactRedux, 'useAppSelector')
-
   it('should match snapshot', () => {
-    useSelectorMock.mockReturnValueOnce(null)
-    useSelectorMock.mockReturnValueOnce(true)
-    useSelectorMock.mockReturnValueOnce(null)
-
     const { result } = renderHookWithWrapper(useContainer)
 
     expect(result.current).toMatchSnapshot()

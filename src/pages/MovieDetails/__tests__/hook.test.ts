@@ -23,36 +23,48 @@ jest.mock<typeof import('@reduxjs/toolkit')>('@reduxjs/toolkit', () => ({
   nanoid: () => 'test/id',
 }))
 
+const mockDispatch = jest.fn()
+jest.spyOn(reactRedux, 'useAppDispatch').mockReturnValue(mockDispatch)
+
 describe('MovieDetails useContainer hook', () => {
-  const mockDispatch = jest.fn()
-  jest.spyOn(reactRedux, 'useAppDispatch').mockReturnValue(mockDispatch)
-  const useSelectorMock = jest.spyOn(reactRedux, 'useAppSelector')
+  const mockState = {
+    auth: {
+      _persist: {
+        rehydrated: true,
+        version: -1,
+      },
+      account: mockAccount,
+      isAuthenticated: true,
+    },
+    createdLists: {
+      data: null,
+      error: null,
+      loading: true,
+    },
+    movieDetails: {
+      entities: {
+        [mockMovieDetailsExtended.id]: mockMovieDetailsExtended,
+      },
+      error: null,
+      ids: [mockMovieDetailsExtended.id],
+      loading: false,
+    },
+  }
 
   it('should match snapshot', () => {
-    useSelectorMock
-      .mockReturnValueOnce(mockAccount)
-      .mockReturnValueOnce(true)
-      .mockReturnValueOnce(null)
-      .mockReturnValueOnce(mockMovieDetailsExtended)
-      .mockReturnValueOnce(false)
-      .mockReturnValueOnce(null)
-
-    const { result } = renderHookWithWrapper(useContainer)
+    const { result } = renderHookWithWrapper(useContainer, {
+      preloadedState: mockState,
+    })
 
     expect(result.current).toMatchSnapshot()
   })
 
   it('should check "handlePopoverMouseEnter" method', () => {
-    useSelectorMock
-      .mockReturnValueOnce(mockAccount)
-      .mockReturnValueOnce(true)
-      .mockReturnValueOnce(null)
-      .mockReturnValueOnce(mockMovieDetailsExtended)
-      .mockReturnValueOnce(false)
-      .mockReturnValueOnce(null)
     const fetchLists = jest.spyOn(createdListsActions, 'fetchLists')
 
-    const { result } = renderHookWithWrapper(useContainer)
+    const { result } = renderHookWithWrapper(useContainer, {
+      preloadedState: mockState,
+    })
 
     act(() => {
       result.current.handlePopoverMouseEnter()
@@ -63,15 +75,33 @@ describe('MovieDetails useContainer hook', () => {
   })
 
   it('should check "handlePopoverMouseEnter" method with other params', () => {
-    useSelectorMock
-      .mockReturnValueOnce(null)
-      .mockReturnValueOnce(true)
-      .mockReturnValueOnce(null)
-      .mockReturnValueOnce(mockMovieDetailsExtended)
-      .mockReturnValueOnce(false)
-      .mockReturnValueOnce(null)
+    const mockState = {
+      auth: {
+        _persist: {
+          rehydrated: true,
+          version: -1,
+        },
+        account: null,
+        isAuthenticated: true,
+      },
+      createdLists: {
+        data: null,
+        error: null,
+        loading: true,
+      },
+      movieDetails: {
+        entities: {
+          [mockMovieDetailsExtended.id]: mockMovieDetailsExtended,
+        },
+        error: null,
+        ids: [mockMovieDetailsExtended.id],
+        loading: false,
+      },
+    }
 
-    const { result } = renderHookWithWrapper(useContainer)
+    const { result } = renderHookWithWrapper(useContainer, {
+      preloadedState: mockState,
+    })
 
     act(() => {
       result.current.handlePopoverMouseEnter()
@@ -81,13 +111,6 @@ describe('MovieDetails useContainer hook', () => {
   })
 
   it('should check "handleFavoriteClick" method', () => {
-    useSelectorMock
-      .mockReturnValueOnce(mockAccount)
-      .mockReturnValueOnce(true)
-      .mockReturnValueOnce(null)
-      .mockReturnValueOnce(mockMovieDetailsExtended)
-      .mockReturnValueOnce(false)
-      .mockReturnValueOnce(null)
     const changeMovieInFavorite = jest.spyOn(
       movieDetailsActions,
       'changeMovieInFavorite'
@@ -96,7 +119,9 @@ describe('MovieDetails useContainer hook', () => {
       message: 'test/title added to Favorite',
     })
 
-    const { result } = renderHookWithWrapper(useContainer)
+    const { result } = renderHookWithWrapper(useContainer, {
+      preloadedState: mockState,
+    })
 
     act(() => {
       result.current.handleFavoriteClick()
@@ -110,13 +135,6 @@ describe('MovieDetails useContainer hook', () => {
   })
 
   it('should check "handleWatchlistClick" method', () => {
-    useSelectorMock
-      .mockReturnValueOnce(mockAccount)
-      .mockReturnValueOnce(true)
-      .mockReturnValueOnce(null)
-      .mockReturnValueOnce(mockMovieDetailsExtended)
-      .mockReturnValueOnce(false)
-      .mockReturnValueOnce(null)
     const changeMovieInWatchlist = jest.spyOn(
       movieDetailsActions,
       'changeMovieInWatchlist'
@@ -124,7 +142,10 @@ describe('MovieDetails useContainer hook', () => {
     const notification = showNotification({
       message: 'test/title added to Watchlist',
     })
-    const { result } = renderHookWithWrapper(useContainer)
+
+    const { result } = renderHookWithWrapper(useContainer, {
+      preloadedState: mockState,
+    })
 
     act(() => {
       result.current.handleWatchlistClick()
@@ -148,19 +169,35 @@ describe('MovieDetails useContainer hook', () => {
   })
 
   it('should check "useEffect" method', () => {
-    useSelectorMock
-      .mockReturnValueOnce(mockAccount)
-      .mockReturnValueOnce(true)
-      .mockReturnValueOnce(null)
-      .mockReturnValueOnce(null)
-      .mockReturnValueOnce(false)
-      .mockReturnValueOnce(null)
+    const mockState = {
+      auth: {
+        _persist: {
+          rehydrated: true,
+          version: -1,
+        },
+        account: mockAccount,
+        isAuthenticated: true,
+      },
+      createdLists: {
+        data: null,
+        error: null,
+        loading: true,
+      },
+      movieDetails: {
+        entities: {},
+        error: null,
+        ids: [],
+        loading: false,
+      },
+    }
     const fetchMovieDetails = jest.spyOn(
       movieDetailsActions,
       'fetchMovieDetails'
     )
 
-    renderHookWithWrapper(useContainer)
+    renderHookWithWrapper(useContainer, {
+      preloadedState: mockState,
+    })
 
     expect(mockDispatch).toHaveBeenCalled()
     expect(fetchMovieDetails).toHaveBeenCalledWith(1234)

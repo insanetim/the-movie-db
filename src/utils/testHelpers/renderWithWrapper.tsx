@@ -2,10 +2,11 @@ import { render, renderHook, RenderOptions } from '@testing-library/react'
 import { PropsWithChildren, ReactNode, Suspense } from 'react'
 import { Provider } from 'react-redux'
 import { BrowserRouter } from 'react-router-dom'
+import mockState from 'src/__mocks__/mockState'
 import { AppStore, RootState, setupStore } from 'src/store'
 
 interface ExtendedRenderOptions extends Omit<RenderOptions, 'queries'> {
-  preloadedState?: RootState
+  preloadedState?: Partial<RootState>
   store?: AppStore
 }
 
@@ -22,7 +23,7 @@ const createWrapper =
 export const renderWithWrapper = (
   ui: ReactNode,
   {
-    preloadedState = {} as RootState,
+    preloadedState = mockState,
     store = setupStore(preloadedState),
     ...renderOptions
   }: ExtendedRenderOptions = {}

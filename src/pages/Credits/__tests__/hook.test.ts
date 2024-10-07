@@ -15,34 +15,35 @@ jest.mock('react-router-dom', () => ({
   useParams: jest.fn(() => ({ personSlug: '1234-darth-maul' })),
 }))
 
+const mockDispatch = jest.fn()
+jest.spyOn(reactRedux, 'useAppDispatch').mockReturnValue(mockDispatch)
+
 describe('Credits useContainer hook', () => {
-  const useSelectorMock = jest.spyOn(reactRedux, 'useAppSelector')
+  const mockState = {
+    personDetails: {
+      entities: {
+        [mockPersonDetails.id]: mockPersonDetails,
+      },
+      error: null,
+      ids: [mockPersonDetails.id],
+      loading: false,
+    },
+  }
 
   it('should match snapshot', () => {
-    useSelectorMock
-      .mockReturnValueOnce(mockPersonDetails)
-      .mockReturnValueOnce(false)
-      .mockReturnValueOnce(null)
-
-    const { result } = renderHookWithWrapper(useContainer)
+    const { result } = renderHookWithWrapper(useContainer, {
+      preloadedState: mockState,
+    })
 
     expect(result.current).toMatchSnapshot()
   })
 
   it('should match snapshot with "cast" filter', () => {
-    useSelectorMock
-      .mockReturnValueOnce(mockPersonDetails)
-      .mockReturnValueOnce(false)
-      .mockReturnValueOnce(null)
-
-    const { result } = renderHookWithWrapper(useContainer)
+    const { result } = renderHookWithWrapper(useContainer, {
+      preloadedState: mockState,
+    })
 
     act(() => {
-      useSelectorMock
-        .mockReturnValueOnce(mockPersonDetails)
-        .mockReturnValueOnce(false)
-        .mockReturnValueOnce(null)
-
       result.current.handleChangeFilter(FilterOptions.Cast)
     })
 
@@ -50,19 +51,11 @@ describe('Credits useContainer hook', () => {
   })
 
   it('should match snapshot with "crew" filter', () => {
-    useSelectorMock
-      .mockReturnValueOnce(mockPersonDetails)
-      .mockReturnValueOnce(false)
-      .mockReturnValueOnce(null)
-
-    const { result } = renderHookWithWrapper(useContainer)
+    const { result } = renderHookWithWrapper(useContainer, {
+      preloadedState: mockState,
+    })
 
     act(() => {
-      useSelectorMock
-        .mockReturnValueOnce(mockPersonDetails)
-        .mockReturnValueOnce(false)
-        .mockReturnValueOnce(null)
-
       result.current.handleChangeFilter(FilterOptions.Crew)
     })
 
@@ -74,7 +67,9 @@ describe('Credits useContainer hook', () => {
     // @ts-expect-error - mocking useState
     jest.spyOn(React, 'useState').mockImplementation(init => [init, setState])
 
-    const { result } = renderHookWithWrapper(useContainer)
+    const { result } = renderHookWithWrapper(useContainer, {
+      preloadedState: mockState,
+    })
 
     act(() => {
       result.current.handleChangeFilter(FilterOptions.Cast)
@@ -84,14 +79,22 @@ describe('Credits useContainer hook', () => {
   })
 
   it('should check "useEffect" method', () => {
-    const mockDispatch = jest.fn()
-    jest.spyOn(reactRedux, 'useAppDispatch').mockReturnValue(mockDispatch)
+    const mockState = {
+      personDetails: {
+        entities: {},
+        error: null,
+        ids: [],
+        loading: false,
+      },
+    }
     const fetchPersonDetails = jest.spyOn(
       personDetailsActions,
       'fetchPersonDetails'
     )
 
-    renderHookWithWrapper(useContainer)
+    renderHookWithWrapper(useContainer, {
+      preloadedState: mockState,
+    })
 
     expect(mockDispatch).toHaveBeenCalled()
     expect(fetchPersonDetails).toHaveBeenCalledWith(1234)

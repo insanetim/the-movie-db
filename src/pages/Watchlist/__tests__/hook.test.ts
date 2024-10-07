@@ -1,4 +1,4 @@
-import { act, renderHook } from '@testing-library/react'
+import { act } from '@testing-library/react'
 import { Modal } from 'antd'
 import { MouseEvent } from 'react'
 import { useSearchParams } from 'react-router-dom'
@@ -23,19 +23,13 @@ jest.mock('src/hooks/useUpdatePage')
 const updatePage = jest.fn()
 jest.mocked(useUpdatePage).mockReturnValue({ updatePage })
 
+const mockDispatch = jest.fn()
+jest.spyOn(reactRedux, 'useAppDispatch').mockReturnValue(mockDispatch)
+
 describe('Watchlist useContainer hook', () => {
-  const mockDispatch = jest.fn()
-  jest.spyOn(reactRedux, 'useAppDispatch').mockReturnValue(mockDispatch)
-  const useSelectorMock = jest.spyOn(reactRedux, 'useAppSelector')
   const confirmSpy = jest.spyOn(Modal, 'confirm')
 
   it('should match snapshot', () => {
-    useSelectorMock
-      .mockReturnValueOnce(null)
-      .mockReturnValueOnce(null)
-      .mockReturnValueOnce(true)
-      .mockReturnValueOnce(null)
-
     const { result } = renderHookWithWrapper(useContainer)
 
     expect(result.current).toMatchSnapshot()
@@ -81,14 +75,21 @@ describe('Watchlist useContainer hook', () => {
   })
 
   it('should check "useEffect" method with account', () => {
-    useSelectorMock
-      .mockReturnValueOnce(mockAccount)
-      .mockReturnValueOnce(null)
-      .mockReturnValueOnce(true)
-      .mockReturnValueOnce(null)
+    const mockState = {
+      auth: {
+        _persist: {
+          rehydrated: true,
+          version: -1,
+        },
+        account: mockAccount,
+        isAuthenticated: false,
+      },
+    }
     const fetchWatchlist = jest.spyOn(watchlistActions, 'fetchWatchlist')
 
-    renderHook(useContainer)
+    renderHookWithWrapper(useContainer, {
+      preloadedState: mockState,
+    })
 
     expect(mockDispatch).toHaveBeenCalled()
     expect(fetchWatchlist).toHaveBeenCalledWith('1')

@@ -45,6 +45,7 @@ describe('SearchResult component', () => {
       total_pages: 1,
       total_results: 1,
     }
+
     const { asFragment } = renderWithWrapper(
       <SearchResult query='test/search' />
     )
@@ -59,6 +60,7 @@ describe('SearchResult component', () => {
       total_pages: 1,
       total_results: 1,
     }
+
     const { asFragment } = renderWithWrapper(
       <SearchResult query='test/search' />
     )
@@ -68,6 +70,7 @@ describe('SearchResult component', () => {
 
   it('should match snapshot with loading', () => {
     mockedHook.loading = true
+
     const { asFragment } = renderWithWrapper(
       <SearchResult query='test/search' />
     )
@@ -78,6 +81,7 @@ describe('SearchResult component', () => {
   it('should match snapshot with error', () => {
     mockedHook.loading = false
     mockedHook.error = 'Something went wrong!'
+
     const { asFragment } = renderWithWrapper(
       <SearchResult query='test/search' />
     )

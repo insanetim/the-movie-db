@@ -8,17 +8,14 @@ import { renderHookWithWrapper } from 'src/utils/testHelpers/renderWithWrapper'
 import useContainer from '../hook'
 import { PopoverContentHookProps } from '../types'
 
-describe('PopoverContent useContainer hook', () => {
-  const mockDispatch = jest.fn()
-  jest.spyOn(reactRedux, 'useAppDispatch').mockReturnValue(mockDispatch)
-  const useSelectorMock = jest.spyOn(reactRedux, 'useAppSelector')
-  const setPopoverOpen = jest.fn()
+const mockDispatch = jest.fn()
+jest.spyOn(reactRedux, 'useAppDispatch').mockReturnValue(mockDispatch)
 
+describe('PopoverContent useContainer hook', () => {
+  const setPopoverOpen = jest.fn()
   const props: PopoverContentHookProps = { movieId: 1234, setPopoverOpen }
 
   it('should match snapshot', () => {
-    useSelectorMock.mockReturnValueOnce(null)
-
     const { result } = renderHookWithWrapper(() => useContainer(props))
 
     expect(result.current).toMatchSnapshot()

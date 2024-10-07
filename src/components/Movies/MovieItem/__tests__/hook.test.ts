@@ -1,4 +1,4 @@
-import { act, renderHook } from '@testing-library/react'
+import { act } from '@testing-library/react'
 import { useNavigate } from 'react-router-dom'
 import { renderHookWithWrapper } from 'src/utils/testHelpers/renderWithWrapper'
 
@@ -22,7 +22,7 @@ describe('MovieItem useContainer hook', () => {
   })
 
   it('should check "handleClick" method', () => {
-    const { result } = renderHook(() => useContainer(props))
+    const { result } = renderHookWithWrapper(() => useContainer(props))
 
     act(() => {
       result.current.handleClick()

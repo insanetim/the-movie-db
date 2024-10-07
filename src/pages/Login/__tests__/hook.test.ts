@@ -15,9 +15,10 @@ jest.mock('react-router-dom', () => ({
 const navigate = jest.fn()
 jest.mocked(useNavigate).mockReturnValue(navigate)
 
+const mockDispatch = jest.fn()
+jest.spyOn(reactRedux, 'useAppDispatch').mockReturnValue(mockDispatch)
+
 describe('Login useContainer hook', () => {
-  const mockDispatch = jest.fn()
-  jest.spyOn(reactRedux, 'useAppDispatch').mockReturnValue(mockDispatch)
   const setState = jest.fn()
   const useStateMock = (initState: unknown) => [initState, setState]
   jest.spyOn(React, 'useState').mockImplementation(useStateMock as never)

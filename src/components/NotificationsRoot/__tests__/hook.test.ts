@@ -6,21 +6,32 @@ import { renderHookWithWrapper } from 'src/utils/testHelpers/renderWithWrapper'
 
 import useContainer from '../hook'
 
+const mockDispatch = jest.fn()
+jest.spyOn(reactRedux, 'useAppDispatch').mockReturnValue(mockDispatch)
+
 describe('NotificationsRoot useContainer hook', () => {
-  const mockDispatch = jest.fn()
-  jest.spyOn(reactRedux, 'useAppDispatch').mockReturnValue(mockDispatch)
-  const useSelectorMock = jest.spyOn(reactRedux, 'useAppSelector')
+  const mockState = {
+    app: {
+      modal: {
+        modalProps: null,
+        modalType: null,
+      },
+      notifications: [mockNotification],
+    },
+  }
 
   it('should match snapshot', () => {
-    useSelectorMock.mockReturnValueOnce([mockNotification])
-
-    const { result } = renderHookWithWrapper(useContainer)
+    const { result } = renderHookWithWrapper(useContainer, {
+      preloadedState: mockState,
+    })
 
     expect(result.current).toMatchSnapshot()
   })
 
   it('should check "hideNotification" method', () => {
-    const { result } = renderHookWithWrapper(useContainer)
+    const { result } = renderHookWithWrapper(useContainer, {
+      preloadedState: mockState,
+    })
 
     act(() => {
       result.current.hideNotification('test/id')

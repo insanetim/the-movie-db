@@ -26,18 +26,13 @@ jest.mock('src/hooks/useUpdatePage')
 const updatePage = jest.fn()
 jest.mocked(useUpdatePage).mockReturnValue({ updatePage })
 
+const mockDispatch = jest.fn()
+jest.spyOn(reactRedux, 'useAppDispatch').mockReturnValue(mockDispatch)
+
 describe('ListDetails useContainer hook', () => {
-  const mockDispatch = jest.fn()
-  jest.spyOn(reactRedux, 'useAppDispatch').mockReturnValue(mockDispatch)
-  const useSelectorMock = jest.spyOn(reactRedux, 'useAppSelector')
   const modalSpy = jest.spyOn(Modal, 'confirm')
 
   it('should match snapshot', () => {
-    useSelectorMock
-      .mockReturnValueOnce(null)
-      .mockReturnValueOnce(true)
-      .mockReturnValueOnce(null)
-
     const { result } = renderHookWithWrapper(useContainer)
 
     expect(result.current).toMatchSnapshot()

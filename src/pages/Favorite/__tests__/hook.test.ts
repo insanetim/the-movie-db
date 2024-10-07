@@ -23,19 +23,13 @@ jest.mock('src/hooks/useUpdatePage')
 const updatePage = jest.fn()
 jest.mocked(useUpdatePage).mockReturnValue({ updatePage })
 
+const mockDispatch = jest.fn()
+jest.spyOn(reactRedux, 'useAppDispatch').mockReturnValue(mockDispatch)
+
 describe('Favotite useContainer hook', () => {
-  const mockDispatch = jest.fn()
-  jest.spyOn(reactRedux, 'useAppDispatch').mockReturnValue(mockDispatch)
-  const useSelectorMock = jest.spyOn(reactRedux, 'useAppSelector')
   const modalSpy = jest.spyOn(Modal, 'confirm')
 
   it('should match snapshot', () => {
-    useSelectorMock
-      .mockReturnValueOnce(null)
-      .mockReturnValueOnce(null)
-      .mockReturnValueOnce(true)
-      .mockReturnValueOnce(null)
-
     const { result } = renderHookWithWrapper(useContainer)
 
     expect(result.current).toMatchSnapshot()
@@ -81,10 +75,21 @@ describe('Favotite useContainer hook', () => {
   })
 
   it('should check "useEffect" method with account', () => {
-    useSelectorMock.mockReturnValueOnce(mockAccount)
+    const mockState = {
+      auth: {
+        _persist: {
+          rehydrated: true,
+          version: -1,
+        },
+        account: mockAccount,
+        isAuthenticated: false,
+      },
+    }
     const fetchFavorite = jest.spyOn(favoriteActions, 'fetchFavorite')
 
-    renderHookWithWrapper(useContainer)
+    renderHookWithWrapper(useContainer, {
+      preloadedState: mockState,
+    })
 
     expect(mockDispatch).toHaveBeenCalled()
     expect(fetchFavorite).toHaveBeenCalledWith('1')

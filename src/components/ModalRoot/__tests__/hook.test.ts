@@ -5,18 +5,24 @@ import { renderHookWithWrapper } from 'src/utils/testHelpers/renderWithWrapper'
 
 import useContainer from '../hook'
 
+const mockDispatch = jest.fn()
+jest.spyOn(reactRedux, 'useAppDispatch').mockReturnValue(mockDispatch)
+
 describe('ModalRoot useContainer hook', () => {
-  const mockDispatch = jest.fn()
-  jest.spyOn(reactRedux, 'useAppDispatch').mockReturnValue(mockDispatch)
-  const useSelectorMock = jest.spyOn(reactRedux, 'useAppSelector')
+  const mockState = {
+    app: {
+      modal: {
+        modalProps: null,
+        modalType: 'MODAL_CREATE_LIST' as const,
+      },
+      notifications: [],
+    },
+  }
 
   it('should match snapshot', () => {
-    useSelectorMock.mockReturnValueOnce({
-      modalProps: null,
-      modalType: 'MODAL_CREATE_LIST',
+    const { result } = renderHookWithWrapper(useContainer, {
+      preloadedState: mockState,
     })
-
-    const { result } = renderHookWithWrapper(useContainer)
 
     expect(result.current).toMatchSnapshot()
   })

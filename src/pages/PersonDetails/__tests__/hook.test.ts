@@ -15,24 +15,33 @@ jest.mock('react-router-dom', () => ({
 const navigate = jest.fn()
 jest.mocked(useNavigate).mockReturnValue(navigate)
 
+const mockDispatch = jest.fn()
+jest.spyOn(reactRedux, 'useAppDispatch').mockReturnValue(mockDispatch)
+
 describe('PersonDetails useContainer hook', () => {
-  const mockDispatch = jest.fn()
-  jest.spyOn(reactRedux, 'useAppDispatch').mockReturnValue(mockDispatch)
-  const useSelectorMock = jest.spyOn(reactRedux, 'useAppSelector')
+  const mockState = {
+    personDetails: {
+      entities: {
+        [mockPersonDetails.id]: mockPersonDetails,
+      },
+      error: null,
+      ids: [mockPersonDetails.id],
+      loading: false,
+    },
+  }
 
   it('should match snapshot', () => {
-    useSelectorMock
-      .mockReturnValueOnce(mockPersonDetails)
-      .mockReturnValueOnce(false)
-      .mockReturnValueOnce(null)
-
-    const { result } = renderHookWithWrapper(useContainer)
+    const { result } = renderHookWithWrapper(useContainer, {
+      preloadedState: mockState,
+    })
 
     expect(result.current).toMatchSnapshot()
   })
 
   it('should check "handleGoToCast" method', () => {
-    const { result } = renderHookWithWrapper(useContainer)
+    const { result } = renderHookWithWrapper(useContainer, {
+      preloadedState: mockState,
+    })
 
     act(() => {
       result.current.handleGoToCredits()
@@ -42,12 +51,22 @@ describe('PersonDetails useContainer hook', () => {
   })
 
   it('should check "useEffect" method', () => {
+    const mockState = {
+      personDetails: {
+        entities: {},
+        error: null,
+        ids: [],
+        loading: false,
+      },
+    }
     const fetchPersonDetails = jest.spyOn(
       personDetailsActions,
       'fetchPersonDetails'
     )
 
-    renderHookWithWrapper(useContainer)
+    renderHookWithWrapper(useContainer, {
+      preloadedState: mockState,
+    })
 
     expect(mockDispatch).toHaveBeenCalled()
     expect(fetchPersonDetails).toHaveBeenCalledWith(1234)

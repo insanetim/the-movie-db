@@ -4,16 +4,18 @@ import React from 'react'
 import { hideModal } from 'src/store/app/actions'
 import * as createdListsActions from 'src/store/createdLists/actions'
 import * as reactRedux from 'src/store/hooks'
-import { renderHookWithWrapper } from 'src/utils/testHelpers/renderWithWrapper'
 
 import useContainer from '../hook'
 import { ModalCreateListHookProps } from '../types'
 
-describe('ModalCreateList useContainer hook', () => {
-  const mockDispatch = jest.fn()
-  jest.spyOn(reactRedux, 'useAppDispatch').mockReturnValue(mockDispatch)
-  const createList = jest.spyOn(createdListsActions, 'createList')
+const focus = jest.fn()
+jest.spyOn(React, 'useRef').mockReturnValue({ current: { focus } })
 
+const mockDispatch = jest.fn()
+jest.spyOn(reactRedux, 'useAppDispatch').mockReturnValue(mockDispatch)
+
+describe('ModalCreateList useContainer hook', () => {
+  const createList = jest.spyOn(createdListsActions, 'createList')
   const props: ModalCreateListHookProps = {
     form: {
       resetFields: jest.fn(),
@@ -23,7 +25,7 @@ describe('ModalCreateList useContainer hook', () => {
   }
 
   it('should match snapshot', () => {
-    const { result } = renderHookWithWrapper(() => useContainer(props))
+    const { result } = renderHook(() => useContainer(props))
 
     expect(result.current).toMatchSnapshot()
   })
@@ -86,9 +88,6 @@ describe('ModalCreateList useContainer hook', () => {
   })
 
   it('should check "handleAfterOpenChange" method with true', () => {
-    const focus = jest.fn()
-    jest.spyOn(React, 'useRef').mockReturnValue({ current: { focus } })
-
     const { result } = renderHook(() => useContainer(props))
 
     act(() => {
@@ -99,9 +98,6 @@ describe('ModalCreateList useContainer hook', () => {
   })
 
   it('should check "handleAfterOpenChange" method with false', () => {
-    const focus = jest.fn()
-    jest.spyOn(React, 'useRef').mockReturnValue({ current: { focus } })
-
     const { result } = renderHook(() => useContainer(props))
 
     act(() => {

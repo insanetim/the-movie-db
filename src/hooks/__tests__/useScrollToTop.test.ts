@@ -1,4 +1,4 @@
-import { renderHook } from '@testing-library/react'
+import { renderHookWithWrapper } from 'src/utils/testHelpers/renderWithWrapper'
 
 import useScrollToTop from '../useScrollToTop'
 
@@ -14,7 +14,7 @@ Object.defineProperty(global.window, 'scrollTo', { value: spyScrollTo })
 
 describe('useScrollToTop', () => {
   it('should call "scrollTo" method', () => {
-    renderHook(useScrollToTop)
+    renderHookWithWrapper(useScrollToTop)
     jest.runAllTimers()
 
     expect(spyScrollTo).toHaveBeenCalledWith(0, 0)

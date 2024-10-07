@@ -25,16 +25,13 @@ jest.mock('src/hooks/useUpdatePage')
 const updatePage = jest.fn()
 jest.mocked(useUpdatePage).mockReturnValue({ updatePage })
 
-describe('ListItem useContainer hook', () => {
-  const mockDispatch = jest.fn()
-  jest.spyOn(reactRedux, 'useAppDispatch').mockReturnValue(mockDispatch)
-  const useSelectorMock = jest.spyOn(reactRedux, 'useAppSelector')
+const mockDispatch = jest.fn()
+jest.spyOn(reactRedux, 'useAppDispatch').mockReturnValue(mockDispatch)
 
+describe('ListItem useContainer hook', () => {
   const props: ListItemHookProps = { id: 1234, name: 'list' }
 
   it('should match snapshot', () => {
-    useSelectorMock.mockReturnValueOnce(null)
-
     const { result } = renderHookWithWrapper(() => useContainer(props))
 
     expect(result.current).toMatchSnapshot()

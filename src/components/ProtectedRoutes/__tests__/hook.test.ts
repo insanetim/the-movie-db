@@ -1,4 +1,3 @@
-import * as reactRedux from 'src/store/hooks'
 import { renderHookWithWrapper } from 'src/utils/testHelpers/renderWithWrapper'
 
 import useContainer from '../hook'
@@ -9,12 +8,21 @@ jest.mock('react-router-dom', () => ({
 }))
 
 describe('ProtectedRoutes useContainer hook', () => {
-  const useSelectorMock = jest.spyOn(reactRedux, 'useAppSelector')
+  const mockState = {
+    auth: {
+      _persist: {
+        rehydrated: true,
+        version: -1,
+      },
+      account: null,
+      isAuthenticated: true,
+    },
+  }
 
   it('should match snapshot', () => {
-    useSelectorMock.mockReturnValueOnce(true)
-
-    const { result } = renderHookWithWrapper(useContainer)
+    const { result } = renderHookWithWrapper(useContainer, {
+      preloadedState: mockState,
+    })
 
     expect(result.current).toMatchSnapshot()
   })

@@ -17,19 +17,13 @@ const searchParams = new URLSearchParams()
 const setSearchParams = jest.fn()
 jest.mocked(useSearchParams).mockReturnValue([searchParams, setSearchParams])
 
+const mockDispatch = jest.fn()
+jest.spyOn(reactRedux, 'useAppDispatch').mockReturnValue(mockDispatch)
+
 describe('Lists useContainer hook', () => {
-  const mockDispatch = jest.fn()
-  jest.spyOn(reactRedux, 'useAppDispatch').mockReturnValue(mockDispatch)
-  const useSelectorMock = jest.spyOn(reactRedux, 'useAppSelector')
   const fetchLists = jest.spyOn(createdListsActions, 'fetchLists')
 
   it('should match snapshot', () => {
-    useSelectorMock
-      .mockReturnValueOnce(null)
-      .mockReturnValueOnce(null)
-      .mockReturnValueOnce(true)
-      .mockReturnValueOnce(null)
-
     const { result } = renderHookWithWrapper(useContainer)
 
     expect(result.current).toMatchSnapshot()
@@ -91,9 +85,20 @@ describe('Lists useContainer hook', () => {
   })
 
   it('should check "useEffect" method with account', () => {
-    useSelectorMock.mockReturnValueOnce(mockAccount)
+    const mockState = {
+      auth: {
+        _persist: {
+          rehydrated: true,
+          version: -1,
+        },
+        account: mockAccount,
+        isAuthenticated: false,
+      },
+    }
 
-    renderHookWithWrapper(useContainer)
+    renderHookWithWrapper(useContainer, {
+      preloadedState: mockState,
+    })
 
     expect(mockDispatch).toHaveBeenCalled()
     expect(fetchLists).toHaveBeenCalledWith('1')
