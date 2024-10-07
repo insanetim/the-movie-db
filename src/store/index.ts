@@ -45,24 +45,28 @@ const rootReducer = combineReducers({
   watchlist: watchlistReducer,
 })
 
-export const store = configureStore({
-  devTools: process.env.NODE_ENV !== 'production',
-  middleware: getDefaultMiddleware =>
-    getDefaultMiddleware({
-      serializableCheck: {
-        ignoredActions: [
-          FLUSH,
-          PAUSE,
-          PERSIST,
-          PURGE,
-          REGISTER,
-          REHYDRATE,
-          showModal.type,
-        ],
-      },
-    }),
-  reducer: rootReducer,
-})
+export const setupStore = (preloadedState?: ReturnType<typeof rootReducer>) =>
+  configureStore({
+    devTools: process.env.NODE_ENV !== 'production',
+    middleware: getDefaultMiddleware =>
+      getDefaultMiddleware({
+        serializableCheck: {
+          ignoredActions: [
+            FLUSH,
+            PAUSE,
+            PERSIST,
+            PURGE,
+            REGISTER,
+            REHYDRATE,
+            showModal.type,
+          ],
+        },
+      }),
+    preloadedState,
+    reducer: rootReducer,
+  })
+
+export const store = setupStore()
 
 export const persistor = persistStore(store)
 
