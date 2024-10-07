@@ -19,6 +19,8 @@ const mockedHook: PopoverContentHookReturn = {
 jest.mock('../hook', () => jest.fn(() => mockedHook))
 
 describe('PopoverContent component', () => {
+  const user = userEvent.setup()
+
   const props: PopoverContentProps = {
     movieId: 1234,
     setPopoverOpen: jest.fn(),
@@ -33,7 +35,6 @@ describe('PopoverContent component', () => {
   it('should call "handleAddToList" when addToList button clicked', async () => {
     renderWithWrapper(<PopoverContent {...props} />)
 
-    const user = userEvent.setup()
     const addToListBtn = screen.getByText('test/list')
     await user.click(addToListBtn)
 
@@ -46,7 +47,6 @@ describe('PopoverContent component', () => {
   it('should call "handleAddToNewList" when createList button clicked', async () => {
     renderWithWrapper(<PopoverContent {...props} />)
 
-    const user = userEvent.setup()
     const createListBtn = screen.getByText(/create/i)
     await user.click(createListBtn)
 

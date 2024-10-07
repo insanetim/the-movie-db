@@ -6,6 +6,7 @@ import { renderWithWrapper } from 'src/utils/testHelpers/renderWithWrapper'
 import IconButton from '../component'
 
 describe('IconButton component', () => {
+  const user = userEvent.setup()
   const handleClick = jest.fn()
 
   it('should match snapshot', () => {
@@ -27,7 +28,6 @@ describe('IconButton component', () => {
       />
     )
 
-    const user = userEvent.setup()
     const button = screen.getByRole('button')
     await user.click(button)
 

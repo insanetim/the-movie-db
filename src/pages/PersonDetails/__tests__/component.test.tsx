@@ -15,6 +15,8 @@ const mockedHook: PersonDetailsHookReturn = {
 jest.mock('../hook', () => jest.fn(() => mockedHook))
 
 describe('PersonDetails component', () => {
+  const user = userEvent.setup()
+
   it('should match snapshot', () => {
     const { asFragment } = renderWithWrapper(<PersonDetails />)
 
@@ -24,7 +26,6 @@ describe('PersonDetails component', () => {
   it('should call "handleGoToCredits" when button clicked', async () => {
     renderWithWrapper(<PersonDetails />)
 
-    const user = userEvent.setup()
     const button = screen.getByText('Show all credits')
     await user.click(button)
 

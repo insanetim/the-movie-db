@@ -21,6 +21,8 @@ const mockedHook: ListsHookReturn = {
 jest.mock('../hook', () => jest.fn(() => mockedHook))
 
 describe('Lists component', () => {
+  const user = userEvent.setup()
+
   it('should match snapshot', () => {
     const { asFragment } = renderWithWrapper(<Lists />)
 
@@ -30,7 +32,6 @@ describe('Lists component', () => {
   it('should call "handleCreateList" when button clicked', async () => {
     renderWithWrapper(<Lists />)
 
-    const user = userEvent.setup()
     const createListBtn = screen.getByTestId('createListBtn')
     await user.click(createListBtn)
 
@@ -40,7 +41,6 @@ describe('Lists component', () => {
   it('should call "handlePagination" when pagination clicked', async () => {
     renderWithWrapper(<Lists />)
 
-    const user = userEvent.setup()
     const link = screen.getByText('2')
     await user.click(link)
 

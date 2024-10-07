@@ -7,6 +7,7 @@ import MoviesList from '../component'
 import { MoviesListProps } from '../types'
 
 describe('MoviesList component', () => {
+  const user = userEvent.setup()
   const handleMovieDelete = jest.fn()
   const props: MoviesListProps = {
     handleMovieDelete,
@@ -22,7 +23,6 @@ describe('MoviesList component', () => {
   it('should call "handleMovieDelete" when delete button clicked', async () => {
     renderWithWrapper(<MoviesList {...props} />)
 
-    const user = userEvent.setup()
     const deleteBtn = screen.getByTestId('deleteMovieBtn')
     await user.click(deleteBtn)
 

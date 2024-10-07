@@ -5,6 +5,7 @@ import { renderWithWrapper } from 'src/utils/testHelpers/renderWithWrapper'
 import AddToFavoriteButton from '../component'
 
 describe('AddToFavoriteButton component', () => {
+  const user = userEvent.setup()
   const handleClick = jest.fn()
 
   it('should match snapshot', () => {
@@ -37,7 +38,6 @@ describe('AddToFavoriteButton component', () => {
       />
     )
 
-    const user = userEvent.setup()
     const button = screen.getByRole('button')
     await user.click(button)
 

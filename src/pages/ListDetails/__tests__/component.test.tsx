@@ -25,6 +25,8 @@ const mockedHook: ListDetailsHookReturn = {
 jest.mock('../hook', () => jest.fn(() => mockedHook))
 
 describe('ListDetails component', () => {
+  const user = userEvent.setup()
+
   it('should match snapshot', () => {
     const { asFragment } = renderWithWrapper(<ListDetails />)
 
@@ -34,7 +36,6 @@ describe('ListDetails component', () => {
   it('should call "handleListDelete" when delete button clicked', async () => {
     renderWithWrapper(<ListDetails />)
 
-    const user = userEvent.setup()
     const deleteBtn = screen.getByTestId('deleteListBtn')
     await user.click(deleteBtn)
 
@@ -44,7 +45,6 @@ describe('ListDetails component', () => {
   it('should call "handleMovieDelete" when delete button clicked', async () => {
     renderWithWrapper(<ListDetails />)
 
-    const user = userEvent.setup()
     const deleteBtn = screen.getByTestId('deleteMovieBtn')
     await user.click(deleteBtn)
 
@@ -54,7 +54,6 @@ describe('ListDetails component', () => {
   it('should call "handlePagination" when pagination clicked', async () => {
     renderWithWrapper(<ListDetails />)
 
-    const user = userEvent.setup()
     const link = screen.getByText('2')
     await user.click(link)
 

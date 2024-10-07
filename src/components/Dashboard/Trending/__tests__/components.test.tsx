@@ -20,6 +20,8 @@ const mockedHook: TrendingHookReturn = {
 jest.mock('../hook', () => jest.fn(() => mockedHook))
 
 describe('Trending component', () => {
+  const user = userEvent.setup()
+
   it('should match snapshot', () => {
     const { asFragment } = renderWithWrapper(<Trending />)
 
@@ -29,7 +31,6 @@ describe('Trending component', () => {
   it('should call "handlePagination" when pagination clicked', async () => {
     renderWithWrapper(<Trending />)
 
-    const user = userEvent.setup()
     const link = screen.getByText('2')
     await user.click(link)
 

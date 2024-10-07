@@ -5,6 +5,7 @@ import { renderWithWrapper } from 'src/utils/testHelpers/renderWithWrapper'
 import AddToWatchlistButton from '../component'
 
 describe('AddToWatchlistButton component', () => {
+  const user = userEvent.setup()
   const handleClick = jest.fn()
 
   it('should match snapshot', () => {
@@ -37,7 +38,6 @@ describe('AddToWatchlistButton component', () => {
       />
     )
 
-    const user = userEvent.setup()
     const button = screen.getByRole('button')
     await user.click(button)
 

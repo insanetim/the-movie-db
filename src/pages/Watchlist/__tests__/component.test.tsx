@@ -21,6 +21,8 @@ const mockedHook: WatchlistHookReturn = {
 jest.mock('../hook', () => jest.fn(() => mockedHook))
 
 describe('Watchlist component', () => {
+  const user = userEvent.setup()
+
   it('should match snapshot', () => {
     const { asFragment } = renderWithWrapper(<Watchlist />)
 
@@ -30,7 +32,6 @@ describe('Watchlist component', () => {
   it('should call "handlePagination" when pagination clicked', async () => {
     renderWithWrapper(<Watchlist />)
 
-    const user = userEvent.setup()
     const link = screen.getByText('2')
     await user.click(link)
 
@@ -40,7 +41,6 @@ describe('Watchlist component', () => {
   it('should call "handleMovieDelete" when delete button clicked', async () => {
     renderWithWrapper(<Watchlist />)
 
-    const user = userEvent.setup()
     const deleteBtn = screen.getByTestId('deleteMovieBtn')
     await user.click(deleteBtn)
 

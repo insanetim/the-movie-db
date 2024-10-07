@@ -27,6 +27,8 @@ jest.mock('src/store/createdLists/selectors', () => ({
 }))
 
 describe('MovieDetails component', () => {
+  const user = userEvent.setup()
+
   it('should match snapshot', () => {
     const { asFragment } = renderWithWrapper(<MovieDetails />)
 
@@ -36,7 +38,6 @@ describe('MovieDetails component', () => {
   it('should call "handlePopoverMouseEnter" when popover hovered', async () => {
     renderWithWrapper(<MovieDetails />)
 
-    const user = userEvent.setup()
     const popover = screen.getByTestId('addMovieToListPopover')
     await user.hover(popover)
 
@@ -46,7 +47,6 @@ describe('MovieDetails component', () => {
   it('should call "setPopoverOpen" when popover clicked', async () => {
     renderWithWrapper(<MovieDetails />)
 
-    const user = userEvent.setup()
     const popover = screen.getByTestId('addMovieToListPopover')
     await user.click(popover)
 
@@ -56,7 +56,6 @@ describe('MovieDetails component', () => {
   it('should call "handleFavoriteClick" when button clicked', async () => {
     renderWithWrapper(<MovieDetails />)
 
-    const user = userEvent.setup()
     const button = screen.getByTestId('addToFavoriteBtn')
     await user.click(button)
 
@@ -66,7 +65,6 @@ describe('MovieDetails component', () => {
   it('should call "handleWatchlistClick" when button clicked', async () => {
     renderWithWrapper(<MovieDetails />)
 
-    const user = userEvent.setup()
     const button = screen.getByTestId('addToWatchlistBtn')
     await user.click(button)
 
@@ -76,7 +74,6 @@ describe('MovieDetails component', () => {
   it('should call "handleGoToCast" when button clicked', async () => {
     renderWithWrapper(<MovieDetails />)
 
-    const user = userEvent.setup()
     const button = screen.getByText('Full Cast & Crew')
     await user.click(button)
 

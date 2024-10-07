@@ -13,6 +13,8 @@ const mockedHook: SearchInputHookReturn = {
 jest.mock('../hook', () => jest.fn(() => mockedHook))
 
 describe('SearchInput component', () => {
+  const user = userEvent.setup()
+
   it('should match snapshot', () => {
     const { asFragment } = renderWithWrapper(<SearchInput query={''} />)
 
@@ -22,7 +24,6 @@ describe('SearchInput component', () => {
   it('should call "handleChange" when input changed', async () => {
     renderWithWrapper(<SearchInput query={''} />)
 
-    const user = userEvent.setup()
     const input = screen.getByRole('textbox')
     await user.type(input, 'test/search')
 
@@ -32,7 +33,6 @@ describe('SearchInput component', () => {
   it('should call "handleSearch" when button clicked', async () => {
     renderWithWrapper(<SearchInput query={''} />)
 
-    const user = userEvent.setup()
     const button = screen.getByRole('button')
     await user.click(button)
 
@@ -42,9 +42,8 @@ describe('SearchInput component', () => {
   it('should call "handleSearch" when enter pressed', async () => {
     renderWithWrapper(<SearchInput query={''} />)
 
-    const user = userEvent.setup()
     const input = screen.getByRole('textbox')
-    await user.type(input, '{enter}')
+    await user.type(input, '{Enter}')
 
     expect(mockedHook.handleSearch).toHaveBeenCalled()
   })

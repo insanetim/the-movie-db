@@ -20,6 +20,8 @@ const mockedHook: SearchResultHookReturn = {
 jest.mock('../hook', () => jest.fn(() => mockedHook))
 
 describe('SearchResult component', () => {
+  const user = userEvent.setup()
+
   it('should match snapshot', () => {
     const { asFragment } = renderWithWrapper(
       <SearchResult query='test/search' />
@@ -31,7 +33,6 @@ describe('SearchResult component', () => {
   it('should call "handlePagination" when pagination clicked', async () => {
     renderWithWrapper(<SearchResult query='test/search' />)
 
-    const user = userEvent.setup()
     const link = screen.getByText('2')
     await user.click(link)
 

@@ -13,6 +13,8 @@ const mockedHook: ListItemHookReturn = {
 jest.mock('../hook', () => jest.fn(() => mockedHook))
 
 describe('ListItem component', () => {
+  const user = userEvent.setup()
+
   it('should match snapshot', () => {
     const { asFragment } = renderWithWrapper(
       <ListItem
@@ -34,7 +36,6 @@ describe('ListItem component', () => {
       />
     )
 
-    const user = userEvent.setup()
     const card = screen.getByTestId('listItemCard')
     await user.click(card)
 
@@ -50,7 +51,6 @@ describe('ListItem component', () => {
       />
     )
 
-    const user = userEvent.setup()
     const deleteBtn = screen.getByTestId('deleteListBtn')
     await user.click(deleteBtn)
 

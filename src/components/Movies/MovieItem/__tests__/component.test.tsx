@@ -13,6 +13,7 @@ const mockedHook: MovieItemHookReturn = {
 jest.mock('../hook', () => jest.fn(() => mockedHook))
 
 describe('MovieItem component', () => {
+  const user = userEvent.setup()
   const props: MovieItemProps = {
     handleMovieDelete: jest.fn(),
     id: mockMovie.id,
@@ -38,7 +39,6 @@ describe('MovieItem component', () => {
   it('should call "handleClick" when card clicked', async () => {
     renderWithWrapper(<MovieItem {...props} />)
 
-    const user = userEvent.setup()
     const card = screen.getByTestId('movieItemCard')
     await user.click(card)
 
@@ -48,7 +48,6 @@ describe('MovieItem component', () => {
   it('should call "handleMovieDelete" when delete button clicked', async () => {
     renderWithWrapper(<MovieItem {...props} />)
 
-    const user = userEvent.setup()
     const deleteBtn = screen.getByTestId('deleteMovieBtn')
     await user.click(deleteBtn)
 
