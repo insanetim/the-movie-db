@@ -79,7 +79,7 @@ export const getAccountDetails = async ({
 export const getTrending = async ({ page }: { page: string }) => {
   const { data } = await tmdbClient.request<IMoviesList>({
     params: { page },
-    url: '/trending/movie/day',
+    url: '/trending/movie/week',
   })
 
   return data

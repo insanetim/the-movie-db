@@ -93,7 +93,10 @@ describe('tmdbRoutes', () => {
   })
 
   it('should handle "getTrending" request', async () => {
-    const request = { params: { page }, url: '/trending/movie/day' }
+    const request = {
+      params: { page },
+      url: '/trending/movie/week',
+    }
     const response = { data: mockMoviesResponse }
     requestSpy.mockResolvedValueOnce(response)
 
