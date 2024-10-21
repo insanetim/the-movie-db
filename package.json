@@ -38,7 +38,7 @@
     "@babel/preset-env": "^7.25.8",
     "@babel/preset-react": "^7.25.7",
     "@babel/preset-typescript": "^7.25.7",
-    "@swc/core": "^1.7.35",
+    "@swc/core": "^1.7.36",
     "@testing-library/dom": "^10.4.0",
     "@testing-library/jest-dom": "^6.5.0",
     "@testing-library/react": "^16.0.1",
