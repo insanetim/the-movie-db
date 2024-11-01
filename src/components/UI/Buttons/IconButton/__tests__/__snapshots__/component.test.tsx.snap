@@ -3,7 +3,7 @@
 exports[`IconButton component should match snapshot 1`] = `
 <DocumentFragment>
   <button
-    class="ant-btn css-dev-only-do-not-override-vryruh ant-btn-circle ant-btn-text ant-btn-color-default ant-btn-variant-text ant-btn-icon-only"
+    class="ant-btn css-dev-only-do-not-override-ni1kz0 ant-btn-circle ant-btn-text ant-btn-color-default ant-btn-variant-text ant-btn-icon-only"
     type="button"
   >
     <span
