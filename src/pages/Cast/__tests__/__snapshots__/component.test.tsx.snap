@@ -15,6 +15,7 @@ exports[`Cast component should match snapshot 1`] = `
           class="ant-typography css-dev-only-do-not-override-cdzvx5"
         >
           <a
+            data-discover="true"
             href="/movie/1234-test-movie"
           >
             <span
@@ -354,6 +355,7 @@ exports[`Cast component should match snapshot without release_date 1`] = `
           class="ant-typography css-dev-only-do-not-override-cdzvx5"
         >
           <a
+            data-discover="true"
             href="/movie/1234-test-movie"
           >
             <span

@@ -13,6 +13,7 @@ exports[`Header component should match snapshot 1`] = `
       >
         <a
           class="logo text-white"
+          data-discover="true"
           href="/"
         >
           The Movie DB
@@ -78,6 +79,7 @@ exports[`Header component should match snapshot for unauthenticated 1`] = `
       >
         <a
           class="logo text-white"
+          data-discover="true"
           href="/"
         >
           The Movie DB
@@ -110,6 +112,7 @@ exports[`Header component should match snapshot with avatar_path 1`] = `
       >
         <a
           class="logo text-white"
+          data-discover="true"
           href="/"
         >
           The Movie DB
@@ -175,6 +178,7 @@ exports[`Header component should match snapshot with empty account 1`] = `
       >
         <a
           class="logo text-white"
+          data-discover="true"
           href="/"
         >
           The Movie DB

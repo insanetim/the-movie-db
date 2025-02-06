@@ -25,6 +25,7 @@ exports[`NotFound component should match snapshot 1`] = `
         >
           Please check that the Web site address is spelled correctly or go to 
           <a
+            data-discover="true"
             href="/"
           >
             home page

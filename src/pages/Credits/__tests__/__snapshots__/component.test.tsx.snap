@@ -15,6 +15,7 @@ exports[`Credits component should match snapshot 1`] = `
           class="ant-typography css-dev-only-do-not-override-cdzvx5"
         >
           <a
+            data-discover="true"
             href="/person/1234-test-person"
           >
             <span
@@ -367,6 +368,7 @@ exports[`Credits component should match snapshot 1`] = `
                             class="ant-table-cell"
                           >
                             <a
+                              data-discover="true"
                               href="/movie/1234-test-movie"
                             >
                               the-matrix
@@ -437,6 +439,7 @@ exports[`Credits component should match snapshot 1`] = `
                             class="ant-table-cell"
                           >
                             <a
+                              data-discover="true"
                               href="/movie/4321-test-movie"
                             >
                               star-wars
