@@ -5,10 +5,6 @@ import {
 } from 'src/interfaces/global.interface'
 import { IMoviesList } from 'src/interfaces/movie.interface'
 
-export type SearchResultProps = {
-  query: Query
-}
-
 export type SearchResultHookProps = SearchResultProps
 
 export type SearchResultHookReturn = {
@@ -16,4 +12,8 @@ export type SearchResultHookReturn = {
   handlePagination: HandlePagination
   loading: boolean
   movies: IMoviesList | null
+}
+
+export type SearchResultProps = {
+  query: Query
 }

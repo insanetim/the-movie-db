@@ -7,16 +7,6 @@ export enum FilterOptions {
   Crew = 'crew',
 }
 
-export interface ICredit {
-  key: string
-  movieSlug: string
-  posterPath: null | string
-  releaseDate: string
-  releaseDateTitle: string
-  role: string
-  title: string
-}
-
 export type CreditsHookReturn = {
   dataSource: ICredit[]
   error: ErrorMsg
@@ -28,4 +18,14 @@ export type CreditsHookReturn = {
 
 export type CreditsRouteParams = {
   personSlug: string
+}
+
+export interface ICredit {
+  key: string
+  movieSlug: string
+  posterPath: null | string
+  releaseDate: string
+  releaseDateTitle: string
+  role: string
+  title: string
 }

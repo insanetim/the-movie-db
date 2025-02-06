@@ -1,16 +1,3 @@
-interface IPerson {
-  biography: string
-  birthday?: string
-  deathday?: string
-  gender: number
-  id: number
-  known_for_department: string
-  name: string
-  place_of_birth?: string
-  popularity: number
-  profile_path?: string
-}
-
 export interface IExternalIds {
   facebook_id?: string
   instagram_id?: string
@@ -35,4 +22,17 @@ export interface IPersonDetails extends IPerson {
     cast: IPersonCredit[]
     crew: IPersonCredit[]
   }
+}
+
+interface IPerson {
+  biography: string
+  birthday?: string
+  deathday?: string
+  gender: number
+  id: number
+  known_for_department: string
+  name: string
+  place_of_birth?: string
+  popularity: number
+  profile_path?: string
 }

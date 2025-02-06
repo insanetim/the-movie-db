@@ -1,5 +1,11 @@
 import { IResponse } from './global.interface'
 
+export interface IMDBInfo {
+  contentRating?: string
+  id: string
+  rating?: IRating
+}
+
 export interface IMovie {
   id: number | string
   original_language: string
@@ -7,36 +13,6 @@ export interface IMovie {
   poster_path: null | string
   release_date?: string
   title: string
-}
-
-interface IGenre {
-  id: number
-  name: string
-}
-
-interface ICountry {
-  iso_3166_1: string
-  name: string
-}
-
-export interface IMovieDetails extends IMovie {
-  budget: number
-  genres: IGenre[]
-  imdb_id: null | string
-  production_countries: ICountry[]
-  revenue: number
-  runtime: number
-  status: string
-}
-
-export interface IMovieImage {
-  file_path: string
-}
-
-export interface IMovieImages {
-  backdrops: IMovieImage[]
-  logos: IMovieImage[]
-  posters: IMovieImage[]
 }
 
 export interface IMovieAccountStates {
@@ -54,15 +30,14 @@ export interface IMovieCredit {
   profile_path?: string
 }
 
-interface IRating {
-  count?: number
-  star?: number
-}
-
-export interface IMDBInfo {
-  contentRating?: string
-  id: string
-  rating?: IRating
+export interface IMovieDetails extends IMovie {
+  budget: number
+  genres: IGenre[]
+  imdb_id: null | string
+  production_countries: ICountry[]
+  revenue: number
+  runtime: number
+  status: string
 }
 
 export interface IMovieDetailsExtended extends IMovieDetails {
@@ -75,4 +50,29 @@ export interface IMovieDetailsExtended extends IMovieDetails {
   imdbInfo?: IMDBInfo
 }
 
+export interface IMovieImage {
+  file_path: string
+}
+
+export interface IMovieImages {
+  backdrops: IMovieImage[]
+  logos: IMovieImage[]
+  posters: IMovieImage[]
+}
+
 export type IMoviesList = IResponse<IMovie>
+
+interface ICountry {
+  iso_3166_1: string
+  name: string
+}
+
+interface IGenre {
+  id: number
+  name: string
+}
+
+interface IRating {
+  count?: number
+  star?: number
+}

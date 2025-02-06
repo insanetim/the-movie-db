@@ -1,8 +1,8 @@
 import { IAccount } from 'src/interfaces/account.interface'
 
-export type UserData = {
-  password: string
-  username: string
+export type AuthState = {
+  account: IAccount | null
+  isAuthenticated: boolean
 }
 
 export type RequestToken = {
@@ -16,7 +16,7 @@ export type Session = {
   success: boolean
 }
 
-export type AuthState = {
-  account: IAccount | null
-  isAuthenticated: boolean
+export type UserData = {
+  password: string
+  username: string
 }

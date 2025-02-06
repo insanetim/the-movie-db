@@ -1,5 +1,5 @@
 import { ButtonProps } from 'antd'
 
-export type AddToWatchlistButtonProps = {
+export type AddToWatchlistButtonProps = ButtonProps & {
   inWatchlist: boolean
-} & ButtonProps
+}

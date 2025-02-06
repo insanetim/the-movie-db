@@ -1,5 +1,5 @@
 import { ButtonProps } from 'antd'
 
-export type AddToFavoriteButtonProps = {
+export type AddToFavoriteButtonProps = ButtonProps & {
   inFavorite: boolean
-} & ButtonProps
+}

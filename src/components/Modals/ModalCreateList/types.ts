@@ -3,11 +3,6 @@ import { IMovie } from 'src/interfaces/movie.interface'
 
 export type ListData = { description: string; name: string }
 
-export type ModalCreateListProps = {
-  movieId?: IMovie['id']
-  onSuccess?: () => void
-} & ModalProps
-
 export type ModalCreateListHookProps = {
   form: FormInstance
   movieId?: IMovie['id']
@@ -20,4 +15,9 @@ export type ModalCreateListHookReturn = {
   handleOk: () => void
   handleSubmit: (listData: ListData) => void
   inputRef: React.RefObject<InputRef>
+}
+
+export type ModalCreateListProps = ModalProps & {
+  movieId?: IMovie['id']
+  onSuccess?: () => void
 }
