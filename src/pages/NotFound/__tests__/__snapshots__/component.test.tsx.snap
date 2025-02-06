@@ -6,22 +6,22 @@ exports[`NotFound component should match snapshot 1`] = `
     class="container"
   >
     <div
-      class="ant-row ant-row-center css-dev-only-do-not-override-49qm"
+      class="ant-row ant-row-center css-dev-only-do-not-override-1htoz2s"
     >
       <div
-        class="ant-col ant-col-24 ant-col-md-22 ant-col-xl-20 css-dev-only-do-not-override-49qm"
+        class="ant-col ant-col-24 ant-col-md-22 ant-col-xl-20 css-dev-only-do-not-override-1htoz2s"
       >
         <h2
-          class="ant-typography error-title css-dev-only-do-not-override-49qm"
+          class="ant-typography error-title css-dev-only-do-not-override-1htoz2s"
         >
           Oops! We can't find the page you're looking for.
         </h2>
       </div>
       <div
-        class="ant-col ant-col-24 ant-col-md-22 ant-col-xl-20 css-dev-only-do-not-override-49qm"
+        class="ant-col ant-col-24 ant-col-md-22 ant-col-xl-20 css-dev-only-do-not-override-1htoz2s"
       >
         <div
-          class="ant-typography css-dev-only-do-not-override-49qm"
+          class="ant-typography css-dev-only-do-not-override-1htoz2s"
         >
           Please check that the Web site address is spelled correctly or go to 
           <a

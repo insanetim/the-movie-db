@@ -24,7 +24,7 @@ describe('SearchInput component', () => {
   it('should call "handleChange" when input changed', async () => {
     renderWithWrapper(<SearchInput query={''} />)
 
-    const input = screen.getByRole('textbox')
+    const input = screen.getByPlaceholderText('Enter movie name')
     await user.type(input, 'test/search')
 
     expect(mockedHook.handleChange).toHaveBeenCalled()
@@ -42,7 +42,7 @@ describe('SearchInput component', () => {
   it('should call "handleSearch" when enter pressed', async () => {
     renderWithWrapper(<SearchInput query={''} />)
 
-    const input = screen.getByRole('textbox')
+    const input = screen.getByPlaceholderText('Enter movie name')
     await user.type(input, '{Enter}')
 
     expect(mockedHook.handleSearch).toHaveBeenCalled()

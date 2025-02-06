@@ -4,7 +4,7 @@ exports[`PopoverContent component should match snapshot 1`] = `
 <DocumentFragment>
   <div>
     <button
-      class="ant-btn css-dev-only-do-not-override-49qm ant-btn-link ant-btn-color-primary ant-btn-variant-link"
+      class="ant-btn css-dev-only-do-not-override-1htoz2s ant-btn-link ant-btn-color-primary ant-btn-variant-link"
       type="button"
     >
       <span>
@@ -14,7 +14,7 @@ exports[`PopoverContent component should match snapshot 1`] = `
   </div>
   <div>
     <button
-      class="ant-btn css-dev-only-do-not-override-49qm ant-btn-link ant-btn-color-primary ant-btn-variant-link"
+      class="ant-btn css-dev-only-do-not-override-1htoz2s ant-btn-link ant-btn-color-primary ant-btn-variant-link"
       type="button"
     >
       <span>
