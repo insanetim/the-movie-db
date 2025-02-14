@@ -1,3 +1,6 @@
+import '@testing-library/jest-dom'
+import { TextDecoder, TextEncoder } from 'node:util'
+
 Object.defineProperty(window, 'matchMedia', {
   value: jest.fn().mockImplementation(query => ({
     addEventListener: jest.fn(),
@@ -10,4 +13,9 @@ Object.defineProperty(window, 'matchMedia', {
     removeListener: jest.fn(), // deprecated
   })),
   writable: true,
+})
+
+Object.assign(global, {
+  TextDecoder,
+  TextEncoder,
 })

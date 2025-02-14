@@ -35,6 +35,7 @@
     /* Completeness */
     "skipLibCheck": true
   },
-  "include": ["src"],
-  "exclude": ["node_modules", "**.config.js"]
+  "include": ["src", "**/*.ts", "**/*.tsx"],
+  "exclude": ["node_modules", "**.config.js"],
+  "types": ["node", "jest"]
 }

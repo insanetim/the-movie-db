@@ -17,6 +17,6 @@ module.exports = {
     '\\.(s?css)$': 'identity-obj-proxy',
   },
   modulePaths: ['<rootDir>/'],
-  setupFilesAfterEnv: ['<rootDir>/src/setupTests.ts'],
+  setupFilesAfterEnv: ['<rootDir>/jest-setup.ts'],
   testEnvironment: 'jsdom',
 }

@@ -3,16 +3,16 @@
 exports[`DefaultLayout component should match snapshot 1`] = `
 <DocumentFragment>
   <div
-    class="ant-layout css-dev-only-do-not-override-cdzvx5"
+    class="ant-layout css-dev-only-do-not-override-xex5fb"
   >
     <header
-      class="ant-layout-header css-dev-only-do-not-override-cdzvx5"
+      class="ant-layout-header css-dev-only-do-not-override-xex5fb"
     >
       <div
-        class="ant-row ant-row-space-between css-dev-only-do-not-override-cdzvx5"
+        class="ant-row ant-row-space-between css-dev-only-do-not-override-xex5fb"
       >
         <div
-          class="ant-col css-dev-only-do-not-override-cdzvx5"
+          class="ant-col css-dev-only-do-not-override-xex5fb"
         >
           <a
             class="logo text-white"
@@ -23,13 +23,13 @@ exports[`DefaultLayout component should match snapshot 1`] = `
           </a>
         </div>
         <div
-          class="ant-col css-dev-only-do-not-override-cdzvx5"
+          class="ant-col css-dev-only-do-not-override-xex5fb"
         >
           <span
-            class="ant-typography ant-dropdown-trigger css-dev-only-do-not-override-cdzvx5"
+            class="ant-typography ant-dropdown-trigger css-dev-only-do-not-override-xex5fb"
           >
             <span
-              class="ant-avatar ant-avatar-circle ant-avatar-image css-dev-only-do-not-override-cdzvx5"
+              class="ant-avatar ant-avatar-circle ant-avatar-image css-dev-only-do-not-override-xex5fb"
             >
               <img
                 alt="User avatar"
@@ -67,17 +67,17 @@ exports[`DefaultLayout component should match snapshot 1`] = `
       </div>
     </header>
     <main
-      class="ant-layout-content css-dev-only-do-not-override-cdzvx5"
+      class="ant-layout-content css-dev-only-do-not-override-xex5fb"
     />
     <footer
-      class="ant-layout-footer css-dev-only-do-not-override-cdzvx5"
+      class="ant-layout-footer css-dev-only-do-not-override-xex5fb"
     >
       <span
         style="opacity: 0.8;"
       >
         Made with ❤ by 
         <a
-          class="ant-typography css-dev-only-do-not-override-cdzvx5"
+          class="ant-typography css-dev-only-do-not-override-xex5fb"
           href="https://github.com/insanetim/the-movie-db"
           rel="noreferrer"
           target="_blank"
