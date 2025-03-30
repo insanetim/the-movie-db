@@ -6,23 +6,23 @@ exports[`ListDetails component should match snapshot 1`] = `
     class="container top-margin"
   >
     <div
-      class="ant-row css-dev-only-do-not-override-xex5fb"
+      class="ant-row css-dev-only-do-not-override-tjsggz"
     >
       <div
-        class="ant-col ant-col-24 css-dev-only-do-not-override-xex5fb"
+        class="ant-col ant-col-24 css-dev-only-do-not-override-tjsggz"
       >
         <div
-          class="ant-flex css-dev-only-do-not-override-xex5fb ant-flex-align-center ant-flex-gap-middle"
+          class="ant-flex css-dev-only-do-not-override-tjsggz ant-flex-align-center ant-flex-gap-middle"
           style="margin-bottom: 24px;"
         >
           <h1
-            class="ant-typography css-dev-only-do-not-override-xex5fb"
+            class="ant-typography css-dev-only-do-not-override-tjsggz"
             style="margin-bottom: 0px;"
           >
             test/list
           </h1>
           <button
-            class="ant-btn css-dev-only-do-not-override-xex5fb ant-btn-circle ant-btn-text ant-btn-color-default ant-btn-variant-text ant-btn-icon-only"
+            class="ant-btn css-dev-only-do-not-override-tjsggz ant-btn-circle ant-btn-text ant-btn-color-default ant-btn-variant-text ant-btn-icon-only"
             data-testid="deleteListBtn"
             type="button"
           >
@@ -57,15 +57,15 @@ exports[`ListDetails component should match snapshot 1`] = `
       </div>
     </div>
     <div
-      class="ant-row css-dev-only-do-not-override-xex5fb"
+      class="ant-row css-dev-only-do-not-override-tjsggz"
       style="margin-left: -12px; margin-right: -12px; row-gap: 16px;"
     >
       <div
-        class="ant-col ant-col-24 ant-col-sm-12 ant-col-md-8 ant-col-lg-8 ant-col-xl-6 css-dev-only-do-not-override-xex5fb"
+        class="ant-col ant-col-24 ant-col-sm-12 ant-col-md-8 ant-col-lg-8 ant-col-xl-6 css-dev-only-do-not-override-tjsggz"
         style="padding-left: 12px; padding-right: 12px;"
       >
         <div
-          class="ant-card ant-card-bordered ant-card-hoverable css-dev-only-do-not-override-xex5fb"
+          class="ant-card ant-card-bordered ant-card-hoverable css-dev-only-do-not-override-tjsggz"
           data-testid="movieItemCard"
         >
           <div
@@ -136,13 +136,13 @@ exports[`ListDetails component should match snapshot 1`] = `
       </div>
     </div>
     <div
-      class="ant-row ant-row-center css-dev-only-do-not-override-xex5fb"
+      class="ant-row ant-row-center css-dev-only-do-not-override-tjsggz"
     >
       <div
-        class="ant-col css-dev-only-do-not-override-xex5fb"
+        class="ant-col css-dev-only-do-not-override-tjsggz"
       >
         <ul
-          class="ant-pagination pagination css-dev-only-do-not-override-xex5fb"
+          class="ant-pagination pagination css-dev-only-do-not-override-tjsggz"
         >
           <li
             aria-disabled="true"
@@ -325,23 +325,23 @@ exports[`ListDetails component should match snapshot with 1 page 1`] = `
     class="container top-margin"
   >
     <div
-      class="ant-row css-dev-only-do-not-override-xex5fb"
+      class="ant-row css-dev-only-do-not-override-tjsggz"
     >
       <div
-        class="ant-col ant-col-24 css-dev-only-do-not-override-xex5fb"
+        class="ant-col ant-col-24 css-dev-only-do-not-override-tjsggz"
       >
         <div
-          class="ant-flex css-dev-only-do-not-override-xex5fb ant-flex-align-center ant-flex-gap-middle"
+          class="ant-flex css-dev-only-do-not-override-tjsggz ant-flex-align-center ant-flex-gap-middle"
           style="margin-bottom: 24px;"
         >
           <h1
-            class="ant-typography css-dev-only-do-not-override-xex5fb"
+            class="ant-typography css-dev-only-do-not-override-tjsggz"
             style="margin-bottom: 0px;"
           >
             test/list
           </h1>
           <button
-            class="ant-btn css-dev-only-do-not-override-xex5fb ant-btn-circle ant-btn-text ant-btn-color-default ant-btn-variant-text ant-btn-icon-only"
+            class="ant-btn css-dev-only-do-not-override-tjsggz ant-btn-circle ant-btn-text ant-btn-color-default ant-btn-variant-text ant-btn-icon-only"
             data-testid="deleteListBtn"
             type="button"
           >
@@ -376,15 +376,15 @@ exports[`ListDetails component should match snapshot with 1 page 1`] = `
       </div>
     </div>
     <div
-      class="ant-row css-dev-only-do-not-override-xex5fb"
+      class="ant-row css-dev-only-do-not-override-tjsggz"
       style="margin-left: -12px; margin-right: -12px; row-gap: 16px;"
     >
       <div
-        class="ant-col ant-col-24 ant-col-sm-12 ant-col-md-8 ant-col-lg-8 ant-col-xl-6 css-dev-only-do-not-override-xex5fb"
+        class="ant-col ant-col-24 ant-col-sm-12 ant-col-md-8 ant-col-lg-8 ant-col-xl-6 css-dev-only-do-not-override-tjsggz"
         style="padding-left: 12px; padding-right: 12px;"
       >
         <div
-          class="ant-card ant-card-bordered ant-card-hoverable css-dev-only-do-not-override-xex5fb"
+          class="ant-card ant-card-bordered ant-card-hoverable css-dev-only-do-not-override-tjsggz"
           data-testid="movieItemCard"
         >
           <div
@@ -464,23 +464,23 @@ exports[`ListDetails component should match snapshot with empty list 1`] = `
     class="container top-margin"
   >
     <div
-      class="ant-row css-dev-only-do-not-override-xex5fb"
+      class="ant-row css-dev-only-do-not-override-tjsggz"
     >
       <div
-        class="ant-col ant-col-24 css-dev-only-do-not-override-xex5fb"
+        class="ant-col ant-col-24 css-dev-only-do-not-override-tjsggz"
       >
         <div
-          class="ant-flex css-dev-only-do-not-override-xex5fb ant-flex-align-center ant-flex-gap-middle"
+          class="ant-flex css-dev-only-do-not-override-tjsggz ant-flex-align-center ant-flex-gap-middle"
           style="margin-bottom: 24px;"
         >
           <h1
-            class="ant-typography css-dev-only-do-not-override-xex5fb"
+            class="ant-typography css-dev-only-do-not-override-tjsggz"
             style="margin-bottom: 0px;"
           >
             My List
           </h1>
           <button
-            class="ant-btn css-dev-only-do-not-override-xex5fb ant-btn-circle ant-btn-text ant-btn-color-default ant-btn-variant-text ant-btn-icon-only"
+            class="ant-btn css-dev-only-do-not-override-tjsggz ant-btn-circle ant-btn-text ant-btn-color-default ant-btn-variant-text ant-btn-icon-only"
             data-testid="deleteListBtn"
             type="button"
           >
@@ -515,7 +515,7 @@ exports[`ListDetails component should match snapshot with empty list 1`] = `
       </div>
     </div>
     <div
-      class="css-dev-only-do-not-override-xex5fb ant-empty ant-empty-normal"
+      class="css-dev-only-do-not-override-tjsggz ant-empty ant-empty-normal"
     >
       <div
         class="ant-empty-image"
@@ -572,7 +572,7 @@ exports[`ListDetails component should match snapshot with error 1`] = `
     class="container top-margin"
   >
     <div
-      class="ant-result ant-result-error css-dev-only-do-not-override-xex5fb"
+      class="ant-result ant-result-error css-dev-only-do-not-override-tjsggz"
     >
       <div
         class="ant-result-icon"
@@ -614,15 +614,15 @@ exports[`ListDetails component should match snapshot with loading 1`] = `
     class="container top-margin"
   >
     <div
-      class="ant-row ant-row-center top-margin css-dev-only-do-not-override-xex5fb"
+      class="ant-row ant-row-center top-margin css-dev-only-do-not-override-tjsggz"
     >
       <div
-        class="ant-col css-dev-only-do-not-override-xex5fb"
+        class="ant-col css-dev-only-do-not-override-tjsggz"
       >
         <div
           aria-busy="true"
           aria-live="polite"
-          class="ant-spin ant-spin-spinning css-dev-only-do-not-override-xex5fb"
+          class="ant-spin ant-spin-spinning css-dev-only-do-not-override-tjsggz"
         >
           <span
             class="ant-spin-dot-holder"

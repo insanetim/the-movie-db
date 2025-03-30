@@ -5,7 +5,7 @@ exports[`ModalCreateList component should match snapshot 1`] = `
   <div />
   <div>
     <div
-      class="ant-modal-root css-dev-only-do-not-override-xex5fb"
+      class="ant-modal-root css-dev-only-do-not-override-tjsggz"
     >
       <div
         class="ant-modal-mask"
@@ -17,7 +17,7 @@ exports[`ModalCreateList component should match snapshot 1`] = `
         <div
           aria-labelledby="test-id"
           aria-modal="true"
-          class="ant-modal css-dev-only-do-not-override-xex5fb ant-zoom-appear ant-zoom-appear-prepare ant-zoom"
+          class="ant-modal css-dev-only-do-not-override-tjsggz ant-zoom-appear ant-zoom-appear-prepare ant-zoom"
           role="dialog"
           style="width: 520px;"
         >
@@ -73,16 +73,16 @@ exports[`ModalCreateList component should match snapshot 1`] = `
               >
                 <form
                   autocomplete="off"
-                  class="ant-form ant-form-horizontal css-dev-only-do-not-override-xex5fb"
+                  class="ant-form ant-form-horizontal css-dev-only-do-not-override-tjsggz"
                 >
                   <div
-                    class="ant-form-item css-dev-only-do-not-override-xex5fb"
+                    class="ant-form-item css-dev-only-do-not-override-tjsggz"
                   >
                     <div
-                      class="ant-row ant-form-item-row css-dev-only-do-not-override-xex5fb"
+                      class="ant-row ant-form-item-row css-dev-only-do-not-override-tjsggz"
                     >
                       <div
-                        class="ant-col ant-form-item-control css-dev-only-do-not-override-xex5fb"
+                        class="ant-col ant-form-item-control css-dev-only-do-not-override-tjsggz"
                       >
                         <div
                           class="ant-form-item-control-input"
@@ -92,7 +92,7 @@ exports[`ModalCreateList component should match snapshot 1`] = `
                           >
                             <input
                               aria-required="true"
-                              class="ant-input css-dev-only-do-not-override-xex5fb ant-input-outlined"
+                              class="ant-input css-dev-only-do-not-override-tjsggz ant-input-outlined"
                               id="name"
                               placeholder="Name"
                               type="text"
@@ -104,13 +104,13 @@ exports[`ModalCreateList component should match snapshot 1`] = `
                     </div>
                   </div>
                   <div
-                    class="ant-form-item css-dev-only-do-not-override-xex5fb"
+                    class="ant-form-item css-dev-only-do-not-override-tjsggz"
                   >
                     <div
-                      class="ant-row ant-form-item-row css-dev-only-do-not-override-xex5fb"
+                      class="ant-row ant-form-item-row css-dev-only-do-not-override-tjsggz"
                     >
                       <div
-                        class="ant-col ant-form-item-control css-dev-only-do-not-override-xex5fb"
+                        class="ant-col ant-form-item-control css-dev-only-do-not-override-tjsggz"
                       >
                         <div
                           class="ant-form-item-control-input"
@@ -120,7 +120,7 @@ exports[`ModalCreateList component should match snapshot 1`] = `
                           >
                             <input
                               aria-required="true"
-                              class="ant-input css-dev-only-do-not-override-xex5fb ant-input-outlined"
+                              class="ant-input css-dev-only-do-not-override-tjsggz ant-input-outlined"
                               id="description"
                               placeholder="Description"
                               type="text"
@@ -137,7 +137,7 @@ exports[`ModalCreateList component should match snapshot 1`] = `
                 class="ant-modal-footer"
               >
                 <button
-                  class="ant-btn css-dev-only-do-not-override-xex5fb ant-btn-default ant-btn-color-default ant-btn-variant-outlined"
+                  class="ant-btn css-dev-only-do-not-override-tjsggz ant-btn-default ant-btn-color-default ant-btn-variant-outlined"
                   type="button"
                 >
                   <span>
@@ -145,7 +145,7 @@ exports[`ModalCreateList component should match snapshot 1`] = `
                   </span>
                 </button>
                 <button
-                  class="ant-btn css-dev-only-do-not-override-xex5fb ant-btn-primary ant-btn-color-primary ant-btn-variant-solid"
+                  class="ant-btn css-dev-only-do-not-override-tjsggz ant-btn-primary ant-btn-color-primary ant-btn-variant-solid"
                   type="button"
                 >
                   <span>
