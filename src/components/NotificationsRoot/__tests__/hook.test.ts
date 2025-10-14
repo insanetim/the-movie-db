@@ -17,6 +17,7 @@ describe('NotificationsRoot useContainer hook', () => {
         modalType: null,
       },
       notifications: [mockNotification],
+      theme: 'light' as const,
     },
   }
 

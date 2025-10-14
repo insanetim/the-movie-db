@@ -22,6 +22,7 @@ describe('appReducer', () => {
       modalType: null,
     },
     notifications: [],
+    theme: 'light',
   }
 
   it('should return initial state with empty action', () => {
@@ -40,20 +41,6 @@ describe('appReducer', () => {
 
   it('should handle "hideNotification" action', () => {
     const action = hideNotification('test/id')
-    const state = {
-      modal: {
-        modalProps: null,
-        modalType: null,
-      },
-      notifications: [
-        {
-          duration: NOTIFICATION_DURATION,
-          id: action.payload,
-          message: 'test/message',
-          type: NOTIFICATION_TYPE.SUCCESS,
-        },
-      ],
-    }
     const newState = assoc('notifications', [], state)
     const result = appReducer(state, action)
 

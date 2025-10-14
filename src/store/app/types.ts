@@ -5,6 +5,7 @@ import { NOTIFICATION_TYPE } from 'src/constants/app'
 export type AppState = {
   modal: Modal
   notifications: Notification[]
+  theme: Theme
 }
 
 export type Modal = {
@@ -26,3 +27,5 @@ export type ShowNotificationProps = {
   message: string
   type?: NOTIFICATION_TYPE
 }
+
+export type Theme = 'dark' | 'light'

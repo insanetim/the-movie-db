@@ -9,6 +9,7 @@ const mockState: RootState = {
       modalType: null,
     },
     notifications: [],
+    theme: 'light',
   },
   auth: {
     _persist: {

@@ -16,6 +16,7 @@ describe('ModalRoot useContainer hook', () => {
         modalType: 'MODAL_CREATE_LIST' as const,
       },
       notifications: [],
+      theme: 'light' as const,
     },
   }
 
