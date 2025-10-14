@@ -11,6 +11,10 @@ jest.spyOn(reactRedux, 'useAppDispatch').mockReturnValue(mockDispatch)
 describe('ModalRoot useContainer hook', () => {
   const mockState = {
     app: {
+      _persist: {
+        rehydrated: true,
+        version: -1,
+      },
       modal: {
         modalProps: null,
         modalType: 'MODAL_CREATE_LIST' as const,

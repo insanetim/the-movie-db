@@ -4,6 +4,10 @@ import { personDetailsInitialState } from 'src/store/personDetails/reducer'
 
 const mockState: RootState = {
   app: {
+    _persist: {
+      rehydrated: true,
+      version: -1,
+    },
     modal: {
       modalProps: null,
       modalType: null,
