@@ -19,4 +19,16 @@ describe('ThemeProvider component', () => {
 
     expect(asFragment()).toMatchSnapshot()
   })
+
+  it('should match snapshot when isDark is true', () => {
+    mockedHook.isDark = true
+
+    const { asFragment } = renderWithWrapper(
+      <ThemeProvider>
+        <div data-testid='child'>content</div>
+      </ThemeProvider>
+    )
+
+    expect(asFragment()).toMatchSnapshot()
+  })
 })
