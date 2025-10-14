@@ -1,0 +1,8 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ThemeSwitch useContainer hook should match snapshot 1`] = `
+{
+  "currentTheme": "light",
+  "handleChange": [Function],
+}
+`;
