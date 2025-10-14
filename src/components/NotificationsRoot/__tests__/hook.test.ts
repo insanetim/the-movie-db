@@ -1,6 +1,7 @@
 import { act } from '@testing-library/react'
 import mockNotification from 'src/__mocks__/mockNotification'
 import { hideNotification } from 'src/store/app/actions'
+import { Theme } from 'src/store/app/types'
 import * as reactRedux from 'src/store/hooks'
 import { renderHookWithWrapper } from 'src/utils/testHelpers/renderWithWrapper'
 
@@ -21,7 +22,7 @@ describe('NotificationsRoot useContainer hook', () => {
         modalType: null,
       },
       notifications: [mockNotification],
-      theme: 'light' as const,
+      theme: 'light' as Theme,
     },
   }
 
