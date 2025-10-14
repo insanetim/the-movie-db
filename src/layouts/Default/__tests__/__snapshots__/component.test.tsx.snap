@@ -127,7 +127,7 @@ exports[`DefaultLayout component should match snapshot 1`] = `
               style="padding-left: 12px; padding-right: 12px;"
             >
               <span
-                class="ant-typography ant-dropdown-trigger css-dev-only-do-not-override-1odpy5d"
+                class="ant-typography ant-dropdown-trigger text-white css-dev-only-do-not-override-1odpy5d"
               >
                 <span
                   class="ant-avatar ant-avatar-circle ant-avatar-image css-dev-only-do-not-override-1odpy5d"
