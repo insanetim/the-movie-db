@@ -45,6 +45,8 @@ const rootReducer = combineReducers({
   watchlist: watchlistReducer,
 })
 
+export type RootState = ReturnType<typeof rootReducer>
+
 export const setupStore = (preloadedState?: Partial<RootState>) =>
   configureStore({
     devTools: process.env.NODE_ENV !== 'production',
@@ -70,11 +72,11 @@ export const store = setupStore()
 
 export const persistor = persistStore(store)
 
-// Infer the `AppDispatch` type from the store itself
-export type AppDispatch = typeof store.dispatch
-// Infer the type of `store`
+export type AppDispatch = AppStore['dispatch']
 export type AppStore = typeof store
-// Export a reusable type for handwritten thunks
-export type AppThunk = ThunkAction<void, RootState, unknown, Action>
-// Same for the `RootState` type
-export type RootState = ReturnType<typeof rootReducer>
+export type AppThunk<ThunkReturnType = void> = ThunkAction<
+  ThunkReturnType,
+  RootState,
+  unknown,
+  Action
+>
