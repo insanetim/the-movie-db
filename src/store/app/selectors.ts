@@ -1,1 +1,1 @@
-export { modalSelector, notificationsSelector } from './reducer'
+export { modalSelector, notificationsSelector, themeSelector } from './reducer'

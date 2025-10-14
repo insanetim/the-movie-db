@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ThemeProvider useContainer hook should match snapshot with dark theme 1`] = `
+{
+  "algorithm": [Function],
+  "isDark": true,
+}
+`;
+
+exports[`ThemeProvider useContainer hook should match snapshot with light theme 1`] = `
+{
+  "algorithm": [Function],
+  "isDark": false,
+}
+`;

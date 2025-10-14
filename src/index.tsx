@@ -1,12 +1,11 @@
 import { disableReactDevTools } from '@fvilers/disable-react-devtools'
 import { createRoot } from 'react-dom/client'
-import { Provider } from 'react-redux'
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import { PersistGate } from 'redux-persist/integration/react'
+import { Route, BrowserRouter as Router, Routes } from 'react-router-dom'
 import App from 'src/App'
-import { persistor, store } from 'src/store'
 
 import './assets/styles/styles.scss'
+import StoreProvider from './contexts/StoreProvider'
+import ThemeProvider from './contexts/ThemeProvider'
 
 if (process.env.NODE_ENV === 'production') {
   disableReactDevTools()
@@ -16,19 +15,16 @@ const rootElement = document.getElementById('root')
 const root = createRoot(rootElement as HTMLElement)
 
 root.render(
-  <Provider store={store}>
-    <PersistGate
-      loading={null}
-      persistor={persistor}
-    >
-      <BrowserRouter>
+  <StoreProvider>
+    <ThemeProvider>
+      <Router>
         <Routes>
           <Route
             element={<App />}
             path='/*'
           />
         </Routes>
-      </BrowserRouter>
-    </PersistGate>
-  </Provider>
+      </Router>
+    </ThemeProvider>
+  </StoreProvider>
 )

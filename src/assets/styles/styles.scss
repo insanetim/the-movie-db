@@ -38,10 +38,6 @@ body {
   margin-top: 64px;
 }
 
-.ant-layout {
-  background-color: #fff;
-}
-
 .ant-layout-content {
   min-height: calc(100vh - 134px);
   padding-bottom: 12px;
@@ -52,7 +48,6 @@ body {
   z-index: 999;
   top: 0;
   padding: 0 12px;
-  background-color: #032541;
   box-shadow:
     0 1px 2px -2px rgb(0 0 0 / 16%),
     0 3px 6px 0 rgb(0 0 0 / 12%),
@@ -65,10 +60,6 @@ body {
   @media (width >= 1200px) {
     padding: 0 48px;
   }
-}
-
-.ant-layout-header .ant-typography {
-  color: #fff;
 }
 
 .top-margin {
@@ -109,10 +100,6 @@ body {
   @media (width <= 575px) {
     display: none;
   }
-}
-
-.ant-card-meta-description {
-  color: rgb(0 0 0 / 55%) !important;
 }
 
 .ant-card-actions {

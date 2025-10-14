@@ -1,6 +1,7 @@
 import { act } from '@testing-library/react'
 import mockNotification from 'src/__mocks__/mockNotification'
 import { hideNotification } from 'src/store/app/actions'
+import { Theme } from 'src/store/app/types'
 import * as reactRedux from 'src/store/hooks'
 import { renderHookWithWrapper } from 'src/utils/testHelpers/renderWithWrapper'
 
@@ -12,11 +13,16 @@ jest.spyOn(reactRedux, 'useAppDispatch').mockReturnValue(mockDispatch)
 describe('NotificationsRoot useContainer hook', () => {
   const mockState = {
     app: {
+      _persist: {
+        rehydrated: true,
+        version: -1,
+      },
       modal: {
         modalProps: null,
         modalType: null,
       },
       notifications: [mockNotification],
+      theme: 'light' as Theme,
     },
   }
 

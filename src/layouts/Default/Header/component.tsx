@@ -1,6 +1,7 @@
 import { CaretDownOutlined, UserOutlined } from '@ant-design/icons'
 import { Avatar, Col, Dropdown, Layout, MenuProps, Row, Typography } from 'antd'
 import { Link } from 'react-router-dom'
+import ThemeSwitch from 'src/components/ThemeSwitch'
 import { APP_NAME } from 'src/constants/app'
 
 import useContainer from './hook'
@@ -47,24 +48,31 @@ const Header: React.FC = () => {
           </Link>
         </Col>
         <Col>
-          {isAuthenticated ? (
-            <Dropdown menu={{ items }}>
-              <Typography.Text>
-                {avatar}
-                {` `}
-                <span className='hide-sm-down'>{username}</span>
-                {` `}
-                <CaretDownOutlined />
-              </Typography.Text>
-            </Dropdown>
-          ) : (
-            <Typography.Link
-              className='text-white'
-              onClick={handleLogIn}
-            >
-              Sign in
-            </Typography.Link>
-          )}
+          <Row gutter={24}>
+            <Col>
+              <ThemeSwitch />
+            </Col>
+            <Col>
+              {isAuthenticated ? (
+                <Dropdown menu={{ items }}>
+                  <Typography.Text>
+                    {avatar}
+                    {` `}
+                    <span className='hide-sm-down'>{username}</span>
+                    {` `}
+                    <CaretDownOutlined />
+                  </Typography.Text>
+                </Dropdown>
+              ) : (
+                <Typography.Link
+                  className='text-white'
+                  onClick={handleLogIn}
+                >
+                  Sign in
+                </Typography.Link>
+              )}
+            </Col>
+          </Row>
         </Col>
       </Row>
     </Layout.Header>

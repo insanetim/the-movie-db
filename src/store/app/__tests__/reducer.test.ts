@@ -4,6 +4,7 @@ import { NOTIFICATION_DURATION, NOTIFICATION_TYPE } from 'src/constants/app'
 import {
   hideModal,
   hideNotification,
+  setTheme,
   showModal,
   showNotification,
 } from '../actions'
@@ -22,6 +23,7 @@ describe('appReducer', () => {
       modalType: null,
     },
     notifications: [],
+    theme: 'light',
   }
 
   it('should return initial state with empty action', () => {
@@ -39,22 +41,47 @@ describe('appReducer', () => {
   })
 
   it('should handle "hideNotification" action', () => {
-    const action = hideNotification('test/id')
-    const state = {
-      modal: {
-        modalProps: null,
-        modalType: null,
-      },
-      notifications: [
+    const stateWithNotifications = assoc(
+      'notifications',
+      [
         {
           duration: NOTIFICATION_DURATION,
-          id: action.payload,
+          id: 'test/id',
           message: 'test/message',
           type: NOTIFICATION_TYPE.SUCCESS,
         },
+        {
+          duration: NOTIFICATION_DURATION,
+          id: 'other/id',
+          message: 'other/message',
+          type: NOTIFICATION_TYPE.ERROR,
+        },
       ],
-    }
-    const newState = assoc('notifications', [], state)
+      state
+    )
+
+    const action = hideNotification('test/id')
+    const expectedState = assoc(
+      'notifications',
+      [
+        {
+          duration: NOTIFICATION_DURATION,
+          id: 'other/id',
+          message: 'other/message',
+          type: NOTIFICATION_TYPE.ERROR,
+        },
+      ],
+      state
+    )
+
+    const result = appReducer(stateWithNotifications, action)
+
+    expect(result).toEqual(expectedState)
+  })
+
+  it('should handle "setTheme" action', () => {
+    const action = setTheme('dark')
+    const newState = assoc('theme', action.payload, state)
     const result = appReducer(state, action)
 
     expect(result).toEqual(newState)

@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ThemeProvider component should match snapshot 1`] = `
+<DocumentFragment>
+  <div
+    data-testid="child"
+  >
+    content
+  </div>
+</DocumentFragment>
+`;
+
+exports[`ThemeProvider component should match snapshot when isDark is true 1`] = `
+<DocumentFragment>
+  <div
+    data-testid="child"
+  >
+    content
+  </div>
+</DocumentFragment>
+`;

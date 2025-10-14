@@ -27,6 +27,12 @@ import movieDetailsReducer from './movieDetails'
 import personDetailsReducer from './personDetails'
 import watchlistReducer from './watchlist'
 
+const appPersistConfig = {
+  key: 'app',
+  storage,
+  whitelist: ['theme'],
+}
+
 const authPersistConfig = {
   key: 'auth',
   storage,
@@ -34,7 +40,7 @@ const authPersistConfig = {
 }
 
 const rootReducer = combineReducers({
-  app: appReducer,
+  app: persistReducer(appPersistConfig, appReducer),
   auth: persistReducer(authPersistConfig, authReducer),
   createdLists: createdListsReducer,
   dashboard: dashboardReducer,
