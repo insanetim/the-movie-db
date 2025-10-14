@@ -1,4 +1,5 @@
-import { setTheme, themeSelector } from 'src/store/app/reducer'
+import { setTheme } from 'src/store/app/actions'
+import { themeSelector } from 'src/store/app/selectors'
 import { Theme } from 'src/store/app/types'
 import { useAppDispatch, useAppSelector } from 'src/store/hooks'
 

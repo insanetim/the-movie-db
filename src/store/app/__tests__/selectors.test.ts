@@ -1,6 +1,10 @@
 import mockState from 'src/__mocks__/mockState'
 
-import { modalSelector, notificationsSelector } from '../selectors'
+import {
+  modalSelector,
+  notificationsSelector,
+  themeSelector,
+} from '../selectors'
 
 describe('app selectors', () => {
   it('modalSelector', () => {
@@ -16,5 +20,11 @@ describe('app selectors', () => {
     const result = notificationsSelector(mockState)
 
     expect(result).toEqual([])
+  })
+
+  it('themeSelector', () => {
+    const result = themeSelector(mockState)
+
+    expect(result).toEqual('light')
   })
 })
