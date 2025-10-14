@@ -55,7 +55,7 @@ const Header: React.FC = () => {
             <Col>
               {isAuthenticated ? (
                 <Dropdown menu={{ items }}>
-                  <Typography.Text>
+                  <Typography.Text className='text-white'>
                     {avatar}
                     {` `}
                     <span className='hide-sm-down'>{username}</span>
