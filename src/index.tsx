@@ -5,6 +5,7 @@ import App from 'src/App'
 
 import './assets/styles/styles.scss'
 import StoreProvider from './contexts/StoreProvider'
+import ThemeProvider from './contexts/ThemeProvider'
 
 if (process.env.NODE_ENV === 'production') {
   disableReactDevTools()
@@ -15,13 +16,15 @@ const root = createRoot(rootElement as HTMLElement)
 
 root.render(
   <StoreProvider>
-    <Router>
-      <Routes>
-        <Route
-          element={<App />}
-          path='/*'
-        />
-      </Routes>
-    </Router>
+    <ThemeProvider>
+      <Router>
+        <Routes>
+          <Route
+            element={<App />}
+            path='/*'
+          />
+        </Routes>
+      </Router>
+    </ThemeProvider>
   </StoreProvider>
 )
