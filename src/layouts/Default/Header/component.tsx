@@ -3,7 +3,7 @@ import { Avatar, Col, Dropdown, Layout, MenuProps, Row, Typography } from 'antd'
 import { Link } from 'react-router-dom'
 import ThemeSwitch from 'src/components/ThemeSwitch'
 import { APP_NAME } from 'src/constants/app'
-import { getAvatarUrl } from 'src/utils/helpers/getAvatarUrl'
+import getAvatarUrl from 'src/utils/helpers/getAvatarUrl'
 
 import useContainer from './hook'
 

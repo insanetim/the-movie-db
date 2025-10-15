@@ -1,10 +1,10 @@
 import { useState } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
 import useHandleError from 'src/hooks/useHandleError'
-import { UserData } from 'src/store/auth/types'
 import {
   useCreateSessionMutation,
   useLazyCreateRequestTokenQuery,
+  UserData,
   useValidateWithLoginMutation,
 } from 'src/store/features/auth'
 
