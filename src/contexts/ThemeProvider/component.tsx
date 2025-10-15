@@ -14,7 +14,7 @@ const ThemeProvider: React.FC<PropsWithChildren> = ({ children }) => {
           Layout: {
             bodyBg: isDark ? '#121212' : '#fff',
             footerBg: isDark ? '#121212' : '#f5f5f5',
-            headerBg: isDark ? '#021525' : '#032541',
+            headerBg: '#032541',
           },
         },
       }}
