@@ -1,7 +1,7 @@
 import Cookies from 'js-cookie'
 import mockAccount from 'src/__mocks__/mockAccount'
 import * as apiRoutes from 'src/api/tmdb/apiRoutes'
-import { NOTIFICATION_TYPE } from 'src/constants/app'
+import { NOTIFICATION_TYPE, SESSION_COOKIE_NAME } from 'src/constants/app'
 import { showNotification } from 'src/store/app/actions'
 
 import { fetchAccount, logIn, logOut } from '../actions'
@@ -82,7 +82,7 @@ describe('auth actions', () => {
       const { calls } = dispatch.mock
 
       expect(deleteSession).toHaveBeenCalledWith({ sessionId })
-      expect(cookiesRemoveSpy).toHaveBeenCalledWith('tmdb.session_id')
+      expect(cookiesRemoveSpy).toHaveBeenCalledWith(SESSION_COOKIE_NAME)
       expect(calls).toHaveLength(2)
       expect(calls[0][0].type).toBe(logOut.pending.type)
       expect(calls[1][0].type).toBe(logOut.fulfilled.type)

@@ -6,7 +6,7 @@ import {
   getAccountDetails,
   validateWithLogin,
 } from 'src/api/tmdb/apiRoutes'
-import { NOTIFICATION_TYPE } from 'src/constants/app'
+import { NOTIFICATION_TYPE, SESSION_COOKIE_NAME } from 'src/constants/app'
 import { showNotification } from 'src/store/app/actions'
 import errorMessage from 'src/utils/helpers/errorMessage'
 import getSessionId from 'src/utils/helpers/getSessionId'
@@ -45,7 +45,7 @@ const logOut = createAppAsyncThunk(
     try {
       await deleteSession({ sessionId })
 
-      Cookies.remove('tmdb.session_id')
+      Cookies.remove(SESSION_COOKIE_NAME)
     } catch (error) {
       dispatch(
         showNotification({

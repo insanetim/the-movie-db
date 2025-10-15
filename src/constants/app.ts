@@ -1,4 +1,5 @@
 const APP_NAME = 'The Movie DB'
+const SESSION_COOKIE_NAME = 'tmdb.session_id'
 const TMDB_API_URL = process.env.TMDB_API_URL as string
 const TMDB_ACCESS_TOKEN_AUTH = process.env.TMDB_ACCESS_TOKEN_AUTH as string
 const IMDB_API_URL = process.env.IMDB_API_URL as string
@@ -20,6 +21,7 @@ export {
   IMDB_API_URL,
   NOTIFICATION_DURATION,
   NOTIFICATION_TYPE,
+  SESSION_COOKIE_NAME,
   TMDB_ACCESS_TOKEN_AUTH,
   TMDB_API_URL,
 }
