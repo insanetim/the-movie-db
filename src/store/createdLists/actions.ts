@@ -7,12 +7,12 @@ import {
 } from 'src/api/tmdb/apiRoutes'
 import { NOTIFICATION_TYPE } from 'src/constants/app'
 import { IList } from 'src/interfaces/list.interface'
-import { showNotification } from 'src/store/app/actions'
 import { accountSelector } from 'src/store/auth/selectors'
 import errorMessage from 'src/utils/helpers/errorMessage'
 import getSessionId from 'src/utils/helpers/getSessionId'
 import listMessage from 'src/utils/helpers/listMessage'
 
+import { showNotification } from '../features/app'
 import { movieDetailsSelector } from '../movieDetails/selectors'
 import { createAppAsyncThunk } from '../withTypes'
 import * as types from './constants'

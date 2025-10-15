@@ -1,8 +1,8 @@
 import { act, renderHook } from '@testing-library/react'
 import { FormInstance } from 'antd'
 import React from 'react'
-import { hideModal } from 'src/store/app/actions'
 import * as createdListsActions from 'src/store/createdLists/actions'
+import { hideModal } from 'src/store/features/app'
 import * as reactRedux from 'src/store/hooks'
 
 import useContainer from '../hook'

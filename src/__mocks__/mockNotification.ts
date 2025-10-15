@@ -1,5 +1,5 @@
 import { NOTIFICATION_DURATION, NOTIFICATION_TYPE } from 'src/constants/app'
-import { Notification } from 'src/store/app/types'
+import { Notification } from 'src/store/features/app'
 
 const mockNotification: Notification = {
   duration: NOTIFICATION_DURATION,

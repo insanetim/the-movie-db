@@ -2,7 +2,7 @@ import Cookies from 'js-cookie'
 import mockAccount from 'src/__mocks__/mockAccount'
 import * as apiRoutes from 'src/api/tmdb/apiRoutes'
 import { NOTIFICATION_TYPE, SESSION_COOKIE_NAME } from 'src/constants/app'
-import { showNotification } from 'src/store/app/actions'
+import { showNotification } from 'src/store/features/app'
 
 import { fetchAccount, logIn, logOut } from '../actions'
 

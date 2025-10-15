@@ -2,7 +2,7 @@ import { mockImdbInfo, mockMovieDetailsExtended } from 'src/__mocks__/mockMovie'
 import * as imdbRoutes from 'src/api/imdb/apiRoutes'
 import * as tmdbRoutes from 'src/api/tmdb/apiRoutes'
 import { NOTIFICATION_TYPE } from 'src/constants/app'
-import { showNotification } from 'src/store/app/actions'
+import { showNotification } from 'src/store/features/app'
 
 import {
   changeMovieInFavorite,

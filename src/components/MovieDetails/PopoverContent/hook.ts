@@ -1,7 +1,7 @@
 import { modalComponentsMap } from 'src/components/ModalRoot/modalComponents'
-import { showModal } from 'src/store/app/actions'
 import { addToList } from 'src/store/createdLists/actions'
 import { createdListsSelector } from 'src/store/createdLists/selectors'
+import { showModal } from 'src/store/features/app'
 import { useAppDispatch, useAppSelector } from 'src/store/hooks'
 
 import {

@@ -1,7 +1,7 @@
 import { nanoid, PayloadAction } from '@reduxjs/toolkit'
 import { NOTIFICATION_DURATION, NOTIFICATION_TYPE } from 'src/constants/app'
+import { createAppSlice } from 'src/store/withTypes'
 
-import { createAppSlice } from '../withTypes'
 import { AppState, Notification, ShowNotificationProps, Theme } from './types'
 
 const initialState: AppState = {
@@ -13,7 +13,7 @@ const initialState: AppState = {
   theme: 'light',
 }
 
-const appSlice = createAppSlice({
+export const appSlice = createAppSlice({
   initialState,
   name: 'app',
   reducers: {
@@ -66,4 +66,4 @@ export const {
 export const { modalSelector, notificationsSelector, themeSelector } =
   appSlice.selectors
 
-export default appSlice.reducer
+export const appReducer = appSlice.reducer

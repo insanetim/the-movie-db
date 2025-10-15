@@ -10,7 +10,7 @@ import { accountSelector } from 'src/store/auth/selectors'
 import errorMessage from 'src/utils/helpers/errorMessage'
 import getSessionId from 'src/utils/helpers/getSessionId'
 
-import { showNotification } from '../app/actions'
+import { showNotification } from '../features/app'
 import { createAppAsyncThunk } from '../withTypes'
 import * as types from './constants'
 import {

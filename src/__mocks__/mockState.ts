@@ -1,8 +1,20 @@
+import { apiSlice } from 'src/store/api/apiSlice'
 import { RootState } from 'src/store/index'
 import { movieDetailsInitialState } from 'src/store/movieDetails/reducer'
 import { personDetailsInitialState } from 'src/store/personDetails/reducer'
 
 const mockState: RootState = {
+  [apiSlice.reducerPath]: {
+    config: {
+      focused: true,
+      middlewareRegistered: true,
+      online: true,
+    },
+    mutations: {},
+    provided: {},
+    queries: {},
+    subscriptions: {},
+  } as ReturnType<typeof apiSlice.reducer>,
   app: {
     _persist: {
       rehydrated: true,

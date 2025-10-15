@@ -7,10 +7,10 @@ import {
   validateWithLogin,
 } from 'src/api/tmdb/apiRoutes'
 import { NOTIFICATION_TYPE, SESSION_COOKIE_NAME } from 'src/constants/app'
-import { showNotification } from 'src/store/app/actions'
 import errorMessage from 'src/utils/helpers/errorMessage'
 import getSessionId from 'src/utils/helpers/getSessionId'
 
+import { showNotification } from '../features/app'
 import { createAppAsyncThunk } from '../withTypes'
 import * as types from './constants'
 import { UserData } from './types'

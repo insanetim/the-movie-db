@@ -1,5 +1,7 @@
-import { hideNotification as hideNotificationAction } from 'src/store/app/actions'
-import { notificationsSelector } from 'src/store/app/selectors'
+import {
+  hideNotification as hideNotificationAction,
+  notificationsSelector,
+} from 'src/store/features/app'
 import { useAppDispatch, useAppSelector } from 'src/store/hooks'
 
 import { NotificationsRootHookReturn } from './types'

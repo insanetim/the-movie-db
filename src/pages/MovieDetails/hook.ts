@@ -1,12 +1,12 @@
 import { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
-import { showNotification } from 'src/store/app/actions'
 import {
   accountSelector,
   isAuthenticatedSelector,
 } from 'src/store/auth/selectors'
 import { fetchLists } from 'src/store/createdLists/actions'
 import { createdListsSelector } from 'src/store/createdLists/selectors'
+import { showNotification } from 'src/store/features/app'
 import { useAppDispatch, useAppSelector } from 'src/store/hooks'
 import {
   changeMovieInFavorite,

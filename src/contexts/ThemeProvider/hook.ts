@@ -1,5 +1,5 @@
 import { theme } from 'antd'
-import { themeSelector } from 'src/store/app/reducer'
+import { themeSelector } from 'src/store/features/app'
 import { useAppSelector } from 'src/store/hooks'
 
 import { ThemeProviderHookReturn } from './types'

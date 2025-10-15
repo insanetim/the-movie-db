@@ -1,5 +1,4 @@
-import { hideModal } from 'src/store/app/actions'
-import { modalSelector } from 'src/store/app/selectors'
+import { hideModal, modalSelector } from 'src/store/features/app'
 import { useAppDispatch, useAppSelector } from 'src/store/hooks'
 
 import { ModalRootHookReturn } from './types'

@@ -1,6 +1,5 @@
 import { act } from '@testing-library/react'
-import { hideModal } from 'src/store/app/actions'
-import { Theme } from 'src/store/app/types'
+import { hideModal, Theme } from 'src/store/features/app'
 import * as reactRedux from 'src/store/hooks'
 import { renderHookWithWrapper } from 'src/utils/testHelpers/renderWithWrapper'
 

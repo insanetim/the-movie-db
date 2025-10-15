@@ -1,6 +1,4 @@
-import { setTheme } from 'src/store/app/actions'
-import { themeSelector } from 'src/store/app/selectors'
-import { Theme } from 'src/store/app/types'
+import { setTheme, Theme, themeSelector } from 'src/store/features/app'
 import { useAppDispatch, useAppSelector } from 'src/store/hooks'
 
 import { ThemeSwitchHookReturn } from './types'

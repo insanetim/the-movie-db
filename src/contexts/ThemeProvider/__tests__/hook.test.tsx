@@ -1,4 +1,4 @@
-import { Theme } from 'src/store/app/types'
+import { Theme } from 'src/store/features/app'
 import { renderHookWithWrapper } from 'src/utils/testHelpers/renderWithWrapper'
 
 import useContainer from '../hook'

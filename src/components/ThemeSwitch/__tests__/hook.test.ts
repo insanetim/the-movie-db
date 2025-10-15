@@ -1,5 +1,5 @@
 import { act } from '@testing-library/react'
-import * as appReducer from 'src/store/app/reducer'
+import * as appSlice from 'src/store/features/app'
 import * as reactRedux from 'src/store/hooks'
 import { renderHookWithWrapper } from 'src/utils/testHelpers/renderWithWrapper'
 
@@ -22,6 +22,6 @@ describe('ThemeSwitch useContainer hook', () => {
       result.current.handleChange('dark')
     })
 
-    expect(mockDispatch).toHaveBeenCalledWith(appReducer.setTheme('dark'))
+    expect(mockDispatch).toHaveBeenCalledWith(appSlice.setTheme('dark'))
   })
 })

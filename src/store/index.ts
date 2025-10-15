@@ -17,12 +17,11 @@ import {
 import storage from 'redux-persist/lib/storage'
 
 import { apiSlice } from './api/apiSlice'
-import appReducer from './app'
-import { showModal } from './app/actions'
 import authReducer from './auth'
 import createdListsReducer from './createdLists'
 import dashboardReducer from './dashboard'
 import favoriteReducer from './favorite'
+import { appReducer, showModal } from './features/app'
 import listDetailsReducer from './listDetails'
 import movieDetailsReducer from './movieDetails'
 import personDetailsReducer from './personDetails'

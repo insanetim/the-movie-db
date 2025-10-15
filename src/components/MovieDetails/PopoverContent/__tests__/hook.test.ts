@@ -1,7 +1,7 @@
 import { act } from '@testing-library/react'
 import { modalComponentsMap } from 'src/components/ModalRoot/modalComponents'
-import { showModal } from 'src/store/app/actions'
 import * as createdListsActions from 'src/store/createdLists/actions'
+import { showModal } from 'src/store/features/app'
 import * as reactRedux from 'src/store/hooks'
 import { renderHookWithWrapper } from 'src/utils/testHelpers/renderWithWrapper'
 
