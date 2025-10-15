@@ -16,6 +16,7 @@ import {
 } from 'redux-persist'
 import storage from 'redux-persist/lib/storage'
 
+import { apiSlice } from './api/apiSlice'
 import appReducer from './app'
 import { showModal } from './app/actions'
 import authReducer from './auth'
@@ -40,6 +41,7 @@ const authPersistConfig = {
 }
 
 const rootReducer = combineReducers({
+  [apiSlice.reducerPath]: apiSlice.reducer,
   app: persistReducer(appPersistConfig, appReducer),
   auth: persistReducer(authPersistConfig, authReducer),
   createdLists: createdListsReducer,
@@ -50,8 +52,6 @@ const rootReducer = combineReducers({
   personDetails: personDetailsReducer,
   watchlist: watchlistReducer,
 })
-
-export type RootState = ReturnType<typeof rootReducer>
 
 export const setupStore = (preloadedState?: Partial<RootState>) =>
   configureStore({
@@ -69,13 +69,12 @@ export const setupStore = (preloadedState?: Partial<RootState>) =>
             showModal.type,
           ],
         },
-      }),
+      }).concat(apiSlice.middleware),
     preloadedState,
     reducer: rootReducer,
   })
 
 export const store = setupStore()
-
 export const persistor = persistStore(store)
 
 export type AppDispatch = AppStore['dispatch']
@@ -86,3 +85,4 @@ export type AppThunk<ThunkReturnType = void> = ThunkAction<
   unknown,
   Action
 >
+export type RootState = ReturnType<typeof rootReducer>
