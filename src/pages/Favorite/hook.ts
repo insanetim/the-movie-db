@@ -3,13 +3,13 @@ import { MouseEvent, useEffect } from 'react'
 import { useSearchParams } from 'react-router-dom'
 import useUpdatePage from 'src/hooks/useUpdatePage'
 import { IMovie } from 'src/interfaces/movie.interface'
-import { accountSelector } from 'src/store/auth/selectors'
 import { fetchFavorite } from 'src/store/favorite/actions'
 import {
   favoriteErrorSelector,
   favoriteLoadingSelector,
   favoriteMoviesSelector,
 } from 'src/store/favorite/selectors'
+import { selectAccount } from 'src/store/features/auth'
 import { useAppDispatch, useAppSelector } from 'src/store/hooks'
 import { changeMovieInFavorite } from 'src/store/movieDetails/actions'
 import getParams from 'src/utils/helpers/getParams'
@@ -18,7 +18,7 @@ import { FavoriteHookReturn } from './types'
 
 const useContainer = (): FavoriteHookReturn => {
   const dispatch = useAppDispatch()
-  const account = useAppSelector(accountSelector)
+  const account = useAppSelector(selectAccount)
   const movies = useAppSelector(favoriteMoviesSelector)
   const loading = useAppSelector(favoriteLoadingSelector)
   const error = useAppSelector(favoriteErrorSelector)

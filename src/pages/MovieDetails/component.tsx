@@ -33,10 +33,10 @@ const MovieDetails: React.FC = () => {
     handleGoToCast,
     handlePopoverMouseEnter,
     handleWatchlistClick,
-    isAuthenticated,
     loading,
     movie,
     popoverOpen,
+    sessionId,
     setPopoverOpen,
   } = useContainer()
 
@@ -74,7 +74,7 @@ const MovieDetails: React.FC = () => {
           <Typography.Title style={{ marginBottom: 0 }}>
             {title}
           </Typography.Title>
-          {isAuthenticated && (
+          {sessionId && (
             <>
               <Popover
                 content={

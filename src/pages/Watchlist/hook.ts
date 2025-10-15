@@ -3,7 +3,7 @@ import { MouseEvent, useEffect } from 'react'
 import { useSearchParams } from 'react-router-dom'
 import useUpdatePage from 'src/hooks/useUpdatePage'
 import { IMovie } from 'src/interfaces/movie.interface'
-import { accountSelector } from 'src/store/auth/selectors'
+import { selectAccount } from 'src/store/features/auth'
 import { useAppDispatch, useAppSelector } from 'src/store/hooks'
 import { changeMovieInWatchlist } from 'src/store/movieDetails/actions'
 import { fetchWatchlist } from 'src/store/watchlist/actions'
@@ -18,7 +18,7 @@ import { WatchlistHookReturn } from './types'
 
 const useContainer = (): WatchlistHookReturn => {
   const dispatch = useAppDispatch()
-  const account = useAppSelector(accountSelector)
+  const account = useAppSelector(selectAccount)
   const movies = useAppSelector(watchlistMoviesSelector)
   const loading = useAppSelector(watchlistLoadingSelector)
   const error = useAppSelector(watchlistErrorSelector)

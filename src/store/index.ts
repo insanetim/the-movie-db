@@ -16,12 +16,12 @@ import {
 } from 'redux-persist'
 import storage from 'redux-persist/lib/storage'
 
-import { apiSlice } from './api/apiSlice'
-import authReducer from './auth'
+import { apiSlice } from './api'
 import createdListsReducer from './createdLists'
 import dashboardReducer from './dashboard'
 import favoriteReducer from './favorite'
 import { appReducer, showModal } from './features/app'
+import { authReducer } from './features/auth'
 import listDetailsReducer from './listDetails'
 import movieDetailsReducer from './movieDetails'
 import personDetailsReducer from './personDetails'
@@ -36,7 +36,6 @@ const appPersistConfig = {
 const authPersistConfig = {
   key: 'auth',
   storage,
-  whitelist: ['account'],
 }
 
 const rootReducer = combineReducers({

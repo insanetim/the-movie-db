@@ -1,4 +1,4 @@
-import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query'
+import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 import { TMDB_ACCESS_TOKEN_AUTH, TMDB_API_URL } from 'src/constants/app'
 
 const baseQuery = fetchBaseQuery({
@@ -12,4 +12,5 @@ const baseQuery = fetchBaseQuery({
 export const apiSlice = createApi({
   baseQuery,
   endpoints: () => ({}),
+  reducerPath: 'api',
 })

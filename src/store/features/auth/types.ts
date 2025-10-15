@@ -2,7 +2,7 @@ import { IAccount } from 'src/interfaces/account.interface'
 
 export type AuthState = {
   account: IAccount | null
-  isAuthenticated: boolean
+  sessionId: null | string
 }
 
 export type RequestToken = {
@@ -19,4 +19,14 @@ export type Session = {
 export type UserData = {
   password: string
   username: string
+}
+
+export type ValidateWithLoginRequest = UserData & {
+  request_token: string
+}
+
+export type ValidateWithLoginResponse = {
+  expires_at: string
+  request_token: string
+  success: boolean
 }

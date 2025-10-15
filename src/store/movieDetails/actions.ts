@@ -6,11 +6,10 @@ import {
 } from 'src/api/tmdb/apiRoutes'
 import { NOTIFICATION_TYPE } from 'src/constants/app'
 import { IMovie } from 'src/interfaces/movie.interface'
-import { accountSelector } from 'src/store/auth/selectors'
 import errorMessage from 'src/utils/helpers/errorMessage'
-import getSessionId from 'src/utils/helpers/getSessionId'
 
 import { showNotification } from '../features/app'
+import { selectAccount, selectSessionId } from '../features/auth'
 import { createAppAsyncThunk } from '../withTypes'
 import * as types from './constants'
 import {
@@ -20,8 +19,8 @@ import {
 
 const fetchMovieDetails = createAppAsyncThunk(
   types.fetchMovieDetails,
-  async function (movieId: IMovie['id'], { rejectWithValue }) {
-    const sessionId = getSessionId()
+  async function (movieId: IMovie['id'], { getState, rejectWithValue }) {
+    const sessionId = selectSessionId(getState())!
 
     try {
       let movieDetails = await getMovieDetails({ movieId, sessionId })
@@ -43,8 +42,8 @@ const changeMovieInFavorite = createAppAsyncThunk(
     { inFavorite, movieId }: ChangeMovieInFavoriteProps,
     { dispatch, getState }
   ) {
-    const sessionId = getSessionId()
-    const { id: accountId } = accountSelector(getState())!
+    const sessionId = selectSessionId(getState())!
+    const { id: accountId } = selectAccount(getState())!
 
     try {
       await addToFovorite({ accountId, inFavorite, movieId, sessionId })
@@ -65,8 +64,8 @@ const changeMovieInWatchlist = createAppAsyncThunk(
     { inWatchlist, movieId }: ChangeMovieInWatchlistProps,
     { dispatch, getState }
   ) {
-    const sessionId = getSessionId()
-    const { id: accountId } = accountSelector(getState())!
+    const sessionId = selectSessionId(getState())!
+    const { id: accountId } = selectAccount(getState())!
 
     try {
       await addToWatchlist({ accountId, inWatchlist, movieId, sessionId })

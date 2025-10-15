@@ -1,28 +1,42 @@
 import { useState } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
-import { logIn } from 'src/store/auth/actions'
+import useHandleError from 'src/hooks/useHandleError'
 import { UserData } from 'src/store/auth/types'
-import { useAppDispatch } from 'src/store/hooks'
+import {
+  useCreateSessionMutation,
+  useLazyCreateRequestTokenQuery,
+  useValidateWithLoginMutation,
+} from 'src/store/features/auth'
 
 import { LoginHookReturn } from './types'
 
 const useContainer = (): LoginHookReturn => {
-  const [isSubmitting, setIsSubmitting] = useState(false)
-  const dispatch = useAppDispatch()
   const location = useLocation()
   const navigate = useNavigate()
+  const { handleError } = useHandleError()
+  const [isSubmitting, setIsSubmitting] = useState(false)
 
-  const handleLogIn = async (userData: UserData) => {
+  const [createRequestToken] = useLazyCreateRequestTokenQuery()
+  const [validateWithLogin] = useValidateWithLoginMutation()
+  const [createSession] = useCreateSessionMutation()
+
+  const handleLogin = async (userData: UserData) => {
     setIsSubmitting(true)
-    const to = location.state?.from?.pathname || '/'
-    const sessionId = await dispatch(logIn(userData)).unwrap()
-    setIsSubmitting(false)
-    if (sessionId) {
-      navigate(to, { replace: true })
+    try {
+      const { request_token } = await createRequestToken().unwrap()
+      await validateWithLogin({ request_token, ...userData }).unwrap()
+      const { success } = await createSession({ request_token }).unwrap()
+      if (success) {
+        const to = location.state?.from?.pathname || '/'
+        navigate(to, { replace: true })
+      }
+    } catch (error) {
+      handleError(error)
     }
+    setIsSubmitting(false)
   }
 
-  return { handleLogIn, isSubmitting }
+  return { handleLogin, isSubmitting }
 }
 
 export default useContainer

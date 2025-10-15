@@ -61,8 +61,8 @@ jest.mock('../components/NotificationsRoot/hook', () =>
 
 const mockedHeaderHook: HeaderHookReturn = {
   account: null,
-  handleLogIn: jest.fn(),
-  handleLogOut: jest.fn(),
+  handleLogin: jest.fn(),
+  handleLogout: jest.fn(),
   isAuthenticated: false,
 }
 jest.mock('../layouts/Default/Header/hook', () =>
@@ -70,7 +70,7 @@ jest.mock('../layouts/Default/Header/hook', () =>
 )
 
 const mockedLoginHook: LoginHookReturn = {
-  handleLogIn: jest.fn(),
+  handleLogin: jest.fn(),
   isSubmitting: false,
 }
 jest.mock('../pages/Login/hook', () => jest.fn(() => mockedLoginHook))

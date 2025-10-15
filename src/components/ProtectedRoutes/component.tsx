@@ -3,9 +3,9 @@ import { Navigate, Outlet } from 'react-router-dom'
 import useContainer from './hook'
 
 const ProtectedRoutes: React.FC = () => {
-  const { isAuthenticated, location } = useContainer()
+  const { location, sessionId } = useContainer()
 
-  return isAuthenticated ? (
+  return sessionId ? (
     <Outlet />
   ) : (
     <Navigate

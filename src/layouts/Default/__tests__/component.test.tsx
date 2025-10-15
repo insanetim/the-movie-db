@@ -6,8 +6,8 @@ import { HeaderHookReturn } from '../Header/types'
 
 const mockedHeader: HeaderHookReturn = {
   account: mockAccount,
-  handleLogIn: jest.fn(),
-  handleLogOut: jest.fn(),
+  handleLogin: jest.fn(),
+  handleLogout: jest.fn(),
   isAuthenticated: true,
 }
 jest.mock('../Header/hook', () => jest.fn(() => mockedHeader))

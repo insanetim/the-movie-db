@@ -30,7 +30,7 @@ describe('Login useContainer hook', () => {
     expect(result.current).toMatchSnapshot()
   })
 
-  it('should check "handleLogIn" method with success', async () => {
+  it('should check "handleLogin" method with success', async () => {
     jest
       .mocked(mockDispatch)
       .mockReturnValueOnce({ unwrap: () => 'test/session_id' })
@@ -39,7 +39,7 @@ describe('Login useContainer hook', () => {
     const { result } = renderHookWithWrapper(useContainer)
 
     await act(() => {
-      result.current.handleLogIn(userData)
+      result.current.handleLogin(userData)
     })
 
     expect(setState).toHaveBeenCalledTimes(2)
@@ -50,14 +50,14 @@ describe('Login useContainer hook', () => {
     expect(navigate).toHaveBeenCalledWith('/', { replace: true })
   })
 
-  it('should check "handleLogIn" method with failure', async () => {
+  it('should check "handleLogin" method with failure', async () => {
     jest.mocked(mockDispatch).mockReturnValueOnce({ unwrap: () => undefined })
     const userData = { password: 'password', username: 'user' }
 
     const { result } = renderHookWithWrapper(useContainer)
 
     await act(() => {
-      result.current.handleLogIn(userData)
+      result.current.handleLogin(userData)
     })
 
     expect(setState).toHaveBeenCalledTimes(2)

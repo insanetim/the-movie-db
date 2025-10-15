@@ -1,12 +1,9 @@
 import { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
-import {
-  accountSelector,
-  isAuthenticatedSelector,
-} from 'src/store/auth/selectors'
 import { fetchLists } from 'src/store/createdLists/actions'
 import { createdListsSelector } from 'src/store/createdLists/selectors'
 import { showNotification } from 'src/store/features/app'
+import { selectAccount, selectSessionId } from 'src/store/features/auth'
 import { useAppDispatch, useAppSelector } from 'src/store/hooks'
 import {
   changeMovieInFavorite,
@@ -30,8 +27,8 @@ const useContainer = (): MovieDetailsHookReturn => {
   >() as MovieDetailsRouteParams
   const navigate = useNavigate()
   const dispatch = useAppDispatch()
-  const account = useAppSelector(accountSelector)
-  const isAuthenticated = useAppSelector(isAuthenticatedSelector)
+  const account = useAppSelector(selectAccount)
+  const sessionId = useAppSelector(selectSessionId)
   const lists = useAppSelector(createdListsSelector)
   const movieId = getIdFromSlug(movieSlug)
   const movie = useAppSelector(state => movieDetailsSelector(state, movieId))
@@ -83,10 +80,10 @@ const useContainer = (): MovieDetailsHookReturn => {
     handleGoToCast,
     handlePopoverMouseEnter,
     handleWatchlistClick,
-    isAuthenticated,
     loading,
     movie,
     popoverOpen,
+    sessionId,
     setPopoverOpen,
   }
 }

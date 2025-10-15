@@ -7,12 +7,11 @@ import {
 } from 'src/api/tmdb/apiRoutes'
 import { NOTIFICATION_TYPE } from 'src/constants/app'
 import { IList } from 'src/interfaces/list.interface'
-import { accountSelector } from 'src/store/auth/selectors'
 import errorMessage from 'src/utils/helpers/errorMessage'
-import getSessionId from 'src/utils/helpers/getSessionId'
 import listMessage from 'src/utils/helpers/listMessage'
 
 import { showNotification } from '../features/app'
+import { selectAccount, selectSessionId } from '../features/auth'
 import { movieDetailsSelector } from '../movieDetails/selectors'
 import { createAppAsyncThunk } from '../withTypes'
 import * as types from './constants'
@@ -21,8 +20,8 @@ import { AddToListProps, CreateListProps, RemoveFromListProps } from './types'
 const fetchLists = createAppAsyncThunk(
   types.fetchLists,
   async function (page: string, { getState, rejectWithValue }) {
-    const sessionId = getSessionId()
-    const { id: accountId } = accountSelector(getState())!
+    const sessionId = selectSessionId(getState())!
+    const { id: accountId } = selectAccount(getState())!
 
     try {
       const lists = await getCreatedLists({ accountId, page, sessionId })
@@ -36,8 +35,11 @@ const fetchLists = createAppAsyncThunk(
 
 const createList = createAppAsyncThunk(
   types.createList,
-  async function ({ listData, movieId }: CreateListProps, { dispatch }) {
-    const sessionId = getSessionId()
+  async function (
+    { listData, movieId }: CreateListProps,
+    { dispatch, getState }
+  ) {
+    const sessionId = selectSessionId(getState())!
     const { name: listName } = listData
 
     try {
@@ -59,8 +61,8 @@ const createList = createAppAsyncThunk(
 
 const deleteList = createAppAsyncThunk(
   types.deleteList,
-  async function (listId: IList['id'], { dispatch }) {
-    const sessionId = getSessionId()
+  async function (listId: IList['id'], { dispatch, getState }) {
+    const sessionId = selectSessionId(getState())!
 
     try {
       await deleteMyList({ listId, sessionId })
@@ -81,7 +83,7 @@ const addToList = createAppAsyncThunk(
     { listId, listName, movieId }: AddToListProps,
     { dispatch, getState }
   ) {
-    const sessionId = getSessionId()
+    const sessionId = selectSessionId(getState())!
     const { title: movieTitle } = movieDetailsSelector(getState(), movieId)
 
     try {
@@ -101,8 +103,11 @@ const addToList = createAppAsyncThunk(
 
 const removeFromList = createAppAsyncThunk(
   types.removeFromList,
-  async function ({ listId, movieId }: RemoveFromListProps, { dispatch }) {
-    const sessionId = getSessionId()
+  async function (
+    { listId, movieId }: RemoveFromListProps,
+    { dispatch, getState }
+  ) {
+    const sessionId = selectSessionId(getState())!
 
     try {
       await removeMovieFromList({ listId, movieId, sessionId })

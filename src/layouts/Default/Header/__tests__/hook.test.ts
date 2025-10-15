@@ -38,13 +38,13 @@ describe('Header useContainer hook', () => {
     expect(result.current).toMatchSnapshot()
   })
 
-  it('should check "handleLogIn" method', () => {
+  it('should check "handleLogin" method', () => {
     const { result } = renderHookWithWrapper(useContainer, {
       preloadedState: mockState,
     })
 
     act(() => {
-      result.current.handleLogIn()
+      result.current.handleLogin()
     })
 
     expect(navigate).toHaveBeenCalledWith('/login', {
@@ -52,7 +52,7 @@ describe('Header useContainer hook', () => {
     })
   })
 
-  it('should check "handleLogOut" method', () => {
+  it('should check "handleLogout" method', () => {
     const logOut = jest.spyOn(sessionActions, 'logOut')
 
     const { result } = renderHookWithWrapper(useContainer, {
@@ -60,7 +60,7 @@ describe('Header useContainer hook', () => {
     })
 
     act(() => {
-      result.current.handleLogOut()
+      result.current.handleLogout()
     })
 
     expect(mockDispatch).toHaveBeenCalled()

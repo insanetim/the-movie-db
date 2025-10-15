@@ -5,12 +5,12 @@ import {
   appReducer,
   hideModal,
   hideNotification,
-  modalSelector,
-  notificationsSelector,
+  selectModal,
+  selectNotification,
+  selectTheme,
   setTheme,
   showModal,
   showNotification,
-  themeSelector,
 } from '../appSlice'
 import { AppState } from '../types'
 
@@ -144,19 +144,19 @@ describe('appSlice', () => {
   describe('selectors', () => {
     it('should select modal', () => {
       const root = { app: initialState }
-      expect(modalSelector(root as never)).toEqual(initialState.modal)
+      expect(selectModal(root as never)).toEqual(initialState.modal)
     })
 
     it('should select notifications', () => {
       const root = { app: initialState }
-      expect(notificationsSelector(root as never)).toEqual(
+      expect(selectNotification(root as never)).toEqual(
         initialState.notifications
       )
     })
 
     it('should select theme', () => {
       const root = { app: initialState }
-      expect(themeSelector(root as never)).toEqual(initialState.theme)
+      expect(selectTheme(root as never)).toEqual(initialState.theme)
     })
   })
 })
