@@ -1,5 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit'
-
+import { createAppSlice } from '../withTypes'
 import { fetchSearch, fetchTrending } from './actions'
 import { DashboardState } from './types'
 
@@ -9,7 +8,7 @@ const initialState: DashboardState = {
   loading: true,
 }
 
-const dashboardSlice = createSlice({
+const dashboardSlice = createAppSlice({
   extraReducers(builder) {
     builder
       .addCase(fetchTrending.pending, state => {

@@ -1,7 +1,7 @@
-import { createSlice } from '@reduxjs/toolkit'
 import { IAccount } from 'src/interfaces/account.interface'
 import getSessionId from 'src/utils/helpers/getSessionId'
 
+import { createAppSlice } from '../withTypes'
 import { fetchAccount, logIn, logOut } from './actions'
 import { AuthState } from './types'
 
@@ -10,7 +10,7 @@ const initialState: AuthState = {
   isAuthenticated: Boolean(getSessionId()),
 }
 
-const authSlice = createSlice({
+const authSlice = createAppSlice({
   extraReducers(builder) {
     builder
       .addCase(logIn.fulfilled, state => {

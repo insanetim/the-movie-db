@@ -1,5 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit'
-
+import { createAppSlice } from '../withTypes'
 import { fetchFavorite } from './actions'
 import { FavoriteState } from './types'
 
@@ -9,7 +8,7 @@ const initialState: FavoriteState = {
   loading: true,
 }
 
-const favoriteSlice = createSlice({
+const favoriteSlice = createAppSlice({
   extraReducers(builder) {
     builder
       .addCase(fetchFavorite.pending, state => {

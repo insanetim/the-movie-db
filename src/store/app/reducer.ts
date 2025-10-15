@@ -1,6 +1,7 @@
-import { createSlice, nanoid, PayloadAction } from '@reduxjs/toolkit'
+import { nanoid, PayloadAction } from '@reduxjs/toolkit'
 import { NOTIFICATION_DURATION, NOTIFICATION_TYPE } from 'src/constants/app'
 
+import { createAppSlice } from '../withTypes'
 import { AppState, Notification, ShowNotificationProps, Theme } from './types'
 
 const initialState: AppState = {
@@ -12,7 +13,7 @@ const initialState: AppState = {
   theme: 'light',
 }
 
-const appSlice = createSlice({
+const appSlice = createAppSlice({
   initialState,
   name: 'app',
   reducers: {

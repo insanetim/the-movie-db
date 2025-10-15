@@ -1,5 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit'
-
+import { createAppSlice } from '../withTypes'
 import { fetchWatchlist } from './actions'
 import { WatchlistState } from './types'
 
@@ -9,7 +8,7 @@ const initialState: WatchlistState = {
   loading: true,
 }
 
-const watchlistSlice = createSlice({
+const watchlistSlice = createAppSlice({
   extraReducers(builder) {
     builder
       .addCase(fetchWatchlist.pending, state => {

@@ -1,7 +1,8 @@
-import { createEntityAdapter, createSlice } from '@reduxjs/toolkit'
+import { createEntityAdapter } from '@reduxjs/toolkit'
 import { IMovieDetailsExtended } from 'src/interfaces/movie.interface'
 import { RootState } from 'src/store'
 
+import { createAppSlice } from '../withTypes'
 import {
   changeMovieInFavorite,
   changeMovieInWatchlist,
@@ -17,7 +18,7 @@ export const movieDetailsInitialState =
     loading: true,
   })
 
-const movieDetailsSlice = createSlice({
+const movieDetailsSlice = createAppSlice({
   extraReducers(builder) {
     builder
       .addCase(fetchMovieDetails.pending, state => {

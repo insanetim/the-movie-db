@@ -1,5 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit'
-
+import { createAppSlice } from '../withTypes'
 import { fetchLists } from './actions'
 import { CreatedListsState } from './types'
 
@@ -9,7 +8,7 @@ const initialState: CreatedListsState = {
   loading: true,
 }
 
-const createdListsSlice = createSlice({
+const createdListsSlice = createAppSlice({
   extraReducers(builder) {
     builder
       .addCase(fetchLists.pending, state => {

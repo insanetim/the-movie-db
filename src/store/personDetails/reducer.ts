@@ -1,7 +1,8 @@
-import { createEntityAdapter, createSlice } from '@reduxjs/toolkit'
+import { createEntityAdapter } from '@reduxjs/toolkit'
 import { IPersonDetails } from 'src/interfaces/person.interface'
 import { RootState } from 'src/store'
 
+import { createAppSlice } from '../withTypes'
 import { fetchPersonDetails } from './actions'
 import { PersonDetailsState } from './types'
 
@@ -13,7 +14,7 @@ export const personDetailsInitialState =
     loading: true,
   })
 
-const personDetailsSlice = createSlice({
+const personDetailsSlice = createAppSlice({
   extraReducers(builder) {
     builder
       .addCase(fetchPersonDetails.pending, state => {
