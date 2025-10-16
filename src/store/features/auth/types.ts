@@ -21,11 +21,11 @@ export type UserData = {
   username: string
 }
 
-export type ValidateWithLoginRequest = UserData & {
+export type ValidateWithLoginReq = UserData & {
   request_token: string
 }
 
-export type ValidateWithLoginResponse = {
+export type ValidateWithLoginRes = {
   expires_at: string
   request_token: string
   success: boolean

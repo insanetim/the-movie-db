@@ -18,12 +18,10 @@ import storage from 'redux-persist/lib/storage'
 
 import { apiSlice } from './api'
 import createdListsReducer from './createdLists'
-import dashboardReducer from './dashboard'
 import favoriteReducer from './favorite'
 import { appReducer, showModal } from './features/app'
 import { authReducer } from './features/auth'
 import listDetailsReducer from './listDetails'
-import movieDetailsReducer from './movieDetails'
 import personDetailsReducer from './personDetails'
 import watchlistReducer from './watchlist'
 
@@ -43,10 +41,8 @@ const rootReducer = combineReducers({
   app: persistReducer(appPersistConfig, appReducer),
   auth: persistReducer(authPersistConfig, authReducer),
   createdLists: createdListsReducer,
-  dashboard: dashboardReducer,
   favorite: favoriteReducer,
   listDetails: listDetailsReducer,
-  movieDetails: movieDetailsReducer,
   personDetails: personDetailsReducer,
   watchlist: watchlistReducer,
 })

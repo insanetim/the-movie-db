@@ -10,8 +10,8 @@ import {
   favoriteMoviesSelector,
 } from 'src/store/favorite/selectors'
 import { selectAccount } from 'src/store/features/auth'
+import { useAddToFavoriteMutation } from 'src/store/features/favorite'
 import { useAppDispatch, useAppSelector } from 'src/store/hooks'
-import { changeMovieInFavorite } from 'src/store/movieDetails/actions'
 import getParams from 'src/utils/helpers/getParams'
 
 import { FavoriteHookReturn } from './types'
@@ -31,6 +31,8 @@ const useContainer = (): FavoriteHookReturn => {
     setSearchParams,
   })
 
+  const [addToFavorite] = useAddToFavoriteMutation()
+
   const handlePagination = (page: number) => {
     setSearchParams(getParams({ page }))
   }
@@ -42,7 +44,7 @@ const useContainer = (): FavoriteHookReturn => {
     event.stopPropagation()
 
     const onOk = async () => {
-      await dispatch(changeMovieInFavorite({ inFavorite: false, movieId }))
+      await addToFavorite({ inFavorite: false, movieId })
       updatePage()
     }
 

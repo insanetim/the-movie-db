@@ -1,20 +1,14 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import { fetchLists } from 'src/store/createdLists/actions'
 import { createdListsSelector } from 'src/store/createdLists/selectors'
 import { showNotification } from 'src/store/features/app'
 import { selectAccount, selectSessionId } from 'src/store/features/auth'
+import { useAddToFavoriteMutation } from 'src/store/features/favorite'
+import { useGetMovieDetailsQuery } from 'src/store/features/movieDetails'
+import { useAddToWatchlistMutation } from 'src/store/features/watchlist'
 import { useAppDispatch, useAppSelector } from 'src/store/hooks'
-import {
-  changeMovieInFavorite,
-  changeMovieInWatchlist,
-  fetchMovieDetails,
-} from 'src/store/movieDetails/actions'
-import {
-  movieDetailsErrorSelector,
-  movieDetailsLoadingSelector,
-  movieDetailsSelector,
-} from 'src/store/movieDetails/selectors'
+import errorMessage from 'src/utils/helpers/errorMessage'
 import favoriteMessage from 'src/utils/helpers/favoriteMessage'
 import getIdFromSlug from 'src/utils/helpers/getIdFromSlug'
 import watchlistMessage from 'src/utils/helpers/watchlistMessage'
@@ -31,10 +25,11 @@ const useContainer = (): MovieDetailsHookReturn => {
   const sessionId = useAppSelector(selectSessionId)
   const lists = useAppSelector(createdListsSelector)
   const movieId = getIdFromSlug(movieSlug)
-  const movie = useAppSelector(state => movieDetailsSelector(state, movieId))
-  const loading = useAppSelector(movieDetailsLoadingSelector)
-  const error = useAppSelector(movieDetailsErrorSelector)
   const [popoverOpen, setPopoverOpen] = useState(false)
+
+  const { data: movie, error, isLoading } = useGetMovieDetailsQuery(movieId)
+  const [addToFavorite] = useAddToFavoriteMutation()
+  const [addToWatchlist] = useAddToWatchlistMutation()
 
   const handlePopoverMouseEnter = () => {
     if (account && !lists) {
@@ -45,7 +40,7 @@ const useContainer = (): MovieDetailsHookReturn => {
   const handleFavoriteClick = () => {
     const inFavorite = !movie!.account_states.favorite
 
-    dispatch(changeMovieInFavorite({ inFavorite, movieId }))
+    addToFavorite({ inFavorite, movieId })
     dispatch(
       showNotification({
         message: favoriteMessage(movie!.title, inFavorite),
@@ -56,7 +51,7 @@ const useContainer = (): MovieDetailsHookReturn => {
   const handleWatchlistClick = () => {
     const inWatchlist = !movie?.account_states.watchlist
 
-    dispatch(changeMovieInWatchlist({ inWatchlist, movieId }))
+    addToWatchlist({ inWatchlist, movieId })
     dispatch(
       showNotification({
         message: watchlistMessage(movie!.title, inWatchlist),
@@ -68,19 +63,13 @@ const useContainer = (): MovieDetailsHookReturn => {
     navigate('cast')
   }
 
-  useEffect(() => {
-    if (!movie) {
-      dispatch(fetchMovieDetails(movieId))
-    }
-  }, [dispatch, movie, movieId])
-
   return {
-    error,
+    error: errorMessage(error),
     handleFavoriteClick,
     handleGoToCast,
     handlePopoverMouseEnter,
     handleWatchlistClick,
-    loading,
+    isLoading,
     movie,
     popoverOpen,
     sessionId,

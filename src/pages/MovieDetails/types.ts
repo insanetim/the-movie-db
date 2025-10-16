@@ -1,5 +1,5 @@
 import { ErrorMsg } from 'src/interfaces/global.interface'
-import { IMovieDetailsExtended } from 'src/interfaces/movie.interface'
+import { IMovieDetailsEx } from 'src/interfaces/movie.interface'
 
 export type MovieDetailsHookReturn = {
   error: ErrorMsg
@@ -7,8 +7,8 @@ export type MovieDetailsHookReturn = {
   handleGoToCast: () => void
   handlePopoverMouseEnter: () => void
   handleWatchlistClick: () => void
-  loading: boolean
-  movie?: IMovieDetailsExtended
+  isLoading: boolean
+  movie?: IMovieDetailsEx
   popoverOpen: boolean
   sessionId: null | string
   setPopoverOpen: React.Dispatch<React.SetStateAction<boolean>>

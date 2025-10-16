@@ -40,7 +40,7 @@ export interface IMovieDetails extends IMovie {
   status: string
 }
 
-export interface IMovieDetailsExtended extends IMovieDetails {
+export interface IMovieDetailsEx extends IMovieDetails {
   account_states: IMovieAccountStates
   credits: {
     cast: IMovieCredit[]

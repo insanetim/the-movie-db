@@ -1,9 +1,7 @@
-import { IState, Query } from 'src/interfaces/global.interface'
-import { IMoviesList } from 'src/interfaces/movie.interface'
+import { Query } from 'src/interfaces/global.interface'
 
-export type DashboardState = IState<IMoviesList>
-
-export type FetchSearchProps = {
+export type SearchMoviesReq = {
+  include_adult?: boolean
   page: string
   query: Query
 }

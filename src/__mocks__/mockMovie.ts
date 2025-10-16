@@ -4,7 +4,7 @@ import {
   IMovie,
   IMovieCredit,
   IMovieDetails,
-  IMovieDetailsExtended,
+  IMovieDetailsEx,
   IMovieImage,
 } from 'src/interfaces/movie.interface'
 
@@ -55,7 +55,7 @@ const mockImdbInfo: IMDBInfo = {
   },
 }
 
-const mockMovieDetailsExtended: IMovieDetailsExtended = {
+const mockMovieDetailsExtended: IMovieDetailsEx = {
   ...mockMovieDetails,
   account_states: { favorite: false, watchlist: false },
   credits: {

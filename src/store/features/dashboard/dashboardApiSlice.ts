@@ -1,15 +1,24 @@
 import { IMoviesList } from 'src/interfaces/movie.interface'
 import { apiSlice } from 'src/store/api'
 
+import { SearchMoviesReq } from './types'
+
 export const dashboardApiSlice = apiSlice.injectEndpoints({
   endpoints: builder => ({
-    getTrendingMovies: builder.query<IMoviesList, string>({
-      query: page => ({
-        params: { page },
+    getSearchMovies: builder.query<IMoviesList, SearchMoviesReq>({
+      query: params => ({
+        params,
+        url: '/search/movie',
+      }),
+    }),
+    getTrendingMovies: builder.query<IMoviesList, { page: string }>({
+      query: params => ({
+        params,
         url: '/trending/movie/week',
       }),
     }),
   }),
 })
 
-export const { useGetTrendingMoviesQuery } = dashboardApiSlice
+export const { useGetSearchMoviesQuery, useGetTrendingMoviesQuery } =
+  dashboardApiSlice

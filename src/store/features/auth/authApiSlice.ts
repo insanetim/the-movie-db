@@ -4,8 +4,8 @@ import { apiSlice } from 'src/store/api'
 import {
   RequestToken,
   Session,
-  ValidateWithLoginRequest,
-  ValidateWithLoginResponse,
+  ValidateWithLoginReq,
+  ValidateWithLoginRes,
 } from './types'
 
 export const authApiSlice = apiSlice.injectEndpoints({
@@ -39,8 +39,8 @@ export const authApiSlice = apiSlice.injectEndpoints({
       }),
     }),
     validateWithLogin: builder.mutation<
-      ValidateWithLoginResponse,
-      ValidateWithLoginRequest
+      ValidateWithLoginRes,
+      ValidateWithLoginReq
     >({
       query: data => ({
         body: data,

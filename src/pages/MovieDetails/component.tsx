@@ -33,14 +33,14 @@ const MovieDetails: React.FC = () => {
     handleGoToCast,
     handlePopoverMouseEnter,
     handleWatchlistClick,
-    loading,
+    isLoading,
     movie,
     popoverOpen,
     sessionId,
     setPopoverOpen,
   } = useContainer()
 
-  if (loading) {
+  if (isLoading) {
     return (
       <div className='container top-margin'>
         <Loading />

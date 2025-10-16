@@ -4,8 +4,8 @@ import { useSearchParams } from 'react-router-dom'
 import useUpdatePage from 'src/hooks/useUpdatePage'
 import { IMovie } from 'src/interfaces/movie.interface'
 import { selectAccount } from 'src/store/features/auth'
+import { useAddToWatchlistMutation } from 'src/store/features/watchlist'
 import { useAppDispatch, useAppSelector } from 'src/store/hooks'
-import { changeMovieInWatchlist } from 'src/store/movieDetails/actions'
 import { fetchWatchlist } from 'src/store/watchlist/actions'
 import {
   watchlistErrorSelector,
@@ -31,6 +31,8 @@ const useContainer = (): WatchlistHookReturn => {
     setSearchParams,
   })
 
+  const [addToWatchlist] = useAddToWatchlistMutation()
+
   const handlePagination = (page: number) => {
     setSearchParams(getParams({ page }))
   }
@@ -42,7 +44,7 @@ const useContainer = (): WatchlistHookReturn => {
     event.stopPropagation()
 
     const onOk = async () => {
-      await dispatch(changeMovieInWatchlist({ inWatchlist: false, movieId }))
+      await addToWatchlist({ inWatchlist: false, movieId })
       updatePage()
     }
 

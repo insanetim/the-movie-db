@@ -9,7 +9,7 @@ const useContainer = (): TrendingHookReturn => {
   const [searchParams, setSearchParams] = useSearchParams()
   const page = searchParams.get('page') || '1'
 
-  const { data: movies, error, isLoading } = useGetTrendingMoviesQuery(page)
+  const { data: movies, error, isLoading } = useGetTrendingMoviesQuery({ page })
 
   const handlePagination = (page: number) => {
     setSearchParams(getParams({ page }))

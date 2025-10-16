@@ -1,10 +1,10 @@
 import { ErrorMsg } from 'src/interfaces/global.interface'
-import { IMovieDetailsExtended } from 'src/interfaces/movie.interface'
+import { IMovieDetailsEx } from 'src/interfaces/movie.interface'
 
 export type CastHookReturn = {
   error: ErrorMsg
   loading: boolean
-  movie: IMovieDetailsExtended | undefined
+  movie: IMovieDetailsEx | undefined
   movieSlug: string
 }
 

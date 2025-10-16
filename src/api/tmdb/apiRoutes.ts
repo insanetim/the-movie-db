@@ -3,7 +3,7 @@ import { IAccount } from 'src/interfaces/account.interface'
 import { IList, IListDetails, IListsList } from 'src/interfaces/list.interface'
 import {
   IMovie,
-  IMovieDetailsExtended,
+  IMovieDetailsEx,
   IMoviesList,
 } from 'src/interfaces/movie.interface'
 import { IPersonDetails } from 'src/interfaces/person.interface'
@@ -282,7 +282,7 @@ export const getMovieDetails = async ({
   movieId: IMovie['id']
   sessionId: string
 }) => {
-  const { data } = await tmdbClient.request<IMovieDetailsExtended>({
+  const { data } = await tmdbClient.request<IMovieDetailsEx>({
     params: {
       append_to_response: 'images,account_states,credits',
       session_id: sessionId,
