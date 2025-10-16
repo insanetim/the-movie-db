@@ -18,7 +18,7 @@ export const authApiSlice = apiSlice.injectEndpoints({
     createSession: builder.mutation<Session, { request_token: string }>({
       query: data => ({
         body: data,
-        method: 'post',
+        method: 'POST',
         url: '/authentication/session/new',
       }),
     }),
@@ -28,7 +28,7 @@ export const authApiSlice = apiSlice.injectEndpoints({
     >({
       query: data => ({
         body: data,
-        method: 'delete',
+        method: 'DELETE',
         url: '/authentication/session',
       }),
     }),
@@ -44,7 +44,7 @@ export const authApiSlice = apiSlice.injectEndpoints({
     >({
       query: data => ({
         body: data,
-        method: 'post',
+        method: 'POST',
         url: '/authentication/token/validate_with_login',
       }),
     }),
