@@ -13,9 +13,9 @@ import metaTitle from 'src/utils/helpers/metaTitle'
 import useContainer from './hook'
 
 const PersonDetails = () => {
-  const { error, handleGoToCredits, loading, person } = useContainer()
+  const { error, handleGoToCredits, isLoading, person } = useContainer()
 
-  if (loading) {
+  if (isLoading) {
     return (
       <div className='container top-margin'>
         <Loading />

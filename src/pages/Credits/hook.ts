@@ -1,30 +1,28 @@
 import { addYears } from 'date-fns'
 import { groupBy, head, map, pipe, pluck, values } from 'ramda'
-import { useEffect, useMemo, useState } from 'react'
+import { useMemo, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { IPersonCredit } from 'src/interfaces/person.interface'
-import { useAppDispatch, useAppSelector } from 'src/store/hooks'
-import { fetchPersonDetails } from 'src/store/personDetails/actions'
-import {
-  personDetailsErrorSelector,
-  personDetailsLoadingSelector,
-  personDetailsSelector,
-} from 'src/store/personDetails/selectors'
+import { useGetPersonDetailsQuery } from 'src/store/features/personDetails'
+import errorMessage from 'src/utils/helpers/errorMessage'
 import getIdFromSlug from 'src/utils/helpers/getIdFromSlug'
 import getSlug from 'src/utils/helpers/getSlug'
 
-import { CreditsRouteParams, FilterOptions, ICredit } from './types'
+import {
+  CreditsHookReturn,
+  CreditsRouteParams,
+  FilterOptions,
+  ICredit,
+} from './types'
 
-const useContainer = () => {
+const useContainer = (): CreditsHookReturn => {
   const { personSlug } = useParams<
     keyof CreditsRouteParams
   >() as CreditsRouteParams
-  const dispatch = useAppDispatch()
   const personId = getIdFromSlug(personSlug)
-  const person = useAppSelector(state => personDetailsSelector(state, personId))
-  const loading = useAppSelector(personDetailsLoadingSelector)
-  const error = useAppSelector(personDetailsErrorSelector)
   const [filter, setFilter] = useState<FilterOptions>(FilterOptions.All)
+
+  const { data: person, error, isLoading } = useGetPersonDetailsQuery(personId)
 
   const filteredCredits: IPersonCredit[] = useMemo(() => {
     if (person) {
@@ -68,13 +66,14 @@ const useContainer = () => {
     setFilter(filter)
   }
 
-  useEffect(() => {
-    if (!person) {
-      dispatch(fetchPersonDetails(personId))
-    }
-  }, [dispatch, person, personId])
-
-  return { dataSource, error, handleChangeFilter, loading, person, personSlug }
+  return {
+    dataSource,
+    error: errorMessage(error),
+    handleChangeFilter,
+    isLoading,
+    person,
+    personSlug,
+  }
 }
 
 export default useContainer

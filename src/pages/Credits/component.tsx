@@ -18,10 +18,16 @@ import useContainer from './hook'
 import { FilterOptions, ICredit } from './types'
 
 const Credits: React.FC = () => {
-  const { dataSource, error, handleChangeFilter, loading, person, personSlug } =
-    useContainer()
+  const {
+    dataSource,
+    error,
+    handleChangeFilter,
+    isLoading,
+    person,
+    personSlug,
+  } = useContainer()
 
-  if (loading) {
+  if (isLoading) {
     return (
       <div className='container top-margin'>
         <Loading />

@@ -4,7 +4,7 @@ import { IPersonDetails } from 'src/interfaces/person.interface'
 export type PersonDetailsHookReturn = {
   error: ErrorMsg
   handleGoToCredits: () => void
-  loading: boolean
+  isLoading: boolean
   person?: IPersonDetails
 }
 

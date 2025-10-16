@@ -22,7 +22,6 @@ import favoriteReducer from './favorite'
 import { appReducer, showModal } from './features/app'
 import { authReducer } from './features/auth'
 import listDetailsReducer from './listDetails'
-import personDetailsReducer from './personDetails'
 import watchlistReducer from './watchlist'
 
 const appPersistConfig = {
@@ -43,7 +42,6 @@ const rootReducer = combineReducers({
   createdLists: createdListsReducer,
   favorite: favoriteReducer,
   listDetails: listDetailsReducer,
-  personDetails: personDetailsReducer,
   watchlist: watchlistReducer,
 })
 
