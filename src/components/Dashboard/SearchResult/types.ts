@@ -11,7 +11,7 @@ export type SearchResultHookReturn = {
   error: ErrorMsg
   handlePagination: HandlePagination
   isLoading: boolean
-  movies: IMoviesList | undefined
+  movies?: IMoviesList
 }
 
 export type SearchResultProps = {

@@ -5,5 +5,5 @@ export type TrendingHookReturn = {
   error: ErrorMsg
   handlePagination: HandlePagination
   isLoading: boolean
-  movies: IMoviesList | undefined
+  movies?: IMoviesList
 }

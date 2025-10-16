@@ -8,11 +8,9 @@ import {
 import { NOTIFICATION_TYPE } from 'src/constants/app'
 import { IList } from 'src/interfaces/list.interface'
 import errorMessage from 'src/utils/helpers/errorMessage'
-import listMessage from 'src/utils/helpers/listMessage'
 
 import { showNotification } from '../features/app'
 import { selectAccount, selectSessionId } from '../features/auth'
-import { movieDetailsSelector } from '../movieDetails/selectors'
 import { createAppAsyncThunk } from '../withTypes'
 import * as types from './constants'
 import { AddToListProps, CreateListProps, RemoveFromListProps } from './types'
@@ -84,11 +82,11 @@ const addToList = createAppAsyncThunk(
     { dispatch, getState }
   ) {
     const sessionId = selectSessionId(getState())!
-    const { title: movieTitle } = movieDetailsSelector(getState(), movieId)
+    // const { title: movieTitle } = movieDetailsSelector(getState(), movieId)
 
     try {
       await addMovieToList({ listId, movieId, sessionId })
-      dispatch(showNotification({ message: listMessage(movieTitle, listName) }))
+      // dispatch(showNotification({ message: listMessage(movieTitle, listName) }))
       await dispatch(fetchLists('1'))
     } catch (error) {
       dispatch(

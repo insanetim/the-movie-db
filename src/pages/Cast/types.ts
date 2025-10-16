@@ -3,8 +3,8 @@ import { IMovieDetailsEx } from 'src/interfaces/movie.interface'
 
 export type CastHookReturn = {
   error: ErrorMsg
-  loading: boolean
-  movie: IMovieDetailsEx | undefined
+  isLoading: boolean
+  movie?: IMovieDetailsEx
   movieSlug: string
 }
 
