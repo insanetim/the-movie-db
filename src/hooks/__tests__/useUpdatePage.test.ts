@@ -7,11 +7,9 @@ import useUpdatePage, { UseUpdatePageProps } from '../useUpdatePage'
 describe('useUpdatePage', () => {
   const mockDispatch = jest.fn()
   jest.spyOn(reactRedux, 'useAppDispatch').mockReturnValue(mockDispatch)
-  const action = jest.fn()
   const setSearchParams = jest.fn()
 
   const props: UseUpdatePageProps = {
-    action,
     items: [1],
     page: '3',
     setSearchParams,
@@ -31,17 +29,5 @@ describe('useUpdatePage', () => {
     })
 
     expect(setSearchParams).toHaveBeenCalledWith({ page: '2' })
-  })
-
-  it('should check "updatePage" method without items', () => {
-    const extendedProps = { ...props, items: undefined }
-
-    const { result } = renderHookWithWrapper(() => useUpdatePage(extendedProps))
-
-    act(() => {
-      result.current.updatePage()
-    })
-
-    expect(mockDispatch).toHaveBeenCalledWith(action)
   })
 })

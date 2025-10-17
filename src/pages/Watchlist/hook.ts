@@ -1,37 +1,36 @@
 import { Modal } from 'antd'
-import { MouseEvent, useEffect } from 'react'
+import { MouseEvent } from 'react'
 import { useSearchParams } from 'react-router-dom'
 import useUpdatePage from 'src/hooks/useUpdatePage'
 import { IMovie } from 'src/interfaces/movie.interface'
 import { selectAccount } from 'src/store/features/auth'
-import { useAddToWatchlistMutation } from 'src/store/features/watchlist'
-import { useAppDispatch, useAppSelector } from 'src/store/hooks'
-import { fetchWatchlist } from 'src/store/watchlist/actions'
 import {
-  watchlistErrorSelector,
-  watchlistLoadingSelector,
-  watchlistMoviesSelector,
-} from 'src/store/watchlist/selectors'
+  useAddToWatchlistMutation,
+  useGetWatchlistMoviesQuery,
+} from 'src/store/features/watchlist'
+import { useAppSelector } from 'src/store/hooks'
+import errorMessage from 'src/utils/helpers/errorMessage'
 import getParams from 'src/utils/helpers/getParams'
 
 import { WatchlistHookReturn } from './types'
 
 const useContainer = (): WatchlistHookReturn => {
-  const dispatch = useAppDispatch()
   const account = useAppSelector(selectAccount)
-  const movies = useAppSelector(watchlistMoviesSelector)
-  const loading = useAppSelector(watchlistLoadingSelector)
-  const error = useAppSelector(watchlistErrorSelector)
   const [searchParams, setSearchParams] = useSearchParams()
   const page = searchParams.get('page') || '1'
+
+  const {
+    data: movies,
+    error,
+    isLoading,
+  } = useGetWatchlistMoviesQuery(page, { skip: !account })
+  const [addToWatchlist] = useAddToWatchlistMutation()
+
   const { updatePage } = useUpdatePage({
-    action: fetchWatchlist(page),
     items: movies?.results,
     page,
     setSearchParams,
   })
-
-  const [addToWatchlist] = useAddToWatchlistMutation()
 
   const handlePagination = (page: number) => {
     setSearchParams(getParams({ page }))
@@ -56,13 +55,13 @@ const useContainer = (): WatchlistHookReturn => {
     return onOk
   }
 
-  useEffect(() => {
-    if (account) {
-      dispatch(fetchWatchlist(page))
-    }
-  }, [account, page, dispatch])
-
-  return { error, handleMovieDelete, handlePagination, loading, movies }
+  return {
+    error: errorMessage(error),
+    handleMovieDelete,
+    handlePagination,
+    isLoading,
+    movies,
+  }
 }
 
 export default useContainer

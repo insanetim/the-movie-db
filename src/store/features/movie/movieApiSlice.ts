@@ -45,9 +45,9 @@ export const movieApiSlice = apiSlice.injectEndpoints({
         url: '/search/movie',
       }),
     }),
-    getTrendingMovies: builder.query<IMoviesList, { page: string }>({
-      query: params => ({
-        params,
+    getTrendingMovies: builder.query<IMoviesList, string>({
+      query: page => ({
+        params: { page },
         url: '/trending/movie/week',
       }),
     }),

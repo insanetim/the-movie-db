@@ -14,13 +14,10 @@ const useContainer = (): TrendingHookReturn => {
     data: movies,
     error,
     isLoading,
-  } = useGetTrendingMoviesQuery(
-    { page },
-    {
-      pollingInterval: getInterval(10, 'minutes'),
-      skipPollingIfUnfocused: true,
-    }
-  )
+  } = useGetTrendingMoviesQuery(page, {
+    pollingInterval: getInterval(10, 'minutes'),
+    skipPollingIfUnfocused: true,
+  })
 
   const handlePagination = (page: number) => {
     setSearchParams(getParams({ page }))

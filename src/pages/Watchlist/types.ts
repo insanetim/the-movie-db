@@ -8,6 +8,6 @@ export type WatchlistHookReturn = {
     movieId: IMovie['id']
   ) => () => Promise<void>
   handlePagination: HandlePagination
-  loading: boolean
-  movies: IMoviesList | null
+  isLoading: boolean
+  movies?: IMoviesList
 }
