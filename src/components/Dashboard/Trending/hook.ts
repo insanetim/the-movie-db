@@ -16,7 +16,10 @@ const useContainer = (): TrendingHookReturn => {
     isLoading,
   } = useGetTrendingMoviesQuery(
     { page },
-    { pollingInterval: getInterval(15, 'minutes') }
+    {
+      pollingInterval: getInterval(10, 'minutes'),
+      skipPollingIfUnfocused: true,
+    }
   )
 
   const handlePagination = (page: number) => {

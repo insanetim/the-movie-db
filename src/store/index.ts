@@ -4,6 +4,7 @@ import {
   configureStore,
   ThunkAction,
 } from '@reduxjs/toolkit'
+import { setupListeners } from '@reduxjs/toolkit/query'
 import {
   FLUSH,
   PAUSE,
@@ -68,6 +69,8 @@ export const setupStore = (preloadedState?: Partial<RootState>) =>
 
 export const store = setupStore()
 export const persistor = persistStore(store)
+
+setupListeners(store.dispatch)
 
 export type AppDispatch = AppStore['dispatch']
 export type AppStore = typeof store
