@@ -21,7 +21,6 @@ import { apiSlice } from './api'
 import createdListsReducer from './createdLists'
 import { appReducer, showModal } from './features/app'
 import { authReducer } from './features/auth'
-import listDetailsReducer from './listDetails'
 
 const appPersistConfig = {
   key: 'app',
@@ -39,7 +38,6 @@ const rootReducer = combineReducers({
   app: persistReducer(appPersistConfig, appReducer),
   auth: persistReducer(authPersistConfig, authReducer),
   createdLists: createdListsReducer,
-  listDetails: listDetailsReducer,
 })
 
 export const setupStore = (preloadedState?: Partial<RootState>) =>

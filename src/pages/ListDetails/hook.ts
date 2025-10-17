@@ -1,16 +1,12 @@
 import { Modal } from 'antd'
-import { MouseEvent, useEffect } from 'react'
+import { MouseEvent } from 'react'
 import { useNavigate, useParams, useSearchParams } from 'react-router-dom'
 import useUpdatePage from 'src/hooks/useUpdatePage'
 import { IMovie } from 'src/interfaces/movie.interface'
 import { deleteList, removeFromList } from 'src/store/createdLists/actions'
-import { useAppDispatch, useAppSelector } from 'src/store/hooks'
-import { fetchListDetails } from 'src/store/listDetails/actions'
-import {
-  listDetailsErrorSelector,
-  listDetailsLoadingSelector,
-  listDetailsSelector,
-} from 'src/store/listDetails/selectors'
+import { useGetListDetailsQuery } from 'src/store/features/lists'
+import { useAppDispatch } from 'src/store/hooks'
+import errorMessage from 'src/utils/helpers/errorMessage'
 import getIdFromSlug from 'src/utils/helpers/getIdFromSlug'
 import getParams from 'src/utils/helpers/getParams'
 
@@ -22,14 +18,17 @@ const useContainer = (): ListDetailsHookReturn => {
   >() as ListDetailsRouteParams
   const navigate = useNavigate()
   const dispatch = useAppDispatch()
-  const list = useAppSelector(listDetailsSelector)
-  const loading = useAppSelector(listDetailsLoadingSelector)
-  const error = useAppSelector(listDetailsErrorSelector)
   const [searchParams, setSearchParams] = useSearchParams()
   const page = searchParams.get('page') || '1'
   const listId = getIdFromSlug(listSlug)
+
+  const {
+    data: list,
+    error,
+    isLoading,
+  } = useGetListDetailsQuery({ listId, page })
+
   const { updatePage } = useUpdatePage({
-    action: fetchListDetails({ listId, page }),
     items: list?.items,
     page,
     setSearchParams,
@@ -72,17 +71,13 @@ const useContainer = (): ListDetailsHookReturn => {
     return onOk
   }
 
-  useEffect(() => {
-    dispatch(fetchListDetails({ listId, page }))
-  }, [page, listId, dispatch])
-
   return {
-    error,
+    error: errorMessage(error),
     handleListDelete,
     handleMovieDelete,
     handlePagination,
+    isLoading,
     list,
-    loading,
   }
 }
 

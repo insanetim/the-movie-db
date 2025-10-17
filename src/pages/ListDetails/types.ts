@@ -10,8 +10,8 @@ export type ListDetailsHookReturn = {
     movieId: IMovie['id']
   ) => () => Promise<void>
   handlePagination: HandlePagination
-  list: IListDetails | null
-  loading: boolean
+  isLoading: boolean
+  list?: IListDetails
 }
 
 export type ListDetailsRouteParams = {

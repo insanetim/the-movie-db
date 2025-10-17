@@ -18,11 +18,11 @@ const ListDetails: React.FC = () => {
     handleListDelete,
     handleMovieDelete,
     handlePagination,
+    isLoading,
     list,
-    loading,
   } = useContainer()
 
-  if (loading) {
+  if (isLoading) {
     return (
       <div className='container top-margin'>
         <Loading />
