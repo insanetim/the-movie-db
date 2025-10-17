@@ -1,6 +1,7 @@
 import { useSearchParams } from 'react-router-dom'
-import { useGetTrendingMoviesQuery } from 'src/store/features/dashboard'
+import { useGetTrendingMoviesQuery } from 'src/store/features/movie'
 import errorMessage from 'src/utils/helpers/errorMessage'
+import getInterval from 'src/utils/helpers/getInterval'
 import getParams from 'src/utils/helpers/getParams'
 
 import { TrendingHookReturn } from './types'
@@ -9,7 +10,14 @@ const useContainer = (): TrendingHookReturn => {
   const [searchParams, setSearchParams] = useSearchParams()
   const page = searchParams.get('page') || '1'
 
-  const { data: movies, error, isLoading } = useGetTrendingMoviesQuery({ page })
+  const {
+    data: movies,
+    error,
+    isLoading,
+  } = useGetTrendingMoviesQuery(
+    { page },
+    { pollingInterval: getInterval(15, 'minutes') }
+  )
 
   const handlePagination = (page: number) => {
     setSearchParams(getParams({ page }))

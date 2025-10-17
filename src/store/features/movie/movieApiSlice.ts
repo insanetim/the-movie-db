@@ -1,11 +1,16 @@
 import { getImdbInfo } from 'src/api/imdb/apiRoutes'
-import { IMovie, IMovieDetailsEx } from 'src/interfaces/movie.interface'
+import {
+  IMovie,
+  IMovieDetailsEx,
+  IMoviesList,
+} from 'src/interfaces/movie.interface'
 import { RootState } from 'src/store'
 import { apiSlice } from 'src/store/api'
 
 import { selectSessionId } from '../auth'
+import { SearchMoviesReq } from './types'
 
-export const movieDetailsApiSlice = apiSlice.injectEndpoints({
+export const movieApiSlice = apiSlice.injectEndpoints({
   endpoints: builder => ({
     getMovieDetails: builder.query<IMovieDetailsEx, IMovie['id']>({
       queryFn: async (movieId, { getState }, _extraOptions, fetchBaseQuery) => {
@@ -31,7 +36,23 @@ export const movieDetailsApiSlice = apiSlice.injectEndpoints({
         }
       },
     }),
+    getSearchMovies: builder.query<IMoviesList, SearchMoviesReq>({
+      query: params => ({
+        params,
+        url: '/search/movie',
+      }),
+    }),
+    getTrendingMovies: builder.query<IMoviesList, { page: string }>({
+      query: params => ({
+        params,
+        url: '/trending/movie/week',
+      }),
+    }),
   }),
 })
 
-export const { useGetMovieDetailsQuery } = movieDetailsApiSlice
+export const {
+  useGetMovieDetailsQuery,
+  useGetSearchMoviesQuery,
+  useGetTrendingMoviesQuery,
+} = movieApiSlice

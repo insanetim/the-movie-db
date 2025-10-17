@@ -2,7 +2,7 @@ import { RootState } from 'src/store'
 import { apiSlice } from 'src/store/api'
 
 import { selectAccount, selectSessionId } from '../auth'
-import { movieDetailsApiSlice } from '../movieDetails'
+import { movieApiSlice } from '../movie'
 import { AddToFavoriteReq, AddToFavoriteRes } from './types'
 
 export const favoriteApiSlice = apiSlice.injectEndpoints({
@@ -13,7 +13,7 @@ export const favoriteApiSlice = apiSlice.injectEndpoints({
         { dispatch, queryFulfilled }
       ) => {
         const patchResult = dispatch(
-          movieDetailsApiSlice.util.updateQueryData(
+          movieApiSlice.util.updateQueryData(
             'getMovieDetails',
             movieId,
             draft => {
