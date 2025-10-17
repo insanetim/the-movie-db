@@ -3,7 +3,7 @@ import { RootState } from 'src/store'
 import { apiSlice } from 'src/store/api'
 
 import { selectAccount, selectSessionId } from '../auth'
-import { movieApiSlice } from '../movie'
+import { moviesApiSlice } from '../movies'
 import { AddToWatchlistReq, AddToWatchlistRes } from './types'
 
 export const watchlistApiSlice = apiSlice
@@ -17,7 +17,7 @@ export const watchlistApiSlice = apiSlice
           { dispatch, queryFulfilled }
         ) => {
           const patchResult = dispatch(
-            movieApiSlice.util.updateQueryData(
+            moviesApiSlice.util.updateQueryData(
               'getMovieDetails',
               movieId,
               draft => {

@@ -1,5 +1,5 @@
 import { useSearchParams } from 'react-router-dom'
-import { useGetTrendingMoviesQuery } from 'src/store/features/movie'
+import { useGetTrendingMoviesQuery } from 'src/store/features/movies'
 import errorMessage from 'src/utils/helpers/errorMessage'
 import getInterval from 'src/utils/helpers/getInterval'
 import getParams from 'src/utils/helpers/getParams'

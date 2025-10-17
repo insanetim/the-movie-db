@@ -1,5 +1,5 @@
 import { useParams } from 'react-router-dom'
-import { useGetMovieDetailsQuery } from 'src/store/features/movie'
+import { useGetMovieDetailsQuery } from 'src/store/features/movies'
 import errorMessage from 'src/utils/helpers/errorMessage'
 import getIdFromSlug from 'src/utils/helpers/getIdFromSlug'
 
