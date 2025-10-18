@@ -1,5 +1,5 @@
 import { useNavigate, useParams } from 'react-router-dom'
-import { useGetPersonDetailsQuery } from 'src/store/features/personDetails'
+import { useGetPersonDetailsQuery } from 'src/store/features/person'
 import errorMessage from 'src/utils/helpers/errorMessage'
 import getIdFromSlug from 'src/utils/helpers/getIdFromSlug'
 

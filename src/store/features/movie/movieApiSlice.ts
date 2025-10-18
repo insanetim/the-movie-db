@@ -11,7 +11,7 @@ import { apiSlice } from 'src/store/api'
 import { selectSessionId } from '../auth'
 import { SearchMoviesReq } from './types'
 
-export const moviesApiSlice = apiSlice.injectEndpoints({
+export const movieApiSlice = apiSlice.injectEndpoints({
   endpoints: builder => ({
     getMovieDetails: builder.query<IMovieDetailsEx, IMovie['id']>({
       queryFn: async (movieId, { getState }, _extraOptions, fetchBaseQuery) => {
@@ -58,4 +58,4 @@ export const {
   useGetMovieDetailsQuery,
   useGetSearchMoviesQuery,
   useGetTrendingMoviesQuery,
-} = moviesApiSlice
+} = movieApiSlice

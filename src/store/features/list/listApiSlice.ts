@@ -11,7 +11,7 @@ import {
   MovieListOperationReq,
 } from './types'
 
-export const listsApiSlice = apiSlice
+export const listApiSlice = apiSlice
   .enhanceEndpoints({
     addTagTypes: ['Lists', 'ListDetails'],
   })
@@ -144,4 +144,4 @@ export const {
   useGetListsQuery,
   usePrefetch,
   useRemoveMovieFromListMutation,
-} = listsApiSlice
+} = listApiSlice

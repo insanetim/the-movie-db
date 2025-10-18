@@ -6,7 +6,7 @@ import {
   ListData,
   useCreateListMutation,
   useGetListsQuery,
-} from 'src/store/features/lists'
+} from 'src/store/features/list'
 import { useAppDispatch, useAppSelector } from 'src/store/hooks'
 import errorMessage from 'src/utils/helpers/errorMessage'
 import getParams from 'src/utils/helpers/getParams'

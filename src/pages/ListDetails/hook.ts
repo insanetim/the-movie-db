@@ -7,7 +7,7 @@ import {
   useDeleteListMutation,
   useGetListDetailsQuery,
   useRemoveMovieFromListMutation,
-} from 'src/store/features/lists'
+} from 'src/store/features/list'
 import errorMessage from 'src/utils/helpers/errorMessage'
 import getIdFromSlug from 'src/utils/helpers/getIdFromSlug'
 import getParams from 'src/utils/helpers/getParams'

@@ -5,7 +5,7 @@ import useUpdatePage from 'src/hooks/useUpdatePage'
 import {
   useDeleteListMutation,
   useGetListsQuery,
-} from 'src/store/features/lists'
+} from 'src/store/features/list'
 import getSlug from 'src/utils/helpers/getSlug'
 
 import { ListItemHookProps, ListItemHookReturn } from './types'

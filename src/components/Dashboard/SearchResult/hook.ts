@@ -1,6 +1,6 @@
 import { useSearchParams } from 'react-router-dom'
 import { selectAccount } from 'src/store/features/auth'
-import { useGetSearchMoviesQuery } from 'src/store/features/movies'
+import { useGetSearchMoviesQuery } from 'src/store/features/movie'
 import { useAppSelector } from 'src/store/hooks'
 import errorMessage from 'src/utils/helpers/errorMessage'
 import getParams from 'src/utils/helpers/getParams'

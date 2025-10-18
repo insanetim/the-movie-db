@@ -1,5 +1,5 @@
 import { FormInstance, InputRef, ModalProps } from 'antd'
-import { ListData } from 'src/store/features/lists'
+import { ListData } from 'src/store/features/list'
 
 export type ModalCreateListHookProps = {
   form: FormInstance

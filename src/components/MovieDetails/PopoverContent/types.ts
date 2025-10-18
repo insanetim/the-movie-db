@@ -1,6 +1,6 @@
 import { IList, IListsList } from 'src/interfaces/list.interface'
 import { IMovie } from 'src/interfaces/movie.interface'
-import { ListData } from 'src/store/features/lists'
+import { ListData } from 'src/store/features/list'
 
 export type HandleAddToListProps = {
   listId: IList['id']

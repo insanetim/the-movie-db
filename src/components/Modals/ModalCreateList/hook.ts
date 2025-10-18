@@ -1,7 +1,7 @@
 import { InputRef } from 'antd'
 import { useRef } from 'react'
 import { hideModal } from 'src/store/features/app'
-import { ListData } from 'src/store/features/lists'
+import { ListData } from 'src/store/features/list'
 import { useAppDispatch } from 'src/store/hooks'
 
 import { ModalCreateListHookProps, ModalCreateListHookReturn } from './types'

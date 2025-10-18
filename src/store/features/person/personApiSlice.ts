@@ -1,7 +1,7 @@
 import { IPersonDetails } from 'src/interfaces/person.interface'
 import { apiSlice } from 'src/store/api'
 
-export const personDetailsApiSlice = apiSlice.injectEndpoints({
+export const personApiSlice = apiSlice.injectEndpoints({
   endpoints: builder => ({
     getPersonDetails: builder.query<IPersonDetails, IPersonDetails['id']>({
       query: personId => ({
@@ -12,4 +12,4 @@ export const personDetailsApiSlice = apiSlice.injectEndpoints({
   }),
 })
 
-export const { useGetPersonDetailsQuery } = personDetailsApiSlice
+export const { useGetPersonDetailsQuery } = personApiSlice

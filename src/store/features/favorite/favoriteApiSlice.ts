@@ -4,7 +4,7 @@ import { RootState } from 'src/store'
 import { apiSlice } from 'src/store/api'
 
 import { selectAccount, selectSessionId } from '../auth'
-import { moviesApiSlice } from '../movies'
+import { movieApiSlice } from '../movie'
 import { AddToFavoriteReq } from './types'
 
 export const favoriteApiSlice = apiSlice
@@ -18,7 +18,7 @@ export const favoriteApiSlice = apiSlice
           { dispatch, queryFulfilled }
         ) => {
           const patchResult = dispatch(
-            moviesApiSlice.util.updateQueryData(
+            movieApiSlice.util.updateQueryData(
               'getMovieDetails',
               movieId,
               draft => {

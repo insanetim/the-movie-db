@@ -7,8 +7,8 @@ import {
   useAddMovieToListMutation,
   useCreateListMutation,
   useGetListsQuery,
-} from 'src/store/features/lists'
-import { useGetMovieDetailsQuery } from 'src/store/features/movies'
+} from 'src/store/features/list'
+import { useGetMovieDetailsQuery } from 'src/store/features/movie'
 import { useAppDispatch } from 'src/store/hooks'
 import listMessage from 'src/utils/helpers/listMessage'
 
