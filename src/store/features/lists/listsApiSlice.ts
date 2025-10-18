@@ -142,5 +142,6 @@ export const {
   useDeleteListMutation,
   useGetListDetailsQuery,
   useGetListsQuery,
+  usePrefetch,
   useRemoveMovieFromListMutation,
 } = listsApiSlice

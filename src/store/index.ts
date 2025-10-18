@@ -18,7 +18,6 @@ import {
 import storage from 'redux-persist/lib/storage'
 
 import { apiSlice } from './api'
-import createdListsReducer from './createdLists'
 import { appReducer, showModal } from './features/app'
 import { authReducer } from './features/auth'
 
@@ -37,7 +36,6 @@ const rootReducer = combineReducers({
   [apiSlice.reducerPath]: apiSlice.reducer,
   app: persistReducer(appPersistConfig, appReducer),
   auth: persistReducer(authPersistConfig, authReducer),
-  createdLists: createdListsReducer,
 })
 
 export const setupStore = (preloadedState?: Partial<RootState>) =>

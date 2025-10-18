@@ -34,7 +34,7 @@ const useContainer = (): CreditsHookReturn => {
           return { ...head(credits as IPersonCredit[]), job: jobs }
         })
       )(person.movie_credits.crew) as IPersonCredit[]
-      console.log('filter', filter)
+
       switch (filter) {
         case 'all':
           return [...person.movie_credits.cast, ...crewCredits]

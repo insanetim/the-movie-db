@@ -1,10 +1,9 @@
 import { useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
-import { fetchLists } from 'src/store/createdLists/actions'
-import { createdListsSelector } from 'src/store/createdLists/selectors'
 import { showNotification } from 'src/store/features/app'
-import { selectAccount, selectSessionId } from 'src/store/features/auth'
+import { selectSessionId } from 'src/store/features/auth'
 import { useAddToFavoriteMutation } from 'src/store/features/favorite'
+import { usePrefetch } from 'src/store/features/lists'
 import { useGetMovieDetailsQuery } from 'src/store/features/movies'
 import { useAddToWatchlistMutation } from 'src/store/features/watchlist'
 import { useAppDispatch, useAppSelector } from 'src/store/hooks'
@@ -21,20 +20,17 @@ const useContainer = (): MovieDetailsHookReturn => {
   >() as MovieDetailsRouteParams
   const navigate = useNavigate()
   const dispatch = useAppDispatch()
-  const account = useAppSelector(selectAccount)
   const sessionId = useAppSelector(selectSessionId)
-  const lists = useAppSelector(createdListsSelector)
   const movieId = getIdFromSlug(movieSlug)
   const [popoverOpen, setPopoverOpen] = useState(false)
 
   const { data: movie, error, isLoading } = useGetMovieDetailsQuery(movieId)
   const [addToFavorite] = useAddToFavoriteMutation()
   const [addToWatchlist] = useAddToWatchlistMutation()
+  const prefetchLists = usePrefetch('getLists')
 
   const handlePopoverMouseEnter = () => {
-    if (account && !lists) {
-      dispatch(fetchLists('1'))
-    }
+    prefetchLists('1')
   }
 
   const handleFavoriteClick = () => {

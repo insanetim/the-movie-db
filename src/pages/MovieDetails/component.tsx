@@ -83,7 +83,7 @@ const MovieDetails: React.FC = () => {
                     setPopoverOpen={setPopoverOpen}
                   />
                 }
-                destroyTooltipOnHide
+                destroyOnHidden
                 onOpenChange={open => setPopoverOpen(open)}
                 open={popoverOpen}
                 placement='top'

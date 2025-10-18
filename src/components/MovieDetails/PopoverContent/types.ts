@@ -1,5 +1,6 @@
 import { IList, IListsList } from 'src/interfaces/list.interface'
 import { IMovie } from 'src/interfaces/movie.interface'
+import { ListData } from 'src/store/features/lists'
 
 export type HandleAddToListProps = {
   listId: IList['id']
@@ -10,8 +11,10 @@ export type PopoverContentHookProps = PopoverContentProps
 
 export type PopoverContentHookReturn = {
   handleAddToList: (props: HandleAddToListProps) => void
-  handleAddToNewList: () => void
-  lists: IListsList | null
+  handleAddToNewList: () => {
+    onSubmit: (listData: ListData) => Promise<void>
+  }
+  lists?: IListsList
 }
 
 export type PopoverContentProps = {
