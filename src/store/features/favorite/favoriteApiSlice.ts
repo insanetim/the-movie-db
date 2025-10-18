@@ -1,16 +1,17 @@
+import { MutationResponse } from 'src/interfaces/global.interface'
 import { IMoviesList } from 'src/interfaces/movie.interface'
 import { RootState } from 'src/store'
 import { apiSlice } from 'src/store/api'
 
 import { selectAccount, selectSessionId } from '../auth'
 import { moviesApiSlice } from '../movies'
-import { AddToFavoriteReq, AddToFavoriteRes } from './types'
+import { AddToFavoriteReq } from './types'
 
 export const favoriteApiSlice = apiSlice
   .enhanceEndpoints({ addTagTypes: ['FavoriteMovies'] })
   .injectEndpoints({
     endpoints: builder => ({
-      addToFavorite: builder.mutation<AddToFavoriteRes, AddToFavoriteReq>({
+      addToFavorite: builder.mutation<MutationResponse, AddToFavoriteReq>({
         invalidatesTags: ['FavoriteMovies'],
         onQueryStarted: async (
           { inFavorite, movieId },
@@ -53,7 +54,7 @@ export const favoriteApiSlice = apiSlice
           })
           if (error) return { error }
 
-          return { data: data as AddToFavoriteRes }
+          return { data: data as MutationResponse }
         },
       }),
       getFavoriteMovies: builder.query<IMoviesList, string>({

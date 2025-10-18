@@ -2,25 +2,28 @@ import { Modal } from 'antd'
 import { MouseEvent } from 'react'
 import { useNavigate, useSearchParams } from 'react-router-dom'
 import useUpdatePage from 'src/hooks/useUpdatePage'
-import { deleteList, fetchLists } from 'src/store/createdLists/actions'
 import { createdListsSelector } from 'src/store/createdLists/selectors'
-import { useAppDispatch, useAppSelector } from 'src/store/hooks'
+import { useDeleteListMutation } from 'src/store/features/lists'
+import { useAppSelector } from 'src/store/hooks'
 import getSlug from 'src/utils/helpers/getSlug'
 
 import { ListItemHookProps, ListItemHookReturn } from './types'
 
-const useContainer = ({ id, name }: ListItemHookProps): ListItemHookReturn => {
+const useContainer = ({
+  listId: id,
+  name,
+}: ListItemHookProps): ListItemHookReturn => {
   const navigate = useNavigate()
-  const dispatch = useAppDispatch()
   const lists = useAppSelector(createdListsSelector)
   const [searchParams, setSearchParams] = useSearchParams()
   const page = searchParams.get('page') || '1'
   const { updatePage } = useUpdatePage({
-    action: fetchLists(page),
     items: lists?.results,
     page,
     setSearchParams,
   })
+
+  const [deleteList] = useDeleteListMutation()
 
   const handleClick = () => {
     navigate(`/list/${getSlug(id, name)}`)
@@ -30,7 +33,7 @@ const useContainer = ({ id, name }: ListItemHookProps): ListItemHookReturn => {
     event.stopPropagation()
 
     const onOk = async () => {
-      await dispatch(deleteList(id))
+      await deleteList(id)
       updatePage()
     }
 

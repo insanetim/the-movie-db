@@ -1,3 +1,4 @@
+import { Draft } from '@reduxjs/toolkit'
 import { ComponentProps } from 'react'
 import { ModalsMap, ModalTypes } from 'src/components/ModalRoot/types'
 import { NOTIFICATION_TYPE } from 'src/constants/app'
@@ -10,7 +11,7 @@ export type AppState = {
 
 export type Modal = {
   [T in ModalTypes]: {
-    modalProps: ComponentProps<ModalsMap[T]> | null
+    modalProps: Draft<ComponentProps<ModalsMap[T]>> | null
     modalType: null | T
   }
 }[ModalTypes]

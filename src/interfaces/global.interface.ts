@@ -15,4 +15,10 @@ export interface IState<T> {
   loading: boolean
 }
 
+export type MutationResponse = {
+  status_code: number
+  status_message: string
+  success: boolean
+}
+
 export type Query = string

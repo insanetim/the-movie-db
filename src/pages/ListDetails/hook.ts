@@ -3,8 +3,11 @@ import { MouseEvent } from 'react'
 import { useNavigate, useParams, useSearchParams } from 'react-router-dom'
 import useUpdatePage from 'src/hooks/useUpdatePage'
 import { IMovie } from 'src/interfaces/movie.interface'
-import { deleteList, removeFromList } from 'src/store/createdLists/actions'
-import { useGetListDetailsQuery } from 'src/store/features/lists'
+import { removeFromList } from 'src/store/createdLists/actions'
+import {
+  useDeleteListMutation,
+  useGetListDetailsQuery,
+} from 'src/store/features/lists'
 import { useAppDispatch } from 'src/store/hooks'
 import errorMessage from 'src/utils/helpers/errorMessage'
 import getIdFromSlug from 'src/utils/helpers/getIdFromSlug'
@@ -27,6 +30,7 @@ const useContainer = (): ListDetailsHookReturn => {
     error,
     isLoading,
   } = useGetListDetailsQuery({ listId, page })
+  const [deleteList] = useDeleteListMutation()
 
   const { updatePage } = useUpdatePage({
     items: list?.items,
@@ -40,7 +44,7 @@ const useContainer = (): ListDetailsHookReturn => {
 
   const handleListDelete = () => {
     const onOk = async () => {
-      await dispatch(deleteList(listId))
+      await deleteList(listId)
       navigate('/lists')
     }
 

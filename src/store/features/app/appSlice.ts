@@ -2,7 +2,13 @@ import { nanoid, PayloadAction } from '@reduxjs/toolkit'
 import { NOTIFICATION_DURATION, NOTIFICATION_TYPE } from 'src/constants/app'
 import { createAppSlice } from 'src/store/withTypes'
 
-import { AppState, Notification, ShowNotificationProps, Theme } from './types'
+import {
+  AppState,
+  Modal,
+  Notification,
+  ShowNotificationProps,
+  Theme,
+} from './types'
 
 const initialState: AppState = {
   modal: {
@@ -28,7 +34,7 @@ export const appSlice = createAppSlice({
     setTheme(state, action: PayloadAction<Theme>) {
       state.theme = action.payload
     },
-    showModal(state, action) {
+    showModal(state, action: PayloadAction<Modal>) {
       state.modal.modalType = action.payload.modalType
       state.modal.modalProps = action.payload.modalProps || null
     },

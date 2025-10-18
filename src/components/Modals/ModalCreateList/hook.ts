@@ -1,19 +1,14 @@
 import { InputRef } from 'antd'
 import { useRef } from 'react'
-import { createList } from 'src/store/createdLists/actions'
 import { hideModal } from 'src/store/features/app'
+import { ListData } from 'src/store/features/lists'
 import { useAppDispatch } from 'src/store/hooks'
 
-import {
-  ListData,
-  ModalCreateListHookProps,
-  ModalCreateListHookReturn,
-} from './types'
+import { ModalCreateListHookProps, ModalCreateListHookReturn } from './types'
 
 const useContainer = ({
   form,
-  movieId,
-  onSuccess,
+  onSubmit,
 }: ModalCreateListHookProps): ModalCreateListHookReturn => {
   const inputRef = useRef<InputRef>(null)
   const dispatch = useAppDispatch()
@@ -24,15 +19,7 @@ const useContainer = ({
 
   const handleSubmit = async (listData: ListData) => {
     dispatch(hideModal())
-    await dispatch(createList({ listData, movieId }))
-
-    if (onSuccess) {
-      onSuccess()
-    }
-  }
-
-  const handleAfterClose = () => {
-    form.resetFields()
+    await onSubmit?.(listData)
   }
 
   const handleAfterOpenChange = (open: boolean) => {
@@ -42,7 +29,6 @@ const useContainer = ({
   }
 
   return {
-    handleAfterClose,
     handleAfterOpenChange,
     handleOk,
     handleSubmit,

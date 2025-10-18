@@ -1,12 +1,7 @@
 import { IAccount } from 'src/interfaces/account.interface'
 import { apiSlice } from 'src/store/api'
 
-import {
-  RequestToken,
-  Session,
-  ValidateWithLoginReq,
-  ValidateWithLoginRes,
-} from './types'
+import { RequestToken, Session, ValidateWithLoginReq } from './types'
 
 export const authApiSlice = apiSlice.injectEndpoints({
   endpoints: builder => ({
@@ -38,10 +33,7 @@ export const authApiSlice = apiSlice.injectEndpoints({
         url: '/account',
       }),
     }),
-    validateWithLogin: builder.mutation<
-      ValidateWithLoginRes,
-      ValidateWithLoginReq
-    >({
+    validateWithLogin: builder.mutation<RequestToken, ValidateWithLoginReq>({
       query: data => ({
         body: data,
         method: 'POST',

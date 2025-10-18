@@ -4,8 +4,8 @@ import { Card, Typography } from 'antd'
 import useContainer from './hook'
 import { ListItemProps } from './types'
 
-const ListItem: React.FC<ListItemProps> = ({ description, id, name }) => {
-  const { handleClick, handleListDelete } = useContainer({ id, name })
+const ListItem: React.FC<ListItemProps> = ({ description, listId, name }) => {
+  const { handleClick, handleListDelete } = useContainer({ listId, name })
 
   return (
     <Card

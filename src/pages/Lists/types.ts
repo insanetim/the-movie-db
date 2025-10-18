@@ -1,10 +1,13 @@
 import { ErrorMsg, HandlePagination } from 'src/interfaces/global.interface'
 import { IListsList } from 'src/interfaces/list.interface'
+import { ListData } from 'src/store/features/lists'
 
 export type ListsHookReturn = {
   error: ErrorMsg
-  handleCreateList: () => () => void
+  handleCreateList: () => {
+    onSubmit: (listData: ListData) => Promise<void>
+  }
   handlePagination: HandlePagination
-  lists: IListsList | null
-  loading: boolean
+  isLoading: boolean
+  lists?: IListsList
 }

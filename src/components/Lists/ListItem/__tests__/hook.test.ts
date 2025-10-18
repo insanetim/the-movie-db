@@ -29,7 +29,7 @@ const mockDispatch = jest.fn()
 jest.spyOn(reactRedux, 'useAppDispatch').mockReturnValue(mockDispatch)
 
 describe('ListItem useContainer hook', () => {
-  const props: ListItemHookProps = { id: 1234, name: 'list' }
+  const props: ListItemHookProps = { listId: 1234, name: 'list' }
 
   it('should match snapshot', () => {
     const { result } = renderHookWithWrapper(() => useContainer(props))
@@ -67,7 +67,7 @@ describe('ListItem useContainer hook', () => {
       title: 'Do you want to delete list?',
     })
     expect(mockDispatch).toHaveBeenCalled()
-    expect(deleteList).toHaveBeenCalledWith(props.id)
+    expect(deleteList).toHaveBeenCalledWith(props.listId)
     expect(updatePage).toHaveBeenCalled()
   })
 })

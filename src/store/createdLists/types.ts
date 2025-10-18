@@ -1,7 +1,8 @@
-import { ListData } from 'src/components/Modals/ModalCreateList/types'
 import { IState } from 'src/interfaces/global.interface'
 import { IList, IListsList } from 'src/interfaces/list.interface'
 import { IMovie } from 'src/interfaces/movie.interface'
+
+import { ListData } from '../features/lists'
 
 export type AddToListProps = {
   listId: IList['id']

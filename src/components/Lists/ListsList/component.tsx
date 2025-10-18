@@ -16,7 +16,7 @@ const ListsList: React.FC<ListsListProps> = ({ lists }) => (
       >
         <ListItem
           description={description}
-          id={id}
+          listId={id}
           name={name}
         />
       </Col>

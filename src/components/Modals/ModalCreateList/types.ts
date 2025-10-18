@@ -1,16 +1,12 @@
 import { FormInstance, InputRef, ModalProps } from 'antd'
-import { IMovie } from 'src/interfaces/movie.interface'
-
-export type ListData = { description: string; name: string }
+import { ListData } from 'src/store/features/lists'
 
 export type ModalCreateListHookProps = {
   form: FormInstance
-  movieId?: IMovie['id']
-  onSuccess?: () => void
+  onSubmit?: (listData: ListData) => Promise<void>
 }
 
 export type ModalCreateListHookReturn = {
-  handleAfterClose: () => void
   handleAfterOpenChange: (open: boolean) => void
   handleOk: () => void
   handleSubmit: (listData: ListData) => void
@@ -18,6 +14,5 @@ export type ModalCreateListHookReturn = {
 }
 
 export type ModalCreateListProps = ModalProps & {
-  movieId?: IMovie['id']
-  onSuccess?: () => void
+  onSubmit?: (listData: ListData) => Promise<void>
 }

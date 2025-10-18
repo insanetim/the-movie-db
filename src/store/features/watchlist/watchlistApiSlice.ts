@@ -1,16 +1,17 @@
+import { MutationResponse } from 'src/interfaces/global.interface'
 import { IMoviesList } from 'src/interfaces/movie.interface'
 import { RootState } from 'src/store'
 import { apiSlice } from 'src/store/api'
 
 import { selectAccount, selectSessionId } from '../auth'
 import { moviesApiSlice } from '../movies'
-import { AddToWatchlistReq, AddToWatchlistRes } from './types'
+import { AddToWatchlistReq } from './types'
 
 export const watchlistApiSlice = apiSlice
   .enhanceEndpoints({ addTagTypes: ['WatchlistMovies'] })
   .injectEndpoints({
     endpoints: builder => ({
-      addToWatchlist: builder.mutation<AddToWatchlistRes, AddToWatchlistReq>({
+      addToWatchlist: builder.mutation<MutationResponse, AddToWatchlistReq>({
         invalidatesTags: ['WatchlistMovies'],
         onQueryStarted: async (
           { inWatchlist, movieId },
@@ -53,7 +54,7 @@ export const watchlistApiSlice = apiSlice
           })
           if (error) return { error }
 
-          return { data: data as AddToWatchlistRes }
+          return { data: data as MutationResponse }
         },
       }),
       getWatchlistMovies: builder.query<IMoviesList, string>({
