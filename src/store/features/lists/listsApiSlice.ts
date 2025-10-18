@@ -4,7 +4,12 @@ import { RootState } from 'src/store'
 import { apiSlice } from 'src/store/api'
 
 import { selectAccount, selectSessionId } from '../auth'
-import { CreateListRes, GetListDetailsReq, ListData } from './types'
+import {
+  CreateListRes,
+  GetListDetailsReq,
+  ListData,
+  MovieListOperationReq,
+} from './types'
 
 export const listsApiSlice = apiSlice
   .enhanceEndpoints({
@@ -12,6 +17,31 @@ export const listsApiSlice = apiSlice
   })
   .injectEndpoints({
     endpoints: builder => ({
+      addMovieToList: builder.mutation<MutationResponse, MovieListOperationReq>(
+        {
+          invalidatesTags: (_result, _error, { listId }) => [
+            { id: listId, type: 'ListDetails' },
+          ],
+          queryFn: async (
+            { listId, movieId },
+            { getState },
+            _extraOptions,
+            fetchBaseQuery
+          ) => {
+            const sessionId = selectSessionId(getState() as RootState)!
+
+            const { data, error } = await fetchBaseQuery({
+              body: { media_id: movieId },
+              method: 'POST',
+              params: { session_id: sessionId },
+              url: `/list/${listId}/add_item`,
+            })
+            if (error) return { error }
+
+            return { data: data as MutationResponse }
+          },
+        }
+      ),
       createList: builder.mutation<CreateListRes, ListData>({
         invalidatesTags: ['Lists'],
         queryFn: async (
@@ -54,7 +84,9 @@ export const listsApiSlice = apiSlice
         },
       }),
       getListDetails: builder.query<IListDetails, GetListDetailsReq>({
-        providesTags: ['ListDetails'],
+        providesTags: (_result, _error, { listId }) => [
+          { id: listId, type: 'ListDetails' },
+        ],
         query: ({ listId, page }) => ({
           params: { page },
           url: `/list/${listId}`,
@@ -75,12 +107,40 @@ export const listsApiSlice = apiSlice
           return { data: data as IListsList }
         },
       }),
+      removeMovieFromList: builder.mutation<
+        MutationResponse,
+        MovieListOperationReq
+      >({
+        invalidatesTags: (_result, _error, { listId }) => [
+          { id: listId, type: 'ListDetails' },
+        ],
+        queryFn: async (
+          { listId, movieId },
+          { getState },
+          _extraOptions,
+          fetchBaseQuery
+        ) => {
+          const sessionId = selectSessionId(getState() as RootState)!
+
+          const { data, error } = await fetchBaseQuery({
+            body: { media_id: movieId },
+            method: 'POST',
+            params: { session_id: sessionId },
+            url: `/list/${listId}/remove_item`,
+          })
+          if (error) return { error }
+
+          return { data: data as MutationResponse }
+        },
+      }),
     }),
   })
 
 export const {
+  useAddMovieToListMutation,
   useCreateListMutation,
   useDeleteListMutation,
   useGetListDetailsQuery,
   useGetListsQuery,
+  useRemoveMovieFromListMutation,
 } = listsApiSlice

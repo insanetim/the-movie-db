@@ -3,12 +3,11 @@ import { MouseEvent } from 'react'
 import { useNavigate, useParams, useSearchParams } from 'react-router-dom'
 import useUpdatePage from 'src/hooks/useUpdatePage'
 import { IMovie } from 'src/interfaces/movie.interface'
-import { removeFromList } from 'src/store/createdLists/actions'
 import {
   useDeleteListMutation,
   useGetListDetailsQuery,
+  useRemoveMovieFromListMutation,
 } from 'src/store/features/lists'
-import { useAppDispatch } from 'src/store/hooks'
 import errorMessage from 'src/utils/helpers/errorMessage'
 import getIdFromSlug from 'src/utils/helpers/getIdFromSlug'
 import getParams from 'src/utils/helpers/getParams'
@@ -16,11 +15,10 @@ import getParams from 'src/utils/helpers/getParams'
 import { ListDetailsHookReturn, ListDetailsRouteParams } from './types'
 
 const useContainer = (): ListDetailsHookReturn => {
+  const navigate = useNavigate()
   const { listSlug } = useParams<
     keyof ListDetailsRouteParams
   >() as ListDetailsRouteParams
-  const navigate = useNavigate()
-  const dispatch = useAppDispatch()
   const [searchParams, setSearchParams] = useSearchParams()
   const page = searchParams.get('page') || '1'
   const listId = getIdFromSlug(listSlug)
@@ -31,6 +29,7 @@ const useContainer = (): ListDetailsHookReturn => {
     isLoading,
   } = useGetListDetailsQuery({ listId, page })
   const [deleteList] = useDeleteListMutation()
+  const [removeMovieFromList] = useRemoveMovieFromListMutation()
 
   const { updatePage } = useUpdatePage({
     items: list?.items,
@@ -63,7 +62,7 @@ const useContainer = (): ListDetailsHookReturn => {
     event.stopPropagation()
 
     const onOk = async () => {
-      await dispatch(removeFromList({ listId, movieId }))
+      await removeMovieFromList({ listId, movieId })
       updatePage()
     }
 
