@@ -10,9 +10,9 @@ export const authApiSlice = apiSlice.injectEndpoints({
         url: '/authentication/token/new',
       }),
     }),
-    createSession: builder.mutation<Session, { request_token: string }>({
-      query: data => ({
-        body: data,
+    createSession: builder.mutation<Session, RequestToken['request_token']>({
+      query: request_token => ({
+        body: { request_token },
         method: 'POST',
         url: '/authentication/session/new',
       }),
@@ -27,9 +27,9 @@ export const authApiSlice = apiSlice.injectEndpoints({
         url: '/authentication/session',
       }),
     }),
-    getAccount: builder.query<IAccount, { session_id: string }>({
-      query: data => ({
-        params: data,
+    getAccount: builder.query<IAccount, Session['session_id']>({
+      query: session_id => ({
+        params: { session_id },
         url: '/account',
       }),
     }),

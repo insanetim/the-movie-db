@@ -25,7 +25,7 @@ const useContainer = (): LoginHookReturn => {
     try {
       const { request_token } = await createRequestToken().unwrap()
       await validateWithLogin({ request_token, ...userData }).unwrap()
-      const { success } = await createSession({ request_token }).unwrap()
+      const { success } = await createSession(request_token).unwrap()
       if (success) {
         const to = location.state?.from?.pathname || '/'
         navigate(to, { replace: true })

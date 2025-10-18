@@ -1,4 +1,3 @@
-import { FetchBaseQueryError } from '@reduxjs/toolkit/query'
 import { modalComponentsMap } from 'src/components/ModalRoot/modalComponents'
 import useHandleError from 'src/hooks/useHandleError'
 import { showModal, showNotification } from 'src/store/features/app'
@@ -45,7 +44,7 @@ const useContainer = ({
           })
         )
       } catch (error) {
-        handleError(error as FetchBaseQueryError)
+        handleError(error)
       }
     }
 
@@ -76,7 +75,7 @@ const useContainer = ({
         })
       )
     } catch (error) {
-      handleError(error as FetchBaseQueryError)
+      handleError(error)
     }
     setPopoverOpen(false)
   }

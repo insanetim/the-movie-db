@@ -17,7 +17,7 @@ const useContainer = (): HeaderHookReturn => {
   const sessionId = useAppSelector(selectSessionId)
   useScrollToTop()
 
-  useGetAccountQuery({ session_id: sessionId! }, { skip: !sessionId })
+  useGetAccountQuery(sessionId!, { skip: !sessionId })
   const [deleteSession] = useDeleteSessionMutation()
 
   const handleLogin = () => {
