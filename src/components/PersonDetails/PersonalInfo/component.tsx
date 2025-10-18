@@ -1,5 +1,5 @@
 import { Typography } from 'antd'
-import { GENDERS } from 'src/constants/app'
+import { GENDERS } from 'src/constants'
 import { getAge, getFormatedDate } from 'src/utils/helpers/getAge'
 
 import { PersonalInfoProps } from './types'

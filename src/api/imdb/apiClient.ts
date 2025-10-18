@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { IMDB_API_URL } from 'src/constants/app'
+import { IMDB_API_URL } from 'src/constants'
 
 const baseURL = IMDB_API_URL
 

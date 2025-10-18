@@ -1,4 +1,4 @@
-import { NOTIFICATION_TYPE } from 'src/constants/app'
+import { NOTIFICATION_TYPE } from 'src/constants'
 
 export type NotificationHookProps = NotificationProps
 

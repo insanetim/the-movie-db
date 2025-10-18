@@ -1,6 +1,6 @@
 import { act } from '@testing-library/react'
 import { notification } from 'antd'
-import { NOTIFICATION_DURATION, NOTIFICATION_TYPE } from 'src/constants/app'
+import { NOTIFICATION_DURATION, NOTIFICATION_TYPE } from 'src/constants'
 import { renderHookWithWrapper } from 'src/utils/testHelpers/renderWithWrapper'
 
 import useContainer from '../hook'

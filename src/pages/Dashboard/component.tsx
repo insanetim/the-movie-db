@@ -2,7 +2,7 @@ import { Helmet } from 'react-helmet'
 import SearchInput from 'src/components/Dashboard/SearchInput'
 import SearchResult from 'src/components/Dashboard/SearchResult/component'
 import Trending from 'src/components/Dashboard/Trending/component'
-import { APP_NAME } from 'src/constants/app'
+import { APP_NAME } from 'src/constants'
 
 import useContainer from './hook'
 

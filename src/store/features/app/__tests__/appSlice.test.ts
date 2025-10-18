@@ -1,5 +1,5 @@
 import { assoc, assocPath, mergeDeepRight } from 'ramda'
-import { NOTIFICATION_DURATION, NOTIFICATION_TYPE } from 'src/constants/app'
+import { NOTIFICATION_DURATION, NOTIFICATION_TYPE } from 'src/constants'
 
 import {
   appReducer,

@@ -1,7 +1,7 @@
 import { Draft } from '@reduxjs/toolkit'
 import { ComponentProps } from 'react'
 import { ModalsMap, ModalTypes } from 'src/components/ModalRoot/types'
-import { NOTIFICATION_TYPE } from 'src/constants/app'
+import { NOTIFICATION_TYPE } from 'src/constants'
 
 export type AppState = {
   modal: Modal

@@ -1,4 +1,4 @@
-import { APP_NAME } from 'src/constants/app'
+import { APP_NAME } from 'src/constants'
 
 import metaTitle from '../metaTitle'
 
