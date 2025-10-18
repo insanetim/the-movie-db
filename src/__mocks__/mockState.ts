@@ -1,7 +1,5 @@
 import { apiSlice } from 'src/store/api/apiSlice'
 import { RootState } from 'src/store/index'
-import { movieDetailsInitialState } from 'src/store/movieDetails/reducer'
-import { personDetailsInitialState } from 'src/store/personDetails/reducer'
 
 const mockState: RootState = {
   [apiSlice.reducerPath]: {
@@ -33,34 +31,7 @@ const mockState: RootState = {
       version: -1,
     },
     account: null,
-    isAuthenticated: false,
-  },
-  createdLists: {
-    data: null,
-    error: null,
-    loading: true,
-  },
-  dashboard: {
-    data: null,
-    error: null,
-    loading: true,
-  },
-  favorite: {
-    data: null,
-    error: null,
-    loading: true,
-  },
-  listDetails: {
-    data: null,
-    error: null,
-    loading: true,
-  },
-  movieDetails: movieDetailsInitialState,
-  personDetails: personDetailsInitialState,
-  watchlist: {
-    data: null,
-    error: null,
-    loading: true,
+    sessionId: null,
   },
 }
 
