@@ -8,9 +8,12 @@ import { ListDetailsHookReturn } from '../types'
 
 const mockedHook: ListDetailsHookReturn = {
   error: null,
-  handleListDelete: jest.fn(),
-  handleMovieDelete: jest.fn(),
+  handleConfirmDeleteList: jest.fn(),
+  handleConfirmDeleteMovie: jest.fn(),
+  handleDeleteList: jest.fn(),
+  handleDeleteMovie: jest.fn(),
   handlePagination: jest.fn(),
+  isLoading: false,
   list: {
     description: 'test/description',
     id: 1234,
@@ -20,7 +23,6 @@ const mockedHook: ListDetailsHookReturn = {
     total_pages: 10,
     total_results: 200,
   },
-  loading: false,
 }
 jest.mock('../hook', () => jest.fn(() => mockedHook))
 
@@ -39,7 +41,7 @@ describe('ListDetails component', () => {
     const deleteBtn = screen.getByTestId('deleteListBtn')
     await user.click(deleteBtn)
 
-    expect(mockedHook.handleListDelete).toHaveBeenCalled()
+    expect(mockedHook.handleConfirmDeleteList).toHaveBeenCalled()
   })
 
   it('should call "handleMovieDelete" when delete button clicked', async () => {
@@ -48,7 +50,7 @@ describe('ListDetails component', () => {
     const deleteBtn = screen.getByTestId('deleteMovieBtn')
     await user.click(deleteBtn)
 
-    expect(mockedHook.handleMovieDelete).toHaveBeenCalled()
+    expect(mockedHook.handleConfirmDeleteMovie).toHaveBeenCalled()
   })
 
   it('should call "handlePagination" when pagination clicked', async () => {
@@ -76,21 +78,21 @@ describe('ListDetails component', () => {
   })
 
   it('should match snapshot with empty list', () => {
-    mockedHook.list = null
+    mockedHook.list = undefined
     const { asFragment } = renderWithWrapper(<ListDetails />)
 
     expect(asFragment()).toMatchSnapshot()
   })
 
   it('should match snapshot with loading', () => {
-    mockedHook.loading = true
+    mockedHook.isLoading = true
     const { asFragment } = renderWithWrapper(<ListDetails />)
 
     expect(asFragment()).toMatchSnapshot()
   })
 
   it('should match snapshot with error', () => {
-    mockedHook.loading = false
+    mockedHook.isLoading = false
     mockedHook.error = 'Something went wrong!'
     const { asFragment } = renderWithWrapper(<ListDetails />)
 
