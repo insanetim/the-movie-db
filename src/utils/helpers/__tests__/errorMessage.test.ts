@@ -9,7 +9,7 @@ describe('errorMessage', () => {
   })
 
   it('should return correct value', () => {
-    const error = { response: { data: { status_message: 'test/message' } } }
+    const error = { data: { status_message: 'test/message' } }
     const result = errorMessage(error)
 
     expect(result).toBe('test/message')
