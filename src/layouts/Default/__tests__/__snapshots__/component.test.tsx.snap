@@ -126,11 +126,44 @@ exports[`DefaultLayout component should match snapshot 1`] = `
               class="ant-col css-dev-only-do-not-override-1odpy5d"
               style="padding-left: 12px; padding-right: 12px;"
             >
-              <a
-                class="ant-typography text-white css-dev-only-do-not-override-1odpy5d"
+              <span
+                class="ant-typography ant-dropdown-trigger text-white css-dev-only-do-not-override-1odpy5d"
               >
-                Sign in
-              </a>
+                <span
+                  class="ant-avatar ant-avatar-circle ant-avatar-image css-dev-only-do-not-override-1odpy5d"
+                >
+                  <img
+                    alt="User avatar"
+                    src="https://www.gravatar.com/avatar/image"
+                  />
+                </span>
+                 
+                <span
+                  class="hide-sm-down"
+                >
+                  test/username
+                </span>
+                 
+                <span
+                  aria-label="caret-down"
+                  class="anticon anticon-caret-down"
+                  role="img"
+                >
+                  <svg
+                    aria-hidden="true"
+                    data-icon="caret-down"
+                    fill="currentColor"
+                    focusable="false"
+                    height="1em"
+                    viewBox="0 0 1024 1024"
+                    width="1em"
+                  >
+                    <path
+                      d="M840.4 300H183.6c-19.7 0-30.7 20.8-18.5 35l328.4 380.8c9.4 10.9 27.5 10.9 37 0L858.9 335c12.2-14.2 1.2-35-18.5-35z"
+                    />
+                  </svg>
+                </span>
+              </span>
             </div>
           </div>
         </div>

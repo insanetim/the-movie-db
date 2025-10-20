@@ -8,7 +8,7 @@ const mockedHeader: HeaderHookReturn = {
   account: mockAccount,
   handleLogin: jest.fn(),
   handleLogout: jest.fn(),
-  isAuthenticated: true,
+  sessionId: 'test/session_id',
 }
 jest.mock('../Header/hook', () => jest.fn(() => mockedHeader))
 

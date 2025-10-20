@@ -9,7 +9,7 @@ const mockedHook: HeaderHookReturn = {
   account: mockAccount,
   handleLogin: jest.fn(),
   handleLogout: jest.fn(),
-  isAuthenticated: true,
+  sessionId: 'test/session_id',
 }
 jest.mock('../hook', () => jest.fn(() => mockedHook))
 
@@ -39,7 +39,7 @@ describe('Header component', () => {
   })
 
   it('should match snapshot for unauthenticated', () => {
-    mockedHook.isAuthenticated = false
+    mockedHook.sessionId = null
 
     const { asFragment } = renderWithWrapper(<Header />)
 
