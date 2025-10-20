@@ -4,9 +4,8 @@ import { ListData } from 'src/store/features/list'
 
 export type ListsHookReturn = {
   error: ErrorMsg
-  handleCreateList: () => {
-    onSubmit: (listData: ListData) => Promise<void>
-  }
+  handleCreateList: (listData: ListData) => Promise<void>
+  handleOpenCreateListModal: () => void
   handlePagination: HandlePagination
   isLoading: boolean
   lists?: IListsList

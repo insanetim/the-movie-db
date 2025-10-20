@@ -1,6 +1,7 @@
 import { Modal } from 'antd'
 import { MouseEvent } from 'react'
 import { useNavigate, useParams, useSearchParams } from 'react-router-dom'
+import useHandleError from 'src/hooks/useHandleError'
 import useUpdatePage from 'src/hooks/useUpdatePage'
 import { IMovie } from 'src/interfaces/movie.interface'
 import {
@@ -22,6 +23,7 @@ const useContainer = (): ListDetailsHookReturn => {
   const [searchParams, setSearchParams] = useSearchParams()
   const page = searchParams.get('page') || '1'
   const listId = getIdFromSlug(listSlug)
+  const { handleError } = useHandleError()
 
   const {
     data: list,
@@ -41,43 +43,49 @@ const useContainer = (): ListDetailsHookReturn => {
     setSearchParams(getParams({ page }))
   }
 
-  const handleListDelete = () => {
-    const onOk = async () => {
-      await deleteList(listId)
+  const handleDeleteList = async () => {
+    try {
+      await deleteList(listId).unwrap()
       navigate('/lists')
+    } catch (error) {
+      handleError(error)
     }
-
-    Modal.confirm({
-      onOk,
-      title: 'Do you want to delete list?',
-    })
-
-    return onOk
   }
 
-  const handleMovieDelete = (
+  const handleDeleteMovie = async (movieId: IMovie['id']) => {
+    try {
+      await removeMovieFromList({ listId, movieId }).unwrap()
+      updatePage()
+    } catch (error) {
+      handleError(error)
+    }
+  }
+
+  const handleConfirmDeleteList = () => {
+    Modal.confirm({
+      onOk: () => handleDeleteList(),
+      title: 'Do you want to delete list?',
+    })
+  }
+
+  const handleConfirmDeleteMovie = (
     event: MouseEvent<HTMLSpanElement>,
     movieId: IMovie['id']
   ) => {
     event.stopPropagation()
 
-    const onOk = async () => {
-      await removeMovieFromList({ listId, movieId })
-      updatePage()
-    }
-
     Modal.confirm({
-      onOk,
+      onOk: () => handleDeleteMovie(movieId),
       title: 'Do you want to delete movie from this list?',
     })
-
-    return onOk
   }
 
   return {
     error: errorMessage(error),
-    handleListDelete,
-    handleMovieDelete,
+    handleConfirmDeleteList,
+    handleConfirmDeleteMovie,
+    handleDeleteList,
+    handleDeleteMovie,
     handlePagination,
     isLoading,
     list,

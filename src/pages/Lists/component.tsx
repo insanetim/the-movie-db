@@ -13,8 +13,13 @@ import metaTitle from 'src/utils/helpers/metaTitle'
 import useContainer from './hook'
 
 const Lists: React.FC = () => {
-  const { error, handleCreateList, handlePagination, isLoading, lists } =
-    useContainer()
+  const {
+    error,
+    handleOpenCreateListModal,
+    handlePagination,
+    isLoading,
+    lists,
+  } = useContainer()
 
   let content: JSX.Element
   if (isLoading) {
@@ -50,7 +55,7 @@ const Lists: React.FC = () => {
           <IconButton
             data-testid='createListBtn'
             icon={<PlusCircleOutlined />}
-            onClick={handleCreateList}
+            onClick={handleOpenCreateListModal}
           />
         </PageTitle>
         {content}

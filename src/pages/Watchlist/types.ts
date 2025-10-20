@@ -3,10 +3,11 @@ import { IMovie, IMoviesList } from 'src/interfaces/movie.interface'
 
 export type WatchlistHookReturn = {
   error: ErrorMsg
-  handleMovieDelete: (
+  handleConfirmDeleteMovie: (
     event: React.MouseEvent<HTMLSpanElement>,
     movieId: IMovie['id']
-  ) => () => Promise<void>
+  ) => void
+  handleDeleteMovie: (movieId: IMovie['id']) => Promise<void>
   handlePagination: HandlePagination
   isLoading: boolean
   movies?: IMoviesList

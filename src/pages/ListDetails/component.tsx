@@ -15,8 +15,8 @@ import useContainer from './hook'
 const ListDetails: React.FC = () => {
   const {
     error,
-    handleListDelete,
-    handleMovieDelete,
+    handleConfirmDeleteList,
+    handleConfirmDeleteMovie,
     handlePagination,
     isLoading,
     list,
@@ -43,7 +43,7 @@ const ListDetails: React.FC = () => {
     content = (
       <>
         <MoviesList
-          handleMovieDelete={handleMovieDelete}
+          handleMovieDelete={handleConfirmDeleteMovie}
           movies={list.items}
         />
         {list.total_pages > 1 && (
@@ -71,7 +71,7 @@ const ListDetails: React.FC = () => {
           <IconButton
             data-testid='deleteListBtn'
             icon={<MinusCircleOutlined />}
-            onClick={handleListDelete}
+            onClick={handleConfirmDeleteList}
           />
         </PageTitle>
         {content}

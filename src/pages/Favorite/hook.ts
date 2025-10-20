@@ -1,6 +1,7 @@
 import { Modal } from 'antd'
 import { MouseEvent } from 'react'
 import { useSearchParams } from 'react-router-dom'
+import useHandleError from 'src/hooks/useHandleError'
 import useUpdatePage from 'src/hooks/useUpdatePage'
 import { IMovie } from 'src/interfaces/movie.interface'
 import { selectAccount } from 'src/store/features/auth'
@@ -15,6 +16,7 @@ import getParams from 'src/utils/helpers/getParams'
 import { FavoriteHookReturn } from './types'
 
 const useContainer = (): FavoriteHookReturn => {
+  const { handleError } = useHandleError()
   const account = useAppSelector(selectAccount)
   const [searchParams, setSearchParams] = useSearchParams()
   const page = searchParams.get('page') || '1'
@@ -36,28 +38,31 @@ const useContainer = (): FavoriteHookReturn => {
     setSearchParams(getParams({ page }))
   }
 
-  const handleMovieDelete = (
+  const handleDeleteMovie = async (movieId: IMovie['id']) => {
+    try {
+      await addToFavorite({ inFavorite: false, movieId }).unwrap()
+      updatePage()
+    } catch (error) {
+      handleError(error)
+    }
+  }
+
+  const handleConfirmDeleteMovie = (
     event: MouseEvent<HTMLSpanElement>,
     movieId: IMovie['id']
   ) => {
     event.stopPropagation()
 
-    const onOk = async () => {
-      await addToFavorite({ inFavorite: false, movieId })
-      updatePage()
-    }
-
     Modal.confirm({
-      onOk,
+      onOk: () => handleDeleteMovie(movieId),
       title: 'Do you want to delete movie from favorite?',
     })
-
-    return onOk
   }
 
   return {
     error: errorMessage(error),
-    handleMovieDelete,
+    handleConfirmDeleteMovie,
+    handleDeleteMovie,
     handlePagination,
     isLoading,
     movies,
