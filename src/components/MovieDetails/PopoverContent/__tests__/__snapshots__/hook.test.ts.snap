@@ -1,9 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`PopoverContent useContainer hook should match snapshot 1`] = `
-{
-  "handleAddToList": [Function],
-  "handleAddToNewList": [Function],
-  "lists": null,
-}
-`;
