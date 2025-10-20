@@ -1,9 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`SearchInput useContainer hook should match snapshot 1`] = `
-{
-  "handleChange": [Function],
-  "handleSearch": [Function],
-  "inputValue": "",
-}
-`;
