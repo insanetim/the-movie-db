@@ -2,6 +2,6 @@
 
 exports[`CreditsItem useContainer hook should match snapshot 1`] = `
 {
-  "handleClick": [Function],
+  "handleNavigateToPerson": [Function],
 }
 `;

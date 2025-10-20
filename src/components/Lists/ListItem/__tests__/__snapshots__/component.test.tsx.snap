@@ -28,7 +28,6 @@ exports[`ListItem component should match snapshot 1`] = `
             class="anticon anticon-delete"
             data-testid="deleteListBtn"
             role="img"
-            tabindex="-1"
           >
             <svg
               aria-hidden="true"

@@ -3,15 +3,11 @@
 exports[`EmptyLayout component should match snapshot 1`] = `
 <DocumentFragment>
   <div
-    class="center"
+    class="ant-layout center css-dev-only-do-not-override-1odpy5d"
   >
-    <div
-      class="ant-layout css-dev-only-do-not-override-1odpy5d"
-    >
-      <main
-        class="ant-layout-content css-dev-only-do-not-override-1odpy5d"
-      />
-    </div>
+    <main
+      class="ant-layout-content auth-layout css-dev-only-do-not-override-1odpy5d"
+    />
   </div>
 </DocumentFragment>
 `;

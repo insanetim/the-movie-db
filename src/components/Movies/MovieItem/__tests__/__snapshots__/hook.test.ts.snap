@@ -2,6 +2,6 @@
 
 exports[`MovieItem useContainer hook should match snapshot 1`] = `
 {
-  "handleClick": [Function],
+  "handleNavigateToMovie": [Function],
 }
 `;
