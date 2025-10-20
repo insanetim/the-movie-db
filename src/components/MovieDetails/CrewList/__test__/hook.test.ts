@@ -109,20 +109,35 @@ describe('CrewList useContainer hook', () => {
     renderHook(() => useContainer(props))
 
     expect(mockGroupBy).toHaveBeenCalledWith(
-      expect.any(Function), // The grouping function
+      expect.any(Function), // The grouping function that extracts department
       mockCrew
     )
+
+    // Test that the groupBy function would correctly group our mock data
+    const groupByFunction = mockGroupBy.mock.calls[0][0]
+    expect(groupByFunction(mockCrew[0])).toBe('Directing')
+    expect(groupByFunction(mockCrew[1])).toBe('Writing')
+    expect(groupByFunction(mockCrew[2])).toBe('Directing')
+    expect(groupByFunction(mockCrew[3])).toBe('Production')
+    expect(groupByFunction(mockCrew[4])).toBe('Writing')
   })
 
-  it('should sort department names alphabetically', () => {
+  it('should sort department names alphabetically using localeCompare', () => {
     const groupedData = {
-      Directing: [mockCrew[0], mockCrew[2]], // D comes second
-      Production: [mockCrew[3]], // P comes third
-      Writing: [mockCrew[1], mockCrew[4]], // W comes first alphabetically
+      Directing: [mockCrew[0], mockCrew[2]], // D comes first in insertion order
+      Production: [mockCrew[3]], // P comes second
+      Writing: [mockCrew[1], mockCrew[4]], // W comes third
     }
 
     mockGroupBy.mockReturnValue(groupedData as never)
-    mockSort.mockReturnValue(['Directing', 'Production', 'Writing'])
+
+    let capturedSortFunction: ((a: string, b: string) => number) | undefined
+
+    mockSort.mockImplementation(comparator => {
+      capturedSortFunction = comparator
+      // Return the sorted array as expected
+      return ['Directing', 'Production', 'Writing']
+    })
 
     const props: CrewListHookProps = {
       crew: mockCrew,
@@ -130,12 +145,26 @@ describe('CrewList useContainer hook', () => {
 
     renderHook(() => useContainer(props))
 
-    // The sort function should be called with Object.keys(groups) which would be ['Writing', 'Directing', 'Production']
-    // and it should return them sorted alphabetically: ['Directing', 'Production', 'Writing']
-    expect(mockSort).toHaveBeenCalledWith(
-      expect.any(Function), // The comparison function (a, b) => a.localeCompare(b)
-      ['Writing', 'Directing', 'Production'] // The keys from grouped data (in insertion order)
-    )
+    // Verify the sort function was called with the correct array (insertion order)
+    expect(mockSort).toHaveBeenCalledWith(expect.any(Function), [
+      'Directing',
+      'Production',
+      'Writing',
+    ])
+
+    // Test the captured sort function
+    expect(capturedSortFunction).toBeDefined()
+    if (capturedSortFunction) {
+      // Test that it sorts alphabetically using localeCompare logic
+      expect(capturedSortFunction('Apple', 'Banana')).toBeLessThan(0) // A < B
+      expect(capturedSortFunction('Banana', 'Apple')).toBeGreaterThan(0) // B > A
+      expect(capturedSortFunction('Cherry', 'Cherry')).toBe(0) // C = C
+
+      // Test with the actual department names from our data
+      expect(capturedSortFunction('Directing', 'Production')).toBeLessThan(0) // D < P
+      expect(capturedSortFunction('Production', 'Writing')).toBeLessThan(0) // P < W
+      expect(capturedSortFunction('Directing', 'Writing')).toBeLessThan(0) // D < W
+    }
   })
 
   it('should handle empty crew array', () => {
