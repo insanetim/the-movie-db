@@ -12,7 +12,7 @@ const MovieItem: React.FC<MovieItemProps> = ({
   posterPath,
   title,
 }) => {
-  const { handleClick } = useContainer({ id, title })
+  const { handleNavigateToMovie } = useContainer({ id, title })
 
   let cover: JSX.Element
   if (posterPath) {
@@ -53,7 +53,7 @@ const MovieItem: React.FC<MovieItemProps> = ({
       cover={cover}
       data-testid='movieItemCard'
       hoverable
-      onClick={handleClick}
+      onClick={handleNavigateToMovie}
     >
       <Card.Meta
         description={overview}

@@ -25,7 +25,7 @@ describe('MovieItem useContainer hook', () => {
     const { result } = renderHookWithWrapper(() => useContainer(props))
 
     act(() => {
-      result.current.handleClick()
+      result.current.handleNavigateToMovie()
     })
 
     expect(navigate).toHaveBeenCalledWith('/movie/1234-movie')

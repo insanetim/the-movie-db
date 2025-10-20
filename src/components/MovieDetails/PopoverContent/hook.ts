@@ -29,34 +29,32 @@ const useContainer = ({
   const [createList] = useCreateListMutation()
   const [addMovieToList] = useAddMovieToListMutation()
 
-  const handleAddToNewList = () => {
-    const onSubmit = async (listData: ListData) => {
-      try {
-        const { list_id: listId } = await createList(listData).unwrap()
-        await addMovieToList({ listId, movieId }).unwrap()
-        dispatch(
-          showNotification({
-            message: listMessage({
-              listName: listData.name,
-              movieTitle: movie!.title,
-              type: 'add',
-            }),
-          })
-        )
-      } catch (error) {
-        handleError(error)
-      }
+  const handleAddToNewList = async (listData: ListData) => {
+    try {
+      const { list_id: listId } = await createList(listData).unwrap()
+      await addMovieToList({ listId, movieId }).unwrap()
+      dispatch(
+        showNotification({
+          message: listMessage({
+            listName: listData.name,
+            movieTitle: movie!.title,
+            type: 'add',
+          }),
+        })
+      )
+    } catch (error) {
+      handleError(error)
     }
+  }
 
+  const handleOpenCreateListModal = () => {
     dispatch(
       showModal({
-        modalProps: { onSubmit },
+        modalProps: { onSubmit: handleAddToNewList },
         modalType: modalComponentsMap.MODAL_CREATE_LIST,
       })
     )
     setPopoverOpen(false)
-
-    return { onSubmit }
   }
 
   const handleAddToList = async ({
@@ -80,7 +78,12 @@ const useContainer = ({
     setPopoverOpen(false)
   }
 
-  return { handleAddToList, handleAddToNewList, lists }
+  return {
+    handleAddToList,
+    handleAddToNewList,
+    handleOpenCreateListModal,
+    lists,
+  }
 }
 
 export default useContainer

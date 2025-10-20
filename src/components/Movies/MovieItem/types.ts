@@ -6,7 +6,7 @@ export type MovieItemHookProps = {
 }
 
 export type MovieItemHookReturn = {
-  handleClick: () => void
+  handleNavigateToMovie: () => void
 }
 
 export type MovieItemProps = {

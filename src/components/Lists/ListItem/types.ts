@@ -7,8 +7,9 @@ export type ListItemHookProps = {
 }
 
 export type ListItemHookReturn = {
-  handleClick: () => void
-  handleListDelete: (event: MouseEvent<HTMLSpanElement>) => () => Promise<void>
+  handleConfirmDeleteList: (event: MouseEvent<HTMLSpanElement>) => void
+  handleDeleteList: () => Promise<void>
+  handleNavigateToList: () => void
 }
 
 export type ListItemProps = {

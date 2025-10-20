@@ -1,6 +1,7 @@
 import { Modal } from 'antd'
 import { MouseEvent } from 'react'
 import { useNavigate, useSearchParams } from 'react-router-dom'
+import useHandleError from 'src/hooks/useHandleError'
 import useUpdatePage from 'src/hooks/useUpdatePage'
 import {
   useDeleteListMutation,
@@ -17,6 +18,7 @@ const useContainer = ({
   const navigate = useNavigate()
   const [searchParams, setSearchParams] = useSearchParams()
   const page = searchParams.get('page') || '1'
+  const { handleError } = useHandleError()
 
   const { data: lists } = useGetListsQuery(page)
   const [deleteList] = useDeleteListMutation()
@@ -27,27 +29,29 @@ const useContainer = ({
     setSearchParams,
   })
 
-  const handleClick = () => {
+  const handleNavigateToList = () => {
     navigate(`/list/${getSlug(id, name)}`)
   }
 
-  const handleListDelete = (event: MouseEvent<HTMLSpanElement>) => {
-    event.stopPropagation()
-
-    const onOk = async () => {
-      await deleteList(id)
+  const handleDeleteList = async () => {
+    try {
+      await deleteList(id).unwrap()
       updatePage()
+    } catch (error) {
+      handleError(error)
     }
-
-    Modal.confirm({
-      onOk,
-      title: 'Do you want to delete list?',
-    })
-
-    return onOk
   }
 
-  return { handleClick, handleListDelete }
+  const handleConfirmDeleteList = (event: MouseEvent<HTMLSpanElement>) => {
+    event.stopPropagation()
+
+    Modal.confirm({
+      onOk: () => handleDeleteList(),
+      title: 'Do you want to delete list?',
+    })
+  }
+
+  return { handleConfirmDeleteList, handleDeleteList, handleNavigateToList }
 }
 
 export default useContainer

@@ -5,7 +5,10 @@ import useContainer from './hook'
 import { ListItemProps } from './types'
 
 const ListItem: React.FC<ListItemProps> = ({ description, listId, name }) => {
-  const { handleClick, handleListDelete } = useContainer({ listId, name })
+  const { handleConfirmDeleteList, handleNavigateToList } = useContainer({
+    listId,
+    name,
+  })
 
   return (
     <Card
@@ -13,12 +16,12 @@ const ListItem: React.FC<ListItemProps> = ({ description, listId, name }) => {
         <DeleteOutlined
           data-testid='deleteListBtn'
           key='delete'
-          onClick={handleListDelete}
+          onClick={handleConfirmDeleteList}
         />,
       ]}
       data-testid='listItemCard'
       hoverable
-      onClick={handleClick}
+      onClick={handleNavigateToList}
     >
       <Typography.Title level={4}>{name}</Typography.Title>
       {description}

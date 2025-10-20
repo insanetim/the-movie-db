@@ -28,7 +28,7 @@ describe('CreditsItem useContainer hook', () => {
     const { result } = renderHookWithWrapper(() => useContainer(props))
 
     act(() => {
-      result.current.handleClick()
+      result.current.handleNavigateToPerson()
     })
 
     expect(navigate).toHaveBeenCalledWith('/person/1234-john-doe')

@@ -11,9 +11,8 @@ export type PopoverContentHookProps = PopoverContentProps
 
 export type PopoverContentHookReturn = {
   handleAddToList: (props: HandleAddToListProps) => void
-  handleAddToNewList: () => {
-    onSubmit: (listData: ListData) => Promise<void>
-  }
+  handleAddToNewList: (listData: ListData) => Promise<void>
+  handleOpenCreateListModal: () => void
   lists?: IListsList
 }
 
