@@ -9,7 +9,7 @@ import { TrendingHookReturn } from '../types'
 const mockedHook: TrendingHookReturn = {
   error: null,
   handlePagination: jest.fn(),
-  loading: false,
+  isLoading: false,
   movies: {
     page: 1,
     results: [mockMovie],
@@ -62,14 +62,14 @@ describe('Trending component', () => {
   })
 
   it('should match snapshot with loading', () => {
-    mockedHook.loading = true
+    mockedHook.isLoading = true
     const { asFragment } = renderWithWrapper(<Trending />)
 
     expect(asFragment()).toMatchSnapshot()
   })
 
   it('should match snapshot with error', () => {
-    mockedHook.loading = false
+    mockedHook.isLoading = false
     mockedHook.error = 'Something went wrong!'
     const { asFragment } = renderWithWrapper(<Trending />)
 
