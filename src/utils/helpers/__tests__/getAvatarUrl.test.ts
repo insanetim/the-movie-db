@@ -16,8 +16,8 @@ describe('getAvatarUrl', () => {
     username: 'johndoe',
   }
 
-  it('should return TMDB avatar url when tmdb.avatar_path exists', () => {
-    const account: IAccount = {
+  it('should return TMDB avatar URL when avatar path exists', () => {
+    const accountWithTmdbAvatar: IAccount = {
       ...baseAccount,
       avatar: {
         ...baseAccount.avatar,
@@ -25,15 +25,15 @@ describe('getAvatarUrl', () => {
       },
     }
 
-    const result = getAvatarUrl(account)
+    const result = getAvatarUrl(accountWithTmdbAvatar)
 
     expect(result).toBe(
       'https://www.themoviedb.org/t/p/w32_and_h32_face/path/to/avatar.png'
     )
   })
 
-  it('should return Gravatar url when tmdb.avatar_path is null', () => {
-    const account: IAccount = {
+  it('should return Gravatar URL when TMDB avatar path is null', () => {
+    const accountWithGravatar: IAccount = {
       ...baseAccount,
       avatar: {
         gravatar: { hash: '0123456789abcdef' },
@@ -41,7 +41,7 @@ describe('getAvatarUrl', () => {
       },
     }
 
-    const result = getAvatarUrl(account)
+    const result = getAvatarUrl(accountWithGravatar)
 
     expect(result).toBe('https://www.gravatar.com/avatar/0123456789abcdef')
   })
