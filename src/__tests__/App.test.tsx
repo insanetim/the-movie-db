@@ -35,8 +35,8 @@ import { WatchlistHookReturn } from 'src/pages/Watchlist/types'
 import { renderWithWrapper } from 'src/utils/testHelpers/renderWithWrapper'
 
 const mockedProtectedRoutesHook: ProtectedRoutesHookReturn = {
-  isAuthenticated: false,
   location: {} as Location,
+  sessionId: null,
 }
 jest.mock('../components/ProtectedRoutes/hook', () =>
   jest.fn(() => mockedProtectedRoutesHook)
@@ -61,16 +61,16 @@ jest.mock('../components/NotificationsRoot/hook', () =>
 
 const mockedHeaderHook: HeaderHookReturn = {
   account: null,
-  handleLogIn: jest.fn(),
-  handleLogOut: jest.fn(),
-  isAuthenticated: false,
+  handleLogin: jest.fn(),
+  handleLogout: jest.fn(),
+  sessionId: null,
 }
 jest.mock('../layouts/Default/Header/hook', () =>
   jest.fn(() => mockedHeaderHook)
 )
 
 const mockedLoginHook: LoginHookReturn = {
-  handleLogIn: jest.fn(),
+  handleLogin: jest.fn(),
   isSubmitting: false,
 }
 jest.mock('../pages/Login/hook', () => jest.fn(() => mockedLoginHook))
@@ -83,8 +83,8 @@ jest.mock('../pages/Dashboard/hook', () => jest.fn(() => mockedDashboardHook))
 const mockedTrendingHook: TrendingHookReturn = {
   error: null,
   handlePagination: () => jest.fn(),
-  loading: false,
-  movies: null,
+  isLoading: false,
+  movies: undefined,
 }
 jest.mock('../components/Dashboard/Trending/hook', () =>
   jest.fn(() => mockedTrendingHook)
@@ -93,37 +93,42 @@ jest.mock('../components/Dashboard/Trending/hook', () =>
 const mockedListsHook: ListsHookReturn = {
   error: null,
   handleCreateList: jest.fn(),
+  handleOpenCreateListModal: jest.fn(),
   handlePagination: jest.fn(),
-  lists: null,
-  loading: false,
+  isLoading: false,
+  lists: undefined,
 }
 jest.mock('../pages/Lists/hook', () => jest.fn(() => mockedListsHook))
 
 const mockedWatchlistHook: WatchlistHookReturn = {
   error: null,
-  handleMovieDelete: jest.fn(),
+  handleConfirmDeleteMovie: jest.fn(),
+  handleDeleteMovie: jest.fn(),
   handlePagination: jest.fn(),
-  loading: false,
-  movies: null,
+  isLoading: false,
+  movies: undefined,
 }
 jest.mock('../pages/Watchlist/hook', () => jest.fn(() => mockedWatchlistHook))
 
 const mockedFavoriteHook: FavoriteHookReturn = {
   error: null,
-  handleMovieDelete: jest.fn(),
+  handleConfirmDeleteMovie: jest.fn(),
+  handleDeleteMovie: jest.fn(),
   handlePagination: jest.fn(),
-  loading: false,
-  movies: null,
+  isLoading: false,
+  movies: undefined,
 }
 jest.mock('../pages/Favorite/hook', () => jest.fn(() => mockedFavoriteHook))
 
 const mockedListDetailsHook: ListDetailsHookReturn = {
   error: null,
-  handleListDelete: jest.fn(),
-  handleMovieDelete: jest.fn(),
+  handleConfirmDeleteList: jest.fn(),
+  handleConfirmDeleteMovie: jest.fn(),
+  handleDeleteList: jest.fn(),
+  handleDeleteMovie: jest.fn(),
   handlePagination: jest.fn(),
+  isLoading: false,
   list: mockListDetails,
-  loading: false,
 }
 jest.mock('../pages/ListDetails/hook', () =>
   jest.fn(() => mockedListDetailsHook)
@@ -135,10 +140,10 @@ const mockedMovieDetailsHook: MovieDetailsHookReturn = {
   handleGoToCast: jest.fn(),
   handlePopoverMouseEnter: jest.fn(),
   handleWatchlistClick: jest.fn(),
-  isAuthenticated: true,
-  loading: false,
+  isLoading: false,
   movie: mockMovieDetailsExtended,
   popoverOpen: false,
+  sessionId: 'test/session_id',
   setPopoverOpen: jest.fn(),
 }
 jest.mock('../pages/MovieDetails/hook', () =>
@@ -147,7 +152,7 @@ jest.mock('../pages/MovieDetails/hook', () =>
 
 const mockedCastHook: CastHookReturn = {
   error: null,
-  loading: false,
+  isLoading: false,
   movie: mockMovieDetailsExtended,
   movieSlug: '1234-test-movie',
 }
@@ -156,7 +161,7 @@ jest.mock('../pages/Cast/hook', () => jest.fn(() => mockedCastHook))
 const mockedPersonDetailsHook: PersonDetailsHookReturn = {
   error: null,
   handleGoToCredits: jest.fn(),
-  loading: false,
+  isLoading: false,
   person: mockPersonDetails,
 }
 jest.mock('../pages/PersonDetails/hook', () =>
@@ -167,7 +172,7 @@ const mockedCreditsHook: CreditsHookReturn = {
   dataSource: mockedCredits,
   error: null,
   handleChangeFilter: jest.fn(),
-  loading: false,
+  isLoading: false,
   person: mockPersonDetails,
   personSlug: '1234-test-person',
 }

@@ -19,3 +19,5 @@ Object.assign(global, {
   TextDecoder,
   TextEncoder,
 })
+
+global.fetch = jest.fn()

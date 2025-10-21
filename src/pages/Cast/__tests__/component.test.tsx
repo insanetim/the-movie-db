@@ -6,7 +6,7 @@ import { CastHookReturn } from '../types'
 
 const mockedHook: CastHookReturn = {
   error: null,
-  loading: false,
+  isLoading: false,
   movie: mockMovieDetailsExtended,
   movieSlug: '1234-test-movie',
 }
@@ -36,7 +36,7 @@ describe('Cast component', () => {
   })
 
   it('should match snapshot with loading', () => {
-    mockedHook.loading = true
+    mockedHook.isLoading = true
 
     const { asFragment } = renderWithWrapper(<Cast />)
 
@@ -44,7 +44,7 @@ describe('Cast component', () => {
   })
 
   it('should match snapshot with error', () => {
-    mockedHook.loading = false
+    mockedHook.isLoading = false
     mockedHook.error = 'Something went wrong!'
 
     const { asFragment } = renderWithWrapper(<Cast />)

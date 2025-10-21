@@ -4,7 +4,7 @@ export type CreditsItemHookProps = {
 }
 
 export type CreditsItemHookReturn = {
-  handleClick: () => void
+  handleNavigateToPerson: () => void
 }
 
 export type CreditsItemProps = {

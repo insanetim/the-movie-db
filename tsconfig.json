@@ -9,8 +9,8 @@
     /* Modules */
     "module": "ESNext",
     "moduleResolution": "Bundler",
-    "baseUrl": "./",
     "resolveJsonModule": true,
+    "baseUrl": "./",
 
     /* Emit */
     "sourceMap": true,

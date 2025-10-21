@@ -10,8 +10,8 @@ export enum FilterOptions {
 export type CreditsHookReturn = {
   dataSource: ICredit[]
   error: ErrorMsg
-  handleChangeFilter: () => void
-  loading: boolean
+  handleChangeFilter: (filter: FilterOptions) => void
+  isLoading: boolean
   person?: IPersonDetails
   personSlug: string
 }

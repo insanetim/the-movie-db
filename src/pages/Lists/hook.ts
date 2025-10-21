@@ -1,58 +1,63 @@
-import { useEffect } from 'react'
 import { useSearchParams } from 'react-router-dom'
 import { modalComponentsMap } from 'src/components/ModalRoot/modalComponents'
-import { showModal } from 'src/store/app/actions'
-import { accountSelector } from 'src/store/auth/selectors'
-import { fetchLists } from 'src/store/createdLists/actions'
+import useHandleError from 'src/hooks/useHandleError'
+import { showModal } from 'src/store/features/app'
+import { selectAccount } from 'src/store/features/auth'
 import {
-  createdListsErrorSelector,
-  createdListsLoadingSelector,
-  createdListsSelector,
-} from 'src/store/createdLists/selectors'
+  ListData,
+  useCreateListMutation,
+  useGetListsQuery,
+} from 'src/store/features/list'
 import { useAppDispatch, useAppSelector } from 'src/store/hooks'
+import errorMessage from 'src/utils/helpers/errorMessage'
 import getParams from 'src/utils/helpers/getParams'
 
 import { ListsHookReturn } from './types'
 
 const useContainer = (): ListsHookReturn => {
   const dispatch = useAppDispatch()
-  const account = useAppSelector(accountSelector)
-  const lists = useAppSelector(createdListsSelector)
-  const loading = useAppSelector(createdListsLoadingSelector)
-  const error = useAppSelector(createdListsErrorSelector)
+  const { handleError } = useHandleError()
+  const account = useAppSelector(selectAccount)
   const [searchParams, setSearchParams] = useSearchParams()
   const page = searchParams.get('page') || '1'
+
+  const [createList] = useCreateListMutation()
+
+  const {
+    data: lists,
+    error,
+    isLoading,
+  } = useGetListsQuery(page, { skip: !account })
 
   const handlePagination = (page: number) => {
     setSearchParams(getParams({ page }))
   }
 
-  const handleCreateList = () => {
-    const onSuccess = () => {
-      if (page === '1') {
-        dispatch(fetchLists(page))
-      } else {
-        setSearchParams({})
-      }
+  const handleCreateList = async (listData: ListData) => {
+    try {
+      await createList(listData).unwrap()
+    } catch (error) {
+      handleError(error)
     }
+  }
 
+  const handleOpenCreateListModal = () => {
     dispatch(
       showModal({
-        modalProps: { onSuccess },
+        modalProps: { onSubmit: handleCreateList },
         modalType: modalComponentsMap.MODAL_CREATE_LIST,
       })
     )
-
-    return onSuccess
   }
 
-  useEffect(() => {
-    if (account) {
-      dispatch(fetchLists(page))
-    }
-  }, [account, page, dispatch])
-
-  return { error, handleCreateList, handlePagination, lists, loading }
+  return {
+    error: errorMessage(error),
+    handleCreateList,
+    handleOpenCreateListModal,
+    handlePagination,
+    isLoading,
+    lists,
+  }
 }
 
 export default useContainer

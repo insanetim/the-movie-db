@@ -4,28 +4,17 @@ import useContainer from './hook'
 import { ModalCreateListProps } from './types'
 
 const ModalCreateList: React.FC<ModalCreateListProps> = ({
-  movieId,
-  onSuccess,
+  onSubmit,
   ...otherProps
 }) => {
   const [form] = Form.useForm()
-  const {
-    handleAfterClose,
-    handleAfterOpenChange,
-    handleOk,
-    handleSubmit,
-    inputRef,
-  } = useContainer({
-    form,
-    movieId,
-    onSuccess,
-  })
+  const { handleAfterOpenChange, handleOk, handleSubmit, inputRef } =
+    useContainer({ form, onSubmit })
 
   return (
     <Modal
-      afterClose={handleAfterClose}
       afterOpenChange={handleAfterOpenChange}
-      destroyOnClose
+      destroyOnHidden
       okText='Create'
       onOk={handleOk}
       open
@@ -34,6 +23,7 @@ const ModalCreateList: React.FC<ModalCreateListProps> = ({
     >
       <Form
         autoComplete='off'
+        clearOnDestroy
         form={form}
         onFinish={handleSubmit}
       >

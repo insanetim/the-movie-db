@@ -5,7 +5,6 @@ import ModalCreateList from '../component'
 import { ModalCreateListHookReturn } from '../types'
 
 const mockedHook: ModalCreateListHookReturn = {
-  handleAfterClose: jest.fn(),
   handleAfterOpenChange: jest.fn(),
   handleOk: jest.fn(),
   handleSubmit: jest.fn(),

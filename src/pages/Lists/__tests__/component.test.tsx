@@ -9,14 +9,15 @@ import { ListsHookReturn } from '../types'
 const mockedHook: ListsHookReturn = {
   error: null,
   handleCreateList: jest.fn(),
+  handleOpenCreateListModal: jest.fn(),
   handlePagination: jest.fn(),
+  isLoading: false,
   lists: {
     page: 1,
     results: [mockList],
     total_pages: 10,
     total_results: 200,
   },
-  loading: false,
 }
 jest.mock('../hook', () => jest.fn(() => mockedHook))
 
@@ -35,7 +36,7 @@ describe('Lists component', () => {
     const createListBtn = screen.getByTestId('createListBtn')
     await user.click(createListBtn)
 
-    expect(mockedHook.handleCreateList).toHaveBeenCalled()
+    expect(mockedHook.handleOpenCreateListModal).toHaveBeenCalled()
   })
 
   it('should call "handlePagination" when pagination clicked', async () => {
@@ -61,21 +62,21 @@ describe('Lists component', () => {
   })
 
   it('should match snapshot with empty lists', () => {
-    mockedHook.lists = null
+    mockedHook.lists = undefined
     const { asFragment } = renderWithWrapper(<Lists />)
 
     expect(asFragment()).toMatchSnapshot()
   })
 
   it('should match snapshot with loading', () => {
-    mockedHook.loading = true
+    mockedHook.isLoading = true
     const { asFragment } = renderWithWrapper(<Lists />)
 
     expect(asFragment()).toMatchSnapshot()
   })
 
   it('should match snapshot with error', () => {
-    mockedHook.loading = false
+    mockedHook.isLoading = false
     mockedHook.error = 'Something went wrong!'
     const { asFragment } = renderWithWrapper(<Lists />)
 

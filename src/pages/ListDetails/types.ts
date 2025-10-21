@@ -4,14 +4,16 @@ import { IMovie } from 'src/interfaces/movie.interface'
 
 export type ListDetailsHookReturn = {
   error: ErrorMsg
-  handleListDelete: () => () => Promise<void>
-  handleMovieDelete: (
+  handleConfirmDeleteList: () => void
+  handleConfirmDeleteMovie: (
     event: React.MouseEvent<HTMLSpanElement>,
     movieId: IMovie['id']
-  ) => () => Promise<void>
+  ) => void
+  handleDeleteList: () => Promise<void>
+  handleDeleteMovie: (movieId: IMovie['id']) => Promise<void>
   handlePagination: HandlePagination
-  list: IListDetails | null
-  loading: boolean
+  isLoading: boolean
+  list?: IListDetails
 }
 
 export type ListDetailsRouteParams = {

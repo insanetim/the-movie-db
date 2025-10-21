@@ -9,6 +9,7 @@ import { PopoverContentHookReturn, PopoverContentProps } from '../types'
 const mockedHook: PopoverContentHookReturn = {
   handleAddToList: jest.fn(),
   handleAddToNewList: jest.fn(),
+  handleOpenCreateListModal: jest.fn(),
   lists: {
     page: 1,
     results: [mockList],
@@ -50,6 +51,6 @@ describe('PopoverContent component', () => {
     const createListBtn = screen.getByText(/create/i)
     await user.click(createListBtn)
 
-    expect(mockedHook.handleAddToNewList).toHaveBeenCalled()
+    expect(mockedHook.handleOpenCreateListModal).toHaveBeenCalled()
   })
 })

@@ -2,12 +2,13 @@ import { CaretDownOutlined, UserOutlined } from '@ant-design/icons'
 import { Avatar, Col, Dropdown, Layout, MenuProps, Row, Typography } from 'antd'
 import { Link } from 'react-router-dom'
 import ThemeSwitch from 'src/components/ThemeSwitch'
-import { APP_NAME } from 'src/constants/app'
+import { APP_NAME } from 'src/constants'
+import getAvatarUrl from 'src/utils/helpers/getAvatarUrl'
 
 import useContainer from './hook'
 
 const Header: React.FC = () => {
-  const { account, handleLogIn, handleLogOut, isAuthenticated } = useContainer()
+  const { account, handleLogin, handleLogout, sessionId } = useContainer()
 
   const items: MenuProps['items'] = [
     { key: 'item-1', label: <Link to='/'>Dashboard</Link> },
@@ -16,18 +17,15 @@ const Header: React.FC = () => {
     { key: 'item-4', label: <Link to='/favorite'>Favorite</Link> },
     { key: 'item-5', label: <Link to='/watchlist'>Watchlist</Link> },
     { key: 'item-6', type: 'divider' },
-    { key: 'item-7', label: 'Sign out', onClick: handleLogOut },
+    { key: 'item-7', label: 'Sign out', onClick: handleLogout },
   ]
 
   let avatar: JSX.Element
   if (account) {
-    const url = account.avatar.tmdb.avatar_path
-      ? `https://www.themoviedb.org/t/p/w32_and_h32_face${account.avatar.tmdb.avatar_path}`
-      : `https://www.gravatar.com/avatar/${account.avatar.gravatar.hash}`
     avatar = (
       <Avatar
         alt='User avatar'
-        src={url}
+        src={getAvatarUrl(account)}
       />
     )
   } else {
@@ -53,7 +51,7 @@ const Header: React.FC = () => {
               <ThemeSwitch />
             </Col>
             <Col>
-              {isAuthenticated ? (
+              {sessionId ? (
                 <Dropdown menu={{ items }}>
                   <Typography.Text className='text-white'>
                     {avatar}
@@ -66,7 +64,7 @@ const Header: React.FC = () => {
               ) : (
                 <Typography.Link
                   className='text-white'
-                  onClick={handleLogIn}
+                  onClick={handleLogin}
                 >
                   Sign in
                 </Typography.Link>

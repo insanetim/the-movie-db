@@ -7,9 +7,9 @@ import Pagination from 'src/components/UI/Pagination'
 import useContainer from './hook'
 
 const Trending: React.FC = () => {
-  const { error, handlePagination, loading, movies } = useContainer()
+  const { error, handlePagination, isLoading, movies } = useContainer()
 
-  if (loading) {
+  if (isLoading) {
     return <Loading />
   } else if (error) {
     return <Error error={error} />

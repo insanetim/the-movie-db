@@ -9,11 +9,11 @@ const useContainer = ({
 }: MovieItemHookProps): MovieItemHookReturn => {
   const navigate = useNavigate()
 
-  const handleClick = () => {
+  const handleNavigateToMovie = () => {
     navigate(`/movie/${getSlug(id, title)}`)
   }
 
-  return { handleClick }
+  return { handleNavigateToMovie }
 }
 
 export default useContainer

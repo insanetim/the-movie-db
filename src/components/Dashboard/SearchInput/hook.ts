@@ -10,11 +10,13 @@ const useContainer = ({
   const [inputValue, setInputValue] = useState(query)
   const setSearchParams = useSearchParams()[1]
 
-  const handleChange = (e: ChangeEvent<HTMLInputElement>) =>
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     setInputValue(e.target.value)
+  }
 
-  const handleSearch = (value: string) =>
+  const handleSearch = (value: string) => {
     setSearchParams(getParams({ search: value.trim() }), { replace: true })
+  }
 
   return { handleChange, handleSearch, inputValue }
 }

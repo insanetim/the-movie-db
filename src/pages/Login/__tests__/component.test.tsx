@@ -4,7 +4,7 @@ import Login from '../component'
 import { LoginHookReturn } from '../types'
 
 const mockedHook: LoginHookReturn = {
-  handleLogIn: jest.fn(),
+  handleLogin: jest.fn(),
   isSubmitting: false,
 }
 jest.mock('../hook', () => jest.fn(() => mockedHook))

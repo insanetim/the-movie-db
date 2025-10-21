@@ -1,0 +1,48 @@
+import { IAccount } from 'src/interfaces/account.interface'
+
+import getAvatarUrl from '../getAvatarUrl'
+
+describe('getAvatarUrl', () => {
+  const baseAccount: IAccount = {
+    avatar: {
+      gravatar: { hash: 'abcdef1234567890' },
+      tmdb: { avatar_path: null },
+    },
+    id: 1,
+    include_adult: false,
+    iso_639_1: 'en',
+    iso_3166_1: 'US',
+    name: 'John Doe',
+    username: 'johndoe',
+  }
+
+  it('should return TMDB avatar URL when avatar path exists', () => {
+    const accountWithTmdbAvatar: IAccount = {
+      ...baseAccount,
+      avatar: {
+        ...baseAccount.avatar,
+        tmdb: { avatar_path: '/path/to/avatar.png' },
+      },
+    }
+
+    const result = getAvatarUrl(accountWithTmdbAvatar)
+
+    expect(result).toBe(
+      'https://www.themoviedb.org/t/p/w32_and_h32_face/path/to/avatar.png'
+    )
+  })
+
+  it('should return Gravatar URL when TMDB avatar path is null', () => {
+    const accountWithGravatar: IAccount = {
+      ...baseAccount,
+      avatar: {
+        gravatar: { hash: '0123456789abcdef' },
+        tmdb: { avatar_path: null },
+      },
+    }
+
+    const result = getAvatarUrl(accountWithGravatar)
+
+    expect(result).toBe('https://www.gravatar.com/avatar/0123456789abcdef')
+  })
+})

@@ -1,18 +1,17 @@
-import { hideModal } from 'src/store/app/actions'
-import { modalSelector } from 'src/store/app/selectors'
+import { hideModal, selectModal } from 'src/store/features/app'
 import { useAppDispatch, useAppSelector } from 'src/store/hooks'
 
-import { ModalRootHookReturn } from './types'
+import { ModalProps, ModalRootHookReturn } from './types'
 
 const useContainer = (): ModalRootHookReturn => {
   const dispatch = useAppDispatch()
-  const { modalProps, modalType } = useAppSelector(modalSelector)
+  const { modalProps, modalType } = useAppSelector(selectModal)
 
   const onCancel = () => {
     dispatch(hideModal())
   }
 
-  return { modalProps, modalType, onCancel }
+  return { modalProps: modalProps as ModalProps, modalType, onCancel }
 }
 
 export default useContainer

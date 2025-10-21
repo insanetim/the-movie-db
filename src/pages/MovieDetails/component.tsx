@@ -33,14 +33,14 @@ const MovieDetails: React.FC = () => {
     handleGoToCast,
     handlePopoverMouseEnter,
     handleWatchlistClick,
-    isAuthenticated,
-    loading,
+    isLoading,
     movie,
     popoverOpen,
+    sessionId,
     setPopoverOpen,
   } = useContainer()
 
-  if (loading) {
+  if (isLoading) {
     return (
       <div className='container top-margin'>
         <Loading />
@@ -74,7 +74,7 @@ const MovieDetails: React.FC = () => {
           <Typography.Title style={{ marginBottom: 0 }}>
             {title}
           </Typography.Title>
-          {isAuthenticated && (
+          {sessionId && (
             <>
               <Popover
                 content={
@@ -83,7 +83,7 @@ const MovieDetails: React.FC = () => {
                     setPopoverOpen={setPopoverOpen}
                   />
                 }
-                destroyTooltipOnHide
+                destroyOnHidden
                 onOpenChange={open => setPopoverOpen(open)}
                 open={popoverOpen}
                 placement='top'

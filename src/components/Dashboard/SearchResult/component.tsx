@@ -8,9 +8,9 @@ import useContainer from './hook'
 import { SearchResultProps } from './types'
 
 const SearchResult: React.FC<SearchResultProps> = ({ query }) => {
-  const { error, handlePagination, loading, movies } = useContainer({ query })
+  const { error, handlePagination, isLoading, movies } = useContainer({ query })
 
-  if (loading) {
+  if (isLoading) {
     return <Loading />
   } else if (error) {
     return <Error error={error} />

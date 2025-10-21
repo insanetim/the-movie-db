@@ -7,7 +7,7 @@ import metaTitle from 'src/utils/helpers/metaTitle'
 import useContainer from './hook'
 
 const Login: React.FC = () => {
-  const { handleLogIn, isSubmitting } = useContainer()
+  const { handleLogin, isSubmitting } = useContainer()
 
   return (
     <>
@@ -23,7 +23,7 @@ const Login: React.FC = () => {
             >
               <LoginForm
                 isSubmitting={isSubmitting}
-                onSubmit={handleLogIn}
+                onSubmit={handleLogin}
               />
             </Col>
             <Col span={24}>

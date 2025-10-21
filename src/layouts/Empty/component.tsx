@@ -3,11 +3,9 @@ import { Layout } from 'antd'
 import { EmptyLayoutProps } from './types'
 
 const EmptyLayout: React.FC<EmptyLayoutProps> = ({ children }) => (
-  <div className='center'>
-    <Layout>
-      <Layout.Content>{children}</Layout.Content>
-    </Layout>
-  </div>
+  <Layout className='center'>
+    <Layout.Content className='auth-layout'>{children}</Layout.Content>
+  </Layout>
 )
 
 export default EmptyLayout

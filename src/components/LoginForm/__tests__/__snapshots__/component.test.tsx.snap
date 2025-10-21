@@ -7,7 +7,7 @@ exports[`LoginForm component should match snapshot 1`] = `
     class="ant-form ant-form-horizontal css-dev-only-do-not-override-1odpy5d"
   >
     <h1
-      class="ant-typography css-dev-only-do-not-override-1odpy5d"
+      class="ant-typography text-center css-dev-only-do-not-override-1odpy5d"
     >
       The Movie DB
     </h1>

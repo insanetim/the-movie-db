@@ -1,47 +1,67 @@
-import { act } from '@testing-library/react'
-import * as reactRedux from 'src/store/hooks'
-import { renderHookWithWrapper } from 'src/utils/testHelpers/renderWithWrapper'
+import getParams from 'src/utils/helpers/getParams'
 
-import useUpdatePage, { UseUpdatePageProps } from '../useUpdatePage'
+import useUpdatePage from '../useUpdatePage'
+
+jest.mock('src/utils/helpers/getParams')
+
+const mockGetParams = getParams as jest.MockedFunction<typeof getParams>
 
 describe('useUpdatePage', () => {
-  const mockDispatch = jest.fn()
-  jest.spyOn(reactRedux, 'useAppDispatch').mockReturnValue(mockDispatch)
-  const action = jest.fn()
-  const setSearchParams = jest.fn()
-
-  const props: UseUpdatePageProps = {
-    action,
-    items: [1],
-    page: '3',
-    setSearchParams,
-  }
-
-  it('should match snapshot', () => {
-    const { result } = renderHookWithWrapper(() => useUpdatePage(props))
-
-    expect(result.current).toMatchSnapshot()
+  beforeEach(() => {
+    jest.clearAllMocks()
   })
 
-  it('should check "updatePage" method', () => {
-    const { result } = renderHookWithWrapper(() => useUpdatePage(props))
+  it('should decrement page when there is exactly 1 item and page > 1', () => {
+    const setSearchParams = jest.fn()
+    const items = [{}]
+    const page = '3'
+    const expectedParams: ReturnType<typeof getParams> = { page: '2' }
+    mockGetParams.mockReturnValue(expectedParams)
 
-    act(() => {
-      result.current.updatePage()
-    })
+    const { updatePage } = useUpdatePage({ items, page, setSearchParams })
 
-    expect(setSearchParams).toHaveBeenCalledWith({ page: '2' })
+    updatePage()
+
+    expect(mockGetParams).toHaveBeenCalledWith({ page: 2 })
+    expect(setSearchParams).toHaveBeenCalledWith(expectedParams)
   })
 
-  it('should check "updatePage" method without items', () => {
-    const extendedProps = { ...props, items: undefined }
+  it('should not change page when items length is not 1', () => {
+    const setSearchParams = jest.fn()
+    const items = [{}, {}]
+    const page = '5'
 
-    const { result } = renderHookWithWrapper(() => useUpdatePage(extendedProps))
+    const { updatePage } = useUpdatePage({ items, page, setSearchParams })
 
-    act(() => {
-      result.current.updatePage()
-    })
+    updatePage()
 
-    expect(mockDispatch).toHaveBeenCalledWith(action)
+    expect(setSearchParams).not.toHaveBeenCalled()
+    expect(mockGetParams).not.toHaveBeenCalled()
+  })
+
+  it('should not change page when current page is 1', () => {
+    const setSearchParams = jest.fn()
+    const items = [{}]
+    const page = '1'
+
+    const { updatePage } = useUpdatePage({ items, page, setSearchParams })
+
+    updatePage()
+
+    expect(setSearchParams).not.toHaveBeenCalled()
+    expect(mockGetParams).not.toHaveBeenCalled()
+  })
+
+  it('should not change page when page is not a valid number', () => {
+    const setSearchParams = jest.fn()
+    const items = [{}]
+    const page = 'abc'
+
+    const { updatePage } = useUpdatePage({ items, page, setSearchParams })
+
+    updatePage()
+
+    expect(setSearchParams).not.toHaveBeenCalled()
+    expect(mockGetParams).not.toHaveBeenCalled()
   })
 })

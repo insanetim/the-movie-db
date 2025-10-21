@@ -1,7 +1,7 @@
 import { MoonOutlined, SunOutlined } from '@ant-design/icons'
 import { Segmented } from 'antd'
-import { SegmentedOptions } from 'node_modules/antd/es/segmented'
-import { Theme } from 'src/store/app/types'
+import { SegmentedOptions } from 'antd/es/segmented'
+import { Theme } from 'src/store/features/app'
 
 import useContainer from './hook'
 

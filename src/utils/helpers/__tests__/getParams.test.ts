@@ -1,32 +1,37 @@
 import getParams from '../getParams'
 
 describe('getParams', () => {
-  it('should return correct value', () => {
-    const result = getParams({})
+  it('should return empty object for empty params', () => {
+    const params = {}
+    const result = getParams(params)
 
     expect(result).toEqual({})
   })
 
-  it('should return correct value', () => {
-    const result = getParams({ page: '1', search: '' })
+  it('should filter out empty page and search params', () => {
+    const params = { page: '1', search: '' }
+    const result = getParams(params)
 
     expect(result).toEqual({})
   })
 
-  it('should return correct value', () => {
-    const result = getParams({ search: 'test/search' })
+  it('should include non-empty search param', () => {
+    const params = { search: 'test/search' }
+    const result = getParams(params)
 
     expect(result).toEqual({ search: 'test/search' })
   })
 
-  it('should return correct value', () => {
-    const result = getParams({ page: '3' })
+  it('should include non-empty page param', () => {
+    const params = { page: '3' }
+    const result = getParams(params)
 
     expect(result).toEqual({ page: '3' })
   })
 
-  it('should return correct value', () => {
-    const result = getParams({ page: '3', search: 'test/search' })
+  it('should include multiple non-empty params', () => {
+    const params = { page: '3', search: 'test/search' }
+    const result = getParams(params)
 
     expect(result).toEqual({ page: '3', search: 'test/search' })
   })

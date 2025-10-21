@@ -7,8 +7,9 @@ import ListItem from '../component'
 import { ListItemHookReturn } from '../types'
 
 const mockedHook: ListItemHookReturn = {
-  handleClick: jest.fn(),
-  handleListDelete: jest.fn(),
+  handleConfirmDeleteList: jest.fn(),
+  handleDeleteList: jest.fn(),
+  handleNavigateToList: jest.fn(),
 }
 jest.mock('../hook', () => jest.fn(() => mockedHook))
 
@@ -19,7 +20,7 @@ describe('ListItem component', () => {
     const { asFragment } = renderWithWrapper(
       <ListItem
         description={mockList.description}
-        id={mockList.id}
+        listId={mockList.id}
         name={mockList.name}
       />
     )
@@ -31,7 +32,7 @@ describe('ListItem component', () => {
     renderWithWrapper(
       <ListItem
         description={mockList.description}
-        id={mockList.id}
+        listId={mockList.id}
         name={mockList.name}
       />
     )
@@ -39,14 +40,14 @@ describe('ListItem component', () => {
     const card = screen.getByTestId('listItemCard')
     await user.click(card)
 
-    expect(mockedHook.handleClick).toHaveBeenCalled()
+    expect(mockedHook.handleNavigateToList).toHaveBeenCalled()
   })
 
   it('should call "handleListDelete" when delete button clicked', async () => {
     renderWithWrapper(
       <ListItem
         description={mockList.description}
-        id={mockList.id}
+        listId={mockList.id}
         name={mockList.name}
       />
     )
@@ -54,6 +55,6 @@ describe('ListItem component', () => {
     const deleteBtn = screen.getByTestId('deleteListBtn')
     await user.click(deleteBtn)
 
-    expect(mockedHook.handleListDelete).toHaveBeenCalled()
+    expect(mockedHook.handleConfirmDeleteList).toHaveBeenCalled()
   })
 })

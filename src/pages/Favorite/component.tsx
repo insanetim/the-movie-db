@@ -11,11 +11,16 @@ import metaTitle from 'src/utils/helpers/metaTitle'
 import useContainer from './hook'
 
 const Favorite: React.FC = () => {
-  const { error, handleMovieDelete, handlePagination, loading, movies } =
-    useContainer()
+  const {
+    error,
+    handleConfirmDeleteMovie,
+    handlePagination,
+    isLoading,
+    movies,
+  } = useContainer()
 
   let content: JSX.Element
-  if (loading) {
+  if (isLoading) {
     content = <Loading />
   } else if (error) {
     content = <Error error={error} />
@@ -25,7 +30,7 @@ const Favorite: React.FC = () => {
     content = (
       <>
         <MoviesList
-          handleMovieDelete={handleMovieDelete}
+          handleMovieDelete={handleConfirmDeleteMovie}
           movies={movies.results}
         />
         {movies.total_pages > 1 && (

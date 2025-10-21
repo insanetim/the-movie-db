@@ -3,13 +3,17 @@ import { mockedCredits } from 'src/__mocks__/mockPerson'
 import { releaseDateSorter, titleSorter } from '../creditsSorters'
 
 describe('creditsSorters', () => {
-  const [a, b] = mockedCredits
+  const [firstCredit, secondCredit] = mockedCredits
 
-  it('releaseDateSorter', () => {
-    expect(releaseDateSorter(a, b)).toBe(-1)
+  it('should sort credits by release date in ascending order', () => {
+    const result = releaseDateSorter(firstCredit, secondCredit)
+
+    expect(result).toBe(-1)
   })
 
-  it('titleSorter', () => {
-    expect(titleSorter(a, b)).toBe(1)
+  it('should sort credits by title in descending order', () => {
+    const result = titleSorter(firstCredit, secondCredit)
+
+    expect(result).toBe(1)
   })
 })

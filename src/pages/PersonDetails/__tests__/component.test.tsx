@@ -9,7 +9,7 @@ import { PersonDetailsHookReturn } from '../types'
 const mockedHook: PersonDetailsHookReturn = {
   error: null,
   handleGoToCredits: jest.fn(),
-  loading: false,
+  isLoading: false,
   person: mockPersonDetails,
 }
 jest.mock('../hook', () => jest.fn(() => mockedHook))
@@ -50,7 +50,7 @@ describe('PersonDetails component', () => {
   })
 
   it('should match snapshot with loading', () => {
-    mockedHook.loading = true
+    mockedHook.isLoading = true
 
     const { asFragment } = renderWithWrapper(<PersonDetails />)
 
@@ -58,7 +58,7 @@ describe('PersonDetails component', () => {
   })
 
   it('should match snapshot with error', () => {
-    mockedHook.loading = false
+    mockedHook.isLoading = false
     mockedHook.error = 'Something went wrong!'
 
     const { asFragment } = renderWithWrapper(<PersonDetails />)

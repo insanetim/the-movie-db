@@ -13,9 +13,9 @@ import metaTitle from 'src/utils/helpers/metaTitle'
 import useContainer from './hook'
 
 const Cast: React.FC = () => {
-  const { error, loading, movie, movieSlug } = useContainer()
+  const { error, isLoading, movie, movieSlug } = useContainer()
 
-  if (loading) {
+  if (isLoading) {
     return (
       <div className='container top-margin'>
         <Loading />

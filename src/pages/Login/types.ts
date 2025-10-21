@@ -1,6 +1,6 @@
-import { UserData } from 'src/store/auth/types'
+import { UserData } from 'src/store/features/auth'
 
 export type LoginHookReturn = {
-  handleLogIn: (userData: UserData) => Promise<void>
+  handleLogin: (userData: UserData) => Promise<void>
   isSubmitting: boolean
 }

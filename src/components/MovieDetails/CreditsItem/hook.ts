@@ -9,11 +9,11 @@ const useContainer = ({
 }: CreditsItemHookProps): CreditsItemHookReturn => {
   const navigate = useNavigate()
 
-  const handleClick = () => {
+  const handleNavigateToPerson = () => {
     navigate(`/person/${getSlug(id, title)}`)
   }
 
-  return { handleClick }
+  return { handleNavigateToPerson }
 }
 
 export default useContainer

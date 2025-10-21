@@ -1,12 +1,14 @@
-import { hideNotification as hideNotificationAction } from 'src/store/app/actions'
-import { notificationsSelector } from 'src/store/app/selectors'
+import {
+  hideNotification as hideNotificationAction,
+  selectNotification,
+} from 'src/store/features/app'
 import { useAppDispatch, useAppSelector } from 'src/store/hooks'
 
 import { NotificationsRootHookReturn } from './types'
 
 const useContainer = (): NotificationsRootHookReturn => {
   const dispatch = useAppDispatch()
-  const notifications = useAppSelector(notificationsSelector)
+  const notifications = useAppSelector(selectNotification)
 
   const hideNotification = (id: string) => {
     dispatch(hideNotificationAction(id))

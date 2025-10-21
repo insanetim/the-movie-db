@@ -10,7 +10,7 @@ const CreditsItem: React.FC<CreditsItemProps> = ({
   profilePath,
   title,
 }) => {
-  const { handleClick } = useContainer({ id, title })
+  const { handleNavigateToPerson } = useContainer({ id, title })
 
   let cover: JSX.Element
   if (profilePath) {
@@ -35,7 +35,7 @@ const CreditsItem: React.FC<CreditsItemProps> = ({
     <Card
       cover={cover}
       hoverable
-      onClick={handleClick}
+      onClick={handleNavigateToPerson}
     >
       <Card.Meta
         description={description}

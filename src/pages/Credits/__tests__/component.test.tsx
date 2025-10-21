@@ -8,7 +8,7 @@ const mockedHook: CreditsHookReturn = {
   dataSource: mockedCredits,
   error: null,
   handleChangeFilter: jest.fn(),
-  loading: false,
+  isLoading: false,
   person: mockPersonDetails,
   personSlug: '1234-test-person',
 }
@@ -30,7 +30,7 @@ describe('Credits component', () => {
   })
 
   it('should match snapshot with loading', () => {
-    mockedHook.loading = true
+    mockedHook.isLoading = true
 
     const { asFragment } = renderWithWrapper(<Credits />)
 
@@ -38,7 +38,7 @@ describe('Credits component', () => {
   })
 
   it('should match snapshot with error', () => {
-    mockedHook.loading = false
+    mockedHook.isLoading = false
     mockedHook.error = 'Something went wrong!'
 
     const { asFragment } = renderWithWrapper(<Credits />)

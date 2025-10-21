@@ -1,4 +1,4 @@
-import { Theme } from 'src/store/app/types'
+import { Theme } from 'src/store/features/app'
 
 export type ThemeSwitchHookReturn = {
   currentTheme: Theme

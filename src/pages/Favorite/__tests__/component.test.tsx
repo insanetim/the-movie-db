@@ -8,9 +8,10 @@ import { FavoriteHookReturn } from '../types'
 
 const mockedHook: FavoriteHookReturn = {
   error: null,
-  handleMovieDelete: jest.fn(),
+  handleConfirmDeleteMovie: jest.fn(),
+  handleDeleteMovie: jest.fn(),
   handlePagination: jest.fn(),
-  loading: false,
+  isLoading: false,
   movies: {
     page: 1,
     results: [mockMovie],
@@ -44,7 +45,7 @@ describe('Favorite component', () => {
     const deleteBtn = screen.getByTestId('deleteMovieBtn')
     await user.click(deleteBtn)
 
-    expect(mockedHook.handleMovieDelete).toHaveBeenCalled()
+    expect(mockedHook.handleConfirmDeleteMovie).toHaveBeenCalled()
   })
 
   it('should match snapshot with 1 page', () => {
@@ -60,21 +61,21 @@ describe('Favorite component', () => {
   })
 
   it('should match snapshot with empty movies', () => {
-    mockedHook.movies = null
+    mockedHook.movies = undefined
     const { asFragment } = renderWithWrapper(<Favorite />)
 
     expect(asFragment()).toMatchSnapshot()
   })
 
   it('should match snapshot with loading', () => {
-    mockedHook.loading = true
+    mockedHook.isLoading = true
     const { asFragment } = renderWithWrapper(<Favorite />)
 
     expect(asFragment()).toMatchSnapshot()
   })
 
   it('should match snapshot with error', () => {
-    mockedHook.loading = false
+    mockedHook.isLoading = false
     mockedHook.error = 'Something went wrong!'
     const { asFragment } = renderWithWrapper(<Favorite />)
 

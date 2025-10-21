@@ -10,8 +10,8 @@ export type SearchResultHookProps = SearchResultProps
 export type SearchResultHookReturn = {
   error: ErrorMsg
   handlePagination: HandlePagination
-  loading: boolean
-  movies: IMoviesList | null
+  isLoading: boolean
+  movies?: IMoviesList
 }
 
 export type SearchResultProps = {

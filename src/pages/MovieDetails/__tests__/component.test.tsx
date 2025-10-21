@@ -14,17 +14,13 @@ const mockedHook: MovieDetailsHookReturn = {
   handleGoToCast: jest.fn(),
   handlePopoverMouseEnter: jest.fn(),
   handleWatchlistClick: jest.fn(),
-  isAuthenticated: true,
-  loading: false,
+  isLoading: false,
   movie: mockMovieDetailsExtended,
   popoverOpen: false,
+  sessionId: 'test/session_id',
   setPopoverOpen: jest.fn(),
 }
 jest.mock('../hook', () => jest.fn(() => mockedHook))
-
-jest.mock('src/store/createdLists/selectors', () => ({
-  createdListsSelector: () => null,
-}))
 
 describe('MovieDetails component', () => {
   const user = userEvent.setup()
@@ -120,14 +116,14 @@ describe('MovieDetails component', () => {
   })
 
   it('should match snapshot with loading', () => {
-    mockedHook.loading = true
+    mockedHook.isLoading = true
     const { asFragment } = renderWithWrapper(<MovieDetails />)
 
     expect(asFragment()).toMatchSnapshot()
   })
 
   it('should match snapshot with error', () => {
-    mockedHook.loading = false
+    mockedHook.isLoading = false
     mockedHook.error = 'Something went wrong!'
     const { asFragment } = renderWithWrapper(<MovieDetails />)
 

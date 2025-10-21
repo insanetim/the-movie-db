@@ -9,7 +9,7 @@ import { SearchResultHookReturn } from '../types'
 const mockedHook: SearchResultHookReturn = {
   error: null,
   handlePagination: jest.fn(),
-  loading: false,
+  isLoading: false,
   movies: {
     page: 1,
     results: [mockMovie],
@@ -70,7 +70,7 @@ describe('SearchResult component', () => {
   })
 
   it('should match snapshot with loading', () => {
-    mockedHook.loading = true
+    mockedHook.isLoading = true
 
     const { asFragment } = renderWithWrapper(
       <SearchResult query='test/search' />
@@ -80,7 +80,7 @@ describe('SearchResult component', () => {
   })
 
   it('should match snapshot with error', () => {
-    mockedHook.loading = false
+    mockedHook.isLoading = false
     mockedHook.error = 'Something went wrong!'
 
     const { asFragment } = renderWithWrapper(

@@ -22,6 +22,11 @@ const useContainer = ({
       message,
       onClose,
     })
+
+    // Clean up the notification when the component unmounts
+    return () => {
+      notification.destroy(id)
+    }
   }, [onClose, duration, id, message, type])
 
   return { onClose }

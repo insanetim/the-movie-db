@@ -8,7 +8,7 @@ import MovieItem from '../component'
 import { MovieItemHookReturn, MovieItemProps } from '../types'
 
 const mockedHook: MovieItemHookReturn = {
-  handleClick: jest.fn(),
+  handleNavigateToMovie: jest.fn(),
 }
 jest.mock('../hook', () => jest.fn(() => mockedHook))
 
@@ -42,7 +42,7 @@ describe('MovieItem component', () => {
     const card = screen.getByTestId('movieItemCard')
     await user.click(card)
 
-    expect(mockedHook.handleClick).toHaveBeenCalled()
+    expect(mockedHook.handleNavigateToMovie).toHaveBeenCalled()
   })
 
   it('should call "handleMovieDelete" when delete button clicked', async () => {

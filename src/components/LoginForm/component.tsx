@@ -8,7 +8,7 @@ const LoginForm: React.FC<LoginFormProps> = ({ isSubmitting, onSubmit }) => (
     autoComplete='off'
     onFinish={onSubmit}
   >
-    <Typography.Title>The Movie DB</Typography.Title>
+    <Typography.Title className='text-center'>The Movie DB</Typography.Title>
     <Form.Item
       name='username'
       rules={[{ message: 'Username is required', required: true }]}

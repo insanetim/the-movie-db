@@ -4,13 +4,14 @@ import useContainer from './hook'
 import { PopoverContentProps } from './types'
 
 const PopoverContent: React.FC<PopoverContentProps> = props => {
-  const { handleAddToList, handleAddToNewList, lists } = useContainer(props)
+  const { handleAddToList, handleOpenCreateListModal, lists } =
+    useContainer(props)
 
   return (
     <>
       <div>
         <Button
-          onClick={handleAddToNewList}
+          onClick={handleOpenCreateListModal}
           type='link'
         >
           Create new list ...
