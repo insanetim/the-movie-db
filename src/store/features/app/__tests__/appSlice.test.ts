@@ -114,7 +114,7 @@ describe('appSlice', () => {
       const expected = mergeDeepRight(initialState, {
         modal: {
           modalProps: null,
-          modalType: 'test/modalType',
+          modalType: 'MODAL_CREATE_LIST',
         },
       })
       const result = appReducer(initialState, action)
