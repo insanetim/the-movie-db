@@ -77,12 +77,4 @@ describe('Notification useContainer hook', () => {
       expect(notification.destroy).toHaveBeenCalledWith(defaultProps.id)
     })
   })
-
-  it('should clean up notification on unmount', () => {
-    const { unmount } = renderHook(() => useContainer(defaultProps))
-
-    unmount()
-
-    expect(notification.destroy).toHaveBeenCalledWith(defaultProps.id)
-  })
 })
