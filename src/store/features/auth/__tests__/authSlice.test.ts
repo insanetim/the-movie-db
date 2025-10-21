@@ -39,7 +39,10 @@ describe('authSlice', () => {
     })
 
     it('should handle deleteSession.matchFulfilled', () => {
-      const stateWithData = { account: { id: 1, name: 'Test' }, sessionId: 'sid' }
+      const stateWithData = {
+        account: { id: 1, name: 'Test' },
+        sessionId: 'sid',
+      }
       const action = {
         meta: { arg: { endpointName: 'deleteSession' } },
         payload: { success: true },
@@ -64,4 +67,3 @@ describe('authSlice', () => {
     })
   })
 })
-

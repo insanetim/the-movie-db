@@ -1,4 +1,4 @@
-import { UserData } from 'src/store/auth/types'
+import { UserData } from 'src/store/features/auth'
 
 export type LoginFormProps = {
   isSubmitting: boolean

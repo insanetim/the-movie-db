@@ -150,7 +150,7 @@ describe('Login useContainer hook', () => {
   it('should set submitting true during process', async () => {
     // Defer the token step to keep the process in-flight immediately
     let resolveToken: () => void
-    const tokenDeferred = new Promise<void>((res) => {
+    const tokenDeferred = new Promise<void>(res => {
       resolveToken = res
     })
 

@@ -108,7 +108,8 @@ describe('appSlice', () => {
 
     it('should handle "showModal" action without modalProps', () => {
       const action = showModal({
-        modalType: 'test/modalType' as unknown as never,
+        modalProps: null,
+        modalType: 'MODAL_CREATE_LIST',
       })
       const expected = mergeDeepRight(initialState, {
         modal: {
