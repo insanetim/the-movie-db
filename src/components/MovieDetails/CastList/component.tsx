@@ -1,7 +1,7 @@
 import { Col, Row, Typography } from 'antd'
 
 import CreditsItem from '../CreditsItem'
-import { CastListProps } from './type'
+import { CastListProps } from './types'
 
 const CastList: React.FC<CastListProps> = ({ cast, showTotal }) => (
   <>

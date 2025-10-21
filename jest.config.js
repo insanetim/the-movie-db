@@ -1,13 +1,19 @@
 module.exports = {
   clearMocks: true,
-  collectCoverageFrom: ['<rootDir>/src/**/*.{ts,tsx}'],
-  coveragePathIgnorePatterns: ['<rootDir>/src/index.tsx'],
+  collectCoverageFrom: [
+    '<rootDir>/src/**/*.{ts,tsx}',
+    '!<rootDir>/src/**/*index.{ts,tsx}',
+    '!<rootDir>/src/**/*types.{ts,tsx}',
+    '!<rootDir>/src/**/*{a,A}piSlice.{ts,tsx}',
+    '!<rootDir>/src/interfaces/**/*.{ts,tsx}',
+  ],
+  coveragePathIgnorePatterns: ['src/index.tsx', 'src/global.d.ts'],
   coverageThreshold: {
     global: {
+      statements: 100,
       branches: 100,
       functions: 100,
       lines: 100,
-      statements: 100,
     },
   },
   moduleDirectories: ['node_modules'],
