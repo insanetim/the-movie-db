@@ -139,6 +139,17 @@ describe('ListDetails useContainer hook', () => {
     })
   })
 
+  it('should default page to "1" when search param is missing', () => {
+    mockGet.mockReturnValue(null)
+
+    renderHook(() => useContainer())
+
+    expect(mockUseGetListDetailsQuery).toHaveBeenCalledWith({
+      listId: 1234,
+      page: '1',
+    })
+  })
+
   it('should reflect loading state', () => {
     mockUseGetListDetailsQuery.mockReturnValue({
       data: undefined,

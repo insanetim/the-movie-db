@@ -115,6 +115,16 @@ describe('Watchlist useContainer hook', () => {
     })
   })
 
+  it('should default page to "1" when search param is missing', () => {
+    mockGet.mockReturnValue(null)
+
+    renderHook(() => useContainer())
+
+    expect(mockUseGetWatchlistMoviesQuery).toHaveBeenCalledWith('1', {
+      skip: false,
+    })
+  })
+
   it('should reflect loading state', () => {
     mockUseGetWatchlistMoviesQuery.mockReturnValue({
       data: undefined,

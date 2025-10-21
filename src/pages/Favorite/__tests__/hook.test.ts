@@ -127,6 +127,16 @@ describe('Favorite useContainer hook', () => {
     })
   })
 
+  it('should default page to "1" when search param is missing', () => {
+    mockGet.mockReturnValue(null)
+
+    renderHook(() => useContainer())
+
+    expect(mockUseGetFavoriteMoviesQuery).toHaveBeenCalledWith('1', {
+      skip: false,
+    })
+  })
+
   it('should reflect loading state', () => {
     mockUseGetFavoriteMoviesQuery.mockReturnValue({
       data: undefined,

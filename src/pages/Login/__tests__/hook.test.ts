@@ -114,6 +114,20 @@ describe('Login useContainer hook', () => {
     expect(result.current.isSubmitting).toBe(false)
   })
 
+  it('should not navigate when session creation is unsuccessful', async () => {
+    unwrapSessionOk.mockResolvedValue({ success: false })
+
+    const { result } = renderHook(() => useContainer())
+    const userData = { password: 'p', username: 'u' } as UserData
+
+    await act(async () => {
+      await result.current.handleLogin(userData)
+    })
+
+    expect(navigate).not.toHaveBeenCalled()
+    expect(result.current.isSubmitting).toBe(false)
+  })
+
   it('should navigate to `from` when provided', async () => {
     mockUseLocation.mockReturnValue({
       state: { from: { pathname: '/back' } },

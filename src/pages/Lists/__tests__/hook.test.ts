@@ -120,6 +120,14 @@ describe('Lists useContainer hook', () => {
     expect(mockUseGetListsQuery).toHaveBeenCalledWith('1', { skip: false })
   })
 
+  it('should default page to "1" when search param is missing', () => {
+    mockGet.mockReturnValue(null)
+
+    renderHook(() => useContainer())
+
+    expect(mockUseGetListsQuery).toHaveBeenCalledWith('1', { skip: false })
+  })
+
   it('should skip query when account is missing', () => {
     mockSelectAccount.mockReturnValue(undefined)
     const { result } = renderHook(() => useContainer())
