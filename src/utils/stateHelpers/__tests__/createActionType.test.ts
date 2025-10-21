@@ -1,8 +1,11 @@
 import createActionType from '../createActionType'
 
 describe('createActionType', () => {
-  it('should return correct result', () => {
-    const result = createActionType('a', 'b', 'c')
+  it('should join action type segments with forward slashes', () => {
+    const domain = 'a'
+    const action = 'b'
+    const detail = 'c'
+    const result = createActionType(domain, action, detail)
 
     expect(result).toBe('a/b/c')
   })
