@@ -4,7 +4,7 @@ exports[`ThemeSwitch component should match snapshot 1`] = `
 <DocumentFragment>
   <div
     aria-label="segmented control"
-    class="ant-segmented ant-segmented-shape-round css-dev-only-do-not-override-1odpy5d"
+    class="ant-segmented ant-segmented-shape-round css-dev-only-do-not-override-1cj4ms"
     role="radiogroup"
     tabindex="0"
   >

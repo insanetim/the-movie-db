@@ -3,13 +3,13 @@
 exports[`Header component should match snapshot 1`] = `
 <DocumentFragment>
   <header
-    class="ant-layout-header css-dev-only-do-not-override-1odpy5d"
+    class="ant-layout-header css-dev-only-do-not-override-1cj4ms"
   >
     <div
-      class="ant-row ant-row-space-between css-dev-only-do-not-override-1odpy5d"
+      class="ant-row ant-row-space-between css-dev-only-do-not-override-1cj4ms"
     >
       <div
-        class="ant-col css-dev-only-do-not-override-1odpy5d"
+        class="ant-col css-dev-only-do-not-override-1cj4ms"
       >
         <a
           class="logo text-white"
@@ -20,19 +20,19 @@ exports[`Header component should match snapshot 1`] = `
         </a>
       </div>
       <div
-        class="ant-col css-dev-only-do-not-override-1odpy5d"
+        class="ant-col css-dev-only-do-not-override-1cj4ms"
       >
         <div
-          class="ant-row css-dev-only-do-not-override-1odpy5d"
+          class="ant-row css-dev-only-do-not-override-1cj4ms"
           style="margin-left: -12px; margin-right: -12px;"
         >
           <div
-            class="ant-col css-dev-only-do-not-override-1odpy5d"
+            class="ant-col css-dev-only-do-not-override-1cj4ms"
             style="padding-left: 12px; padding-right: 12px;"
           >
             <div
               aria-label="segmented control"
-              class="ant-segmented ant-segmented-shape-round css-dev-only-do-not-override-1odpy5d"
+              class="ant-segmented ant-segmented-shape-round css-dev-only-do-not-override-1cj4ms"
               role="radiogroup"
               tabindex="0"
             >
@@ -120,14 +120,14 @@ exports[`Header component should match snapshot 1`] = `
             </div>
           </div>
           <div
-            class="ant-col css-dev-only-do-not-override-1odpy5d"
+            class="ant-col css-dev-only-do-not-override-1cj4ms"
             style="padding-left: 12px; padding-right: 12px;"
           >
             <span
-              class="ant-typography ant-dropdown-trigger text-white css-dev-only-do-not-override-1odpy5d"
+              class="ant-typography ant-dropdown-trigger text-white css-dev-only-do-not-override-1cj4ms"
             >
               <span
-                class="ant-avatar ant-avatar-circle ant-avatar-image css-dev-only-do-not-override-1odpy5d"
+                class="ant-avatar ant-avatar-circle ant-avatar-image css-dev-only-do-not-override-1cj4ms"
               >
                 <img
                   alt="User avatar"
@@ -172,13 +172,13 @@ exports[`Header component should match snapshot 1`] = `
 exports[`Header component should match snapshot for unauthenticated 1`] = `
 <DocumentFragment>
   <header
-    class="ant-layout-header css-dev-only-do-not-override-1odpy5d"
+    class="ant-layout-header css-dev-only-do-not-override-1cj4ms"
   >
     <div
-      class="ant-row ant-row-space-between css-dev-only-do-not-override-1odpy5d"
+      class="ant-row ant-row-space-between css-dev-only-do-not-override-1cj4ms"
     >
       <div
-        class="ant-col css-dev-only-do-not-override-1odpy5d"
+        class="ant-col css-dev-only-do-not-override-1cj4ms"
       >
         <a
           class="logo text-white"
@@ -189,19 +189,19 @@ exports[`Header component should match snapshot for unauthenticated 1`] = `
         </a>
       </div>
       <div
-        class="ant-col css-dev-only-do-not-override-1odpy5d"
+        class="ant-col css-dev-only-do-not-override-1cj4ms"
       >
         <div
-          class="ant-row css-dev-only-do-not-override-1odpy5d"
+          class="ant-row css-dev-only-do-not-override-1cj4ms"
           style="margin-left: -12px; margin-right: -12px;"
         >
           <div
-            class="ant-col css-dev-only-do-not-override-1odpy5d"
+            class="ant-col css-dev-only-do-not-override-1cj4ms"
             style="padding-left: 12px; padding-right: 12px;"
           >
             <div
               aria-label="segmented control"
-              class="ant-segmented ant-segmented-shape-round css-dev-only-do-not-override-1odpy5d"
+              class="ant-segmented ant-segmented-shape-round css-dev-only-do-not-override-1cj4ms"
               role="radiogroup"
               tabindex="0"
             >
@@ -289,11 +289,11 @@ exports[`Header component should match snapshot for unauthenticated 1`] = `
             </div>
           </div>
           <div
-            class="ant-col css-dev-only-do-not-override-1odpy5d"
+            class="ant-col css-dev-only-do-not-override-1cj4ms"
             style="padding-left: 12px; padding-right: 12px;"
           >
             <a
-              class="ant-typography text-white css-dev-only-do-not-override-1odpy5d"
+              class="ant-typography text-white css-dev-only-do-not-override-1cj4ms"
             >
               Sign in
             </a>
@@ -308,13 +308,13 @@ exports[`Header component should match snapshot for unauthenticated 1`] = `
 exports[`Header component should match snapshot with avatar_path 1`] = `
 <DocumentFragment>
   <header
-    class="ant-layout-header css-dev-only-do-not-override-1odpy5d"
+    class="ant-layout-header css-dev-only-do-not-override-1cj4ms"
   >
     <div
-      class="ant-row ant-row-space-between css-dev-only-do-not-override-1odpy5d"
+      class="ant-row ant-row-space-between css-dev-only-do-not-override-1cj4ms"
     >
       <div
-        class="ant-col css-dev-only-do-not-override-1odpy5d"
+        class="ant-col css-dev-only-do-not-override-1cj4ms"
       >
         <a
           class="logo text-white"
@@ -325,19 +325,19 @@ exports[`Header component should match snapshot with avatar_path 1`] = `
         </a>
       </div>
       <div
-        class="ant-col css-dev-only-do-not-override-1odpy5d"
+        class="ant-col css-dev-only-do-not-override-1cj4ms"
       >
         <div
-          class="ant-row css-dev-only-do-not-override-1odpy5d"
+          class="ant-row css-dev-only-do-not-override-1cj4ms"
           style="margin-left: -12px; margin-right: -12px;"
         >
           <div
-            class="ant-col css-dev-only-do-not-override-1odpy5d"
+            class="ant-col css-dev-only-do-not-override-1cj4ms"
             style="padding-left: 12px; padding-right: 12px;"
           >
             <div
               aria-label="segmented control"
-              class="ant-segmented ant-segmented-shape-round css-dev-only-do-not-override-1odpy5d"
+              class="ant-segmented ant-segmented-shape-round css-dev-only-do-not-override-1cj4ms"
               role="radiogroup"
               tabindex="0"
             >
@@ -425,14 +425,14 @@ exports[`Header component should match snapshot with avatar_path 1`] = `
             </div>
           </div>
           <div
-            class="ant-col css-dev-only-do-not-override-1odpy5d"
+            class="ant-col css-dev-only-do-not-override-1cj4ms"
             style="padding-left: 12px; padding-right: 12px;"
           >
             <span
-              class="ant-typography ant-dropdown-trigger text-white css-dev-only-do-not-override-1odpy5d"
+              class="ant-typography ant-dropdown-trigger text-white css-dev-only-do-not-override-1cj4ms"
             >
               <span
-                class="ant-avatar ant-avatar-circle ant-avatar-image css-dev-only-do-not-override-1odpy5d"
+                class="ant-avatar ant-avatar-circle ant-avatar-image css-dev-only-do-not-override-1cj4ms"
               >
                 <img
                   alt="User avatar"
@@ -477,13 +477,13 @@ exports[`Header component should match snapshot with avatar_path 1`] = `
 exports[`Header component should match snapshot with empty account 1`] = `
 <DocumentFragment>
   <header
-    class="ant-layout-header css-dev-only-do-not-override-1odpy5d"
+    class="ant-layout-header css-dev-only-do-not-override-1cj4ms"
   >
     <div
-      class="ant-row ant-row-space-between css-dev-only-do-not-override-1odpy5d"
+      class="ant-row ant-row-space-between css-dev-only-do-not-override-1cj4ms"
     >
       <div
-        class="ant-col css-dev-only-do-not-override-1odpy5d"
+        class="ant-col css-dev-only-do-not-override-1cj4ms"
       >
         <a
           class="logo text-white"
@@ -494,19 +494,19 @@ exports[`Header component should match snapshot with empty account 1`] = `
         </a>
       </div>
       <div
-        class="ant-col css-dev-only-do-not-override-1odpy5d"
+        class="ant-col css-dev-only-do-not-override-1cj4ms"
       >
         <div
-          class="ant-row css-dev-only-do-not-override-1odpy5d"
+          class="ant-row css-dev-only-do-not-override-1cj4ms"
           style="margin-left: -12px; margin-right: -12px;"
         >
           <div
-            class="ant-col css-dev-only-do-not-override-1odpy5d"
+            class="ant-col css-dev-only-do-not-override-1cj4ms"
             style="padding-left: 12px; padding-right: 12px;"
           >
             <div
               aria-label="segmented control"
-              class="ant-segmented ant-segmented-shape-round css-dev-only-do-not-override-1odpy5d"
+              class="ant-segmented ant-segmented-shape-round css-dev-only-do-not-override-1cj4ms"
               role="radiogroup"
               tabindex="0"
             >
@@ -594,14 +594,14 @@ exports[`Header component should match snapshot with empty account 1`] = `
             </div>
           </div>
           <div
-            class="ant-col css-dev-only-do-not-override-1odpy5d"
+            class="ant-col css-dev-only-do-not-override-1cj4ms"
             style="padding-left: 12px; padding-right: 12px;"
           >
             <span
-              class="ant-typography ant-dropdown-trigger text-white css-dev-only-do-not-override-1odpy5d"
+              class="ant-typography ant-dropdown-trigger text-white css-dev-only-do-not-override-1cj4ms"
             >
               <span
-                class="ant-avatar ant-avatar-circle ant-avatar-icon css-dev-only-do-not-override-1odpy5d"
+                class="ant-avatar ant-avatar-circle ant-avatar-icon css-dev-only-do-not-override-1cj4ms"
               >
                 <span
                   aria-label="user"
