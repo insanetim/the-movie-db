@@ -1,7 +1,8 @@
 import { authReducer, selectAccount, selectSessionId } from '../authSlice'
+import { AuthState } from '../types'
 
 describe('authSlice', () => {
-  const initialState = {
+  const initialState: AuthState = {
     account: null,
     sessionId: null,
   }
@@ -26,7 +27,15 @@ describe('authSlice', () => {
     })
 
     it('should handle getAccount.matchFulfilled', () => {
-      const account = { id: 1, name: 'Test User' }
+      const account = {
+        avatar: { gravatar: { hash: 'hash' }, tmdb: { avatar_path: null } },
+        id: 1,
+        include_adult: false,
+        iso_639_1: 'en',
+        iso_3166_1: 'US',
+        name: 'Test User',
+        username: 'testuser',
+      }
       const action = {
         meta: { arg: { endpointName: 'getAccount' } },
         payload: account,
@@ -39,8 +48,16 @@ describe('authSlice', () => {
     })
 
     it('should handle deleteSession.matchFulfilled', () => {
-      const stateWithData = {
-        account: { id: 1, name: 'Test' },
+      const stateWithData: AuthState = {
+        account: {
+          avatar: { gravatar: { hash: 'hash' }, tmdb: { avatar_path: null } },
+          id: 1,
+          include_adult: false,
+          iso_639_1: 'en',
+          iso_3166_1: 'US',
+          name: 'Test',
+          username: 'testuser',
+        },
         sessionId: 'sid',
       }
       const action = {
@@ -49,7 +66,7 @@ describe('authSlice', () => {
         type: 'api/executeMutation/fulfilled',
       }
 
-      const result = authReducer(stateWithData as never, action as never)
+      const result = authReducer(stateWithData, action as never)
 
       expect(result).toEqual(initialState)
     })
@@ -58,12 +75,12 @@ describe('authSlice', () => {
   describe('selectors', () => {
     it('should select account', () => {
       const root = { auth: initialState }
-      expect(selectAccount(root as never)).toEqual(initialState.account)
+      expect(selectAccount(root)).toEqual(initialState.account)
     })
 
     it('should select sessionId', () => {
       const root = { auth: initialState }
-      expect(selectSessionId(root as never)).toEqual(initialState.sessionId)
+      expect(selectSessionId(root)).toEqual(initialState.sessionId)
     })
   })
 })
