@@ -3,6 +3,12 @@ describe('personApiSlice endpoints', () => {
     useGetPersonDetailsQuery: Symbol('useGetPersonDetailsQuery'),
   }
 
+  // Define the query function type explicitly
+  type PersonQueryFunction = (personId: number) => {
+    params: { append_to_response: string }
+    url: string
+  }
+
   let builder: {
     mutation: jest.Mock
     query: jest.Mock
@@ -42,11 +48,19 @@ describe('personApiSlice endpoints', () => {
     expect(builder.mutation).toHaveBeenCalledTimes(0)
     expect(builder.query).toHaveBeenCalledTimes(1)
 
-    // Test getPersonDetails query
+    // Test getPersonDetails query function
     const getPersonDetailsConfig = builder.query.mock.calls[0][0] as {
-      query: Function
+      query: PersonQueryFunction
     }
     expect(typeof getPersonDetailsConfig.query).toBe('function')
+
+    // Test the query function with a sample personId
+    const testPersonId = 123
+    const queryResult = getPersonDetailsConfig.query(testPersonId)
+    expect(queryResult).toEqual({
+      params: { append_to_response: 'external_ids,movie_credits' },
+      url: `/person/${testPersonId}`,
+    })
 
     expect(module.personApiSlice).toBe(hooksMock)
     expect(module.useGetPersonDetailsQuery).toBe(
