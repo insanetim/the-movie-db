@@ -10,6 +10,11 @@ interface ExtendedRenderOptions extends Omit<RenderOptions, 'queries'> {
   store?: AppStore
 }
 
+/**
+ * Creates a wrapper component that provides Redux store, Router, and Suspense context
+ * @param store - The Redux store to provide to components
+ * @returns A wrapper component for testing
+ */
 const createWrapper =
   (store: AppStore) =>
   ({ children }: PropsWithChildren) => (
@@ -20,6 +25,12 @@ const createWrapper =
     </Provider>
   )
 
+/**
+ * Renders a React component with Redux store, Router, and Suspense providers
+ * @param ui - The React component to render
+ * @param options - Extended render options including preloaded state and custom store
+ * @returns The render result from React Testing Library
+ */
 export const renderWithWrapper = (
   ui: ReactNode,
   {
@@ -32,10 +43,16 @@ export const renderWithWrapper = (
   return render(ui, { wrapper: Wrapper, ...renderOptions })
 }
 
-export const renderHookWithWrapper = <T,>(
-  hook: () => T,
+/**
+ * Renders a React hook with Redux store, Router, and Suspense providers
+ * @param hook - The hook function to render
+ * @param options - Extended render options including preloaded state and custom store
+ * @returns The renderHook result from React Testing Library
+ */
+export const renderHookWithWrapper = <TProps, TResult>(
+  hook: (initialProps?: TProps) => TResult,
   {
-    preloadedState = {} as RootState,
+    preloadedState = mockState,
     store = setupStore(preloadedState),
     ...renderOptions
   }: ExtendedRenderOptions = {}

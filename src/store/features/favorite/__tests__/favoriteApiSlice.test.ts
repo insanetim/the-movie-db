@@ -3,6 +3,7 @@ import { MutationResponse } from 'src/interfaces/global.interface'
 import { IMoviesList } from 'src/interfaces/movie.interface'
 import { RootState } from 'src/store'
 import { apiSlice } from 'src/store/api'
+
 import { AddToFavoriteReq } from './types'
 
 // Top-level mocks
@@ -183,7 +184,7 @@ describe('favoriteApiSlice', () => {
     describe('queryFn', () => {
       it('should make correct API call for adding to favorites', async () => {
         const mockFetchBaseQuery = jest.fn().mockResolvedValue({
-          data: { success: true, status_code: 12, status_message: 'Success' },
+          data: { status_code: 12, status_message: 'Success', success: true },
         })
 
         const result = await mutationConfig.queryFn(
@@ -205,13 +206,13 @@ describe('favoriteApiSlice', () => {
         })
 
         expect(result).toEqual({
-          data: { success: true, status_code: 12, status_message: 'Success' },
+          data: { status_code: 12, status_message: 'Success', success: true },
         })
       })
 
       it('should make correct API call for removing from favorites', async () => {
         const mockFetchBaseQuery = jest.fn().mockResolvedValue({
-          data: { success: true, status_code: 13, status_message: 'Removed' },
+          data: { status_code: 13, status_message: 'Removed', success: true },
         })
 
         const result = await mutationConfig.queryFn(
@@ -233,12 +234,12 @@ describe('favoriteApiSlice', () => {
         })
 
         expect(result).toEqual({
-          data: { success: true, status_code: 13, status_message: 'Removed' },
+          data: { status_code: 13, status_message: 'Removed', success: true },
         })
       })
 
       it('should return error when API call fails', async () => {
-        const mockError = { status: 500, data: 'Internal Server Error' }
+        const mockError = { data: 'Internal Server Error', status: 500 }
         const mockFetchBaseQuery = jest.fn().mockResolvedValue({
           error: mockError,
         })
@@ -299,9 +300,9 @@ describe('favoriteApiSlice', () => {
           results: [
             {
               id: 1,
-              title: 'Test Movie',
               poster_path: '/test.jpg',
               release_date: '2023-01-01',
+              title: 'Test Movie',
               vote_average: 8.5,
             },
           ],
@@ -329,7 +330,7 @@ describe('favoriteApiSlice', () => {
       })
 
       it('should return error when API call fails', async () => {
-        const mockError = { status: 404, data: 'Not Found' }
+        const mockError = { data: 'Not Found', status: 404 }
         const mockFetchBaseQuery = jest.fn().mockResolvedValue({
           error: mockError,
         })
