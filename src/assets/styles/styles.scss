@@ -19,11 +19,8 @@ body {
   margin-left: auto;
 }
 
-.center {
-  display: flex;
+.full-height {
   height: 100vh;
-  align-items: center;
-  justify-content: center;
 }
 
 .text-center {
@@ -212,4 +209,5 @@ body {
   min-height: unset;
   flex: none;
   padding-bottom: 0;
+  margin-top: 120px;
 }
