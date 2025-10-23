@@ -58,6 +58,7 @@ export const appSlice = createAppSlice({
     selectModal: state => state.modal,
     selectNotification: state => state.notifications,
     selectTheme: state => state.theme,
+    selectThemeIsDark: state => state.theme === 'dark',
   },
 })
 
@@ -69,7 +70,11 @@ export const {
   showNotification,
 } = appSlice.actions
 
-export const { selectModal, selectNotification, selectTheme } =
-  appSlice.selectors
+export const {
+  selectModal,
+  selectNotification,
+  selectTheme,
+  selectThemeIsDark,
+} = appSlice.selectors
 
 export const appReducer = appSlice.reducer

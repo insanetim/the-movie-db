@@ -1,31 +1,8 @@
 import { renderHook } from '@testing-library/react'
-import { MappingAlgorithm } from 'antd'
 import { selectThemeIsDark } from 'src/store/features/app'
 import { useAppSelector } from 'src/store/hooks'
 
 import useContainer from '../hook'
-
-jest.mock('antd', () => {
-  const createAlgorithm = (label: string) =>
-    Object.assign(jest.fn(), { label }) as unknown as MappingAlgorithm
-
-  return {
-    theme: {
-      darkAlgorithm: createAlgorithm('dark'),
-      defaultAlgorithm: createAlgorithm('default'),
-    },
-  }
-})
-
-const getAlgorithms = () =>
-  (
-    jest.requireMock('antd') as {
-      theme: {
-        darkAlgorithm: MappingAlgorithm
-        defaultAlgorithm: MappingAlgorithm
-      }
-    }
-  ).theme
 
 jest.mock('src/store/features/app')
 jest.mock('src/store/hooks')
@@ -37,7 +14,7 @@ const mockSelectThemeIsDark = selectThemeIsDark as jest.MockedFunction<
   typeof selectThemeIsDark
 >
 
-describe('ThemeProvider useContainer hook', () => {
+describe('LoginForm useContainer hook', () => {
   beforeEach(() => {
     mockUseAppSelector.mockReturnValue(false)
   })
@@ -55,21 +32,17 @@ describe('ThemeProvider useContainer hook', () => {
   })
 
   describe('Return values', () => {
-    it('should return default algorithm and isDark false when isDark=false', () => {
+    it('should return isDark false when selector returns false', () => {
       const { result } = renderHook(() => useContainer())
-      const { defaultAlgorithm } = getAlgorithms()
 
-      expect(result.current.algorithm).toBe(defaultAlgorithm)
       expect(result.current.isDark).toBe(false)
     })
 
-    it('should return dark algorithm and isDark true when isDark=true', () => {
+    it('should return isDark true when selector returns true', () => {
       mockUseAppSelector.mockReturnValue(true)
 
       const { result } = renderHook(() => useContainer())
-      const { darkAlgorithm } = getAlgorithms()
 
-      expect(result.current.algorithm).toBe(darkAlgorithm)
       expect(result.current.isDark).toBe(true)
     })
 
@@ -79,16 +52,12 @@ describe('ThemeProvider useContainer hook', () => {
         .mockReturnValueOnce(true)
 
       const { rerender, result } = renderHook(() => useContainer())
-      const { darkAlgorithm, defaultAlgorithm } = getAlgorithms()
 
-      expect(result.current.algorithm).toBe(defaultAlgorithm)
       expect(result.current.isDark).toBe(false)
 
       rerender()
 
-      expect(result.current.algorithm).toBe(darkAlgorithm)
       expect(result.current.isDark).toBe(true)
     })
   })
 })
-
