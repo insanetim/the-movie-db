@@ -1,28 +1,16 @@
 import { renderHook } from '@testing-library/react'
 import { FormInstance, InputRef } from 'antd'
 import { useRef } from 'react'
-import { hideModal } from 'src/store/features/app'
 import { ListData } from 'src/store/features/list'
-import { useAppDispatch } from 'src/store/hooks'
 
 import useContainer from '../hook'
 import { ModalCreateListHookProps } from '../types'
-
-jest.mock('src/store/hooks')
-jest.mock('src/store/features/app', () => ({
-  hideModal: jest.fn(),
-}))
 
 // Mock React useRef for testing inputRef
 jest.mock('react', () => ({
   ...jest.requireActual('react'),
   useRef: jest.fn(),
 }))
-
-const mockUseAppDispatch = useAppDispatch as jest.MockedFunction<
-  typeof useAppDispatch
->
-const mockHideModal = hideModal as jest.MockedFunction<typeof hideModal>
 const mockUseRef = useRef as jest.MockedFunction<typeof useRef>
 
 // Mock InputRef interface for testing
@@ -67,19 +55,10 @@ const mockListData: ListData = {
 }
 
 describe('ModalCreateList useContainer hook', () => {
-  let dispatch: jest.Mock
   let mockOnSubmit: jest.Mock
 
   beforeEach(() => {
-    dispatch = jest.fn()
-    mockUseAppDispatch.mockReturnValue(dispatch as never)
-
     mockUseRef.mockReturnValue(mockInputRef as never)
-
-    mockHideModal.mockReturnValue({
-      payload: undefined,
-      type: 'app/hideModal',
-    } as never)
 
     mockOnSubmit = jest.fn()
   })
@@ -115,8 +94,10 @@ describe('ModalCreateList useContainer hook', () => {
     expect(mockForm.submit).toHaveBeenCalledTimes(1)
   })
 
-  it('should dispatch hideModal and call onSubmit when handleSubmit is called', async () => {
+  it('should call closeModal and call onSubmit when handleSubmit is called', async () => {
+    const mockCloseModal = jest.fn()
     const props: ModalCreateListHookProps = {
+      closeModal: mockCloseModal,
       form: mockForm,
       onSubmit: mockOnSubmit,
     }
@@ -125,12 +106,14 @@ describe('ModalCreateList useContainer hook', () => {
 
     await result.current.handleSubmit(mockListData)
 
-    expect(dispatch).toHaveBeenCalledWith(mockHideModal())
+    expect(mockCloseModal).toHaveBeenCalledTimes(1)
     expect(mockOnSubmit).toHaveBeenCalledWith(mockListData)
   })
 
-  it('should dispatch hideModal and call onSubmit even without onSubmit prop', async () => {
+  it('should call closeModal even without onSubmit prop', async () => {
+    const mockCloseModal = jest.fn()
     const props: ModalCreateListHookProps = {
+      closeModal: mockCloseModal,
       form: mockForm,
       // onSubmit is optional
     }
@@ -139,7 +122,7 @@ describe('ModalCreateList useContainer hook', () => {
 
     await result.current.handleSubmit(mockListData)
 
-    expect(dispatch).toHaveBeenCalledWith(mockHideModal())
+    expect(mockCloseModal).toHaveBeenCalledTimes(1)
     expect(mockOnSubmit).not.toHaveBeenCalled()
   })
 

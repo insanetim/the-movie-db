@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
-exports[`ModalRoot component should match snapshot 1`] = `
+exports[`ModalsRoot component matches snapshot with active modal 1`] = `
 <body>
   <div />
   <div>
@@ -167,7 +167,7 @@ exports[`ModalRoot component should match snapshot 1`] = `
 </body>
 `;
 
-exports[`ModalRoot component should match snapshot without modalType 1`] = `
+exports[`ModalsRoot component matches snapshot without modals 1`] = `
 <body>
   <div />
 </body>

@@ -1,7 +1,8 @@
 import { act, renderHook } from '@testing-library/react'
 import { modalTypes } from 'src/components/ModalsRoot/modalComponents'
 import useHandleError from 'src/hooks/useHandleError'
-import { showModal, showNotification } from 'src/store/features/app'
+import useModal from 'src/hooks/useModal'
+import { showNotification } from 'src/store/features/app'
 import { ListData } from 'src/store/features/list'
 import { useAppDispatch } from 'src/store/hooks'
 import listMessage from 'src/utils/helpers/listMessage'
@@ -14,8 +15,8 @@ jest.mock('src/store/features/movie')
 jest.mock('src/store/features/list')
 jest.mock('src/store/hooks')
 jest.mock('src/hooks/useHandleError')
+jest.mock('src/hooks/useModal')
 jest.mock('src/store/features/app', () => ({
-  showModal: jest.fn(),
   showNotification: jest.fn(payload => ({
     payload: {
       duration: 5000,
@@ -26,8 +27,8 @@ jest.mock('src/store/features/app', () => ({
     type: 'app/showNotification',
   })),
 }))
-jest.mock('src/components/ModalRoot/modalComponents', () => ({
-  modalComponentsMap: { MODAL_CREATE_LIST: 'MODAL_CREATE_LIST' },
+jest.mock('src/components/ModalsRoot/modalComponents', () => ({
+  modalTypes: { CREATE_LIST: 'CREATE_LIST' },
 }))
 jest.mock('src/utils/helpers/listMessage', () => jest.fn())
 
@@ -60,7 +61,7 @@ const mockUseAppDispatch = useAppDispatch as jest.MockedFunction<
 const mockUseHandleError = useHandleError as jest.MockedFunction<
   typeof useHandleError
 >
-const mockShowModal = showModal as jest.MockedFunction<typeof showModal>
+const mockUseModal = useModal as jest.MockedFunction<typeof useModal>
 const mockShowNotification = showNotification as jest.MockedFunction<
   typeof showNotification
 >
@@ -93,6 +94,8 @@ describe('PopoverContent useContainer hook', () => {
   let addTrigger: jest.Mock
   let unwrapCreate: jest.Mock
   let unwrapAdd: jest.Mock
+  let openModalMock: jest.Mock
+  let closeModalMock: jest.Mock
 
   beforeEach(() => {
     dispatch = jest.fn()
@@ -100,6 +103,13 @@ describe('PopoverContent useContainer hook', () => {
 
     handleError = jest.fn()
     mockUseHandleError.mockReturnValue({ handleError } as never)
+
+    openModalMock = jest.fn()
+    closeModalMock = jest.fn()
+    mockUseModal.mockReturnValue({
+      closeModal: closeModalMock,
+      openModal: openModalMock,
+    } as never)
 
     // Mock movie query
     mockUseGetMovieDetailsQuery.mockReturnValue({
@@ -244,8 +254,11 @@ describe('PopoverContent useContainer hook', () => {
       result.current.handleOpenCreateListModal()
     })
 
-    expect(mockShowModal).toHaveBeenCalledWith({
-      modalProps: { onSubmit: expect.any(Function) },
+    expect(openModalMock).toHaveBeenCalledWith({
+      modalProps: {
+        closeModal: closeModalMock,
+        onSubmit: result.current.handleAddToNewList,
+      },
       modalType: modalTypes.CREATE_LIST,
     })
     expect(mockSetPopoverOpen).toHaveBeenCalledWith(false)
@@ -290,6 +303,7 @@ describe('PopoverContent useContainer hook', () => {
       },
       type: 'app/showNotification',
     })
+    expect(mockSetPopoverOpen).toHaveBeenCalledWith(false)
   })
 
   it('should handle errors when adding movie to existing list fails', async () => {
@@ -346,8 +360,12 @@ describe('PopoverContent useContainer hook', () => {
 
     // Should still call addMovieToList but movie title will be undefined in message
     expect(addTrigger).toHaveBeenCalledWith({ listId: 'list1', movieId: 123 })
-    // Note: listMessage won't be called because movie is undefined and movie!.title throws
-    // This is expected behavior - the hook assumes movie data exists
+    expect(mockListMessage).not.toHaveBeenCalled()
+    expect(mockShowNotification).not.toHaveBeenCalled()
+    expect(handleError).toHaveBeenCalledWith(expect.any(Error))
+    const [errorArg] = handleError.mock.calls[0]
+    expect(errorArg).toBeInstanceOf(TypeError)
+    expect(mockSetPopoverOpen).toHaveBeenCalledWith(false)
   })
 
   it('should handle movie with no title', async () => {
@@ -425,10 +443,11 @@ describe('PopoverContent useContainer hook', () => {
       result.current.handleOpenCreateListModal()
     })
 
-    const modalCall = mockShowModal.mock.calls[0][0]
+    const modalCall = openModalMock.mock.calls[0][0]
     expect(modalCall.modalType).toBe(modalTypes.CREATE_LIST)
     expect(modalCall.modalProps).toBeDefined()
     expect(typeof modalCall.modalProps?.onSubmit).toBe('function')
+    expect(modalCall.modalProps?.closeModal).toBe(closeModalMock)
 
     // The onSubmit function should be the handleAddToNewList function
     expect(modalCall.modalProps?.onSubmit).toBe(
