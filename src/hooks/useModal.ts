@@ -3,27 +3,21 @@ import { useCallback } from 'react'
 import { useModalsContext } from 'src/contexts/ModalsProvider'
 import { Modal } from 'src/contexts/ModalsProvider/types'
 
-const useModal = (initId?: string) => {
+const useModal = (initModalId?: string) => {
   const { dispatch } = useModalsContext()
 
-  const id = initId ?? nanoid()
+  const modalId = initModalId ?? nanoid()
 
   const openModal = useCallback(
-    (modal: Modal) => {
-      dispatch({
-        payload: {
-          ...modal,
-          id,
-        },
-        type: 'OPEN_MODAL',
-      })
+    (modal: Omit<Modal, 'modalId'>) => {
+      dispatch({ payload: { ...modal, modalId }, type: 'OPEN_MODAL' })
     },
-    [dispatch, id]
+    [dispatch, modalId]
   )
 
   const closeModal = useCallback(() => {
-    dispatch({ payload: id, type: 'CLOSE_MODAL' })
-  }, [dispatch, id])
+    dispatch({ payload: modalId, type: 'CLOSE_MODAL' })
+  }, [dispatch, modalId])
 
   return { closeModal, openModal }
 }

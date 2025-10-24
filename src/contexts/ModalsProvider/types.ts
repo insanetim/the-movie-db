@@ -3,7 +3,7 @@ import { ModalsMap, ModalTypes } from 'src/components/ModalsRoot/types'
 
 export type Modal = {
   [T in ModalTypes]: {
-    id: string
+    modalId: string
     modalProps: ComponentProps<ModalsMap[T]>
     modalType: T
   }
@@ -14,7 +14,10 @@ export type ModalsContextType = {
   modals: Modal[]
 }
 
-export type ModalsReducerAction = CloseModalAction | OpenModalAction
+export type ModalsReducerAction =
+  | CloseModalAction
+  | OpenModalAction
+  | RemoveModalAction
 
 type CloseModalAction = {
   payload: string
@@ -24,4 +27,9 @@ type CloseModalAction = {
 type OpenModalAction = {
   payload: Modal
   type: 'OPEN_MODAL'
+}
+
+type RemoveModalAction = {
+  payload: string
+  type: 'REMOVE_MODAL'
 }

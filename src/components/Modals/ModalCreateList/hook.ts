@@ -1,25 +1,26 @@
 import { InputRef } from 'antd'
-import { useRef } from 'react'
-import { hideModal } from 'src/store/features/app'
+import { useRef, useState } from 'react'
 import { ListData } from 'src/store/features/list'
-import { useAppDispatch } from 'src/store/hooks'
 
 import { ModalCreateListHookProps, ModalCreateListHookReturn } from './types'
 
 const useContainer = ({
+  closeModal,
   form,
   onSubmit,
 }: ModalCreateListHookProps): ModalCreateListHookReturn => {
+  const [isSubmitting, setIsSubmitting] = useState(false)
   const inputRef = useRef<InputRef>(null)
-  const dispatch = useAppDispatch()
 
   const handleOk = () => {
     form.submit()
   }
 
   const handleSubmit = async (listData: ListData) => {
-    dispatch(hideModal())
+    setIsSubmitting(true)
     await onSubmit?.(listData)
+    setIsSubmitting(false)
+    closeModal?.()
   }
 
   const handleAfterOpenChange = (open: boolean) => {
@@ -33,6 +34,7 @@ const useContainer = ({
     handleOk,
     handleSubmit,
     inputRef,
+    isSubmitting,
   }
 }
 

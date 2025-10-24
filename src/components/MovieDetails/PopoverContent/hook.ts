@@ -1,6 +1,7 @@
-import { modalComponentsMap } from 'src/components/ModalsRoot/modalComponents'
+import { modalTypes } from 'src/components/ModalsRoot/modalComponents'
 import useHandleError from 'src/hooks/useHandleError'
-import { showModal, showNotification } from 'src/store/features/app'
+import useModal from 'src/hooks/useModal'
+import { showNotification } from 'src/store/features/app'
 import {
   ListData,
   useAddMovieToListMutation,
@@ -23,6 +24,7 @@ const useContainer = ({
 }: PopoverContentHookProps): PopoverContentHookReturn => {
   const dispatch = useAppDispatch()
   const { handleError } = useHandleError()
+  const { closeModal, openModal } = useModal()
 
   const { data: movie } = useGetMovieDetailsQuery(movieId)
   const { data: lists } = useGetListsQuery('1')
@@ -48,12 +50,10 @@ const useContainer = ({
   }
 
   const handleOpenCreateListModal = () => {
-    dispatch(
-      showModal({
-        modalProps: { onSubmit: handleAddToNewList },
-        modalType: modalComponentsMap.MODAL_CREATE_LIST,
-      })
-    )
+    openModal({
+      modalProps: { closeModal, onSubmit: handleAddToNewList },
+      modalType: modalTypes.CREATE_LIST,
+    })
     setPopoverOpen(false)
   }
 

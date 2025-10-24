@@ -1,5 +1,5 @@
 import { act, renderHook } from '@testing-library/react'
-import { modalComponentsMap } from 'src/components/ModalsRoot/modalComponents'
+import { modalTypes } from 'src/components/ModalsRoot/modalComponents'
 import useHandleError from 'src/hooks/useHandleError'
 import { showModal, showNotification } from 'src/store/features/app'
 import { ListData } from 'src/store/features/list'
@@ -246,7 +246,7 @@ describe('PopoverContent useContainer hook', () => {
 
     expect(mockShowModal).toHaveBeenCalledWith({
       modalProps: { onSubmit: expect.any(Function) },
-      modalType: modalComponentsMap.MODAL_CREATE_LIST,
+      modalType: modalTypes.CREATE_LIST,
     })
     expect(mockSetPopoverOpen).toHaveBeenCalledWith(false)
   })
@@ -426,7 +426,7 @@ describe('PopoverContent useContainer hook', () => {
     })
 
     const modalCall = mockShowModal.mock.calls[0][0]
-    expect(modalCall.modalType).toBe(modalComponentsMap.MODAL_CREATE_LIST)
+    expect(modalCall.modalType).toBe(modalTypes.CREATE_LIST)
     expect(modalCall.modalProps).toBeDefined()
     expect(typeof modalCall.modalProps?.onSubmit).toBe('function')
 

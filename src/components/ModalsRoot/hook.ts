@@ -7,13 +7,20 @@ const useContainer = (): ModalRootHookReturn => {
   const { dispatch, modals } = useModalsContext()
 
   const closeModal = useCallback(
-    (id: string) => {
-      dispatch({ payload: id, type: 'CLOSE_MODAL' })
+    (modalId: string) => {
+      dispatch({ payload: modalId, type: 'CLOSE_MODAL' })
     },
     [dispatch]
   )
 
-  return { closeModal, modals }
+  const removeDialog = useCallback(
+    (modalId: string) => {
+      dispatch({ payload: modalId, type: 'REMOVE_MODAL' })
+    },
+    [dispatch]
+  )
+
+  return { closeModal, modals, removeDialog }
 }
 
 export default useContainer

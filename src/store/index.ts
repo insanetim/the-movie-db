@@ -18,7 +18,7 @@ import {
 import storage from 'redux-persist/lib/storage'
 
 import { apiSlice } from './api'
-import { appReducer, showModal } from './features/app'
+import { appReducer } from './features/app'
 import { authReducer } from './features/auth'
 
 const appPersistConfig = {
@@ -44,15 +44,7 @@ export const setupStore = (preloadedState?: Partial<RootState>) =>
     middleware: getDefaultMiddleware =>
       getDefaultMiddleware({
         serializableCheck: {
-          ignoredActions: [
-            FLUSH,
-            PAUSE,
-            PERSIST,
-            PURGE,
-            REGISTER,
-            REHYDRATE,
-            showModal.type,
-          ],
+          ignoredActions: [FLUSH, PAUSE, PERSIST, PURGE, REGISTER, REHYDRATE],
         },
       }).concat(apiSlice.middleware),
     preloadedState,

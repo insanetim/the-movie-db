@@ -7,7 +7,7 @@ import { Modal, ModalsReducerAction } from './types'
 const modalsReducer = (state: Modal[], action: ModalsReducerAction) => {
   switch (action.type) {
     case 'CLOSE_MODAL': {
-      const index = state.findIndex(modal => modal.id === action.payload)
+      const index = state.findIndex(modal => modal.modalId === action.payload)
       const updatedModal = {
         ...state[index],
         modalProps: { ...state[index].modalProps, open: false },
@@ -20,6 +20,8 @@ const modalsReducer = (state: Modal[], action: ModalsReducerAction) => {
     }
     case 'OPEN_MODAL':
       return [...state, action.payload]
+    case 'REMOVE_MODAL':
+      return state.filter(modal => modal.modalId !== action.payload)
     default:
       return state
   }
@@ -28,9 +30,9 @@ const modalsReducer = (state: Modal[], action: ModalsReducerAction) => {
 const initialState: Modal[] = []
 
 export const ModalsProvider: React.FC<PropsWithChildren> = ({ children }) => {
-  const [state, dispatch] = useReducer(modalsReducer, initialState)
+  const [modals, dispatch] = useReducer(modalsReducer, initialState)
 
-  const value = useMemo(() => ({ dispatch, modals: state }), [state])
+  const value = useMemo(() => ({ dispatch, modals }), [modals])
 
   return (
     <ModalsContext.Provider value={value}>
