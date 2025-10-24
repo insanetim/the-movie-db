@@ -7,6 +7,7 @@ import {
   selectNotification,
   selectTheme,
   selectThemeIsDark,
+  setTheme,
   showNotification,
 } from '../appSlice'
 import { AppState } from '../types'
@@ -85,6 +86,17 @@ describe('appSlice', () => {
       const result = appReducer(initialState, action)
 
       expect(result).toEqual(expected)
+    })
+
+    it('should handle "setTheme" action', () => {
+      const action = setTheme('dark')
+
+      const result = appReducer(initialState, action)
+
+      expect(result).toEqual({
+        notifications: initialState.notifications,
+        theme: 'dark',
+      })
     })
   })
 
