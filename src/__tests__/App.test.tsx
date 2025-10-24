@@ -43,9 +43,9 @@ jest.mock('../components/ProtectedRoutes/hook', () =>
 )
 
 const mockedModalRootHook: ModalRootHookReturn = {
-  modalProps: null,
-  modalType: null,
-  onCancel: jest.fn(),
+  closeModal: jest.fn(),
+  modals: [],
+  removeModal: jest.fn(),
 }
 jest.mock('../components/ModalRoot/hook', () =>
   jest.fn(() => mockedModalRootHook)

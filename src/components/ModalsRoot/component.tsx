@@ -2,7 +2,7 @@ import useContainer from './hook'
 import { MODAL_COMPONENTS } from './modalComponents'
 
 const ModalsRoot: React.FC = () => {
-  const { closeModal, modals, removeDialog } = useContainer()
+  const { closeModal, modals, removeModal } = useContainer()
 
   return (
     <>
@@ -13,8 +13,8 @@ const ModalsRoot: React.FC = () => {
           <ModalComponent
             {...modal.modalProps}
             afterClose={() => {
-              modal.modalProps.afterClose?.()
-              removeDialog(modal.modalId)
+              modal.modalProps?.afterClose?.()
+              removeModal(modal.modalId)
             }}
             key={modal.modalId}
             onCancel={() => closeModal(modal.modalId)}

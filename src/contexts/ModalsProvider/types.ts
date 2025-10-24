@@ -4,7 +4,7 @@ import { ModalsMap, ModalTypes } from 'src/components/ModalsRoot/types'
 export type Modal = {
   [T in ModalTypes]: {
     modalId: string
-    modalProps: ComponentProps<ModalsMap[T]>
+    modalProps?: ComponentProps<ModalsMap[T]>
     modalType: T
   }
 }[ModalTypes]

@@ -12,7 +12,7 @@ export type ModalProps = ComponentProps<ModalsMap[ModalTypes]>
 export type ModalRootHookReturn = {
   closeModal: (id: string) => void
   modals: Modal[]
-  removeDialog: (id: string) => void
+  removeModal: (id: string) => void
 }
 
 export type ModalsMap = typeof MODAL_COMPONENTS
