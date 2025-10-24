@@ -102,6 +102,14 @@ describe('Lists useContainer hook', () => {
     expect(mockUseGetListsQuery).toHaveBeenCalledWith('1', { skip: false })
   })
 
+  it('should fallback to page "1" when search param is missing', () => {
+    mockGet.mockReturnValueOnce(null)
+
+    renderHook(() => useContainer())
+
+    expect(mockUseGetListsQuery).toHaveBeenCalledWith('1', { skip: false })
+  })
+
   it('should skip query when account is missing', () => {
     mockUseAppSelector.mockReturnValueOnce(undefined as never)
 
@@ -163,4 +171,3 @@ describe('Lists useContainer hook', () => {
     expect(args.modalProps.onSubmit).toBe(result.current.handleCreateList)
   })
 })
-
