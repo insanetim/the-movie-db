@@ -47,7 +47,7 @@ const mockedModalRootHook: ModalRootHookReturn = {
   modals: [],
   removeModal: jest.fn(),
 }
-jest.mock('../components/ModalRoot/hook', () =>
+jest.mock('../components/ModalsRoot/hook', () =>
   jest.fn(() => mockedModalRootHook)
 )
 
