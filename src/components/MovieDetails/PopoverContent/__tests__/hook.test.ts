@@ -1,5 +1,5 @@
 import { act, renderHook } from '@testing-library/react'
-import { modalComponentsMap } from 'src/components/ModalRoot/modalComponents'
+import { modalComponentsMap } from 'src/components/ModalsRoot/modalComponents'
 import useHandleError from 'src/hooks/useHandleError'
 import { showModal, showNotification } from 'src/store/features/app'
 import { ListData } from 'src/store/features/list'

@@ -1,4 +1,4 @@
-import { modalComponentsMap } from 'src/components/ModalRoot/modalComponents'
+import { modalComponentsMap } from 'src/components/ModalsRoot/modalComponents'
 import useHandleError from 'src/hooks/useHandleError'
 import { showModal, showNotification } from 'src/store/features/app'
 import {

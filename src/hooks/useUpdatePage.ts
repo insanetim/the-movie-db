@@ -1,3 +1,4 @@
+import { useCallback } from 'react'
 import { SetURLSearchParams } from 'react-router-dom'
 import getParams from 'src/utils/helpers/getParams'
 
@@ -9,16 +10,16 @@ export type UseUpdatePageProps = {
 
 const useUpdatePage = ({
   items = [],
-  page: pageString,
+  page: pageProps,
   setSearchParams,
 }: UseUpdatePageProps) => {
-  const updatePage = () => {
-    const page = Number(pageString)
+  const updatePage = useCallback(() => {
+    const page = Number(pageProps)
 
     if (items.length === 1 && page > 1) {
       setSearchParams(getParams({ page: page - 1 }))
     }
-  }
+  }, [items.length, pageProps, setSearchParams])
 
   return { updatePage }
 }

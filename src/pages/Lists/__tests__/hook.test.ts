@@ -1,6 +1,6 @@
 import { act, renderHook } from '@testing-library/react'
 import { useSearchParams } from 'react-router-dom'
-import { modalComponentsMap } from 'src/components/ModalRoot/modalComponents'
+import { modalComponentsMap } from 'src/components/ModalsRoot/modalComponents'
 import useHandleError from 'src/hooks/useHandleError'
 import { showModal } from 'src/store/features/app'
 import { selectAccount } from 'src/store/features/auth'
