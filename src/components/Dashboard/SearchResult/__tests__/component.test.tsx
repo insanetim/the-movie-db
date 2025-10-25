@@ -21,13 +21,18 @@ jest.mock('../hook', () => jest.fn(() => mockedHook))
 
 describe('SearchResult component', () => {
   const user = userEvent.setup()
+  const defaultMovies = {
+    page: 1,
+    results: [mockMovie],
+    total_pages: 10,
+    total_results: 200,
+  }
 
-  it('should match snapshot', () => {
-    const { asFragment } = renderWithWrapper(
-      <SearchResult query='test/search' />
-    )
-
-    expect(asFragment()).toMatchSnapshot()
+  beforeEach(() => {
+    jest.clearAllMocks()
+    mockedHook.error = null
+    mockedHook.isLoading = false
+    mockedHook.movies = { ...defaultMovies }
   })
 
   it('should call "handlePagination" when pagination clicked', async () => {
@@ -39,7 +44,14 @@ describe('SearchResult component', () => {
     expect(mockedHook.handlePagination).toHaveBeenCalled()
   })
 
-  it('should match snapshot with 1 page', () => {
+  it('should render movie list with pagination', () => {
+    renderWithWrapper(<SearchResult query='test/search' />)
+
+    expect(screen.getByText(mockMovie.title)).toBeInTheDocument()
+    expect(screen.getByText('2')).toBeInTheDocument()
+  })
+
+  it('should render movie list without pagination when single page', () => {
     mockedHook.movies = {
       page: 1,
       results: [mockMovie],
@@ -47,14 +59,13 @@ describe('SearchResult component', () => {
       total_results: 1,
     }
 
-    const { asFragment } = renderWithWrapper(
-      <SearchResult query='test/search' />
-    )
+    renderWithWrapper(<SearchResult query='test/search' />)
 
-    expect(asFragment()).toMatchSnapshot()
+    expect(screen.getByText(mockMovie.title)).toBeInTheDocument()
+    expect(screen.queryByText('2')).not.toBeInTheDocument()
   })
 
-  it('should match snapshot without movies', () => {
+  it('should render empty state without movies', () => {
     mockedHook.movies = {
       page: 1,
       results: [],
@@ -62,31 +73,25 @@ describe('SearchResult component', () => {
       total_results: 1,
     }
 
-    const { asFragment } = renderWithWrapper(
-      <SearchResult query='test/search' />
-    )
+    renderWithWrapper(<SearchResult query='test/search' />)
 
-    expect(asFragment()).toMatchSnapshot()
+    expect(screen.getByText('No movies found')).toBeInTheDocument()
   })
 
-  it('should match snapshot with loading', () => {
+  it('should render loading state', () => {
     mockedHook.isLoading = true
 
-    const { asFragment } = renderWithWrapper(
-      <SearchResult query='test/search' />
-    )
+    renderWithWrapper(<SearchResult query='test/search' />)
 
-    expect(asFragment()).toMatchSnapshot()
+    expect(document.querySelector('.ant-spin')).toBeInTheDocument()
   })
 
-  it('should match snapshot with error', () => {
+  it('should render error state', () => {
     mockedHook.isLoading = false
     mockedHook.error = 'Something went wrong!'
 
-    const { asFragment } = renderWithWrapper(
-      <SearchResult query='test/search' />
-    )
+    renderWithWrapper(<SearchResult query='test/search' />)
 
-    expect(asFragment()).toMatchSnapshot()
+    expect(screen.getByText('Something went wrong!')).toBeInTheDocument()
   })
 })
