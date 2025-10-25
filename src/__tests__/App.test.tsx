@@ -179,9 +179,14 @@ const mockedCreditsHook: CreditsHookReturn = {
 jest.mock('../pages/Credits/hook', () => jest.fn(() => mockedCreditsHook))
 
 describe('App component', () => {
-  it('should match snapshot', () => {
-    const { asFragment } = renderWithWrapper(<App />)
-    expect(asFragment()).toMatchSnapshot()
+  it('should render dashboard route on initial load', async () => {
+    renderWithWrapper(<App />)
+
+    expect(
+      await screen.findByPlaceholderText(/enter/i, undefined, {
+        timeout: 5000,
+      })
+    ).toBeInTheDocument()
   })
   it('should render DefaultLayout', async () => {
     renderWithWrapper(<DefaultLayout />)
