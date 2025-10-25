@@ -1,3 +1,4 @@
+import { fireEvent, screen, waitFor } from '@testing-library/react'
 import { mergeDeepRight } from 'ramda'
 import mockAccount from 'src/__mocks__/mockAccount'
 import { renderWithWrapper } from 'src/utils/testHelpers/renderWithWrapper'
@@ -14,35 +15,64 @@ const mockedHook: HeaderHookReturn = {
 jest.mock('../hook', () => jest.fn(() => mockedHook))
 
 describe('Header component', () => {
-  it('should match snapshot', () => {
-    const { asFragment } = renderWithWrapper(<Header />)
-
-    expect(asFragment()).toMatchSnapshot()
+  beforeEach(() => {
+    jest.clearAllMocks()
+    mockedHook.account = mockAccount
+    mockedHook.sessionId = 'test/session_id'
   })
 
-  it('should match snapshot with avatar_path', () => {
+  it('should render app logo and user dropdown', async () => {
+    renderWithWrapper(<Header />)
+
+    expect(screen.getByRole('link', { name: /the movie db/i })).toHaveAttribute(
+      'href',
+      '/'
+    )
+
+    const dropdownTrigger = screen.getByText(mockAccount.username)
+    fireEvent.mouseEnter(dropdownTrigger)
+    fireEvent.click(dropdownTrigger)
+
+    await waitFor(() =>
+      expect(document.querySelector('.ant-dropdown-menu')).not.toBeNull()
+    )
+    expect(screen.getByText(/dashboard/i)).toBeInTheDocument()
+    expect(mockedHook.handleLogout).not.toHaveBeenCalled()
+
+    fireEvent.click(screen.getByText(/sign out/i))
+    expect(mockedHook.handleLogout).toHaveBeenCalled()
+  })
+
+  it('should render avatar when avatar_path is provided', () => {
     mockedHook.account = mergeDeepRight(mockAccount, {
       avatar: { tmdb: { avatar_path: '/image' } },
     })
 
-    const { asFragment } = renderWithWrapper(<Header />)
+    renderWithWrapper(<Header />)
 
-    expect(asFragment()).toMatchSnapshot()
+    const avatarImg = screen.getByAltText('User avatar')
+    expect(avatarImg).toHaveAttribute(
+      'src',
+      'https://www.themoviedb.org/t/p/w32_and_h32_face/image'
+    )
   })
 
-  it('should match snapshot with empty account', () => {
+  it('should render default avatar when account is missing', () => {
     mockedHook.account = null
 
-    const { asFragment } = renderWithWrapper(<Header />)
+    renderWithWrapper(<Header />)
 
-    expect(asFragment()).toMatchSnapshot()
+    expect(document.querySelector('.ant-avatar')).not.toBeNull()
   })
 
-  it('should match snapshot for unauthenticated', () => {
+  it('should show sign in link when user is unauthenticated', () => {
     mockedHook.sessionId = null
 
-    const { asFragment } = renderWithWrapper(<Header />)
+    renderWithWrapper(<Header />)
 
-    expect(asFragment()).toMatchSnapshot()
+    const signInLink = screen.getByText(/sign in/i)
+    fireEvent.click(signInLink)
+
+    expect(mockedHook.handleLogin).toHaveBeenCalled()
   })
 })
