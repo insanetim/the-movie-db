@@ -27,10 +27,23 @@ describe('PopoverContent component', () => {
     setPopoverOpen: jest.fn(),
   }
 
-  it('should match snapshot', () => {
-    const { asFragment } = renderWithWrapper(<PopoverContent {...props} />)
+  beforeEach(() => {
+    jest.clearAllMocks()
+    mockedHook.lists = {
+      page: 1,
+      results: [mockList],
+      total_pages: 1,
+      total_results: 1,
+    }
+  })
 
-    expect(asFragment()).toMatchSnapshot()
+  it('renders list options and create button', () => {
+    renderWithWrapper(<PopoverContent {...props} />)
+
+    expect(screen.getByText(mockList.name)).toBeInTheDocument()
+    expect(
+      screen.getByRole('button', { name: /create new list/i })
+    ).toBeInTheDocument()
   })
 
   it('should call "handleAddToList" when addToList button clicked', async () => {
@@ -52,5 +65,13 @@ describe('PopoverContent component', () => {
     await user.click(createListBtn)
 
     expect(mockedHook.handleOpenCreateListModal).toHaveBeenCalled()
+  })
+
+  it('renders no list buttons when lists data missing', () => {
+    mockedHook.lists = undefined
+
+    renderWithWrapper(<PopoverContent {...props} />)
+
+    expect(screen.queryByText(mockList.name)).not.toBeInTheDocument()
   })
 })
