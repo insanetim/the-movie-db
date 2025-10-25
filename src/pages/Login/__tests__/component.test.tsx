@@ -51,11 +51,13 @@ describe('Login component', () => {
     })
   })
 
-  it('disables submit button while submitting', () => {
+  it('shows loading state while submitting', () => {
     mockedHook.isSubmitting = true
 
     renderWithWrapper(<Login />)
 
-    expect(screen.getByRole('button', { name: 'Sign in' })).toBeDisabled()
+    const button = screen.getByRole('button', { name: /Sign in/i })
+
+    expect(button).toHaveClass('ant-btn-loading')
   })
 })
