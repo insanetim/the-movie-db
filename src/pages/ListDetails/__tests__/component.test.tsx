@@ -6,6 +6,16 @@ import { renderWithWrapper } from 'src/utils/testHelpers/renderWithWrapper'
 import ListDetails from '../component'
 import { ListDetailsHookReturn } from '../types'
 
+const defaultList = {
+  description: 'test/description',
+  id: 1234,
+  items: [mockMovie],
+  name: 'test/list',
+  page: 1,
+  total_pages: 10,
+  total_results: 200,
+}
+
 const mockedHook: ListDetailsHookReturn = {
   error: null,
   handleConfirmDeleteList: jest.fn(),
@@ -14,25 +24,32 @@ const mockedHook: ListDetailsHookReturn = {
   handleDeleteMovie: jest.fn(),
   handlePagination: jest.fn(),
   isLoading: false,
-  list: {
-    description: 'test/description',
-    id: 1234,
-    items: [mockMovie],
-    name: 'test/list',
-    page: 1,
-    total_pages: 10,
-    total_results: 200,
-  },
+  list: { ...defaultList },
 }
 jest.mock('../hook', () => jest.fn(() => mockedHook))
 
 describe('ListDetails component', () => {
   const user = userEvent.setup()
 
-  it('should match snapshot', () => {
-    const { asFragment } = renderWithWrapper(<ListDetails />)
+  beforeEach(() => {
+    jest.clearAllMocks()
+    mockedHook.error = null
+    mockedHook.isLoading = false
+    mockedHook.list = {
+      ...defaultList,
+      items: [...defaultList.items],
+    }
+  })
 
-    expect(asFragment()).toMatchSnapshot()
+  it('should render list details with pagination', () => {
+    renderWithWrapper(<ListDetails />)
+
+    expect(
+      screen.getByRole('heading', { name: defaultList.name })
+    ).toBeInTheDocument()
+    expect(screen.getByTestId('deleteListBtn')).toBeInTheDocument()
+    expect(screen.getByText(mockMovie.title)).toBeInTheDocument()
+    expect(screen.getByText('2')).toBeInTheDocument()
   })
 
   it('should call "handleListDelete" when delete button clicked', async () => {
@@ -62,40 +79,52 @@ describe('ListDetails component', () => {
     expect(mockedHook.handlePagination).toHaveBeenCalled()
   })
 
-  it('should match snapshot with 1 page', () => {
+  it('should render list without pagination when single page', () => {
     mockedHook.list = {
-      description: 'test/description',
-      id: 1234,
+      ...defaultList,
       items: [mockMovie],
-      name: 'test/list',
-      page: 1,
       total_pages: 1,
       total_results: 1,
     }
-    const { asFragment } = renderWithWrapper(<ListDetails />)
 
-    expect(asFragment()).toMatchSnapshot()
+    renderWithWrapper(<ListDetails />)
+
+    expect(screen.getByText(mockMovie.title)).toBeInTheDocument()
+    expect(screen.queryByText('2')).not.toBeInTheDocument()
   })
 
-  it('should match snapshot with empty list', () => {
+  it('should render empty state when list is unavailable', () => {
     mockedHook.list = undefined
-    const { asFragment } = renderWithWrapper(<ListDetails />)
+    renderWithWrapper(<ListDetails />)
 
-    expect(asFragment()).toMatchSnapshot()
+    expect(screen.getByText('No results')).toBeInTheDocument()
+    expect(screen.getByRole('heading', { name: 'My List' })).toBeInTheDocument()
   })
 
-  it('should match snapshot with loading', () => {
+  it('should render empty state when list has no items', () => {
+    mockedHook.list = {
+      ...defaultList,
+      items: [],
+      total_results: 0,
+    }
+
+    renderWithWrapper(<ListDetails />)
+
+    expect(screen.getByText('No results')).toBeInTheDocument()
+  })
+
+  it('should render loading state when fetching list details', () => {
     mockedHook.isLoading = true
-    const { asFragment } = renderWithWrapper(<ListDetails />)
+    const { container } = renderWithWrapper(<ListDetails />)
 
-    expect(asFragment()).toMatchSnapshot()
+    expect(container.querySelector('.ant-spin')).toBeInTheDocument()
   })
 
-  it('should match snapshot with error', () => {
+  it('should render error state when request fails', () => {
     mockedHook.isLoading = false
     mockedHook.error = 'Something went wrong!'
-    const { asFragment } = renderWithWrapper(<ListDetails />)
+    renderWithWrapper(<ListDetails />)
 
-    expect(asFragment()).toMatchSnapshot()
+    expect(screen.getByText('Something went wrong!')).toBeInTheDocument()
   })
 })

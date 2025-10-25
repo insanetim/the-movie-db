@@ -6,21 +6,37 @@ import { renderWithWrapper } from 'src/utils/testHelpers/renderWithWrapper'
 import PersonDetails from '../component'
 import { PersonDetailsHookReturn } from '../types'
 
+const defaultPerson = { ...mockPersonDetails }
+
 const mockedHook: PersonDetailsHookReturn = {
   error: null,
   handleGoToCredits: jest.fn(),
   isLoading: false,
-  person: mockPersonDetails,
+  person: { ...defaultPerson },
 }
 jest.mock('../hook', () => jest.fn(() => mockedHook))
 
 describe('PersonDetails component', () => {
   const user = userEvent.setup()
 
-  it('should match snapshot', () => {
-    const { asFragment } = renderWithWrapper(<PersonDetails />)
+  beforeEach(() => {
+    jest.clearAllMocks()
+    mockedHook.error = null
+    mockedHook.isLoading = false
+    mockedHook.person = { ...defaultPerson }
+  })
 
-    expect(asFragment()).toMatchSnapshot()
+  it('should render person details with known credits', () => {
+    renderWithWrapper(<PersonDetails />)
+
+    expect(
+      screen.getByRole('heading', { name: defaultPerson.name })
+    ).toBeInTheDocument()
+    expect(screen.getByAltText(defaultPerson.name)).toHaveAttribute(
+      'src',
+      `https://image.tmdb.org/t/p/w500${defaultPerson.profile_path}`
+    )
+    expect(screen.getByText('Show all credits')).toBeInTheDocument()
   })
 
   it('should call "handleGoToCredits" when button clicked', async () => {
@@ -32,37 +48,42 @@ describe('PersonDetails component', () => {
     expect(mockedHook.handleGoToCredits).toHaveBeenCalled()
   })
 
-  it('should match snapshot with other data', () => {
-    mockedHook.person!.profile_path = undefined
-    mockedHook.person!.movie_credits.cast = []
+  it('should render person details without poster and credits', () => {
+    mockedHook.person = {
+      ...defaultPerson,
+      movie_credits: { cast: [], crew: [] },
+      profile_path: undefined,
+    }
 
-    const { asFragment } = renderWithWrapper(<PersonDetails />)
+    renderWithWrapper(<PersonDetails />)
 
-    expect(asFragment()).toMatchSnapshot()
+    expect(screen.getByAltText(defaultPerson.name)).toHaveAttribute(
+      'src',
+      'test-file-stub'
+    )
+    expect(screen.queryByText('Show all credits')).not.toBeInTheDocument()
   })
 
-  it('should match snapshot with empty person', () => {
+  it('should render empty state when person not found', () => {
     mockedHook.person = undefined
 
-    const { asFragment } = renderWithWrapper(<PersonDetails />)
+    renderWithWrapper(<PersonDetails />)
 
-    expect(asFragment()).toMatchSnapshot()
+    expect(screen.getByText('Person not found')).toBeInTheDocument()
   })
 
-  it('should match snapshot with loading', () => {
+  it('should render loading state when fetching person', () => {
     mockedHook.isLoading = true
+    renderWithWrapper(<PersonDetails />)
 
-    const { asFragment } = renderWithWrapper(<PersonDetails />)
-
-    expect(asFragment()).toMatchSnapshot()
+    expect(document.querySelector('.ant-spin')).toBeInTheDocument()
   })
 
-  it('should match snapshot with error', () => {
+  it('should render error state when request fails', () => {
     mockedHook.isLoading = false
     mockedHook.error = 'Something went wrong!'
+    renderWithWrapper(<PersonDetails />)
 
-    const { asFragment } = renderWithWrapper(<PersonDetails />)
-
-    expect(asFragment()).toMatchSnapshot()
+    expect(screen.getByText('Something went wrong!')).toBeInTheDocument()
   })
 })
