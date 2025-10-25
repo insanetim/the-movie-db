@@ -4,30 +4,38 @@ import { renderWithWrapper } from 'src/utils/testHelpers/renderWithWrapper'
 
 import AddToFavoriteButton from '../component'
 
+jest.mock('@ant-design/icons', () => ({
+  __esModule: true,
+  HeartFilled: () => <span data-testid='heart-filled' />,
+  HeartOutlined: () => <span data-testid='heart-outlined' />,
+}))
+
 describe('AddToFavoriteButton component', () => {
   const user = userEvent.setup()
   const handleClick = jest.fn()
 
-  it('should match snapshot', () => {
-    const { asFragment } = renderWithWrapper(
+  it('renders filled heart icon when already in favorites', () => {
+    renderWithWrapper(
       <AddToFavoriteButton
-        inFavorite={true}
+        inFavorite
         onClick={handleClick}
       />
     )
 
-    expect(asFragment()).toMatchSnapshot()
+    expect(screen.getByTestId('heart-filled')).toBeInTheDocument()
+    expect(screen.queryByTestId('heart-outlined')).not.toBeInTheDocument()
   })
 
-  it('should match snapshot with other data', () => {
-    const { asFragment } = renderWithWrapper(
+  it('renders outlined heart icon when not in favorites', () => {
+    renderWithWrapper(
       <AddToFavoriteButton
         inFavorite={false}
         onClick={handleClick}
       />
     )
 
-    expect(asFragment()).toMatchSnapshot()
+    expect(screen.getByTestId('heart-outlined')).toBeInTheDocument()
+    expect(screen.queryByTestId('heart-filled')).not.toBeInTheDocument()
   })
 
   it('should call "handleClick" when button clicked', async () => {

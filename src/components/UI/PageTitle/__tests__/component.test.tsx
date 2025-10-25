@@ -3,9 +3,11 @@ import { renderWithWrapper } from 'src/utils/testHelpers/renderWithWrapper'
 import PageTitle from '../component'
 
 describe('PageTitle component', () => {
-  it('should match snapshot', () => {
-    const { asFragment } = renderWithWrapper(<PageTitle>test/title</PageTitle>)
+  it('wraps children with layout containers', () => {
+    const { container } = renderWithWrapper(<PageTitle>test/title</PageTitle>)
 
-    expect(asFragment()).toMatchSnapshot()
+    expect(container.querySelector('.ant-row')).toBeInTheDocument()
+    expect(container.querySelector('.ant-col')).toBeInTheDocument()
+    expect(container.textContent).toContain('test/title')
   })
 })

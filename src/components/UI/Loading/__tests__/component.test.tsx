@@ -3,9 +3,10 @@ import { renderWithWrapper } from 'src/utils/testHelpers/renderWithWrapper'
 import Loading from '../component'
 
 describe('Loading component', () => {
-  it('should match snapshot', () => {
-    const { asFragment } = renderWithWrapper(<Loading />)
+  it('renders centered spinner with styling', () => {
+    const { container } = renderWithWrapper(<Loading />)
 
-    expect(asFragment()).toMatchSnapshot()
+    expect(container.querySelector('.top-margin')).toBeInTheDocument()
+    expect(container.querySelector('.ant-spin')).toBeInTheDocument()
   })
 })
