@@ -30,7 +30,7 @@
     "react-redux": "^9.2.0",
     "react-router-dom": "^7.9.4",
     "redux-persist": "^6.0.0",
-    "slug": "^9.1.0"
+    "slug": "^11.0.1"
   },
   "devDependencies": {
     "@babel/core": "^7.28.4",
