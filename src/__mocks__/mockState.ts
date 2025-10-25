@@ -18,10 +18,6 @@ const mockState: RootState = {
       rehydrated: true,
       version: -1,
     },
-    modal: {
-      modalProps: null,
-      modalType: null,
-    },
     notifications: [],
     theme: 'light',
   },

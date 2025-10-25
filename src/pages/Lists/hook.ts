@@ -1,25 +1,25 @@
 import { useSearchParams } from 'react-router-dom'
-import { modalComponentsMap } from 'src/components/ModalRoot/modalComponents'
+import { modalTypes } from 'src/components/ModalsRoot/modalComponents'
 import useHandleError from 'src/hooks/useHandleError'
-import { showModal } from 'src/store/features/app'
+import useModal from 'src/hooks/useModal'
 import { selectAccount } from 'src/store/features/auth'
 import {
   ListData,
   useCreateListMutation,
   useGetListsQuery,
 } from 'src/store/features/list'
-import { useAppDispatch, useAppSelector } from 'src/store/hooks'
+import { useAppSelector } from 'src/store/hooks'
 import errorMessage from 'src/utils/helpers/errorMessage'
 import getParams from 'src/utils/helpers/getParams'
 
 import { ListsHookReturn } from './types'
 
 const useContainer = (): ListsHookReturn => {
-  const dispatch = useAppDispatch()
   const { handleError } = useHandleError()
   const account = useAppSelector(selectAccount)
   const [searchParams, setSearchParams] = useSearchParams()
   const page = searchParams.get('page') || '1'
+  const { closeModal, openModal } = useModal()
 
   const [createList] = useCreateListMutation()
 
@@ -42,12 +42,10 @@ const useContainer = (): ListsHookReturn => {
   }
 
   const handleOpenCreateListModal = () => {
-    dispatch(
-      showModal({
-        modalProps: { onSubmit: handleCreateList },
-        modalType: modalComponentsMap.MODAL_CREATE_LIST,
-      })
-    )
+    openModal({
+      modalProps: { closeModal, onSubmit: handleCreateList },
+      modalType: modalTypes.CREATE_LIST,
+    })
   }
 
   return {

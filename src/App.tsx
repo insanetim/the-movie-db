@@ -1,6 +1,5 @@
 import { lazy, Suspense } from 'react'
 import { Route, Routes } from 'react-router-dom'
-import ModalRoot from 'src/components/ModalRoot/component'
 import NotificationsRoot from 'src/components/NotificationsRoot'
 import ProtectedRoutes from 'src/components/ProtectedRoutes'
 
@@ -78,7 +77,6 @@ const App: React.FC = () => (
         </Route>
       </Route>
     </Routes>
-    <ModalRoot />
     <NotificationsRoot />
   </Suspense>
 )

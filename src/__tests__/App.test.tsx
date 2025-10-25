@@ -18,7 +18,7 @@ import App, {
   Watchlist,
 } from 'src/App'
 import { TrendingHookReturn } from 'src/components/Dashboard/Trending/types'
-import { ModalRootHookReturn } from 'src/components/ModalRoot/types'
+import { ModalRootHookReturn } from 'src/components/ModalsRoot/types'
 import { NotificationsRootHookReturn } from 'src/components/NotificationsRoot/types'
 import { ProtectedRoutesHookReturn } from 'src/components/ProtectedRoutes/types'
 import { HeaderHookReturn } from 'src/layouts/Default/Header/types'
@@ -43,11 +43,11 @@ jest.mock('../components/ProtectedRoutes/hook', () =>
 )
 
 const mockedModalRootHook: ModalRootHookReturn = {
-  modalProps: null,
-  modalType: null,
-  onCancel: jest.fn(),
+  closeModal: jest.fn(),
+  modals: [],
+  removeModal: jest.fn(),
 }
-jest.mock('../components/ModalRoot/hook', () =>
+jest.mock('../components/ModalsRoot/hook', () =>
   jest.fn(() => mockedModalRootHook)
 )
 

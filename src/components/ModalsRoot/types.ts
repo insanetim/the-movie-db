@@ -1,4 +1,5 @@
 import { ComponentProps } from 'react'
+import { Modal } from 'src/contexts/ModalsProvider/types'
 
 import { MODAL_COMPONENTS } from './modalComponents'
 
@@ -9,9 +10,9 @@ export type ModalComponentsMap = {
 export type ModalProps = ComponentProps<ModalsMap[ModalTypes]>
 
 export type ModalRootHookReturn = {
-  modalProps: ModalProps | null
-  modalType: ModalTypes | null
-  onCancel: () => void
+  closeModal: (id: string) => void
+  modals: Modal[]
+  removeModal: (id: string) => void
 }
 
 export type ModalsMap = typeof MODAL_COMPONENTS

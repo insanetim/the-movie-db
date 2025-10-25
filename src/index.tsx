@@ -4,6 +4,7 @@ import { Route, BrowserRouter as Router, Routes } from 'react-router-dom'
 import App from 'src/App'
 
 import './assets/styles/styles.scss'
+import { ModalsProvider } from './contexts/ModalsProvider'
 import StoreProvider from './contexts/StoreProvider'
 import ThemeProvider from './contexts/ThemeProvider'
 
@@ -17,14 +18,16 @@ const root = createRoot(rootElement as HTMLElement)
 root.render(
   <StoreProvider>
     <ThemeProvider>
-      <Router>
-        <Routes>
-          <Route
-            element={<App />}
-            path='/*'
-          />
-        </Routes>
-      </Router>
+      <ModalsProvider>
+        <Router>
+          <Routes>
+            <Route
+              element={<App />}
+              path='/*'
+            />
+          </Routes>
+        </Router>
+      </ModalsProvider>
     </ThemeProvider>
   </StoreProvider>
 )

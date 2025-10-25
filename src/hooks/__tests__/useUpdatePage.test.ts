@@ -1,3 +1,4 @@
+import { act, renderHook } from '@testing-library/react'
 import getParams from 'src/utils/helpers/getParams'
 
 import useUpdatePage from '../useUpdatePage'
@@ -18,9 +19,13 @@ describe('useUpdatePage', () => {
     const expectedParams: ReturnType<typeof getParams> = { page: '2' }
     mockGetParams.mockReturnValue(expectedParams)
 
-    const { updatePage } = useUpdatePage({ items, page, setSearchParams })
+    const { result } = renderHook(() =>
+      useUpdatePage({ items, page, setSearchParams })
+    )
 
-    updatePage()
+    act(() => {
+      result.current.updatePage()
+    })
 
     expect(mockGetParams).toHaveBeenCalledWith({ page: 2 })
     expect(setSearchParams).toHaveBeenCalledWith(expectedParams)
@@ -31,9 +36,13 @@ describe('useUpdatePage', () => {
     const items = [{}, {}]
     const page = '5'
 
-    const { updatePage } = useUpdatePage({ items, page, setSearchParams })
+    const { result } = renderHook(() =>
+      useUpdatePage({ items, page, setSearchParams })
+    )
 
-    updatePage()
+    act(() => {
+      result.current.updatePage()
+    })
 
     expect(setSearchParams).not.toHaveBeenCalled()
     expect(mockGetParams).not.toHaveBeenCalled()
@@ -44,9 +53,13 @@ describe('useUpdatePage', () => {
     const items = [{}]
     const page = '1'
 
-    const { updatePage } = useUpdatePage({ items, page, setSearchParams })
+    const { result } = renderHook(() =>
+      useUpdatePage({ items, page, setSearchParams })
+    )
 
-    updatePage()
+    act(() => {
+      result.current.updatePage()
+    })
 
     expect(setSearchParams).not.toHaveBeenCalled()
     expect(mockGetParams).not.toHaveBeenCalled()
@@ -57,9 +70,48 @@ describe('useUpdatePage', () => {
     const items = [{}]
     const page = 'abc'
 
-    const { updatePage } = useUpdatePage({ items, page, setSearchParams })
+    const { result } = renderHook(() =>
+      useUpdatePage({ items, page, setSearchParams })
+    )
 
-    updatePage()
+    act(() => {
+      result.current.updatePage()
+    })
+
+    expect(setSearchParams).not.toHaveBeenCalled()
+    expect(mockGetParams).not.toHaveBeenCalled()
+  })
+
+  it('should call getParams with page 1 but not persist it in params', () => {
+    const setSearchParams = jest.fn()
+    const items = [{}]
+    const page = '2'
+    const expectedParams: ReturnType<typeof getParams> = {}
+    mockGetParams.mockReturnValue(expectedParams)
+
+    const { result } = renderHook(() =>
+      useUpdatePage({ items, page, setSearchParams })
+    )
+
+    act(() => {
+      result.current.updatePage()
+    })
+
+    expect(mockGetParams).toHaveBeenCalledWith({ page: 1 })
+    expect(setSearchParams).toHaveBeenCalledWith(expectedParams)
+  })
+
+  it('should handle undefined items by treating them as empty array', () => {
+    const setSearchParams = jest.fn()
+    const page = '5'
+
+    const { result } = renderHook(() =>
+      useUpdatePage({ page, setSearchParams })
+    )
+
+    act(() => {
+      result.current.updatePage()
+    })
 
     expect(setSearchParams).not.toHaveBeenCalled()
     expect(mockGetParams).not.toHaveBeenCalled()

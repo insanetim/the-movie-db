@@ -1,15 +1,13 @@
-import { assoc, assocPath, mergeDeepRight } from 'ramda'
+import { assoc } from 'ramda'
 import { NOTIFICATION_DURATION, NOTIFICATION_TYPE } from 'src/constants'
 
 import {
   appReducer,
-  hideModal,
   hideNotification,
-  selectModal,
   selectNotification,
   selectTheme,
+  selectThemeIsDark,
   setTheme,
-  showModal,
   showNotification,
 } from '../appSlice'
 import { AppState } from '../types'
@@ -21,10 +19,6 @@ jest.mock<typeof import('@reduxjs/toolkit')>('@reduxjs/toolkit', () => ({
 
 describe('appSlice', () => {
   const initialState: AppState = {
-    modal: {
-      modalProps: null,
-      modalType: null,
-    },
     notifications: [],
     theme: 'light',
   }
@@ -34,18 +28,6 @@ describe('appSlice', () => {
       const result = appReducer(undefined, { type: '' })
 
       expect(result).toEqual(initialState)
-    })
-
-    it('should handle "hideModal" action', () => {
-      const action = hideModal()
-      const expected = assocPath(
-        ['modal', 'modalProps'],
-        { open: false },
-        initialState
-      )
-      const result = appReducer(initialState, action)
-
-      expect(result).toEqual(expected)
     })
 
     it('should handle "hideNotification" action', () => {
@@ -87,41 +69,6 @@ describe('appSlice', () => {
       expect(result).toEqual(expected)
     })
 
-    it('should handle "setTheme" action', () => {
-      const action = setTheme('dark')
-      const expected = assoc('theme', action.payload, initialState)
-      const result = appReducer(initialState, action)
-
-      expect(result).toEqual(expected)
-    })
-
-    it('should handle "showModal" action', () => {
-      const action = showModal({
-        modalProps: 'test/modalProps' as unknown as never,
-        modalType: 'test/modalType' as unknown as never,
-      })
-      const expected = assoc('modal', action.payload, initialState)
-      const result = appReducer(initialState, action)
-
-      expect(result).toEqual(expected)
-    })
-
-    it('should handle "showModal" action without modalProps', () => {
-      const action = showModal({
-        modalProps: null,
-        modalType: 'MODAL_CREATE_LIST',
-      })
-      const expected = mergeDeepRight(initialState, {
-        modal: {
-          modalProps: null,
-          modalType: 'MODAL_CREATE_LIST',
-        },
-      })
-      const result = appReducer(initialState, action)
-
-      expect(result).toEqual(expected)
-    })
-
     it('should handle "showNotification" action', () => {
       const action = showNotification({ message: 'test/message' })
       const expected = assoc(
@@ -140,14 +87,20 @@ describe('appSlice', () => {
 
       expect(result).toEqual(expected)
     })
+
+    it('should handle "setTheme" action', () => {
+      const action = setTheme('dark')
+
+      const result = appReducer(initialState, action)
+
+      expect(result).toEqual({
+        notifications: initialState.notifications,
+        theme: 'dark',
+      })
+    })
   })
 
   describe('selectors', () => {
-    it('should select modal', () => {
-      const root = { app: initialState }
-      expect(selectModal(root as never)).toEqual(initialState.modal)
-    })
-
     it('should select notifications', () => {
       const root = { app: initialState }
       expect(selectNotification(root as never)).toEqual(
@@ -158,6 +111,11 @@ describe('appSlice', () => {
     it('should select theme', () => {
       const root = { app: initialState }
       expect(selectTheme(root as never)).toEqual(initialState.theme)
+    })
+
+    it('should select theme is dark', () => {
+      const root = { app: initialState }
+      expect(selectThemeIsDark(root as never)).toEqual(false)
     })
   })
 })

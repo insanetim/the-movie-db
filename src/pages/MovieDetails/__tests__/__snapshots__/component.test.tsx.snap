@@ -628,7 +628,7 @@ exports[`MovieDetails component should match snapshot with open popover 1`] = `
           </h1>
           <button
             aria-describedby="test-id"
-            class="ant-btn css-dev-only-do-not-override-1cj4ms ant-btn-circle ant-btn-text ant-btn-color-default ant-btn-variant-text ant-btn-icon-only ant-popover-open"
+            class="ant-btn css-dev-only-do-not-override-1cj4ms ant-btn-circle ant-btn-text ant-btn-color-default ant-btn-variant-text ant-btn-icon-only"
             data-testid="addMovieToListPopover"
             type="button"
           >
