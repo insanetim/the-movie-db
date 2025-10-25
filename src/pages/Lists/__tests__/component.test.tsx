@@ -6,28 +6,42 @@ import { renderWithWrapper } from 'src/utils/testHelpers/renderWithWrapper'
 import Lists from '../component'
 import { ListsHookReturn } from '../types'
 
+const defaultLists = {
+  page: 1,
+  results: [mockList],
+  total_pages: 10,
+  total_results: 200,
+}
+
 const mockedHook: ListsHookReturn = {
   error: null,
   handleCreateList: jest.fn(),
   handleOpenCreateListModal: jest.fn(),
   handlePagination: jest.fn(),
   isLoading: false,
-  lists: {
-    page: 1,
-    results: [mockList],
-    total_pages: 10,
-    total_results: 200,
-  },
+  lists: { ...defaultLists },
 }
 jest.mock('../hook', () => jest.fn(() => mockedHook))
 
 describe('Lists component', () => {
   const user = userEvent.setup()
 
-  it('should match snapshot', () => {
-    const { asFragment } = renderWithWrapper(<Lists />)
+  beforeEach(() => {
+    jest.clearAllMocks()
+    mockedHook.error = null
+    mockedHook.isLoading = false
+    mockedHook.lists = { ...defaultLists, results: [...defaultLists.results] }
+  })
 
-    expect(asFragment()).toMatchSnapshot()
+  it('should render lists with pagination', () => {
+    renderWithWrapper(<Lists />)
+
+    expect(
+      screen.getByRole('heading', { name: 'My Lists' })
+    ).toBeInTheDocument()
+    expect(screen.getByTestId('createListBtn')).toBeInTheDocument()
+    expect(screen.getByText(mockList.name)).toBeInTheDocument()
+    expect(screen.getByText('2')).toBeInTheDocument()
   })
 
   it('should call "handleCreateList" when button clicked', async () => {
@@ -48,7 +62,7 @@ describe('Lists component', () => {
     expect(mockedHook.handlePagination).toHaveBeenCalled()
   })
 
-  it('should match snapshot with 1 page', () => {
+  it('should render lists without pagination when single page', () => {
     mockedHook.lists = {
       page: 1,
       results: [mockList],
@@ -56,30 +70,45 @@ describe('Lists component', () => {
       total_results: 1,
     }
 
-    const { asFragment } = renderWithWrapper(<Lists />)
+    renderWithWrapper(<Lists />)
 
-    expect(asFragment()).toMatchSnapshot()
+    expect(screen.getByText(mockList.name)).toBeInTheDocument()
+    expect(screen.queryByText('2')).not.toBeInTheDocument()
   })
 
-  it('should match snapshot with empty lists', () => {
+  it('should render empty state when lists are unavailable', () => {
     mockedHook.lists = undefined
-    const { asFragment } = renderWithWrapper(<Lists />)
 
-    expect(asFragment()).toMatchSnapshot()
+    renderWithWrapper(<Lists />)
+
+    expect(screen.getByText('No results')).toBeInTheDocument()
   })
 
-  it('should match snapshot with loading', () => {
+  it('should render empty state when list results are empty', () => {
+    mockedHook.lists = {
+      page: 1,
+      results: [],
+      total_pages: 1,
+      total_results: 0,
+    }
+
+    renderWithWrapper(<Lists />)
+
+    expect(screen.getByText('No results')).toBeInTheDocument()
+  })
+
+  it('should render loading state when fetching lists', () => {
     mockedHook.isLoading = true
-    const { asFragment } = renderWithWrapper(<Lists />)
+    renderWithWrapper(<Lists />)
 
-    expect(asFragment()).toMatchSnapshot()
+    expect(document.querySelector('.ant-spin')).toBeInTheDocument()
   })
 
-  it('should match snapshot with error', () => {
+  it('should render error state when request fails', () => {
     mockedHook.isLoading = false
     mockedHook.error = 'Something went wrong!'
-    const { asFragment } = renderWithWrapper(<Lists />)
+    renderWithWrapper(<Lists />)
 
-    expect(asFragment()).toMatchSnapshot()
+    expect(screen.getByText('Something went wrong!')).toBeInTheDocument()
   })
 })
