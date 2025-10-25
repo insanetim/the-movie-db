@@ -1,5 +1,5 @@
-import { act, renderHook } from '@testing-library/react'
 import { nanoid } from '@reduxjs/toolkit'
+import { act, renderHook } from '@testing-library/react'
 import { modalTypes } from 'src/components/ModalsRoot/modalComponents'
 import { useModalsContext } from 'src/contexts/ModalsProvider'
 
@@ -101,7 +101,7 @@ describe('useModal', () => {
     const dispatch = jest.fn()
     mockUseModalsContext.mockReturnValue({ dispatch, modals: [] } as never)
 
-    const { result, rerender } = renderHook(() => useModal())
+    const { rerender, result } = renderHook(() => useModal())
 
     const initialOpen = result.current.openModal
     const initialClose = result.current.closeModal
