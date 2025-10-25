@@ -4,7 +4,7 @@ import ModalsRoot from 'src/components/ModalsRoot'
 import { ModalsContext } from './ModalsContext'
 import { Modal, ModalsReducerAction } from './types'
 
-const modalsReducer = (state: Modal[], action: ModalsReducerAction) => {
+export const modalsReducer = (state: Modal[], action: ModalsReducerAction) => {
   switch (action.type) {
     case 'CLOSE_MODAL': {
       const index = state.findIndex(modal => modal.modalId === action.payload)
