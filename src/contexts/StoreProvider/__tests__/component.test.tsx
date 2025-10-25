@@ -1,4 +1,4 @@
-import { renderWithWrapper } from 'src/utils/testHelpers/renderWithWrapper'
+import { render, screen } from '@testing-library/react'
 
 import StoreProvider from '../component'
 
@@ -9,13 +9,14 @@ jest.mock('redux-persist/integration/react', () => ({
 }))
 
 describe('StoreProvider component', () => {
-  it('should match snapshot', () => {
-    const { asFragment } = renderWithWrapper(
+  it('should render children inside mocked PersistGate', () => {
+    render(
       <StoreProvider>
         <div data-testid='child'>content</div>
       </StoreProvider>
     )
 
-    expect(asFragment()).toMatchSnapshot()
+    expect(screen.getByTestId('persist-gate-mock')).toBeInTheDocument()
+    expect(screen.getByTestId('child')).toHaveTextContent('content')
   })
 })

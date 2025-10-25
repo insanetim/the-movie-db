@@ -6,28 +6,41 @@ import { renderWithWrapper } from 'src/utils/testHelpers/renderWithWrapper'
 import Favorite from '../component'
 import { FavoriteHookReturn } from '../types'
 
+const defaultMovies = {
+  page: 1,
+  results: [mockMovie],
+  total_pages: 10,
+  total_results: 200,
+}
+
 const mockedHook: FavoriteHookReturn = {
   error: null,
   handleConfirmDeleteMovie: jest.fn(),
   handleDeleteMovie: jest.fn(),
   handlePagination: jest.fn(),
   isLoading: false,
-  movies: {
-    page: 1,
-    results: [mockMovie],
-    total_pages: 10,
-    total_results: 200,
-  },
+  movies: { ...defaultMovies },
 }
 jest.mock('../hook', () => jest.fn(() => mockedHook))
 
 describe('Favorite component', () => {
   const user = userEvent.setup()
 
-  it('should match snapshot', () => {
-    const { asFragment } = renderWithWrapper(<Favorite />)
+  beforeEach(() => {
+    jest.clearAllMocks()
+    mockedHook.error = null
+    mockedHook.isLoading = false
+    mockedHook.movies = { ...defaultMovies }
+  })
 
-    expect(asFragment()).toMatchSnapshot()
+  it('should render favorite movies list with pagination', () => {
+    renderWithWrapper(<Favorite />)
+
+    expect(
+      screen.getByRole('heading', { name: 'Favorite' })
+    ).toBeInTheDocument()
+    expect(screen.getByText(mockMovie.title)).toBeInTheDocument()
+    expect(screen.getByText('2')).toBeInTheDocument()
   })
 
   it('should call "handlePagination" when pagination clicked', async () => {
@@ -48,37 +61,52 @@ describe('Favorite component', () => {
     expect(mockedHook.handleConfirmDeleteMovie).toHaveBeenCalled()
   })
 
-  it('should match snapshot with 1 page', () => {
+  it('should render movie list without pagination when single page', () => {
     mockedHook.movies = {
       page: 1,
       results: [mockMovie],
       total_pages: 1,
       total_results: 1,
     }
-    const { asFragment } = renderWithWrapper(<Favorite />)
 
-    expect(asFragment()).toMatchSnapshot()
+    renderWithWrapper(<Favorite />)
+
+    expect(screen.getByText(mockMovie.title)).toBeInTheDocument()
+    expect(screen.queryByText('2')).not.toBeInTheDocument()
   })
 
-  it('should match snapshot with empty movies', () => {
+  it('should render empty state when movies are unavailable', () => {
     mockedHook.movies = undefined
-    const { asFragment } = renderWithWrapper(<Favorite />)
+    renderWithWrapper(<Favorite />)
 
-    expect(asFragment()).toMatchSnapshot()
+    expect(screen.getByText('No results')).toBeInTheDocument()
   })
 
-  it('should match snapshot with loading', () => {
+  it('should render empty state when movies list is empty', () => {
+    mockedHook.movies = {
+      page: 1,
+      results: [],
+      total_pages: 1,
+      total_results: 0,
+    }
+
+    renderWithWrapper(<Favorite />)
+
+    expect(screen.getByText('No results')).toBeInTheDocument()
+  })
+
+  it('should render loading state when fetching movies', () => {
     mockedHook.isLoading = true
-    const { asFragment } = renderWithWrapper(<Favorite />)
+    renderWithWrapper(<Favorite />)
 
-    expect(asFragment()).toMatchSnapshot()
+    expect(document.querySelector('.ant-spin')).toBeInTheDocument()
   })
 
-  it('should match snapshot with error', () => {
+  it('should render error state when request fails', () => {
     mockedHook.isLoading = false
     mockedHook.error = 'Something went wrong!'
-    const { asFragment } = renderWithWrapper(<Favorite />)
+    renderWithWrapper(<Favorite />)
 
-    expect(asFragment()).toMatchSnapshot()
+    expect(screen.getByText('Something went wrong!')).toBeInTheDocument()
   })
 })

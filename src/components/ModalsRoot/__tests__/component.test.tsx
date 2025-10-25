@@ -39,7 +39,7 @@ describe('ModalsRoot component', () => {
     capturedModalProps.current = undefined
   })
 
-  it('matches snapshot with active modal', () => {
+  it('renders provided modal component when a modal is active', () => {
     const modal: ModalRootHookReturn['modals'][number] = {
       modalId: 'modal-1',
       modalProps: {
@@ -55,21 +55,36 @@ describe('ModalsRoot component', () => {
       removeModal: jest.fn(),
     })
 
-    const { baseElement } = renderWithWrapper(<ModalsRoot />)
+    renderWithWrapper(<ModalsRoot />)
 
-    expect(baseElement).toMatchSnapshot()
+    expect(screen.getByText('Create list')).toBeInTheDocument()
+    expect(screen.getByRole('button', { name: 'Create' })).toBeInTheDocument()
+    const modalProps = capturedModalProps.current as
+      | Record<string, unknown>
+      | undefined
+
+    expect(modalProps).toBeDefined()
+    if (!modalProps) {
+      throw new Error('Modal props were not captured')
+    }
+
+    const typedModalProps = modalProps as Record<string, unknown>
+
+    expect(typedModalProps).toEqual(expect.objectContaining(modal.modalProps))
   })
 
-  it('matches snapshot without modals', () => {
+  it('renders nothing when there are no modals', () => {
     mockedUseContainer.mockReturnValue({
       closeModal: jest.fn(),
       modals: [],
       removeModal: jest.fn(),
     })
 
-    const { baseElement } = renderWithWrapper(<ModalsRoot />)
+    renderWithWrapper(<ModalsRoot />)
 
-    expect(baseElement).toMatchSnapshot()
+    expect(screen.queryByText('Create list')).not.toBeInTheDocument()
+    expect(screen.queryByRole('dialog')).not.toBeInTheDocument()
+    expect(capturedModalProps.current).toBeUndefined()
   })
 
   it('calls modal afterClose and removes modal when ModalComponent afterClose is triggered', () => {

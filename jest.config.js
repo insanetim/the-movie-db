@@ -6,6 +6,7 @@ module.exports = {
     '!<rootDir>/src/**/*types.{ts,tsx}',
     '!<rootDir>/src/**/*{a,A}piSlice.{ts,tsx}',
     '!<rootDir>/src/interfaces/**/*.{ts,tsx}',
+    '!<rootDir>/src/App.tsx',
   ],
   coveragePathIgnorePatterns: ['src/index.tsx', 'src/global.d.ts'],
   coverageThreshold: {

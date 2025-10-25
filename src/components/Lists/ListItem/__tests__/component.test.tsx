@@ -6,18 +6,24 @@ import { renderWithWrapper } from 'src/utils/testHelpers/renderWithWrapper'
 import ListItem from '../component'
 import { ListItemHookReturn } from '../types'
 
-const mockedHook: ListItemHookReturn = {
+const mockedHook: jest.Mocked<ListItemHookReturn> = {
   handleConfirmDeleteList: jest.fn(),
   handleDeleteList: jest.fn(),
   handleNavigateToList: jest.fn(),
 }
+
 jest.mock('../hook', () => jest.fn(() => mockedHook))
 
 describe('ListItem component', () => {
   const user = userEvent.setup()
 
-  it('should match snapshot', () => {
-    const { asFragment } = renderWithWrapper(
+  beforeEach(() => {
+    mockedHook.handleConfirmDeleteList.mockClear()
+    mockedHook.handleNavigateToList.mockClear()
+  })
+
+  it('renders name and description inside card', () => {
+    renderWithWrapper(
       <ListItem
         description={mockList.description}
         listId={mockList.id}
@@ -25,7 +31,11 @@ describe('ListItem component', () => {
       />
     )
 
-    expect(asFragment()).toMatchSnapshot()
+    expect(
+      screen.getByRole('heading', { name: mockList.name })
+    ).toBeInTheDocument()
+    expect(screen.getByText(mockList.description)).toBeInTheDocument()
+    expect(screen.getByTestId('listItemCard')).toBeInTheDocument()
   })
 
   it('should call "handleClick" when card clicked', async () => {

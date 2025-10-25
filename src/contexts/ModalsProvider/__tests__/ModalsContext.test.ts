@@ -1,11 +1,15 @@
 import { renderHook } from '@testing-library/react'
 import { createElement, ReactNode } from 'react'
-import { ModalsContext, ModalsContextType, useModalsContext } from 'src/contexts/ModalsProvider'
+import {
+  ModalsContext,
+  ModalsContextType,
+  useModalsContext,
+} from 'src/contexts/ModalsProvider'
 
 const createWrapper =
   (value: ModalsContextType) =>
-    ({ children }: { children: ReactNode }) =>
-      createElement(ModalsContext.Provider, { value }, children)
+  ({ children }: { children: ReactNode }) =>
+    createElement(ModalsContext.Provider, { value }, children)
 
 describe('useModalsContext', () => {
   it('returns context value when used within ModalsProvider', () => {

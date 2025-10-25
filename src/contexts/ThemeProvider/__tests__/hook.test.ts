@@ -74,9 +74,7 @@ describe('ThemeProvider useContainer hook', () => {
     })
 
     it('should reflect theme changes across rerenders', () => {
-      mockUseAppSelector
-        .mockReturnValueOnce(false)
-        .mockReturnValueOnce(true)
+      mockUseAppSelector.mockReturnValueOnce(false).mockReturnValueOnce(true)
 
       const { rerender, result } = renderHook(() => useContainer())
       const { darkAlgorithm, defaultAlgorithm } = getAlgorithms()
@@ -91,4 +89,3 @@ describe('ThemeProvider useContainer hook', () => {
     })
   })
 })
-

@@ -1,3 +1,4 @@
+import { screen } from '@testing-library/react'
 import mockAccount from 'src/__mocks__/mockAccount'
 import { renderWithWrapper } from 'src/utils/testHelpers/renderWithWrapper'
 
@@ -13,9 +14,11 @@ const mockedHeader: HeaderHookReturn = {
 jest.mock('../Header/hook', () => jest.fn(() => mockedHeader))
 
 describe('DefaultLayout component', () => {
-  it('should match snapshot', () => {
-    const { asFragment } = renderWithWrapper(<DefaultLayout />)
+  it('should render header, outlet wrapper, and footer', () => {
+    renderWithWrapper(<DefaultLayout />)
 
-    expect(asFragment()).toMatchSnapshot()
+    expect(screen.getByText(/insanetim/i)).toBeInTheDocument()
+    expect(document.querySelector('.ant-layout-content')).not.toBeNull()
+    expect(document.querySelector('.ant-layout-footer')).not.toBeNull()
   })
 })

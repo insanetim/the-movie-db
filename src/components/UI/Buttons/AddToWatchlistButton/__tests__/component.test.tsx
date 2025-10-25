@@ -4,30 +4,38 @@ import { renderWithWrapper } from 'src/utils/testHelpers/renderWithWrapper'
 
 import AddToWatchlistButton from '../component'
 
+jest.mock('@ant-design/icons', () => ({
+  __esModule: true,
+  BookFilled: () => <span data-testid='book-filled' />,
+  BookOutlined: () => <span data-testid='book-outlined' />,
+}))
+
 describe('AddToWatchlistButton component', () => {
   const user = userEvent.setup()
   const handleClick = jest.fn()
 
-  it('should match snapshot', () => {
-    const { asFragment } = renderWithWrapper(
+  it('renders filled book icon when item in watchlist', () => {
+    renderWithWrapper(
       <AddToWatchlistButton
-        inWatchlist={true}
+        inWatchlist
         onClick={handleClick}
       />
     )
 
-    expect(asFragment()).toMatchSnapshot()
+    expect(screen.getByTestId('book-filled')).toBeInTheDocument()
+    expect(screen.queryByTestId('book-outlined')).not.toBeInTheDocument()
   })
 
-  it('should match snapshot with other data', () => {
-    const { asFragment } = renderWithWrapper(
+  it('renders outlined book icon when item not in watchlist', () => {
+    renderWithWrapper(
       <AddToWatchlistButton
         inWatchlist={false}
         onClick={handleClick}
       />
     )
 
-    expect(asFragment()).toMatchSnapshot()
+    expect(screen.getByTestId('book-outlined')).toBeInTheDocument()
+    expect(screen.queryByTestId('book-filled')).not.toBeInTheDocument()
   })
 
   it('should call "handleClick" when button clicked', async () => {

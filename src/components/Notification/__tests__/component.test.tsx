@@ -2,12 +2,19 @@ import { NOTIFICATION_DURATION, NOTIFICATION_TYPE } from 'src/constants'
 import { renderWithWrapper } from 'src/utils/testHelpers/renderWithWrapper'
 
 import Notification from '../component'
-import { NotificationHookReturn, NotificationProps } from '../types'
+import { NotificationProps } from '../types'
 
-const mockedHook: NotificationHookReturn = {
-  onClose: jest.fn(),
-}
-jest.mock('../hook', () => jest.fn(() => mockedHook))
+const mockOpenNotification = jest.fn()
+
+jest.mock('../hook', () =>
+  jest.fn(props => {
+    // mimic hook side effects by calling onClose immediately
+    mockOpenNotification(props)
+    return {
+      onClose: jest.fn(),
+    }
+  })
+)
 
 describe('Notification component', () => {
   const props: NotificationProps = {
@@ -18,9 +25,13 @@ describe('Notification component', () => {
     type: NOTIFICATION_TYPE.SUCCESS,
   }
 
-  it('should match snapshot', () => {
-    const { asFragment } = renderWithWrapper(<Notification {...props} />)
+  beforeEach(() => {
+    jest.clearAllMocks()
+  })
 
-    expect(asFragment()).toMatchSnapshot()
+  it('invokes notification hook with provided props', () => {
+    renderWithWrapper(<Notification {...props} />)
+
+    expect(mockOpenNotification).toHaveBeenCalledWith(props)
   })
 })

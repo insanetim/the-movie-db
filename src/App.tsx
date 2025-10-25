@@ -3,18 +3,18 @@ import { Route, Routes } from 'react-router-dom'
 import NotificationsRoot from 'src/components/NotificationsRoot'
 import ProtectedRoutes from 'src/components/ProtectedRoutes'
 
-export const Login = lazy(() => import('src/pages/Login'))
-export const DefaultLayout = lazy(() => import('src/layouts/Default'))
-export const Dashboard = lazy(() => import('src/pages/Dashboard'))
-export const Lists = lazy(() => import('src/pages/Lists'))
-export const Watchlist = lazy(() => import('src/pages/Watchlist'))
-export const Favorite = lazy(() => import('src/pages/Favorite'))
-export const ListDetails = lazy(() => import('src/pages/ListDetails'))
-export const MovieDetails = lazy(() => import('src/pages/MovieDetails'))
-export const Cast = lazy(() => import('src/pages/Cast'))
-export const PersonDetails = lazy(() => import('src/pages/PersonDetails'))
-export const Credits = lazy(() => import('src/pages/Credits'))
-export const NotFound = lazy(() => import('src/pages/NotFound'))
+const Login = lazy(() => import('src/pages/Login'))
+const DefaultLayout = lazy(() => import('src/layouts/Default'))
+const Dashboard = lazy(() => import('src/pages/Dashboard'))
+const Lists = lazy(() => import('src/pages/Lists'))
+const Watchlist = lazy(() => import('src/pages/Watchlist'))
+const Favorite = lazy(() => import('src/pages/Favorite'))
+const ListDetails = lazy(() => import('src/pages/ListDetails'))
+const MovieDetails = lazy(() => import('src/pages/MovieDetails'))
+const Cast = lazy(() => import('src/pages/Cast'))
+const PersonDetails = lazy(() => import('src/pages/PersonDetails'))
+const Credits = lazy(() => import('src/pages/Credits'))
+const NotFound = lazy(() => import('src/pages/NotFound'))
 
 const App: React.FC = () => (
   <Suspense fallback={null}>

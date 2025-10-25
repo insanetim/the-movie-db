@@ -15,10 +15,26 @@ jest.mock('../hook', () => jest.fn(() => mockedHook))
 describe('SearchInput component', () => {
   const user = userEvent.setup()
 
-  it('should match snapshot', () => {
-    const { asFragment } = renderWithWrapper(<SearchInput query={''} />)
+  beforeEach(() => {
+    jest.clearAllMocks()
+    mockedHook.inputValue = ''
+  })
 
-    expect(asFragment()).toMatchSnapshot()
+  it('should render search input with placeholder and button', () => {
+    renderWithWrapper(<SearchInput query={''} />)
+
+    expect(screen.getByPlaceholderText('Enter movie name')).toBeInTheDocument()
+    expect(screen.getByRole('button', { name: /search/i })).toBeInTheDocument()
+  })
+
+  it('should render current input value from hook', () => {
+    mockedHook.inputValue = 'my search query'
+
+    renderWithWrapper(<SearchInput query={''} />)
+
+    expect(screen.getByPlaceholderText('Enter movie name')).toHaveValue(
+      'my search query'
+    )
   })
 
   it('should call "handleChange" when input changed', async () => {

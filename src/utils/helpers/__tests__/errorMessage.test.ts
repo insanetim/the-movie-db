@@ -14,4 +14,10 @@ describe('errorMessage', () => {
 
     expect(result).toBe('test/message')
   })
+
+  it('should return null when error is not provided', () => {
+    const result = errorMessage()
+
+    expect(result).toBeNull()
+  })
 })

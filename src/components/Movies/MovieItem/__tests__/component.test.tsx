@@ -1,6 +1,5 @@
 import { screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
-import { assoc } from 'ramda'
 import { mockMovie } from 'src/__mocks__/mockMovie'
 import { renderWithWrapper } from 'src/utils/testHelpers/renderWithWrapper'
 
@@ -14,43 +13,68 @@ jest.mock('../hook', () => jest.fn(() => mockedHook))
 
 describe('MovieItem component', () => {
   const user = userEvent.setup()
-  const props: MovieItemProps = {
-    handleMovieDelete: jest.fn(),
-    id: mockMovie.id,
-    overview: mockMovie.overview,
-    posterPath: mockMovie.poster_path,
-    title: mockMovie.title,
-  }
+  let props: MovieItemProps
 
-  it('should match snapshot', () => {
-    const { asFragment } = renderWithWrapper(<MovieItem {...props} />)
-
-    expect(asFragment()).toMatchSnapshot()
+  beforeEach(() => {
+    jest.clearAllMocks()
+    props = {
+      handleMovieDelete: jest.fn(),
+      id: mockMovie.id,
+      overview: mockMovie.overview,
+      posterPath: mockMovie.poster_path,
+      title: mockMovie.title,
+    }
   })
 
-  it('should match snapshot without poster_path', () => {
-    const newProps = assoc('posterPath', null, props)
-
-    const { asFragment } = renderWithWrapper(<MovieItem {...newProps} />)
-
-    expect(asFragment()).toMatchSnapshot()
-  })
-
-  it('should call "handleClick" when card clicked', async () => {
+  it('renders movie card with poster and metadata', () => {
     renderWithWrapper(<MovieItem {...props} />)
 
     const card = screen.getByTestId('movieItemCard')
-    await user.click(card)
+    const poster = screen.getByRole('img', { name: mockMovie.title })
+
+    expect(card).toBeInTheDocument()
+    expect(poster).toHaveAttribute(
+      'src',
+      `https://image.tmdb.org/t/p/w500${mockMovie.poster_path}`
+    )
+    expect(screen.getByText(mockMovie.title)).toBeInTheDocument()
+    expect(screen.getByText(mockMovie.overview!)).toBeInTheDocument()
+  })
+
+  it('renders placeholder image when poster is missing', () => {
+    renderWithWrapper(
+      <MovieItem
+        {...props}
+        posterPath={null}
+      />
+    )
+
+    const placeholderWrapper = document.querySelector(
+      '.ant-card-cover--no-image'
+    )
+
+    expect(placeholderWrapper).toBeInTheDocument()
+    expect(placeholderWrapper?.querySelector('img')?.getAttribute('alt')).toBe(
+      mockMovie.title
+    )
+  })
+
+  it('navigates to movie when card is clicked', async () => {
+    renderWithWrapper(<MovieItem {...props} />)
+
+    await user.click(screen.getByTestId('movieItemCard'))
 
     expect(mockedHook.handleNavigateToMovie).toHaveBeenCalled()
   })
 
-  it('should call "handleMovieDelete" when delete button clicked', async () => {
+  it('calls delete handler when delete icon clicked', async () => {
     renderWithWrapper(<MovieItem {...props} />)
 
-    const deleteBtn = screen.getByTestId('deleteMovieBtn')
-    await user.click(deleteBtn)
+    await user.click(screen.getByTestId('deleteMovieBtn'))
 
-    expect(props.handleMovieDelete).toHaveBeenCalled()
+    expect(props.handleMovieDelete).toHaveBeenCalledWith(
+      expect.objectContaining({ type: 'click' }),
+      props.id
+    )
   })
 })

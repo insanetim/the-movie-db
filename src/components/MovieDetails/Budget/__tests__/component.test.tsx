@@ -1,11 +1,13 @@
+import { screen } from '@testing-library/react'
 import { renderWithWrapper } from 'src/utils/testHelpers/renderWithWrapper'
 
 import Budget from '../component'
 
 describe('Budget component', () => {
-  it('should match snapshot', () => {
-    const { asFragment } = renderWithWrapper(<Budget budget={1000000} />)
+  it('renders formatted budget value', () => {
+    renderWithWrapper(<Budget budget={1000000} />)
 
-    expect(asFragment()).toMatchSnapshot()
+    expect(screen.getByText('Budget:')).toBeInTheDocument()
+    expect(screen.getByText('$1,000,000')).toBeInTheDocument()
   })
 })

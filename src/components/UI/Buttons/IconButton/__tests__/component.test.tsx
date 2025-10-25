@@ -9,15 +9,18 @@ describe('IconButton component', () => {
   const user = userEvent.setup()
   const handleClick = jest.fn()
 
-  it('should match snapshot', () => {
-    const { asFragment } = renderWithWrapper(
+  it('renders provided icon inside button', () => {
+    renderWithWrapper(
       <IconButton
         icon={<PlusCircleOutlined />}
         onClick={handleClick}
       />
     )
 
-    expect(asFragment()).toMatchSnapshot()
+    expect(screen.getByRole('img', { name: 'plus-circle' })).toBeInTheDocument()
+    expect(screen.getByRole('button')).toContainElement(
+      screen.getByRole('img', { name: 'plus-circle' })
+    )
   })
 
   it('should call "handleClick" when button clicked', async () => {

@@ -1,5 +1,0 @@
-// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
-
-exports[`ProtectedRoutes component should match snapshot 1`] = `<DocumentFragment />`;
-
-exports[`ProtectedRoutes component should match snapshot without sessionId 1`] = `<DocumentFragment />`;
