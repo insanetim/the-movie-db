@@ -14,9 +14,17 @@ jest.mock('../hook', () => jest.fn(() => mockedHook))
 describe('ThemeSwitch component', () => {
   const user = userEvent.setup()
 
-  it('should match snapshot', () => {
-    const { asFragment } = renderWithWrapper(<ThemeSwitch />)
-    expect(asFragment()).toMatchSnapshot()
+  it('renders theme options with current selection highlighted', () => {
+    renderWithWrapper(<ThemeSwitch />)
+
+    const radios = screen.getAllByRole('radio')
+
+    expect(radios).toHaveLength(2)
+    const selectedItem = radios[0].closest('.ant-segmented-item')
+    const unselectedItem = radios[1].closest('.ant-segmented-item')
+
+    expect(selectedItem).toHaveClass('ant-segmented-item-selected')
+    expect(unselectedItem).not.toHaveClass('ant-segmented-item-selected')
   })
 
   it('should call "handleChange" when option clicked', async () => {

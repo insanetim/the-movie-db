@@ -5,23 +5,55 @@ import ProtectedRoutes from '../component'
 import { ProtectedRoutesHookReturn } from '../types'
 
 const mockedHook: ProtectedRoutesHookReturn = {
-  location: {} as Location,
+  location: { pathname: '/private' } as Location,
   sessionId: 'test/session_id',
 }
+
+const mockNavigateProps = jest.fn()
+
+jest.mock('react-router-dom', () => {
+  const actual = jest.requireActual('react-router-dom')
+
+  return {
+    ...actual,
+    Navigate: jest.fn(props => {
+      mockNavigateProps(props)
+
+      return <div data-testid='navigate' />
+    }),
+    Outlet: jest.fn(() => <div data-testid='protected-outlet' />),
+  }
+})
+
 jest.mock('../hook', () => jest.fn(() => mockedHook))
 
 describe('ProtectedRoutes component', () => {
-  it('should match snapshot', () => {
-    const { asFragment } = renderWithWrapper(<ProtectedRoutes />)
-
-    expect(asFragment()).toMatchSnapshot()
+  beforeEach(() => {
+    jest.clearAllMocks()
+    mockedHook.location = { pathname: '/private' } as Location
+    mockedHook.sessionId = 'test/session_id'
   })
 
-  it('should match snapshot without sessionId', () => {
+  it('renders nested routes when session exists', () => {
+    const { getByTestId, queryByTestId } = renderWithWrapper(
+      <ProtectedRoutes />
+    )
+
+    expect(getByTestId('protected-outlet')).toBeInTheDocument()
+    expect(queryByTestId('navigate')).not.toBeInTheDocument()
+    expect(mockNavigateProps).not.toHaveBeenCalled()
+  })
+
+  it('redirects to login when session is missing', () => {
     mockedHook.sessionId = null
 
-    const { asFragment } = renderWithWrapper(<ProtectedRoutes />)
+    const { getByTestId } = renderWithWrapper(<ProtectedRoutes />)
 
-    expect(asFragment()).toMatchSnapshot()
+    expect(getByTestId('navigate')).toBeInTheDocument()
+    expect(mockNavigateProps).toHaveBeenCalledWith({
+      replace: true,
+      state: { from: mockedHook.location },
+      to: '/login',
+    })
   })
 })
