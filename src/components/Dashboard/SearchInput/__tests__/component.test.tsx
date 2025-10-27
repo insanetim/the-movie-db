@@ -49,7 +49,7 @@ describe('SearchInput component', () => {
   it('should call "handleSearch" when button clicked', async () => {
     renderWithWrapper(<SearchInput query={''} />)
 
-    const button = screen.getByRole('button')
+    const button = screen.getByRole('button', { name: /search/i })
     await user.click(button)
 
     expect(mockedHook.handleSearch).toHaveBeenCalled()
