@@ -15,6 +15,15 @@ Object.defineProperty(window, 'matchMedia', {
   writable: true,
 })
 
+Object.defineProperty(window, 'getComputedStyle', {
+  value: jest.fn(() => ({
+    getPropertyValue: () => '',
+    overflow: 'hidden',
+    overflowX: 'hidden',
+    overflowY: 'hidden',
+  })),
+})
+
 Object.assign(global, {
   TextDecoder,
   TextEncoder,
