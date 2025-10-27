@@ -14,6 +14,7 @@ jest.mock('../hook', () => jest.fn(() => mockedHook))
 
 describe('Login component', () => {
   beforeEach(() => {
+    jest.clearAllMocks()
     mockedHook.isSubmitting = false
     mockedHook.handleLogin.mockClear()
   })

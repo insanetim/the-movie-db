@@ -1,18 +1,10 @@
 import { apiSlice } from 'src/store/api/apiSlice'
 import { RootState } from 'src/store/index'
 
+const apiInitialState = apiSlice.reducer(undefined, { type: 'api/INIT' })
+
 const mockState: RootState = {
-  [apiSlice.reducerPath]: {
-    config: {
-      focused: true,
-      middlewareRegistered: true,
-      online: true,
-    },
-    mutations: {},
-    provided: {},
-    queries: {},
-    subscriptions: {},
-  } as ReturnType<typeof apiSlice.reducer>,
+  [apiSlice.reducerPath]: apiInitialState,
   app: {
     _persist: {
       rehydrated: true,
