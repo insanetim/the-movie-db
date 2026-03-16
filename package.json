@@ -74,7 +74,7 @@
     "postcss-nested": "^7.0.2",
     "postcss-scss": "^4.0.9",
     "prettier": "^3.8.1",
-    "sass-embedded": "^1.97.3",
+    "sass-embedded": "^1.98.0",
     "sass-loader": "^16.0.7",
     "style-loader": "^4.0.0",
     "stylelint": "^16.26.1",
