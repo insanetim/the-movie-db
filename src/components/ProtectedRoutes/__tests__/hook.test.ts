@@ -28,6 +28,7 @@ describe('ProtectedRoutes useContainer hook', () => {
     pathname: '/protected',
     search: '?foo=bar',
     state: { from: '/login' },
+    unstable_mask: undefined,
   }
 
   beforeEach(() => {

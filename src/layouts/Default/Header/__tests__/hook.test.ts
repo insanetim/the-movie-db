@@ -1,5 +1,5 @@
 import { act, renderHook } from '@testing-library/react'
-import { useLocation, useNavigate } from 'react-router-dom'
+import { Location, useLocation, useNavigate } from 'react-router-dom'
 import useScrollToTop from 'src/hooks/useScrollToTop'
 import {
   selectAccount,
@@ -40,12 +40,13 @@ describe('useContainer', () => {
   let mockNavigate: jest.Mock
   let mockDeleteSession: jest.Mock
 
-  const mockLocation = {
+  const mockLocation: Location = {
     hash: '',
     key: 'test-key',
     pathname: '/',
     search: '',
     state: null,
+    unstable_mask: undefined,
   }
 
   const mockAccount = {

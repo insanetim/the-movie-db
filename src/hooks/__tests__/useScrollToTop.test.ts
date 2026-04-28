@@ -27,6 +27,7 @@ const createLocation = (overrides: Partial<Location> = {}): Location => ({
   pathname: '/',
   search: '',
   state: null,
+  unstable_mask: undefined,
   ...overrides,
 })
 
